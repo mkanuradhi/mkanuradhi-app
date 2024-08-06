@@ -1,0 +1,21 @@
+{
+  "title": "Anuradha Ariyaratne",
+  "en": "English",
+  "si": "Sinhala",
+  "pages": {
+    "index": {
+      "title": "Anuradha"
+    }
+  },
+  "components": {
+    "NavigationBar": {
+      "title": "Anuradha Ariyaratne",
+      "teaching": "Teaching",
+      "research": "Research",
+      "publications": "Publications",
+      "awards": "Awards",
+      "experience": "Experience",
+      "contact": "Contact"
+    }
+  }
+}
