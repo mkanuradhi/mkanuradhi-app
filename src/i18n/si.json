@@ -1,7 +1,5 @@
 {
   "title": "අනුරාධා ආරියරත්න",
-  "en": "ඉංග්‍රීසි",
-  "si": "සිංහල",
   "pages": {
     "index": {
       "title": "අනුරාධා"
@@ -10,12 +8,14 @@
   "components": {
     "NavigationBar": {
       "title": "අනුරාධා ආරියරත්න",
-      "teaching": "ඉගැන්වීම",
+      "teaching": "ඉගැන්වීම්",
       "research": "පර්යේෂණ",
       "publications": "ප්‍රකාශන",
       "awards": "සම්මාන",
       "experience": "අත්දැකීම්",
-      "contact": "අමතන්න"
+      "contact": "අමතන්න",
+      "en": "ඉංග්‍රීසි (en)",
+      "si": "සිංහල (si)"
     }
   }
 }

@@ -1,7 +1,5 @@
 {
   "title": "Anuradha Ariyaratne",
-  "en": "English",
-  "si": "Sinhala",
   "pages": {
     "index": {
       "title": "Anuradha"
@@ -15,7 +13,9 @@
       "publications": "Publications",
       "awards": "Awards",
       "experience": "Experience",
-      "contact": "Contact"
+      "contact": "Contact",
+      "en": "English (en)",
+      "si": "Sinhala (si)"
     }
   }
 }
