@@ -17,16 +17,16 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#">{t('title')}</Navbar.Brand>
+          <Navbar.Brand href="/">{t('title')}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#">{t('teaching')}</Nav.Link>
-              <Nav.Link href="#">{t('research')}</Nav.Link>
-              <Nav.Link href="#">{t('publications')}</Nav.Link>
-              <Nav.Link href="#">{t('awards')}</Nav.Link>
-              <Nav.Link href="#">{t('experience')}</Nav.Link>
-              <Nav.Link href="#">{t('contact')}</Nav.Link>
+              <Nav.Link href="teaching">{t('teaching')}</Nav.Link>
+              <Nav.Link href="research">{t('research')}</Nav.Link>
+              <Nav.Link href="publications">{t('publications')}</Nav.Link>
+              <Nav.Link href="awards">{t('awards')}</Nav.Link>
+              <Nav.Link href="experience">{t('experience')}</Nav.Link>
+              <Nav.Link href="contact">{t('contact')}</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link onClick={toggleTheme}>
