@@ -4,6 +4,8 @@ import useLanguage from "./hooks/useLanguage";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
+import { Footer } from "./components/Footer";
+import "./App.scss";
 
 function App() {
   useTitleUpdater();
@@ -23,6 +25,9 @@ function App() {
               <Route path='*' element={ <NotFound /> }></Route>
             </Routes>
           </main>
+          <footer>
+            <Footer />
+          </footer>
         </div>
       </BrowserRouter>
     </>

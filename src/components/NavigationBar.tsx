@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import useTheme from "../hooks/useTheme";
+import { useNavigate } from "react-router-dom";
 
 interface NavigationBarProps {
   changeLanguage: (lng: string) => void;
@@ -12,21 +13,22 @@ interface NavigationBarProps {
 const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLanguage }) => {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation('', { keyPrefix: 'components.NavigationBar' });
+  const navigate = useNavigate();
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary bg-opacity-50">
         <Container>
-          <Navbar.Brand href="/">{t('title')}</Navbar.Brand>
+          <Navbar.Brand onClick={() => navigate("/")}>{t('title')}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="teaching">{t('teaching')}</Nav.Link>
-              <Nav.Link href="research">{t('research')}</Nav.Link>
-              <Nav.Link href="publications">{t('publications')}</Nav.Link>
-              <Nav.Link href="awards">{t('awards')}</Nav.Link>
-              <Nav.Link href="experience">{t('experience')}</Nav.Link>
-              <Nav.Link href="contact">{t('contact')}</Nav.Link>
+              <Nav.Link onClick={() => navigate("/teaching")}>{t('teaching')}</Nav.Link>
+              <Nav.Link onClick={() => navigate("/research")}>{t('research')}</Nav.Link>
+              <Nav.Link onClick={() => navigate("/publications")}>{t('publications')}</Nav.Link>
+              <Nav.Link onClick={() => navigate("/awards")}>{t('awards')}</Nav.Link>
+              <Nav.Link onClick={() => navigate("/experience")}>{t('experience')}</Nav.Link>
+              <Nav.Link onClick={() => navigate("/contact")}>{t('contact')}</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link onClick={toggleTheme}>
