@@ -1,0 +1,12 @@
+.footer-bar {
+
+  background-color: rgba(var(--bs-body-bg-rgb), 0.5);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .footer-content {
+    text-align: center;
+  }
+}
