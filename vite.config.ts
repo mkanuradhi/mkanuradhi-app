@@ -2,9 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
-export default defineConfig(({mode}) => {
-  return {
-    base: mode === 'production' ? '/mkanuradhi.github.io/' : '/',
+export default defineConfig({
     plugins: [react()],
     css: {
       preprocessorOptions: {
@@ -15,6 +13,5 @@ export default defineConfig(({mode}) => {
     },
     server: {
       host: '0.0.0.0',
-    },
-  };
+    }
 })
