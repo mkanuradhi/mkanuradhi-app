@@ -1,4 +1,4 @@
-import { Col, Container, Image, Row, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Col, Container, Image, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import anuImage from "../assets/images/anuradha.png";
 import { v4 as uuidv4 } from "uuid";
