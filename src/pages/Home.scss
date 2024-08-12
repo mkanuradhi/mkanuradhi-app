@@ -1,6 +1,6 @@
 .home {
 
-  .main-row {
+  .top-margin-row {
     margin-top: 32px;
   }
 
@@ -19,4 +19,28 @@
   .description {
     text-align: justify;
   }
+
+  .home-ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1rem;
+
+    li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.5rem;
+
+      .list-icon {
+        position: absolute;
+        left: 0;
+        top: 0.25rem;
+        font-size: 1rem;
+      }
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+  }
+
 }
