@@ -26,6 +26,12 @@
         "MSc in Data Science, (Reading), Tampere University, Finland.",
         "BSc (Hons) Special Degree in Computer Science, 2012, University of Sri Jayewardenepura, Sri Lanka."
       ]
+    },
+    "Teaching": {
+      "title": "Teaching",
+      "descriptions": [
+        "Currently I am teaching to bachelors and masters level degree programs."
+      ]
     }
   },
   "components": {
@@ -39,6 +45,14 @@
       "contact": "Contact",
       "en": "English (en)",
       "si": "Sinhala (si)"
+    },
+    "Footer": {
+      "title": "Copyright 2024 Anuradha Ariyaratne.",
+      "ackTitle": "Acknowlegements",
+      "ackDescriptions": [
+        "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, Prof. TGI Fernando and Prof. Sunethra Weerakoon, for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
+        "Finally, I would like to thank my family for their unwavering support and encouragement. Without them, none of this would be possible."
+      ]
     }
   }
 }

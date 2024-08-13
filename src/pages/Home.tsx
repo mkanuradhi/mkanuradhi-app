@@ -63,7 +63,7 @@ export const Home = () => {
               <div>
                 <h1 className="text-center">{t('aboutTitle')}</h1>
                 {descriptions.map(desc => (
-                  <p key={uuidv4()} className="description">
+                  <p key={uuidv4()} className="text-justify">
                     {desc}
                   </p>
                 ))}
