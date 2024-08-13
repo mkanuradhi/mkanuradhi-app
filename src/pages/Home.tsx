@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
-import "./Home.scss"
 import ExternalLinkBar from "../components/ExternalLinkBar";
+import ScopusIcon from "../icons/ScopusIcon";
+import "./Home.scss";
 
 export const Home = () => {
   const { t } = useTranslation('', { keyPrefix: 'pages.Home' });
@@ -34,6 +35,11 @@ export const Home = () => {
       tooltipText: 'ResearchGate',
       url: 'https://www.researchgate.net/profile/Anuradha-Ariyaratne',
       faIcon: faResearchgate,
+    },
+    {
+      tooltipText: 'Scopus',
+      url: 'https://www.scopus.com/authid/detail.uri?authorId=57188855115',
+      customIcon: <ScopusIcon size={30} />,
     },
   ];
 
