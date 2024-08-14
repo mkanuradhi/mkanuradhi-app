@@ -1,5 +1,4 @@
 import NavigationBar from "./components/NavigationBar";
-import useTitleUpdater from "./hooks/useTitleUpdater";
 import useLanguage from "./hooks/useLanguage";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from "./pages/Home";
@@ -9,7 +8,6 @@ import { Teaching } from "./pages/Teaching";
 import "./App.scss";
 
 function App() {
-  useTitleUpdater();
   const { language, changeLanguage } = useLanguage();
 
   return (
