@@ -10,7 +10,7 @@ import "./NotFound.scss";
 export const NotFound = () => {
   const langKeyPrefix = 'pages.NotFound';
   const { t } = useTranslation('', { keyPrefix: langKeyPrefix });
-  const description = t('description', { exlamation: t('descriptionExclamation') });
+  const description = "Page cannot be found on the server.";
 
   return (
     <>
