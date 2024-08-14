@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import useTheme from "../hooks/useTheme";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./NavigationBar.scss";
 
 interface NavigationBarProps {
@@ -15,6 +15,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation('', { keyPrefix: 'components.NavigationBar' });
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const teachingPath = "/teaching";
+  const researchPath = "/research";
+  const publicationsPath = "/publications";
+  const awardsPath = "/awards";
+  const experiencePath = "/experience";
+  const contactPath = "/contact";
 
   return (
     <>
@@ -34,12 +42,48 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="me-auto">
-                  <Nav.Link onClick={() => navigate("/teaching")} href="#">{t('teaching')}</Nav.Link>
-                  <Nav.Link onClick={() => navigate("/research")} href="#">{t('research')}</Nav.Link>
-                  <Nav.Link onClick={() => navigate("/publications")} href="#">{t('publications')}</Nav.Link>
-                  <Nav.Link onClick={() => navigate("/awards")} href="#">{t('awards')}</Nav.Link>
-                  <Nav.Link onClick={() => navigate("/experience")} href="#">{t('experience')}</Nav.Link>
-                  <Nav.Link onClick={() => navigate("/contact")} href="#">{t('contact')}</Nav.Link>
+                  <Nav.Link
+                    onClick={() => navigate(teachingPath)} 
+                    href="#"
+                    active={location.pathname === teachingPath}
+                    >
+                      {t('teaching')}
+                    </Nav.Link>
+                  <Nav.Link
+                    onClick={() => navigate(researchPath)}
+                    href="#"
+                    active={location.pathname === researchPath}
+                  >
+                    {t('research')}
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={() => navigate(publicationsPath)}
+                    href="#"
+                    active={location.pathname === publicationsPath}
+                  >
+                    {t('publications')}
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={() => navigate(awardsPath)}
+                    href="#"
+                    active={location.pathname === awardsPath}
+                  >
+                    {t('awards')}
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={() => navigate(experiencePath)}
+                    href="#"
+                    active={location.pathname === experiencePath}
+                  >
+                    {t('experience')}
+                  </Nav.Link>
+                  <Nav.Link
+                    onClick={() => navigate(contactPath)}
+                    href="#"
+                    active={location.pathname === contactPath}
+                  >
+                    {t('contact')}
+                  </Nav.Link>
                 </Nav>
                 <Nav>
                   <Nav.Link onClick={toggleTheme}>
@@ -56,29 +100,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
                 </Nav>
               </Offcanvas.Body>
           </Navbar.Offcanvas>
-          {/* <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link onClick={() => navigate("/teaching")}>{t('teaching')}</Nav.Link>
-              <Nav.Link onClick={() => navigate("/research")}>{t('research')}</Nav.Link>
-              <Nav.Link onClick={() => navigate("/publications")}>{t('publications')}</Nav.Link>
-              <Nav.Link onClick={() => navigate("/awards")}>{t('awards')}</Nav.Link>
-              <Nav.Link onClick={() => navigate("/experience")}>{t('experience')}</Nav.Link>
-              <Nav.Link onClick={() => navigate("/contact")}>{t('contact')}</Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link onClick={toggleTheme}>
-                <FontAwesomeIcon icon={theme === 'light' ? faSun : faMoon} />
-              </Nav.Link>
-              <NavDropdown title={<><FontAwesomeIcon icon={faLanguage} /></>} id="collapsible-nav-dropdown">
-                <NavDropdown.Item onClick={() => changeLanguage('en')} active={currentLanguage === 'en'}>
-                  { t('en') }
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => changeLanguage('si')} active={currentLanguage === 'si'}>
-                  { t('si') }
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse> */}
         </Container>
       </Navbar>
     </>

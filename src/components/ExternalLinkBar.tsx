@@ -6,7 +6,8 @@ import "./ExternalLinkBar.scss";
 interface LinkProps {
   tooltipText: string;
   url: string;
-  faIcon: IconProp;
+  faIcon?: IconProp;
+  customIcon?: React.ReactNode;
 }
 
 interface ExternalLinkBarProps {
@@ -27,7 +28,11 @@ const ExternalLinkBar: React.FC<ExternalLinkBarProps> = ({ links }) => (
             }
             >
             <a href={link.url} target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={link.faIcon} size="2x" />
+              {link.faIcon ? (
+                <FontAwesomeIcon icon={link.faIcon} size="2x" />
+              ) : (
+                link.customIcon
+              )}
             </a>
           </OverlayTrigger>
         </Col>

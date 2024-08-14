@@ -26,6 +26,204 @@
         "MSc in Data Science, (Reading), Tampere University, Finland.",
         "BSc (Hons) Special Degree in Computer Science, 2012, University of Sri Jayewardenepura, Sri Lanka."
       ]
+    },
+    "Teaching": {
+      "title": "Teaching",
+      "descriptions": [
+        "Currently I am teaching to bachelors and masters level degree programs."
+      ],
+      "coursesTitle": "Courses",
+      "details": [
+        {
+          "year": "2024",
+          "descriptions": [
+            { 
+              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
+                "CSC 319 1.5 Machine Learning I (B.Sc. (General Degree))"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2023",
+          "descriptions": [
+            { 
+              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "DSA 504 2.0 Machine Learning 1 (M.Sc.in Data Science and AI-Batch 2)"
+              ]
+            },
+            { 
+              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
+                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2022",
+          "descriptions": [
+            { 
+              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "DSA 504 2.0 Machine Learning 1 (M.Sc.in Data Science and AI-Batch 1)",
+                "DSA 555 3.0 Nature Inspired Computing (M.Sc.in Data Science and AI-Batch 1)"
+              ]
+            },
+            { 
+              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
+                "CSC 201 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
+                "ICT 204 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
+                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
+                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
+                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
+                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2021",
+          "descriptions": [
+            { 
+              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "CSC 615 2.0 Nature Inspired Algorithms (M.Sc.in Computer Science)"
+              ]
+            },
+            { 
+              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
+                "CSC 201 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
+                "ICT 204 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
+                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
+                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
+                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
+                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2020",
+          "descriptions": [
+            { 
+              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "IM 534 2.0 Special Topics in Industrial Mathematics (M.Sc.in Industrial Mathematics)"
+              ]
+            },
+            { 
+              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
+                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
+                "ICT 204 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
+                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
+                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
+                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
+                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2019",
+          "descriptions": [
+            { 
+              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
+                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
+                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
+                "CSC 319 1.5 Machine Learning I (B.Sc. (General Degree))",
+                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
+                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
+                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2018",
+          "descriptions": [
+            { 
+              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
+                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
+                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2017",
+          "descriptions": [
+            { 
+              "location": "Department of Computer Science, Faculty of Computing, General Sir John Kotelawala Defence University, Sri Lanka.",
+              "courses": [
+                "CS 5023 Computer Security (Batch 32)",
+                "CS 1022 Foundation of Computer Science (Batch 34)",
+                "IS 5073 Operational Research (Batch 32)"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2016",
+          "descriptions": [
+            { 
+              "location": "Department of Computer Science, Faculty of Computing, General Sir John Kotelawala Defence University, Sri Lanka.",
+              "courses": [
+                "CS 5023 Computer Security (Batch 31)",
+                "CS 1022 Foundation of Computer Science (Batch 33)",
+                "CS 6013 Automata Theory (Batch 31)",
+                "CS 3023 Data Structures and Algorithms II (Batch 32)"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2015",
+          "descriptions": [
+            { 
+              "location": "Department of Computer Science, Faculty of Computing, General Sir John Kotelawala Defence University, Sri Lanka.",
+              "courses": [
+                "CS 5023 Computer Security (Batch 30)",
+                "CS 6013 Automata Theory (Batch 30)",
+                "CS 3023 Data Structures and Algorithms II (Batch 31)"
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2014",
+          "descriptions": [
+            { 
+              "location": "Department of Computer Science, Faculty of Natural Sciences, The Open University of Sri Lanka.",
+              "courses": [
+                "CPU 1142 Data Structures and Algorithms",
+                "CPU 2241 Database Management Systems"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "NotFound": {
+      "title": "Not Found",
+      "subTitle": "404",
+      "descriptionExclamation": "Oops",
+      "linkText": "homepage",
+      "description": "<strong>{{exlamation}}!</strong> The page you're looking for doesn't seem to exist. Try going back to <link /> or checking the <em>URL</em>."
     }
   },
   "components": {
@@ -39,6 +237,14 @@
       "contact": "Contact",
       "en": "English (en)",
       "si": "Sinhala (si)"
+    },
+    "Footer": {
+      "title": "Copyright 2024 Anuradha Ariyaratne.",
+      "ackTitle": "Acknowlegements",
+      "ackDescriptions": [
+        "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, professor TGI Fernando and emeritus professor Sunethra Weerakoon, for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
+        "Finally, I would like to thank my family for their unwavering support and encouragement. Without them, none of this would be possible."
+      ]
     }
   }
 }

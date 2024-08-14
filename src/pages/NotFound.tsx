@@ -1,17 +1,40 @@
-import { Container } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Col, Container, Row } from "react-bootstrap";
+import { Trans, useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import "./NotFound.scss";
 
 export const NotFound = () => {
+  const langKeyPrefix = 'pages.NotFound';
+  const { t } = useTranslation('', { keyPrefix: langKeyPrefix });
 
   return (
     <>
-      <Container>
-        <div>
-          <h1>Not Found</h1>
-          <h3>404</h3>
-          <p>Oops! The page you&apos;re looking for doesn&apos;t seem to exist. Try going back to our <Link to="/">homepage</Link> or checking the URL.</p>
-        </div>
-      </Container>
+      <div className="notfound">
+        <Container>
+          <Row className="top-margin-row">
+            <Col>
+              <div className="notfound-content">
+                <h1>{t('title')}</h1>
+                <h2>{t('subTitle')}</h2>
+                <FontAwesomeIcon icon={faTriangleExclamation} size="6x" />
+                <p>
+                  <Trans
+                    i18nKey={`${langKeyPrefix}.description`}
+                    components={{
+                      strong: <strong />,
+                      em: <em />,
+                      link: <Link to="/">{t('linkText')}</Link>
+                    }}
+                    values={{ exlamation: t('descriptionExclamation') }}
+                  />
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
   )
 }
