@@ -1,6 +1,9 @@
-import { Col, Container, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap";
 import { Trans, useTranslation } from "react-i18next";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import "./NotFound.scss";
 
 export const NotFound = () => {
   const langKeyPrefix = 'pages.NotFound';
@@ -12,11 +15,10 @@ export const NotFound = () => {
         <Container>
           <Row className="top-margin-row">
             <Col>
-              <div>
+              <div className="notfound-content">
                 <h1>{t('title')}</h1>
                 <h2>{t('subTitle')}</h2>
-                {/* <p>{t('description')}</p> */}
-                
+                <FontAwesomeIcon icon={faTriangleExclamation} size="6x" />
                 <p>
                   <Trans
                     i18nKey={`${langKeyPrefix}.description`}
