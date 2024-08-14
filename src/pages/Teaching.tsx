@@ -16,7 +16,7 @@ export const Teaching = () => {
   const { t } = useTranslation('', { keyPrefix: 'pages.Teaching' });
   const descriptions: string[] = t('descriptions', { returnObjects: true });
   // const details: string[] = t('details', { returnObjects: true });
-  const details = t('details', { returnObjects: true }) as TeachingData;
+  const details = t('details', { returnObjects: true }) as TeachingData[];
 
   return (
     <>
