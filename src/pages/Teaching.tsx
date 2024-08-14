@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap"
 import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from "uuid";
 
 export const Teaching = () => {
   const { t } = useTranslation('', { keyPrefix: 'pages.Teaching' });
@@ -14,7 +15,7 @@ export const Teaching = () => {
               <h1>{t('title')}</h1>
               <section>
                 {descriptions.map(description => (
-                  <p>{description}</p>
+                  <p key={uuidv4()}>{description}</p>
                 ))}
               </section>
               <section>

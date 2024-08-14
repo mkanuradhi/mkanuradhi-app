@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { v4 as uuidv4 } from "uuid";
 import "./Footer.scss"
 
 export const Footer = () => {
@@ -36,7 +37,7 @@ export const Footer = () => {
           </Modal.Header>
           <Modal.Body>
             {descriptions.map(description => (
-              <p style={{textAlign: "justify"}}>{description}</p>
+              <p key={uuidv4()} style={{textAlign: "justify"}}>{description}</p>
             ))}
           </Modal.Body>
           <Modal.Footer>
