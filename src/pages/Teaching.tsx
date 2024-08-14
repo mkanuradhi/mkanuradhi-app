@@ -24,16 +24,16 @@ export const Teaching = () => {
         <Container>
           <Row className="top-margin-row">
             <Col>
-              <h1 className="display-1">{t('title')}</h1>
+              <h1>{t('title')}</h1>
               <section>
                 {descriptions.map(description => (
-                  <p key={uuidv4()} className="lead">{description}</p>
+                  <p key={uuidv4()}>{description}</p>
                 ))}
               </section>
-              <h2 className="display-4">{t('coursesTitle')}</h2>
+              <h2>{t('coursesTitle')}</h2>
               {details.map((detail, index) => (
                 <section key={index}>
-                  <h3 className="display-6">{detail.year}</h3>
+                  <h3>{detail.year}</h3>
                   {detail.descriptions.map((desc, descIndex) => (
                     <div key={descIndex}>
                       <p>{desc.location}</p>
