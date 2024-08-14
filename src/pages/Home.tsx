@@ -8,12 +8,16 @@ import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortaweso
 import ExternalLinkBar from "../components/ExternalLinkBar";
 import ScopusIcon from "../icons/ScopusIcon";
 import "./Home.scss";
+import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 
 export const Home = () => {
   const { t } = useTranslation('', { keyPrefix: 'pages.Home' });
   const descriptions: string[] = t('aboutDescriptions', { returnObjects: true });
   const interests: string[] = t('interests', { returnObjects: true });
   const educations: string[] = t('educations', { returnObjects: true });
+  const location = useLocation();
+  const currentUrl = `${window.location.origin}${location.pathname}`;
 
   const externalLinks = [
     {
@@ -45,6 +49,16 @@ export const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{t('title')} - {t('subTitle')}</title>
+        <meta property="og:title" content={t('title')} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={anuImage} />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:description" content={descriptions[0]} />
+        <meta property="og:site_name" content="mkanuradhi.github.io" />
+        <meta property="og:locale" content="en_US" />
+      </Helmet>
       <div className="home">
         <Container>
           <Row className="top-margin-row">

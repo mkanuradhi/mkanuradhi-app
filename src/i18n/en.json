@@ -10,7 +10,7 @@
         "I am a passionate lecturer and a researcher in the field of computing, specializing in meta-heuristic optimization and machine learning. My research area has mainly comprised of finding promising solutions for different real world optimizations tasks appear in different fields such as Sports, Agriculture, Numerical optimization and many other.",
         "My focus spans a variety of topics ranging from the development of novel meta-heuristic algorithms for optimization problems, the integration of meta-heuristics with machine learning techniques for enhanced predictive modeling, the application of machine learning in hyper-parameter tuning and feature selection, to the exploration of hybrid approaches that combine evolutionary algorithms with deep learning for complex data analysis. In 2019, I was awarded with the President's Awards for Scientific Research, for being among highly impacted 100 research papers in Sri Lanka for the year 2019 under computer science.",
         "Currently I work as a senior lecturer in the Department of Computer Science, University of Sri Jayewardenepura. I earned my PhD in computer science from University of Sri Jayewardenepura, Sri Lanka, under the supervision of Professor TGI Fernando and Emeritus Professor Sunethra Weerakoon.",
-        "I’m a fellow of OWSD, founded by UNESCO, from 2022 to present. I am also a life member of SLAAS and SLAAI associations, which are premier organization of Science  and artificial intelligence in Sri Lanka.",
+        "I’m a fellow of OWSD, founded by UNESCO, from 2022 to present. I am also a life member of SLAAS and SLAAI associations, which are premier organizations of science  and artificial intelligence in Sri Lanka.",
         "From 2018 to 2024, I served as a reviewer for the springer journals; Evolutionary Intelligence and Soft Computing.",
         "To enhance my knowledge further in the field of Data Science, currently I am following a M.Sc. in Data Science in Tampere University, Finland."
       ],
@@ -18,7 +18,8 @@
       "interests": [
         "Meta-Heuristic Optimization",
         "Nature-Inspired Computing",
-        "Machine Learning"
+        "Machine Learning",
+        "Artificial Intelligence"
       ],
       "educationTitle": "Education",
       "educations": [
@@ -242,7 +243,7 @@
       "title": "Copyright 2024 Anuradha Ariyaratne.",
       "ackTitle": "Acknowlegements",
       "ackDescriptions": [
-        "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, professor TGI Fernando and emeritus professor Sunethra Weerakoon, for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
+        "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, professor TGI Fernando, emeritus professor Sunethra Weerakoon, professor A S Karunananda and Mr. Duminda de Silva for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
         "Finally, I would like to thank my family for their unwavering support and encouragement. Without them, none of this would be possible."
       ]
     }
