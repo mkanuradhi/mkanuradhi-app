@@ -32,6 +32,13 @@
       "descriptions": [
         "දැනට මම ප්‍රාථමික උපාධි සහ ශාස්ත්‍රපති උපාධි මට්ටම් වලට ඉගැන්වීම් සිදු කරගෙන යමි."
       ]
+    },
+    "NotFound": {
+      "title": "මෙම පිටුව නොමැත",
+      "subTitle": "404",
+      "descriptionExclamation": "අප්ස්",
+      "linkText": "මුල් පිටුව",
+      "description": "<strong>{{exlamation}}!</strong> ඔබ සොයන පිටුව නොපවතින බව පෙනේ. කරුණාකර <link /> හෝ <em>වෙබ් ලිපිනය</em> පරීක්ෂා කිරීමට උත්සාහ කරන්න."
     }
   },
   "components": {

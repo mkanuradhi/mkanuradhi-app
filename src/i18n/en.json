@@ -32,6 +32,13 @@
       "descriptions": [
         "Currently I am teaching to bachelors and masters level degree programs."
       ]
+    },
+    "NotFound": {
+      "title": "Not Found",
+      "subTitle": "404",
+      "descriptionExclamation": "Oops",
+      "linkText": "homepage",
+      "description": "<strong>{{exlamation}}!</strong> The page you're looking for doesn't seem to exist. Try going back to <link /> or checking the <em>URL</em>."
     }
   },
   "components": {
@@ -50,7 +57,7 @@
       "title": "Copyright 2024 Anuradha Ariyaratne.",
       "ackTitle": "Acknowlegements",
       "ackDescriptions": [
-        "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, Prof. TGI Fernando and Prof. Sunethra Weerakoon, for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
+        "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, professor TGI Fernando and emeritus professor Sunethra Weerakoon, for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
         "Finally, I would like to thank my family for their unwavering support and encouragement. Without them, none of this would be possible."
       ]
     }
