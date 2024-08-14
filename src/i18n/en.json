@@ -30,10 +30,10 @@
     },
     "Teaching": {
       "title": "Teaching",
+      "subTitle": "Courses",
       "descriptions": [
         "Currently I am teaching to bachelors and masters level degree programs."
       ],
-      "coursesTitle": "Courses",
       "details": [
         {
           "year": "2024",
