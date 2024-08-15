@@ -14,9 +14,7 @@ function App() {
     <>
       <BrowserRouter>
         <div className='app' lang={language}>
-          <nav>
-            <NavigationBar changeLanguage={changeLanguage} currentLanguage={language} />
-          </nav>
+          <NavigationBar changeLanguage={changeLanguage} currentLanguage={language} />
           <main>
             <Routes>
               <Route index element={ <Home /> }></Route>
