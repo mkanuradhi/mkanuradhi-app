@@ -1,5 +1,5 @@
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +7,8 @@ import { v4 as uuidv4 } from "uuid";
 import "./Footer.scss"
 
 export const Footer = () => {
-  const { t } = useTranslation('', { keyPrefix: 'components.Footer' });
+  const langKeyPrefix = 'components.Footer';
+  const { t } = useTranslation('', { keyPrefix: langKeyPrefix });
   const descriptions: string[] = t('ackDescriptions', { returnObjects: true });
   const [show, setShow] = useState(false);
 
@@ -21,7 +22,12 @@ export const Footer = () => {
           <Row>
             <Col sm={10}>
               <div className="fs-6">
-                <p className="text-center">{t('title')}</p>
+                <p className="text-center">
+                  <Trans
+                    i18nKey={`${langKeyPrefix}.title`}
+                    values={{ currentYear: new Date().getFullYear() }}
+                  />
+                </p>
               </div>
             </Col>
             <Col sm={2}>

@@ -16,10 +16,14 @@
       ],
       "interestTitle": "Interests",
       "interests": [
-        "Meta-Heuristic Optimization",
-        "Nature-Inspired Computing",
+        "Swarm Intelligence",
+        "Evolutionary Computing",
+        "Meta-heuristic optimization",
         "Machine Learning",
-        "Artificial Intelligence"
+        "Intelligent Systems",
+        "Neural Networks",
+        "Multi-objective Combinatorial Optimization",
+        "Root Finding of Non-linear Equations"
       ],
       "educationTitle": "Education",
       "educations": [
@@ -240,7 +244,7 @@
       "si": "Sinhala (si)"
     },
     "Footer": {
-      "title": "Copyright 2024 Anuradha Ariyaratne.",
+      "title": "Copyright \u00A9 {{currentYear}} Anuradha Ariyaratne.",
       "ackTitle": "Acknowlegements",
       "ackDescriptions": [
         "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, professor TGI Fernando, emeritus professor Sunethra Weerakoon, professor A S Karunananda and Mr. Duminda de Silva for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",

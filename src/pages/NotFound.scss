@@ -1,24 +1,11 @@
 .notfound {
 
   .notfound-content {
-    text-align: center;
-  }
-
-  h1 {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  h2 {
-    margin-bottom: 2rem;
-  }
-
-  svg {
-    margin-bottom: 2rem;
-  }
-
-  p {
-    margin-bottom: 2rem;
+    min-height: 70svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
 
 }
