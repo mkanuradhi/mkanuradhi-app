@@ -16,10 +16,14 @@
       ],
       "interestTitle": "Interests",
       "interests": [
-        "Meta-Heuristic Optimization",
-        "Nature-Inspired Computing",
+        "Swarm Intelligence",
+        "Evolutionary Computing",
+        "Meta-heuristic optimization",
         "Machine Learning",
-        "Artificial Intelligence"
+        "Intelligent Systems",
+        "Neural Networks",
+        "Multi-objective Combinatorial Optimization",
+        "Root Finding of Non-linear Equations"
       ],
       "educationTitle": "Education",
       "educations": [
