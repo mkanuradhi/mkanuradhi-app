@@ -244,7 +244,21 @@
     "Awards": {
       "title": "Awards",
       "subTitle": "Achievements & Grants",
-      "description": "I have had the honor of receiving several awards and grants throughout my academic journey."
+      "description": "I have had the honor of receiving several awards and grants throughout my academic journey.",
+      "details": [
+        {
+          "year": "2023",
+          "description": "Tampere University 100% tuition fee scholarship, Master’s Degree in Data Science 2023-2025, Finland."
+        },
+        {
+          "year": "2019",
+          "description": "President’s Award for Scientific Research, Sri Lanka."
+        },
+        {
+          "year": "2012",
+          "description": "Academic Excellence Award-Virtusa for the First Class Pass with the highest GPA, B.Sc. (Special) Degree in Computer Science 2012, University of Sri Jayewardenepura, Sri Lanka."
+        }
+      ]
     },
     "Experience": {
       "title": "Experience",

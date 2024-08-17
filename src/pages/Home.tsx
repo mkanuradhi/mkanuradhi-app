@@ -8,7 +8,7 @@ import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortaweso
 import ExternalLinkBar from "../components/ExternalLinkBar";
 import ScopusIcon from "../icons/ScopusIcon";
 import MetaTags from "../components/MetaTags";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import "./Home.scss";
 
 export const Home = () => {
