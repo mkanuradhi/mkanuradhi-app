@@ -43,6 +43,14 @@
           "year": "2024",
           "descriptions": [
             { 
+              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "CSC 540 2.0 Software Engineering (M.Sc.in Computer Science)",
+                "CSC 603 2.0 Nature Inspired Algorithms (M.Sc.in Computer Science - Batch 6)",
+                "CSC 610 2.0 Machine Learning (M.Sc.in Computer Science)"
+              ]
+            },
+            {
               "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
                 "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
