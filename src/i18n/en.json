@@ -234,7 +234,27 @@
     "Research": {
       "title": "Research",
       "subTitle": "Research Activities",
-      "description": "To date, I have owned 19 publications, including 11 journal articles, 1 book chapter, 7 conference proceedings."
+      "description": "From 2014, I have actively engaged in research in the fields of meta-heuristic optimization, nature inspired computing and machine learning."
+    },
+    "Publications": {
+      "title": "Publications",
+      "subTitle": "Papers",
+      "description": "To date, I have authored 19 publications, including 11 journal articles, 1 book chapter, and 7 conference proceedings."
+    },
+    "Awards": {
+      "title": "Awards",
+      "subTitle": "Achievements & Grants",
+      "description": "I have had the honor of receiving several awards and grants throughout my academic journey."
+    },
+    "Experience": {
+      "title": "Experience",
+      "subTitle": "Academic Journey",
+      "description": "I would like to highlight the impactful work I've undertaken in the field."
+    },
+    "Contact": {
+      "title": "Contact",
+      "subTitle": "Collaborate",
+      "description": "Feel free to reach out with any inquiries, collaborations, or opportunities. Whether you have questions about my research, are interested in working together, or simply want to connect, I'd love to hear from you."
     },
     "NotFound": {
       "title": "Not Found",
