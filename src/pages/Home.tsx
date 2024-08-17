@@ -8,6 +8,7 @@ import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortaweso
 import ExternalLinkBar from "../components/ExternalLinkBar";
 import ScopusIcon from "../icons/ScopusIcon";
 import MetaTags from "../components/MetaTags";
+import { motion } from "framer-motion"
 import "./Home.scss";
 
 export const Home = () => {
@@ -56,9 +57,13 @@ export const Home = () => {
         <Container>
           <Row className="top-margin-row">
             <Col sm={5}>
-              <div>
+              <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ delay: 0.2, duration: 2 }}
+              >
                 <Image src={anuImage} alt={t('title')} roundedCircle className="main-image" />
-              </div>
+              </motion.div>
               <div className="text-center">
                 <h1>{t('title')}</h1>
                 <h5>{t('subTitle')}</h5>
