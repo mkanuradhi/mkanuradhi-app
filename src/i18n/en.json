@@ -231,6 +231,11 @@
         }
       ]
     },
+    "Research": {
+      "title": "Research",
+      "subTitle": "Research Activities",
+      "description": "To date, I have owned 19 publications, including 11 journal articles, 1 book chapter, 7 conference proceedings."
+    },
     "NotFound": {
       "title": "Not Found",
       "subTitle": "404",
