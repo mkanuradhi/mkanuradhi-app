@@ -4,7 +4,7 @@
   position: relative;
   min-height: 100svh;
   overflow: auto;
-  background-color: rgba(var(--bs-body-bg-rgb), 0.5);
+  background-color: rgba(var(--bs-body-bg-rgb), 0.8);
 
   &::before,
   &::after {

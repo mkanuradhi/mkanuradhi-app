@@ -3,8 +3,8 @@ import MetaTags from "../components/MetaTags";
 import anuImage from "../assets/images/anuradha.png";
 import { Col, Container, Row } from "react-bootstrap";
 
-export const Research = () => {
-  const { t } = useTranslation('', { keyPrefix: 'pages.Research' });
+export const Experience = () => {
+  const { t } = useTranslation('', { keyPrefix: 'pages.Experience' });
 
   return (
     <>
@@ -14,7 +14,7 @@ export const Research = () => {
         description={t('description')} 
         image={anuImage} 
       />
-      <div className="research">
+      <div className="experience">
         <Container>
           <Row className="top-margin-row">
             <Col>

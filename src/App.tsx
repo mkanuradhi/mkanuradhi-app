@@ -6,7 +6,11 @@ import { NotFound } from "./pages/NotFound";
 import { Footer } from "./components/Footer";
 import { Teaching } from "./pages/Teaching";
 import { Research } from "./pages/Research";
+import { Publications } from "./pages/Publications";
+import { Awards } from "./pages/Awards";
 import "./App.scss";
+import { Experience } from "./pages/Experience";
+import { Contact } from "./pages/Contact";
 
 function App() {
   const { language, changeLanguage } = useLanguage();
@@ -22,6 +26,10 @@ function App() {
               <Route path='home' element={ <Home /> }></Route>
               <Route path='teaching' element={ <Teaching /> }></Route>
               <Route path='research' element={ <Research /> }></Route>
+              <Route path='publications' element={ <Publications /> }></Route>
+              <Route path='awards' element={ <Awards /> }></Route>
+              <Route path='experience' element={ <Experience /> }></Route>
+              <Route path='contact' element={ <Contact /> }></Route>
               <Route path='*' element={ <NotFound /> }></Route>
             </Routes>
           </main>
