@@ -22,7 +22,7 @@ export const NotFound = () => {
       />
       <div className="notfound">
         <Container>
-          <Row className="top-margin-row">
+          <Row className="my-4">
             <Col>
               <div className="notfound-content">
                 <h1>{t('title')}</h1>

@@ -8,7 +8,7 @@ import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortaweso
 import ExternalLinkBar from "../components/ExternalLinkBar";
 import ScopusIcon from "../icons/ScopusIcon";
 import MetaTags from "../components/MetaTags";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import "./Home.scss";
 
 export const Home = () => {
@@ -55,7 +55,7 @@ export const Home = () => {
       />
       <div className="home">
         <Container>
-          <Row className="top-margin-row">
+          <Row className="my-4">
             <Col sm={5}>
               <motion.div 
                 initial={{ opacity: 0 }} 
@@ -82,7 +82,7 @@ export const Home = () => {
               </div>
             </Col>
           </Row>
-          <Row className="top-margin-row">
+          <Row className="my-4">
             <Col sm={5}>
               <div>
                 <h3>{t('interestTitle')}</h3>
