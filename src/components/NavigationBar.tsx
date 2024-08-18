@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { faLanguage, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import useTheme from "../hooks/useTheme";
 import { useLocation, useNavigate } from "react-router-dom";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import "./NavigationBar.scss";
 
 interface NavigationBarProps {
@@ -16,6 +18,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
   const { t } = useTranslation('', { keyPrefix: 'components.NavigationBar' });
   const navigate = useNavigate();
   const location = useLocation();
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 40);
+  });
 
   const teachingPath = "/teaching";
   const researchPath = "/research";
@@ -26,7 +34,16 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
 
   return (
     <>
-      <Navbar collapseOnSelect fixed="top" expand="lg" className="bg-body-tertiary bg-opacity-75 navbar-top">
+      <Navbar 
+        collapseOnSelect 
+        fixed="top" 
+        expand="lg" 
+        className="bg-body-tertiary bg-opacity-75 navbar-top"
+        as={motion.nav}
+        initial={{ boxShadow: 'none' }}
+        animate={{ boxShadow: isScrolled ? '0px 6px 20px rgba(var(--bs-body-color-rgb), 0.2)' : 'none' }}
+        transition={{ duration: 0.3 }}
+      >
         <Container>
           <Navbar.Brand onClick={() => navigate("/")} href="#">{t('title')}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
