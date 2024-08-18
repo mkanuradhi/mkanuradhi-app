@@ -16,7 +16,7 @@ export const Research = () => {
       />
       <div className="research">
         <Container>
-          <Row className="top-margin-row">
+          <Row className="my-4">
             <Col>
               <h1>{t('title')}</h1>
               <section>
