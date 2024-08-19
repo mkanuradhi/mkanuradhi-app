@@ -28,7 +28,7 @@ export const Teaching = () => {
         image={anuImage} 
       />
       <div className="teaching">
-        <Container>
+        <Container fluid="md">
           <Row className="my-4">
             <Col>
               <h1>{t('title')}</h1>

@@ -21,7 +21,7 @@ export const NotFound = () => {
         image={anuImage} 
       />
       <div className="notfound">
-        <Container>
+        <Container fluid="md">
           <Row className="my-4">
             <Col>
               <div className="notfound-content">

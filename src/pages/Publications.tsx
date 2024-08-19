@@ -31,7 +31,7 @@ export const Publications = () => {
         image={anuImage} 
       />
       <div className="publications">
-        <Container>
+        <Container fluid="md">
           <Row className="my-4">
             <Col>
               <h1>{t('title')}</h1>
@@ -39,7 +39,7 @@ export const Publications = () => {
                 <p>{t('description')}</p>
               </section>
               <section>
-                <Container>
+                <Container fluid="md">
                   <Row>
                     <Col>
                       <h2>{t('articlesTitle')}</h2>
@@ -58,7 +58,7 @@ export const Publications = () => {
                           <p>{article.level}</p>
                         )}
                         {article.url && (
-                          <p>
+                          <p className="text-break">
                             <a href={article.url} target="_blank" rel="noopener noreferrer">{article.url}</a>
                           </p>
                         )}
@@ -68,7 +68,7 @@ export const Publications = () => {
                 </Container>
               </section>
               <section>
-                <Container>
+                <Container fluid="md">
                   <Row>
                     <Col>
                       <h2>{t('chaptersTitle')}</h2>
@@ -84,7 +84,7 @@ export const Publications = () => {
                           <p>{parse(chapter.description)}</p>
                         )}
                         {chapter.url && (
-                          <p>
+                          <p className="text-break">
                             <a href={chapter.url} target="_blank" rel="noopener noreferrer">{chapter.url}</a>
                           </p>
                         )}
@@ -94,7 +94,7 @@ export const Publications = () => {
                 </Container>
               </section>
               <section>
-                <Container>
+                <Container fluid="md">
                   <Row>
                     <Col>
                       <h2>{t('conferenceTitle')}</h2>
@@ -110,7 +110,7 @@ export const Publications = () => {
                           <p>{parse(proceeding.description)}</p>
                         )}
                         {proceeding.url && (
-                          <p>
+                          <p className="text-break">
                             <a href={proceeding.url} target="_blank" rel="noopener noreferrer">{proceeding.url}</a>
                           </p>
                         )}
