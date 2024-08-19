@@ -54,7 +54,7 @@ export const Home = () => {
         image={anuImage} 
       />
       <div className="home">
-        <Container>
+        <Container fluid="md">
           <Row className="my-4">
             <Col sm={5}>
               <motion.div 

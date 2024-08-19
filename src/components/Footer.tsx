@@ -18,9 +18,9 @@ export const Footer = () => {
   return (
     <>
       <div className="footer-bar">
-        <Container>
+        <Container fluid="md">
           <Row>
-            <Col sm={10}>
+            <Col sm={9}>
               <div className="fs-6">
                 <p className="text-center">
                   <Trans
@@ -30,7 +30,7 @@ export const Footer = () => {
                 </p>
               </div>
             </Col>
-            <Col sm={2}>
+            <Col sm={3}>
               <div className="fs-6 text-end">
                 <Button variant="link" size="sm" className="blank-btn" onClick={handleShow}>{t('ackTitle')}</Button>
               </div>

@@ -44,78 +44,78 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
         animate={{ boxShadow: isScrolled ? '0px 6px 20px rgba(var(--bs-body-color-rgb), 0.2)' : 'none' }}
         transition={{ duration: 0.3 }}
       >
-        <Container>
+        <Container fluid="md">
           <Navbar.Brand onClick={() => navigate("/")} href="#">{t('title')}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Offcanvas
-              id="basic-navbar-nav"
-              aria-labelledby="basic-navbar-label"
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id="basic-navbar-label">
-                {t('title')}
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="me-auto">
-                  <Nav.Link
-                    onClick={() => navigate(teachingPath)} 
-                    href="#"
-                    active={location.pathname === teachingPath}
-                    >
-                      {t('teaching')}
-                    </Nav.Link>
-                  <Nav.Link
-                    onClick={() => navigate(researchPath)}
-                    href="#"
-                    active={location.pathname === researchPath}
+            id="basic-navbar-nav"
+            aria-labelledby="basic-navbar-label"
+            placement="end"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id="basic-navbar-label">
+              {t('title')}
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="me-auto">
+                <Nav.Link
+                  onClick={() => navigate(teachingPath)} 
+                  href="#"
+                  active={location.pathname === teachingPath}
                   >
-                    {t('research')}
-                  </Nav.Link>
-                  <Nav.Link
-                    onClick={() => navigate(publicationsPath)}
-                    href="#"
-                    active={location.pathname === publicationsPath}
-                  >
-                    {t('publications')}
-                  </Nav.Link>
-                  <Nav.Link
-                    onClick={() => navigate(awardsPath)}
-                    href="#"
-                    active={location.pathname === awardsPath}
-                  >
-                    {t('awards')}
-                  </Nav.Link>
-                  <Nav.Link
-                    onClick={() => navigate(experiencePath)}
-                    href="#"
-                    active={location.pathname === experiencePath}
-                  >
-                    {t('experience')}
-                  </Nav.Link>
-                  <Nav.Link
-                    onClick={() => navigate(contactPath)}
-                    href="#"
-                    active={location.pathname === contactPath}
-                  >
-                    {t('contact')}
-                  </Nav.Link>
-                </Nav>
-                <Nav>
-                  <Nav.Link onClick={toggleTheme}>
-                    <FontAwesomeIcon icon={theme === 'light' ? faSun : faMoon} />
-                  </Nav.Link>
-                  <NavDropdown title={<><FontAwesomeIcon icon={faLanguage} /></>} id="collapsible-nav-dropdown">
-                    <NavDropdown.Item onClick={() => changeLanguage('en')} active={currentLanguage === 'en'}>
-                      { t('en') }
-                    </NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => changeLanguage('si')} active={currentLanguage === 'si'}>
-                      { t('si') }
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </Nav>
-              </Offcanvas.Body>
+                    {t('teaching')}
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => navigate(researchPath)}
+                  href="#"
+                  active={location.pathname === researchPath}
+                >
+                  {t('research')}
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => navigate(publicationsPath)}
+                  href="#"
+                  active={location.pathname === publicationsPath}
+                >
+                  {t('publications')}
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => navigate(awardsPath)}
+                  href="#"
+                  active={location.pathname === awardsPath}
+                >
+                  {t('awards')}
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => navigate(experiencePath)}
+                  href="#"
+                  active={location.pathname === experiencePath}
+                >
+                  {t('experience')}
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => navigate(contactPath)}
+                  href="#"
+                  active={location.pathname === contactPath}
+                >
+                  {t('contact')}
+                </Nav.Link>
+              </Nav>
+              <Nav>
+                <Nav.Link onClick={toggleTheme}>
+                  <FontAwesomeIcon icon={theme === 'light' ? faSun : faMoon} />
+                </Nav.Link>
+                <NavDropdown title={<><FontAwesomeIcon icon={faLanguage} /></>} id="collapsible-nav-dropdown">
+                  <NavDropdown.Item onClick={() => changeLanguage('en')} active={currentLanguage === 'en'}>
+                    { t('en') }
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => changeLanguage('si')} active={currentLanguage === 'si'}>
+                    { t('si') }
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>

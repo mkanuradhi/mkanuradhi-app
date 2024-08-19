@@ -573,7 +573,13 @@
     "Contact": {
       "title": "Contact",
       "subTitle": "Collaborate",
-      "description": "Feel free to reach out with any inquiries, collaborations, or opportunities. Whether you have questions about my research, are interested in working together, or simply want to connect, I'd love to hear from you."
+      "description": "Feel free to reach out with any inquiries, collaborations, or opportunities. Whether you have questions about my research, are interested in working together, or simply want to connect, I'd love to hear from you.",
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "message": "Message",
+      "messagePlaceholder": "Enter your message"
     },
     "NotFound": {
       "title": "Not Found",

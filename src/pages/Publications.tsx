@@ -31,7 +31,7 @@ export const Publications = () => {
         image={anuImage} 
       />
       <div className="publications">
-        <Container>
+        <Container fluid="md">
           <Row className="my-4">
             <Col>
               <h1>{t('title')}</h1>
@@ -39,7 +39,7 @@ export const Publications = () => {
                 <p>{t('description')}</p>
               </section>
               <section>
-                <Container>
+                <Container fluid="md">
                   <Row>
                     <Col>
                       <h2>{t('articlesTitle')}</h2>
@@ -68,7 +68,7 @@ export const Publications = () => {
                 </Container>
               </section>
               <section>
-                <Container>
+                <Container fluid="md">
                   <Row>
                     <Col>
                       <h2>{t('chaptersTitle')}</h2>
@@ -94,7 +94,7 @@ export const Publications = () => {
                 </Container>
               </section>
               <section>
-                <Container>
+                <Container fluid="md">
                   <Row>
                     <Col>
                       <h2>{t('conferenceTitle')}</h2>
