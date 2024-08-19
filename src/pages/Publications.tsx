@@ -58,7 +58,7 @@ export const Publications = () => {
                           <p>{article.level}</p>
                         )}
                         {article.url && (
-                          <p>
+                          <p className="text-break">
                             <a href={article.url} target="_blank" rel="noopener noreferrer">{article.url}</a>
                           </p>
                         )}
@@ -84,7 +84,7 @@ export const Publications = () => {
                           <p>{parse(chapter.description)}</p>
                         )}
                         {chapter.url && (
-                          <p>
+                          <p className="text-break">
                             <a href={chapter.url} target="_blank" rel="noopener noreferrer">{chapter.url}</a>
                           </p>
                         )}
@@ -110,7 +110,7 @@ export const Publications = () => {
                           <p>{parse(proceeding.description)}</p>
                         )}
                         {proceeding.url && (
-                          <p>
+                          <p className="text-break">
                             <a href={proceeding.url} target="_blank" rel="noopener noreferrer">{proceeding.url}</a>
                           </p>
                         )}
