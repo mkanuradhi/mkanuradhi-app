@@ -3,8 +3,15 @@ import MetaTags from "../components/MetaTags";
 import anuImage from "../assets/images/anuradha.png";
 import { Col, Container, Row } from "react-bootstrap";
 
+interface CareerPosition {
+  post: string;
+  organization: string;
+  duration: string;
+}
+
 export const Experience = () => {
   const { t } = useTranslation('', { keyPrefix: 'pages.Experience' });
+  const careerPositions = t('experiences', { returnObjects: true }) as CareerPosition[];
 
   return (
     <>
@@ -21,6 +28,13 @@ export const Experience = () => {
               <h1>{t('title')}</h1>
               <section>
                 <p>{t('description')}</p>
+              </section>
+              <section>
+                <ol>
+                  {careerPositions.map((position, index) => (
+                    <li key={index} className="my-3"><strong>{position.post}</strong>, {position.organization} ({position.duration}).</li>
+                  ))}
+                </ol>
               </section>
             </Col>
           </Row>

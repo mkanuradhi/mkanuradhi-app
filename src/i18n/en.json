@@ -568,7 +568,64 @@
     "Experience": {
       "title": "Experience",
       "subTitle": "Academic Journey",
-      "description": "I would like to highlight the impactful work I've undertaken in the field."
+      "description": "I would like to highlight the impactful work I've undertaken in the field.",
+      "experiences": [
+        {
+          "post": "Senior Lecturer in Computer Science",
+          "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "Nov. 2018 - Present"
+        },
+        {
+          "post": "Lecturer (Probationary) in Computer Science",
+          "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "Jan. 2018 - Nov. 2018"
+        },
+        {
+          "post": "Lecturer (Probationary) in Computer Science",
+          "organization": "Department of Computer Science, Faculty of Computing, General Sir John Kotelawala Defence University, Sri Lanka",
+          "duration": "Nov. 2014 - Dec. 2017"
+        },
+        {
+          "post": "Temporary Lecturer in Computer Science",
+          "organization": "Department of Computer Science, Faculty of Natural Sciences, The Open University of Sri Lanka",
+          "duration": "2013 - 2014"
+        },
+        {
+          "post": "Research Supervisor - M.Sc. Program in Computer Science",
+          "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2020 - Present"
+        },
+        {
+          "post": "Research Supervisor - PhD Degree in Computer Science",
+          "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2021 - Present"
+        },
+        {
+          "post": "Research Supervisor - B.Sc. (Special) Degree in Computer Science",
+          "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2020 - Present"
+        },
+        {
+          "post": "Visiting Lecturer",
+          "organization": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2021 - Present"
+        },
+        {
+          "post": "PhD Research Student",
+          "organization": "Department of Computer Science, Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2013 - 2018"
+        },
+        {
+          "post": "MSc. Student (Data Science)",
+          "organization": "Faculty of Information Technology and Communication Sciences, Tampere University, Finland",
+          "duration": "2023 - Present"
+        },
+        {
+          "post": "Senior Treasurer, Society of Computer Science",
+          "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2022 - 2023"
+        }
+      ]
     },
     "Contact": {
       "title": "Contact",
