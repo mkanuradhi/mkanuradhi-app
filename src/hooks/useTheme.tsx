@@ -1,24 +1,10 @@
-import { useState, useEffect } from "react";
+import { useContext } from 'react';
+import { ThemeContext, ThemeContextType } from '../contexts/ThemeContext';
 
-const themeKey = 'theme';
-
-const useTheme = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem(themeKey) || 'light';
-    setTheme(savedTheme as 'light' | 'dark');
-    document.documentElement.dataset.bsTheme = savedTheme;
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.dataset.bsTheme = newTheme;
-    localStorage.setItem(themeKey, newTheme);
-  };
-
-  return { theme, toggleTheme };
+export const useTheme = (): ThemeContextType => {
+  const context = useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
 };
-
-export default useTheme;
