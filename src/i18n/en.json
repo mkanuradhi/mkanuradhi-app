@@ -636,7 +636,14 @@
       "email": "Email",
       "emailPlaceholder": "Enter your email",
       "message": "Message",
-      "messagePlaceholder": "Enter your message"
+      "messagePlaceholder": "Enter your message",
+      "submit": "Send",
+      "submitting": "Sending message...",
+      "invalidName": "Name is not valid.",
+      "invalidEmail": "Email is not valid.",
+      "invalidMessage": "Message is not valid.",
+      "successResponse": "Message sent!",
+      "errorResponse": "Some error occurred. Please try later."
     },
     "NotFound": {
       "title": "Not Found",

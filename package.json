@@ -26,9 +26,11 @@
     "react-helmet-async": "^2.0.5",
     "react-i18next": "^15.0.0",
     "react-router-dom": "^6.26.0",
+    "react-toastify": "^10.0.5",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@types/node": "^22.5.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",

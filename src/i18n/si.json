@@ -532,7 +532,14 @@
       "email": "ඊමේල් ලිපිනය",
       "emailPlaceholder": "ඔබගේ ඊමේල් ලිපිනය ඇතුලත් කරන්න",
       "message": "පණිවිඩය",
-      "messagePlaceholder": "ඔබගේ පණිවිඩය ඇතුලත් කරන්න"
+      "messagePlaceholder": "ඔබගේ පණිවිඩය ඇතුලත් කරන්න",
+      "submit": "යවන්න",
+      "submitting": "යවමින් පවතී...",
+      "invalidName": "නම වලංගු නැත.",
+      "invalidEmail": "ඊමේල් ලිපිනය වලංගු නැත.",
+      "invalidMessage": "පණිවිඩය වලංගු නැත.",
+      "successResponse": "පණිවිඩය යවන ලදී!",
+      "errorResponse": "යම් දෝෂයක් සිදු විය. කරුණාකර පසුව උත්සාහ කරන්න."
     },
     "NotFound": {
       "title": "මෙම පිටුව නොමැත",
