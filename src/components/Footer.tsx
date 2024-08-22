@@ -37,7 +37,7 @@ export const Footer = () => {
             </Col>
           </Row>
         </Container>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} size="lg" centered>
           <Modal.Header closeButton>
             <Modal.Title>{t('ackTitle')}</Modal.Title>
           </Modal.Header>
