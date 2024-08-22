@@ -3,10 +3,11 @@ import { faLanguage, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import useTheme from "../hooks/useTheme";
+import { useTheme } from "../hooks/useTheme";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import "./NavigationBar.scss";
+
 
 interface NavigationBarProps {
   changeLanguage: (lng: string) => void;

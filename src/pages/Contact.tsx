@@ -5,7 +5,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { FormEvent, useRef, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useTheme from "../hooks/useTheme";
+import { useTheme } from "../hooks/useTheme";
 
 export const Contact = () => {
   const { t } = useTranslation('', { keyPrefix: 'pages.Contact' });
@@ -97,7 +97,7 @@ export const Contact = () => {
         <Container fluid="md">
           <Row>
             <Col>
-              <ToastContainer theme={theme === 'dark' ? 'dark' : 'light'} position="bottom-center" />
+              <ToastContainer theme={theme === 'dark' ? 'dark' : 'light'} position="top-right" />
             </Col>
           </Row>
           <Row className="my-4">
