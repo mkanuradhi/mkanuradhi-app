@@ -6,6 +6,15 @@ import './index.scss'
 import { I18nextProvider } from 'react-i18next'
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext.tsx';
+import ReactGA from "react-ga4";
+
+ReactGA.initialize(`${import.meta.env.VITE_GA_ID}`);
+ReactGA.send(
+  { 
+    hitType: "pageview",
+    page: window.location.pathname
+  }
+);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
