@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MetaTags from "../components/MetaTags";
 import anuImage from "../assets/images/anuradha.png";
 import { Button, Col, Container, Form as BootstrapForm, Row } from "react-bootstrap";
@@ -113,7 +115,13 @@ export const Contact = () => {
                       </BootstrapForm.Group>
                     </fieldset>
                     <Button type="submit" variant="primary" disabled={isSubmitting} className="mt-3">
-                      {t('submit')}
+                      {isSubmitting ? (
+                        <>
+                          <FontAwesomeIcon icon={faCircleNotch} spin /> {t('submitting')}
+                        </>
+                      ) : (
+                        t('submit')
+                      )}
                     </Button>
                   </Form>
                 )}
