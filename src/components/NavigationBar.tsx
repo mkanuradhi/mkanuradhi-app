@@ -105,7 +105,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ changeLanguage, currentLa
               </Nav>
               <Nav>
                 <Nav.Link onClick={toggleTheme}>
-                  <FontAwesomeIcon icon={theme === 'light' ? faSun : faMoon} />
+                  <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
                 </Nav.Link>
                 <NavDropdown title={<><FontAwesomeIcon icon={faLanguage} /></>} id="collapsible-nav-dropdown">
                   <NavDropdown.Item onClick={() => changeLanguage('en')} active={currentLanguage === 'en'}>
