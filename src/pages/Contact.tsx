@@ -1,88 +1,66 @@
 import { useTranslation } from "react-i18next";
 import MetaTags from "../components/MetaTags";
 import anuImage from "../assets/images/anuradha.png";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { FormEvent, useRef, useState } from "react";
+import { Button, Col, Container, Form as BootstrapForm, Row } from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTheme } from "../hooks/useTheme";
+import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
+import * as Yup from 'yup';
+
+interface ContactFormValues {
+  name: string;
+  email: string;
+  message: string;
+}
 
 export const Contact = () => {
   const { t } = useTranslation('', { keyPrefix: 'pages.Contact' });
-  const form = useRef<HTMLFormElement>(null);
-  const [sending, setSending] = useState<boolean>(false);
   const { theme } = useTheme();
 
-  const notifyMessage = async (e: FormEvent) => {
-    e.preventDefault();
-    setSending(true);
+  const contactValidationSchema = Yup.object({
+    name: Yup.string()
+      .matches(/^[\p{L}\p{M}\s'-]+$/u, t('invalidName'))
+      .max(40, t('tooLongName'))
+      .required(t('requiredName')),
+    email: Yup.string()
+      .email(t('invalidEmail'))
+      .required(t('requiredEmail')),
+    message: Yup.string()
+      .max(300, t('tooLongMessage'))
+      .required(t('requiredMessage')),
+  });
 
-    if (form.current) {
-      const formData = new FormData(form.current);
-      const values = Object.fromEntries(formData.entries());
-
+  const handleSubmit = async (values: ContactFormValues, { setSubmitting, resetForm }: FormikHelpers<ContactFormValues>) => {
+    try {
       const name = values.name?.toString().trim();
       const email = values.email?.toString().trim();
       const message = values.message?.toString().trim();
 
-      if (validateInputs(name, email, message)) {
-        try {
-          const notifyUrl = `${import.meta.env.VITE_BACKEND_BASE_URL}${import.meta.env.VITE_NOTIFY_PATH}`;
-          const response = await fetch(notifyUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name,
-              email,
-              message,
-            }),
-          });
-  
-          if (response.ok) {
-            toast.success(t('successResponse'));
-            form.current.reset();
-          } else {
-            toast.error(t('errorResponse'));
-          }
-        } catch (error) {
-          toast.error(t('errorResponse'));
-        } finally {
-          setSending(false);
-        }
+      const notifyUrl = `${import.meta.env.VITE_BACKEND_BASE_URL}${import.meta.env.VITE_NOTIFY_PATH}`;
+      const response = await fetch(notifyUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success(t('successResponse'));
+        resetForm();
       } else {
-        setSending(false);
+        toast.error(t('errorResponse'));
       }
-    } else {
-      setSending(false);
+    } catch (error) {
+      toast.error(t('errorResponse'));
+    } finally {
+      setSubmitting(false);
     }
-  }
-
-  const validateInputs = (name: string, email: string, message: string) => {
-    name = name?.toString().trim();
-    email = email?.toString().trim();
-    message = message?.toString().trim();
-
-    if (!name || name.length < 3) {
-      setSending(false);
-      toast.warning(t('invalidName'));
-      return false;
-    }
-
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-      setSending(false);
-      toast.warning(t('invalidEmail'));
-      return false;
-    }
-
-    if (!message || message.length < 4) {
-      setSending(false);
-      toast.warning(t('invalidMessage'));
-      return false;
-    }
-
-    return true;
   }
 
   return (
@@ -91,7 +69,7 @@ export const Contact = () => {
         title={t('title')}
         subTitle={t('subTitle')}
         description={t('description')} 
-        image={anuImage} 
+        image={anuImage}
       />
       <div className="contact">
         <Container fluid="md">
@@ -110,30 +88,36 @@ export const Contact = () => {
           </Row>
           <Row className="my-4">
             <Col sm={10} md={8} lg={6} className="mx-auto">
-              <Form ref={form} onSubmit={notifyMessage} noValidate>
-                <fieldset disabled={sending}>
-                  <Form.Group className="mb-3" controlId="formGroupName">
-                    <Form.Label>{t('name')}</Form.Label>
-                    <Form.Control type="text" name="name" placeholder={t('namePlaceholder')} className="rounded-pill" required />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label>{t('email')}</Form.Label>
-                    <Form.Control type="email" name="email" placeholder={t('emailPlaceholder')} className="rounded-pill" required />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formGroupMessage">
-                    <Form.Label>{t('message')}</Form.Label>
-                    <Form.Control as="textarea" name="message" rows={4} placeholder={t('messagePlaceholder')} className="rounded-4" required />
-                  </Form.Group>
-                  <Button type="submit" className="rounded-pill">
-                    {sending && (
-                    t('submitting')
-                    )}
-                    {!sending && (
-                      t('submit')
-                    )}
-                  </Button>
-                </fieldset>
-              </Form>
+              <Formik
+                initialValues={{ name: '', email: '', message: '' }}
+                validationSchema={contactValidationSchema}
+                onSubmit={handleSubmit}
+              >
+                {({ isSubmitting }) => (
+                  <Form noValidate>
+                    <fieldset disabled={isSubmitting}>
+                      <BootstrapForm.Group controlId="formName" className="mb-4">
+                        <BootstrapForm.Label>{t('name')}</BootstrapForm.Label>
+                        <Field name="name" className="form-control" type="text" placeholder={t('namePlaceholder')} />
+                        <ErrorMessage name="name" component="p" className="text-danger" />
+                      </BootstrapForm.Group>
+                      <BootstrapForm.Group controlId="formEmail" className="mb-4">
+                        <BootstrapForm.Label>{t('email')}</BootstrapForm.Label>
+                        <Field name="email" className="form-control" type="email" placeholder={t('emailPlaceholder')} />
+                        <ErrorMessage name="email" component="p" className="text-danger" />
+                      </BootstrapForm.Group>
+                      <BootstrapForm.Group controlId="formMessage" className="mb-4">
+                        <BootstrapForm.Label>{t('message')}</BootstrapForm.Label>
+                        <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={3} />
+                        <ErrorMessage name="message" component="p" className="text-danger" />
+                      </BootstrapForm.Group>
+                    </fieldset>
+                    <Button type="submit" variant="primary" disabled={isSubmitting} className="mt-3">
+                      {t('submit')}
+                    </Button>
+                  </Form>
+                )}
+              </Formik>
             </Col>
           </Row>
         </Container>
