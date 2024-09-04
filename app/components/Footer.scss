@@ -1,0 +1,22 @@
+.footer-bar {
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(var(--bs-body-bg-rgb), 0.3);
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+  }
+
+  .blank-btn {
+    text-decoration: none;
+  }
+
+}
