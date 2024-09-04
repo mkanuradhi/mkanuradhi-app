@@ -108,7 +108,7 @@ export default function HomePage() {
         <Container fluid="md">
           <Row className="my-4">
             <Col sm={5}>
-              <Image src={anuImage} alt={t('title')} quality={100} className="main-image" />
+              <Image src={anuImage} alt={t('title')} priority quality={100} className="main-image" />
               <div className="text-center">
                 <h1>{t('title')}</h1>
                 <h5>{t('subTitle')}</h5>
