@@ -553,6 +553,9 @@
       ]
     },
     "Awards": {
+      "pageTitle": "Awards and Grants",
+      "pageDescription": "I have had the honor of receiving several awards and grants throughout my academic journey.",
+      "pageKeywords": "Achievements, President's Award, Academic Excellence Award, Virtusa, scholarship",
       "title": "Awards and Grants",
       "subTitle": "Achievements",
       "description": "I have had the honor of receiving several awards and grants throughout my academic journey.",
@@ -580,6 +583,9 @@
       ]
     },
     "Experience": {
+      "pageTitle": "Experience",
+      "pageDescription": "I would like to highlight the impactful work I've undertaken in the field.",
+      "pageKeywords": "senior lecturer, probationary, temporary, supervisor, treasurer",
       "title": "Experience",
       "subTitle": "Academic Journey",
       "description": "I would like to highlight the impactful work I've undertaken in the field.",
@@ -642,6 +648,9 @@
       ]
     },
     "Contact": {
+      "pageTitle": "Contact",
+      "pageDescription": "Reach out with any inquiries, collaborations, or opportunities. Whether you have questions about my research, are interested in working together, or simply want to connect, I'd love to hear from you.",
+      "pageKeywords": "inquiries, collaborations, opportunities, connect",
       "title": "Contact",
       "subTitle": "Collaborate",
       "description": "Feel free to reach out with any inquiries, collaborations, or opportunities. Whether you have questions about my research, are interested in working together, or simply want to connect, I'd love to hear from you.",
