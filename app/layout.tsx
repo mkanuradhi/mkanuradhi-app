@@ -1,11 +1,10 @@
-import { getTranslations } from "next-intl/server";
 import "./globals.scss";
 
 export async function generateMetadata () {
 
   return {
     title: {
-      template: `M K A Ariyaratne`,
+      template: `%s - M K A Ariyaratne`,
       default: `M K A Ariyaratne`,
     },
     description: '',
