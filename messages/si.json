@@ -678,6 +678,9 @@
       "descriptionExclamation": "අප්ස්",
       "linkText": "මුල් පිටුව",
       "description": "<strong>{{exlamation}}!</strong> ඔබ සොයන පිටුව නොපවතින බව පෙනේ. කරුණාකර <link /> හෝ <em>වෙබ් ලිපිනය</em> පරීක්ෂා කිරීමට උත්සාහ කරන්න."
+    },
+    "Loading":{
+      "title": "පූරණය වෙමින් පවතී..."
     }
   },
   "components": {
