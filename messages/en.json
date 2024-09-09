@@ -678,6 +678,9 @@
       "descriptionExclamation": "Oops",
       "linkText": "homepage",
       "description": "<strong>{{exlamation}}!</strong> The page you're looking for doesn't seem to exist. Try going back to <link /> or checking the <em>URL</em>."
+    },
+    "Loading":{
+      "title": "Loading..."
     }
   },
   "components": {
