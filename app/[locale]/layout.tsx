@@ -5,7 +5,6 @@ import { ThemeProvider } from "../contexts/ThemeProvider";
 import NavigationBar from "../components/NavigationBar";
 import { Footer } from "../components/Footer";
 import { GoogleAnalytics } from '@next/third-parties/google';
-import "../globals.scss";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const notoSerifSinhala = Noto_Serif_Sinhala({ subsets: ["latin", "sinhala"] });
@@ -23,7 +22,10 @@ export async function generateMetadata ({ params }: { params: { locale: string }
     description: t('description'),
     keywords: t('keywords'),
     openGraph: {
-      title: t('title'),
+      title: {
+        template: `%s - ${t('title')}`,
+        default: `${t('title')}`,
+      },
       description: t('description'),
       url: "https://mkanuradhi.vercel.app",
       siteName: 'mkanuradhi',
