@@ -4,10 +4,12 @@ import { Montserrat, Noto_Serif_Sinhala } from "next/font/google";
 import { ThemeProvider } from "../contexts/ThemeProvider";
 import NavigationBar from "../components/NavigationBar";
 import { Footer } from "../components/Footer";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import "../globals.scss";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const notoSerifSinhala = Noto_Serif_Sinhala({ subsets: ["latin", "sinhala"] });
+const GA_ID = `${process.env.NEXT_PUBLIC_GA_ID}`;
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -69,6 +71,7 @@ export default async function LocaleLayout({
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
+      <GoogleAnalytics gaId={`${GA_ID}`} />
     </html>
   );
 }
