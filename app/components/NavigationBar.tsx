@@ -28,6 +28,15 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
     router.replace(pathname, { locale: lang });
   }
 
+  const navLinks = [
+    { title: t('teaching'), path: '/teaching'},
+    { title: t('research'), path: '/research'},
+    { title: t('publications'), path: '/publications'},
+    { title: t('awards'), path: '/awards'},
+    { title: t('experience'), path: '/experience'},
+    { title: t('contact'), path: '/contact'},
+  ];
+
   return (
     <>
       <Navbar 
@@ -57,24 +66,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="me-auto">
-                <Nav.Link as={Link} href="/teaching">
-                  {t('teaching')}
-                </Nav.Link>
-                <Nav.Link as={Link} href="/research">
-                  {t('research')}
-                </Nav.Link>
-                <Nav.Link as={Link} href="/publications">
-                  {t('publications')}
-                </Nav.Link>
-                <Nav.Link as={Link} href="/awards">
-                  {t('awards')}
-                </Nav.Link>
-                <Nav.Link as={Link} href="/experience">
-                  {t('experience')}
-                </Nav.Link>
-                <Nav.Link as={Link} href="/contact">
-                  {t('contact')}
-                </Nav.Link>
+                {navLinks.map((navLink) => (
+                  <Nav.Link key={navLink.title} as={Link} href={navLink.path} active={pathname.startsWith(navLink.path)}>
+                    {navLink.title}
+                  </Nav.Link>
+                ))}
               </Nav>
               <Nav>
                 <Nav.Link onClick={toggleTheme}>
