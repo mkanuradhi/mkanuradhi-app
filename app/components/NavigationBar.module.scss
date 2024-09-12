@@ -3,3 +3,17 @@
   -webkit-backdrop-filter: blur(4px);
   border-bottom: 1px solid rgba(var(--bs-body-bg-rgb), 0.5);
 }
+
+.navbarDarkThemeIcon {
+  &:hover {
+    color: var(--bs-warning);
+    transition: color 0.3s ease;
+  }
+}
+
+.navbarLightThemeIcon {
+  &:hover {
+    color: var(--bs-cyan);
+    transition: color 0.3s ease;
+  }
+}

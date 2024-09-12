@@ -73,7 +73,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                 ))}
               </Nav>
               <Nav>
-                <Nav.Link onClick={toggleTheme}>
+                <Nav.Link onClick={toggleTheme} className={theme === 'light' ? styles.navbarLightThemeIcon : styles.navbarDarkThemeIcon}>
                   <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
                 </Nav.Link>
                 <NavDropdown title={<><FontAwesomeIcon icon={faLanguage} /></>} id="collapsible-nav-dropdown">
