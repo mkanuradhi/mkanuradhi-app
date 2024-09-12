@@ -3,11 +3,10 @@ import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
 import ScopusIcon from '@/app/icons/ScopusIcon';
-import anuImage from "@/public/images/anuradha.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ExternalLinkBar from '@/app/components/ExternalLinkBar';
-import Image from 'next/image';
+import MainImageDisplayer from '@/app/components/MainImageDisplayer';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
@@ -108,7 +107,7 @@ export default function HomePage() {
         <Container fluid="md">
           <Row className="my-4">
             <Col sm={5}>
-              <Image src={anuImage} alt={t('title')} priority quality={100} className="main-image" />
+              <MainImageDisplayer />
               <div className="text-center">
                 <h1>{t('title')}</h1>
                 <h5>{t('subTitle')}</h5>
