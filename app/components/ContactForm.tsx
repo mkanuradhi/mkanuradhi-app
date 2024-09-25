@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import NewTabLink from './NewTabLink';
 
 const baseTPath = 'pages.Contact';
 
@@ -110,6 +111,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
                         <BootstrapForm.Label>{t('message')}</BootstrapForm.Label>
                         <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={3} />
                         <ErrorMessage name="message" component="p" className="text-danger" />
+                      </BootstrapForm.Group>
+                      <BootstrapForm.Group controlId="formMessage" className="mb-4">
+                        <BootstrapForm.Text id="policy" muted>
+                          {t('policyAgree1')} <NewTabLink href="/policy">{t('policyAgreeLink1')}</NewTabLink> {t('policyAgree2')}
+                        </BootstrapForm.Text>
                       </BootstrapForm.Group>
                     </fieldset>
                     <Button type="submit" variant="primary" disabled={isSubmitting} className="mt-3">
