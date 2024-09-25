@@ -80,6 +80,9 @@ const PrivacyPage = () => {
                 <h3>{t('subTitle5')}</h3>
                 <p>{t('subPara5')}</p>
               </section>
+              <section>
+                <p>{t('subPara6')}</p>
+              </section>
             </Col>
           </Row>
         </Container>

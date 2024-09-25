@@ -8,6 +8,7 @@ import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ExternalLinkBar from '@/app/components/ExternalLinkBar';
 import MainImageDisplayer from '@/app/components/MainImageDisplayer';
 import './home.scss';
+import NewTabLink from '@/app/components/NewTabLink';
 
 const baseTPath = 'pages.Home';
 
@@ -111,7 +112,9 @@ export default function HomePage() {
               <div className="text-center">
                 <h1>{t('title')}</h1>
                 <h5>{t('subTitle')}</h5>
-                <h6><a href="https://www.sjp.ac.lk/" target="_blank" rel="noopener noreferrer">{t('university')}</a></h6>
+                <h6>
+                  <NewTabLink href="https://www.sjp.ac.lk/">{t('university')}</NewTabLink>
+                </h6>
               </div>
               <ExternalLinkBar links={externalLinks} />
             </Col>

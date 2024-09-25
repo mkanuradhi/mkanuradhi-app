@@ -660,7 +660,7 @@
       "emailPlaceholder": "Enter your email",
       "message": "Message",
       "messagePlaceholder": "Enter your message",
-      "policyAgree1": "By submitting this form, you agree to our",
+      "policyAgree1": "By submitting this form, you agree to my",
       "policyAgreeLink1": "Privacy Policy",
       "policyAgree2": ".",
       "submit": "Send",
@@ -680,8 +680,8 @@
       "pageDescription": "Privacy policy and data usage policy",
       "pageKeywords": "privacy, data, usage, policy",
       "title": "Privacy Policy",
-      "subTitle": "Last updated: 25-09-2024",
-      "description": "At mkanuradhi.vercel.app, I value your privacy and am committed to protecting the personal information you provide. This Privacy Policy outlines what information I collect, how I use it, and how you can contact me with any concerns.",
+      "subTitle": "Last updated: 26-09-2024",
+      "description": "I value your privacy and am committed to protecting the personal information you provide. This Privacy Policy outlines what information I collect, how I use it, and how you can contact me with any concerns.",
       "subTitle1": "1. Information I Collect",
       "subPara1": "When you use the contact form on this website, I collect the following information:",
       "subItems1": [
@@ -696,7 +696,8 @@
       "subTitle4": "4. How to Contact Me",
       "subPara4": "If you have any questions or concerns about this Privacy Policy or how your data is handled, feel free to contact me at: mkanuradhi@gmail.com",
       "subTitle5": "5. Changes to This Policy",
-      "subPara5": "I may update this Privacy Policy occasionally. Any changes will be posted here, and the \"Last updated\" date will be revised accordingly."
+      "subPara5": "I may update this Privacy Policy occasionally. Any changes will be posted here, and the \"Last updated\" date will be revised accordingly.",
+      "subPara6": "This Privacy Policy is available in multiple languages for your convenience. In case of any discrepancies or differences in interpretation between the translated versions, the English version of this Privacy Policy shall prevail and be considered the official version."
     },
     "NotFound": {
       "title": "Not Found",
