@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useMessages, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import "./Footer.scss";
+import SameTabLink from "./SameTabLink";
 
 interface DescriptionMessages {
   components: {
@@ -35,7 +36,8 @@ export const Footer = () => {
             <Col sm={9}>
               <div className="fs-6">
                 <p className="text-center">
-                  {t('title', { currentYear: new Date().getFullYear() })} <Link href="/policy" style={{ textDecoration: 'none' }}>{t('policy')}</Link>
+                  <span>{t('title', { currentYear: new Date().getFullYear() })} </span>
+                  <SameTabLink href="/policy">{t('policy')}</SameTabLink>
                 </p>
               </div>
             </Col>
