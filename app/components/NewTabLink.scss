@@ -1,0 +1,12 @@
+.new-tab-link {
+  text-decoration: none;
+  color: inherit;
+
+  .link-text {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

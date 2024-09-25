@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from "uuid";
 import { useMessages, useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import "./Footer.scss";
 
 interface DescriptionMessages {
@@ -34,7 +35,7 @@ export const Footer = () => {
             <Col sm={9}>
               <div className="fs-6">
                 <p className="text-center">
-                  {t('title', { currentYear: new Date().getFullYear() })}
+                  {t('title', { currentYear: new Date().getFullYear() })} <Link href="/policy" style={{ textDecoration: 'none' }}>{t('policy')}</Link>
                 </p>
               </div>
             </Col>
