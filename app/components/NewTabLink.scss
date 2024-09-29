@@ -1,12 +1,29 @@
 .new-tab-link {
   text-decoration: none;
   color: inherit;
+  transition: text-shadow 0.3s ease-in-out;
 
-  .link-text {
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  &:link {
+    color: inherit;
   }
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: var(--bs-link-hover-color);
+    text-shadow: 0 0 8px rgba(var(--bs-body-color-rgb), 0.4),
+                 0 0 16px rgba(var(--bs-body-color-rgb), 0.3), 
+                 0 0 24px rgba(var(--bs-body-color-rgb), 0.2);
+  }
+
+  &:active {
+    color: var(--bs-link-hover-color);
+  }
+
+  &:focus {
+    color: var(--bs-link-hover-color);
+  }
+
 }

@@ -10,8 +10,7 @@ const NewTabLink: React.FC<NewTabLinkProps> = ({ href, children }) => {
   return (
     <>
       <Link href={href} target="_blank" rel="noopener noreferrer" className="new-tab-link">
-        <span className="link-text">{children}</span>
-        <span className="arrow-icon">&#8599;</span>
+        {children}<span className="arrow-icon">&#8599;</span>
       </Link>
     </>
   )
