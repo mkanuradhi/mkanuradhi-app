@@ -67,7 +67,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
             <Offcanvas.Body>
               <Nav className="me-auto">
                 {navLinks.map((navLink) => (
-                  <Nav.Link key={navLink.title} as={Link} href={navLink.path} active={pathname.startsWith(navLink.path)}>
+                  <Nav.Link key={navLink.title} as={Link} href={navLink.path} active={pathname.endsWith(navLink.path)}>
                     {navLink.title}
                   </Nav.Link>
                 ))}

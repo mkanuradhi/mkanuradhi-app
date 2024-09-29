@@ -17,7 +17,7 @@ export async function generateMetadata () {
   };
 };
 
-export default function NotFound() {
+const NotFound = () => {
 
   return (
     <>
@@ -42,3 +42,5 @@ export default function NotFound() {
     </>
   );
 }
+
+export default NotFound;

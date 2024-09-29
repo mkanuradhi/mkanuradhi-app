@@ -700,11 +700,12 @@
       "subPara6": "This Privacy Policy is available in multiple languages for your convenience. In case of any discrepancies or differences in interpretation between the translated versions, the English version of this Privacy Policy shall prevail and be considered the official version."
     },
     "NotFound": {
+      "pageTitle": "Not Found",
+      "pageDescription": "The page cannot be found.",
+      "pageKeywords": "404, not found, not-found, resource not found",
       "title": "Not Found",
       "subTitle": "404",
-      "descriptionExclamation": "Oops",
-      "linkText": "homepage",
-      "description": "<strong>{{exlamation}}!</strong> The page you're looking for doesn't seem to exist. Try going back to <link /> or checking the <em>URL</em>."
+      "description": "<strong>Oops!</strong> The page you're looking for doesn't seem to exist. Try going back to <link>home page</link> or checking the <em>URL</em>."
     },
     "Loading":{
       "title": "Loading..."
