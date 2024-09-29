@@ -5,9 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from "uuid";
 import { useMessages, useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
 import "./Footer.scss";
-import SameTabLink from "./SameTabLink";
+import GlowLink from "./GlowLink";
 
 interface DescriptionMessages {
   components: {
@@ -37,7 +36,7 @@ export const Footer = () => {
               <div className="fs-6">
                 <p className="text-center">
                   <span>{t('title', { currentYear: new Date().getFullYear() })} </span>
-                  <SameTabLink href="/policy">{t('policy')}</SameTabLink>
+                  <GlowLink href="/policy">{t('policy')}</GlowLink>
                 </p>
               </div>
             </Col>

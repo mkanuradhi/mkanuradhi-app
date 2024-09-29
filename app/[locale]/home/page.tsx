@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ExternalLinkBar from '@/app/components/ExternalLinkBar';
 import MainImageDisplayer from '@/app/components/MainImageDisplayer';
+import GlowLink from '@/app/components/GlowLink';
 import './home.scss';
-import NewTabLink from '@/app/components/NewTabLink';
 
 const baseTPath = 'pages.Home';
 
@@ -113,7 +113,7 @@ export default function HomePage() {
                 <h1>{t('title')}</h1>
                 <h5>{t('subTitle')}</h5>
                 <h6>
-                  <NewTabLink href="https://www.sjp.ac.lk/">{t('university')}</NewTabLink>
+                  <GlowLink href="https://www.sjp.ac.lk/" newTab={true}>{t('university')}</GlowLink>
                 </h6>
               </div>
               <ExternalLinkBar links={externalLinks} />
