@@ -77,13 +77,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/contact`,
-      lastModified: new Date('2024-09-11'),
-      changeFrequency: 'never',
+      lastModified: new Date('2024-09-29'),
+      changeFrequency: 'yearly',
       priority: 0.3,
       alternates: {
         languages: {
           en: `${baseUrl}/en/contact`,
           si: `${baseUrl}/si/contact`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/en/policy`,
+      lastModified: new Date('2024-09-26'),
+      changeFrequency: 'yearly',
+      priority: 0.2,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/policy`,
+          si: `${baseUrl}/si/policy`,
         },
       },
     },
