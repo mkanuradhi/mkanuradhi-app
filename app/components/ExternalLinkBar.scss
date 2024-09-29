@@ -5,4 +5,29 @@
     margin-bottom: 32px;
   }
 
+  a {
+    color: inherit;
+
+    &:link {
+      color: inherit;
+    }
+  
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--bs-link-hover-color);
+    }
+
+    &:active {
+      color: var(--bs-link-hover-color);
+    }
+  
+    &:focus:not(:hover) {
+      color: inherit;
+    }
+  }
+
 }

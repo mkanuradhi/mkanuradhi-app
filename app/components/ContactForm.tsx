@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import NewTabLink from './NewTabLink';
+import GlowLink from './GlowLink';
 
 const baseTPath = 'pages.Contact';
 
@@ -114,7 +114,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
                       </BootstrapForm.Group>
                       <BootstrapForm.Group controlId="formMessage" className="mb-4">
                         <BootstrapForm.Text id="policy" muted>
-                          {t('policyAgree1')} <NewTabLink href="/policy">{t('policyAgreeLink1')}</NewTabLink> {t('policyAgree2')}
+                          {t('policyAgree1')} <GlowLink href="/policy" newTab={true} withArrow={true}>{t('policyAgreeLink1')}</GlowLink> {t('policyAgree2')}
                         </BootstrapForm.Text>
                       </BootstrapForm.Group>
                     </fieldset>
