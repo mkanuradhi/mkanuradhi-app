@@ -1,3 +1,4 @@
+import React from 'react';
 import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
