@@ -1,14 +1,21 @@
 .glow-link {
   text-decoration: none;
-  color: inherit;
+  background: linear-gradient(
+    45deg,
+    var(--bs-link-color),
+    var(--bs-form-valid-color),
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   transition: text-shadow 0.3s ease-in-out;
 
   &:link {
-    color: inherit;
+    color: transparent;
   }
 
   &:visited {
-    color: inherit;
+    color: transparent;
   }
 
   &:hover,
@@ -24,7 +31,7 @@
   }
 
   &:focus:not(:hover) {
-    color: inherit;
+    color: transparent;
     text-shadow: none;
   }
 
