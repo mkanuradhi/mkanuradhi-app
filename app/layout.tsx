@@ -1,3 +1,4 @@
+import React from 'react';
 import "./globals.scss";
 
 export async function generateMetadata () {
@@ -12,7 +13,7 @@ export async function generateMetadata () {
     openGraph: {
       title: 'M K A Ariyaratne',
       description: '',
-      url: "https://mkanuradhi.vercel.app",
+      url: "https://www.mkanuradhi.com",
       siteName: 'mkanuradhi',
       type: 'website',
       locale: 'en_US',
