@@ -27,7 +27,7 @@ export async function generateMetadata ({ params }: { params: { locale: string }
         default: `${t('title')}`,
       },
       description: t('description'),
-      url: "https://mkanuradhi.vercel.app",
+      url: "https://www.mkanuradhi.com",
       siteName: 'mkanuradhi',
       type: 'website',
       locale: 'en_US',
