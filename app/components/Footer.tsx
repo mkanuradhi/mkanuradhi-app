@@ -31,17 +31,15 @@ export const Footer = () => {
     <>
       <div className="footer-bar">
         <Container fluid="md">
-          <Row>
-            <Col sm={9}>
-              <div className="fs-6">
-                <p className="text-center">
-                  <span>{t('title', { currentYear: new Date().getFullYear() })} </span>
-                  <GlowLink href="/policy">{t('policy')}</GlowLink>
-                </p>
+          <Row style={{ minHeight: '4rem' }}>
+            <Col sm={9} className="d-flex justify-content-center align-items-center">
+              <div className="text-center">
+                <span>{t('title', { currentYear: new Date().getFullYear() })} </span>
+                <GlowLink href="/policy">{t('policy')}</GlowLink>
               </div>
             </Col>
-            <Col sm={3}>
-              <div className="fs-6 text-end">
+            <Col sm={3} className="d-flex justify-content-center align-items-center">
+              <div>
                 <Button variant="link" size="sm" className="blank-btn" onClick={handleShow}>{t('ackTitle')}</Button>
               </div>
             </Col>
