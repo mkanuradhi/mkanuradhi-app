@@ -77,27 +77,27 @@ export default function HomePage() {
 
   const externalLinks = [
     {
-      tooltipText: 'Google Scholar',
+      tooltipText: `${t('gsTooltip')}`,
       url: 'https://scholar.google.com/citations?hl=en&user=-O25soMAAAAJ',
       faIcon: faGoogleScholar,
     },
     {
-      tooltipText: 'LinkedIn',
+      tooltipText: `${t('liTooltip')}`,
       url: 'https://www.linkedin.com/in/anuradha-ariyaratne-3a406281/',
       faIcon: faLinkedin,
     },
     {
-      tooltipText: 'ORCID',
+      tooltipText: `${t('oiTooltip')}`,
       url: 'https://orcid.org/0000-0002-3548-3976',
       faIcon: faOrcid,
     },
     {
-      tooltipText: 'ResearchGate',
+      tooltipText: `${t('rgTooltip')}`,
       url: 'https://www.researchgate.net/profile/Anuradha-Ariyaratne',
       faIcon: faResearchgate,
     },
     {
-      tooltipText: 'Scopus',
+      tooltipText: `${t('scTooltip')}`,
       url: 'https://www.scopus.com/authid/detail.uri?authorId=57188855115',
       customIcon: <ScopusIcon size={30} />,
     },
