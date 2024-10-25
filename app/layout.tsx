@@ -19,9 +19,15 @@ export async function generateMetadata () {
       locale: 'en_US',
       images: [
         {
-          url: '/images/MKAAriyaratne.png',
+          url: '/images/mkanuradhi.png',
           width: 1200,
           height: 630,
+          alt: 'MKA',
+        },
+        {
+          url: '/images/anuradha.png',
+          width: 500,
+          height: 500,
           alt: 'MKA',
         },
       ],
