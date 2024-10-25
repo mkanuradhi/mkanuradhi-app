@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { faLanguage, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useTranslations } from 'next-intl';
@@ -76,7 +76,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                 <Nav.Link onClick={toggleTheme} className={theme === 'light' ? styles.navbarLightThemeIcon : styles.navbarDarkThemeIcon}>
                   <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
                 </Nav.Link>
-                <NavDropdown title={<><FontAwesomeIcon icon={faLanguage} /></>} id="collapsible-nav-dropdown">
+                <NavDropdown title={<><span className="bi bi-translate"></span></>} id="collapsible-nav-dropdown">
                   <NavDropdown.Item onClick={() => changeLanguage('en')}>
                     { t('en') }
                   </NavDropdown.Item>
