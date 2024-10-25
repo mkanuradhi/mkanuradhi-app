@@ -22,6 +22,12 @@ export async function generateMetadata ({ params }: { params: { locale: string }
           height: 630,
           alt: 'MKA',
         },
+        {
+          url: '/images/anuradha.png',
+          width: 500,
+          height: 500,
+          alt: 'MKA',
+        },
       ],
     }
   };
