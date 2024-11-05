@@ -3,6 +3,7 @@ import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import parse from 'html-react-parser';
+import GlowLink from '@/app/components/GlowLink';
 
 const baseTPath = 'pages.Publications';
 
@@ -107,7 +108,7 @@ const PublicationsPage = () => {
                         )}
                         {article.url && (
                           <p className="text-break">
-                            <a href={article.url} target="_blank" rel="noopener noreferrer">{article.url}</a>
+                            <GlowLink href={article.url} newTab={true} withArrow={true}>{article.url}</GlowLink>
                           </p>
                         )}
                       </Col>
@@ -133,7 +134,7 @@ const PublicationsPage = () => {
                         )}
                         {chapter.url && (
                           <p className="text-break">
-                            <a href={chapter.url} target="_blank" rel="noopener noreferrer">{chapter.url}</a>
+                            <GlowLink href={chapter.url} newTab={true} withArrow={true}>{chapter.url}</GlowLink>
                           </p>
                         )}
                       </Col>
@@ -159,7 +160,7 @@ const PublicationsPage = () => {
                         )}
                         {proceeding.url && (
                           <p className="text-break">
-                            <a href={proceeding.url} target="_blank" rel="noopener noreferrer">{proceeding.url}</a>
+                            <GlowLink href={proceeding.url} newTab={true} withArrow={true}>{proceeding.url}</GlowLink>
                           </p>
                         )}
                       </Col>
