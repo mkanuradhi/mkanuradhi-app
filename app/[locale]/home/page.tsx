@@ -59,9 +59,9 @@ export async function generateMetadata ({ params }: { params: { locale: string }
           alt: 'MKA',
         },
         {
-          url: '/images/anuradha.png',
-          width: 500,
-          height: 500,
+          url: '/images/mkanuradhis.png',
+          width: 600,
+          height: 314,
           alt: 'MKA',
         },
       ],
