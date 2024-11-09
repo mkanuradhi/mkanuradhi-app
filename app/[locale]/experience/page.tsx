@@ -11,11 +11,18 @@ interface CareerPosition {
   duration: string;
 }
 
-
-interface CareerPositionMessages {
+interface AcademicCareerPositionMessages {
   pages: {
     Experience: {
-      experiences: CareerPosition[];
+      academicExperiences: CareerPosition[];
+    };
+  };
+}
+
+interface AdministrativeCareerPositionMessages {
+  pages: {
+    Experience: {
+      administrativeExperiences: CareerPosition[];
     };
   };
 }
@@ -47,8 +54,11 @@ export async function generateMetadata ({ params }: { params: { locale: string }
 const ExperiencePage = () => {
   const t = useTranslations(baseTPath);
 
-  const careerPositionMessages = useMessages() as unknown as CareerPositionMessages | undefined;
-  const careerPositions = careerPositionMessages?.pages?.Experience?.experiences as CareerPosition[];
+  const academicCareerPositionMessages = useMessages() as unknown as AcademicCareerPositionMessages | undefined;
+  const academicCareerPositions = academicCareerPositionMessages?.pages?.Experience?.academicExperiences as CareerPosition[];
+  
+  const administrativeCareerPositionMessages = useMessages() as unknown as AdministrativeCareerPositionMessages | undefined;
+  const administrativeCareerPositions = administrativeCareerPositionMessages?.pages?.Experience?.administrativeExperiences as CareerPosition[];
 
   return (
     <>
@@ -57,16 +67,27 @@ const ExperiencePage = () => {
           <Row className="my-4">
             <Col>
               <h1>{t('title')}</h1>
-              <section>
-                <p>{t('description')}</p>
-              </section>
-              <section>
-                <ol>
-                  {careerPositions.map((position, index) => (
-                    <li key={index} className="my-3"><strong>{position.post}</strong>, {position.organization} ({position.duration}).</li>
-                  ))}
-                </ol>
-              </section>
+              <p>{t('description')}</p>
+            </Col>
+          </Row>
+          <Row className="my-4">
+            <Col>
+              <h4>{t('academicTitle')}</h4>
+              <ol>
+                {academicCareerPositions.map((position, index) => (
+                  <li key={index} className="my-3"><strong>{position.post}</strong>, {position.organization} ({position.duration}).</li>
+                ))}
+              </ol>
+            </Col>
+          </Row>
+          <Row className="my-4">
+            <Col>
+              <h4>{t('administrativeTitle')}</h4>
+              <ol>
+                {administrativeCareerPositions.map((position, index) => (
+                  <li key={index} className="my-3"><strong>{position.post}</strong>, {position.organization} ({position.duration}).</li>
+                ))}
+              </ol>
             </Col>
           </Row>
         </Container>
