@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/en`,
       lastModified: new Date('2024-09-11'),
       changeFrequency: 'weekly',
-      priority: 1,
+      priority: 1.0,
       alternates: {
         languages: {
           en: `${baseUrl}/en`,
