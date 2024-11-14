@@ -20,7 +20,7 @@ const GlowLink: React.FC<GlowLinkProps> = ({ href, withArrow = false, newTab = f
       >
         {children}
         { withArrow && 
-          <span className="arrow-icon">&#8599;</span>
+          <span className="arrow-icon">&#x2197;</span>
         }
       </Link>
     </>
