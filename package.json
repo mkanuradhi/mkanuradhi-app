@@ -17,6 +17,7 @@
     "@next/third-parties": "^14.2.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "devicon": "^2.16.0",
     "formik": "^2.4.6",
     "framer-motion": "^11.3.31",
     "html-react-parser": "^5.1.15",
