@@ -10,6 +10,7 @@ import ExternalLinkBar from '@/app/components/ExternalLinkBar';
 import MainImageDisplayer from '@/app/components/MainImageDisplayer';
 import GlowLink from '@/app/components/GlowLink';
 import './home.scss';
+import ToolsSkillsDisplayer from '@/app/components/ToolsSkillsDisplayer';
 
 const baseTPath = 'pages.Home';
 
@@ -151,7 +152,7 @@ export default function HomePage() {
             </Col>
             <Col sm={7}>
               <div>
-              <h3>{t('educationTitle')}</h3>
+                <h3>{t('educationTitle')}</h3>
                 <ul className="home-ul">
                   {educations.map((education, index) => (
                     <li key={index}>
@@ -162,6 +163,7 @@ export default function HomePage() {
               </div>
             </Col>
           </Row>
+          <ToolsSkillsDisplayer />
         </Container>
       </div>
     </>
