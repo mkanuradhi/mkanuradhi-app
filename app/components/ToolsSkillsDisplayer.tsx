@@ -11,6 +11,11 @@ import prolog from "@/public/icons/prolog-original.svg";
 import uml from "@/public/icons/unifiedmodelinglanguage-original.svg";
 import apachespark from "@/public/icons/apachespark-original.svg";
 import pycharm from "@/public/icons/pycharm-original.svg";
+import spss from "@/public/icons/spss-original.svg";
+import rlang from "@/public/icons/r-original.svg";
+import rstudio from "@/public/icons/rstudio-original.svg";
+import jupyter from "@/public/icons/jupyter-original.svg";
+import minitab from "@/public/icons/minitab-original.svg";
 import { Col, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -68,6 +73,26 @@ const ToolsSkillsDisplayer: React.FC = () => {
     {
       img: pycharm,
       title: 'PyCharm'
+    },
+    {
+      img: spss,
+      title: 'SPSS'
+    },
+    {
+      img: rlang,
+      title: 'R'
+    },
+    {
+      img: rstudio,
+      title: 'RStudio'
+    },
+    {
+      img: jupyter,
+      title: 'Jupyter Notebook'
+    },
+    {
+      img: minitab,
+      title: 'Minitab'
     },
   ];
 
