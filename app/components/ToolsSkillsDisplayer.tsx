@@ -17,6 +17,8 @@ import rstudio from "@/public/icons/rstudio-original.svg";
 import jupyter from "@/public/icons/jupyter-original.svg";
 import minitab from "@/public/icons/minitab-original.svg";
 import numpy from "@/public/icons/numpy-original.svg";
+import scikitlearn from "@/public/icons/scikitlearn-original.svg";
+import pandas from "@/public/icons/pandas-original.svg";
 import { Col, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -98,6 +100,14 @@ const ToolsSkillsDisplayer: React.FC = () => {
     {
       img: numpy,
       title: 'NumPy'
+    },
+    {
+      img: scikitlearn,
+      title: 'scikit learn'
+    },
+    {
+      img: pandas,
+      title: 'pandas'
     },
   ];
 
