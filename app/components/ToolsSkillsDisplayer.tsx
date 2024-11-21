@@ -16,6 +16,7 @@ import rlang from "@/public/icons/r-original.svg";
 import rstudio from "@/public/icons/rstudio-original.svg";
 import jupyter from "@/public/icons/jupyter-original.svg";
 import minitab from "@/public/icons/minitab-original.svg";
+import numpy from "@/public/icons/numpy-original.svg";
 import { Col, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -94,6 +95,10 @@ const ToolsSkillsDisplayer: React.FC = () => {
       img: minitab,
       title: 'Minitab'
     },
+    {
+      img: numpy,
+      title: 'NumPy'
+    },
   ];
 
   return (
@@ -105,7 +110,7 @@ const ToolsSkillsDisplayer: React.FC = () => {
         {tools.map((tool, index) => (
           <Col key={index}>
             <div className="d-flex justify-content-center mb-2">
-              <Image src={tool.img} height={60} alt={tool.title} />
+              <Image src={tool.img} height={48} alt={tool.title} />
             </div>
             <p className="text-center">{tool.title}</p>
           </Col>
