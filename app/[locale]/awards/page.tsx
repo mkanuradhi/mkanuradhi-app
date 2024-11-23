@@ -7,7 +7,7 @@ const baseTPath = 'pages.Awards';
 
 interface AwardDetail {
   year: string;
-  description: string;
+  descriptions: string[];
 }
 
 interface AwardMessages {
@@ -18,10 +18,15 @@ interface AwardMessages {
   };
 }
 
+interface GrantDetail {
+  year: string;
+  description: string;
+}
+
 interface GrantMessages {
   pages: {
     Awards: {
-      grantDetails: AwardDetail[];
+      grantDetails: GrantDetail[];
     };
   };
 }
@@ -57,7 +62,7 @@ const AwardsPage = () => {
   const awardDetails = awardMessages?.pages?.Awards?.awardDetails as AwardDetail[];
 
   const grantMessages = useMessages() as unknown as GrantMessages | undefined;
-  const grantDetails = grantMessages?.pages?.Awards?.grantDetails as AwardDetail[];
+  const grantDetails = grantMessages?.pages?.Awards?.grantDetails as GrantDetail[];
 
 
   return (
@@ -80,7 +85,11 @@ const AwardsPage = () => {
                   {awardDetails.map((detail, index) => (
                     <Row key={index} className="my-4">
                       <Col xs={2} sm={1}><strong>{detail.year}</strong></Col>
-                      <Col>{detail.description}</Col>
+                      <Col>
+                        {detail.descriptions.map((desc, index) => (
+                          <p key={index}>{desc}</p>
+                        ))}
+                      </Col>
                     </Row>
                   ))}
                 </Container>
