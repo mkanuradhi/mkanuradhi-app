@@ -68,7 +68,9 @@
               "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
                 "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
-                "CSC 319 1.5 Machine Learning I (B.Sc. (General Degree))"
+                "CSC 112 2.0 Software Engineering II (B.Sc. (General Degree))",
+                "CSC 319 1.5 Machine Learning I (B.Sc. (General Degree))",
+                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree))"
               ]
             }
           ]
