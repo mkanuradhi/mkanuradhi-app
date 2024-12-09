@@ -20,7 +20,20 @@ const GlowLink: React.FC<GlowLinkProps> = ({ href, withArrow = false, newTab = f
       >
         {children}
         { withArrow && 
-          <span className="arrow-icon">&#x2197;</span>
+          <span className="arrow-icon">
+            <svg
+              fill="none"
+              shapeRendering="geometricPrecision"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path d="M7 17L17 7"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
+          </span>
         }
       </Link>
     </>
