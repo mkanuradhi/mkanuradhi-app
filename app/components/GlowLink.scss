@@ -35,4 +35,24 @@
     text-shadow: none;
   }
 
+  .arrow-icon {
+    display: inline-block;
+    vertical-align: middle;
+  
+    svg {
+      width: 1em;
+      height: 1em;
+      stroke: var(--bs-form-valid-color);
+      transition: stroke 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  
+      &:hover,
+      &:focus {
+        stroke: var(--bs-link-hover-color);
+        text-shadow: 0 0 8px rgba(var(--bs-body-color-rgb), 0.4),
+                     0 0 16px rgba(var(--bs-body-color-rgb), 0.3),
+                     0 0 24px rgba(var(--bs-body-color-rgb), 0.2);
+      }
+    }
+  }
+
 }
