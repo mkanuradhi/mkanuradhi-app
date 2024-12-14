@@ -2,6 +2,7 @@ import React from 'react';
 import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
+import GlowLink from '@/app/components/GlowLink';
 
 const baseTPath = 'pages.Experience';
 
@@ -23,6 +24,22 @@ interface AdministrativeCareerPositionMessages {
   pages: {
     Experience: {
       administrativeExperiences: CareerPosition[];
+    };
+  };
+}
+
+interface ProfessionalPosition {
+  post: string;
+  event: string;
+  duration: string;
+  location: string;
+  url: string;
+}
+
+interface ProfessionalPositionMessages {
+  pages: {
+    Experience: {
+      professionalExperiences: ProfessionalPosition[];
     };
   };
 }
@@ -60,6 +77,9 @@ const ExperiencePage = () => {
   const administrativeCareerPositionMessages = useMessages() as unknown as AdministrativeCareerPositionMessages | undefined;
   const administrativeCareerPositions = administrativeCareerPositionMessages?.pages?.Experience?.administrativeExperiences as CareerPosition[];
 
+  const professionalPositionMessages = useMessages() as unknown as ProfessionalPositionMessages | undefined;
+  const professionalPositions = professionalPositionMessages?.pages?.Experience?.professionalExperiences as ProfessionalPosition[];
+
   return (
     <>
       <div className="experience">
@@ -86,6 +106,20 @@ const ExperiencePage = () => {
               <ol>
                 {administrativeCareerPositions.map((position, index) => (
                   <li key={index} className="my-3"><strong>{position.post}</strong>, {position.organization} ({position.duration}).</li>
+                ))}
+              </ol>
+            </Col>
+          </Row>
+          <Row className="my-4">
+            <Col>
+              <h4>{t('professionalTitle')}</h4>
+              <ol>
+                {professionalPositions.map((position, index) => (
+                  <li key={index} className="my-3">
+                    <span>
+                      <strong>{position.post}</strong>, {position.event} ({position.duration}) - {position.location}. <GlowLink href={position.url} newTab={true} withArrow={true}>{position.url}</GlowLink>
+                    </span>
+                  </li>
                 ))}
               </ol>
             </Col>
