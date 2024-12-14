@@ -693,6 +693,16 @@
           "organization": "Faculty of Computing, University of Sri Jayewardenepura, Sri Lanka",
           "duration": "2021 - 2022"
         }
+      ],
+      "professionalTitle": "Professional Activities",
+      "professionalExperiences": [
+        {
+          "post": "Co-Chair, Publication Committee",
+          "event": "8th SLAAI - International Conference on Artificial Intelligence 2024",
+          "duration": "18th - 19th December 2024",
+          "location": "Gen. Sir John Kotelawala Defence University, Sri Lanka",
+          "url": "https://slaai.lk/icai"
+        }
       ]
     },
     "Contact": {
