@@ -623,7 +623,8 @@
         {
           "post": "Senior Lecturer in Computer Science",
           "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
-          "duration": "Nov. 2018 - Present"
+          "duration": "Nov. 2018 - Present",
+          "url": "https://cs.sjp.ac.lk/academic-staff"
         },
         {
           "post": "Lecturer (Probationary) in Computer Science",
@@ -679,6 +680,12 @@
           "duration": "2024 - Present"
         },
         {
+          "post": "Academic Advisor, Department of Computer Science",
+          "organization": "Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2024 - Present",
+          "url": "https://science.sjp.ac.lk/student-and-academic-counsellors"
+        },
+        {
           "post": "Member, Curriculum Development Committee",
           "organization": "B.Sc in Data Science and AI, Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
           "duration": "2024 - Present"
@@ -700,7 +707,7 @@
           "post": "Co-Chair, Publication Committee",
           "event": "8th SLAAI - International Conference on Artificial Intelligence 2024",
           "duration": "18th - 19th December 2024",
-          "location": "Gen. Sir John Kotelawala Defence University, Sri Lanka",
+          "location": "Gen. Sir John Kotelawala Defence University, Sri Lanka.",
           "url": "https://slaai.lk/icai"
         }
       ]

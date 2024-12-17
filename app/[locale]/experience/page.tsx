@@ -10,6 +10,7 @@ interface CareerPosition {
   post: string;
   organization: string;
   duration: string;
+  url: string;
 }
 
 interface AcademicCareerPositionMessages {
@@ -95,7 +96,18 @@ const ExperiencePage = () => {
               <h4>{t('academicTitle')}</h4>
               <ol>
                 {academicCareerPositions.map((position, index) => (
-                  <li key={index} className="my-3"><strong>{position.post}</strong>, {position.organization} ({position.duration}).</li>
+                  <li key={index} className="my-3">
+                    <span><strong>{position.post}</strong></span>
+                    { position.organization && (<span>, {position.organization}</span>) }
+                    { position.duration && (<span className="ms-1">({position.duration})</span>) }
+                    { position.url && (
+                      <span className="ms-2">
+                        <GlowLink href={position.url} newTab={true} withArrow={true}>
+                          {position.url}
+                        </GlowLink>
+                      </span>
+                    ) }
+                  </li>
                 ))}
               </ol>
             </Col>
@@ -105,7 +117,18 @@ const ExperiencePage = () => {
               <h4>{t('administrativeTitle')}</h4>
               <ol>
                 {administrativeCareerPositions.map((position, index) => (
-                  <li key={index} className="my-3"><strong>{position.post}</strong>, {position.organization} ({position.duration}).</li>
+                  <li key={index} className="my-3">
+                    <span><strong>{position.post}</strong></span>
+                    { position.organization && (<span>, {position.organization}</span>) }
+                    { position.duration && (<span className="ms-1">({position.duration})</span>) }
+                    { position.url && (
+                      <span className="ms-2">
+                        <GlowLink href={position.url} newTab={true} withArrow={true}>
+                          {position.url}
+                        </GlowLink>
+                      </span>
+                    ) }
+                  </li>
                 ))}
               </ol>
             </Col>
@@ -116,9 +139,17 @@ const ExperiencePage = () => {
               <ol>
                 {professionalPositions.map((position, index) => (
                   <li key={index} className="my-3">
-                    <span>
-                      <strong>{position.post}</strong>, {position.event} ({position.duration}) - {position.location}. <GlowLink href={position.url} newTab={true} withArrow={true}>{position.url}</GlowLink>
-                    </span>
+                    <span><strong>{position.post}</strong></span>
+                    { position.event && (<span>, {position.event}</span>) }
+                    { position.duration && (<span className="ms-1">({position.duration})</span>) }
+                    { position.location && (<span className="ms-1">- {position.location}</span>) }
+                    { position.url && (
+                      <span className="ms-2">
+                        <GlowLink href={position.url} newTab={true} withArrow={true}>
+                          {position.url}
+                        </GlowLink>
+                      </span>
+                    ) }
                   </li>
                 ))}
               </ol>
