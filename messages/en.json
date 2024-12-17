@@ -541,7 +541,12 @@
         {
           "year": "2017",
           "description": "Paranagama, H.M.T., <strong>Ariyaratne, M.K.A.</strong> and Sirisuriya, S.C.M.D.S., 2017. A machine learning approach to classify sinhala songs based on user ratings. In 2017 Tenth international research conference (KDU)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1686/009.pdf?sequence=1"
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1686/009.pdf"
+        },
+        {
+          "year": "2017",
+          "description": "Salgado, M.N.D., Charuka, P.U., Bashitha, K.P., Eshwarage, S.C. and <strong>Ariyaratne, M.K.A.</strong>, 2017. An Online Help Desk System to Help Students in Learning. In 2017 Tenth international research conference (KDU)",
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1702/022.pdf"
         },
         {
           "year": "2016",
@@ -556,7 +561,7 @@
         {
           "year": "2015",
           "description": "<strong>Ariyaratne, M.K.A.</strong> and Pemarathne, W.P.J., 2015. A review of recent advancements of firefly algorithm; a modern nature inspired algorithm. In 2015 Eighth international research conference (KDU) (pp. 61-66)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1038/com-047.pdf?sequence=1"
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1038/com-047.pdf"
         }
       ]
     },
