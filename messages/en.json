@@ -541,7 +541,12 @@
         {
           "year": "2017",
           "description": "Paranagama, H.M.T., <strong>Ariyaratne, M.K.A.</strong> and Sirisuriya, S.C.M.D.S., 2017. A machine learning approach to classify sinhala songs based on user ratings. In 2017 Tenth international research conference (KDU)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1686/009.pdf?sequence=1"
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1686/009.pdf"
+        },
+        {
+          "year": "2017",
+          "description": "Salgado, M.N.D., Charuka, P.U., Bashitha, K.P., Eshwarage, S.C. and <strong>Ariyaratne, M.K.A.</strong>, 2017. An Online Help Desk System to Help Students in Learning. In 2017 Tenth international research conference (KDU)",
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1702/022.pdf"
         },
         {
           "year": "2016",
@@ -556,7 +561,7 @@
         {
           "year": "2015",
           "description": "<strong>Ariyaratne, M.K.A.</strong> and Pemarathne, W.P.J., 2015. A review of recent advancements of firefly algorithm; a modern nature inspired algorithm. In 2015 Eighth international research conference (KDU) (pp. 61-66)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1038/com-047.pdf?sequence=1"
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1038/com-047.pdf"
         }
       ]
     },
@@ -623,7 +628,8 @@
         {
           "post": "Senior Lecturer in Computer Science",
           "organization": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
-          "duration": "Nov. 2018 - Present"
+          "duration": "Nov. 2018 - Present",
+          "url": "https://cs.sjp.ac.lk/academic-staff"
         },
         {
           "post": "Lecturer (Probationary) in Computer Science",
@@ -679,6 +685,12 @@
           "duration": "2024 - Present"
         },
         {
+          "post": "Academic Advisor, Department of Computer Science",
+          "organization": "Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2024 - Present",
+          "url": "https://science.sjp.ac.lk/student-and-academic-counsellors"
+        },
+        {
           "post": "Member, Curriculum Development Committee",
           "organization": "B.Sc in Data Science and AI, Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
           "duration": "2024 - Present"
@@ -700,7 +712,7 @@
           "post": "Co-Chair, Publication Committee",
           "event": "8th SLAAI - International Conference on Artificial Intelligence 2024",
           "duration": "18th - 19th December 2024",
-          "location": "Gen. Sir John Kotelawala Defence University, Sri Lanka",
+          "location": "Gen. Sir John Kotelawala Defence University, Sri Lanka.",
           "url": "https://slaai.lk/icai"
         }
       ]

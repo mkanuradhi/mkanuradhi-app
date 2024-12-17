@@ -95,7 +95,7 @@ const PublicationsPage = () => {
                     </Col>
                   </Row>
                   {articles.map((article, index) => (
-                    <Row key={index}>
+                    <Row key={index} className="mt-3">
                       <Col xs={2} sm={1}>
                         <strong>{article.year}</strong>
                       </Col>
@@ -124,7 +124,7 @@ const PublicationsPage = () => {
                     </Col>
                   </Row>
                   {chapters.map((chapter, index) => (
-                    <Row key={index}>
+                    <Row key={index} className="mt-3">
                       <Col xs={2} sm={1}>
                         <strong>{chapter.year}</strong>
                       </Col>
@@ -150,7 +150,7 @@ const PublicationsPage = () => {
                     </Col>
                   </Row>
                   {proceedings.map((proceeding, index) => (
-                    <Row key={index}>
+                    <Row key={index} className="mt-3">
                       <Col xs={2} sm={1}>
                         <strong>{proceeding.year}</strong>
                       </Col>

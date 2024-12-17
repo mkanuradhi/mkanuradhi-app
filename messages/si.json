@@ -541,7 +541,12 @@
         {
           "year": "2017",
           "description": "Paranagama, H.M.T., <strong>Ariyaratne, M.K.A.</strong> and Sirisuriya, S.C.M.D.S., 2017. A machine learning approach to classify sinhala songs based on user ratings. In 2017 Tenth international research conference (KDU)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1686/009.pdf?sequence=1"
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1686/009.pdf"
+        },
+        {
+          "year": "2017",
+          "description": "Salgado, M.N.D., Charuka, P.U., Bashitha, K.P., Eshwarage, S.C. and <strong>Ariyaratne, M.K.A.</strong>, 2017. An Online Help Desk System to Help Students in Learning. In 2017 Tenth international research conference (KDU)",
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1702/022.pdf"
         },
         {
           "year": "2016",
@@ -556,7 +561,7 @@
         {
           "year": "2015",
           "description": "<strong>Ariyaratne, M.K.A.</strong> and Pemarathne, W.P.J., 2015. A review of recent advancements of firefly algorithm; a modern nature inspired algorithm. In 2015 Eighth international research conference (KDU) (pp. 61-66)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1038/com-047.pdf?sequence=1"
+          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1038/com-047.pdf"
         }
       ]
     },
@@ -623,7 +628,8 @@
         {
           "post": "පරිගණක විද්‍යාව පිළිබඳ ජ්‍යෙෂ්ඨ කථිකාචාර්ය",
           "organization": "පරිගණක විද්‍යා දෙපාර්තමේන්තුව, ව්‍යවහාරික විද්‍යා පීඨය, ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව",
-          "duration": "2018 නොවැම්බර් - වර්තමානය දක්වා"
+          "duration": "2018 නොවැම්බර් - වර්තමානය දක්වා",
+          "url": "https://cs.sjp.ac.lk/academic-staff"
         },
         {
           "post": "පරිගණක විද්‍යාව පිළිබඳ කථිකාචාර්ය (පරිවාස)",
@@ -679,6 +685,12 @@
           "duration": "2024 - වර්තමානය දක්වා"
         },
         {
+          "post": "ශාස්ත්‍රීය උපදේශක, පරිගණක විද්‍යා දෙපාර්තමේන්තුව",
+          "organization": "ව්‍යවහාරික විද්‍යා පීඨය, ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව",
+          "duration": "2024 - වර්තමානය දක්වා",
+          "url": "https://science.sjp.ac.lk/student-and-academic-counsellors"
+        },
+        {
           "post": "සාමාජික, විෂයමාලා සංවර්ධන කමිටුව",
           "organization": "දත්ත විද්‍යාව සහ කෘතීම බුද්ධිය පිළිබඳ විද්‍යාවේදී උපාධිය, පරිගණක විද්‍යා දෙපාර්තමේන්තුව, ව්‍යවහාරික විද්‍යා පීඨය, ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව",
           "duration": "2024 - වර්තමානය දක්වා"
@@ -700,7 +712,7 @@
           "post": "සම සභාපති, ප්‍රකාශන කමිටුව",
           "event": "8 වන SLAAI - කෘත්‍රිම බුද්ධිය පිළිබඳ ජාත්‍යන්තර සමුළුව 2024",
           "duration": "2024 දෙසැම්බර් 18 - 19",
-          "location": "ජෙනරාල් සර් ජෝන් කොතලාවල ආරක්ෂක විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව",
+          "location": "ජෙනරාල් සර් ජෝන් කොතලාවල ආරක්ෂක විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව.",
           "url": "https://slaai.lk/icai"
         }
       ]
