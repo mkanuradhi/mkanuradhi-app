@@ -65,8 +65,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/experience`,
-      lastModified: new Date('2024-12-17'),
-      changeFrequency: 'yearly',
+      lastModified: new Date('2024-12-19'),
+      changeFrequency: 'monthly',
       priority: 0.5,
       alternates: {
         languages: {
