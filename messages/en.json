@@ -54,6 +54,17 @@
       ],
       "details": [
         {
+          "year": "2025",
+          "descriptions": [
+            { 
+              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
+              "courses": [
+                "DSA 555 3.0 Nature Inspired Computing (M.Sc.in Data Science and AI - Batch 3)"
+              ]
+            }
+          ]
+        },
+        {
           "year": "2024",
           "descriptions": [
             { 

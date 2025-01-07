@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/teaching`,
-      lastModified: new Date('2024-11-28'),
+      lastModified: new Date('2025-01-07'),
       changeFrequency: 'yearly',
       priority: 0.8,
       alternates: {
