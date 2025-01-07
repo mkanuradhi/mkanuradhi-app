@@ -78,7 +78,7 @@ const TeachingPage = () => {
               </section>
               <h2>{t('subTitle')}</h2>
               {details.map((detail, index) => (
-                <section key={index}>
+                <section key={index} className="mt-4">
                   <h3>{detail.year}</h3>
                   {detail.descriptions.map((desc, descIndex) => (
                     <div key={descIndex}>

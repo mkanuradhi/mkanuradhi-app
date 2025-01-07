@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/teaching`,
-      lastModified: new Date('2024-11-28'),
+      lastModified: new Date('2025-01-07'),
       changeFrequency: 'yearly',
       priority: 0.8,
       alternates: {
@@ -65,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/experience`,
-      lastModified: new Date('2024-12-19'),
+      lastModified: new Date('2025-01-07'),
       changeFrequency: 'monthly',
       priority: 0.5,
       alternates: {
