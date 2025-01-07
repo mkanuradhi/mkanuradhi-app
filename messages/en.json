@@ -59,7 +59,7 @@
             { 
               "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
-                "DSA 555 3.0 Nature Inspired Computing (M.Sc.in Data Science and AI - Batch 3)"
+                "DSA 555 3.0 Nature Inspired Computing (M.Sc. in Data Science and AI - Batch 3)"
               ]
             }
           ]
@@ -70,9 +70,9 @@
             { 
               "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
-                "CSC 540 2.0 Software Engineering (M.Sc.in Computer Science)",
-                "CSC 603 2.0 Nature Inspired Algorithms (M.Sc.in Computer Science - Batch 6)",
-                "CSC 610 2.0 Machine Learning (M.Sc.in Computer Science)"
+                "CSC 540 2.0 Software Engineering (M.Sc. in Computer Science)",
+                "CSC 603 2.0 Nature Inspired Algorithms (M.Sc. in Computer Science - Batch 6)",
+                "CSC 610 2.0 Machine Learning (M.Sc. in Computer Science)"
               ]
             },
             {
@@ -92,7 +92,7 @@
             { 
               "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
-                "DSA 504 2.0 Machine Learning 1 (M.Sc.in Data Science and AI-Batch 2)"
+                "DSA 504 2.0 Machine Learning 1 (M.Sc. in Data Science and AI - Batch 2)"
               ]
             },
             { 
@@ -110,8 +110,8 @@
             { 
               "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
-                "DSA 504 2.0 Machine Learning 1 (M.Sc.in Data Science and AI-Batch 1)",
-                "DSA 555 3.0 Nature Inspired Computing (M.Sc.in Data Science and AI-Batch 1)"
+                "DSA 504 2.0 Machine Learning 1 (M.Sc. in Data Science and AI - Batch 1)",
+                "DSA 555 3.0 Nature Inspired Computing (M.Sc. in Data Science and AI - Batch 1)"
               ]
             },
             { 
@@ -134,7 +134,7 @@
             { 
               "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
-                "CSC 615 2.0 Nature Inspired Algorithms (M.Sc.in Computer Science)"
+                "CSC 615 2.0 Nature Inspired Algorithms (M.Sc. in Computer Science)"
               ]
             },
             { 
@@ -157,7 +157,7 @@
             { 
               "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
               "courses": [
-                "IM 534 2.0 Special Topics in Industrial Mathematics (M.Sc.in Industrial Mathematics)"
+                "IM 534 2.0 Special Topics in Industrial Mathematics (M.Sc. in Industrial Mathematics)"
               ]
             },
             { 
@@ -690,6 +690,12 @@
       ],
       "administrativeTitle": "Administrative",
       "administrativeExperiences": [
+        {
+          "post": "Coordinator, MSc in Data Science and AI",
+          "organization": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2025 - Present",
+          "url": "https://cs.sjp.ac.lk/msc_dsai/"
+        },
         {
           "post": "Secretary, Ethics Review Committee",
           "organization": "Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
