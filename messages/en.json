@@ -726,6 +726,13 @@
       "professionalTitle": "Professional Activities",
       "professionalExperiences": [
         {
+          "post": "Resource Person, Curriculum Development Workshop",
+          "event": "Integrating Data Science and Business Economics, organized by the Department of Business Economics, Faculty of Management Studies and Commerce",
+          "duration": "17th January 2025",
+          "location": "University of Sri Jayewardenepura, Sri Lanka.",
+          "url": null
+        },
+        {
           "post": "Co-Chair, Publication Committee",
           "event": "8th SLAAI - International Conference on Artificial Intelligence 2024",
           "duration": "18th - 19th December 2024",
