@@ -748,6 +748,12 @@
         }
       ]
     },
+    "Blog": {
+      "pageTitle": "Blog",
+      "pageDescription": "Explore articles on computer science, metaheuristics, machine learning, teaching, and programming insights on my blog.",
+      "pageKeywords": "blog, data science, articles, meta heuristics",
+      "title": "Blog"
+    },
     "Contact": {
       "pageTitle": "Contact",
       "pageDescription": "Reach out with any inquiries, collaborations, or opportunities. Whether you have questions about my research, are interested in working together, or simply want to connect, I'd love to hear from you.",
@@ -820,9 +826,17 @@
       "publications": "Publications",
       "awards": "Awards",
       "experience": "Experience",
+      "blog": "Blog",
       "contact": "Contact",
       "en": "English (en)",
       "si": "Sinhala (සිං)"
+    },
+    "BlogPostCard": {
+      "readMore": "Read More"
+    },
+    "BlogPostViewer": {
+      "home": "Home",
+      "blog": "Blog"
     },
     "Footer": {
       "title": "Copyright \u00A9 {currentYear} Anuradha Ariyaratne.",

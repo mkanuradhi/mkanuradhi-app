@@ -34,6 +34,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
     { title: t('publications'), path: '/publications'},
     { title: t('awards'), path: '/awards'},
     { title: t('experience'), path: '/experience'},
+    { title: t('blog'), path: '/blog'},
     { title: t('contact'), path: '/contact'},
   ];
 
