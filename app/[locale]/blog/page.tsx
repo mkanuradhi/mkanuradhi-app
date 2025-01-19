@@ -51,19 +51,27 @@ const BlogPage: React.FC<BlogPageProps> = async ({ params }) => {
               <h1>{t('title')}</h1>
             </Col>
           </Row>
-          {blogPostViews.map( (blogPostView, index) => (
-            <Row key={index}>
+          {blogPostViews && blogPostViews.length > 0 ? (
+            blogPostViews.map( (blogPostView, index) => (
+              <Row key={index}>
+                <Col>
+                  <BlogPostCard
+                    title={blogPostView.title}
+                    summary={blogPostView.summary}
+                    img={blogPostView.primaryImage}
+                    path={blogPostView.path}
+                    fDate={blogPostView.formattedDate}
+                  />
+                </Col>
+              </Row>
+            ))
+          ) : (
+            <Row>
               <Col>
-                <BlogPostCard
-                  title={blogPostView.title}
-                  summary={blogPostView.summary}
-                  img={blogPostView.primaryImage}
-                  path={blogPostView.path}
-                  fDate={blogPostView.formattedDate}
-                />
+                <p>{t('noPostsMessage')}</p>
               </Col>
             </Row>
-          ))}
+          )}
         </Container>
       </div>
     </>
