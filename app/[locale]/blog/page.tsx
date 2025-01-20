@@ -68,7 +68,7 @@ const BlogPage: React.FC<BlogPageProps> = async ({ params }) => {
           ) : (
             <Row>
               <Col>
-                <p>{t('noPostsMessage')}</p>
+                <p>{t('noPosts')}</p>
               </Col>
             </Row>
           )}
