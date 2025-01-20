@@ -130,7 +130,7 @@ export default function HomePage() {
               <div>
                 <h1 className="text-center">{t('aboutTitle')}</h1>
                 {descriptions.map((desc, index) => (
-                  <p key={index} className="text-justify">
+                  <p key={index}>
                     {desc}
                   </p>
                 ))}
