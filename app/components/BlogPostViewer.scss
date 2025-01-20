@@ -1,5 +1,22 @@
 .blog-post-viewer {
+
   a {
     text-decoration: none;
+  }
+
+  .primary-image-wrapper {
+    position: relative;
+    min-height: 28rem;
+    min-width: 100%;
+
+    .primary-image {
+      object-fit: cover;
+    }
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--bs-highlight-color);
+    margin: 1rem 0; 
   }
 }

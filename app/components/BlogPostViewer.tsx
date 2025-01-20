@@ -5,8 +5,8 @@ import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import BlogPostView from '../interfaces/i-blog-post-view';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import "./BlogPostViewer.scss";
 import { Link } from '@/i18n/routing';
+import "./BlogPostViewer.scss";
 
 const baseTPath = 'components.BlogPostViewer';
 
@@ -30,10 +30,10 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
             <Row>
               <Col>
                 <Breadcrumb>
-                  <Breadcrumb.Item>
+                  <Breadcrumb.Item linkAs="span">
                     <Link href="/">{t('home')}</Link>
                   </Breadcrumb.Item>
-                  <Breadcrumb.Item>
+                  <Breadcrumb.Item linkAs="span">
                     <Link href="/blog">{t('blog')}</Link>
                   </Breadcrumb.Item>
                 </Breadcrumb>
@@ -41,16 +41,24 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
                 <p className="fs-7">
                   <span className="text-muted fs-7">{blogPostView.formattedDate} {blogPostView.formattedTime}</span>
                 </p>
+                <hr className="divider" />
               </Col>
             </Row>
-            <Row className="mb-3">
-              <Col>
-                <div style={{ position: 'relative', minHeight: '28rem', minWidth: '100%' }}>
-                  <Image src={blogPostView.primaryImage} alt={`Image for ${blogPostView.title}`} fill={true}
-                    style={{ objectFit: 'cover', }} />
-                </div>
-              </Col>
-            </Row>
+            {blogPostView.primaryImage && (
+              <Row className="mb-3">
+                <Col>
+                  <div className="primary-image-wrapper">
+                    <Image
+                      src={blogPostView.primaryImage}
+                      alt={blogPostView.title}
+                      fill={true}
+                      className="primary-image"
+                      priority={true}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            )}
             <Row>
               <Col>
                 <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />

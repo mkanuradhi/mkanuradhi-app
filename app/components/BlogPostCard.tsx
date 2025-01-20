@@ -10,7 +10,7 @@ const baseTPath = 'components.BlogPostCard';
 interface BlogPostCardProps {
   title: string;
   summary: string;
-  img: string;
+  img?: string;
   path: string;
   fDate: string;
 }
@@ -22,7 +22,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
     <>
       <Card className="my-3 shadow blog-post-card">
         <Row className="g-0 flex-column flex-md-row">
-          {/* Left Column for the Image */}
+        {img && (
           <Col md={4}>
             <Card.Img
               src={img}
@@ -30,8 +30,9 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
               style={{ objectFit: 'cover', height: '100%', maxHeight: '32rem' }}
             />
           </Col>
+          )}
           {/* Right Column for the Content */}
-          <Col md={8}>
+          <Col md={img ? 8 : 12}>
             <Card.Body>
               <Card.Title>{ title }</Card.Title>
               <Card.Text className="text-muted fs-7">
