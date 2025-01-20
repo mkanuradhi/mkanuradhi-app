@@ -76,6 +76,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${baseUrl}/en/blog`,
+      lastModified: new Date('2025-01-18'),
+      changeFrequency: 'monthly',
+      priority: 0.3,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/blog`,
+          si: `${baseUrl}/si/blog`,
+        },
+      },
+    },
+    {
       url: `${baseUrl}/en/contact`,
       lastModified: new Date('2024-09-29'),
       changeFrequency: 'yearly',

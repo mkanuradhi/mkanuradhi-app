@@ -1,7 +1,9 @@
 "use client";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Button, Card, Col, Row } from "react-bootstrap";
+import "./BlogPostCard.scss";
 
 const baseTPath = 'components.BlogPostCard';
 
@@ -18,7 +20,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
 
   return (
     <>
-      <Card className="my-3 shadow">
+      <Card className="my-3 shadow blog-post-card">
         <Row className="g-0 flex-column flex-md-row">
           {/* Left Column for the Image */}
           <Col md={4}>
@@ -35,11 +37,26 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
               <Card.Text className="text-muted fs-7">
                 { fDate }
               </Card.Text>
+              <hr className="divider" />
               <Card.Text>
                 { summary }
               </Card.Text>
               <Link href={`blog/${path}`}>
-                <Button variant="primary">{ t('readMore') }</Button>
+                <motion.div
+                  whileHover="hover"
+                  className="d-inline-block"
+                >
+                  <Button variant="primary" className="d-flex align-items-center">
+                    {t('readMore')}
+                    <motion.i
+                      className="bi bi-arrow-right ms-2"
+                      variants={{
+                        hover: { x: 5 },
+                      }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    />
+                  </Button>
+                </motion.div>
               </Link>
             </Card.Body>
           </Col>
@@ -49,4 +66,4 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
   )
 }
 
-export default BlogPostCard
+export default BlogPostCard;
