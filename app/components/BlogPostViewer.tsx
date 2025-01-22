@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import DOMPurify from 'dompurify';
 import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import BlogPostView from '../interfaces/i-blog-post-view';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
+import SharePanel from './SharePanel';
 import "./BlogPostViewer.scss";
 
 const baseTPath = 'components.BlogPostViewer';
@@ -16,7 +17,10 @@ interface BlogPostContentProps {
 
 const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
   const t = useTranslations(baseTPath);
+  const locale = useLocale();
   const [sanitizedHtml, setSanitizedHtml] = useState<string>('');
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const fullUrl = `${baseUrl}/${locale}/${blogPostView.path}`;
 
   useEffect(() => {
     setSanitizedHtml(DOMPurify.sanitize(blogPostView.content));
@@ -62,6 +66,16 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
             <Row>
               <Col>
                 <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
+              </Col>
+            </Row>
+            <Row className="my-3">
+              <Col>
+                <h6>Share this post on</h6>
+                <SharePanel
+                  title={blogPostView.title}
+                  url={fullUrl}
+                  description={blogPostView.pageDescription}
+                />
               </Col>
             </Row>
           </Col>
