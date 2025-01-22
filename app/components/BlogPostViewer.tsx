@@ -20,7 +20,7 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
   const locale = useLocale();
   const [sanitizedHtml, setSanitizedHtml] = useState<string>('');
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
-  const fullUrl = `${baseUrl}/${locale}/${blogPostView.path}`;
+  const fullUrl = `${baseUrl}/${locale}/blog/${blogPostView.path}`;
 
   useEffect(() => {
     setSanitizedHtml(DOMPurify.sanitize(blogPostView.content));
