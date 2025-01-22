@@ -837,7 +837,8 @@
     },
     "BlogPostViewer": {
       "home": "Home",
-      "blog": "Blog"
+      "blog": "Blog",
+      "share": "Share this post"
     },
     "Footer": {
       "title": "Copyright \u00A9 {currentYear} Anuradha Ariyaratne.",

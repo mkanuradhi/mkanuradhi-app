@@ -70,7 +70,7 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
             </Row>
             <Row className="my-3">
               <Col>
-                <h6>Share this post on</h6>
+                <h6>{t('share')}</h6>
                 <SharePanel
                   title={blogPostView.title}
                   url={fullUrl}
