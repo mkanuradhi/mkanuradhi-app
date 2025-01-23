@@ -23,7 +23,21 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
   const fullUrl = `${baseUrl}/${locale}/blog/${blogPostView.path}`;
 
   useEffect(() => {
-    setSanitizedHtml(DOMPurify.sanitize(blogPostView.content));
+    // Add a hook to handle target="_blank"
+    DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+      if (node.tagName === 'A' && node.getAttribute('target') === '_blank') {
+        node.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+
+    const sanitizedContent = DOMPurify.sanitize(blogPostView.content, {
+      ALLOWED_ATTR: ['target', 'href', 'rel', 'src', 'alt', 'style'], // Include necessary attributes
+    });
+    setSanitizedHtml(sanitizedContent);
+    
+    return () => {
+      DOMPurify.removeHook('afterSanitizeAttributes');
+    }
   }, [blogPostView.content]);
 
   return (
