@@ -3,20 +3,12 @@
   background: linear-gradient(
     45deg,
     var(--bs-link-color),
-    var(--bs-form-valid-color),
+    var(--bs-form-valid-color)
   );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   transition: text-shadow 0.3s ease-in-out;
-
-  &:link {
-    color: transparent;
-  }
-
-  &:visited {
-    color: transparent;
-  }
 
   &:hover,
   &:focus {
@@ -43,14 +35,11 @@
       width: 1em;
       height: 1em;
       stroke: var(--bs-form-valid-color);
-      transition: stroke 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+      transition: stroke 0.3s ease-in-out;
   
       &:hover,
       &:focus {
         stroke: var(--bs-link-hover-color);
-        text-shadow: 0 0 8px rgba(var(--bs-body-color-rgb), 0.4),
-                     0 0 16px rgba(var(--bs-body-color-rgb), 0.3),
-                     0 0 24px rgba(var(--bs-body-color-rgb), 0.2);
       }
     }
   }
