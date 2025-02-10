@@ -1,0 +1,14 @@
+.glow-button {
+
+  border-radius: 1000px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-image: linear-gradient(to bottom right, var(--bs-success), var(--bs-primary-text-emphasis));
+    box-shadow: 0 0 2rem rgba(var(--bs-success-rgb), 0.6);
+  }
+
+}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import "./BlogPostCard.scss";
+import GlowButton from "./GlowButton";
 
 const baseTPath = 'components.BlogPostCard';
 
@@ -47,7 +48,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
                   whileHover="hover"
                   className="d-inline-block"
                 >
-                  <Button variant="primary" className="d-flex align-items-center">
+                  <GlowButton>
                     {t('readMore')}
                     <motion.i
                       className="bi bi-arrow-right ms-2"
@@ -56,7 +57,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
                       }}
                       transition={{ type: "spring", stiffness: 300 }}
                     />
-                  </Button>
+                  </GlowButton>
                 </motion.div>
               </Link>
             </Card.Body>

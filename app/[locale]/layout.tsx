@@ -65,6 +65,11 @@ export default async function LocaleLayout({
       <body className={`${langFontClass}`}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
+            <div className="background-container">
+              <div className="overlay"></div>
+              <div className="background-image bg1"></div>
+              <div className="background-image bg2"></div>
+            </div>
             <div className="app">
               <header>
                 <NavigationBar />
