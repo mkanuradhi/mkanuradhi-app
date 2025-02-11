@@ -5,6 +5,8 @@ import { ThemeProvider } from "../contexts/ThemeProvider";
 import NavigationBar from "../components/NavigationBar";
 import { Footer } from "../components/Footer";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { ClerkProvider } from '@clerk/nextjs';
+import { getClerkLocalization } from "@/utils/server/clerk-localization";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const notoSerifSinhala = Noto_Serif_Sinhala({ subsets: ["latin", "sinhala"] });
@@ -59,32 +61,36 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
   const langFontClass = locale === 'en' ? `${montserrat.className}` : `${notoSerifSinhala.className}`;
+  const localization = await getClerkLocalization(locale);
  
   return (
-    <html lang={locale}>
-      <body className={`${langFontClass}`}>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider>
-            <div className="background-container">
-              <div className="overlay"></div>
-              <div className="background-image bg1"></div>
-              <div className="background-image bg2"></div>
-            </div>
-            <div className="app">
-              <header>
-                <NavigationBar />
-              </header>
-              <main>
-                {children}
-              </main>
-              <footer>
-                <Footer />
-              </footer>
-            </div>
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
-      <GoogleAnalytics gaId={`${GA_ID}`} />
-    </html>
+    <ClerkProvider localization={localization}>
+      <html lang={locale}>
+        <body className={`${langFontClass}`}>
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider>
+              <div className="background-container">
+                <div className="overlay"></div>
+                <div className="background-image bg1"></div>
+                <div className="background-image bg2"></div>
+              </div>
+              <div className="app">
+                <header>
+                  <NavigationBar />
+                </header>
+                <main>
+                  {children}
+                </main>
+                <footer>
+                  <Footer />
+                </footer>
+              </div>
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </body>
+        <GoogleAnalytics gaId={`${GA_ID}`} />
+      </html>
+    </ClerkProvider>
+
   );
 }

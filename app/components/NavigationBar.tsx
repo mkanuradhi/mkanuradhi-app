@@ -8,6 +8,8 @@ import { useTheme } from "../hooks/useTheme";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import styles from './NavigationBar.module.scss'
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 interface NavigationBarProps {
 }
@@ -89,6 +91,17 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                     { t('si') }
                   </NavDropdown.Item>
                 </NavDropdown>
+                <SignedIn>
+                  <UserButton>
+                    <UserButton.MenuItems>
+                      <UserButton.Link
+                        label="Dashboard"
+                        labelIcon={<FontAwesomeIcon icon={faEllipsisV} />}
+                        href="/dashboard"
+                      />
+                    </UserButton.MenuItems>
+                  </UserButton>
+                </SignedIn>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
