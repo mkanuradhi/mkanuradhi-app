@@ -817,6 +817,12 @@
     },
     "Loading":{
       "title": "Loading..."
+    },
+    "Dashboard": {
+      "pageTitle": "Dashboard",
+      "pageDescription": "Dashboard for the logged in user",
+      "pageKeywords": "dashboard, control panel",
+      "title": "Dashboard"
     }
   },
   "components": {
@@ -848,6 +854,54 @@
         "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, professor TGI Fernando, emeritus professor Sunethra Weerakoon, professor A S Karunananda and Mr. Duminda de Silva for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
         "Finally, I would like to thank my family for their unwavering support and encouragement. Without them, none of this would be possible."
       ]
+    }
+  },
+  "clerk": {
+    "backButton": "Back",
+    "formFieldLabel__emailAddress": "Email address",
+    "formFieldLabel__password": "Password",
+    "formButtonPrimary": "Continue",
+    "formFieldAction__forgotPassword": "Forgot password?",
+    "signIn": {
+      "alternativeMethods": {
+        "actionLink": "Get help",
+        "actionText": "Don’t have any of these?",
+        "blockButton__emailCode": "Email code to your email address"
+      },
+      "forgotPasswordAlternativeMethods": {
+        "blockButton__resetPassword": "Reset your password",
+        "label__alternativeMethods": "Or, sign in with another method",
+        "title": "Forgot Password?"
+      },
+      "password": {
+        "actionLink": "Use another method",
+        "subtitle": "Enter the password associated with your account",
+        "title": "Enter your password"
+      },
+      "start": {
+        "title": "Sign in to your account",
+        "subtitle": "Welcome back! Please sign in to continue",
+        "actionText": "Don't have an account?",
+        "actionLink": "Sign up"
+      }
+    },
+    "signUp": {
+      "start": {
+        "actionLink": "Sign in",
+        "actionLink__use_email": "Use email instead",
+        "actionLink__use_phone": "Use phone instead",
+        "actionText": "Already have an account?",
+        "subtitle": "Welcome! Please fill in the details to get started.",
+        "subtitleCombined": "Welcome! Please fill in the details to get started.",
+        "title": "Create your account",
+        "titleCombined": "Create your account"
+      }
+    },
+    "unstable__errors": {
+      "form_identifier_not_found": "No account found with this identifier. Please check and try again.",
+      "zxcvbn": {
+        "goodPassword": "Your password meets all the necessary requirements."
+      }
     }
   }
 }
