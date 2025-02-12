@@ -1,7 +1,5 @@
-import { generatePageKey } from '@/utils/server/generate-page-key';
 import { SignIn } from '@clerk/nextjs';
 import { getTranslations } from 'next-intl/server';
-import { redirect } from 'next/navigation';
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 
@@ -31,21 +29,13 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   }
 };
 
-const SignInPage = async ({ searchParams }: { searchParams: { key?: string } }) => {
-    const correctKey = await generatePageKey();
-
-    if (!searchParams.key || searchParams.key !== String(correctKey)) {
-      redirect("/");
-    }
-
-    const signUpUrl = `/sign-up?key=${correctKey}`;
-
+const SignInPage = async () => {
   return (
     <>
       <Container>
         <Row className="d-flex justify-content-center align-items-center my-4">
           <Col className="d-flex justify-content-center">
-            <SignIn signUpUrl={signUpUrl} />
+            <SignIn />
           </Col>
         </Row>
       </Container>
