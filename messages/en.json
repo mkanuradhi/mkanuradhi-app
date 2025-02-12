@@ -858,7 +858,14 @@
   },
   "clerk": {
     "backButton": "Back",
+    "formFieldHintText__optional": "Optional",
+    "formFieldInputPlaceholder__emailAddress": "Enter your email address",
+    "formFieldInputPlaceholder__firstName": "First name",
+    "formFieldInputPlaceholder__lastName": "Last name",
+    "formFieldInputPlaceholder__password": "Enter your password",
     "formFieldLabel__emailAddress": "Email address",
+    "formFieldLabel__firstName": "First name",
+    "formFieldLabel__lastName": "Last name",
     "formFieldLabel__password": "Password",
     "formButtonPrimary": "Continue",
     "formFieldAction__forgotPassword": "Forgot password?",
@@ -898,7 +905,19 @@
       }
     },
     "unstable__errors": {
+      "form_identifier_exists__email_address": "This email address is taken. Please try another.",
       "form_identifier_not_found": "No account found with this identifier. Please check and try again.",
+      "form_param_format_invalid": "The value entered is in an invalid format. Please check and correct it.",
+      "form_password_incorrect": "The password you entered is incorrect. Please try again.",
+      "passwordComplexity": {
+        "maximumLength": "less than 8 characters",
+        "minimumLength": "8 or more characters",
+        "requireLowercase": "a lowercase letter",
+        "requireNumbers": "a number",
+        "requireSpecialCharacter": "a special character",
+        "requireUppercase": "an uppercase letter",
+        "sentencePrefix": "Your password must contain"
+      },
       "zxcvbn": {
         "goodPassword": "Your password meets all the necessary requirements."
       }
