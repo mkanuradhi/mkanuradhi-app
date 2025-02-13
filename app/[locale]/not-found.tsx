@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import GlowLink from '../components/GlowLink';
+import GlowLink from '@/components/GlowLink';
 
 const baseTPath = 'pages.NotFound';
 

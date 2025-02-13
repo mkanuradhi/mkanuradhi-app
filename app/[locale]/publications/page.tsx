@@ -3,7 +3,7 @@ import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import parse from 'html-react-parser';
-import GlowLink from '@/app/components/GlowLink';
+import GlowLink from '@/components/GlowLink';
 
 const baseTPath = 'pages.Publications';
 

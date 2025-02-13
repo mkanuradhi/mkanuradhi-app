@@ -1,6 +1,6 @@
 import React from 'react';
-import { getBlogPostByPath } from '@/app/services/blog-post-service';
-import BlogPostViewer from '@/app/components/BlogPostViewer';
+import { getBlogPostByPath } from '@/services/blog-post-service';
+import BlogPostViewer from '@/components/BlogPostViewer';
 
 interface BlogPostPageProps {
   params: {

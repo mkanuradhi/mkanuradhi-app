@@ -1,8 +1,8 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import { getPublishedBlogPosts } from '@/app/services/blog-post-service';
-import BlogPostCard from '@/app/components/BlogPostCard';
+import { getPublishedBlogPosts } from '@/services/blog-post-service';
+import BlogPostCard from '@/components/BlogPostCard';
 
 const baseTPath = 'pages.Blog';
 

@@ -858,7 +858,14 @@
   },
   "clerk": {
     "backButton": "ආපසු",
+    "formFieldHintText__optional": "අවශ්‍යම නැත",
+    "formFieldInputPlaceholder__emailAddress": "ඔබගේ ඊමේල් ලිපිනය ඇතුළත් කරන්න",
+    "formFieldInputPlaceholder__firstName": "මුල් නම",
+    "formFieldInputPlaceholder__lastName": "වාසගම (අවසන් නම)",
+    "formFieldInputPlaceholder__password": "ඔබගේ මුරපදය ඇතුළත් කරන්න",
     "formFieldLabel__emailAddress": "ඊමේල් ලිපිනය",
+    "formFieldLabel__firstName": "මුල් නම",
+    "formFieldLabel__lastName": "වාසගම",
     "formFieldLabel__password": "මුරපදය",
     "formButtonPrimary": "ඉදිරියට යන්න",
     "formFieldAction__forgotPassword": "මුරපදය අමතක වුණා ද?",
@@ -898,7 +905,19 @@
       }
     },
     "unstable__errors": {
+      "form_identifier_exists__email_address": "මෙම ඊමේල් ලිපිනය දැනටමත් භාවිතයට ගෙන ඇත. කරුණාකර වෙනත් එකක් උත්සාහ කරන්න.",
       "form_identifier_not_found": "මෙම හැඳුනුම්කාරකය සහිත ගිණුමක් හමු නොවීය. කරුණාකර පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+      "form_param_format_invalid": "ඔබ ඇතුළත් කළ අගය වලංගු නොවන ආකෘතියකි. කරුණාකර එය පරීක්ෂා කර නිවැරදි කරන්න.",
+      "form_password_incorrect": "ඔබ ඇතුළත් කළ මුරපදය වැරදියි. කරුණාකර නැවත උත්සාහ කරන්න.",
+      "passwordComplexity": {
+        "maximumLength": "අක්ෂර 8කට අඩු",
+        "minimumLength": "අක්ෂර 8ක් හෝ වැඩි ගණනක්",
+        "requireLowercase": "කුඩා අකුරක්",
+        "requireNumbers": "අංකයක්",
+        "requireSpecialCharacter": "විශේෂ සංකේත අක්ෂරයක්",
+        "requireUppercase": "කැපිටල් අකුරක්",
+        "sentencePrefix": "ඔබගේ මුරපදයේ අඩංගු විය යුත්තේ"
+      },
       "zxcvbn": {
         "goodPassword": "ඔබගේ මුරපදය අවශ්‍ය සියලු අවශ්‍යතා සපුරාලයි."
       }

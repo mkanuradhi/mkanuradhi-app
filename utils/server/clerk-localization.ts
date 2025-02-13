@@ -8,7 +8,14 @@ export const getClerkLocalization = async (locale: string) => {
 
   const localization = {
     backButton: t('backButton'),
+    formFieldHintText__optional: t('formFieldHintText__optional'),
+    formFieldInputPlaceholder__emailAddress: t('formFieldInputPlaceholder__emailAddress'),
+    formFieldInputPlaceholder__firstName: t('formFieldInputPlaceholder__firstName'),
+    formFieldInputPlaceholder__lastName: t('formFieldInputPlaceholder__lastName'),
+    formFieldInputPlaceholder__password: t('formFieldInputPlaceholder__password'),
     formFieldLabel__emailAddress: t('formFieldLabel__emailAddress'),
+    formFieldLabel__firstName: t('formFieldLabel__firstName'),
+    formFieldLabel__lastName: t('formFieldLabel__lastName'),
     formFieldLabel__password: t('formFieldLabel__password'),
     formButtonPrimary: t('formButtonPrimary'),
     formFieldAction__forgotPassword: t('formFieldAction__forgotPassword'),
@@ -48,7 +55,19 @@ export const getClerkLocalization = async (locale: string) => {
       },
     },
     unstable__errors: {
+      form_identifier_exists__email_address: t('unstable__errors.form_identifier_exists__email_address'),
       form_identifier_not_found: t('unstable__errors.form_identifier_not_found'),
+      form_param_format_invalid: t('unstable__errors.form_param_format_invalid'),
+      form_password_incorrect: t('unstable__errors.form_password_incorrect'),
+      passwordComplexity: {
+        maximumLength: t('unstable__errors.passwordComplexity.maximumLength'),
+        minimumLength: t('unstable__errors.passwordComplexity.minimumLength'),
+        requireLowercase: t('unstable__errors.passwordComplexity.requireLowercase'),
+        requireNumbers: t('unstable__errors.passwordComplexity.requireNumbers'),
+        requireSpecialCharacter: t('unstable__errors.passwordComplexity.requireSpecialCharacter'),
+        requireUppercase: t('unstable__errors.passwordComplexity.requireUppercase'),
+        sentencePrefix: t('unstable__errors.passwordComplexity.sentencePrefix'),
+      },
       zxcvbn: {
         goodPassword: t('unstable__errors.zxcvbn.goodPassword'),
       }

@@ -1,8 +1,8 @@
-import { BLOG_POSTS_PATH } from "../constants/api-paths";
-import BlogPost from "../interfaces/i-blog-post";
+import { BLOG_POSTS_PATH } from "@/constants/api-paths";
+import BlogPost from "@/interfaces/i-blog-post";
+import BlogPostView from "@/interfaces/i-blog-post-view";
+import { SearchResult } from "@/interfaces/i-search-result";
 import axios from "axios";
-import { SearchResult } from "../interfaces/i-search-result";
-import BlogPostView from "../interfaces/i-blog-post-view";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
