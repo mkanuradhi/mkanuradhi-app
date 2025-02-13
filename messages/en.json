@@ -836,7 +836,8 @@
       "blog": "Blog",
       "contact": "Contact",
       "en": "English (en)",
-      "si": "Sinhala (සිං)"
+      "si": "Sinhala (සිං)",
+      "dashboard": "Dashboard"
     },
     "BlogPostCard": {
       "readMore": "Read More"
@@ -858,6 +859,7 @@
   },
   "clerk": {
     "backButton": "Back",
+    "badge__primary": "Primary",
     "formFieldHintText__optional": "Optional",
     "formFieldInputPlaceholder__emailAddress": "Enter your email address",
     "formFieldInputPlaceholder__firstName": "First name",
@@ -920,6 +922,49 @@
       },
       "zxcvbn": {
         "goodPassword": "Your password meets all the necessary requirements."
+      }
+    },
+    "userButton": {
+      "action__addAccount": "Add account",
+      "action__manageAccount": "Manage account",
+      "action__signOut": "Sign out",
+      "action__signOutAll": "Sign out of all accounts"
+    },
+    "userProfile": {
+      "navbar": {
+        "account": "Profile",
+        "description": "Manage your account info.",
+        "security": "Security",
+        "title": "Account"
+      },
+      "start": {
+        "activeDevicesSection": {
+          "destructiveAction": "Sign out of device",
+          "title": "Active devices"
+        },
+        "dangerSection": {
+          "deleteAccountButton": "Delete account",
+          "title": "Delete account"
+        },
+        "emailAddressesSection": {
+          "destructiveAction": "Remove email",
+          "detailsAction__nonPrimary": "Set as primary",
+          "detailsAction__primary": "Complete verification",
+          "detailsAction__unverified": "Verify",
+          "primaryButton": "Add email address",
+          "title": "Email addresses"
+        },
+        "headerTitle__account": "Profile details",
+        "headerTitle__security": "Security",
+        "passwordSection": {
+          "primaryButton__setPassword": "Set password",
+          "primaryButton__updatePassword": "Update password",
+          "title": "Password"
+        },
+        "profileSection": {
+          "primaryButton": "Update profile",
+          "title": "Profile"
+        }
       }
     }
   }

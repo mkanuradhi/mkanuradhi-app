@@ -836,7 +836,8 @@
       "blog": "බ්ලොග්",
       "contact": "සම්බන්ධ වන්න",
       "en": "ඉංග්‍රීසි (en)",
-      "si": "සිංහල (සිං)"
+      "si": "සිංහල (සිං)",
+      "dashboard": "පාලන පුවරුව"
     },
     "BlogPostCard": {
       "readMore": "තව කියවන්න"
@@ -858,6 +859,7 @@
   },
   "clerk": {
     "backButton": "ආපසු",
+    "badge__primary": "මූලික",
     "formFieldHintText__optional": "අවශ්‍යම නැත",
     "formFieldInputPlaceholder__emailAddress": "ඔබගේ ඊමේල් ලිපිනය ඇතුළත් කරන්න",
     "formFieldInputPlaceholder__firstName": "මුල් නම",
@@ -920,6 +922,49 @@
       },
       "zxcvbn": {
         "goodPassword": "ඔබගේ මුරපදය අවශ්‍ය සියලු අවශ්‍යතා සපුරාලයි."
+      }
+    },
+    "userButton": {
+      "action__addAccount": "ගිණුමක් එක් කරන්න",
+      "action__manageAccount": "ගිණුම කළමනාකරණය",
+      "action__signOut": "ඉවත් වන්න",
+      "action__signOutAll": "සියලුම ගිණුම් වලින් ඉවත් වන්න"
+    },
+    "userProfile": {
+      "navbar": {
+        "account": "පරිශීලක තොරතුරු",
+        "description": "ඔබගේ ගිණුම් තොරතුරු කළමනාකරණය කරන්න.",
+        "security": "ආරක්ෂාව",
+        "title": "ගිණුම"
+      },
+      "start": {
+        "activeDevicesSection": {
+          "destructiveAction": "උපාංගයෙන් ඉවත් වන්න",
+          "title": "ක්‍රියාකාරී උපාංග"
+        },
+        "dangerSection": {
+          "deleteAccountButton": "ගිණුම මකන්න",
+          "title": "ගිණුම මකන්න"
+        },
+        "emailAddressesSection": {
+          "destructiveAction": "ඊමේල් ලිපිනය ඉවත් කරන්න",
+          "detailsAction__nonPrimary": "මූලික ලෙස සකසන්න",
+          "detailsAction__primary": "තහවුරු කිරීම සම්පූර්ණ කරන්න",
+          "detailsAction__unverified": "තහවුරු කරන්න",
+          "primaryButton": "ඊමේල් ලිපිනය එක් කරන්න",
+          "title": "ඊමේල් ලිපින"
+        },
+        "headerTitle__account": "පරිශීලක තොරතුරු",
+        "headerTitle__security": "ආරක්ෂාව",
+        "passwordSection": {
+          "primaryButton__setPassword": "මුරපදය සකසන්න",
+          "primaryButton__updatePassword": "මුරපදය යාවත්කාලීන කරන්න",
+          "title": "මුරපදය"
+        },
+        "profileSection": {
+          "primaryButton": "යාවත්කාලීන කරන්න",
+          "title": "තොරතුරු"
+        }
       }
     }
   }
