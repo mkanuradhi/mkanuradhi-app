@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { Button, Col, Container, Form as BootstrapForm, Row } from "react-bootstrap";
-import { useTheme } from '@/app/hooks/useTheme';
+import { useTheme } from '@/hooks/useTheme';
 import { useTranslations } from 'next-intl';
 import { ToastContainer, toast } from 'react-toastify';
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";

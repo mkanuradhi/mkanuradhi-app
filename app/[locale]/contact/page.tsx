@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import 'react-toastify/dist/ReactToastify.css';
-import ContactForm from '@/app/components/ContactForm';
+import ContactForm from '@/components/ContactForm';
 
 const baseTPath = 'pages.Contact';
 

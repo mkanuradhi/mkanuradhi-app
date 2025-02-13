@@ -2,9 +2,9 @@ import React from 'react';
 import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import ThesisDisplayer from '@/app/components/ThesisDisplayer';
-import CurrentProjectsDisplayer from '@/app/components/CurrentProjectsDisplayer';
-import PastProjectsDisplayer from '@/app/components/PastProjectsDisplayer';
+import ThesisDisplayer from '@/components/ThesisDisplayer';
+import CurrentProjectsDisplayer from '@/components/CurrentProjectsDisplayer';
+import PastProjectsDisplayer from '@/components/PastProjectsDisplayer';
 
 const baseTPath = 'pages.Research';
 

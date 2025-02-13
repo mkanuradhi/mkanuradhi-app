@@ -3,14 +3,14 @@ import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
-import ScopusIcon from '@/app/icons/ScopusIcon';
+import ScopusIcon from '@/icons/ScopusIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
-import ExternalLinkBar from '@/app/components/ExternalLinkBar';
-import MainImageDisplayer from '@/app/components/MainImageDisplayer';
-import GlowLink from '@/app/components/GlowLink';
+import ExternalLinkBar from '@/components/ExternalLinkBar';
+import MainImageDisplayer from '@/components/MainImageDisplayer';
+import GlowLink from '@/components/GlowLink';
+import ToolsSkillsDisplayer from '@/components/ToolsSkillsDisplayer';
 import './home.scss';
-import ToolsSkillsDisplayer from '@/app/components/ToolsSkillsDisplayer';
 
 const baseTPath = 'pages.Home';
 

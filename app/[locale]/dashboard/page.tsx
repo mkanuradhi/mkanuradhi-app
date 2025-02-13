@@ -1,7 +1,8 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
-import { auth } from '@clerk/nextjs/server';
+import { auth, currentUser } from '@clerk/nextjs/server';
+import { Link } from '@/i18n/routing';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -39,6 +40,7 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
   const { userId } = await auth();
+  const user = await currentUser();
 
   return (
     <>
@@ -46,8 +48,9 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
         <Row>
           <Col>
             <h1>{t('title')}</h1>
-            <p>{t('pageDescription')}</p>
-            <p>User id: { userId }</p>
+            <h4>Welcome, {user?.fullName}!</h4>
+            <p>User Id: { userId }</p>
+            <Link href="/dashboard/blog">Blog Posts</Link>
           </Col>
         </Row>
       </Container>

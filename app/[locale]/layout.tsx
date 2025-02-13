@@ -1,12 +1,13 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Montserrat, Noto_Serif_Sinhala } from "next/font/google";
-import { ThemeProvider } from "../contexts/ThemeProvider";
-import NavigationBar from "../components/NavigationBar";
-import { Footer } from "../components/Footer";
+import { ThemeProvider } from "@/contexts/ThemeProvider";
+import NavigationBar from "@/components/NavigationBar";
+import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { getClerkLocalization } from "@/utils/server/clerk-localization";
+
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const notoSerifSinhala = Noto_Serif_Sinhala({ subsets: ["latin", "sinhala"] });

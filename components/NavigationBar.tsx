@@ -4,7 +4,7 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useTranslations } from 'next-intl';
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "@/hooks/useTheme";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import styles from './NavigationBar.module.scss'
