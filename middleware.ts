@@ -14,19 +14,25 @@ const isProtectedRoute = createRouteMatcher([
 const isAdminRoute = createRouteMatcher([
   '/(si|en)/dashboard/blogs(.*)',
   '/(si|en)/dashboard/students(.*)',
-  '/dashboard/blogs(.*)',
-  '/dashboard/students(.*)',
 ]);
 const isStudentRoute = createRouteMatcher([
   '/(si|en)/dashboard/courses(.*)',
-  '/dashboard/courses(.*)',
 ]);
 
 export default clerkMiddleware(async (authFn, req: NextRequest) => {
+  // Process internationalization first, but do NOT override authentication
+  const intlResponse = intlMiddleware(req);
+
+  // If the requested page is NOT a protected route, just return the intl response
+  if (!isProtectedRoute(req)) {
+    return intlResponse || NextResponse.next();
+  }
+
   const auth = await authFn();
   const { userId, sessionClaims } = auth;
 
-  if (isProtectedRoute(req) && !userId) {
+  // If user tries to access protected routes but is not signed in, redirect to sign-in
+  if (!userId) {
     return NextResponse.redirect(new URL('/sign-in', req.url));
   }
 
@@ -34,6 +40,11 @@ export default clerkMiddleware(async (authFn, req: NextRequest) => {
 
   const isAdmin = memberRoles.includes(Role.ADMIN);
   const isStudent = memberRoles.includes(Role.STUDENT);
+
+  // If user has no roles, redirect them to the home page
+  if (memberRoles.length === 0) {
+    return NextResponse.redirect(new URL('/', req.url));
+  }
 
   // Enforce role-based access control
   if (isAdminRoute(req) && !isAdmin) {
@@ -44,13 +55,7 @@ export default clerkMiddleware(async (authFn, req: NextRequest) => {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
-  // handle next-intl middleware for localization
-  const intlResponse = intlMiddleware(req);
-  if (intlResponse) {
-    return intlResponse || NextResponse.next();
-  }
-
-  return NextResponse.next();
+  return intlResponse || NextResponse.next();
 });
 
 export const config = {
@@ -60,12 +65,10 @@ export const config = {
     '/(api|trpc)(.*)',
 
     // Protect dashboard routes
-    "/dashboard/:path*",
     "/(si|en)/dashboard/:path*",
 
     // Match only internationalized pathnames
     '/',
-    '/(si|en)/:path*',
-    '/:path(home|teaching|research|publications|awards|experience|contact)*'
+    '/(si|en)/:path*'
   ]
 };
