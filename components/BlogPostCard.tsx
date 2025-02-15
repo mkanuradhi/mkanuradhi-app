@@ -2,9 +2,9 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Button, Card, Col, Row } from "react-bootstrap";
-import "./BlogPostCard.scss";
+import { Card, Col, Row } from "react-bootstrap";
 import GlowButton from "./GlowButton";
+import "./BlogPostCard.scss";
 
 const baseTPath = 'components.BlogPostCard';
 

@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }>) {
 
   return (
-    <Container fluid="md">
+    <Container fluid>
       <Row>
         <Col md={3} className="d-none d-md-block">
           <aside className=""></aside>
