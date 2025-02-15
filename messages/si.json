@@ -822,7 +822,10 @@
       "pageTitle": "පාලන පුවරුව",
       "pageDescription": "පිවිසුණු පරිශීලකයා සඳහා පාලන පුවරුව",
       "pageKeywords": "පාලන පුවරුව, පුවරුව",
-      "title": "පාලන පුවරුව"
+      "title": "පාලන පුවරුව",
+      "Blog": {
+        "title": "බ්ලොග්"
+      }
     }
   },
   "components": {
@@ -836,7 +839,8 @@
       "blog": "බ්ලොග්",
       "contact": "සම්බන්ධ වන්න",
       "en": "ඉංග්‍රීසි (en)",
-      "si": "සිංහල (සිං)"
+      "si": "සිංහල (සිං)",
+      "dashboard": "පාලන පුවරුව"
     },
     "BlogPostCard": {
       "readMore": "තව කියවන්න"
@@ -854,10 +858,33 @@
         "මගේ ගමනේදී මා වෙත සහයෝගය ලබා දුන් සෑම අයෙකුටම මම මගේ හදපිරි ස්තුතිය පුද කිරීමට කැමැත්තෙමි. මගේ උපදේශකවරුන් වන මහාචාර්ය ටී.ජී.අයි. ප්‍රනාන්දු, සම්මානනීය මහාචාර්ය සුනේත්‍රා වීරකෝන්, මහාචාර්ය ඒ එස් කරුණානන්ද සහ දුමින්ද ද සිල්වා යන මහත්ම මහත්මීන්ට ඔවුන්ගේ අගනා මඟපෙන්වීම සහ දිරිගැන්වීම වෙනුවෙන් විශේෂ ස්තුතිය පුද කරමි. ඔවුන්ගේ මගපෙන්වීම සහ උද්දීපනය මගේ කාර්යය සහ වෘත්තිය විශාල වශයෙන් ගොඩනැගීමට හේතුවිය.",
         "අවසාන වශයෙන්, මගේ පවුලේ අයගේ නොසැලෙන සහයෝගය සහ දිරිගැන්වීම සඳහා මම ස්තූති කිරීමට කැමතියි. ඔවුන් නොමැතිව, මේ කිසිවක් කළ නොහැකි වනු ඇත."
       ]
+    },
+    "LoadingContainer": {
+      "loading": "පූරණය වෙමින් ..."
+    },
+    "BlogTable": {
+      "failPosts": "බ්ලොග් සටහන් පූරණය කිරීමට අසමත් විය.",
+      "noPosts": "පෙන්වීමට බ්ලොග් සටහන් නොමැත.",
+      "refreshPosts": "බ්ලොග් සටහන් නැවුම් කරමින්...",
+      "blogPosts": "බ්ලොග් සටහන්"
+    },
+    "PaginationInfo": {
+      "showing": "පෙන්වමින්",
+      "of": "සිට",
+      "items": "දක්වා",
+      "page": "පිටුව",
+      "pageOf": "න්"
+    },
+    "BlogPostOptionsCard": {
+      "read": "තව කියවන්න",
+      "publish": "ප්‍රකාශනය කරන්න",
+      "unpublish": "ප්‍රකාශය අහෝසි කරන්න",
+      "delete": "මකන්න"
     }
   },
   "clerk": {
     "backButton": "ආපසු",
+    "badge__primary": "මූලික",
     "formFieldHintText__optional": "අවශ්‍යම නැත",
     "formFieldInputPlaceholder__emailAddress": "ඔබගේ ඊමේල් ලිපිනය ඇතුළත් කරන්න",
     "formFieldInputPlaceholder__firstName": "මුල් නම",
@@ -920,6 +947,49 @@
       },
       "zxcvbn": {
         "goodPassword": "ඔබගේ මුරපදය අවශ්‍ය සියලු අවශ්‍යතා සපුරාලයි."
+      }
+    },
+    "userButton": {
+      "action__addAccount": "ගිණුමක් එක් කරන්න",
+      "action__manageAccount": "ගිණුම කළමනාකරණය",
+      "action__signOut": "ඉවත් වන්න",
+      "action__signOutAll": "සියලුම ගිණුම් වලින් ඉවත් වන්න"
+    },
+    "userProfile": {
+      "navbar": {
+        "account": "පරිශීලක තොරතුරු",
+        "description": "ඔබගේ ගිණුම් තොරතුරු කළමනාකරණය කරන්න.",
+        "security": "ආරක්ෂාව",
+        "title": "ගිණුම"
+      },
+      "start": {
+        "activeDevicesSection": {
+          "destructiveAction": "උපාංගයෙන් ඉවත් වන්න",
+          "title": "ක්‍රියාකාරී උපාංග"
+        },
+        "dangerSection": {
+          "deleteAccountButton": "ගිණුම මකන්න",
+          "title": "ගිණුම මකන්න"
+        },
+        "emailAddressesSection": {
+          "destructiveAction": "ඊමේල් ලිපිනය ඉවත් කරන්න",
+          "detailsAction__nonPrimary": "මූලික ලෙස සකසන්න",
+          "detailsAction__primary": "තහවුරු කිරීම සම්පූර්ණ කරන්න",
+          "detailsAction__unverified": "තහවුරු කරන්න",
+          "primaryButton": "ඊමේල් ලිපිනය එක් කරන්න",
+          "title": "ඊමේල් ලිපින"
+        },
+        "headerTitle__account": "පරිශීලක තොරතුරු",
+        "headerTitle__security": "ආරක්ෂාව",
+        "passwordSection": {
+          "primaryButton__setPassword": "මුරපදය සකසන්න",
+          "primaryButton__updatePassword": "මුරපදය යාවත්කාලීන කරන්න",
+          "title": "මුරපදය"
+        },
+        "profileSection": {
+          "primaryButton": "යාවත්කාලීන කරන්න",
+          "title": "තොරතුරු"
+        }
       }
     }
   }

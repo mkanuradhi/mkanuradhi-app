@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { getClerkLocalization } from "@/utils/server/clerk-localization";
+import { QueryProvider } from "@/contexts/query-provider";
 
 
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -70,6 +71,7 @@ export default async function LocaleLayout({
         <body className={`${langFontClass}`}>
           <NextIntlClientProvider messages={messages}>
             <ThemeProvider>
+              <QueryProvider>
               <div className="background-container">
                 <div className="overlay"></div>
                 <div className="background-image bg1"></div>
@@ -86,6 +88,7 @@ export default async function LocaleLayout({
                   <Footer />
                 </footer>
               </div>
+              </QueryProvider>
             </ThemeProvider>
           </NextIntlClientProvider>
         </body>

@@ -822,7 +822,10 @@
       "pageTitle": "Dashboard",
       "pageDescription": "Dashboard for the logged in user",
       "pageKeywords": "dashboard, control panel",
-      "title": "Dashboard"
+      "title": "Dashboard",
+      "Blog": {
+        "title": "Blog"
+      }
     }
   },
   "components": {
@@ -836,7 +839,8 @@
       "blog": "Blog",
       "contact": "Contact",
       "en": "English (en)",
-      "si": "Sinhala (සිං)"
+      "si": "Sinhala (සිං)",
+      "dashboard": "Dashboard"
     },
     "BlogPostCard": {
       "readMore": "Read More"
@@ -854,10 +858,33 @@
         "I would like to express my deepest gratitude to everyone who has supported me on my journey. A special thanks to my mentors, professor TGI Fernando, emeritus professor Sunethra Weerakoon, professor A S Karunananda and Mr. Duminda de Silva for their invaluable guidance and encouragement. Their insights have greatly shaped my work and career.",
         "Finally, I would like to thank my family for their unwavering support and encouragement. Without them, none of this would be possible."
       ]
+    },
+    "LoadingContainer": {
+      "loading": "Loading ..."
+    },
+    "BlogTable": {
+      "failPosts": "Failed to load blog posts",
+      "noPosts": "No blog posts to display",
+      "refreshPosts": "Refreshing blog posts...",
+      "blogPosts": "blog posts"
+    },
+    "PaginationInfo": {
+      "showing": "Showing",
+      "of": "of",
+      "items": "",
+      "page": "Page",
+      "pageOf": "of"
+    },
+    "BlogPostOptionsCard": {
+      "read": "Read More",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "delete": "Delete"
     }
   },
   "clerk": {
     "backButton": "Back",
+    "badge__primary": "Primary",
     "formFieldHintText__optional": "Optional",
     "formFieldInputPlaceholder__emailAddress": "Enter your email address",
     "formFieldInputPlaceholder__firstName": "First name",
@@ -920,6 +947,49 @@
       },
       "zxcvbn": {
         "goodPassword": "Your password meets all the necessary requirements."
+      }
+    },
+    "userButton": {
+      "action__addAccount": "Add account",
+      "action__manageAccount": "Manage account",
+      "action__signOut": "Sign out",
+      "action__signOutAll": "Sign out of all accounts"
+    },
+    "userProfile": {
+      "navbar": {
+        "account": "Profile",
+        "description": "Manage your account info.",
+        "security": "Security",
+        "title": "Account"
+      },
+      "start": {
+        "activeDevicesSection": {
+          "destructiveAction": "Sign out of device",
+          "title": "Active devices"
+        },
+        "dangerSection": {
+          "deleteAccountButton": "Delete account",
+          "title": "Delete account"
+        },
+        "emailAddressesSection": {
+          "destructiveAction": "Remove email",
+          "detailsAction__nonPrimary": "Set as primary",
+          "detailsAction__primary": "Complete verification",
+          "detailsAction__unverified": "Verify",
+          "primaryButton": "Add email address",
+          "title": "Email addresses"
+        },
+        "headerTitle__account": "Profile details",
+        "headerTitle__security": "Security",
+        "passwordSection": {
+          "primaryButton__setPassword": "Set password",
+          "primaryButton__updatePassword": "Update password",
+          "title": "Password"
+        },
+        "profileSection": {
+          "primaryButton": "Update profile",
+          "title": "Profile"
+        }
       }
     }
   }

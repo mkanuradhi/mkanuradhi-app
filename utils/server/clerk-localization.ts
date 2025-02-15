@@ -8,6 +8,7 @@ export const getClerkLocalization = async (locale: string) => {
 
   const localization = {
     backButton: t('backButton'),
+    badge__primary: t('badge__primary'),
     formFieldHintText__optional: t('formFieldHintText__optional'),
     formFieldInputPlaceholder__emailAddress: t('formFieldInputPlaceholder__emailAddress'),
     formFieldInputPlaceholder__firstName: t('formFieldInputPlaceholder__firstName'),
@@ -70,6 +71,49 @@ export const getClerkLocalization = async (locale: string) => {
       },
       zxcvbn: {
         goodPassword: t('unstable__errors.zxcvbn.goodPassword'),
+      }
+    },
+    userButton: {
+      action__addAccount: t('userButton.action__addAccount'),
+      action__manageAccount: t('userButton.action__manageAccount'),
+      action__signOut: t('userButton.action__signOut'),
+      action__signOutAll: t('userButton.action__signOutAll')
+    },
+    userProfile: {
+      navbar: {
+        account: t('userProfile.navbar.account'),
+        description: t('userProfile.navbar.description'),
+        security: t('userProfile.navbar.security'),
+        title: t('userProfile.navbar.title'),
+      },
+      start: {
+        activeDevicesSection: {
+          destructiveAction: t('userProfile.start.activeDevicesSection.destructiveAction'),
+          title: t('userProfile.start.activeDevicesSection.title'),
+        },
+        dangerSection: {
+          deleteAccountButton: t('userProfile.start.dangerSection.deleteAccountButton'),
+          title: t('userProfile.start.dangerSection.title'),
+        },
+        emailAddressesSection: {
+          destructiveAction: t('userProfile.start.emailAddressesSection.destructiveAction'),
+          detailsAction__nonPrimary: t('userProfile.start.emailAddressesSection.detailsAction__nonPrimary'),
+          detailsAction__primary: t('userProfile.start.emailAddressesSection.detailsAction__primary'),
+          detailsAction__unverified: t('userProfile.start.emailAddressesSection.detailsAction__unverified'),
+          primaryButton: t('userProfile.start.emailAddressesSection.primaryButton'),
+          title: t('userProfile.start.emailAddressesSection.title'),
+        },
+        headerTitle__account: t('userProfile.start.headerTitle__account'),
+        headerTitle__security: t('userProfile.start.headerTitle__security'),
+        passwordSection: {
+          primaryButton__setPassword: t('userProfile.start.passwordSection.primaryButton__setPassword'),
+          primaryButton__updatePassword: t('userProfile.start.passwordSection.primaryButton__updatePassword'),
+          title: t('userProfile.start.passwordSection.title'),
+        },
+        profileSection: {
+          primaryButton: t('userProfile.start.profileSection.primaryButton'),
+          title: t('userProfile.start.profileSection.title'),
+        },
       }
     }
   };

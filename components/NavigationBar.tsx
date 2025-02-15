@@ -95,7 +95,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                   <UserButton>
                     <UserButton.MenuItems>
                       <UserButton.Link
-                        label="Dashboard"
+                        label={t('dashboard')}
                         labelIcon={<FontAwesomeIcon icon={faEllipsisV} />}
                         href="/dashboard"
                       />
