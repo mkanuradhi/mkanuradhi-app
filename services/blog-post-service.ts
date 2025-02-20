@@ -17,6 +17,11 @@ export const getBlogPosts = async (page: number, size: number): Promise<Paginate
   return response.data;
 };
 
+export const getBlogPostById = async (id: string): Promise<BlogPost> => {
+  const response = await axios.get<BlogPost>(`${API_BASE_URL}${BLOG_POSTS_PATH}/id/${id}`);
+  return response.data;
+};
+
 export const getBlogPostByPath = async (lang: string, path: string): Promise<BlogPostView> => {
   const response = await axios.get<BlogPostView>(`${API_BASE_URL}${BLOG_POSTS_PATH}/path/${path}`, {
     params: {

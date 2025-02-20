@@ -1,6 +1,6 @@
 import BlogPost from '@/interfaces/i-blog-post';
 import PaginatedResult from '@/interfaces/i-paginated-result';
-import { deleteBlogPost, getBlogPosts, publishBlogPost, unpublishBlogPost } from '@/services/blog-post-service';
+import { deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost } from '@/services/blog-post-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
@@ -17,12 +17,26 @@ export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?:
   });
 };
 
+export const useBlogPostByIdQuery = (id: string) => {
+  return useQuery<BlogPost>({
+    queryKey: ['blog-post', id],
+    queryFn: () => getBlogPostById(id),
+    refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
+  });
+};
+
 export const usePublishBlogPostMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (id: string) => publishBlogPost(id),
-    onSuccess: () => {
+    onSuccess: (_, id) => {
+      // Update cache instantly instead of re-fetching
+      queryClient.setQueryData(['blog-post', id], (oldData: BlogPost | undefined) => {
+        if (!oldData) return;
+        return { ...oldData, published: true };
+      });
+
       queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
     },
   });
@@ -33,7 +47,13 @@ export const useUnpublishBlogPostMutation = () => {
 
   return useMutation({
     mutationFn: (id: string) => unpublishBlogPost(id),
-    onSuccess: () => {
+    onSuccess: (_, id) => {
+      // Update cache instantly
+      queryClient.setQueryData(['blog-post', id], (oldData: BlogPost | undefined) => {
+        if (!oldData) return;
+        return { ...oldData, published: false };
+      });
+
       queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
     },
   });
@@ -44,7 +64,18 @@ export const useDeleteBlogPostMutation = () => {
 
   return useMutation({
     mutationFn: (id: string) => deleteBlogPost(id),
-    onSuccess: () => {
+    onSuccess: (_, id) => {
+      queryClient.removeQueries({ queryKey: ['blog-post', id] });
+
+      // Update paginated list cache by filtering out the deleted post
+      queryClient.setQueryData(['blog-posts'], (oldData: PaginatedResult<BlogPost> | undefined) => {
+        if (!oldData) return;
+        return {
+          ...oldData,
+          items: oldData.items.filter(post => post.id !== id), // Remove deleted post
+        };
+      });
+
       queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
     },
   });

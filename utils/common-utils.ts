@@ -11,3 +11,20 @@ export const truncateText = (text: string, maxLength: number = 100, appendEllips
 
   return truncated + (appendEllipsis ? " ..." : "");
 };
+
+export const getFormattedDate = (locale: string, dateTime: Date) => {
+  return new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(new Date(dateTime));
+}
+
+export const getFormattedTime = (locale: string, dateTime: Date) => {
+  return new Intl.DateTimeFormat(locale, {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true,
+  }).format(new Date(dateTime));
+}

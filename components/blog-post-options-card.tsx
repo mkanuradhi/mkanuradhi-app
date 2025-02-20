@@ -27,7 +27,7 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
   const locale = useLocale();
   const [show, setShow] = useState(false);
 
-  const selectedTitle = locale === "si" ? titleSi : titleEn;
+  const selectedTitle = locale === "si" ? `'${titleSi}'` : `'${titleEn}'`;
 
   const { mutate: deleteBlogPostMutation, isPending: isPendingDelete } = useDeleteBlogPostMutation();
   const { mutate: publishBlogPostMutation, isPending: isPendingPublish } = usePublishBlogPostMutation();
@@ -81,7 +81,7 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
               <Card.Text>
                 { summarySi }
               </Card.Text>
-              <Link href={`blog/${path}`}>
+              <Link href={`blog/${id}`}>
                 <Button>
                   <FontAwesomeIcon icon={faBookOpenReader} className="list-icon" /> { t('read') }
                 </Button>
