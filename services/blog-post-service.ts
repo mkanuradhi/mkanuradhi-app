@@ -40,3 +40,27 @@ export const getPublishedBlogPosts = async (lang: string, page: number, size: nu
   const searchResult: SearchResult = response.data;
   return searchResult.data;
 };
+
+export const publishBlogPost = async (id: string): Promise<BlogPost> => {
+  const response = await axios.patch<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/publish`,
+    { published: true }
+  );
+  return response.data;
+};
+
+export const unpublishBlogPost = async (id: string): Promise<BlogPost> => {
+  const response = await axios.patch<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/publish`,
+    { published: false }
+  );
+  return response.data;
+};
+
+export const deleteBlogPost = async (id: string) => {
+  const response = await axios.delete(`${API_BASE_URL}${BLOG_POSTS_PATH}/${id}`);
+  if (response.status !== 204) {
+    throw new Error('Failed to delete blog post');
+  }
+  return { id, message: 'Blog post deleted successfully' };
+};
