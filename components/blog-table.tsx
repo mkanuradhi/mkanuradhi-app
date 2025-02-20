@@ -60,6 +60,7 @@ const BlogTable: React.FC<BlogTableProps> = ({ initialBlogPosts }) => {
           <Row key={index}>
             <Col>
               <BlogPostOptionsCard
+                id={blogPost.id}
                 titleEn={blogPost.titleEn}
                 summaryEn={truncateText(blogPost.summaryEn, 150)}
                 titleSi={blogPost.titleSi}

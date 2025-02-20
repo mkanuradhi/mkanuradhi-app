@@ -17,6 +17,11 @@ export const getBlogPosts = async (page: number, size: number): Promise<Paginate
   return response.data;
 };
 
+export const getBlogPostById = async (id: string): Promise<BlogPost> => {
+  const response = await axios.get<BlogPost>(`${API_BASE_URL}${BLOG_POSTS_PATH}/id/${id}`);
+  return response.data;
+};
+
 export const getBlogPostByPath = async (lang: string, path: string): Promise<BlogPostView> => {
   const response = await axios.get<BlogPostView>(`${API_BASE_URL}${BLOG_POSTS_PATH}/path/${path}`, {
     params: {
@@ -39,4 +44,28 @@ export const getPublishedBlogPosts = async (lang: string, page: number, size: nu
   });
   const searchResult: SearchResult = response.data;
   return searchResult.data;
+};
+
+export const publishBlogPost = async (id: string): Promise<BlogPost> => {
+  const response = await axios.patch<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/publish`,
+    { published: true }
+  );
+  return response.data;
+};
+
+export const unpublishBlogPost = async (id: string): Promise<BlogPost> => {
+  const response = await axios.patch<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/publish`,
+    { published: false }
+  );
+  return response.data;
+};
+
+export const deleteBlogPost = async (id: string) => {
+  const response = await axios.delete(`${API_BASE_URL}${BLOG_POSTS_PATH}/${id}`);
+  if (response.status !== 204) {
+    throw new Error('Failed to delete blog post');
+  }
+  return { id, message: 'Blog post deleted successfully' };
 };

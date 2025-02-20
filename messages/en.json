@@ -879,7 +879,21 @@
       "read": "Read More",
       "publish": "Publish",
       "unpublish": "Unpublish",
-      "delete": "Delete"
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete"
+    },
+    "BlogPostOptionsViewer": {
+      "failPost": "Failed to load blog post",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete"
     }
   },
   "clerk": {
