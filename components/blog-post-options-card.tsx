@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button, Card, Col, Modal, Row } from "react-bootstrap";
 import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookOpenReader, faEye, faEyeSlash, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import { useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from "@/hooks/use-blog-posts";
 import "./blog-post-options-card.scss";
@@ -82,24 +82,34 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
                 { summarySi }
               </Card.Text>
               <Link href={`blog/${id}`}>
-                <Button>
-                  <FontAwesomeIcon icon={faBookOpenReader} className="list-icon" /> { t('read') }
+                <Button className="me-2 my-1">
+                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
+                </Button>
+              </Link>
+              <Link href={`blog/${id}/edit`}>
+                <Button variant="secondary" className="me-2 my-1">
+                  <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
                 </Button>
               </Link>
               <Button
                 variant={published ? `warning` : `success`}
-                className="ms-2"
+                className="me-2 my-1"
                 onClick={published ? handleUnpublish : handlePublish}
                 disabled={isPendingPublish || isPendingUnpublish}
               >
                 <FontAwesomeIcon
                   icon={published ? faEyeSlash : faEye}
-                  className="list-icon"
+                  className="me-1"
                 />{" "}
                 {published ? t('unpublish') : t('publish')}
               </Button>
-              <Button variant="danger" className="ms-2" onClick={handleShow} disabled={isPendingDelete}>
-                <FontAwesomeIcon icon={faTrash} className="list-icon" /> { t('delete') }
+              <Button
+                variant="danger"
+                className="me-2 my-1"
+                onClick={handleShow}
+                disabled={isPendingDelete}
+              >
+                <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
               </Button>
             </Card.Body>
           </Col>

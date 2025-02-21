@@ -3,17 +3,17 @@ import BlogPostOptionsViewer from '@/components/blog-post-options-viewer';
 
 interface BlogPostOptionsPageProps {
   params: {
-    slug: string;
+    id: string;
   };
 }
 
-const BlogPostOptionsPage: React.FC<BlogPostOptionsPageProps> = async ({ params }) => {
-  const { slug } = params;
+const BlogPostOptionsPage: React.FC<BlogPostOptionsPageProps> = ({ params }) => {
+  const { id } = params;
 
   return (
     <>
       <div className="blog">
-        <BlogPostOptionsViewer blogPostId={slug} />
+        <BlogPostOptionsViewer blogPostId={id} />
       </div>
     </>
   );
