@@ -900,6 +900,7 @@
     "NewBlogPostEnForm": {
       "titleEnLabel": "Title in English",
       "titleEnPlaceholder": "Enter Title in English",
+      "titleEnTooShort": "Title in English must be more than {min} characters",
       "titleEnTooLong": "Title in English must be less than {max} characters",
       "titleEnRequired": "Title in English is required",
       "summaryEnLabel": "Summary in English",

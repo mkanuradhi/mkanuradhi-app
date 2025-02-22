@@ -900,6 +900,7 @@
     "NewBlogPostEnForm": {
       "titleEnLabel": "මාතෘකාව ඉංග්‍රීසියෙන්",
       "titleEnPlaceholder": "මාතෘකාව ඉංග්‍රීසියෙන් ඇතුළත් කරන්න",
+      "titleEnTooShort": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
       "titleEnTooLong": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
       "titleEnRequired": "ඉංග්‍රීසි භාෂාවෙන් මාතෘකාව අවශ්‍යයි.",
       "summaryEnLabel": "සාරාංශය ඉංග්‍රීසියෙන්",

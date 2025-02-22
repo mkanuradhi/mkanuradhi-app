@@ -1,0 +1,11 @@
+export const MIN_BLOG_TITLE_LENGTH = 3;
+export const MAX_BLOG_TITLE_LENGTH = 100;
+
+export const MIN_BLOG_SUMMARY_LENGTH = 30;
+export const MAX_BLOG_SUMMARY_LENGTH = 400;
+
+export const MIN_BLOG_CONTENT_LENGTH = 50;
+export const MAX_BLOG_CONTENT_LENGTH = 5000;
+
+export const MIN_BLOG_DESCRIPTION_LENGTH = 50;
+export const MAX_BLOG_DESCRIPTION_LENGTH = 160;
