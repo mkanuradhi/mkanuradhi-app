@@ -1,7 +1,8 @@
 import BlogPost from '@/interfaces/i-blog-post';
 import PaginatedResult from '@/interfaces/i-paginated-result';
-import { deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost } from '@/services/blog-post-service';
+import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost } from '@/services/blog-post-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { CreateBlogPostTextEnDto } from '@/dtos/blog-post-dto';
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
   return useQuery<PaginatedResult<BlogPost>, Error>({
@@ -76,6 +77,18 @@ export const useDeleteBlogPostMutation = () => {
         };
       });
 
+      queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
+    },
+  });
+};
+
+export const useCreateBlogPostEnMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (blogPostTextEnDto: CreateBlogPostTextEnDto) => createBlogPostTextEn(blogPostTextEnDto),
+    onSuccess: (_, id) => {
+      queryClient.invalidateQueries({ queryKey: ['blog-post', id] });
       queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
     },
   });

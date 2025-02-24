@@ -824,7 +824,11 @@
       "pageKeywords": "dashboard, control panel",
       "title": "Dashboard",
       "Blog": {
-        "title": "Blog"
+        "title": "Blog",
+        "addNew": "Add New Blog Post",
+        "New": {
+          "title": "Add New Blog Post"
+        }
       }
     }
   },
@@ -877,6 +881,7 @@
     },
     "BlogPostOptionsCard": {
       "read": "Read More",
+      "edit": "Edit",
       "publish": "Publish",
       "unpublish": "Unpublish",
       "delete": "Delete",
@@ -894,6 +899,39 @@
       "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
       "deleteModalCancel": "No",
       "deleteModalAccept": "Yes, Delete"
+    },
+    "NewBlogPostEnForm": {
+      "titleEnLabel": "Title in English",
+      "titleEnPlaceholder": "Enter Title in English",
+      "titleEnTooShort": "Title in English must be more than {min} characters",
+      "titleEnTooLong": "Title in English must be less than {max} characters",
+      "titleEnRequired": "Title in English is required",
+      "summaryEnLabel": "Summary in English",
+      "summaryEnPlaceholder": "Enter summary in English",
+      "summaryEnHelp": "The plain summary which displays when the blog posts list is shown. No HTML tags are allowed.",
+      "summaryEnTooShort": "Summary in English must be more than {min} characters",
+      "summaryEnTooLong": "Summary in English must be less than {max} characters",
+      "summaryEnRequired": "Summary in English is required",
+      "contentEnLabel": "Content in English",
+      "contentEnPlaceholder": "Enter content in English",
+      "contentEnHelp": "The content which displays when the blog post is shown. Please use HTML tags.",
+      "contentEnTooShort": "Content in English must be more than {min} characters",
+      "contentEnTooLong": "Content in English must be less than {max} characters",
+      "contentEnRequired": "Content in English is required",
+      "pageDescriptionEnLabel": "Page Meta Description in English",
+      "pageDescriptionEnPlaceholder": "Enter page meta description in English",
+      "pageDescriptionEnHelp": "The plain page meta description which adds in the page meta tags. No HTML tags are allowed.",
+      "pageDescriptionEnTooShort": "Page meta description in English must be more than {min} characters",
+      "pageDescriptionEnTooLong": "Page meta description in English must be less than {max} characters",
+      "pageDescriptionEnRequired": "Page meta description in English is required",
+      "keywordsLabel": "Keywords",
+      "keywordsRequired": "Keywords are required",
+      "dateTimeLabel": "Date and Time",
+      "dateTimeInputLabel": "Time",
+      "dateTimePlaceholder": "Enter date and time",
+      "dateTimeRequired": "Date and Time is required",
+      "submit": "Submit",
+      "submitting": "Submitting..."
     }
   },
   "clerk": {
