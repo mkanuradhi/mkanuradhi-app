@@ -825,7 +825,10 @@
       "title": "පාලන පුවරුව",
       "Blog": {
         "title": "බ්ලොග්",
-        "addNew": "නව බ්ලොග් සටහනක් එක් කරන්න"
+        "addNew": "නව බ්ලොග් සටහනක් එක් කරන්න",
+        "New": {
+          "title": "නව බ්ලොග් සටහනක් එක් කිරීම"
+        }
       }
     }
   },
@@ -920,7 +923,15 @@
       "pageDescriptionEnHelp": "පිටුවේ මෙටා ටැග් වලට එකතු කරන සරල මෙටා විස්තරය. HTML ටැග් භාවිතා කළ නොහැක.",
       "pageDescriptionEnTooShort": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
       "pageDescriptionEnTooLong": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
-      "pageDescriptionEnRequired": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් අවශ්‍ය වේ."
+      "pageDescriptionEnRequired": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් අවශ්‍ය වේ.",
+      "keywordsLabel": "මූල පද",
+      "keywordsRequired": "මූල පද අවශ්‍යයි.",
+      "dateTimeLabel": "දිනය සහ වේලාව",
+      "dateTimeInputLabel": "වේලාව",
+      "dateTimePlaceholder": "දිනය සහ වේලාව ඇතුළත් කරන්න",
+      "dateTimeRequired": "දිනය සහ වේලාව අවශ්‍යයි",
+      "submit": "යවන්න",
+      "submitting": "යවමින් පවතී..."
     }
   },
   "clerk": {

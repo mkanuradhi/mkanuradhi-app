@@ -1,4 +1,5 @@
 import { BLOG_POSTS_PATH } from "@/constants/api-paths";
+import { CreateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from "@/dtos/blog-post-dto";
 import BlogPost from "@/interfaces/i-blog-post";
 import BlogPostView from "@/interfaces/i-blog-post-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
@@ -68,4 +69,20 @@ export const deleteBlogPost = async (id: string) => {
     throw new Error('Failed to delete blog post');
   }
   return { id, message: 'Blog post deleted successfully' };
+};
+
+export const createBlogPostTextEn = async (blogPostTextEnDto: CreateBlogPostTextEnDto): Promise<BlogPost> => {
+  const response = await axios.post<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}`,
+    blogPostTextEnDto
+  );
+  return response.data;
+};
+
+export const updateBlogPostTextSi = async (id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto): Promise<BlogPost> => {
+  const response = await axios.post<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/si`,
+    blogPostTextSiDto
+  );
+  return response.data;
 };

@@ -28,5 +28,16 @@ export const getNewBlogPostEnSchema = (t: (key: string, values?: Record<string, 
       .min(MIN_BLOG_DESCRIPTION_LENGTH, t('pageDescriptionEnTooShort', { min: MIN_BLOG_DESCRIPTION_LENGTH }) )
       .max(MAX_BLOG_DESCRIPTION_LENGTH, t('pageDescriptionEnTooLong', { max: MAX_BLOG_DESCRIPTION_LENGTH }) )
       .required(t('pageDescriptionEnRequired')),
+    keywords: yup.array()
+      .of(yup.string().trim())
+      .transform((value, originalValue) =>
+        Array.isArray(originalValue)
+          ? originalValue.filter(v => v && v.trim() !== '')
+          : []
+      )
+      .min(1, t('keywordsRequired')),
+    dateTime: yup.date()
+      .required(t('dateTimeRequired'))
+      .default(() => new Date()),
   });
 }

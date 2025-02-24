@@ -1,6 +1,7 @@
 
 export const truncateText = (text: string, maxLength: number = 100, appendEllipsis: boolean = true): string => {
-  if (text.length <= maxLength) return text;
+  if (!text) return "";
+  if (text?.length <= maxLength) return text;
 
   let truncated = text.substring(0, maxLength);
   let lastSpaceIndex = truncated.lastIndexOf(" ");
