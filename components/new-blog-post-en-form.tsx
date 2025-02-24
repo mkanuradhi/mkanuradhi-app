@@ -5,12 +5,13 @@ import { Col, Row, Form as BootstrapForm, Button } from 'react-bootstrap';
 import { getNewBlogPostEnSchema } from '@/schemas/new-blog-post-en-schema';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faCircleNotch, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faCircleNotch, faMinus, faPaperPlane, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useCreateBlogPostEnMutation } from '@/hooks/use-blog-posts';
 import { CreateBlogPostTextEnDto } from '@/dtos/blog-post-dto';
 import DocumentStatus from '@/enums/document-status';
+import { useRouter } from '@/i18n/routing';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const baseTPath = 'components.NewBlogPostEnForm';
 
@@ -29,9 +30,13 @@ interface NewBlogPostEnFormProps {
 
 const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
   const t = useTranslations(baseTPath);
-  const { mutateAsync: createBlogPostEnMutation, isPending } = useCreateBlogPostEnMutation();
+  const router = useRouter();
+  const { mutateAsync: createBlogPostEnMutation, isPending: isPendingCreateBlogPost } = useCreateBlogPostEnMutation();
 
-  const handleSubmit = async (values: typeof initialValues) => {
+  const handleSubmit = async (
+    values: typeof initialValues,
+    actions: { setStatus: (status: any) => void; setSubmitting: (isSubmitting: boolean) => void }  
+  ) => {
     const blogPostTextEnDto: CreateBlogPostTextEnDto = {
       titleEn: values.titleEn,
       summaryEn: values.summaryEn,
@@ -42,9 +47,17 @@ const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
       dateTime: values.dateTime,
     };
     
-    const createdBlogPost = await createBlogPostEnMutation(blogPostTextEnDto);
-    // Call parent's onSuccess with the created id
-    onSuccess(createdBlogPost.id);
+    try {
+      const createdBlogPost = await createBlogPostEnMutation(blogPostTextEnDto);
+      // Call parent's onSuccess with the created id
+      onSuccess(createdBlogPost.id);
+    } catch (error: any) {
+      // Set a generic error message
+      actions.setStatus({ error: error.message || "Failed to create blog post." });
+    } finally {
+      actions.setSubmitting(false);
+    }
+    
   }
 
   return (
@@ -56,7 +69,7 @@ const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
             validationSchema={getNewBlogPostEnSchema(t)}
             onSubmit={handleSubmit}
           >
-            {({ values, isSubmitting }) => (
+            {({ values, isSubmitting, status }) => (
               <Form>
                 <fieldset disabled={isSubmitting}>
                   <BootstrapForm.Group className="mb-4" controlId="formTitleEn">
@@ -127,15 +140,29 @@ const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
                     <ErrorMessage name="dateTime" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                 </fieldset>
-                <Button variant="success" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <FontAwesomeIcon icon={faCircleNotch} spin /> {t('submitting')}
-                    </>
-                  ) : (
-                    t('submit')
-                  )}
-                </Button>
+                <div className="d-flex justify-content-between mt-4">
+                  <Button
+                    variant="secondary"
+                    type="button"
+                    onClick={() => router.push('/dashboard/blog')}
+                  >
+                    <FontAwesomeIcon icon={faXmark} className="me-1" /> {t('cancel')}
+                  </Button>
+                  <Button variant="success" type="submit" disabled={isSubmitting || isPendingCreateBlogPost}>
+                    {isSubmitting || isPendingCreateBlogPost ? (
+                      <>
+                        <FontAwesomeIcon icon={faCircleNotch} className="me-1" spin /> {t('submitting')}
+                      </>
+                    ) : (
+                      <>
+                        <FontAwesomeIcon icon={faPaperPlane} className="me-1" /> {t('submit')}
+                      </>
+                    )}
+                  </Button>
+                </div>
+                {status && status.error && (
+                  <div className="alert alert-danger">{status.error}</div>
+                )}
               </Form>
             )}
           </Formik>

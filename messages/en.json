@@ -930,6 +930,7 @@
       "dateTimeInputLabel": "Time",
       "dateTimePlaceholder": "Enter date and time",
       "dateTimeRequired": "Date and Time is required",
+      "cancel": "Cancel",
       "submit": "Submit",
       "submitting": "Submitting..."
     }

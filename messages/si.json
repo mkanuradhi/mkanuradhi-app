@@ -930,6 +930,7 @@
       "dateTimeInputLabel": "වේලාව",
       "dateTimePlaceholder": "දිනය සහ වේලාව ඇතුළත් කරන්න",
       "dateTimeRequired": "දිනය සහ වේලාව අවශ්‍යයි",
+      "cancel": "අවලංගු කරන්න",
       "submit": "යවන්න",
       "submitting": "යවමින් පවතී..."
     }
