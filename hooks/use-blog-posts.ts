@@ -1,8 +1,8 @@
 import BlogPost from '@/interfaces/i-blog-post';
 import PaginatedResult from '@/interfaces/i-paginated-result';
-import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost } from '@/services/blog-post-service';
+import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextSi } from '@/services/blog-post-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { CreateBlogPostTextEnDto } from '@/dtos/blog-post-dto';
+import { CreateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
   return useQuery<PaginatedResult<BlogPost>, Error>({
@@ -87,6 +87,18 @@ export const useCreateBlogPostEnMutation = () => {
 
   return useMutation({
     mutationFn: (blogPostTextEnDto: CreateBlogPostTextEnDto) => createBlogPostTextEn(blogPostTextEnDto),
+    onSuccess: (_, id) => {
+      queryClient.invalidateQueries({ queryKey: ['blog-post', id] });
+      queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
+    },
+  });
+};
+
+export const useUpdateBlogPostSiMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (variables: {id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto}) => updateBlogPostTextSi(variables.id, variables.blogPostTextSiDto),
     onSuccess: (_, id) => {
       queryClient.invalidateQueries({ queryKey: ['blog-post', id] });
       queryClient.invalidateQueries({ queryKey: ['blog-posts'] });

@@ -12,6 +12,7 @@ import { CreateBlogPostTextEnDto } from '@/dtos/blog-post-dto';
 import DocumentStatus from '@/enums/document-status';
 import { useRouter } from '@/i18n/routing';
 import 'react-datepicker/dist/react-datepicker.css';
+import BlogPost from '@/interfaces/i-blog-post';
 
 const baseTPath = 'components.NewBlogPostEnForm';
 
@@ -25,7 +26,7 @@ const initialValues = {
 }
 
 interface NewBlogPostEnFormProps {
-  onSuccess: (createdId: string) => void;
+  onSuccess: (blogPost: BlogPost) => void;
 }
 
 const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
@@ -50,7 +51,7 @@ const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
     try {
       const createdBlogPost = await createBlogPostEnMutation(blogPostTextEnDto);
       // Call parent's onSuccess with the created id
-      onSuccess(createdBlogPost.id);
+      onSuccess(createdBlogPost);
     } catch (error: any) {
       // Set a generic error message
       actions.setStatus({ error: error.message || "Failed to create blog post." });

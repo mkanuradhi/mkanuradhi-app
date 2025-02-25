@@ -24,7 +24,7 @@ const BlogPage = async ({ params }: { params: { locale: string } }) => {
       </Row>
       <Row>
         <Col>
-          <Link href="/dashboard/blog/new">
+          <Link href="/dashboard/blog/new?step=EN">
             <Button>
               <FontAwesomeIcon icon={faPlus} className="me-1" aria-hidden="true" />{ t('addNew') }
             </Button>

@@ -80,7 +80,7 @@ export const createBlogPostTextEn = async (blogPostTextEnDto: CreateBlogPostText
 };
 
 export const updateBlogPostTextSi = async (id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto): Promise<BlogPost> => {
-  const response = await axios.post<BlogPost>(
+  const response = await axios.patch<BlogPost>(
     `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/si`,
     blogPostTextSiDto
   );
