@@ -27,7 +27,10 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
   });
 
   const changeLanguage = (lang: "en" | "si") => {
-    router.replace(pathname, { locale: lang });
+    const searchParams = new URLSearchParams(window.location.search);
+    const queryString = searchParams.toString();
+    const newPath = queryString ? `${pathname}?${queryString}` : pathname;
+    router.replace(newPath, { locale: lang });
   }
 
   const navLinks = [
