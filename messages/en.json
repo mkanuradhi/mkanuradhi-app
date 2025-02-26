@@ -967,6 +967,14 @@
       "pageDescriptionSiRequired": "Page meta description in Sinhala is required",
       "submit": "Proceed",
       "submitting": "Submitting..."
+    },
+    "UpdateBlogPostPrimaryImageForm": {
+      "dragActiveLabel": "Drop the image here ...",
+      "selectFileLabel": "Drag & drop image here, or click to select image",
+      "fileRejectionTitle": "Rejected Files",
+      "fileRejectionLabel": "{name} is rejected due following reasons",
+      "upload": "Upload",
+      "uploading": "Uploading..."
     }
   },
   "clerk": {

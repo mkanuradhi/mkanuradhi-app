@@ -86,3 +86,11 @@ export const updateBlogPostTextSi = async (id: string, blogPostTextSiDto: Update
   );
   return response.data;
 };
+
+export const uploadBlogPostPrimaryImage = async (id: string, formData: FormData): Promise<BlogPost> => {
+  const response = await axios.patch<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/primary-image`,
+    formData
+  );
+  return response.data;
+};

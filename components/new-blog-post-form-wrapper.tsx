@@ -8,6 +8,7 @@ import { useSearchParams } from 'next/navigation';
 import { useRouter } from '@/i18n/routing';
 import { useBlogPostByIdQuery } from '@/hooks/use-blog-posts';
 import { useTranslations } from 'next-intl';
+import UpdateBlogPostPrimaryImageForm from './update-blog-post-primary-image-form';
 
 const baseTPath = 'components.NewBlogPostFormWrapper';
 
@@ -43,6 +44,10 @@ const NewBlogPostFormWrapper = () => {
     router.push(`/dashboard/blog/new?step=${BlogPostActiveStep.PRIMARY_IMAGE}&id=${updatedBlogPost.id}`);
   };
 
+  const handlePrimaryImageSubmit = (updatedBlogPost: BlogPost) => {
+    router.push(`/dashboard/blog/${updatedBlogPost.id}`);
+  };
+
   return (
     <>
       <Row className="my-3">
@@ -59,7 +64,7 @@ const NewBlogPostFormWrapper = () => {
             <UpdateBlogPostSiForm id={blogPost.id} v={blogPost.v} onSuccess={handleSiSubmit} />
           )}
           { step === BlogPostActiveStep.PRIMARY_IMAGE && blogPost && (
-            <p>Primary image step</p>
+            <UpdateBlogPostPrimaryImageForm id={blogPost.id} onSuccess={handlePrimaryImageSubmit} />
           )}
         </Col>
       </Row>

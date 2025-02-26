@@ -1,6 +1,6 @@
 import BlogPost from '@/interfaces/i-blog-post';
 import PaginatedResult from '@/interfaces/i-paginated-result';
-import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextSi } from '@/services/blog-post-service';
+import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextSi, uploadBlogPostPrimaryImage } from '@/services/blog-post-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { CreateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
 
@@ -180,6 +180,35 @@ export const useUpdateBlogPostSiMutation = () => {
       // Refetch only the updated blog post instead of all posts
       queryClient.invalidateQueries({ queryKey: ['blog-post', variables.id] });
       queryClient.invalidateQueries({ queryKey: ['blog-posts'], refetchType: 'active' });
+    },
+  });
+};
+
+export const useUploadBlogPostPrimaryImageMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, formData }: { id: string; formData: FormData }) => uploadBlogPostPrimaryImage(id, formData),
+
+    onSuccess: (updatedBlogPost) => {
+      if (!updatedBlogPost || !updatedBlogPost.id) return;
+
+      // Update individual blog post cache
+      queryClient.setQueryData(['blog-post', updatedBlogPost.id], updatedBlogPost);
+
+      // Update paginated list cache
+      queryClient.setQueryData(['blog-posts'], (oldData?: PaginatedResult<BlogPost>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((post) =>
+            post.id === updatedBlogPost.id ? updatedBlogPost : post
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: ['blog-post', updatedBlogPost.id] });
     },
   });
 };
