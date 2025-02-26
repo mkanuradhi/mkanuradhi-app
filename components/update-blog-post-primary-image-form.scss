@@ -1,0 +1,27 @@
+.update-blog-post-primary-image-form {
+
+  .primary-image-dropzone {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    padding: 2rem;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .primary-image-wrapper {
+    position: relative;
+    min-width: 100%;
+    min-height: 18rem;
+    overflow: hidden;
+    border-radius: var(--bs-border-radius);
+
+    .primary-image {
+      object-fit: cover;
+    }
+  }
+}

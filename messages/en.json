@@ -892,6 +892,8 @@
     },
     "BlogPostOptionsViewer": {
       "failPost": "Failed to load blog post",
+      "dashboard": "Dashboard",
+      "blog": "Blog",
       "publish": "Publish",
       "unpublish": "Unpublish",
       "delete": "Delete",
@@ -899,6 +901,11 @@
       "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
       "deleteModalCancel": "No",
       "deleteModalAccept": "Yes, Delete"
+    },
+    "NewBlogPostFormWrapper": {
+      "stepEn": "Step 1: Adding English Details",
+      "stepSi": "Step 2: Adding Sinhala Details",
+      "stepPrimaryImage": "Step 3: Adding Primary Image"
     },
     "NewBlogPostEnForm": {
       "titleEnLabel": "Title in English",
@@ -930,8 +937,44 @@
       "dateTimeInputLabel": "Time",
       "dateTimePlaceholder": "Enter date and time",
       "dateTimeRequired": "Date and Time is required",
-      "submit": "Submit",
+      "cancel": "Cancel",
+      "submit": "Proceed",
       "submitting": "Submitting..."
+    },
+    "UpdateBlogPostSiForm": {
+      "titleSiLabel": "Title in Sinhala",
+      "titleSiPlaceholder": "Enter Title in Sinhala",
+      "titleSiTooShort": "Title in Sinhala must be more than {min} characters",
+      "titleSiTooLong": "Title in Sinhala must be less than {max} characters",
+      "titleSiRequired": "Title in Sinhala is required",
+      "summarySiLabel": "Summary in Sinhala",
+      "summarySiPlaceholder": "Enter summary in Sinhala",
+      "summarySiHelp": "The plain summary which displays when the blog posts list is shown. No HTML tags are allowed.",
+      "summarySiTooShort": "Summary in Sinhala must be more than {min} characters",
+      "summarySiTooLong": "Summary in Sinhala must be less than {max} characters",
+      "summarySiRequired": "Summary in Sinhala is required",
+      "contentSiLabel": "Content in Sinhala",
+      "contentSiPlaceholder": "Enter content in Sinhala",
+      "contentSiHelp": "The content which displays when the blog post is shown. Please use HTML tags.",
+      "contentSiTooShort": "Content in Sinhala must be more than {min} characters",
+      "contentSiTooLong": "Content in Sinhala must be less than {max} characters",
+      "contentSiRequired": "Content in Sinhala is required",
+      "pageDescriptionSiLabel": "Page Meta Description in Sinhala",
+      "pageDescriptionSiPlaceholder": "Enter page meta description in Sinhala",
+      "pageDescriptionSiHelp": "The plain page meta description which adds in the page meta tags. No HTML tags are allowed.",
+      "pageDescriptionSiTooShort": "Page meta description in Sinhala must be more than {min} characters",
+      "pageDescriptionSiTooLong": "Page meta description in Sinhala must be less than {max} characters",
+      "pageDescriptionSiRequired": "Page meta description in Sinhala is required",
+      "submit": "Proceed",
+      "submitting": "Submitting..."
+    },
+    "UpdateBlogPostPrimaryImageForm": {
+      "dragActiveLabel": "Drop the image here ...",
+      "selectFileLabel": "Drag & drop image here, or click to select image",
+      "fileRejectionTitle": "Rejected Files",
+      "fileRejectionLabel": "{name} is rejected due following reasons",
+      "upload": "Upload",
+      "uploading": "Uploading..."
     }
   },
   "clerk": {
