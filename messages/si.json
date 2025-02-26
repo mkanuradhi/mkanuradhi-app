@@ -892,6 +892,8 @@
     },
     "BlogPostOptionsViewer": {
       "failPosts": "බ්ලොග් සටහන පූරණය කිරීමට අසමත් විය.",
+      "dashboard": "පාලන පුවරුව",
+      "blog": "බ්ලොග්",
       "publish": "ප්‍රකාශනය කරන්න",
       "unpublish": "ප්‍රකාශය අහෝසි කරන්න",
       "delete": "මකන්න",

@@ -87,9 +87,68 @@ export const useCreateBlogPostEnMutation = () => {
 
   return useMutation({
     mutationFn: (blogPostTextEnDto: CreateBlogPostTextEnDto) => createBlogPostTextEn(blogPostTextEnDto),
-    onSuccess: (_, id) => {
-      queryClient.invalidateQueries({ queryKey: ['blog-post', id] });
-      queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
+    onMutate: async (newPostData) => {
+      await queryClient.cancelQueries({ queryKey: ['blog-posts'] });
+
+      // Snapshot previous data for rollback
+      const previousBlogPosts = queryClient.getQueryData<PaginatedResult<BlogPost>>(['blog-posts']);
+
+      // Define a fallback pagination structure
+      const defaultPagination = { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 };
+
+      // Optimistically add a new temporary post
+      queryClient.setQueryData(['blog-posts'], (oldData?: PaginatedResult<BlogPost>) => {
+        if (!oldData) return { 
+          items: [{ id: 'temp-id', ...newPostData }], 
+          pagination: defaultPagination,
+        };
+
+        return {
+          ...oldData,
+          items: [{ id: 'temp-id', ...newPostData }, ...oldData.items],
+          pagination: { 
+            ...oldData.pagination, 
+            totalCount: oldData.pagination.totalCount + 1, // Optimistically increment total count
+          },
+        };
+      });
+
+      return { previousBlogPosts };
+    },
+    onSuccess: (createdBlogPost) => {
+      if (!createdBlogPost || !createdBlogPost.id) return;
+
+      // Replace temporary post with actual data
+      queryClient.setQueryData(['blog-posts'], (oldData?: PaginatedResult<BlogPost>) => {
+        if (!oldData) return { 
+          items: [createdBlogPost], 
+          pagination: { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 } 
+        };
+
+        return {
+          ...oldData,
+          items: oldData.items.map((post) =>
+            post.id === 'temp-id' ? createdBlogPost : post
+          ),
+          pagination: {
+            ...oldData.pagination,
+            totalCount: Math.max(oldData.pagination.totalCount, oldData.items.length), // Ensure totalCount remains correct
+          },
+        };
+      });
+
+      // Cache the individual blog post
+      queryClient.setQueryData(['blog-post', createdBlogPost.id], createdBlogPost);
+    },
+    onError: (_error, _newPostData, context) => {
+      // Rollback to the previous state in case of failure
+      if (context?.previousBlogPosts) {
+        queryClient.setQueryData(['blog-posts'], context.previousBlogPosts);
+      }
+    },
+    onSettled: () => {
+      // Refetch in background to sync with backend
+      queryClient.invalidateQueries({ queryKey: ['blog-posts'], refetchType: 'active' });
     },
   });
 };
@@ -99,9 +158,28 @@ export const useUpdateBlogPostSiMutation = () => {
 
   return useMutation({
     mutationFn: (variables: {id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto}) => updateBlogPostTextSi(variables.id, variables.blogPostTextSiDto),
-    onSuccess: (_, id) => {
-      queryClient.invalidateQueries({ queryKey: ['blog-post', id] });
-      queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
+    onSuccess: (updatedBlogPost) => {
+      if (!updatedBlogPost || !updatedBlogPost.id) return;
+
+      // Update blog post list cache
+      queryClient.setQueryData(['blog-posts'], (oldData?: PaginatedResult<BlogPost>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((post) => 
+            post.id === updatedBlogPost.id ? updatedBlogPost : post
+          ),
+        };
+      });
+
+      // Update individual blog post cache
+      queryClient.setQueryData(['blog-post', updatedBlogPost.id], updatedBlogPost);
+    },
+    onSettled: (_data, _error, variables) => {
+      // Refetch only the updated blog post instead of all posts
+      queryClient.invalidateQueries({ queryKey: ['blog-post', variables.id] });
+      queryClient.invalidateQueries({ queryKey: ['blog-posts'], refetchType: 'active' });
     },
   });
 };

@@ -12,7 +12,6 @@ import { faEye, faEyeSlash, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useBlogPostByIdQuery, useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from '@/hooks/use-blog-posts';
 import LoadingContainer from './loading-container';
 import "./blog-post-options-viewer.scss";
-import { on } from 'events';
 
 const baseTPath = 'components.BlogPostOptionsViewer';
 
@@ -71,18 +70,22 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
   return (
     <>
       <Container fluid="md" className="blog-post-options-viewer">
+        <Row>
+          <Col>
+            <Breadcrumb>
+              <Breadcrumb.Item linkAs="span">
+                <Link href="/dashboard">{t('dashboard')}</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item linkAs="span">
+                <Link href="/dashboard/blog">{t('blog')}</Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+          </Col>
+        </Row>
         <Row className="my-4">
           <Col>
             <Row>
               <Col>
-                <Breadcrumb>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/dashboard">Dashboard</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/dashboard/blog">Blog</Link>
-                  </Breadcrumb.Item>
-                </Breadcrumb>
                 <h1>{blogPost.titleEn}</h1>
                 <p className="fs-7">
                   <span className="text-muted fs-7">{ getFormattedDate(LOCALE_EN, blogPost.dateTime) } { getFormattedTime(LOCALE_EN, blogPost.dateTime) }</span>

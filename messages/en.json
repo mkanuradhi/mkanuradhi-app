@@ -892,6 +892,8 @@
     },
     "BlogPostOptionsViewer": {
       "failPost": "Failed to load blog post",
+      "dashboard": "Dashboard",
+      "blog": "Blog",
       "publish": "Publish",
       "unpublish": "Unpublish",
       "delete": "Delete",
