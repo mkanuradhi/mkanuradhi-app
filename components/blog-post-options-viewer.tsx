@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { LOCALE_EN, LOCALE_SI } from '@/constants/common-vars';
 import { getFormattedDate, getFormattedTime } from '@/utils/common-utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useBlogPostByIdQuery, useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from '@/hooks/use-blog-posts';
 import LoadingContainer from './loading-container';
 import "./blog-post-options-viewer.scss";
@@ -151,9 +151,14 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
         </Row>
         <Row>
           <Col>
+            <Link href={`/dashboard/blog/${blogPost.id}/edit`}>
+              <Button variant="secondary" className="me-2">
+                <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
+              </Button>
+            </Link>
             <Button
               variant={blogPost.published ? `warning` : `success`}
-              className="ms-2"
+              className="me-2"
               onClick={blogPost.published ? handleUnpublish : handlePublish}
               disabled={isPendingPublish || isPendingUnpublish}
             >
@@ -163,7 +168,7 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
               />{" "}
               {blogPost.published ? t('unpublish') : t('publish')}
             </Button>
-            <Button variant="danger" className="ms-2" onClick={handleShow} disabled={isPendingDelete}>
+            <Button variant="danger" className="me-2" onClick={handleShow} disabled={isPendingDelete}>
               <FontAwesomeIcon icon={faTrash} className="list-icon" /> { t('delete') }
             </Button>
           </Col>

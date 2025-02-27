@@ -1,5 +1,5 @@
 import { BLOG_POSTS_PATH } from "@/constants/api-paths";
-import { CreateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from "@/dtos/blog-post-dto";
+import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from "@/dtos/blog-post-dto";
 import BlogPost from "@/interfaces/i-blog-post";
 import BlogPostView from "@/interfaces/i-blog-post-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
@@ -91,6 +91,14 @@ export const uploadBlogPostPrimaryImage = async (id: string, formData: FormData)
   const response = await axios.patch<BlogPost>(
     `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/primary-image`,
     formData
+  );
+  return response.data;
+};
+
+export const updateBlogPostTextEn = async (id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto): Promise<BlogPost> => {
+  const response = await axios.patch<BlogPost>(
+    `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/en`,
+    blogPostTextEnDto
   );
   return response.data;
 };

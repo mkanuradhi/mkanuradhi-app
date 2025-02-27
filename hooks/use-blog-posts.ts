@@ -1,8 +1,8 @@
 import BlogPost from '@/interfaces/i-blog-post';
 import PaginatedResult from '@/interfaces/i-paginated-result';
-import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextSi, uploadBlogPostPrimaryImage } from '@/services/blog-post-service';
+import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextEn, updateBlogPostTextSi, uploadBlogPostPrimaryImage } from '@/services/blog-post-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { CreateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
+import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
   return useQuery<PaginatedResult<BlogPost>, Error>({
@@ -209,6 +209,37 @@ export const useUploadBlogPostPrimaryImageMutation = () => {
       });
 
       queryClient.invalidateQueries({ queryKey: ['blog-post', updatedBlogPost.id] });
+    },
+  });
+};
+
+export const useUpdateBlogPostEnMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (variables: {id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto}) => updateBlogPostTextEn(variables.id, variables.blogPostTextEnDto),
+    onSuccess: (updatedBlogPost) => {
+      if (!updatedBlogPost || !updatedBlogPost.id) return;
+
+      // Update blog post list cache
+      queryClient.setQueryData(['blog-posts'], (oldData?: PaginatedResult<BlogPost>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((post) => 
+            post.id === updatedBlogPost.id ? updatedBlogPost : post
+          ),
+        };
+      });
+
+      // Update individual blog post cache
+      queryClient.setQueryData(['blog-post', updatedBlogPost.id], updatedBlogPost);
+    },
+    onSettled: (_data, _error, variables) => {
+      // Refetch only the updated blog post instead of all posts
+      queryClient.invalidateQueries({ queryKey: ['blog-post', variables.id] });
+      queryClient.invalidateQueries({ queryKey: ['blog-posts'], refetchType: 'active' });
     },
   });
 };
