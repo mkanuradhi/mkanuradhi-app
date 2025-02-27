@@ -18,7 +18,7 @@ enum BlogPostActiveStep {
   PRIMARY_IMAGE = "PRIMARY_IMAGE",
 }
 
-const NewBlogPostFormWrapper = () => {
+const NewBlogPostFormContainer = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const stepParam = searchParams.get("step") as BlogPostActiveStep | null;
@@ -72,4 +72,4 @@ const NewBlogPostFormWrapper = () => {
   )
 }
 
-export default NewBlogPostFormWrapper;
+export default NewBlogPostFormContainer;
