@@ -10,7 +10,7 @@ import { useBlogPostByIdQuery } from '@/hooks/use-blog-posts';
 import { useTranslations } from 'next-intl';
 import UpdateBlogPostPrimaryImageForm from './update-blog-post-primary-image-form';
 
-const baseTPath = 'components.NewBlogPostFormWrapper';
+const baseTPath = 'components.NewBlogPostFormsContainer';
 
 enum BlogPostActiveStep {
   EN = "EN",
@@ -18,7 +18,7 @@ enum BlogPostActiveStep {
   PRIMARY_IMAGE = "PRIMARY_IMAGE",
 }
 
-const NewBlogPostFormContainer = () => {
+const NewBlogPostFormsContainer = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const stepParam = searchParams.get("step") as BlogPostActiveStep | null;
@@ -72,4 +72,4 @@ const NewBlogPostFormContainer = () => {
   )
 }
 
-export default NewBlogPostFormContainer;
+export default NewBlogPostFormsContainer;

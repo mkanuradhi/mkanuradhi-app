@@ -902,7 +902,7 @@
       "deleteModalCancel": "නැත",
       "deleteModalAccept": "ඔව්, මකන්න"
     },
-    "NewBlogPostFormWrapper": {
+    "NewBlogPostFormsContainer": {
       "stepEn": "පියවර 1: ඉංග්‍රීසි විස්තර එකතු කිරීම",
       "stepSi": "පියවර 2: සිංහල විස්තර එකතු කිරීම",
       "stepPrimaryImage": "පියවර 3: ප්‍රාථමික රූපය එකතු කිරීම"

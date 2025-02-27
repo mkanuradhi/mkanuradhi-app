@@ -902,7 +902,7 @@
       "deleteModalCancel": "No",
       "deleteModalAccept": "Yes, Delete"
     },
-    "NewBlogPostFormWrapper": {
+    "NewBlogPostFormsContainer": {
       "stepEn": "Step 1: Adding English Details",
       "stepSi": "Step 2: Adding Sinhala Details",
       "stepPrimaryImage": "Step 3: Adding Primary Image"
