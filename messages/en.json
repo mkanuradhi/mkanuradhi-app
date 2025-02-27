@@ -828,6 +828,9 @@
         "addNew": "Add New Blog Post",
         "New": {
           "title": "Add New Blog Post"
+        },
+        "Edit": {
+          "title": "Edit Blog Post"
         }
       }
     }
@@ -894,6 +897,7 @@
       "failPost": "Failed to load blog post",
       "dashboard": "Dashboard",
       "blog": "Blog",
+      "edit": "Edit",
       "publish": "Publish",
       "unpublish": "Unpublish",
       "delete": "Delete",
@@ -902,7 +906,7 @@
       "deleteModalCancel": "No",
       "deleteModalAccept": "Yes, Delete"
     },
-    "NewBlogPostFormWrapper": {
+    "NewBlogPostFormsContainer": {
       "stepEn": "Step 1: Adding English Details",
       "stepSi": "Step 2: Adding Sinhala Details",
       "stepPrimaryImage": "Step 3: Adding Primary Image"
@@ -974,7 +978,14 @@
       "fileRejectionTitle": "Rejected Files",
       "fileRejectionLabel": "{name} is rejected due following reasons",
       "upload": "Upload",
-      "uploading": "Uploading..."
+      "uploading": "Uploading...",
+      "noPrimaryImage": "No existing primary image to be shown",
+      "proceed": "Proceed"
+    },
+    "UpdateBlogPostFormsContainer": {
+      "stepEn": "Step 1: Updating English Details",
+      "stepSi": "Step 2: Updating Sinhala Details",
+      "stepPrimaryImage": "Step 3: Updating Primary Image"
     }
   },
   "clerk": {

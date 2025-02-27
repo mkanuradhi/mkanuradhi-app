@@ -4,10 +4,12 @@ import React, { useCallback, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleNotch, faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch, faPaperPlane, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { useDropzone } from 'react-dropzone';
-import { useUploadBlogPostPrimaryImageMutation } from '@/hooks/use-blog-posts';
+import { useBlogPostByIdQuery, useUploadBlogPostPrimaryImageMutation } from '@/hooks/use-blog-posts';
 import "./update-blog-post-primary-image-form.scss";
+import LoadingContainer from './loading-container';
+import { Link } from '@/i18n/routing';
 
 const baseTPath = 'components.UpdateBlogPostPrimaryImageForm';
 
@@ -24,16 +26,16 @@ const UpdateBlogPostPrimaryImageForm: React.FC<UpdateBlogPostPrimaryImageFormPro
   const t = useTranslations(baseTPath);
   const [files, setFiles] = useState<PreviewFile[]>([]);
 
+  const { data: blogPost, isPending, isError, isFetching, isSuccess, error } = useBlogPostByIdQuery(id);
   const { mutateAsync: uploadBlogPostPrimaryImageMutation, isPending: isPendingUploadPrimaryImage } = useUploadBlogPostPrimaryImageMutation();
 
   const onDrop = useCallback( (acceptedFiles: File[]) => {
     if (acceptedFiles?.length) {
-      setFiles(previousFiles => [
-        ...previousFiles,
-        ...acceptedFiles.map(file => 
-          Object.assign(file, {preview: URL.createObjectURL(file)})
+      setFiles(
+        acceptedFiles.map(file =>
+          Object.assign(file, { preview: URL.createObjectURL(file) })
         )
-      ]);
+      );
     }
   }, [])
 
@@ -63,7 +65,35 @@ const UpdateBlogPostPrimaryImageForm: React.FC<UpdateBlogPostPrimaryImageFormPro
 
   return (
     <>
+      {isError && (
+        <Row>
+          <Col>{ error.message }</Col>
+        </Row>
+      )}
+      {isPending || isFetching && (
+        <LoadingContainer />
+      )}
+      {isSuccess && blogPost && (
       <div className="update-blog-post-primary-image-form">
+        <Row>
+          <Col>
+            {blogPost.primaryImage ? (
+              <div className="primary-image-wrapper">
+                <Image
+                  src={blogPost.primaryImage}
+                  alt={blogPost.titleEn}
+                  fill={true}
+                  className="primary-image"
+                  priority={true}
+                />
+              </div>
+            ) : (
+              <div>
+                <p>{t('noPrimaryImage')}</p>
+              </div>
+            )}
+          </Col>
+        </Row>
         <Row>
           <Col>
             <div
@@ -129,7 +159,17 @@ const UpdateBlogPostPrimaryImageForm: React.FC<UpdateBlogPostPrimaryImageFormPro
             </Col>
           </Row>
         )}
+        <Row>
+          <Col className="d-flex justify-content-end">
+            <Link href={`/dashboard/blog/${blogPost.id}`}>
+              <Button variant="success">
+                <FontAwesomeIcon icon={faPaperPlane} className="me-1" aria-hidden="true" />{ t('proceed') }
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </div>
+      )}
     </>
   )
 }

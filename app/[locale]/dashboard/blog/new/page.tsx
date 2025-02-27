@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
-import NewBlogPostFormWrapper from '@/components/new-blog-post-form-wrapper';
+import NewBlogPostFormsContainer from '@/components/new-blog-post-forms-container';
 
 const baseTPath = 'pages.Dashboard.Blog.New';
 
@@ -15,7 +15,7 @@ const NewBlogPostPage = async () => {
           <h1>{t('title')}</h1>
         </Col>
       </Row>
-      <NewBlogPostFormWrapper />
+      <NewBlogPostFormsContainer />
     </>
   )
 }

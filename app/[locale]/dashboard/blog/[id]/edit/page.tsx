@@ -1,4 +1,9 @@
+import UpdateBlogPostFormsContainer from '@/components/update-blog-post-forms-container';
+import { getTranslations } from 'next-intl/server';
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+
+const baseTPath = 'pages.Dashboard.Blog.Edit';
 
 interface EditBlogPostPageProps {
   params: {
@@ -6,13 +11,18 @@ interface EditBlogPostPageProps {
   };
 }
 
-const EditBlogPostPage: React.FC<EditBlogPostPageProps> = ({ params }) => {
+const EditBlogPostPage: React.FC<EditBlogPostPageProps> = async ({ params }) => {
+  const t = await getTranslations(baseTPath);
   const { id } = params;
 
   return (
     <>
-      <h1>Edit Blog Post</h1>
-      <p>Editing post: {id}</p>
+      <Row>
+        <Col>
+          <h1>{t('title')}</h1>
+        </Col>
+      </Row>
+      <UpdateBlogPostFormsContainer id={id} />
     </>
   )
 }
