@@ -3,9 +3,10 @@ import PaginatedResult from '@/interfaces/i-paginated-result';
 import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextEn, updateBlogPostTextSi, uploadBlogPostPrimaryImage } from '@/services/blog-post-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
+import { ApiError } from '@/errors/api-error';
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
-  return useQuery<PaginatedResult<BlogPost>, Error>({
+  return useQuery<PaginatedResult<BlogPost>, ApiError>({
     queryKey: ['blog-posts', page, size],
     queryFn: () => getBlogPosts(page, size),
     initialData: initialBlogPosts,
@@ -19,7 +20,7 @@ export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?:
 };
 
 export const useBlogPostByIdQuery = (id: string) => {
-  return useQuery<BlogPost>({
+  return useQuery<BlogPost, ApiError>({
     queryKey: ['blog-post', id],
     queryFn: () => getBlogPostById(id),
     refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
@@ -85,7 +86,7 @@ export const useDeleteBlogPostMutation = () => {
 export const useCreateBlogPostEnMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation({
+  return useMutation<BlogPost, ApiError, CreateBlogPostTextEnDto, { previousBlogPosts?: PaginatedResult<BlogPost> }>({
     mutationFn: (blogPostTextEnDto: CreateBlogPostTextEnDto) => createBlogPostTextEn(blogPostTextEnDto),
     onMutate: async (newPostData) => {
       await queryClient.cancelQueries({ queryKey: ['blog-posts'] });
@@ -140,7 +141,7 @@ export const useCreateBlogPostEnMutation = () => {
       // Cache the individual blog post
       queryClient.setQueryData(['blog-post', createdBlogPost.id], createdBlogPost);
     },
-    onError: (_error, _newPostData, context) => {
+    onError: (error, _newPostData, context) => {
       // Rollback to the previous state in case of failure
       if (context?.previousBlogPosts) {
         queryClient.setQueryData(['blog-posts'], context.previousBlogPosts);
