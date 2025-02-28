@@ -9,6 +9,7 @@ import { useBlogPostByIdQuery } from '@/hooks/use-blog-posts';
 import { useTranslations } from 'next-intl';
 import UpdateBlogPostPrimaryImageForm from './update-blog-post-primary-image-form';
 import UpdateBlogPostEnForm from './update-blog-post-en-form';
+import BlogPostActiveStep from '@/enums/blog-post-active-step';
 
 const baseTPath = 'components.UpdateBlogPostFormsContainer';
 
@@ -16,17 +17,10 @@ interface UpdateBlogPostFormsContainerProps {
   id: string;
 }
 
-enum BlogPostActiveStep {
-  EN = "EN",
-  SI = "SI",
-  PRIMARY_IMAGE = "PRIMARY_IMAGE",
-}
-
 const UpdateBlogPostFormsContainer:React.FC<UpdateBlogPostFormsContainerProps> = ({ id }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const stepParam = searchParams.get("step") as BlogPostActiveStep | null;
-  // const idParam = searchParams.get("id");
   const t = useTranslations(baseTPath);
 
   const { data: blogPost } = useBlogPostByIdQuery(id || '');
