@@ -847,7 +847,8 @@
       "contact": "සම්බන්ධ වන්න",
       "en": "ඉංග්‍රීසි (en)",
       "si": "සිංහල (සිං)",
-      "dashboard": "පාලන පුවරුව"
+      "dashboard": "පාලන පුවරුව",
+      "menu": "මෙනුව"
     },
     "BlogPostCard": {
       "readMore": "තව කියවන්න"
@@ -891,7 +892,10 @@
       "deleteModalTitle": "මැකීම තහවුරු කරන්න",
       "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> බ්ලොග් සටහන මැකීමට අවශ්‍ය බව විශ්වාසද?",
       "deleteModalCancel": "නැත",
-      "deleteModalAccept": "ඔව්, මකන්න"
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "publishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කළ නොහැක",
+      "unpublishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කිරීම ඉවත් කළ නොහැක",
+      "deleteErrorTitle": "බ්ලොග් සටහන මැකිය නොහැක"
     },
     "BlogPostOptionsViewer": {
       "failPosts": "බ්ලොග් සටහන පූරණය කිරීමට අසමත් විය.",
@@ -904,7 +908,10 @@
       "deleteModalTitle": "මැකීම තහවුරු කරන්න",
       "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> බ්ලොග් සටහන මැකීමට අවශ්‍ය බව විශ්වාසද?",
       "deleteModalCancel": "නැත",
-      "deleteModalAccept": "ඔව්, මකන්න"
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "publishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කළ නොහැක",
+      "unpublishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කිරීම ඉවත් කළ නොහැක",
+      "deleteErrorTitle": "බ්ලොග් සටහන මැකිය නොහැක"
     },
     "NewBlogPostFormsContainer": {
       "stepEn": "පියවර 1: ඉංග්‍රීසි විස්තර එකතු කිරීම",
@@ -912,32 +919,32 @@
       "stepPrimaryImage": "පියවර 3: ප්‍රාථමික රූපය එකතු කිරීම"
     },
     "NewBlogPostEnForm": {
-      "titleEnLabel": "මාතෘකාව ඉංග්‍රීසියෙන්",
+      "titleEnLabel": "මාතෘකාව ඉංග්‍රීසියෙන් (Title)",
       "titleEnPlaceholder": "මාතෘකාව ඉංග්‍රීසියෙන් ඇතුළත් කරන්න",
       "titleEnTooShort": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
       "titleEnTooLong": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
       "titleEnRequired": "ඉංග්‍රීසි භාෂාවෙන් මාතෘකාව අවශ්‍යයි.",
-      "summaryEnLabel": "සාරාංශය ඉංග්‍රීසියෙන්",
+      "summaryEnLabel": "සාරාංශය ඉංග්‍රීසියෙන් (Summary)",
       "summaryEnPlaceholder": "සාරාංශය ඉංග්‍රීසියෙන් ඇතුළත් කරන්න",
       "summaryEnHelp": "බ්ලොග් සටහන් ලැයිස්තුව පෙන්වන විට පෙන්වන සරල ඉංග්‍රීසි සාරාංශය. HTML ටැග් භාවිතා කළ නොහැක.",
       "summaryEnTooShort": "ඉංග්‍රීසි සාරාංශය අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
       "summaryEnTooLong": "ඉංග්‍රීසි සාරාංශය අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
       "summaryEnRequired": "ඉංග්‍රීසි සාරාංශය අවශ්‍යයි.",
-      "contentEnLabel": "ඉංග්‍රීසියෙන් අන්තර්ගතය",
+      "contentEnLabel": "ඉංග්‍රීසියෙන් අන්තර්ගතය (Content)",
       "contentEnPlaceholder": "අන්තර්ගතය ඉංග්‍රීසියෙන් ඇතුළත් කරන්න",
       "contentEnHelp": "බ්ලොග් සටහන පෙන්වන විට පෙන්වන අන්තර්ගතය. කරුණාකර HTML ටැග් භාවිතා කරන්න.",
       "contentEnTooShort": "ඉංග්‍රීසි අන්තර්ගතය අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
       "contentEnTooLong": "ඉංග්‍රීසි අන්තර්ගතය අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
       "contentEnRequired": "ඉංග්‍රීසි අන්තර්ගතය අවශ්‍යයි.",
-      "pageDescriptionEnLabel": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන්",
+      "pageDescriptionEnLabel": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් (Meta Description)",
       "pageDescriptionEnPlaceholder": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් ඇතුළත් කරන්න",
       "pageDescriptionEnHelp": "පිටුවේ මෙටා ටැග් වලට එකතු කරන සරල මෙටා විස්තරය. HTML ටැග් භාවිතා කළ නොහැක.",
       "pageDescriptionEnTooShort": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
       "pageDescriptionEnTooLong": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
       "pageDescriptionEnRequired": "පිටුවේ මෙටා විස්තරය ඉංග්‍රීසියෙන් අවශ්‍ය වේ.",
-      "keywordsLabel": "මූල පද",
+      "keywordsLabel": "මූල පද (Keywords)",
       "keywordsRequired": "මූල පද අවශ්‍යයි.",
-      "dateTimeLabel": "දිනය සහ වේලාව",
+      "dateTimeLabel": "දිනය සහ වේලාව (Date and Time)",
       "dateTimeInputLabel": "වේලාව",
       "dateTimePlaceholder": "දිනය සහ වේලාව ඇතුළත් කරන්න",
       "dateTimeRequired": "දිනය සහ වේලාව අවශ්‍යයි",
@@ -986,6 +993,13 @@
       "stepEn": "පියවර 1: ඉංග්‍රීසි විස්තර සංස්කරණය කිරීම",
       "stepSi": "පියවර 2: සිංහල විස්තර සංස්කරණය කිරීම",
       "stepPrimaryImage": "පියවර 3: ප්‍රධාන රූපය සංස්කරණය කිරීම"
+    }
+  },
+  "contexts": {
+    "SideBar": {
+      "dashboard": "පාලන පුවරුව",
+      "blog": "බ්ලොග්",
+      "courses": "පාඨමාලා"
     }
   },
   "clerk": {

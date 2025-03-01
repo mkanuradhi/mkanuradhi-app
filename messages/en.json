@@ -847,7 +847,8 @@
       "contact": "Contact",
       "en": "English (en)",
       "si": "Sinhala (සිං)",
-      "dashboard": "Dashboard"
+      "dashboard": "Dashboard",
+      "menu": "Menu"
     },
     "BlogPostCard": {
       "readMore": "Read More"
@@ -891,7 +892,10 @@
       "deleteModalTitle": "Confirm Delete",
       "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
       "deleteModalCancel": "No",
-      "deleteModalAccept": "Yes, Delete"
+      "deleteModalAccept": "Yes, Delete",
+      "publishErrorTitle": "Cannot publish the blog post",
+      "unpublishErrorTitle": "Cannot unpublish the blog post",
+      "deleteErrorTitle": "Cannot delete the blog post"
     },
     "BlogPostOptionsViewer": {
       "failPost": "Failed to load blog post",
@@ -904,7 +908,10 @@
       "deleteModalTitle": "Confirm Delete",
       "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
       "deleteModalCancel": "No",
-      "deleteModalAccept": "Yes, Delete"
+      "deleteModalAccept": "Yes, Delete",
+      "publishErrorTitle": "Cannot publish the blog post",
+      "unpublishErrorTitle": "Cannot unpublish the blog post",
+      "deleteErrorTitle": "Cannot delete the blog post"
     },
     "NewBlogPostFormsContainer": {
       "stepEn": "Step 1: Adding English Details",
@@ -946,24 +953,24 @@
       "submitting": "Submitting..."
     },
     "UpdateBlogPostSiForm": {
-      "titleSiLabel": "Title in Sinhala",
+      "titleSiLabel": "Title in Sinhala (මාතෘකාව)",
       "titleSiPlaceholder": "Enter Title in Sinhala",
       "titleSiTooShort": "Title in Sinhala must be more than {min} characters",
       "titleSiTooLong": "Title in Sinhala must be less than {max} characters",
       "titleSiRequired": "Title in Sinhala is required",
-      "summarySiLabel": "Summary in Sinhala",
+      "summarySiLabel": "Summary in Sinhala (සාරාංශය)",
       "summarySiPlaceholder": "Enter summary in Sinhala",
       "summarySiHelp": "The plain summary which displays when the blog posts list is shown. No HTML tags are allowed.",
       "summarySiTooShort": "Summary in Sinhala must be more than {min} characters",
       "summarySiTooLong": "Summary in Sinhala must be less than {max} characters",
       "summarySiRequired": "Summary in Sinhala is required",
-      "contentSiLabel": "Content in Sinhala",
+      "contentSiLabel": "Content in Sinhala (අන්තර්ගතය)",
       "contentSiPlaceholder": "Enter content in Sinhala",
       "contentSiHelp": "The content which displays when the blog post is shown. Please use HTML tags.",
       "contentSiTooShort": "Content in Sinhala must be more than {min} characters",
       "contentSiTooLong": "Content in Sinhala must be less than {max} characters",
       "contentSiRequired": "Content in Sinhala is required",
-      "pageDescriptionSiLabel": "Page Meta Description in Sinhala",
+      "pageDescriptionSiLabel": "Page Meta Description in Sinhala (මෙටා විස්තරය)",
       "pageDescriptionSiPlaceholder": "Enter page meta description in Sinhala",
       "pageDescriptionSiHelp": "The plain page meta description which adds in the page meta tags. No HTML tags are allowed.",
       "pageDescriptionSiTooShort": "Page meta description in Sinhala must be more than {min} characters",
@@ -986,6 +993,13 @@
       "stepEn": "Step 1: Updating English Details",
       "stepSi": "Step 2: Updating Sinhala Details",
       "stepPrimaryImage": "Step 3: Updating Primary Image"
+    }
+  },
+  "contexts": {
+    "SideBar": {
+      "dashboard": "Dashboard",
+      "blog": "Blog",
+      "courses": "Courses"
     }
   },
   "clerk": {

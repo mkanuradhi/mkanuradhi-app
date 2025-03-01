@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import DOMPurify from 'dompurify';
-import { Breadcrumb, Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import { Alert, Breadcrumb, Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import { Link, useRouter } from '@/i18n/routing';
 import Image from 'next/image';
 import { LOCALE_EN, LOCALE_SI } from '@/constants/common-vars';
@@ -32,9 +32,9 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
   const router = useRouter();
 
   const { data: blogPost, isPending, isError, isFetching, isSuccess } = useBlogPostByIdQuery(blogPostId);
-  const { mutate: deleteBlogPostMutation, isPending: isPendingDelete } = useDeleteBlogPostMutation();
-  const { mutate: publishBlogPostMutation, isPending: isPendingPublish } = usePublishBlogPostMutation();
-  const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish } = useUnpublishBlogPostMutation();
+  const { mutate: deleteBlogPostMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteBlogPostMutation();
+  const { mutate: publishBlogPostMutation, isPending: isPendingPublish, isError: isPublishError, error: publishError } = usePublishBlogPostMutation();
+  const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish, isError: isUnpublishError, error: unpublishError } = useUnpublishBlogPostMutation();
 
   if (isPending || isFetching) {
     return (<LoadingContainer />);
@@ -173,6 +173,36 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
             </Button>
           </Col>
         </Row>
+        {isPublishError && publishError && (
+          <Row className="my-3">
+            <Col>
+              <Alert variant="danger" dismissible>
+                <Alert.Heading>{t('publishErrorTitle')}</Alert.Heading>
+                <p>{publishError.message}</p>
+              </Alert>
+            </Col>
+          </Row>
+        )}
+        {isUnpublishError && unpublishError && (
+          <Row className="my-3">
+            <Col>
+              <Alert variant="danger" dismissible>
+                <Alert.Heading>{t('unpublishErrorTitle')}</Alert.Heading>
+                <p>{unpublishError.message}</p>
+              </Alert>
+            </Col>
+          </Row>
+        )}
+        {isDeleteError && deleteError && (
+          <Row className="my-3">
+            <Col>
+              <Alert variant="danger" dismissible>
+                <Alert.Heading>{t('deleteErrorTitle')}</Alert.Heading>
+                <p>{deleteError.message}</p>
+              </Alert>
+            </Col>
+          </Row>
+        )}
         <div>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>

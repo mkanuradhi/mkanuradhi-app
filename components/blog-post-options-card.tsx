@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Button, Card, Col, Modal, Row } from "react-bootstrap";
+import { Alert, Button, Card, Col, Modal, Row } from "react-bootstrap";
 import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -29,9 +29,9 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
 
   const selectedTitle = locale === "si" ? `'${titleSi}'` : `'${titleEn}'`;
 
-  const { mutate: deleteBlogPostMutation, isPending: isPendingDelete } = useDeleteBlogPostMutation();
-  const { mutate: publishBlogPostMutation, isPending: isPendingPublish } = usePublishBlogPostMutation();
-  const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish } = useUnpublishBlogPostMutation();
+  const { mutate: deleteBlogPostMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteBlogPostMutation();
+  const { mutate: publishBlogPostMutation, isPending: isPendingPublish, isError: isPublishError, error: publishError } = usePublishBlogPostMutation();
+  const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish, isError: isUnpublishError, error: unpublishError } = useUnpublishBlogPostMutation();
 
   const handleDeleteBlogPost = async () => {
     deleteBlogPostMutation(id);
@@ -111,9 +111,28 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
               >
                 <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
               </Button>
+              {isPublishError && publishError && (
+                <Alert variant="danger" className="my-2" dismissible>
+                  <Alert.Heading>{t('publishErrorTitle')}</Alert.Heading>
+                  <p>{publishError.message}</p>
+                </Alert>
+              )}
+              {isUnpublishError && unpublishError && (
+                <Alert variant="danger" className="my-2" dismissible>
+                  <Alert.Heading>{t('unpublishErrorTitle')}</Alert.Heading>
+                  <p>{unpublishError.message}</p>
+                </Alert>
+              )}
+              {isDeleteError && deleteError && (
+                <Alert variant="danger" className="my-2" dismissible>
+                  <Alert.Heading>{t('deleteErrorTitle')}</Alert.Heading>
+                  <p>{deleteError.message}</p>
+                </Alert>
+              )}
             </Card.Body>
           </Col>
         </Row>
+        
         <div>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
