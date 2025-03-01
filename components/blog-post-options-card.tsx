@@ -29,9 +29,9 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
 
   const selectedTitle = locale === "si" ? `'${titleSi}'` : `'${titleEn}'`;
 
-  const { mutate: deleteBlogPostMutation, isPending: isPendingDelete } = useDeleteBlogPostMutation();
+  const { mutate: deleteBlogPostMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteBlogPostMutation();
   const { mutate: publishBlogPostMutation, isPending: isPendingPublish, isError: isPublishError, error: publishError } = usePublishBlogPostMutation();
-  const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish } = useUnpublishBlogPostMutation();
+  const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish, isError: isUnpublishError, error: unpublishError } = useUnpublishBlogPostMutation();
 
   const handleDeleteBlogPost = async () => {
     deleteBlogPostMutation(id);
@@ -113,8 +113,20 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
               </Button>
               {isPublishError && publishError && (
                 <Alert variant="danger" className="my-2" dismissible>
-                  <Alert.Heading>{t('unpublishMessageTitle')}</Alert.Heading>
+                  <Alert.Heading>{t('publishErrorTitle')}</Alert.Heading>
                   <p>{publishError.message}</p>
+                </Alert>
+              )}
+              {isUnpublishError && unpublishError && (
+                <Alert variant="danger" className="my-2" dismissible>
+                  <Alert.Heading>{t('unpublishErrorTitle')}</Alert.Heading>
+                  <p>{unpublishError.message}</p>
+                </Alert>
+              )}
+              {isDeleteError && deleteError && (
+                <Alert variant="danger" className="my-2" dismissible>
+                  <Alert.Heading>{t('deleteErrorTitle')}</Alert.Heading>
+                  <p>{deleteError.message}</p>
                 </Alert>
               )}
             </Card.Body>

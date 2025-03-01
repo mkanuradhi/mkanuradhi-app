@@ -892,7 +892,9 @@
       "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> බ්ලොග් සටහන මැකීමට අවශ්‍ය බව විශ්වාසද?",
       "deleteModalCancel": "නැත",
       "deleteModalAccept": "ඔව්, මකන්න",
-      "unpublishMessageTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කළ නොහැක"
+      "publishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කළ නොහැක",
+      "unpublishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කිරීම ඉවත් කළ නොහැක",
+      "deleteErrorTitle": "බ්ලොග් සටහන මැකිය නොහැක"
     },
     "BlogPostOptionsViewer": {
       "failPosts": "බ්ලොග් සටහන පූරණය කිරීමට අසමත් විය.",
@@ -906,7 +908,9 @@
       "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> බ්ලොග් සටහන මැකීමට අවශ්‍ය බව විශ්වාසද?",
       "deleteModalCancel": "නැත",
       "deleteModalAccept": "ඔව්, මකන්න",
-      "unpublishMessageTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කළ නොහැක"
+      "publishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කළ නොහැක",
+      "unpublishErrorTitle": "බ්ලොග් සටහන ප්‍රකාශයට පත් කිරීම ඉවත් කළ නොහැක",
+      "deleteErrorTitle": "බ්ලොග් සටහන මැකිය නොහැක"
     },
     "NewBlogPostFormsContainer": {
       "stepEn": "පියවර 1: ඉංග්‍රීසි විස්තර එකතු කිරීම",

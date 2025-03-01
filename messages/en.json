@@ -892,7 +892,9 @@
       "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
       "deleteModalCancel": "No",
       "deleteModalAccept": "Yes, Delete",
-      "unpublishMessageTitle": "Cannot publish the blog post"
+      "publishErrorTitle": "Cannot publish the blog post",
+      "unpublishErrorTitle": "Cannot unpublish the blog post",
+      "deleteErrorTitle": "Cannot delete the blog post"
     },
     "BlogPostOptionsViewer": {
       "failPost": "Failed to load blog post",
@@ -906,7 +908,9 @@
       "deleteModalMessage": "Are you sure you want to delete blog post: <strong>title</strong>?",
       "deleteModalCancel": "No",
       "deleteModalAccept": "Yes, Delete",
-      "unpublishMessageTitle": "Cannot publish the blog post"
+      "publishErrorTitle": "Cannot publish the blog post",
+      "unpublishErrorTitle": "Cannot unpublish the blog post",
+      "deleteErrorTitle": "Cannot delete the blog post"
     },
     "NewBlogPostFormsContainer": {
       "stepEn": "Step 1: Adding English Details",
