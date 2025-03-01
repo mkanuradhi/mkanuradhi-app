@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Container, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
+import { Button, Container, ListGroup, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useTranslations } from 'next-intl';
 import { useTheme } from "@/hooks/useTheme";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
@@ -10,6 +10,7 @@ import { Link, usePathname, useRouter } from '@/i18n/routing';
 import styles from './NavigationBar.module.scss'
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { useSideBar } from "@/hooks/use-side-bar";
 
 interface NavigationBarProps {
 }
@@ -21,6 +22,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const { sidebarLinks, showOffcanvas, handleClose, handleShow } = useSideBar();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 40);
@@ -56,6 +58,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
         transition={{ duration: 0.3 }}
       >
         <Container fluid="md">
+          <SignedIn>
+            <Button variant="outline" className="d-md-none" onClick={handleShow}>
+              <FontAwesomeIcon icon={faEllipsisV} />
+            </Button>
+          </SignedIn>
           <Navbar.Brand as={Link} href="/">
             {t('title')}
           </Navbar.Brand>
@@ -110,6 +117,29 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+      <div>
+        <Offcanvas show={showOffcanvas} onHide={handleClose} className="d-md-none">
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>{t('menu')}</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <ListGroup variant="flush">
+              {sidebarLinks.map((sidebarLink, id) => (
+                <ListGroup.Item 
+                  key={id}
+                  action
+                  as={Link}
+                  href={sidebarLink.path}
+                  active={pathname.endsWith(sidebarLink.path)}
+                  onClick={handleClose}
+                >
+                  {sidebarLink.title}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </Offcanvas.Body>
+        </Offcanvas>
+      </div>
     </>
   )
 }

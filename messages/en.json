@@ -847,7 +847,8 @@
       "contact": "Contact",
       "en": "English (en)",
       "si": "Sinhala (සිං)",
-      "dashboard": "Dashboard"
+      "dashboard": "Dashboard",
+      "menu": "Menu"
     },
     "BlogPostCard": {
       "readMore": "Read More"
@@ -992,6 +993,13 @@
       "stepEn": "Step 1: Updating English Details",
       "stepSi": "Step 2: Updating Sinhala Details",
       "stepPrimaryImage": "Step 3: Updating Primary Image"
+    }
+  },
+  "contexts": {
+    "SideBar": {
+      "dashboard": "Dashboard",
+      "blog": "Blog",
+      "courses": "Courses"
     }
   },
   "clerk": {

@@ -8,7 +8,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { getClerkLocalization } from "@/utils/server/clerk-localization";
 import { QueryProvider } from "@/contexts/query-provider";
-
+import { SideBarProvider } from "@/contexts/side-bar-provider";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const notoSerifSinhala = Noto_Serif_Sinhala({ subsets: ["latin", "sinhala"] });
@@ -71,24 +71,26 @@ export default async function LocaleLayout({
         <body className={`${langFontClass}`}>
           <NextIntlClientProvider messages={messages}>
             <ThemeProvider>
-              <QueryProvider>
-              <div className="background-container">
-                <div className="overlay"></div>
-                <div className="background-image bg1"></div>
-                <div className="background-image bg2"></div>
-              </div>
-              <div className="app">
-                <header>
-                  <NavigationBar />
-                </header>
-                <main>
-                  {children}
-                </main>
-                <footer>
-                  <Footer />
-                </footer>
-              </div>
-              </QueryProvider>
+              <SideBarProvider>
+                <QueryProvider>
+                  <div className="background-container">
+                    <div className="overlay"></div>
+                    <div className="background-image bg1"></div>
+                    <div className="background-image bg2"></div>
+                  </div>
+                  <div className="app">
+                    <header>
+                      <NavigationBar />
+                    </header>
+                    <main>
+                      {children}
+                    </main>
+                    <footer>
+                      <Footer />
+                    </footer>
+                  </div>
+                </QueryProvider>
+              </SideBarProvider>
             </ThemeProvider>
           </NextIntlClientProvider>
         </body>
