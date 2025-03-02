@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { Link } from '@/i18n/routing';
+import Role from '@/enums/role';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -39,8 +40,10 @@ export async function generateMetadata ({ params }: { params: { locale: string }
 const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
-  const { userId } = await auth();
+  const { userId, sessionClaims } = await auth();
   const user = await currentUser();
+
+  const memberRoles = sessionClaims?.metadata?.roles as Role[] || [];
 
   return (
     <>
@@ -48,9 +51,9 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
         <Row>
           <Col>
             <h1>{t('title')}</h1>
-            <h4>Welcome, {user?.fullName}!</h4>
-            <p>User Id: { userId }</p>
-            <Link href="/dashboard/blog">Blog Posts</Link>
+            <h4>{t.rich('welcome', {fullname: user?.fullName})}</h4>
+            <p>{t.rich('userId', {userId: userId})}</p>
+            <p>{t.rich('roleMessage', {roles: memberRoles.join(", ")})}</p>
           </Col>
         </Row>
       </Container>

@@ -823,6 +823,9 @@
       "pageDescription": "Dashboard for the logged in user",
       "pageKeywords": "dashboard, control panel",
       "title": "Dashboard",
+      "welcome": "Welcome, {fullname}!",
+      "userId": "User Id: {userId}",
+      "roleMessage": "You logged in as {roles}",
       "Blog": {
         "title": "Blog",
         "addNew": "Add New Blog Post",
