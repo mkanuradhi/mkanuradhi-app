@@ -856,6 +856,12 @@
     "BlogPostCard": {
       "readMore": "Read More"
     },
+    "BlogPostsViewer": {
+      "failPosts": "Failed to load blog posts",
+      "noPosts": "No blog posts to display",
+      "refreshPosts": "Refreshing blog posts...",
+      "blogPosts": "blog posts"
+    },
     "BlogPostViewer": {
       "home": "Home",
       "blog": "Blog",
