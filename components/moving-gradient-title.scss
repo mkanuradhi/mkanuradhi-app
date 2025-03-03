@@ -1,0 +1,29 @@
+.moving-gradient-title {
+
+  .gradient-text {
+    font-size: 2.42rem;
+    font-weight: bold;
+    background: linear-gradient(
+      45deg,
+      var(--bs-cyan),
+      var(--bs-indigo),
+      var(--bs-pink),
+      var(--bs-teal),
+      var(--bs-blue),
+      var(--bs-orange),
+      var(--bs-cyan)
+    );
+    background-size: 300% 300%;
+    animation: gradientShift 24s infinite alternate ease-in-out;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
