@@ -10,6 +10,7 @@ import ExternalLinkBar from '@/components/ExternalLinkBar';
 import MainImageDisplayer from '@/components/MainImageDisplayer';
 import GlowLink from '@/components/GlowLink';
 import ToolsSkillsDisplayer from '@/components/ToolsSkillsDisplayer';
+import MovingGradientTitle from '@/components/moving-gradient-title';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
@@ -118,7 +119,7 @@ export default function HomePage() {
             <Col sm={5}>
               <MainImageDisplayer />
               <div className="text-center">
-                <h1>{t('title')}</h1>
+                <MovingGradientTitle text={t('title')} />
                 <h5>{t('subTitle')}</h5>
                 <h6>
                   <GlowLink href="https://www.sjp.ac.lk/" newTab={true}>{t('university')}</GlowLink>
