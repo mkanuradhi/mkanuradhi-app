@@ -4,7 +4,6 @@ import { handleApiError } from "@/errors/api-error-handler";
 import BlogPost from "@/interfaces/i-blog-post";
 import BlogPostView from "@/interfaces/i-blog-post-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { SearchResult } from "@/interfaces/i-search-result";
 import axios from "axios";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
@@ -45,9 +44,9 @@ export const getBlogPostByPath = async (lang: string, path: string): Promise<Blo
   }
 };
 
-export const getPublishedBlogPosts = async (lang: string, page: number, size: number): Promise<BlogPostView[]> => {
+export const getPublishedBlogPosts = async (lang: string, page: number, size: number): Promise<PaginatedResult<BlogPostView>> => {
   try {
-    const response = await axios.get<SearchResult>(`${API_BASE_URL}${BLOG_POSTS_PATH}/search`, {
+    const response = await axios.get<PaginatedResult<BlogPostView>>(`${API_BASE_URL}${BLOG_POSTS_PATH}/search`, {
       params: {
         q: '',
         page,
@@ -57,8 +56,7 @@ export const getPublishedBlogPosts = async (lang: string, page: number, size: nu
         lang,
       },
     });
-    const searchResult: SearchResult = response.data;
-    return searchResult.data;
+    return response.data;
   } catch (error) {
     throw handleApiError(error);
   }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import { getPublishedBlogPosts } from '@/services/blog-post-service';
-import BlogPostCard from '@/components/BlogPostCard';
+import BlogPostsViewer from '@/components/blog-posts-viewer';
 
 const baseTPath = 'pages.Blog';
 
@@ -36,11 +35,8 @@ export async function generateMetadata ({ params }: BlogPageProps) {
   };
 };
 
-const BlogPage: React.FC<BlogPageProps> = async ({ params }) => {
-  const { locale } = params;
-
+const BlogPage = async () => {
   const t = await getTranslations(baseTPath);
-  const blogPostViews = await getPublishedBlogPosts(locale, 0, 10);
 
   return (
     <>
@@ -51,27 +47,7 @@ const BlogPage: React.FC<BlogPageProps> = async ({ params }) => {
               <h1>{t('title')}</h1>
             </Col>
           </Row>
-          {blogPostViews && blogPostViews.length > 0 ? (
-            blogPostViews.map( (blogPostView, index) => (
-              <Row key={index}>
-                <Col>
-                  <BlogPostCard
-                    title={blogPostView.title}
-                    summary={blogPostView.summary}
-                    img={blogPostView.primaryImage}
-                    path={blogPostView.path}
-                    fDate={blogPostView.formattedDate}
-                  />
-                </Col>
-              </Row>
-            ))
-          ) : (
-            <Row>
-              <Col>
-                <p>{t('noPosts')}</p>
-              </Col>
-            </Row>
-          )}
+          <BlogPostsViewer />
         </Container>
       </div>
     </>

@@ -856,6 +856,12 @@
     "BlogPostCard": {
       "readMore": "තව කියවන්න"
     },
+    "BlogPostsViewer": {
+      "failPosts": "බ්ලොග් සටහන් පූරණය කිරීමට අසමත් විය.",
+      "noPosts": "පෙන්වීමට බ්ලොග් සටහන් නොමැත.",
+      "refreshPosts": "බ්ලොග් සටහන් නැවුම් කරමින්...",
+      "blogPosts": "බ්ලොග් සටහන්"
+    },
     "BlogPostViewer": {
       "home": "මුල් පිටුව",
       "blog": "බ්ලොග්",

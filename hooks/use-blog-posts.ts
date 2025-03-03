@@ -1,9 +1,10 @@
 import BlogPost from '@/interfaces/i-blog-post';
 import PaginatedResult from '@/interfaces/i-paginated-result';
-import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextEn, updateBlogPostTextSi, uploadBlogPostPrimaryImage } from '@/services/blog-post-service';
+import { createBlogPostTextEn, deleteBlogPost, getBlogPostById, getBlogPosts, getPublishedBlogPosts, publishBlogPost, unpublishBlogPost, updateBlogPostTextEn, updateBlogPostTextSi, uploadBlogPostPrimaryImage } from '@/services/blog-post-service';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
 import { ApiError } from '@/errors/api-error';
+import BlogPostView from '@/interfaces/i-blog-post-view';
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
   return useQuery<PaginatedResult<BlogPost>, ApiError>({
@@ -16,6 +17,18 @@ export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?:
       pagination: { totalCount: 0, totalPages: 1, currentPage: page, currentPageSize: 0 } 
     }, // Keeps previous data until new data loads
     refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
+  });
+};
+
+export const useBlogPostViewsQuery = (lang: string, page: number, size: number) => {
+  return useQuery<PaginatedResult<BlogPostView>, ApiError>({
+    queryKey: ['blog-post-views', lang, page, size],
+    queryFn: () => getPublishedBlogPosts(lang, page, size),
+    placeholderData: (prevData) => prevData ?? { 
+      items: [], 
+      pagination: { totalCount: 0, totalPages: 1, currentPage: page, currentPageSize: 0 } 
+    },
+    refetchOnWindowFocus: false,
   });
 };
 
