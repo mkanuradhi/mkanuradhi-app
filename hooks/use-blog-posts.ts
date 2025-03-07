@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
 import { ApiError } from '@/errors/api-error';
 import BlogPostView from '@/interfaces/i-blog-post-view';
+import DocumentStatus from '@/enums/document-status';
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
   return useQuery<PaginatedResult<BlogPost>, ApiError>({
@@ -49,7 +50,7 @@ export const usePublishBlogPostMutation = () => {
       // Update cache instantly instead of re-fetching
       queryClient.setQueryData(['blog-post', id], (oldData: BlogPost | undefined) => {
         if (!oldData) return;
-        return { ...oldData, published: true };
+        return { ...oldData, status: DocumentStatus.ACTIVE };
       });
 
       queryClient.invalidateQueries({ queryKey: ['blog-posts'] });
@@ -66,7 +67,7 @@ export const useUnpublishBlogPostMutation = () => {
       // Update cache instantly
       queryClient.setQueryData(['blog-post', id], (oldData: BlogPost | undefined) => {
         if (!oldData) return;
-        return { ...oldData, published: false };
+        return { ...oldData, status: DocumentStatus.INACTIVE };
       });
 
       queryClient.invalidateQueries({ queryKey: ['blog-posts'] });

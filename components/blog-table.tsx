@@ -67,8 +67,8 @@ const BlogTable: React.FC<BlogTableProps> = ({ initialBlogPosts }) => {
                 summarySi={truncateText(blogPost.summarySi, 150)}
                 img={blogPost.primaryImage}
                 path={blogPost.path}
+                status={blogPost.status}
                 dateTime={blogPost.dateTime}
-                published={blogPost.published}
               />
             </Col>
           </Row>

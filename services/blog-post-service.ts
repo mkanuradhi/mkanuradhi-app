@@ -1,5 +1,6 @@
 import { BLOG_POSTS_PATH } from "@/constants/api-paths";
 import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from "@/dtos/blog-post-dto";
+import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
 import BlogPost from "@/interfaces/i-blog-post";
 import BlogPostView from "@/interfaces/i-blog-post-view";
@@ -51,7 +52,7 @@ export const getPublishedBlogPosts = async (lang: string, page: number, size: nu
         q: '',
         page,
         size,
-        published: true,
+        status: DocumentStatus.ACTIVE,
         sort: 'latest',
         lang,
       },
@@ -65,8 +66,8 @@ export const getPublishedBlogPosts = async (lang: string, page: number, size: nu
 export const publishBlogPost = async (id: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
-      `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/publish`,
-      { published: true }
+      `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/toggle`,
+      { status: DocumentStatus.ACTIVE }
     );
     return response.data;
   } catch (error) {
@@ -77,8 +78,8 @@ export const publishBlogPost = async (id: string): Promise<BlogPost> => {
 export const unpublishBlogPost = async (id: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
-      `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/publish`,
-      { published: false }
+      `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/toggle`,
+      { status: DocumentStatus.INACTIVE }
     );
     return response.data;
   } catch (error) {
