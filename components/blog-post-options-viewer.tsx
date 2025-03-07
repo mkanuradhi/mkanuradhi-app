@@ -12,6 +12,7 @@ import { faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-i
 import { useBlogPostByIdQuery, useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from '@/hooks/use-blog-posts';
 import LoadingContainer from './loading-container';
 import "./blog-post-options-viewer.scss";
+import DocumentStatus from '@/enums/document-status';
 
 const baseTPath = 'components.BlogPostOptionsViewer';
 
@@ -157,16 +158,16 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
               </Button>
             </Link>
             <Button
-              variant={blogPost.published ? `warning` : `success`}
+              variant={blogPost.status === DocumentStatus.ACTIVE ? `warning` : `success`}
               className="me-2"
-              onClick={blogPost.published ? handleUnpublish : handlePublish}
+              onClick={blogPost.status === DocumentStatus.ACTIVE ? handleUnpublish : handlePublish}
               disabled={isPendingPublish || isPendingUnpublish}
             >
               <FontAwesomeIcon
-                icon={blogPost.published ? faEyeSlash : faEye}
+                icon={blogPost.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
                 className="list-icon"
               />{" "}
-              {blogPost.published ? t('unpublish') : t('publish')}
+              {blogPost.status === DocumentStatus.ACTIVE ? t('unpublish') : t('publish')}
             </Button>
             <Button variant="danger" className="me-2" onClick={handleShow} disabled={isPendingDelete}>
               <FontAwesomeIcon icon={faTrash} className="list-icon" /> { t('delete') }

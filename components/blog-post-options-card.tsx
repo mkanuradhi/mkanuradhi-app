@@ -7,6 +7,7 @@ import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesom
 import { useState } from "react";
 import { useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from "@/hooks/use-blog-posts";
 import "./blog-post-options-card.scss";
+import DocumentStatus from "@/enums/document-status";
 
 const baseTPath = 'components.BlogPostOptionsCard';
 
@@ -18,11 +19,11 @@ interface BlogPostCardOptionsProps {
   summarySi: string;
   img?: string;
   path: string;
+  status: DocumentStatus;
   dateTime: Date;
-  published: boolean;
 }
 
-const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, summaryEn, titleSi, summarySi, img, path, dateTime, published}) => {
+const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, summaryEn, titleSi, summarySi, img, path, status, dateTime}) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
   const [show, setShow] = useState(false);
@@ -92,16 +93,16 @@ const BlogPostOptionsCard: React.FC<BlogPostCardOptionsProps> = ({id, titleEn, s
                 </Button>
               </Link>
               <Button
-                variant={published ? `warning` : `success`}
+                variant={status === DocumentStatus.ACTIVE ? `warning` : `success`}
                 className="me-2 my-1"
-                onClick={published ? handleUnpublish : handlePublish}
+                onClick={status === DocumentStatus.ACTIVE ? handleUnpublish : handlePublish}
                 disabled={isPendingPublish || isPendingUnpublish}
               >
                 <FontAwesomeIcon
-                  icon={published ? faEyeSlash : faEye}
+                  icon={status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
                   className="me-1"
                 />{" "}
-                {published ? t('unpublish') : t('publish')}
+                {status === DocumentStatus.ACTIVE ? t('unpublish') : t('publish')}
               </Button>
               <Button
                 variant="danger"
