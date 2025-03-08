@@ -64,7 +64,7 @@ const CoursesTable: React.FC<CoursesTableProps> = ({ initialCourses }) => {
         ))
       ) : (
         <Row>
-          <Col>{t('noPosts')}</Col>
+          <Col>{t('noCourses')}</Col>
         </Row>
       )}
       {totalPages > 1 && (
