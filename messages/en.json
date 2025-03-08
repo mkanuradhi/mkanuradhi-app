@@ -835,6 +835,16 @@
         "Edit": {
           "title": "Edit Blog Post"
         }
+      },
+      "Courses": {
+        "title": "Courses",
+        "addNew": "Add New Course",
+        "New": {
+          "title": "Add New Course"
+        },
+        "Edit": {
+          "title": "Edit Course"
+        }
       }
     }
   },
@@ -1002,13 +1012,34 @@
       "stepEn": "Step 1: Updating English Details",
       "stepSi": "Step 2: Updating Sinhala Details",
       "stepPrimaryImage": "Step 3: Updating Primary Image"
+    },
+    "CoursesTable": {
+      "failCourses": "Failed to load courses",
+      "noCourses": "No courses to display",
+      "refreshCourses": "Refreshing courses...",
+      "courses": "courses"
+    },
+    "CourseOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete course: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the course",
+      "deactivateErrorTitle": "Cannot deactivate the course",
+      "deleteErrorTitle": "Cannot delete the course"
     }
   },
   "contexts": {
     "SideBar": {
       "dashboard": "Dashboard",
       "blog": "Blog",
-      "courses": "Courses"
+      "courses": "Courses",
+      "studentCourses": "Student Courses"
     }
   },
   "clerk": {

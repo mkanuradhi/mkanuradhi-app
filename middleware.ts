@@ -13,10 +13,11 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 const isAdminRoute = createRouteMatcher([
   '/(si|en)/dashboard/blogs(.*)',
+  '/(si|en)/dashboard/courses(.*)',
   '/(si|en)/dashboard/students(.*)',
 ]);
 const isStudentRoute = createRouteMatcher([
-  '/(si|en)/dashboard/courses(.*)',
+  '/(si|en)/dashboard/student/courses(.*)',
 ]);
 
 export default clerkMiddleware(async (authFn, req: NextRequest) => {
