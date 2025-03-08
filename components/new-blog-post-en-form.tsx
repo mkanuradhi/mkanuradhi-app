@@ -43,7 +43,6 @@ const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
       summaryEn: values.summaryEn,
       contentEn: values.contentEn,
       pageDescriptionEn: values.pageDescriptionEn,
-      status: DocumentStatus.ACTIVE,
       keywords: values.keywords,
       dateTime: values.dateTime,
     };

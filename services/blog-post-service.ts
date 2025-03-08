@@ -1,4 +1,4 @@
-import { BLOG_POSTS_PATH } from "@/constants/api-paths";
+import { API_BASE_URL, BLOG_POSTS_PATH } from "@/constants/api-paths";
 import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiDto } from "@/dtos/blog-post-dto";
 import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
@@ -6,8 +6,6 @@ import BlogPost from "@/interfaces/i-blog-post";
 import BlogPostView from "@/interfaces/i-blog-post-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import axios from "axios";
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
 export const getBlogPosts = async (page: number, size: number): Promise<PaginatedResult<BlogPost>> => {
   try {

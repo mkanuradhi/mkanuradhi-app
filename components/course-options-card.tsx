@@ -5,104 +5,94 @@ import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
-import { useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from "@/hooks/use-blog-posts";
-import "./blog-post-options-card.scss";
+import { useActivateCourseMutation, useDeactivateCourseMutation, useDeleteCourseMutation } from "@/hooks/use-courses";
 import DocumentStatus from "@/enums/document-status";
+import Course from "@/interfaces/i-course";
+import "./course-options-card.scss";
 
-const baseTPath = 'components.BlogPostOptionsCard';
+const baseTPath = 'components.CourseOptionsCard';
 
-interface BlogPostOptionsCardProps {
-  id: string;
-  titleEn: string;
-  summaryEn: string;
-  titleSi: string;
-  summarySi: string;
-  img?: string;
-  path: string;
-  status: DocumentStatus;
-  dateTime: Date;
+interface CourseOptionsCardProps {
+  course: Course;
 }
 
-const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, summaryEn, titleSi, summarySi, img, path, status, dateTime}) => {
+const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
   const [show, setShow] = useState(false);
 
-  const selectedTitle = locale === "si" ? `'${titleSi}'` : `'${titleEn}'`;
+  const selectedTitle = locale === "si" ? `${course.year} '${course.titleSi}'` : `${course.year} '${course.titleEn}'`;
 
-  const { mutate: deleteBlogPostMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteBlogPostMutation();
-  const { mutate: publishBlogPostMutation, isPending: isPendingPublish, isError: isPublishError, error: publishError } = usePublishBlogPostMutation();
-  const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish, isError: isUnpublishError, error: unpublishError } = useUnpublishBlogPostMutation();
+  const { mutate: deleteCourseMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteCourseMutation();
+  const { mutate: activateCourseMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateCourseMutation();
+  const { mutate: deactivateCourseMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateCourseMutation();
 
-  const handleDeleteBlogPost = async () => {
-    deleteBlogPostMutation(id);
+  const handleDeleteCourse = async () => {
+    deleteCourseMutation(course.id);
     handleClose();
   }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handlePublish = () => {
-    publishBlogPostMutation(id);
+  const handleActivate = () => {
+    activateCourseMutation(course.id);
   }
 
-  const handleUnpublish = () => {
-    unpublishBlogPostMutation(id);
+  const handleDeativate = () => {
+    deactivateCourseMutation(course.id);
   }
 
   return (
     <>
       <Card className="my-3 shadow blog-post-options-card">
         <Row className="g-0 flex-column flex-md-row">
-        {img && (
-          <Col md={4}>
-            <Card.Img
-              src={img}
-              alt={`Image for ${titleEn}`}
-              style={{ objectFit: 'cover', height: '100%', maxHeight: '32rem' }}
-            />
-          </Col>
-          )}
           {/* Right Column for the Content */}
-          <Col md={img ? 8 : 12}>
+          <Col>
             <Card.Body>
+              <Card.Subtitle>
+                { course.year && `${course.year} ` }
+              </Card.Subtitle>
               <Card.Title>
-                { titleEn }
+                { course.code && `${course.code} ` }
+                { course.credits && `${course.credits} ` }
+                { course.titleEn && `${course.titleEn} ` }
+                { course.subtitleEn && `(${course.subtitleEn})` }
               </Card.Title>
               <Card.Title>
-                { titleSi }
+                { course.code && `${course.code} ` }
+                { course.credits && `${course.credits} ` }
+                { course.titleSi && `${course.titleSi} ` }
+                { course.subtitleSi && `(${course.subtitleSi})` }
               </Card.Title>
-              <Card.Text className="text-muted fs-7">
-                { new Date(dateTime).toLocaleDateString() }
-              </Card.Text>
               <hr className="divider" />
               <Card.Text>
-                { summaryEn }
+                { course.locationEn }
               </Card.Text>
               <Card.Text>
-                { summarySi }
+                { course.locationSi }
               </Card.Text>
-              <Link href={`blog/${id}`}>
+              <Link href={`courses/${course.id}`}>
                 <Button className="me-2 my-1">
                   <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
                 </Button>
               </Link>
-              <Link href={`blog/${id}/edit`}>
+              <Link href={`courses/${course.id}/edit`}>
                 <Button variant="secondary" className="me-2 my-1">
                   <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
                 </Button>
               </Link>
               <Button
-                variant={status === DocumentStatus.ACTIVE ? `warning` : `success`}
+                variant={course.status === DocumentStatus.ACTIVE ? `warning` : `success`}
                 className="me-2 my-1"
-                onClick={status === DocumentStatus.ACTIVE ? handleUnpublish : handlePublish}
-                disabled={isPendingPublish || isPendingUnpublish}
+                onClick={course.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
+                disabled={isPendingActivate || isPendingDeactivate}
               >
                 <FontAwesomeIcon
-                  icon={status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
+                  icon={course.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
                   className="me-1"
                 />{" "}
-                {status === DocumentStatus.ACTIVE ? t('unpublish') : t('publish')}
+                {course.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
               </Button>
               <Button
                 variant="danger"
@@ -112,16 +102,16 @@ const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, s
               >
                 <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
               </Button>
-              {isPublishError && publishError && (
+              {isActivateError && activateError && (
                 <Alert variant="danger" className="my-2" dismissible>
-                  <Alert.Heading>{t('publishErrorTitle')}</Alert.Heading>
-                  <p>{publishError.message}</p>
+                  <Alert.Heading>{t('activateErrorTitle')}</Alert.Heading>
+                  <p>{activateError.message}</p>
                 </Alert>
               )}
-              {isUnpublishError && unpublishError && (
+              {isDeactivateError && deactivateError && (
                 <Alert variant="danger" className="my-2" dismissible>
-                  <Alert.Heading>{t('unpublishErrorTitle')}</Alert.Heading>
-                  <p>{unpublishError.message}</p>
+                  <Alert.Heading>{t('deactivateErrorTitle')}</Alert.Heading>
+                  <p>{deactivateError.message}</p>
                 </Alert>
               )}
               {isDeleteError && deleteError && (
@@ -150,7 +140,7 @@ const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, s
               <Button variant="secondary" onClick={handleClose}>
                 {t('deleteModalCancel')}
               </Button>
-              <Button variant="danger" onClick={handleDeleteBlogPost}>
+              <Button variant="danger" onClick={handleDeleteCourse}>
                 {t('deleteModalAccept')}
               </Button>
             </Modal.Footer>
@@ -161,4 +151,4 @@ const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, s
   )
 }
 
-export default BlogPostOptionsCard;
+export default CourseOptionsCard;

@@ -835,6 +835,16 @@
         "Edit": {
           "title": "බ්ලොග් සටහන සංස්කරණය කරන්න"
         }
+      },
+      "Courses": {
+        "title": "පාඨමාලා",
+        "addNew": "නව පාඨමාලාවක් එක් කරන්න",
+        "New": {
+          "title": "නව පාඨමාලාවක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "පාඨමාලාව සංස්කරණය කරන්න"
+        }
       }
     }
   },
@@ -907,7 +917,7 @@
       "deleteErrorTitle": "බ්ලොග් සටහන මැකිය නොහැක"
     },
     "BlogPostOptionsViewer": {
-      "failPosts": "බ්ලොග් සටහන පූරණය කිරීමට අසමත් විය.",
+      "failPost": "බ්ලොග් සටහන පූරණය කිරීමට අසමත් විය.",
       "dashboard": "පාලන පුවරුව",
       "blog": "බ්ලොග්",
       "edit": "සංස්කරණය කරන්න",
@@ -1002,13 +1012,50 @@
       "stepEn": "පියවර 1: ඉංග්‍රීසි විස්තර සංස්කරණය කිරීම",
       "stepSi": "පියවර 2: සිංහල විස්තර සංස්කරණය කිරීම",
       "stepPrimaryImage": "පියවර 3: ප්‍රධාන රූපය සංස්කරණය කිරීම"
+    },
+    "CoursesTable": {
+      "failCourses": "පාඨමාලා පූරණය කිරීමට අසමත් විය",
+      "noCourses": "පෙන්වීමට පාඨමාලා නොමැත",
+      "refreshCourses": "පාඨමාලා නැවුම් කරමින්...",
+      "courses": "පාඨමාලා"
+    },
+    "CourseOptionsCard": {
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> පාඨමාලාව මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "පාඨමාලාව සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "පාඨමාලාව අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "පාඨමාලාව මැකිය නොහැක"
+    },
+    "CourseOptionsViewer": {
+      "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය.",
+      "dashboard": "පාලන පුවරුව",
+      "courses": "පාඨමාලා",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> පාඨමාලාව මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "පාඨමාලාව සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "පාඨමාලාව අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "පාඨමාලාව මැකිය නොහැක"
     }
   },
   "contexts": {
     "SideBar": {
       "dashboard": "පාලන පුවරුව",
       "blog": "බ්ලොග්",
-      "courses": "පාඨමාලා"
+      "courses": "පාඨමාලා",
+      "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },
   "clerk": {

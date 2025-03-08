@@ -1,20 +1,20 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Button, Col, Row } from 'react-bootstrap';
-import { getBlogPosts } from '@/services/blog-post-service';
-import BlogTable from '@/components/blog-table';
 import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ActiveStep from '@/enums/active-step';
+import { getCourses } from '@/services/course-service';
+import CoursesTable from '@/components/courses-table';
 
-const baseTPath = 'pages.Dashboard.Blog';
+const baseTPath = 'pages.Dashboard.Courses';
 
-const BlogPage = async ({ params }: { params: { locale: string } }) => {
+const CoursesPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
 
-  const initialPaginatedResult = await getBlogPosts(0, 10);
+  const initialPaginatedResult = await getCourses(0, 10);
 
   return (
     <>
@@ -25,7 +25,7 @@ const BlogPage = async ({ params }: { params: { locale: string } }) => {
       </Row>
       <Row>
         <Col>
-          <Link href={`/dashboard/blog/new?step=${ActiveStep.EN}`}>
+          <Link href={`/dashboard/courses/new?step=${ActiveStep.EN}`}>
             <Button>
               <FontAwesomeIcon icon={faPlus} className="me-1" aria-hidden="true" />{ t('addNew') }
             </Button>
@@ -34,11 +34,11 @@ const BlogPage = async ({ params }: { params: { locale: string } }) => {
       </Row>
       <Row>
         <Col>
-          <BlogTable initialBlogPosts={initialPaginatedResult} />
+          <CoursesTable initialCourses={initialPaginatedResult} />
         </Col>
       </Row>
     </>
   )
 }
 
-export default BlogPage;
+export default CoursesPage;

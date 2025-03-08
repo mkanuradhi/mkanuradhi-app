@@ -2,7 +2,7 @@
 import React, { createContext, ReactNode, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import Role from "@/enums/role";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 const baseTPath = 'contexts.SideBar';
 
@@ -24,20 +24,20 @@ export const SideBarProvider: React.FC<SideBarProviderProps> = ({children}) => {
   const { user } = useUser();
   const memberRoles = user?.publicMetadata?.roles as Role[];
   const t = useTranslations(baseTPath);
-  const locale = useLocale();
 
   const baseLinks = [
-    { title: t('dashboard'), path: `/${locale}/dashboard`},
+    { title: t('dashboard'), path: `/dashboard`},
   ];
 
   const sidebarLinks = [...baseLinks];
 
   const adminLinks = [
-    { title: t('blog'), path: `/${locale}/dashboard/blog` },
+    { title: t('blog'), path: `/dashboard/blog` },
+    { title: t('courses'), path: `/dashboard/courses` },
   ];
 
   const studentLinks = [
-    { title: t('courses'), path: `/${locale}/dashboard/courses` },
+    { title: t('studentCourses'), path: `/dashboard/student/courses` },
   ];
 
   if (memberRoles?.includes(Role.ADMIN)) {
