@@ -6,7 +6,7 @@ import BlogTable from '@/components/blog-table';
 import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import BlogPostActiveStep from '@/enums/blog-post-active-step';
+import ActiveStep from '@/enums/active-step';
 
 const baseTPath = 'pages.Dashboard.Blog';
 
@@ -25,7 +25,7 @@ const BlogPage = async ({ params }: { params: { locale: string } }) => {
       </Row>
       <Row>
         <Col>
-          <Link href={`/dashboard/blog/new?step=${BlogPostActiveStep.EN}`}>
+          <Link href={`/dashboard/blog/new?step=${ActiveStep.EN}`}>
             <Button>
               <FontAwesomeIcon icon={faPlus} className="me-1" aria-hidden="true" />{ t('addNew') }
             </Button>

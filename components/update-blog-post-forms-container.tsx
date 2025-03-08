@@ -9,7 +9,7 @@ import { useBlogPostByIdQuery } from '@/hooks/use-blog-posts';
 import { useTranslations } from 'next-intl';
 import UpdateBlogPostPrimaryImageForm from './update-blog-post-primary-image-form';
 import UpdateBlogPostEnForm from './update-blog-post-en-form';
-import BlogPostActiveStep from '@/enums/blog-post-active-step';
+import ActiveStep from '@/enums/active-step';
 
 const baseTPath = 'components.UpdateBlogPostFormsContainer';
 
@@ -20,26 +20,26 @@ interface UpdateBlogPostFormsContainerProps {
 const UpdateBlogPostFormsContainer:React.FC<UpdateBlogPostFormsContainerProps> = ({ id }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const stepParam = searchParams.get("step") as BlogPostActiveStep | null;
+  const stepParam = searchParams.get("step") as ActiveStep | null;
   const t = useTranslations(baseTPath);
 
   const { data: blogPost } = useBlogPostByIdQuery(id || '');
-  const [step, setStep] = useState<BlogPostActiveStep>(stepParam || BlogPostActiveStep.EN);
+  const [step, setStep] = useState<ActiveStep>(stepParam || ActiveStep.EN);
 
-  const stepLabels: Record<BlogPostActiveStep, string> = {
-    [BlogPostActiveStep.EN]: t('stepEn'),
-    [BlogPostActiveStep.SI]: t('stepSi'),
-    [BlogPostActiveStep.PRIMARY_IMAGE]: t('stepPrimaryImage'),
+  const stepLabels: Record<ActiveStep, string> = {
+    [ActiveStep.EN]: t('stepEn'),
+    [ActiveStep.SI]: t('stepSi'),
+    [ActiveStep.PRIMARY_IMAGE]: t('stepPrimaryImage'),
   };
 
   const handleEnSubmit = (createdBlogPost: BlogPost) => {
-    setStep(BlogPostActiveStep.SI);
-    router.push(`/dashboard/blog/${id}/edit?step=${BlogPostActiveStep.SI}`);
+    setStep(ActiveStep.SI);
+    router.push(`/dashboard/blog/${id}/edit?step=${ActiveStep.SI}`);
   };
 
   const handleSiSubmit = (updatedBlogPost: BlogPost) => {
-    setStep(BlogPostActiveStep.PRIMARY_IMAGE);
-    router.push(`/dashboard/blog/${id}/edit?step=${BlogPostActiveStep.PRIMARY_IMAGE}`);
+    setStep(ActiveStep.PRIMARY_IMAGE);
+    router.push(`/dashboard/blog/${id}/edit?step=${ActiveStep.PRIMARY_IMAGE}`);
   };
 
   const handlePrimaryImageSubmit = (updatedBlogPost: BlogPost) => {
@@ -55,13 +55,13 @@ const UpdateBlogPostFormsContainer:React.FC<UpdateBlogPostFormsContainerProps> =
       </Row>
       <Row>
         <Col>
-          { step === BlogPostActiveStep.EN && (
+          { step === ActiveStep.EN && (
             <UpdateBlogPostEnForm id={id} onSuccess={handleEnSubmit} />
           )}
-          { step === BlogPostActiveStep.SI && blogPost && (
+          { step === ActiveStep.SI && blogPost && (
             <UpdateBlogPostSiForm id={blogPost.id} v={blogPost.v} onSuccess={handleSiSubmit} />
           )}
-          { step === BlogPostActiveStep.PRIMARY_IMAGE && blogPost && (
+          { step === ActiveStep.PRIMARY_IMAGE && blogPost && (
             <UpdateBlogPostPrimaryImageForm id={blogPost.id} onSuccess={handlePrimaryImageSubmit} />
           )}
         </Col>

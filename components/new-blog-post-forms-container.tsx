@@ -6,27 +6,27 @@ import BlogPost from '@/interfaces/i-blog-post';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import BlogPostActiveStep from '@/enums/blog-post-active-step';
+import ActiveStep from '@/enums/active-step';
 
 const baseTPath = 'components.NewBlogPostFormsContainer';
 
 const NewBlogPostFormsContainer = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const stepParam = searchParams.get("step") as BlogPostActiveStep | null;
+  const stepParam = searchParams.get("step") as ActiveStep | null;
   const t = useTranslations(baseTPath);
 
-  const [step, setStep] = useState<BlogPostActiveStep>(stepParam || BlogPostActiveStep.EN);
+  const [step, setStep] = useState<ActiveStep>(stepParam || ActiveStep.EN);
 
-  const stepLabels: Record<BlogPostActiveStep, string> = {
-    [BlogPostActiveStep.EN]: t('stepEn'),
-    [BlogPostActiveStep.SI]: t('stepSi'),
-    [BlogPostActiveStep.PRIMARY_IMAGE]: t('stepPrimaryImage'),
+  const stepLabels: Record<ActiveStep, string> = {
+    [ActiveStep.EN]: t('stepEn'),
+    [ActiveStep.SI]: t('stepSi'),
+    [ActiveStep.PRIMARY_IMAGE]: t('stepPrimaryImage'),
   };
 
   const handleEnSubmit = (createdBlogPost: BlogPost) => {
-    setStep(BlogPostActiveStep.SI);
-    router.push(`/dashboard/blog/${createdBlogPost.id}/edit?step=${BlogPostActiveStep.SI}`);
+    setStep(ActiveStep.SI);
+    router.push(`/dashboard/blog/${createdBlogPost.id}/edit?step=${ActiveStep.SI}`);
   };
 
   return (
@@ -38,7 +38,7 @@ const NewBlogPostFormsContainer = () => {
       </Row>
       <Row>
         <Col>
-          { step === BlogPostActiveStep.EN && (
+          { step === ActiveStep.EN && (
             <NewBlogPostEnForm onSuccess={handleEnSubmit} />
           )}
         </Col>
