@@ -917,7 +917,7 @@
       "deleteErrorTitle": "බ්ලොග් සටහන මැකිය නොහැක"
     },
     "BlogPostOptionsViewer": {
-      "failPosts": "බ්ලොග් සටහන පූරණය කිරීමට අසමත් විය.",
+      "failPost": "බ්ලොග් සටහන පූරණය කිරීමට අසමත් විය.",
       "dashboard": "පාලන පුවරුව",
       "blog": "බ්ලොග්",
       "edit": "සංස්කරණය කරන්න",
@@ -1026,7 +1026,23 @@
       "deactivate": "අක්‍රිය කරන්න",
       "delete": "මකන්න",
       "deleteModalTitle": "මැකීම තහවුරු කරන්න",
-      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> බ්ලොග් සටහන මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> පාඨමාලාව මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "පාඨමාලාව සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "පාඨමාලාව අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "පාඨමාලාව මැකිය නොහැක"
+    },
+    "CourseOptionsViewer": {
+      "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය.",
+      "dashboard": "පාලන පුවරුව",
+      "courses": "පාඨමාලා",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> පාඨමාලාව මැකීමට අවශ්‍ය බව විශ්වාසද?",
       "deleteModalCancel": "නැත",
       "deleteModalAccept": "ඔව්, මකන්න",
       "activateErrorTitle": "පාඨමාලාව සක්‍රිය කළ නොහැක",

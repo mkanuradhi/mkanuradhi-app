@@ -10,7 +10,6 @@ import DocumentStatus from "@/enums/document-status";
 import Course from "@/interfaces/i-course";
 import "./course-options-card.scss";
 
-
 const baseTPath = 'components.CourseOptionsCard';
 
 interface CourseOptionsCardProps {
@@ -22,7 +21,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
   const locale = useLocale();
   const [show, setShow] = useState(false);
 
-  const selectedTitle = locale === "si" ? `'${course.titleSi}'` : `'${course.titleEn}'`;
+  const selectedTitle = locale === "si" ? `${course.year} '${course.titleSi}'` : `${course.year} '${course.titleEn}'`;
 
   const { mutate: deleteCourseMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteCourseMutation();
   const { mutate: activateCourseMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateCourseMutation();

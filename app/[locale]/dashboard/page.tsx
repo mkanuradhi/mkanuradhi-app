@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
-import { Link } from '@/i18n/routing';
 import Role from '@/enums/role';
 
 const baseTPath = 'pages.Dashboard';

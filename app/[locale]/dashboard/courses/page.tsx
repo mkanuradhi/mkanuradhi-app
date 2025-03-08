@@ -25,7 +25,7 @@ const CoursesPage = async ({ params }: { params: { locale: string } }) => {
       </Row>
       <Row>
         <Col>
-          <Link href={`/dashboard/course/new?step=${ActiveStep.EN}`}>
+          <Link href={`/dashboard/courses/new?step=${ActiveStep.EN}`}>
             <Button>
               <FontAwesomeIcon icon={faPlus} className="me-1" aria-hidden="true" />{ t('addNew') }
             </Button>

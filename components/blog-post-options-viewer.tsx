@@ -11,8 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useBlogPostByIdQuery, useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from '@/hooks/use-blog-posts';
 import LoadingContainer from './loading-container';
-import "./blog-post-options-viewer.scss";
 import DocumentStatus from '@/enums/document-status';
+import "./blog-post-options-viewer.scss";
 
 const baseTPath = 'components.BlogPostOptionsViewer';
 
@@ -32,7 +32,7 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
   const [show, setShow] = useState(false);
   const router = useRouter();
 
-  const { data: blogPost, isPending, isError, isFetching, isSuccess } = useBlogPostByIdQuery(blogPostId);
+  const { data: blogPost, isPending, isError, isFetching, isSuccess, error: blogpostError } = useBlogPostByIdQuery(blogPostId);
   const { mutate: deleteBlogPostMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteBlogPostMutation();
   const { mutate: publishBlogPostMutation, isPending: isPendingPublish, isError: isPublishError, error: publishError } = usePublishBlogPostMutation();
   const { mutate: unpublishBlogPostMutation, isPending: isPendingUnpublish, isError: isUnpublishError, error: unpublishError } = useUnpublishBlogPostMutation();
@@ -41,10 +41,13 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
     return (<LoadingContainer />);
   }
 
-  if (isError || !blogPost) {
+  if (isError && blogpostError) {
     return (
       <Row>
-        <Col>{t('failPosts')}</Col>
+        <Col>
+          <h5>{t('failPost')}</h5>
+          <p>{blogpostError.message}</p>
+        </Col>
       </Row>
     );
   }
