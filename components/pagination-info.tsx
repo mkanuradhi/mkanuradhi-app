@@ -23,7 +23,7 @@ const PaginationInfo: React.FC<PaginationInfoProps> = ({
   const t = useTranslations(baseTPath);
 
   // Avoid showing pagination info when there's no data
-  if (totalCount === 0) return null;
+  if (totalCount === 0 || currentPageSize === 0) return null;
 
   const startItem = currentPage * pageSize + 1;
   const endItem = Math.min(startItem + currentPageSize - 1, totalCount);
