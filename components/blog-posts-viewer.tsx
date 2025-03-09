@@ -44,7 +44,9 @@ const BlogPostsViewer = () => {
       )}
       { isError && (
         <Row>
-          <Col>{t('failPosts')}</Col>
+          <Col>
+            <h5>{t('failPosts')}</h5>
+          </Col>
         </Row>
       )}
       {blogPostViews && blogPostViews.length > 0 && 
@@ -64,7 +66,9 @@ const BlogPostsViewer = () => {
       }
       {!isFetching && (!blogPostViews || blogPostViews.length < 1) && (
         <Row>
-          <Col>{t('noPosts')}</Col>
+          <Col>
+            <h5>{t('noPosts')}</h5>
+          </Col>
         </Row>
       )}
       {totalPages > 1 && (
@@ -87,6 +91,7 @@ const BlogPostsViewer = () => {
           <PaginationControls
             currentPage={currentPage}
             totalPages={totalPages}
+            currentPageSize={currentPageSize}
             onPageChange={handlePageChange}
           />
           </Col>
