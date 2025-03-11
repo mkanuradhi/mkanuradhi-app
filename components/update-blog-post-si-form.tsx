@@ -10,6 +10,7 @@ import { useBlogPostByIdQuery, useUpdateBlogPostSiMutation } from '@/hooks/use-b
 import { UpdateBlogPostTextSiDto } from '@/dtos/blog-post-dto';
 import BlogPost from '@/interfaces/i-blog-post';
 import LoadingContainer from './loading-container';
+import RequiredFormLabel from './required-form-label';
 
 const baseTPath = 'components.UpdateBlogPostSiForm';
 
@@ -90,24 +91,24 @@ const UpdateBlogPostSiForm: FC<UpdateBlogPostSiFormProps> = ({id, onSuccess }) =
                 <Form>
                   <fieldset disabled={isSubmitting}>
                     <BootstrapForm.Group className="mb-4" controlId="formTitleSi">
-                      <BootstrapForm.Label>{t('titleSiLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('titleSiLabel')}</RequiredFormLabel>
                       <Field name="titleSi" type="text" placeholder={t('titleSiPlaceholder')} className="form-control" />
                       <ErrorMessage name="titleSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formSummarySi">
-                      <BootstrapForm.Label>{t('summarySiLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('summarySiLabel')}</RequiredFormLabel>
                       <Field as="textarea" name="summarySi" placeholder={t('summarySiPlaceholder')} className="form-control" rows={3} />
                       <BootstrapForm.Text className="text-muted">{t('summarySiHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="summarySi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formContentSi">
-                      <BootstrapForm.Label>{t('contentSiLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('contentSiLabel')}</RequiredFormLabel>
                       <Field as="textarea" name="contentSi" placeholder={t('contentSiPlaceholder')} className="form-control" rows={8} />
                       <BootstrapForm.Text className="text-muted">{t('contentSiHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="contentSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formPageDescriptionSi">
-                      <BootstrapForm.Label>{t('pageDescriptionSiLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('pageDescriptionSiLabel')}</RequiredFormLabel>
                       <Field as="textarea" name="pageDescriptionSi" placeholder={t('pageDescriptionSiPlaceholder')} className="form-control" rows={3} />
                       <BootstrapForm.Text className="text-muted">{t('pageDescriptionSiHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="pageDescriptionSi" component="p" className="text-danger mt-1" />
