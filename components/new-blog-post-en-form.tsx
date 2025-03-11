@@ -9,7 +9,6 @@ import { faCalendarDays, faCircleNotch, faMinus, faPaperPlane, faPlus, faXmark }
 import DatePicker from 'react-datepicker';
 import { useCreateBlogPostEnMutation } from '@/hooks/use-blog-posts';
 import { CreateBlogPostTextEnDto } from '@/dtos/blog-post-dto';
-import DocumentStatus from '@/enums/document-status';
 import { useRouter } from '@/i18n/routing';
 import 'react-datepicker/dist/react-datepicker.css';
 import BlogPost from '@/interfaces/i-blog-post';

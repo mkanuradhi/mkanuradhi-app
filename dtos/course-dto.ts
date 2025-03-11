@@ -1,9 +1,11 @@
+import DeliveryMode from "@/enums/delivery-mode";
 import { VersionDto } from "./base-dto";
 
 export interface CreateCourseEnDto {
   year: number;
   code?: string;
-  credits?: number;
+  credits?: number | undefined;
+  mode: DeliveryMode;
   titleEn: string;
   subtitleEn?: string;
   descriptionEn?: string;
