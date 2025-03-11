@@ -10,6 +10,8 @@ import PaginatedResult from '@/interfaces/i-paginated-result';
 import PaginationInfo from './pagination-info';
 import { useTranslations } from 'next-intl';
 import PaginationControls from './pagination-controls';
+import { useRouter } from '@/i18n/routing';
+import { useSearchParams } from 'next/navigation';
 
 const baseTPath = 'components.BlogTable';
 
@@ -19,9 +21,19 @@ interface BlogTableProps {
 
 const BlogTable: React.FC<BlogTableProps> = ({ initialBlogPosts }) => {
   const t = useTranslations(baseTPath);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [page, setPage] = useState(0);
+  const initialPage = Number(searchParams.get("page")) || 0;
+  const [page, setPage] = useState(initialPage);
   const pageSize = 10;
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", String(newPage));
+    router.replace(`?${params.toString()}`, { scroll: false });
+  };
 
   const { data, isPending, isError, isFetching, isSuccess } = useBlogPostsQuery(page, pageSize, initialBlogPosts);
 
@@ -98,7 +110,8 @@ const BlogTable: React.FC<BlogTableProps> = ({ initialBlogPosts }) => {
           <PaginationControls
             currentPage={currentPage}
             totalPages={totalPages}
-            onPageChange={setPage}
+            currentPageSize={currentPageSize}
+            onPageChange={handlePageChange}
           />
           </Col>
         </Row>

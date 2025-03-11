@@ -9,6 +9,8 @@ import PaginationControls from './pagination-controls';
 import Course from '@/interfaces/i-course';
 import { useCoursesQuery } from '@/hooks/use-courses';
 import CourseOptionsCard from './course-options-card';
+import { useRouter } from '@/i18n/routing';
+import { useSearchParams } from 'next/navigation';
 
 const baseTPath = 'components.CoursesTable';
 
@@ -18,9 +20,19 @@ interface CoursesTableProps {
 
 const CoursesTable: React.FC<CoursesTableProps> = ({ initialCourses }) => {
   const t = useTranslations(baseTPath);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [page, setPage] = useState(0);
+  const initialPage = Number(searchParams.get("page")) || 0;
+  const [page, setPage] = useState(initialPage);
   const pageSize = 10;
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", String(newPage));
+    router.replace(`?${params.toString()}`, { scroll: false });
+  };
 
   const { data, isPending, isError, isFetching, isSuccess } = useCoursesQuery(page, pageSize, initialCourses);
 
@@ -87,7 +99,8 @@ const CoursesTable: React.FC<CoursesTableProps> = ({ initialCourses }) => {
           <PaginationControls
             currentPage={currentPage}
             totalPages={totalPages}
-            onPageChange={setPage}
+            currentPageSize={currentPageSize}
+            onPageChange={handlePageChange}
           />
           </Col>
         </Row>

@@ -4,12 +4,14 @@ import { Pagination } from 'react-bootstrap';
 interface PaginationControlsProps {
   currentPage: number;
   totalPages: number;
+  currentPageSize: number;
   onPageChange: (page: number) => void;
 }
 
 const PaginationControls: React.FC<PaginationControlsProps> = ({
   currentPage,
   totalPages,
+  currentPageSize,
   onPageChange
 }) => {
 
@@ -18,6 +20,8 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
       onPageChange(newPage);
     }
   };
+
+  if (currentPageSize === 0) return null;
 
   return (
     <>
