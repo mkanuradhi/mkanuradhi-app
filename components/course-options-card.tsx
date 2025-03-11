@@ -20,6 +20,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
   const [show, setShow] = useState(false);
+  const formattedCredits = course.credits ? course.credits.toFixed(1) : course.credits;
 
   const selectedTitle = locale === "si" ? `${course.year} '${course.titleSi}'` : `${course.year} '${course.titleEn}'`;
 
@@ -55,13 +56,13 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
               </Card.Subtitle>
               <Card.Title>
                 { course.code && `${course.code} ` }
-                { course.credits && `${course.credits} ` }
+                { course.credits && `${formattedCredits} ` }
                 { course.titleEn && `${course.titleEn} ` }
                 { course.subtitleEn && `(${course.subtitleEn})` }
               </Card.Title>
               <Card.Title>
                 { course.code && `${course.code} ` }
-                { course.credits && `${course.credits} ` }
+                { course.credits && `${formattedCredits} ` }
                 { course.titleSi && `${course.titleSi} ` }
                 { course.subtitleSi && `(${course.subtitleSi})` }
               </Card.Title>

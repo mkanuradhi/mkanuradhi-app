@@ -42,6 +42,7 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
   }
 
   const selectedTitle = `${course.year} '${course.titleEn}' | '${course.titleSi}'`;
+  const formattedCredits = course.credits ? course.credits.toFixed(1) : course.credits;
 
   const handleDeleteCourse = async () => {
     deleteCourseMutation(course.id);
@@ -82,7 +83,7 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
                 <h3>{course.year}</h3>
                 <h1>
                   { course.code && `${course.code} ` }
-                  { course.credits && `${course.credits} ` }
+                  { course.credits && `${formattedCredits} ` }
                   { course.titleEn && `${course.titleEn} ` }
                   { course.subtitleEn && `(${course.subtitleEn})` }
                 </h1>
@@ -109,7 +110,7 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
                 <h3>{course.year}</h3>
                 <h1>
                 { course.code && `${course.code} ` }
-                { course.credits && `${course.credits} ` }
+                { course.credits && `${formattedCredits} ` }
                 { course.titleSi && `${course.titleSi} ` }
                 { course.subtitleSi && `(${course.subtitleSi})` }
                 </h1>
