@@ -13,6 +13,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Course from '@/interfaces/i-course';
 import LoadingContainer from './loading-container';
 import DeliveryMode from '@/enums/delivery-mode';
+import RequiredFormLabel from './required-form-label';
 
 const baseTPath = 'components.NewCourseEnForm';
 
@@ -132,7 +133,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
                 <Form>
                   <fieldset disabled={isSubmitting}>
                     <BootstrapForm.Group className="mb-4" controlId="formYear">
-                      <BootstrapForm.Label>{t('yearLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('yearLabel')}</RequiredFormLabel>
                       <Field name="year" type="text" placeholder={t('yearPlaceholder')} className="form-control" />
                       <ErrorMessage name="year" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
@@ -147,7 +148,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
                       <ErrorMessage name="credits" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formMode">
-                      <BootstrapForm.Label>{t('modeLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('modeLabel')}</RequiredFormLabel>
                       <Field as="select" name="mode" className="form-select">
                         {Object.values(DeliveryMode).map((mode) => (
                           <option key={mode} value={mode}>
@@ -164,7 +165,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
                       <ErrorMessage name="mode" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formTitleEn">
-                      <BootstrapForm.Label>{t('titleEnLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('titleEnLabel')}</RequiredFormLabel>
                       <Field name="titleEn" type="text" placeholder={t('titleEnPlaceholder')} className="form-control" />
                       <ErrorMessage name="titleEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
@@ -180,7 +181,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
                       <ErrorMessage name="descriptionEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formLocationEn">
-                      <BootstrapForm.Label>{t('locationEnLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('locationEnLabel')}</RequiredFormLabel>
                       <Field name="locationEn" placeholder={t('locationEnPlaceholder')} className="form-control" />
                       <BootstrapForm.Text className="text-muted">{t('locationEnHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="locationEn" component="p" className="text-danger mt-1" />

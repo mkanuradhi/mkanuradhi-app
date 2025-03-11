@@ -1130,6 +1130,9 @@
       "locationSiRequired": "Location in Sinhala is required",
       "submit": "Proceed",
       "submitting": "Submitting..."
+    },
+    "RequiredLabel": {
+      "tooltip": "Required field"
     }
   },
   "contexts": {

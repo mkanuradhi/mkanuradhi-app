@@ -1130,6 +1130,9 @@
       "locationSiRequired": "පාඨමාලාව පැවැත්වූ ස්ථානය අවශ්‍යයි.",
       "submit": "ඉදිරියට යන්න",
       "submitting": "යවමින් පවතී..."
+    },
+    "RequiredLabel": {
+      "tooltip": "අවශ්‍ය ක්ෂේත්‍රයකි"
     }
   },
   "contexts": {

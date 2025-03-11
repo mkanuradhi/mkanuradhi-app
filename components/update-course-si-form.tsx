@@ -10,6 +10,7 @@ import { useCourseByIdQuery, useUpdateCourseSiMutation } from '@/hooks/use-cours
 import { UpdateCourseSiDto } from '@/dtos/course-dto';
 import Course from '@/interfaces/i-course';
 import LoadingContainer from './loading-container';
+import RequiredFormLabel from './required-form-label';
 
 const baseTPath = 'components.UpdateCourseSiForm';
 
@@ -90,7 +91,7 @@ const UpdateCourseSiForm: FC<UpdateCourseSiFormProps> = ({id, onSuccess }) => {
                 <Form>
                   <fieldset disabled={isSubmitting}>
                     <BootstrapForm.Group className="mb-4" controlId="formTitleSi">
-                      <BootstrapForm.Label>{t('titleSiLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('titleSiLabel')}</RequiredFormLabel>
                       <Field name="titleSi" type="text" placeholder={t('titleSiPlaceholder')} className="form-control" />
                       <ErrorMessage name="titleSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
@@ -107,7 +108,7 @@ const UpdateCourseSiForm: FC<UpdateCourseSiFormProps> = ({id, onSuccess }) => {
                       <ErrorMessage name="descriptionSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formLocationSi">
-                      <BootstrapForm.Label>{t('locationSiLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('locationSiLabel')}</RequiredFormLabel>
                       <Field name="locationSi" placeholder={t('locationSiPlaceholder')} className="form-control" />
                       <BootstrapForm.Text className="text-muted">{t('locationSiHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="locationSi" component="p" className="text-danger mt-1" />
