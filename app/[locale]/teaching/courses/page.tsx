@@ -5,7 +5,7 @@ import CourseView from '@/interfaces/i-course-view';
 import { getActivatedCourses } from '@/services/course-service';
 import CourseCard from '@/components/course-card';
 
-const baseTPath = 'pages.Teaching';
+const baseTPath = 'pages.Teaching.Courses';
 
 export const revalidate = 60;
 
@@ -69,7 +69,7 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const TeachingPage = async ({ params }: { params: { locale: string } }) => {
+const CoursesPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
 
@@ -79,19 +79,15 @@ const TeachingPage = async ({ params }: { params: { locale: string } }) => {
 
   return (
     <>
-      <div className="teaching">
+      <div className="courses">
         <Container fluid="md">
           <Row className="mt-4">
             <Col>
               <h1>{t('title')}</h1>
-              <section>
-                <p className="mt-4">{ t('description') }</p>
-              </section>
             </Col>
           </Row>
           <Row className="mt-3">
             <Col>
-              <h2>{t('subTitle')}</h2>
               {groupedData.map(group => (
                 <section key={group.year} className="mt-4">
                   <h3>{group.year}</h3>
@@ -117,4 +113,4 @@ const TeachingPage = async ({ params }: { params: { locale: string } }) => {
   )
 }
 
-export default TeachingPage;
+export default CoursesPage;

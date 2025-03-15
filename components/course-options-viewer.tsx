@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Alert, Breadcrumb, Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import { Link, useRouter } from '@/i18n/routing';
@@ -8,6 +8,7 @@ import { faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-i
 import { useActivateCourseMutation, useCourseByIdQuery, useDeactivateCourseMutation, useDeleteCourseMutation } from '@/hooks/use-courses';
 import LoadingContainer from './loading-container';
 import DocumentStatus from '@/enums/document-status';
+import DOMPurify from 'dompurify';
 import "./course-options-viewer.scss";
 
 const baseTPath = 'components.CourseOptionsViewer';
@@ -20,11 +21,40 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
   const t = useTranslations(baseTPath);
   const [show, setShow] = useState(false);
   const router = useRouter();
+  const [sanitizedHtmlEn, setSanitizedHtmlEn] = useState<string>('');
+  const [sanitizedHtmlSi, setSanitizedHtmlSi] = useState<string>('');
 
   const { data: course, isPending, isError, isFetching, error: courseError } = useCourseByIdQuery(courseId);
   const { mutate: deleteCourseMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteCourseMutation();
   const { mutate: activateCourseMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateCourseMutation();
   const { mutate: deactivateCourseMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateCourseMutation();
+
+  useEffect(() => {
+    if (!course || !course.descriptionEn) {
+      return;
+    }
+
+    // Add a hook to handle target="_blank"
+    DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+      if (node.tagName === 'A' && node.getAttribute('target') === '_blank') {
+        node.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+
+    const sanitizedDescription = DOMPurify.sanitize(course.descriptionEn, {
+      ALLOWED_ATTR: ['target', 'href', 'rel', 'src', 'alt', 'style'], // Include necessary attributes
+    });
+    setSanitizedHtmlEn(sanitizedDescription);
+
+    const sanitizedDescriptionSi = DOMPurify.sanitize(course.descriptionSi, {
+      ALLOWED_ATTR: ['target', 'href', 'rel', 'src', 'alt', 'style'], // Include necessary attributes
+    });
+    setSanitizedHtmlSi(sanitizedDescriptionSi);
+    
+    return () => {
+      DOMPurify.removeHook('afterSanitizeAttributes');
+    }
+  }, [course]);
 
   if (isPending || isFetching) {
     return (<LoadingContainer />);
@@ -97,7 +127,7 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
             </Row>
             <Row>
               <Col>
-                <div>{course.descriptionEn}</div>
+                <div dangerouslySetInnerHTML={{ __html: sanitizedHtmlEn }} />
               </Col>
             </Row>
           </Col>
@@ -124,7 +154,7 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
             </Row>
             <Row>
               <Col>
-              <div>{course.descriptionSi}</div>
+                <div dangerouslySetInnerHTML={{ __html: sanitizedHtmlSi }} />
               </Col>
             </Row>
           </Col>
