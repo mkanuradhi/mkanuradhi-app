@@ -11,6 +11,7 @@ import { useRouter } from '@/i18n/routing';
 import { useCreateCourseEnMutation } from '@/hooks/use-courses';
 import { CreateCourseEnDto } from '@/dtos/course-dto';
 import DeliveryMode from '@/enums/delivery-mode';
+import RequiredFormLabel from './required-form-label';
 
 const baseTPath = 'components.NewCourseEnForm';
 
@@ -101,7 +102,7 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
               <Form>
                 <fieldset disabled={isSubmitting}>
                   <BootstrapForm.Group className="mb-4" controlId="formYear">
-                    <BootstrapForm.Label>{t('yearLabel')}</BootstrapForm.Label>
+                    <RequiredFormLabel>{t('yearLabel')}</RequiredFormLabel>
                     <Field name="year" type="text" placeholder={t('yearPlaceholder')} className="form-control" />
                     <ErrorMessage name="year" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
@@ -116,7 +117,7 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
                     <ErrorMessage name="credits" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                   <BootstrapForm.Group className="mb-4" controlId="formMode">
-                    <BootstrapForm.Label>{t('modeLabel')}</BootstrapForm.Label>
+                    <RequiredFormLabel>{t('modeLabel')}</RequiredFormLabel>
                     <Field as="select" name="mode" className="form-select">
                       {Object.values(DeliveryMode).map((mode) => (
                         <option key={mode} value={mode}>
@@ -133,7 +134,7 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
                     <ErrorMessage name="mode" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                   <BootstrapForm.Group className="mb-4" controlId="formTitleEn">
-                    <BootstrapForm.Label>{t('titleEnLabel')}</BootstrapForm.Label>
+                    <RequiredFormLabel>{t('titleEnLabel')}</RequiredFormLabel>
                     <Field name="titleEn" type="text" placeholder={t('titleEnPlaceholder')} className="form-control" />
                     <ErrorMessage name="titleEn" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
@@ -149,7 +150,7 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
                     <ErrorMessage name="descriptionEn" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                   <BootstrapForm.Group className="mb-4" controlId="formLocationEn">
-                    <BootstrapForm.Label>{t('locationEnLabel')}</BootstrapForm.Label>
+                    <RequiredFormLabel>{t('locationEnLabel')}</RequiredFormLabel>
                     <Field name="locationEn" placeholder={t('locationEnPlaceholder')} className="form-control" />
                     <BootstrapForm.Text className="text-muted">{t('locationEnHelp')}</BootstrapForm.Text>
                     <ErrorMessage name="locationEn" component="p" className="text-danger mt-1" />
@@ -159,7 +160,7 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
                   <Button
                     variant="secondary"
                     type="button"
-                    onClick={() => router.push('/dashboard/blog')}
+                    onClick={() => router.push('/dashboard/courses')}
                   >
                     <FontAwesomeIcon icon={faXmark} className="me-1" /> {t('cancel')}
                   </Button>

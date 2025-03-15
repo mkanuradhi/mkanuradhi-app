@@ -13,6 +13,7 @@ import { useRouter } from '@/i18n/routing';
 import 'react-datepicker/dist/react-datepicker.css';
 import BlogPost from '@/interfaces/i-blog-post';
 import LoadingContainer from './loading-container';
+import RequiredFormLabel from './required-form-label';
 
 const baseTPath = 'components.NewBlogPostEnForm';
 
@@ -100,30 +101,30 @@ const UpdateBlogPostEnForm: FC<UpdateBlogPostEnFormProps> = ({ id, onSuccess }) 
                 <Form>
                   <fieldset disabled={isSubmitting}>
                     <BootstrapForm.Group className="mb-4" controlId="formTitleEn">
-                      <BootstrapForm.Label>{t('titleEnLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('titleEnLabel')}</RequiredFormLabel>
                       <Field name="titleEn" type="text" placeholder={t('titleEnPlaceholder')} className="form-control" />
                       <ErrorMessage name="titleEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formSummaryEn">
-                      <BootstrapForm.Label>{t('summaryEnLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('summaryEnLabel')}</RequiredFormLabel>
                       <Field as="textarea" name="summaryEn" placeholder={t('summaryEnPlaceholder')} className="form-control" rows={3} />
                       <BootstrapForm.Text className="text-muted">{t('summaryEnHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="summaryEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formContentEn">
-                      <BootstrapForm.Label>{t('contentEnLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('contentEnLabel')}</RequiredFormLabel>
                       <Field as="textarea" name="contentEn" placeholder={t('contentEnPlaceholder')} className="form-control" rows={8} />
                       <BootstrapForm.Text className="text-muted">{t('contentEnHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="contentEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formPageDescriptionEn">
-                      <BootstrapForm.Label>{t('pageDescriptionEnLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('pageDescriptionEnLabel')}</RequiredFormLabel>
                       <Field as="textarea" name="pageDescriptionEn" placeholder={t('pageDescriptionEnPlaceholder')} className="form-control" rows={3} />
                       <BootstrapForm.Text className="text-muted">{t('pageDescriptionEnHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="pageDescriptionEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formKeywords">
-                      <BootstrapForm.Label>{t('keywordsLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('keywordsLabel')}</RequiredFormLabel>
                       <FieldArray name="keywords">
                         {({ push, remove }) => (
                           <div>
@@ -145,7 +146,7 @@ const UpdateBlogPostEnForm: FC<UpdateBlogPostEnFormProps> = ({ id, onSuccess }) 
                       <ErrorMessage name="keywords" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formDateTime">
-                      <BootstrapForm.Label>{t('dateTimeLabel')}</BootstrapForm.Label>
+                      <RequiredFormLabel>{t('dateTimeLabel')}</RequiredFormLabel>
                       <Field name="dateTime" type="text" className="form-control">
                         {({ field, form }: FieldProps) => (
                           <DatePicker

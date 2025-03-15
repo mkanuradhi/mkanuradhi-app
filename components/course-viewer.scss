@@ -1,0 +1,12 @@
+.course-viewer {
+
+  a {
+    text-decoration: none;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--bs-highlight-color);
+    margin: 1rem 0; 
+  }
+}

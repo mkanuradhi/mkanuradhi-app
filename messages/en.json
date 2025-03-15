@@ -48,10 +48,14 @@
       "pageDescription": "I am teaching many subjects in the field of computing, specializing in meta-heuristic optimization and machine learning.",
       "pageKeywords": "teaching, courses, degree, masters",
       "title": "Teaching",
+      "description": "I teach Computer Science at both undergraduate and postgraduate levels, covering a broad range of subjects. My approach focuses on clarity, engagement, and real-world applications, helping students develop strong analytical and problem-solving skills. Beyond full-length courses, I also conduct short sessions and workshops, making complex topics accessible and practical for diverse learners.",
       "subTitle": "Courses",
-      "descriptions": [
-        "Currently I am teaching to bachelors and masters level degree programs."
-      ],
+      "Courses": {
+        "pageTitle": "Courses",
+        "pageDescription": "I am conducting many courses in the field of computing, specializing in meta-heuristic optimization and machine learning.",
+        "pageKeywords": "courses, subjects, degree, masters",
+        "title": "Courses"
+      },
       "details": [
         {
           "year": "2025",
@@ -818,6 +822,11 @@
     "Loading":{
       "title": "Loading..."
     },
+    "Error": {
+      "title": "An Error Occurred",
+      "subTitle": "An unexpected error occurred during the process. Please Try again later.",
+      "tryAgain": "Try Again"
+    },
     "Dashboard": {
       "pageTitle": "Dashboard",
       "pageDescription": "Dashboard for the logged in user",
@@ -876,6 +885,16 @@
       "home": "Home",
       "blog": "Blog",
       "share": "Share this post"
+    },
+    "CourseCard": {
+      "credits": "{value} Credits"
+    },
+    "CourseViewer": {
+      "home": "Home",
+      "teaching": "Teaching",
+      "courses": "Courses",
+      "share": "Share this course",
+      "credits": "{value} Credits"
     },
     "Footer": {
       "title": "Copyright \u00A9 {currentYear} Anuradha Ariyaratne.",
@@ -1130,6 +1149,9 @@
       "locationSiRequired": "Location in Sinhala is required",
       "submit": "Proceed",
       "submitting": "Submitting..."
+    },
+    "RequiredLabel": {
+      "tooltip": "Required field"
     }
   },
   "contexts": {

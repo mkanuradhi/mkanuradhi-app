@@ -1,6 +1,8 @@
 import React from 'react';
 import { getBlogPostByPath } from '@/services/blog-post-service';
 import BlogPostViewer from '@/components/BlogPostViewer';
+import { ApiError } from '@/errors/api-error';
+import { notFound } from 'next/navigation';
 
 interface BlogPostPageProps {
   params: {
@@ -11,7 +13,15 @@ interface BlogPostPageProps {
 
 export async function generateMetadata ({ params }: BlogPostPageProps) {
   const { locale, slug } = params;
-  const blogPostView = await getBlogPostByPath(locale, slug);
+  let blogPostView;
+  try {
+    blogPostView = await getBlogPostByPath(locale, slug);
+  } catch (error: any) {
+    if (error instanceof ApiError && (error.status === 404 || error.status === 400)) {
+      notFound();
+    }
+    throw error;
+  }
 
   return {
     title: blogPostView.title,
@@ -34,7 +44,15 @@ export async function generateMetadata ({ params }: BlogPostPageProps) {
 
 const BlogPostPage: React.FC<BlogPostPageProps> = async ({ params }) => {
   const { locale, slug } = params;
-  const blogPostView = await getBlogPostByPath(locale, slug);
+  let blogPostView;
+  try {
+    blogPostView = await getBlogPostByPath(locale, slug);
+  } catch (error: any) {
+    if (error instanceof ApiError && (error.status === 404 || error.status === 400)) {
+      notFound();
+    }
+    throw error;
+  }
 
   return (
     <>
