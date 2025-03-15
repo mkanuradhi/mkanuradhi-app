@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/contexts/ThemeProvider";
 import NavigationBar from "@/components/NavigationBar";
 import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { ClerkProvider } from '@clerk/nextjs';
+import ClerkThemeProvider from "@/contexts/clerk-theme-provider";
 import { getClerkLocalization } from "@/utils/server/clerk-localization";
 import { QueryProvider } from "@/contexts/query-provider";
 import { SideBarProvider } from "@/contexts/side-bar-provider";
@@ -66,11 +66,11 @@ export default async function LocaleLayout({
   const localization = await getClerkLocalization(locale);
  
   return (
-    <ClerkProvider localization={localization}>
-      <html lang={locale}>
-        <body className={`${langFontClass}`}>
-          <NextIntlClientProvider messages={messages}>
-            <ThemeProvider>
+    <html lang={locale}>
+      <body className={`${langFontClass}`}>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>
+            <ClerkThemeProvider localization={localization}>
               <SideBarProvider>
                 <QueryProvider>
                   <div className="background-container">
@@ -91,12 +91,11 @@ export default async function LocaleLayout({
                   </div>
                 </QueryProvider>
               </SideBarProvider>
-            </ThemeProvider>
-          </NextIntlClientProvider>
-        </body>
-        <GoogleAnalytics gaId={`${GA_ID}`} />
-      </html>
-    </ClerkProvider>
-
+            </ClerkThemeProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
+      </body>
+      <GoogleAnalytics gaId={`${GA_ID}`} />
+    </html>
   );
 }
