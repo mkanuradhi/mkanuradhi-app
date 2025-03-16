@@ -9,11 +9,12 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 interface RichTextEditorProps {
   value: string;
+  placeholder?: string;
   onChange: (value: string) => void;
 }
 
-const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange }) => {
-  // Define Quill modules and formats as needed
+const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, placeholder = '', onChange }) => {
+
   const modules = {
     toolbar: [
       [{ font: [] }],
@@ -56,6 +57,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange }) => {
         onChange={onChange}
         modules={modules}
         formats={formats}
+        placeholder={placeholder}
       />
     </div>
   );

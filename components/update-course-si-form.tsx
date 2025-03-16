@@ -11,6 +11,7 @@ import { UpdateCourseSiDto } from '@/dtos/course-dto';
 import Course from '@/interfaces/i-course';
 import LoadingContainer from './loading-container';
 import RequiredFormLabel from './required-form-label';
+import RichTextEditor from './rich-text-editor';
 
 const baseTPath = 'components.UpdateCourseSiForm';
 
@@ -87,7 +88,7 @@ const UpdateCourseSiForm: FC<UpdateCourseSiFormProps> = ({id, onSuccess }) => {
               onSubmit={handleSubmit}
               enableReinitialize={true}
             >
-              {({ isSubmitting, status }) => (
+              {({ values, setFieldValue, isSubmitting, status }) => (
                 <Form>
                   <fieldset disabled={isSubmitting}>
                     <BootstrapForm.Group className="mb-4" controlId="formTitleSi">
@@ -103,7 +104,11 @@ const UpdateCourseSiForm: FC<UpdateCourseSiFormProps> = ({id, onSuccess }) => {
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formDescriptionSi">
                       <BootstrapForm.Label>{t('descriptionSiLabel')}</BootstrapForm.Label>
-                      <Field as="textarea" name="descriptionSi" placeholder={t('descriptionSiPlaceholder')} className="form-control" rows={8} />
+                      <RichTextEditor
+                        value={values.descriptionSi}
+                        onChange={(content) => setFieldValue('descriptionSi', content)}
+                        placeholder={t('descriptionSiPlaceholder')}
+                      />
                       <BootstrapForm.Text className="text-muted">{t('descriptionSiHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="descriptionSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>

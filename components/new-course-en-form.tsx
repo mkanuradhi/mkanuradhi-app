@@ -149,6 +149,7 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
                     <RichTextEditor
                       value={values.descriptionEn}
                       onChange={(content) => setFieldValue('descriptionEn', content)}
+                      placeholder={t('descriptionEnPlaceholder')}
                     />
                     <BootstrapForm.Text className="text-muted">{t('descriptionEnHelp')}</BootstrapForm.Text>
                     <ErrorMessage name="descriptionEn" component="p" className="text-danger mt-1" />

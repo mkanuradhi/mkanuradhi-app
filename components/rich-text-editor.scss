@@ -16,6 +16,11 @@
   line-height: 1.5;
   font-weight: 400;
   font-size: 1rem;
+  padding: 2px;
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--bs-placeholder-color, #6c757d);
 }
 
 .ql-container.ql-snow:focus-within {
@@ -44,4 +49,14 @@
 .ql-toolbar.ql-snow button:focus {
   background-color: var(--bs-light);
   color: var(--bs-body-color);
+}
+
+.ql-toolbar.ql-snow .ql-picker-label,
+.ql-toolbar.ql-snow .ql-picker-item {
+  color: var(--bs-body-color);
+}
+
+.ql-toolbar.ql-snow .ql-picker-options {
+  background-color: var(--bs-body-bg);
+  border-color: var(--bs-border-color);
 }

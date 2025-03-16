@@ -14,6 +14,7 @@ import Course from '@/interfaces/i-course';
 import LoadingContainer from './loading-container';
 import DeliveryMode from '@/enums/delivery-mode';
 import RequiredFormLabel from './required-form-label';
+import RichTextEditor from './rich-text-editor';
 
 const baseTPath = 'components.NewCourseEnForm';
 
@@ -129,7 +130,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
               onSubmit={handleSubmit}
               enableReinitialize={true}
             >
-              {({ values, isSubmitting, status }) => (
+              {({ values, setFieldValue, isSubmitting, status }) => (
                 <Form>
                   <fieldset disabled={isSubmitting}>
                     <BootstrapForm.Group className="mb-4" controlId="formYear">
@@ -176,7 +177,11 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formDescriptionEn">
                       <BootstrapForm.Label>{t('descriptionEnLabel')}</BootstrapForm.Label>
-                      <Field as="textarea" name="descriptionEn" placeholder={t('descriptionEnPlaceholder')} className="form-control" rows={8} />
+                      <RichTextEditor
+                        value={values.descriptionEn}
+                        onChange={(content) => setFieldValue('descriptionEn', content)}
+                        placeholder={t('descriptionEnPlaceholder')}
+                      />
                       <BootstrapForm.Text className="text-muted">{t('descriptionEnHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="descriptionEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
