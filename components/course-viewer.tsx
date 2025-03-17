@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import DOMPurify from 'dompurify';
+import React from 'react';
 import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import { useLocale, useTranslations } from 'next-intl';
 import CourseView from '@/interfaces/i-course-view';
 import { Link } from '@/i18n/routing';
 import SharePanel from './SharePanel';
+import SanitizedHtml from './sanitized-html';
+import 'react-quill/dist/quill.snow.css';
 import "./course-viewer.scss";
 
 const baseTPath = 'components.CourseViewer';
@@ -17,7 +18,6 @@ interface CourseViewerProps {
 const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
-  const [sanitizedHtml, setSanitizedHtml] = useState<string>('');
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
   const fullUrl = `${baseUrl}/${locale}/teaching/courses/${courseView.path}`;
 
@@ -30,24 +30,6 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
     codeCreditsParts.push(`${t.rich('credits', {value: formattedCredits})}`);
   }
   const codeCredits = codeCreditsParts.join(" | ");
-
-  useEffect(() => {
-    // Add a hook to handle target="_blank"
-    DOMPurify.addHook('afterSanitizeAttributes', (node) => {
-      if (node.tagName === 'A' && node.getAttribute('target') === '_blank') {
-        node.setAttribute('rel', 'noopener noreferrer');
-      }
-    });
-
-    const sanitizedDescription = DOMPurify.sanitize(courseView.description, {
-      ALLOWED_ATTR: ['target', 'href', 'rel', 'src', 'alt', 'style'], // Include necessary attributes
-    });
-    setSanitizedHtml(sanitizedDescription);
-    
-    return () => {
-      DOMPurify.removeHook('afterSanitizeAttributes');
-    }
-  }, [courseView.description]);
 
   return (
     <>
@@ -86,7 +68,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
             </Row>
             <Row>
               <Col>
-                <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
+                <SanitizedHtml html={courseView.description} className="ql-editor" />
               </Col>
             </Row>
             <Row className="my-3">
