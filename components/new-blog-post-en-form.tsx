@@ -5,7 +5,7 @@ import { Col, Row, Form as BootstrapForm, Button } from 'react-bootstrap';
 import { getNewBlogPostEnSchema } from '@/schemas/new-blog-post-en-schema';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faCircleNotch, faMinus, faPaperPlane, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch, faMinus, faPaperPlane, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import DatePicker from 'react-datepicker';
 import { useCreateBlogPostEnMutation } from '@/hooks/use-blog-posts';
 import { CreateBlogPostTextEnDto } from '@/dtos/blog-post-dto';
@@ -133,7 +133,7 @@ const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
                           timeInputLabel={t('dateTimeInputLabel')}
                           showTimeInput={true}
                           placeholderText={t('dateTimePlaceholder')}
-                          icon={<FontAwesomeIcon icon={faCalendarDays} />}
+                          icon={<i className="bi bi-calendar2-check-fill"></i>}
                         />
                       )}
                     </Field>
