@@ -1,8 +1,9 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 import "./rich-text-editor.scss";
+import { Button } from 'react-bootstrap';
 
 // Dynamically import ReactQuill (client-side only)
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
@@ -14,6 +15,15 @@ interface RichTextEditorProps {
 }
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, placeholder = '', onChange }) => {
+  const [showHtml, setShowHtml] = useState(false);
+  // htmlContent holds the raw HTML when in HTML view
+  const [htmlContent, setHtmlContent] = useState(value);
+
+  useEffect(() => {
+    if (!showHtml) {
+      setHtmlContent(value);
+    }
+  }, [value, showHtml]);
 
   const modules = {
     toolbar: [
@@ -49,16 +59,37 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, placeholder = ''
     'script',
   ];
 
+  const handleToggle = () => {
+    if (showHtml) {
+      onChange(htmlContent);
+    }
+    setShowHtml(!showHtml);
+  };
+
   return (
     <div>
-      <ReactQuill
-        theme="snow"
-        value={value}
-        onChange={onChange}
-        modules={modules}
-        formats={formats}
-        placeholder={placeholder}
-      />
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.5rem' }}>
+        <Button onClick={handleToggle} variant="outline-primary" size="sm">
+          { showHtml ? <i className="bi bi-type-italic"></i> : <i className="bi bi-code-slash"></i> }
+        </Button>
+      </div>
+      {showHtml ? (
+        <textarea
+          value={htmlContent}
+          onChange={(e) => setHtmlContent(e.target.value)}
+          rows={10}
+          style={{ width: '100%', fontFamily: 'monospace', padding: '0.5rem' }}
+        />
+      ) : (
+        <ReactQuill
+          theme="snow"
+          value={value}
+          onChange={onChange}
+          modules={modules}
+          formats={formats}
+          placeholder={placeholder}
+        />
+      )}
     </div>
   );
 };
