@@ -710,11 +710,9 @@
       "blogPosts": "blog posts"
     },
     "PaginationInfo": {
-      "showing": "Showing",
-      "of": "of",
-      "items": "",
-      "page": "Page",
-      "pageOf": "of"
+      "itemInfo": "Showing <strong>{startItem}</strong> - <strong>{endItem}</strong> of <strong>{totalCount}</strong> {itemName}",
+      "pageInfo": "(Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>)",
+      "noItemName": "items"
     },
     "BlogPostOptionsCard": {
       "read": "Read More",

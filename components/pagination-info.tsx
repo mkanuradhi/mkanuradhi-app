@@ -27,12 +27,27 @@ const PaginationInfo: React.FC<PaginationInfoProps> = ({
 
   const startItem = currentPage * pageSize + 1;
   const endItem = Math.min(startItem + currentPageSize - 1, totalCount);
+  const contentName = itemName || t('noItemName');
 
   return (
     <span className="text-muted">
-      {t('showing')} <strong>{startItem}</strong> - <strong>{endItem}</strong> {t('of')}{" "}
-      <strong>{totalCount}</strong> {t('items')}{" "}{itemName} ({t('page')}{" "}
-      <strong>{currentPage + 1}</strong> {t('pageOf')} <strong>{totalPages}</strong>)
+      {
+        t.rich('itemInfo', {
+          strong: (chunks) => <strong>{chunks}</strong>,
+          startItem,
+          endItem,
+          totalCount,
+          itemName: contentName,
+          })
+      }
+      {" "}
+      {
+        t.rich('pageInfo', {
+          strong: (chunks) => <strong>{chunks}</strong>,
+          currentPage: currentPage + 1,
+          totalPages
+        })
+      }
     </span>
   );
 }

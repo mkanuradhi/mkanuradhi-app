@@ -710,11 +710,9 @@
       "blogPosts": "බ්ලොග් සටහන්"
     },
     "PaginationInfo": {
-      "showing": "පෙන්වමින්",
-      "of": "සිට",
-      "items": "දක්වා",
-      "page": "පිටුව",
-      "pageOf": "න්"
+      "itemInfo": "{itemName} <strong>{totalCount}</strong> න් <strong>{startItem}</strong> - <strong>{endItem}</strong> තෙක් පෙන්වයි",
+      "pageInfo": "(පිටු <strong>{totalPages}</strong> න් <strong>{currentPage}</strong> පිටුව)",
+      "noItemName": "අයිතම"
     },
     "BlogPostOptionsCard": {
       "read": "තව කියවන්න",
