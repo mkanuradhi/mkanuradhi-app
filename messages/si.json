@@ -689,7 +689,8 @@
       "teaching": "ඉගැන්වීම්",
       "courses": "පාඨමාලා",
       "share": "මෙම පාඨමාලාව බෙදා ගන්න",
-      "credits": "ඒකක අගය {value}"
+      "credits": "ඒකක අගය {value}",
+      "quizzes": "ප්‍රශ්නාවලි"
     },
     "Footer": {
       "title": "ප්‍රකාශන හිමිකම \u00A9 {currentYear} අනුරාධා ආරියරත්න.",

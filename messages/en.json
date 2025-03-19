@@ -689,7 +689,8 @@
       "teaching": "Teaching",
       "courses": "Courses",
       "share": "Share this course",
-      "credits": "{value} Credits"
+      "credits": "{value} Credits",
+      "quizzes": "Quizzes"
     },
     "Footer": {
       "title": "Copyright \u00A9 {currentYear} Anuradha Ariyaratne.",
