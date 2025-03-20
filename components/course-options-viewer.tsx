@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Alert, Breadcrumb, Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import { Alert, Breadcrumb, Button, ButtonGroup, Col, Container, Modal, Row } from 'react-bootstrap';
 import { Link, useRouter } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faListUl, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useActivateCourseMutation, useCourseByIdQuery, useDeactivateCourseMutation, useDeleteCourseMutation } from '@/hooks/use-courses';
 import LoadingContainer from './loading-container';
 import DocumentStatus from '@/enums/document-status';
@@ -102,6 +102,20 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
                 <SanitizedHtml html={course.descriptionEn} className="ql-editor" />
               </Col>
             </Row>
+            {course.quizzes && course.quizzes.length > 0 && (
+              <Row>
+                <Col>
+                  <h2 className="my-3">{t('quizzesEn')}</h2>
+                  <ol>
+                    {course.quizzes.map((quiz) => (
+                      <li key={quiz.id}>
+                        <Link href={`/dashboard/courses/${course.id}/quizzes/${quiz.id}`}>{quiz.titleEn}</Link>
+                      </li>
+                    ))}
+                  </ol>
+                </Col>
+              </Row>
+            )}
           </Col>
         </Row>
         {/* ----------------- Si ----------------- */}
@@ -129,27 +143,51 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
                 <SanitizedHtml html={course.descriptionSi} className="ql-editor" />
               </Col>
             </Row>
+            {course.quizzes && course.quizzes.length > 0 && (
+              <Row>
+                <Col>
+                  <h2 className="my-3">{t('quizzesSi')}</h2>
+                  <ol>
+                    {course.quizzes.map((quiz) => (
+                      <li key={quiz.id}>
+                        <Link href={`/dashboard/courses/${course.id}/quizzes/${quiz.id}`}>{quiz.titleSi}</Link>
+                      </li>
+                    ))}
+                  </ol>
+                </Col>
+              </Row>
+            )}
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <Link href={`/dashboard/courses/${course.id}/edit`}>
-              <Button variant="secondary" className="me-2">
+        <Row className="align-items-center">
+          <Col className="mb-2">
+            <ButtonGroup>
+              <Button
+                variant="secondary"
+                onClick={() => router.push(`/dashboard/courses/${course.id}/edit`)}
+              >
                 <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
               </Button>
-            </Link>
-            <Button
-              variant={course.status === DocumentStatus.ACTIVE ? `warning` : `success`}
-              className="me-2"
-              onClick={course.status === DocumentStatus.ACTIVE ? handleDeactivate : handleActivate}
-              disabled={isPendingActivate || isPendingDeactivate}
-            >
-              <FontAwesomeIcon
-                icon={course.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
-                className="list-icon"
-              />{" "}
-              {course.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
-            </Button>
+              <Button
+                variant={course.status === DocumentStatus.ACTIVE ? `warning` : `success`}
+                onClick={course.status === DocumentStatus.ACTIVE ? handleDeactivate : handleActivate}
+                disabled={isPendingActivate || isPendingDeactivate}
+              >
+                <FontAwesomeIcon
+                  icon={course.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
+                  className="list-icon"
+                />{" "}
+                {course.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+              </Button>
+              <Button
+                variant="info"
+                onClick={() => router.push(`/dashboard/courses/${course.id}/quizzes`)}
+              >
+                <FontAwesomeIcon icon={faListUl} className="me-1" /> { t('quizzes') }
+              </Button>
+            </ButtonGroup>
+          </Col>
+          <Col xs="auto" className="mb-2">
             <Button variant="danger" className="me-2" onClick={handleShow} disabled={isPendingDelete}>
               <FontAwesomeIcon icon={faTrash} className="list-icon" /> { t('delete') }
             </Button>
@@ -186,7 +224,7 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
           </Row>
         )}
         <div>
-          <Modal show={show} onHide={handleClose}>
+          <Modal show={show} onHide={handleClose} centered>
             <Modal.Header closeButton>
               <Modal.Title>{t('deleteModalTitle')}</Modal.Title>
             </Modal.Header>

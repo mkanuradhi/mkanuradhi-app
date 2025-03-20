@@ -648,6 +648,10 @@
         },
         "Edit": {
           "title": "Edit Course"
+        },
+        "Quizzes": {
+          "title": "Quizzes",
+          "addNew": "Add New Quiz"
         }
       }
     }
@@ -860,7 +864,10 @@
       "deleteModalAccept": "Yes, Delete",
       "activateErrorTitle": "Cannot activate the course",
       "deactivateErrorTitle": "Cannot deactivate the course",
-      "deleteErrorTitle": "Cannot delete the course"
+      "deleteErrorTitle": "Cannot delete the course",
+      "quizzesEn": "Quizzes",
+      "quizzesSi": "ප්‍රශ්නාවලි",
+      "quizzes": "Quizzes"
     },
     "NewCourseEnForm": {
       "yearLabel": "Year",

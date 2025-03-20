@@ -648,6 +648,10 @@
         },
         "Edit": {
           "title": "පාඨමාලාව සංස්කරණය කරන්න"
+        },
+        "Quizzes": {
+          "title": "ප්‍රශ්නාවලි",
+          "addNew": "නව ප්‍රශ්නාවලියක් එක් කරන්න"
         }
       }
     }
@@ -850,7 +854,7 @@
       "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය.",
       "dashboard": "පාලන පුවරුව",
       "courses": "පාඨමාලා",
-      "edit": "සංස්කරණය කරන්න",
+      "edit": "සංස්කරණ",
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",
       "delete": "මකන්න",
@@ -860,7 +864,10 @@
       "deleteModalAccept": "ඔව්, මකන්න",
       "activateErrorTitle": "පාඨමාලාව සක්‍රිය කළ නොහැක",
       "deactivateErrorTitle": "පාඨමාලාව අක්‍රිය කළ නොහැක",
-      "deleteErrorTitle": "පාඨමාලාව මැකිය නොහැක"
+      "deleteErrorTitle": "පාඨමාලාව මැකිය නොහැක",
+      "quizzesEn": "Quizzes",
+      "quizzesSi": "ප්‍රශ්නාවලි",
+      "quizzes": "ප්‍රශ්නාවලි"
     },
     "NewCourseEnForm": {
       "yearLabel": "වර්ෂය",

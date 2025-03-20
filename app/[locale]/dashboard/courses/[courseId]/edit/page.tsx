@@ -7,13 +7,13 @@ const baseTPath = 'pages.Dashboard.Courses.Edit';
 
 interface EditCoursePageProps {
   params: {
-    id: string;
+    courseId: string;
   };
 }
 
 const EditCoursePage: React.FC<EditCoursePageProps> = async ({ params }) => {
   const t = await getTranslations(baseTPath);
-  const { id } = params;
+  const { courseId } = params;
 
   return (
     <>
@@ -22,7 +22,7 @@ const EditCoursePage: React.FC<EditCoursePageProps> = async ({ params }) => {
           <h1>{t('title')}</h1>
         </Col>
       </Row>
-      <UpdateCourseFormsContainer id={id} />
+      <UpdateCourseFormsContainer id={courseId} />
     </>
   )
 }
