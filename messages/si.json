@@ -648,10 +648,6 @@
         },
         "Edit": {
           "title": "පාඨමාලාව සංස්කරණය කරන්න"
-        },
-        "Quizzes": {
-          "title": "ප්‍රශ්නාවලි",
-          "addNew": "නව ප්‍රශ්නාවලියක් එක් කරන්න"
         }
       }
     }
@@ -953,6 +949,24 @@
     },
     "RequiredLabel": {
       "tooltip": "අවශ්‍ය ක්ෂේත්‍රයකි"
+    },
+    "QuizzesOptionsViewer": {
+      "title": "ප්‍රශ්නාවලි",
+      "dashboard": "පාලන පුවරුව",
+      "courses": "පාඨමාලා",
+      "addNew": "නව ප්‍රශ්නාවලියක් එක් කරන්න"
+    },
+    "QuizOptionsViewer": {
+      "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය.",
+      "failQuiz": "ප්‍රශ්නාවලිය පූරණය කිරීමට අසමත් විය.",
+      "dashboard": "පාලන පුවරුව",
+      "courses": "පාඨමාලා",
+      "quizzes": "ප්‍රශ්නාවලි",
+      "duration": "කාල සීමාව",
+      "numMinutes": "මිනිත්තු {mins}",
+      "availableFromUntil": "මෙය <strong>{from}</strong> සිට <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
+      "availableFrom": "මෙය <strong>{from}</strong> සිට සක්‍රිය වේ.",
+      "availableUntil": "මෙය <strong>{until}</strong> දක්වා සක්‍රිය වේ."
     }
   },
   "contexts": {

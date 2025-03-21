@@ -29,3 +29,17 @@ export const getFormattedTime = (locale: string, dateTime: Date) => {
     hour12: true,
   }).format(new Date(dateTime));
 }
+
+export const getFormattedDateTime = (locale: string, dateTime: Date): string => {
+  return new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true,
+  }).format(new Date(dateTime));
+}
+
+export const capitalizeLang = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1);

@@ -1,4 +1,5 @@
 import React from 'react';
+import QuizOptionsViewer from '@/components/quiz-options-viewer';
 
 interface QuizOptionsPageProps {
   params: {
@@ -12,12 +13,7 @@ const QuizOptionsPage: React.FC<QuizOptionsPageProps> = ({ params }) => {
 
   return (
     <>
-      <h1>Quiz {courseId}</h1>
-      <h3>{quizId}</h3>
-      <div className="quiz">
-        {/* <QuizOptionsViewer quizId={quizId} /> */}
-      </div>
-      
+      <QuizOptionsViewer courseId={courseId} quizId={quizId} />
     </>
   );
 }

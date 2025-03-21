@@ -648,10 +648,6 @@
         },
         "Edit": {
           "title": "Edit Course"
-        },
-        "Quizzes": {
-          "title": "Quizzes",
-          "addNew": "Add New Quiz"
         }
       }
     }
@@ -953,6 +949,24 @@
     },
     "RequiredLabel": {
       "tooltip": "Required field"
+    },
+    "QuizzesOptionsViewer": {
+      "title": "Quizzes",
+      "dashboard": "Dashboard",
+      "courses": "Courses",
+      "addNew": "Add new quiz"
+    },
+    "QuizOptionsViewer": {
+      "failCourse": "Failed to load course",
+      "failQuiz": "Failed to load quiz",
+      "dashboard": "Dashboard",
+      "courses": "Courses",
+      "quizzes": "Quizzes",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
+      "availableFrom": "This will be enabled from <strong>{from}</strong>",
+      "availableUntil": "This will be enabled until <strong>{until}</strong>"
     }
   },
   "contexts": {
