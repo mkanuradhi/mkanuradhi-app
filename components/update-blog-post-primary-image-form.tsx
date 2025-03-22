@@ -105,7 +105,10 @@ const UpdateBlogPostPrimaryImageForm: React.FC<UpdateBlogPostPrimaryImageFormPro
               {
                 isDragActive ?
                   <p>{t('dragActiveLabel')}</p> :
-                  <p>{t('selectFileLabel')}</p>
+                  <div className="d-flex flex-column justify-content-center align-items-center">
+                    <i className="bi bi-image" style={{ fontSize: '3rem' }}></i>
+                    <p className="text-center">{" "}{t('selectFileLabel')}</p>
+                  </div>
               }
             </div>
           </Col>

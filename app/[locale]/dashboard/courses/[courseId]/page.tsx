@@ -3,18 +3,16 @@ import CourseOptionsViewer from '@/components/course-options-viewer';
 
 interface CourseOptionsPageProps {
   params: {
-    id: string;
+    courseId: string;
   };
 }
 
 const CourseOptionsPage: React.FC<CourseOptionsPageProps> = ({ params }) => {
-  const { id } = params;
+  const { courseId } = params;
 
   return (
     <>
-      <div className="course">
-        <CourseOptionsViewer courseId={id} />
-      </div>
+      <CourseOptionsViewer courseId={courseId} />
     </>
   );
 }

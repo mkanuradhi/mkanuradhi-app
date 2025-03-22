@@ -71,6 +71,20 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
                 <SanitizedHtml html={courseView.description} className="ql-editor" />
               </Col>
             </Row>
+            {courseView.quizzes && courseView.quizzes.length > 0 && (
+              <Row>
+                <Col>
+                  <h2 className="my-3">{t('quizzes')}</h2>
+                  <ol>
+                    {courseView.quizzes.map((quiz) => (
+                      <li key={quiz.id}>
+                        <Link href={`/teaching/courses/${courseView.path}/quizzes/${quiz.id}`}>{quiz.title}</Link>
+                      </li>
+                    ))}
+                  </ol>
+                </Col>
+              </Row>
+            )}
             <Row className="my-3">
               <Col>
                 <h6>{t('share')}</h6>

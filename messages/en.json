@@ -55,212 +55,7 @@
         "pageDescription": "I am conducting many courses in the field of computing, specializing in meta-heuristic optimization and machine learning.",
         "pageKeywords": "courses, subjects, degree, masters",
         "title": "Courses"
-      },
-      "details": [
-        {
-          "year": "2025",
-          "descriptions": [
-            { 
-              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "DSA 555 3.0 Nature Inspired Computing (M.Sc. in Data Science and AI - Batch 3)"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2024",
-          "descriptions": [
-            { 
-              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "CSC 540 2.0 Software Engineering (M.Sc. in Computer Science)",
-                "CSC 603 2.0 Nature Inspired Algorithms (M.Sc. in Computer Science - Batch 6)",
-                "CSC 610 2.0 Machine Learning (M.Sc. in Computer Science)"
-              ]
-            },
-            {
-              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
-                "CSC 112 2.0 Software Engineering II (B.Sc. (General Degree))",
-                "CSC 319 1.5 Machine Learning I (B.Sc. (General Degree))",
-                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree))"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2023",
-          "descriptions": [
-            { 
-              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "DSA 504 2.0 Machine Learning 1 (M.Sc. in Data Science and AI - Batch 2)"
-              ]
-            },
-            { 
-              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
-                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2022",
-          "descriptions": [
-            { 
-              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "DSA 504 2.0 Machine Learning 1 (M.Sc. in Data Science and AI - Batch 1)",
-                "DSA 555 3.0 Nature Inspired Computing (M.Sc. in Data Science and AI - Batch 1)"
-              ]
-            },
-            { 
-              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
-                "CSC 201 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
-                "ICT 204 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
-                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
-                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
-                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
-                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2021",
-          "descriptions": [
-            { 
-              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "CSC 615 2.0 Nature Inspired Algorithms (M.Sc. in Computer Science)"
-              ]
-            },
-            { 
-              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
-                "CSC 201 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
-                "ICT 204 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
-                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
-                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
-                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
-                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2020",
-          "descriptions": [
-            { 
-              "location": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "IM 534 2.0 Special Topics in Industrial Mathematics (M.Sc. in Industrial Mathematics)"
-              ]
-            },
-            { 
-              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
-                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
-                "ICT 204 2.0 Data Structures and Algorithms I (B.Sc. (General Degree))",
-                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
-                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
-                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
-                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2019",
-          "descriptions": [
-            { 
-              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
-                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
-                "ICT 307 2.0 Introduction to AI (B.Sc. (General Degree))",
-                "CSC 319 1.5 Machine Learning I (B.Sc. (General Degree))",
-                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))",
-                "CSC 377 2.0 Theory of Programming Languages (B.Sc. (Special Degree, CS))",
-                "CSC 467 2.0 Evolutionary Computing (B.Sc. (Special Degree, CS))"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2018",
-          "descriptions": [
-            { 
-              "location": "Department of Computer Science, Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka.",
-              "courses": [
-                "CSC 108 1.5 Software Engineering I (B.Sc. (General Degree))",
-                "ICT 131 2.0 Software Engineering  II (B.Sc. (General Degree))",
-                "CSC 361 2.0 Swarm Intelligence (B.Sc. (General Degree))"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2017",
-          "descriptions": [
-            { 
-              "location": "Department of Computer Science, Faculty of Computing, General Sir John Kotelawala Defence University, Sri Lanka.",
-              "courses": [
-                "CS 5023 Computer Security (Batch 32)",
-                "CS 1022 Foundation of Computer Science (Batch 34)",
-                "IS 5073 Operational Research (Batch 32)"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2016",
-          "descriptions": [
-            { 
-              "location": "Department of Computer Science, Faculty of Computing, General Sir John Kotelawala Defence University, Sri Lanka.",
-              "courses": [
-                "CS 5023 Computer Security (Batch 31)",
-                "CS 1022 Foundation of Computer Science (Batch 33)",
-                "CS 6013 Automata Theory (Batch 31)",
-                "CS 3023 Data Structures and Algorithms II (Batch 32)"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2015",
-          "descriptions": [
-            { 
-              "location": "Department of Computer Science, Faculty of Computing, General Sir John Kotelawala Defence University, Sri Lanka.",
-              "courses": [
-                "CS 5023 Computer Security (Batch 30)",
-                "CS 6013 Automata Theory (Batch 30)",
-                "CS 3023 Data Structures and Algorithms II (Batch 31)"
-              ]
-            }
-          ]
-        },
-        {
-          "year": "2014",
-          "descriptions": [
-            { 
-              "location": "Department of Computer Science, Faculty of Natural Sciences, The Open University of Sri Lanka.",
-              "courses": [
-                "CPU 1142 Data Structures and Algorithms",
-                "CPU 2241 Database Management Systems"
-              ]
-            }
-          ]
-        }
-      ]
+      }
     },
     "Research": {
       "pageTitle": "Research",
@@ -894,7 +689,8 @@
       "teaching": "Teaching",
       "courses": "Courses",
       "share": "Share this course",
-      "credits": "{value} Credits"
+      "credits": "{value} Credits",
+      "quizzes": "Quizzes"
     },
     "Footer": {
       "title": "Copyright \u00A9 {currentYear} Anuradha Ariyaratne.",
@@ -915,11 +711,9 @@
       "blogPosts": "blog posts"
     },
     "PaginationInfo": {
-      "showing": "Showing",
-      "of": "of",
-      "items": "",
-      "page": "Page",
-      "pageOf": "of"
+      "itemInfo": "Showing <strong>{startItem}</strong> - <strong>{endItem}</strong> of <strong>{totalCount}</strong> {itemName}",
+      "pageInfo": "(Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>)",
+      "noItemName": "items"
     },
     "BlogPostOptionsCard": {
       "read": "Read More",
@@ -1066,7 +860,10 @@
       "deleteModalAccept": "Yes, Delete",
       "activateErrorTitle": "Cannot activate the course",
       "deactivateErrorTitle": "Cannot deactivate the course",
-      "deleteErrorTitle": "Cannot delete the course"
+      "deleteErrorTitle": "Cannot delete the course",
+      "quizzesEn": "Quizzes",
+      "quizzesSi": "ප්‍රශ්නාවලි",
+      "quizzes": "Quizzes"
     },
     "NewCourseEnForm": {
       "yearLabel": "Year",
@@ -1152,6 +949,46 @@
     },
     "RequiredLabel": {
       "tooltip": "Required field"
+    },
+    "QuizzesTable": {
+      "title": "Quizzes",
+      "dashboard": "Dashboard",
+      "courses": "Courses",
+      "addNew": "Add new quiz",
+      "failCourse": "Failed to load course",
+      "failQuizzes": "Failed to load quizzes",
+      "noQuizzes": "No quizzes to show"
+    },
+    "QuizOptionsCard": {
+      "failQuiz": "Fail to load the quiz",
+      "read": "Read more",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
+      "availableFrom": "This will be enabled from <strong>{from}</strong>",
+      "availableUntil": "This will be enabled until <strong>{until}</strong>",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the quiz: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the quiz",
+      "deactivateErrorTitle": "Cannot deactivate the quiz",
+      "deleteErrorTitle": "Cannot delete the quiz"
+    },
+    "QuizOptionsViewer": {
+      "failCourse": "Failed to load course",
+      "failQuiz": "Failed to load quiz",
+      "dashboard": "Dashboard",
+      "courses": "Courses",
+      "quizzes": "Quizzes",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
+      "availableFrom": "This will be enabled from <strong>{from}</strong>",
+      "availableUntil": "This will be enabled until <strong>{until}</strong>"
     }
   },
   "contexts": {
