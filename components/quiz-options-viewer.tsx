@@ -52,7 +52,6 @@ const QuizOptionsViewer: React.FC<QuizOptionsViewerProps> = ({ courseId, quizId 
 
   const fCode = course.code ? `${course.code} ` : '';
   const formattedCredits = course.credits ? course.credits.toFixed(1) : '';
-  // const titleKey = `title${capitalizeLang(lang)}` as `titleEn` | 'titleSi';
   const titleKey = (lang === LANG_SI ? `titleSi` : `titleEn` );
   const formattedCourseTitle = `${course.year} ${fCode} ${formattedCredits} ${course[titleKey]}`;
 

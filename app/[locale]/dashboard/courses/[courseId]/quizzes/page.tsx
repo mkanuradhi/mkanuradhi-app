@@ -1,5 +1,5 @@
 import React from 'react';
-import QuizzesOptionsViewer from '@/components/quizzes-options-viewer';
+import QuizzesTable from '@/components/quizzes-table';
 
 interface QuizzesPageProps {
   params: {
@@ -12,7 +12,7 @@ const QuizzesPage: React.FC<QuizzesPageProps> = async ({ params }) => {
 
   return (
     <>
-      <QuizzesOptionsViewer courseId={courseId} />
+      <QuizzesTable courseId={courseId} />
     </>
   )
 }

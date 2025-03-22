@@ -97,11 +97,13 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
                 <div>{course.locationEn}</div>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <SanitizedHtml html={course.descriptionEn} className="ql-editor" />
-              </Col>
-            </Row>
+            {course.descriptionEn && (
+              <Row>
+                <Col>
+                  <SanitizedHtml html={course.descriptionEn} className="ql-editor" />
+                </Col>
+              </Row>
+            )}
             {course.quizzes && course.quizzes.length > 0 && (
               <Row>
                 <Col>

@@ -8,21 +8,26 @@ import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { capitalizeLang } from '@/utils/common-utils';
-import "./quizzes-options-viewer.scss";
+import QuizOptionsCard from './quiz-options-card';
+import { useQuizzesQuery } from '@/hooks/use-quizzes';
+import "./quizzes-table.scss";
 
-const baseTPath = 'components.QuizzesOptionsViewer';
+const baseTPath = 'components.QuizzesTable';
 
-interface QuizzesOptionsViewerProps {
+interface QuizzesTableProps {
   courseId: string;
 }
 
-const QuizzesOptionsViewer: React.FC<QuizzesOptionsViewerProps> = ({ courseId }) => {
+const QuizzesTable: React.FC<QuizzesTableProps> = ({ courseId }) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
 
   const { data: course, isPending: isPendingCourse, isError: isCourseError, isFetching: isFetchingCourse, error: courseError } = useCourseByIdQuery(courseId);
+  const { data: quizzesPaginatedResult, isPending: isPendingQuizzes, isError: isQuizzesError, isFetching: isFetchingQuizzes, error: quizzesError } = useQuizzesQuery(courseId);
 
-  if (isPendingCourse || isFetchingCourse) {
+  const quizzes = quizzesPaginatedResult?.items ?? [];
+
+  if (isPendingCourse || isFetchingCourse || isPendingQuizzes || isFetchingQuizzes) {
     return (<LoadingContainer />);
   }
 
@@ -37,6 +42,17 @@ const QuizzesOptionsViewer: React.FC<QuizzesOptionsViewerProps> = ({ courseId })
     );
   }
 
+  if (isQuizzesError && quizzesError) {
+    return (
+      <Row>
+        <Col>
+          <h5>{t('failQuizzes')}</h5>
+          <p>{quizzesError.message}</p>
+        </Col>
+      </Row>
+    );
+  }
+
   const fCode = course.code ? `${course.code} ` : '';
   const formattedCredits = course.credits ? course.credits.toFixed(1) : '';
   const titleKey = `title${capitalizeLang(locale)}` as `titleEn` | 'titleSi';
@@ -44,7 +60,7 @@ const QuizzesOptionsViewer: React.FC<QuizzesOptionsViewerProps> = ({ courseId })
 
   return (
     <>
-      <Container fluid="md" className="quiz-options-viewer">
+      <Container fluid="md" className="quizzes-table">
         <Row>
           <Col>
             <Breadcrumb>
@@ -60,7 +76,7 @@ const QuizzesOptionsViewer: React.FC<QuizzesOptionsViewerProps> = ({ courseId })
             </Breadcrumb>
           </Col>
         </Row>
-        <Row className="my-4">
+        <Row className="">
           <Col>
             <h1>{t('title')}</h1>
           </Col>
@@ -69,24 +85,22 @@ const QuizzesOptionsViewer: React.FC<QuizzesOptionsViewerProps> = ({ courseId })
           <Col>
             <Link href={`/dashboard/courses/${courseId}/quizzes/new`}>
               <Button>
-                <FontAwesomeIcon icon={faPlus} className="me-1" aria-hidden="true" />{ t('addNew') }
+                <FontAwesomeIcon icon={faPlus} className="me-2" aria-hidden="true" />{ t('addNew') }
               </Button>
             </Link>
           </Col>
         </Row>
-        { course.quizzes && course.quizzes.length > 0 && (
-          <Row className="my-4">
-            <Col>
-              <ol>
-                {course.quizzes.map((quiz) => (
-                  <li key={quiz.id}>
-                    <Link href={`/dashboard/courses/${courseId}/quizzes/${quiz.id}`} className="text-decoration-none">
-                      {quiz.titleEn}{" | "}{quiz.titleSi}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </Col>
+        {quizzes && quizzes.length > 0 ? (
+          quizzes.map((quiz, index) => (
+            <Row key={index}>
+              <Col>
+                <QuizOptionsCard courseId={courseId} quizId={quiz.id} />
+              </Col>
+            </Row>
+          ))
+        ) : (
+          <Row>
+            <Col>{t('noQuizzes')}</Col>
           </Row>
         )}
       </Container>
@@ -94,4 +108,4 @@ const QuizzesOptionsViewer: React.FC<QuizzesOptionsViewerProps> = ({ courseId })
   );
 }
 
-export default QuizzesOptionsViewer;
+export default QuizzesTable;

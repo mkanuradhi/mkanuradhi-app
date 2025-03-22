@@ -5,33 +5,78 @@ import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
-import { useActivateCourseMutation, useDeactivateCourseMutation, useDeleteCourseMutation } from "@/hooks/use-courses";
 import DocumentStatus from "@/enums/document-status";
-import Course from "@/interfaces/i-course";
-import "./course-options-card.scss";
+import { useActivateQuizMutation, useDeactivateQuizMutation, useDeleteQuizMutation, useQuizByIdQuery } from '@/hooks/use-quizzes';
+import LoadingContainer from './loading-container';
+import { LANG_SI, LOCALE_EN, LOCALE_SI } from '@/constants/common-vars';
+import { getFormattedDateTime } from '@/utils/common-utils';
 
-const baseTPath = 'components.CourseOptionsCard';
+const baseTPath = 'components.QuizOptionsCard';
 
-interface CourseOptionsCardProps {
-  course: Course;
+interface QuizOptionsCardProps {
+  courseId: string;
+  quizId: string;
 }
 
-const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
+const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => {
   const t = useTranslations(baseTPath);
-  const locale = useLocale();
+  const lang = useLocale();
   const [show, setShow] = useState(false);
   const router = useRouter();
 
-  const formattedCredits = course.credits ? course.credits.toFixed(1) : course.credits;
+  const { data: quiz, isPending: isPendingQuiz, isError: isQuizError, isFetching: isFetchingQuiz, error: quizError } = useQuizByIdQuery(courseId, quizId);
+  const { mutate: deleteQuizMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteQuizMutation(courseId);
+  const { mutate: activateQuizMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateQuizMutation(courseId);
+  const { mutate: deactivateQuizMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateQuizMutation(courseId);
 
-  const selectedTitle = locale === "si" ? `${course.year} '${course.titleSi}'` : `${course.year} '${course.titleEn}'`;
+  if ( isPendingQuiz || isFetchingQuiz ) {
+    return (<LoadingContainer />);
+  }
 
-  const { mutate: deleteCourseMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteCourseMutation();
-  const { mutate: activateCourseMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateCourseMutation();
-  const { mutate: deactivateCourseMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateCourseMutation();
+  if (isQuizError && quizError) {
+    return (
+      <Row>
+        <Col>
+          <h5>{t('failQuiz')}</h5>
+          <p>{quizError.message}</p>
+        </Col>
+      </Row>
+    );
+  }
+
+  const selectedTitle = lang === "si" ? `'${quiz.titleSi}'` : `'${quiz.titleEn}'`;
+
+  const locale = lang === LANG_SI ? LOCALE_SI : LOCALE_EN;
+  const formattedAvailableFrom = quiz.availableFrom ? getFormattedDateTime(locale, quiz.availableFrom) : undefined;
+  const formattedAvailableUntil = quiz.availableUntil ? getFormattedDateTime(locale, quiz.availableUntil) : undefined;
+  
+  let formattedAvailable = undefined;
+  if (quiz.availableFrom && quiz.availableUntil) {
+    formattedAvailable = t.rich('availableFromUntil', 
+      {
+        strong: (chunks) => <strong>{chunks}</strong>,
+        from: formattedAvailableFrom,
+        until: formattedAvailableUntil
+      }
+    );
+  } else if (quiz.availableFrom) {
+    formattedAvailable = t.rich('availableFrom', 
+      {
+        strong: (chunks) => <strong>{chunks}</strong>,
+        from: formattedAvailableFrom
+      }
+    );
+  } else if (quiz.availableUntil) {
+    formattedAvailable = t.rich('availableUntil',
+      {
+        strong: (chunks) => <strong>{chunks}</strong>,
+        until: formattedAvailableUntil
+      }
+    );
+  }
 
   const handleDeleteCourse = async () => {
-    deleteCourseMutation(course.id);
+    deleteQuizMutation({courseId, quizId});
     handleClose();
   }
 
@@ -39,67 +84,49 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
   const handleShow = () => setShow(true);
 
   const handleActivate = () => {
-    activateCourseMutation(course.id);
+    activateQuizMutation({courseId, quizId});
   }
 
   const handleDeativate = () => {
-    deactivateCourseMutation(course.id);
+    deactivateQuizMutation({courseId, quizId});
   }
 
   return (
     <>
-      <Card className="my-3 shadow course-options-card">
+      <Card className="my-3 shadow quiz-options-card">
         <Row className="g-0 flex-column flex-md-row">
-          {/* Right Column for the Content */}
           <Col>
             <Card.Body>
-              <Card.Subtitle>
-                { course.year && `${course.year} ` }
-              </Card.Subtitle>
               <Card.Title>
-                { course.code && `${course.code} ` }
-                { course.credits && `${formattedCredits} ` }
-                { course.titleEn && `${course.titleEn} ` }
-                { course.subtitleEn && `(${course.subtitleEn})` }
+                { quiz.titleEn && `${quiz.titleEn} ` }
+                { quiz.titleSi && ` | ${quiz.titleSi}` }
               </Card.Title>
-              <Card.Title>
-                { course.code && `${course.code} ` }
-                { course.credits && `${formattedCredits} ` }
-                { course.titleSi && `${course.titleSi} ` }
-                { course.subtitleSi && `(${course.subtitleSi})` }
-              </Card.Title>
-              <hr className="divider" />
+              <hr />
               <Card.Text>
-                { course.locationEn }
+                <b>{t('duration')}:</b>{" "}{ t.rich('numMinutes', {mins: quiz.duration}) }
               </Card.Text>
-              <Card.Text>
-                { course.locationSi }
-              </Card.Text>
+              {formattedAvailable && (
+                <Card.Text>{formattedAvailable}</Card.Text>
+              )}
               <Row className="align-items-center">
                 <Col className="mb-2">
                   <ButtonGroup>
                     <Button
                       variant="primary"
-                      onClick={() => router.push(`courses/${course.id}`)}
+                      onClick={() => router.push(`quizzes/${quiz.id}`)}
                     >
                       <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
                     </Button>
                     <Button
-                      variant="secondary"
-                      onClick={() => router.push(`courses/${course.id}/edit`)}
-                    >
-                      <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
-                    </Button>
-                    <Button
-                      variant={course.status === DocumentStatus.ACTIVE ? `warning` : `success`}
-                      onClick={course.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
+                      variant={quiz.status === DocumentStatus.ACTIVE ? `warning` : `success`}
+                      onClick={quiz.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
                       disabled={isPendingActivate || isPendingDeactivate}
                     >
                       <FontAwesomeIcon
-                        icon={course.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
+                        icon={quiz.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
                         className="me-1"
                       />{" "}
-                      {course.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+                      {quiz.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
                     </Button>
                   </ButtonGroup>
                 </Col>
@@ -163,4 +190,4 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
   )
 }
 
-export default CourseOptionsCard;
+export default QuizOptionsCard;

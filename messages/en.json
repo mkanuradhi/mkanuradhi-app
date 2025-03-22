@@ -950,11 +950,33 @@
     "RequiredLabel": {
       "tooltip": "Required field"
     },
-    "QuizzesOptionsViewer": {
+    "QuizzesTable": {
       "title": "Quizzes",
       "dashboard": "Dashboard",
       "courses": "Courses",
-      "addNew": "Add new quiz"
+      "addNew": "Add new quiz",
+      "failCourse": "Failed to load course",
+      "failQuizzes": "Failed to load quizzes",
+      "noQuizzes": "No quizzes to show"
+    },
+    "QuizOptionsCard": {
+      "failQuiz": "Fail to load the quiz",
+      "read": "Read more",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
+      "availableFrom": "This will be enabled from <strong>{from}</strong>",
+      "availableUntil": "This will be enabled until <strong>{until}</strong>",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the quiz: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the quiz",
+      "deactivateErrorTitle": "Cannot deactivate the quiz",
+      "deleteErrorTitle": "Cannot delete the quiz"
     },
     "QuizOptionsViewer": {
       "failCourse": "Failed to load course",
