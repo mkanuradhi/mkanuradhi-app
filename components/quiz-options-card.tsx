@@ -25,9 +25,9 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
   const router = useRouter();
 
   const { data: quiz, isPending: isPendingQuiz, isError: isQuizError, isFetching: isFetchingQuiz, error: quizError } = useQuizByIdQuery(courseId, quizId);
-  const { mutate: deleteQuizMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteQuizMutation(courseId);
-  const { mutate: activateQuizMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateQuizMutation(courseId);
-  const { mutate: deactivateQuizMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateQuizMutation(courseId);
+  const { mutate: deleteQuizMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteQuizMutation();
+  const { mutate: activateQuizMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateQuizMutation();
+  const { mutate: deactivateQuizMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateQuizMutation();
 
   if ( isPendingQuiz || isFetchingQuiz ) {
     return (<LoadingContainer />);

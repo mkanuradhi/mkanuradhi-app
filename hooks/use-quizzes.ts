@@ -25,7 +25,7 @@ export const useQuizByIdQuery = (courseId: string, quizId: string) => {
   });
 };
 
-export const useActivateQuizMutation = (courseId: string) => {
+export const useActivateQuizMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -37,14 +37,14 @@ export const useActivateQuizMutation = (courseId: string) => {
         return { ...oldData, status: DocumentStatus.ACTIVE };
       });
 
-      queryClient.invalidateQueries({ queryKey: ['quizzes', courseId] });
+      queryClient.invalidateQueries({ queryKey: ['quizzes', values.courseId] });
       queryClient.invalidateQueries({ queryKey: ['quiz', values.quizId] });
-      queryClient.invalidateQueries({ queryKey: ['course', courseId] });
+      queryClient.invalidateQueries({ queryKey: ['course', values.courseId] });
     },
   });
 };
 
-export const useDeactivateQuizMutation = (courseId: string) => {
+export const useDeactivateQuizMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -56,33 +56,33 @@ export const useDeactivateQuizMutation = (courseId: string) => {
         return { ...oldData, status: DocumentStatus.INACTIVE };
       });
 
-      queryClient.invalidateQueries({ queryKey: ['quizzes', courseId] });
+      queryClient.invalidateQueries({ queryKey: ['quizzes', values.courseId] });
       queryClient.invalidateQueries({ queryKey: ['quiz', values.quizId] });
-      queryClient.invalidateQueries({ queryKey: ['course', courseId] });
+      queryClient.invalidateQueries({ queryKey: ['course', values.courseId] });
     },
   });
 };
 
-export const useDeleteQuizMutation = (courseId: string) => {
+export const useDeleteQuizMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (variables: {courseId: string, quizId: string}) => deleteQuiz(variables.courseId, variables.quizId),
-    onSuccess: (_, {quizId}) => {
-      queryClient.removeQueries({ queryKey: ['quiz', quizId] });
+    onSuccess: (_, values) => {
+      queryClient.removeQueries({ queryKey: ['quiz', values.quizId] });
 
       // Update paginated list cache by filtering out the deleted course
       queryClient.setQueryData(['quizzes'], (oldData: PaginatedResult<Quiz> | undefined) => {
         if (!oldData) return;
         return {
           ...oldData,
-          items: oldData.items.filter(quiz => quiz.id !== quizId), // Remove deleted quiz
+          items: oldData.items.filter(quiz => quiz.id !== values.quizId), // Remove deleted quiz
         };
       });
 
-      queryClient.invalidateQueries({ queryKey: ['quizzes',courseId] });
+      queryClient.invalidateQueries({ queryKey: ['quizzes', values.courseId] });
       queryClient.invalidateQueries({ queryKey: ['courses'] });
-      queryClient.invalidateQueries({ queryKey: ['course', courseId] });
+      queryClient.invalidateQueries({ queryKey: ['course', values.courseId] });
     },
   });
 };
