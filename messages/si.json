@@ -648,6 +648,11 @@
         },
         "Edit": {
           "title": "පාඨමාලාව සංස්කරණය කරන්න"
+        },
+        "Quizzes": {
+          "New": {
+            "title": "නව ප්‍රශ්නාවලියක් එක් කිරීම"
+          }
         }
       }
     }
@@ -989,6 +994,41 @@
       "availableFromUntil": "මෙය <strong>{from}</strong> සිට <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
       "availableFrom": "මෙය <strong>{from}</strong> සිට සක්‍රිය වේ.",
       "availableUntil": "මෙය <strong>{until}</strong> දක්වා සක්‍රිය වේ."
+    },
+    "NewQuizFormsContainer": {
+      "stepGeneral": "පියවර 1: සාමාන්‍ය විස්තර එකතු කිරීම"
+    },
+    "NewQuizForm": {
+      "titleEnLabel": "ප්‍රශ්නාවලියේ මාතෘකාව ඉංග්‍රීසියෙන් (Title in English)",
+      "titleEnPlaceholder": "මාතෘකාව ඉංග්‍රීසියෙන් ඇතුළත් කරන්න",
+      "titleEnTooShort": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
+      "titleEnTooLong": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "titleEnRequired": "ඉංග්‍රීසි භාෂාවෙන් මාතෘකාව අවශ්‍යයි.",
+      "titleSiLabel": "ප්‍රශ්නාවලියේ මාතෘකාව සිංහලෙන්",
+      "titleSiPlaceholder": "මාතෘකාව සිංහලෙන් ඇතුළත් කරන්න.",
+      "titleSiTooShort": "සිංහල භාෂාවෙන් මාතෘකාව අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
+      "titleSiTooLong": "සිංහල භාෂාවෙන් මාතෘකාව අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "titleSiRequired": "සිංහල භාෂාවෙන් මාතෘකාව අවශ්‍යයි.",
+      "durationLabel": "කාල සීමාව",
+      "durationPlaceholder": "කාල සීමාව මිනිත්තු වලින් ඇතුළත් කරන්න",
+      "durationMinutes": "මිනිත්තු",
+      "durationHelp": "ප්‍රශ්නාවලියකට මිනිත්තු වලින් පවරා ඇති කාලය. ප්‍රශ්න ගණන සහ එක් එක් ප්‍රශ්නයට පිළිතුරු දීමට ගතවන කාලය සලකා බලන්න.",
+      "durationMustBeNumber": "කාලය මිනිත්තු නියෝජනය කල යුතු අතර වලංගු සංඛ්‍යාවක් විය යුතුය.",
+      "durationMustBeWholeNumber": "කාල සීමාව පූර්ණ සංඛ්‍යාවක් විය යුතුය. කරුණාකර දශම සංඛ්‍යා ඉවත් කරන්න.",
+      "durationTooLow": "සපයා ඇති කාල සීමාව ඉතා අඩුය. කරුණාකර මිනිත්තු {min} කට වඩා වැඩි ධන අගයක් ඇතුළත් කරන්න.",
+      "durationTooHigh": "සපයන ලද කාල සීමාව ඉතා ඉහළයි. කරුණාකර මිනිත්තු {max} කට වඩා අඩු ධන අගයක් ඇතුළත් කරන්න.",
+      "availableFromLabel": "ලබා ගත හැකි ආරම්භක දිනය සහ වේලාව",
+      "availableFromInputLabel": "වේලාව",
+      "availableFromPlaceholder": "ලබා ගත හැකි ආරම්භක දිනය සහ වේලාව ඇතුළත් කරන්න",
+      "availableFromMustBeDate": "ලබා ගත හැකි ආරම්භක දිනය සහ වේලාව වලංගු දිනයක් විය යුතුය.",
+      "availableUntilLabel": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව",
+      "availableUntilInputLabel": "වේලාව",
+      "availableUntilPlaceholder": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව ඇතුළත් කරන්න",
+      "availableUntilMustBeDate": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව වලංගු දිනයක් විය යුතුය.",
+      "availableUntilMustBeAfter": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව ලබා ගත හැකි ආරම්භක දිනය සහ වේලාවට පසුව විය යුතුය.",
+      "cancel": "අවලංගු කරන්න",
+      "submit": "ඉදිරියට යන්න",
+      "submitting": "ඉදිරිපත් කරමින්..."
     }
   },
   "contexts": {

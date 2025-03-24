@@ -648,6 +648,11 @@
         },
         "Edit": {
           "title": "Edit Course"
+        },
+        "Quizzes": {
+          "New": {
+            "title": "Add New Quiz"
+          }
         }
       }
     }
@@ -989,6 +994,41 @@
       "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
       "availableFrom": "This will be enabled from <strong>{from}</strong>",
       "availableUntil": "This will be enabled until <strong>{until}</strong>"
+    },
+    "NewQuizFormsContainer": {
+      "stepGeneral": "Step 1: Adding General Details"
+    },
+    "NewQuizForm": {
+      "titleEnLabel": "Quiz Title in English",
+      "titleEnPlaceholder": "Enter Title in English",
+      "titleEnTooShort": "Title in English must be more than {min} characters",
+      "titleEnTooLong": "Title in English must be less than {max} characters",
+      "titleEnRequired": "Title in English is required",
+      "titleSiLabel": "Quiz Title in Sinhala (ප්‍රශ්නාවලියේ මාතෘකාව)",
+      "titleSiPlaceholder": "Enter Title in Sinhala",
+      "titleSiTooShort": "Title in Sinhala must be more than {min} characters",
+      "titleSiTooLong": "Title in Sinhala must be less than {max} characters",
+      "titleSiRequired": "Title in Sinhala is required",
+      "durationLabel": "Duration",
+      "durationPlaceholder": "Enter duration in minutes",
+      "durationMinutes": "minutes",
+      "durationHelp": "Duration assigned per quiz in minutes. Consider the number of questions and the time required to answer each question.",
+      "durationMustBeNumber": "Duration must be a valid number represents minutes",
+      "durationMustBeWholeNumber": "Duration must be a whole number. Please remove any decimal values.",
+      "durationTooLow": "Provided duration is too low. Please enter a positive number greater than {min} minutes",
+      "durationTooHigh": "Provided duration is too high. Please enter a positive number less than {max} minutes",
+      "availableFromLabel": "Available From",
+      "availableFromInputLabel": "Time",
+      "availableFromPlaceholder": "Enter the available from date and time",
+      "availableFromMustBeDate": "Available From must be a valid date",
+      "availableUntilLabel": "Available Until",
+      "availableUntilInputLabel": "Time",
+      "availableUntilPlaceholder": "Enter the available until date and time",
+      "availableUntilMustBeDate": "Available until must be a valid date",
+      "availableUntilMustBeAfter": "Available until date must be after the available from date",
+      "cancel": "Cancel",
+      "submit": "Proceed",
+      "submitting": "Submitting..."
     }
   },
   "contexts": {
