@@ -18,7 +18,7 @@ const NewBlogPostFormsContainer = () => {
 
   const [step, setStep] = useState<ActiveStep>(stepParam || ActiveStep.EN);
 
-  const stepLabels: Record<ActiveStep, string> = {
+  const stepLabels: Partial<Record<ActiveStep, string>> = {
     [ActiveStep.EN]: t('stepEn'),
     [ActiveStep.SI]: t('stepSi'),
     [ActiveStep.PRIMARY_IMAGE]: t('stepPrimaryImage'),

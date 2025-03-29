@@ -28,7 +28,6 @@ const NewQuizFormsContainer: React.FC<NewQuizFormsContainerProps> = ({courseId})
   };
 
   const handleSubmit = (createdQuiz: Quiz) => {
-    setStep(ActiveStep.SI);
     router.push(`/dashboard/courses/${courseId}/quizzes/${createdQuiz.id}`);
   };
 

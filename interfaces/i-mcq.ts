@@ -5,21 +5,12 @@ interface McqChoice {
   isCorrect: boolean;
 }
 
-interface QuizMcq {
+interface Mcq {
   id: string;
   question: string;
   choices: McqChoice[];
-}
-
-interface Quiz {
-  id: string;
-  titleEn: string;
-  titleSi: string;
-  duration: number;
-  availableFrom: Date;
-  availableUntil: Date;
-  courseId: string;
-  mcqs: QuizMcq[];
+  solutionExplanation: string;
+  quizId: string;
   status: DocumentStatus;
   deleted: boolean;
   createdAt: Date;
@@ -27,4 +18,4 @@ interface Quiz {
   v: number;
 }
 
-export default Quiz;
+export default Mcq;
