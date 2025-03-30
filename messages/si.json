@@ -1044,7 +1044,10 @@
       "deleteModalAccept": "ඔව්, මකන්න",
       "activateErrorTitle": "බහුවරණ ප්‍රශ්නය සක්‍රිය කළ නොහැක",
       "deactivateErrorTitle": "බහුවරණ ප්‍රශ්නය අක්‍රිය කළ නොහැක",
-      "deleteErrorTitle": "බහුවරණ ප්‍රශ්නය මැකිය නොහැක"
+      "deleteErrorTitle": "බහුවරණ ප්‍රශ්නය මැකිය නොහැක",
+      "editModalTitle": "බහුවරණ ප්‍රශ්නය සංස්කරණය",
+      "editModalCancel": "අවලංගු කරන්න",
+      "editModalSubmit": "සුරකින්න"
     }
   },
   "contexts": {

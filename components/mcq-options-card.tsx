@@ -1,6 +1,5 @@
 "use client";
-import { useRouter } from '@/i18n/routing';
-import { Alert, Button, ButtonGroup, Card, Col, Modal, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Alert, Button, ButtonGroup, Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +8,7 @@ import DocumentStatus from "@/enums/document-status";
 import { useActivateMcqMutation, useDeactivateMcqMutation, useDeleteMcqMutation, useMcqByIdQuery } from '@/hooks/use-mcqs';
 import LoadingContainer from './loading-container';
 import SanitizedHtml from './sanitized-html';
+import DeleteModal from './delete-modal';
 
 const baseTPath = 'components.McqOptionsCard';
 
@@ -20,8 +20,6 @@ interface McqOptionsCardProps {
 const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
   const t = useTranslations(baseTPath);
   const [deleteModalShow, setDeleteModalShow] = useState(false);
-  const [editModalShow, setEditModalShow] = useState(false);
-  const router = useRouter();
 
   const { data: mcq, isPending: isPendingMcq, isError: isMcqError, isFetching: isFetchingMcq, error: mcqError } = useMcqByIdQuery(quizId, mcqId);
   const { mutate: deleteMcqMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteMcqMutation();
@@ -45,14 +43,8 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
 
   const handleDeleteMcq = async () => {
     deleteMcqMutation({quizId, mcqId});
-    handleDeleteModalClose();
+    setDeleteModalShow(false);
   }
-
-  const handleDeleteModalClose = () => setDeleteModalShow(false);
-  const handleDeleteModalShow = () => setDeleteModalShow(true);
-
-  const handleEditModalClose = () => setEditModalShow(false);
-  const handleEditModalShow = () => setEditModalShow(true);
 
   const handleActivate = () => {
     activateMcqMutation({quizId, mcqId});
@@ -98,7 +90,6 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
                     >
                       <Button
                         variant="secondary"
-                        onClick={handleEditModalShow}
                         aria-label={t('edit')}
                       >
                         <FontAwesomeIcon icon={faPen} />
@@ -123,13 +114,14 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
                 </Col>
                 <Col xs="auto" className="mb-2">
                   <OverlayTrigger
+                    key={deleteModalShow ? 'open' : 'closed'}
                     placement="top"
                     overlay={<Tooltip id="tooltip-delete">{t('delete')}</Tooltip>}
                   >
                     <Button
                       variant="danger"
                       className="me-2 my-1"
-                      onClick={handleDeleteModalShow}
+                      onClick={() => setDeleteModalShow(true)}
                       disabled={isPendingDelete}
                       aria-label={t('delete')}
                     >
@@ -159,30 +151,20 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
             </Card.Body>
           </Col>
         </Row>
-        
-        <div>
-          <Modal show={deleteModalShow} onHide={handleDeleteModalClose} centered>
-            <Modal.Header closeButton>
-              <Modal.Title>{t('deleteModalTitle')}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {
-                t.rich('deleteModalMessage', {
-                  strong: () => <strong>{mcq.question}</strong>,
-                })
-              }
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleDeleteModalClose}>
-                {t('deleteModalCancel')}
-              </Button>
-              <Button variant="danger" onClick={handleDeleteMcq}>
-                {t('deleteModalAccept')}
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
       </Card>
+      <DeleteModal
+        title={t('deleteModalTitle')}
+        description={
+          t.rich('deleteModalMessage', {
+            strong: () => <strong>{mcq.question}</strong>,
+          })
+        }
+        cancelText={t('deleteModalCancel')}
+        confirmText={t('deleteModalAccept')}
+        show={deleteModalShow}
+        onHide={() => setDeleteModalShow(false)}
+        onConfirm={handleDeleteMcq}
+      />
     </>
   )
 }

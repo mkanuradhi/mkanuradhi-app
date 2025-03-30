@@ -1039,12 +1039,15 @@
       "deactivate": "Deactivate",
       "delete": "Delete",
       "deleteModalTitle": "Confirm Delete",
-      "deleteModalMessage": "Are you sure you want to delete the question: <strong>title</strong>?",
+      "deleteModalMessage": "Are you sure you want to delete the mcq: <strong>title</strong>?",
       "deleteModalCancel": "No",
       "deleteModalAccept": "Yes, Delete",
       "activateErrorTitle": "Cannot activate the mcq",
       "deactivateErrorTitle": "Cannot deactivate the mcq",
-      "deleteErrorTitle": "Cannot delete the mcq"
+      "deleteErrorTitle": "Cannot delete the mcq",
+      "editModalTitle": "Edit The Question",
+      "editModalCancel": "Cancel",
+      "editModalSubmit": "Save Changes"
     }
   },
   "contexts": {
