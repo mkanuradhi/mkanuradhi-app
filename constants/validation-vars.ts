@@ -42,3 +42,9 @@ export const MAX_QUIZ_TITLE_LENGTH = 100;
 
 export const MIN_QUIZ_DURATION = 2;
 export const MAX_QUIZ_DURATION = 180;
+
+// --------------- mcq ---------------
+export const MIN_MCQ_QUESTION_LENGTH = 3;
+export const MAX_MCQ_QUESTION_LENGTH = 1000;
+
+export const MAX_MCQ_EXPLANATION_LENGTH = 2000;

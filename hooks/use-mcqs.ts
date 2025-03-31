@@ -1,8 +1,9 @@
+import { CreateMcqDto } from "@/dtos/mcq-dto";
 import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import Mcq from "@/interfaces/i-mcq";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { activateMcq, deactivateMcq, deleteMcq, getMcqById, getMcqs } from "@/services/mcq-service";
+import { activateMcq, createMcq, deactivateMcq, deleteMcq, getMcqById, getMcqs } from "@/services/mcq-service";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 
@@ -84,6 +85,77 @@ export const useDeleteMcqMutation = () => {
       queryClient.invalidateQueries({ queryKey: ['mcqs', values.quizId] });
       queryClient.invalidateQueries({ queryKey: ['quizzes'] });
       queryClient.invalidateQueries({ queryKey: ['quiz', values.quizId] });
+    },
+  });
+};
+
+export const useCreateMcqMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<Mcq, ApiError, { quizId: string; mcqDto: CreateMcqDto }, { previousMcqs?: PaginatedResult<Mcq> }>({
+    mutationFn: (variables: {quizId: string, mcqDto: CreateMcqDto}) => createMcq(variables.quizId, variables.mcqDto),
+    onMutate: async (newMcqData) => {
+      await queryClient.cancelQueries({ queryKey: ['mcqs'] });
+
+      // Snapshot previous data for rollback
+      const previousMcqs = queryClient.getQueryData<PaginatedResult<Mcq>>(['mcqs']);
+
+      // Define a fallback pagination structure
+      const defaultPagination = { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 };
+
+      // Optimistically add a new temporary mcq
+      queryClient.setQueryData(['mcqs'], (oldData?: PaginatedResult<Mcq>) => {
+        if (!oldData) return { 
+          items: [{ id: 'temp-id', ...newMcqData }], 
+          pagination: defaultPagination,
+        };
+
+        return {
+          ...oldData,
+          items: [{ id: 'temp-id', ...newMcqData }, ...oldData.items],
+          pagination: { 
+            ...oldData.pagination, 
+            totalCount: oldData.pagination.totalCount + 1, // Optimistically increment total count
+          },
+        };
+      });
+
+      return { previousMcqs };
+    },
+    onSuccess: (createdMcq) => {
+      if (!createdMcq || !createdMcq.id) return;
+
+      // Replace temporary mcq with actual data
+      queryClient.setQueryData(['mcqs'], (oldData?: PaginatedResult<Mcq>) => {
+        if (!oldData) return { 
+          items: [createdMcq], 
+          pagination: { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 } 
+        };
+
+        return {
+          ...oldData,
+          items: oldData.items.map((mcq) =>
+            mcq.id === 'temp-id' ? createdMcq : mcq
+          ),
+          pagination: {
+            ...oldData.pagination,
+            totalCount: Math.max(oldData.pagination.totalCount, oldData.items.length), // Ensure totalCount remains correct
+          },
+        };
+      });
+
+      // Cache the individual mcq
+      queryClient.setQueryData(['mcq', createdMcq.id], createdMcq);
+    },
+    onError: (error, _newMcqData, context) => {
+      // Rollback to the previous state in case of failure
+      if (context?.previousMcqs) {
+        queryClient.setQueryData(['mcqs'], context.previousMcqs);
+      }
+    },
+    onSettled: () => {
+      // Refetch in background to sync with backend
+      queryClient.invalidateQueries({ queryKey: ['mcqs'], refetchType: 'active' });
     },
   });
 };

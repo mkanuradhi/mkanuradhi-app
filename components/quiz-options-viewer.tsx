@@ -1,7 +1,7 @@
 "use client";
+import React, { useState } from 'react';
 import { useCourseByIdQuery } from '@/hooks/use-courses';
 import { useLocale, useTranslations } from 'next-intl';
-import React from 'react';
 import { Breadcrumb, Button, Col, Container, Row } from 'react-bootstrap';
 import LoadingContainer from './loading-container';
 import { Link } from '@/i18n/routing';
@@ -10,9 +10,10 @@ import { getFormattedDateTime } from '@/utils/common-utils';
 import { LANG_SI, LOCALE_EN, LOCALE_SI } from '@/constants/common-vars';
 import McqOptionsCard from './mcq-options-card';
 import { useMcqsQuery } from '@/hooks/use-mcqs';
-import "./quiz-options-viewer.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import NewMcqModal from './new-mcq-modal';
+import "./quiz-options-viewer.scss";
 
 
 const baseTPath = 'components.QuizOptionsViewer';
@@ -25,6 +26,7 @@ interface QuizOptionsViewerProps {
 const QuizOptionsViewer: React.FC<QuizOptionsViewerProps> = ({ courseId, quizId }) => {
   const t = useTranslations(baseTPath);
   const lang = useLocale();
+  const [newModalShow, setNewModalShow] = useState(false);
 
   const { data: course, isPending: isPendingCourse, isError: isCourseError, isFetching: isFetchingCourse, error: courseError } = useCourseByIdQuery(courseId);
   const { data: quiz, isPending: isPendingQuiz, isError: isQuizError, isFetching: isFetchingQuiz, error: quizError } = useQuizByIdQuery(courseId, quizId);
@@ -103,6 +105,10 @@ const QuizOptionsViewer: React.FC<QuizOptionsViewerProps> = ({ courseId, quizId 
     );
   }
 
+  const handleAddNewMcq = () => {
+    setNewModalShow(false);
+  }
+
   return (
     <>
       <Container fluid="md" className="quiz-options-viewer">
@@ -153,12 +159,20 @@ const QuizOptionsViewer: React.FC<QuizOptionsViewerProps> = ({ courseId, quizId 
         </Row>
         <Row>
           <Col>
-            <Button>
+            <Button
+              onClick={() => setNewModalShow(true)}
+            >
               <FontAwesomeIcon icon={faPlus} className="me-2" aria-hidden="true" />{ t('addNew') }
             </Button>  
           </Col>
         </Row>
       </Container>
+      <NewMcqModal
+        quizId={quizId}
+        show={newModalShow}
+        onHide={() => setNewModalShow(false)}
+        onConfirm={handleAddNewMcq}
+      />
     </>
   );
 }

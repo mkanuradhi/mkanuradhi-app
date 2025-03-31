@@ -995,7 +995,7 @@
       "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
       "availableFrom": "This will be enabled from <strong>{from}</strong>",
       "availableUntil": "This will be enabled until <strong>{until}</strong>",
-      "addNew": "Add New Question"
+      "addNew": "Add New MCQ"
     },
     "NewQuizFormsContainer": {
       "stepGeneral": "Step 1: Adding General Details"
@@ -1048,6 +1048,27 @@
       "editModalTitle": "Edit The Question",
       "editModalCancel": "Cancel",
       "editModalSubmit": "Save Changes"
+    },
+    "NewMcqModal": {
+      "title": "Add New MCQ",
+      "questionLabel": "Question",
+      "questionPlaceholder": "Enter the question",
+      "questionTooShort": "Question must be more than {min} characters long",
+      "questionTooLong": "Question must be less than {max} characters",
+      "questionRequired": "Question is required",
+      "choicesLabel": "Choices",
+      "choiceTextRequired": "Choice text is required",
+      "choicesRequired": "At least 2 choices should be present",
+      "choicePlaceholder": "Enter the choice text",
+      "choiceCorrectLabel": "Is correct",
+      "atLeastOneCorrectChoice": "At least one choice must be correct",
+      "choicesMustBeUnique": "Choices should be unique.",
+      "solutionExplanationLabel": "Solution Explaination",
+      "solutionExplanationPlaceholder": "Enter solution explaination",
+      "solutionExplanationTooLong": "Solution explanantion must be less than {max} characters",
+      "cancel": "Cancel",
+      "submitting": "Submitting...",
+      "submit": "Submit"
     }
   },
   "contexts": {

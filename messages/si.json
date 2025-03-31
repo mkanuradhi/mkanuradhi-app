@@ -995,7 +995,7 @@
       "availableFromUntil": "මෙය <strong>{from}</strong> සිට <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
       "availableFrom": "මෙය <strong>{from}</strong> සිට සක්‍රිය වේ.",
       "availableUntil": "මෙය <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
-      "addNew": "නව ප්‍රශ්නයක් එක් කරන්න"
+      "addNew": "නව බහුවරණ ප්‍රශ්නයක් එක් කරන්න"
     },
     "NewQuizFormsContainer": {
       "stepGeneral": "පියවර 1: සාමාන්‍ය විස්තර එකතු කිරීම"
@@ -1048,6 +1048,27 @@
       "editModalTitle": "බහුවරණ ප්‍රශ්නය සංස්කරණය",
       "editModalCancel": "අවලංගු කරන්න",
       "editModalSubmit": "සුරකින්න"
+    },
+    "NewMcqModal": {
+      "title": "නව බහුවරණ ප්‍රශ්නයක් එක් කරන්න",
+      "questionLabel": "ප්‍රශ්නය",
+      "questionPlaceholder": "ප්‍රශ්නය ඇතුළත් කරන්න",
+      "questionTooShort": "ප්‍රශ්නය අක්ෂර {min} කට වඩා දිගු විය යුතුය.",
+      "questionTooLong": "ප්‍රශ්නය අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "questionRequired": "ප්‍රශ්නය අවශ්‍යයි",
+      "choicesLabel": "තේරීම්",
+      "choiceTextRequired": "තේරීම් පෙළ අවශ්‍යයි",
+      "choicesRequired": "අවම වශයෙන් තේරීම් 2ක්වත් තිබිය යුතුය.",
+      "choicePlaceholder": "තේරීම් පෙළ ඇතුළත් කරන්න",
+      "choiceCorrectLabel": "නිවැරදි පිළිතුරකි",
+      "atLeastOneCorrectChoice": "අවම වශයෙන් එක් තේරීමක් හෝ නිවැරදි විය යුතුය.",
+      "choicesMustBeUnique": "තේරීම් අනන්‍ය විය යුතුය.",
+      "solutionExplanationLabel": "විසඳුම් විස්තරය",
+      "solutionExplanationPlaceholder": "විසඳුම් විස්තරය ඇතුළත් කරන්න",
+      "solutionExplanationTooLong": "විසඳුම් විස්තරය අක්ෂර {max}කට අඩු විය යුතුය",
+      "cancel": "අවලංගු කරන්න",
+      "submitting": "ඉදිරිපත් කරමින්...",
+      "submit": "ඉදිරිපත් කරන්න"
     }
   },
   "contexts": {
