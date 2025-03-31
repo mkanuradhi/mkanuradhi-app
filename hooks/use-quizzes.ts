@@ -1,9 +1,9 @@
-import { CreateQuizDto } from "@/dtos/quiz-dto";
+import { CreateQuizDto, UpdateQuizDto } from "@/dtos/quiz-dto";
 import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import Quiz from "@/interfaces/i-quiz";
-import { activateQuiz, createQuiz, deactivateQuiz, deleteQuiz, getQuizById, getQuizzes } from "@/services/quiz-service";
+import { activateQuiz, createQuiz, deactivateQuiz, deleteQuiz, getQuizById, getQuizzes, updateQuiz } from "@/services/quiz-service";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useQuizzesQuery = (courseId: string) => {
@@ -154,6 +154,37 @@ export const useCreateQuizMutation = () => {
     },
     onSettled: () => {
       // Refetch in background to sync with backend
+      queryClient.invalidateQueries({ queryKey: ['quizzes'], refetchType: 'active' });
+    },
+  });
+};
+
+export const useUpdateQuizMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (variables: {courseId: string, quizId: string, quizDto: UpdateQuizDto}) => updateQuiz(variables.courseId, variables.quizId, variables.quizDto),
+    onSuccess: (updatedQuiz) => {
+      if (!updatedQuiz || !updatedQuiz.id) return;
+
+      // Update quiz list cache
+      queryClient.setQueryData(['quizzes'], (oldData?: PaginatedResult<Quiz>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((quiz) => 
+            quiz.id === updatedQuiz.id ? updatedQuiz : quiz
+          ),
+        };
+      });
+
+      // Update individual quiz cache
+      queryClient.setQueryData(['quiz', updatedQuiz.id], updatedQuiz);
+    },
+    onSettled: (_data, _error, variables) => {
+      // Refetch only the updated quiz instead of all quizzes
+      queryClient.invalidateQueries({ queryKey: ['quiz', variables.quizId] });
       queryClient.invalidateQueries({ queryKey: ['quizzes'], refetchType: 'active' });
     },
   });

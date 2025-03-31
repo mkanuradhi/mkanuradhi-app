@@ -1,5 +1,5 @@
 import { API_BASE_URL, COURSES_PATH, QUIZZES_PATH } from "@/constants/api-paths";
-import { CreateQuizDto } from "@/dtos/quiz-dto";
+import { CreateQuizDto, UpdateQuizDto } from "@/dtos/quiz-dto";
 import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
 import PaginatedResult from "@/interfaces/i-paginated-result";
@@ -69,6 +69,18 @@ export const createQuiz = async (courseId: string, quizDto: CreateQuizDto): Prom
   try {
     const response = await axios.post<Quiz>(
       `${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}`,
+      quizDto
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const updateQuiz = async (courseId: string, quizId: string, quizDto: UpdateQuizDto): Promise<Quiz> => {
+  try {
+    const response = await axios.patch<Quiz>(
+      `${API_BASE_URL}${COURSES_PATH}/${courseId}/quizzes/${quizId}`,
       quizDto
     );
     return response.data;
