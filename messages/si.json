@@ -981,7 +981,8 @@
       "deleteModalAccept": "ඔව්, මකන්න",
       "activateErrorTitle": "ප්‍රශ්නාවලිය සක්‍රිය කළ නොහැක",
       "deactivateErrorTitle": "ප්‍රශ්නාවලිය අක්‍රිය කළ නොහැක",
-      "deleteErrorTitle": "ප්‍රශ්නාවලිය මැකිය නොහැක"
+      "deleteErrorTitle": "ප්‍රශ්නාවලිය මැකිය නොහැක",
+      "activeQuestions": "ක්‍රියාකාරී ප්‍රශ්න ගණන"
     },
     "QuizOptionsViewer": {
       "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය.",
@@ -995,7 +996,9 @@
       "availableFromUntil": "මෙය <strong>{from}</strong> සිට <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
       "availableFrom": "මෙය <strong>{from}</strong> සිට සක්‍රිය වේ.",
       "availableUntil": "මෙය <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
-      "addNew": "නව බහුවරණ ප්‍රශ්නයක් එක් කරන්න"
+      "addNew": "නව බහුවරණ ප්‍රශ්නයක් එක් කරන්න",
+      "allQuestions": "සියලුම ප්‍රශ්න ගණන",
+      "activeQuestions": "ක්‍රියාකාරී ප්‍රශ්න ගණන"
     },
     "NewQuizFormsContainer": {
       "stepGeneral": "පියවර 1: සාමාන්‍ය විස්තර එකතු කිරීම"

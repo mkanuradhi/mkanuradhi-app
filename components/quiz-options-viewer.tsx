@@ -140,11 +140,17 @@ const QuizOptionsViewer: React.FC<QuizOptionsViewerProps> = ({ courseId, quizId 
           <Col>
             {quiz.duration && (
               <p>
-                <b>{t('duration')}:</b>{" "}{ t.rich('numMinutes', {mins: quiz.duration}) }
+                <b className="me-2">{t('duration')}:</b>{ t.rich('numMinutes', {mins: quiz.duration}) }
               </p>
             )}
             {formattedAvailable && (
               <p>{formattedAvailable}</p>
+            )}
+            {mcqs && (
+              <p><b className="me-2">{t('allQuestions')}:</b>{mcqs.length}</p>
+            )}
+            {quiz.mcqs && (
+              <p><b className="me-2">{t('activeQuestions')}:</b>{quiz.mcqs.length}</p>
             )}
           </Col>
         </Row>

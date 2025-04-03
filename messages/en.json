@@ -981,7 +981,8 @@
       "deleteModalAccept": "Yes, Delete",
       "activateErrorTitle": "Cannot activate the quiz",
       "deactivateErrorTitle": "Cannot deactivate the quiz",
-      "deleteErrorTitle": "Cannot delete the quiz"
+      "deleteErrorTitle": "Cannot delete the quiz",
+      "activeQuestions": "Active questions"
     },
     "QuizOptionsViewer": {
       "failCourse": "Failed to load course",
@@ -995,7 +996,9 @@
       "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
       "availableFrom": "This will be enabled from <strong>{from}</strong>",
       "availableUntil": "This will be enabled until <strong>{until}</strong>",
-      "addNew": "Add New MCQ"
+      "addNew": "Add New MCQ",
+      "allQuestions": "All questions",
+      "activeQuestions": "Active questions"
     },
     "NewQuizFormsContainer": {
       "stepGeneral": "Step 1: Adding General Details"

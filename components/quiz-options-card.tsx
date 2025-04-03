@@ -101,10 +101,15 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
               </Card.Title>
               <hr />
               <Card.Text>
-                <b>{t('duration')}:</b>{" "}{ t.rich('numMinutes', {mins: quiz.duration}) }
+                <b className="me-2">{t('duration')}:</b>{ t.rich('numMinutes', {mins: quiz.duration}) }
               </Card.Text>
               {formattedAvailable && (
                 <Card.Text>{formattedAvailable}</Card.Text>
+              )}
+              {quiz.mcqs && (
+                <Card.Text>
+                  <b className="me-2">{t('activeQuestions')}:</b>{quiz.mcqs.length}
+                </Card.Text>
               )}
               <Row className="align-items-center">
                 <Col className="mb-2">
