@@ -92,70 +92,39 @@ export const useDeleteMcqMutation = () => {
 export const useCreateMcqMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<Mcq, ApiError, { quizId: string; mcqDto: CreateMcqDto }, { previousMcqs?: PaginatedResult<Mcq> }>({
-    mutationFn: (variables: {quizId: string, mcqDto: CreateMcqDto}) => createMcq(variables.quizId, variables.mcqDto),
-    onMutate: async (newMcqData) => {
-      await queryClient.cancelQueries({ queryKey: ['mcqs'] });
+  return useMutation<Mcq, ApiError, { quizId: string; mcqDto: CreateMcqDto }>({
+    mutationFn: ({ quizId, mcqDto }) => createMcq(quizId, mcqDto),
 
-      // Snapshot previous data for rollback
-      const previousMcqs = queryClient.getQueryData<PaginatedResult<Mcq>>(['mcqs']);
-
-      // Define a fallback pagination structure
-      const defaultPagination = { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 };
-
-      // Optimistically add a new temporary mcq
-      queryClient.setQueryData(['mcqs'], (oldData?: PaginatedResult<Mcq>) => {
-        if (!oldData) return { 
-          items: [{ id: 'temp-id', ...newMcqData }], 
-          pagination: defaultPagination,
-        };
-
-        return {
-          ...oldData,
-          items: [{ id: 'temp-id', ...newMcqData }, ...oldData.items],
-          pagination: { 
-            ...oldData.pagination, 
-            totalCount: oldData.pagination.totalCount + 1, // Optimistically increment total count
-          },
-        };
-      });
-
-      return { previousMcqs };
-    },
-    onSuccess: (createdMcq) => {
+    onSuccess: (createdMcq, { quizId }) => {
       if (!createdMcq || !createdMcq.id) return;
 
-      // Replace temporary mcq with actual data
-      queryClient.setQueryData(['mcqs'], (oldData?: PaginatedResult<Mcq>) => {
-        if (!oldData) return { 
-          items: [createdMcq], 
-          pagination: { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 } 
-        };
+      const defaultPagination = { totalCount: 1, totalPages: 1, currentPage: 0, currentPageSize: 1 };
+
+      // Update mcq list
+      queryClient.setQueryData(["mcqs", quizId], (oldData?: PaginatedResult<Mcq>) => {
+        if (!oldData) {
+          return {
+            items: [createdMcq],
+            pagination: defaultPagination,
+          };
+        }
 
         return {
           ...oldData,
-          items: oldData.items.map((mcq) =>
-            mcq.id === 'temp-id' ? createdMcq : mcq
-          ),
+          items: [createdMcq, ...oldData.items],
           pagination: {
             ...oldData.pagination,
-            totalCount: Math.max(oldData.pagination.totalCount, oldData.items.length), // Ensure totalCount remains correct
+            totalCount: oldData.pagination.totalCount + 1,
           },
         };
       });
 
-      // Cache the individual mcq
-      queryClient.setQueryData(['mcq', createdMcq.id], createdMcq);
+      queryClient.setQueryData(["mcq", createdMcq.id], createdMcq);
     },
-    onError: (error, _newMcqData, context) => {
-      // Rollback to the previous state in case of failure
-      if (context?.previousMcqs) {
-        queryClient.setQueryData(['mcqs'], context.previousMcqs);
-      }
-    },
-    onSettled: () => {
-      // Refetch in background to sync with backend
-      queryClient.invalidateQueries({ queryKey: ['mcqs'], refetchType: 'active' });
+
+    // Optional: handle errors
+    onError: (error) => {
+      console.error("Create MCQ failed:", error);
     },
   });
 };

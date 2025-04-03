@@ -37,6 +37,7 @@ const NewMcqModal: React.FC<NewMcqModalProps> = ({ quizId, show, onHide, onConfi
       values: typeof initialValues,
       actions: { setStatus: (status: any) => void; setSubmitting: (isSubmitting: boolean) => void }  
     ) => {
+      actions.setStatus(undefined);
       const mcqDto: CreateMcqDto = {
         question: values.question,
         choices: values.choices,
