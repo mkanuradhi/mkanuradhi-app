@@ -80,7 +80,7 @@ export const createQuiz = async (courseId: string, quizDto: CreateQuizDto): Prom
 export const updateQuiz = async (courseId: string, quizId: string, quizDto: UpdateQuizDto): Promise<Quiz> => {
   try {
     const response = await axios.patch<Quiz>(
-      `${API_BASE_URL}${COURSES_PATH}/${courseId}/quizzes/${quizId}`,
+      `${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}/${quizId}`,
       quizDto
     );
     return response.data;
