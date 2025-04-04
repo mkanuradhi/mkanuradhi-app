@@ -9,6 +9,7 @@ import { useActivateMcqMutation, useDeactivateMcqMutation, useDeleteMcqMutation,
 import LoadingContainer from './loading-container';
 import SanitizedHtml from './sanitized-html';
 import DeleteModal from './delete-modal';
+import UpdateMcqModal from "./update-mcq-modal";
 
 const baseTPath = 'components.McqOptionsCard';
 
@@ -20,6 +21,7 @@ interface McqOptionsCardProps {
 const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
   const t = useTranslations(baseTPath);
   const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [updateModalShow, setUpdateModalShow] = useState(false);
 
   const { data: mcq, isPending: isPendingMcq, isError: isMcqError, isFetching: isFetchingMcq, error: mcqError } = useMcqByIdQuery(quizId, mcqId);
   const { mutate: deleteMcqMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteMcqMutation();
@@ -54,6 +56,10 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
     deactivateMcqMutation({quizId, mcqId});
   }
 
+  const handleUpdateMcq = () => {
+    setUpdateModalShow(false);
+  }
+
   return (
     <>
       <Card className="my-3 shadow quiz-options-card">
@@ -85,19 +91,21 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
                 <Col className="mb-2">
                   <ButtonGroup>
                     <OverlayTrigger
+                      key={updateModalShow ? 'open' : 'closed'}
                       placement="top"
                       overlay={<Tooltip id="tooltip-edit">{t('edit')}</Tooltip>}
                     >
                       <Button
                         variant="secondary"
                         aria-label={t('edit')}
+                        onClick={() => setUpdateModalShow(true)}
                       >
                         <FontAwesomeIcon icon={faPen} />
                       </Button>
                     </OverlayTrigger>
                     <OverlayTrigger
                       placement="top"
-                      overlay={<Tooltip id="tooltip-edit">{mcq.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}</Tooltip>}
+                      overlay={<Tooltip id="tooltip-toggle">{mcq.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}</Tooltip>}
                     >
                       <Button
                         variant={mcq.status === DocumentStatus.ACTIVE ? `warning` : `success`}
@@ -164,6 +172,13 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
         show={deleteModalShow}
         onHide={() => setDeleteModalShow(false)}
         onConfirm={handleDeleteMcq}
+      />
+      <UpdateMcqModal
+        quizId={quizId}
+        mcqId={mcqId}
+        show={updateModalShow}
+        onHide={() => setUpdateModalShow(false)}
+        onConfirm={handleUpdateMcq}
       />
     </>
   )

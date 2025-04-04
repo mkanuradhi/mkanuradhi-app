@@ -1,5 +1,5 @@
 import { API_BASE_URL, MCQS_PATH, QUIZZES_PATH } from "@/constants/api-paths";
-import { CreateMcqDto } from "@/dtos/mcq-dto";
+import { CreateMcqDto, UpdateMcqDto } from "@/dtos/mcq-dto";
 import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
 import Mcq from "@/interfaces/i-mcq";
@@ -69,6 +69,18 @@ export const createMcq = async (quizId: string, mcqDto: CreateMcqDto): Promise<M
   try {
     const response = await axios.post<Mcq>(
       `${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}`,
+      mcqDto
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const updateMcq = async (quizId: string, mcqId: string, mcqDto: UpdateMcqDto): Promise<Mcq> => {
+  try {
+    const response = await axios.patch<Mcq>(
+      `${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/${mcqId}`,
       mcqDto
     );
     return response.data;

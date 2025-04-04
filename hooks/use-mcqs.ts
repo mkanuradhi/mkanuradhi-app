@@ -1,9 +1,9 @@
-import { CreateMcqDto } from "@/dtos/mcq-dto";
+import { CreateMcqDto, UpdateMcqDto } from "@/dtos/mcq-dto";
 import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import Mcq from "@/interfaces/i-mcq";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { activateMcq, createMcq, deactivateMcq, deleteMcq, getMcqById, getMcqs } from "@/services/mcq-service";
+import { activateMcq, createMcq, deactivateMcq, deleteMcq, getMcqById, getMcqs, updateMcq } from "@/services/mcq-service";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 
@@ -125,6 +125,37 @@ export const useCreateMcqMutation = () => {
     // Optional: handle errors
     onError: (error) => {
       console.error("Create MCQ failed:", error);
+    },
+  });
+};
+
+export const useUpdateMcqMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (variables: {quizId: string, mcqId: string, mcqDto: UpdateMcqDto}) => updateMcq(variables.quizId, variables.mcqId, variables.mcqDto),
+    onSuccess: (updatedMcq) => {
+      if (!updatedMcq || !updatedMcq.id) return;
+
+      // Update mcq list cache
+      queryClient.setQueryData(['mcqs', updatedMcq.quizId], (oldData?: PaginatedResult<Mcq>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((mcq) => 
+            mcq.id === updatedMcq.id ? updatedMcq : mcq
+          ),
+        };
+      });
+
+      // Update individual mcq cache
+      queryClient.setQueryData(['mcq', updatedMcq.id], updatedMcq);
+    },
+    onSettled: (_data, _error, variables) => {
+      // Refetch only the updated mcq instead of all courses
+      queryClient.invalidateQueries({ queryKey: ['mcq', variables.mcqId] });
+      queryClient.invalidateQueries({ queryKey: ['mcqs', variables.quizId], refetchType: 'active' });
     },
   });
 };
