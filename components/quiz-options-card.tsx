@@ -121,6 +121,12 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                       <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
                     </Button>
                     <Button
+                      variant="secondary"
+                      onClick={() => router.push(`quizzes/${quizId}/edit`)}
+                    >
+                      <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
+                    </Button>
+                    <Button
                       variant={quiz.status === DocumentStatus.ACTIVE ? `warning` : `success`}
                       onClick={quiz.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
                       disabled={isPendingActivate || isPendingDeactivate}

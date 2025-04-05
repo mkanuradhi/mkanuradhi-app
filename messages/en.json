@@ -652,6 +652,9 @@
         "Quizzes": {
           "New": {
             "title": "Add New Quiz"
+          },
+          "Edit": {
+            "title": "Edit Quiz"
           }
         }
       }
@@ -967,6 +970,7 @@
     "QuizOptionsCard": {
       "failQuiz": "Fail to load the quiz",
       "read": "Read more",
+      "edit": "Edit",
       "activate": "Activate",
       "deactivate": "Deactivate",
       "delete": "Delete",
@@ -1034,6 +1038,9 @@
       "cancel": "Cancel",
       "submit": "Proceed",
       "submitting": "Submitting..."
+    },
+    "UpdateQuizFormsContainer": {
+      "stepGeneral": "Step 1: Updating General Details"
     },
     "McqOptionsCard": {
       "failMcq": "Fail to load the mcq",
