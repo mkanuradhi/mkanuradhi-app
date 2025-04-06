@@ -7,9 +7,9 @@ import { useState } from "react";
 import DocumentStatus from "@/enums/document-status";
 import { useActivateMcqMutation, useDeactivateMcqMutation, useDeleteMcqMutation, useMcqByIdQuery } from '@/hooks/use-mcqs';
 import LoadingContainer from './loading-container';
-import SanitizedHtml from './sanitized-html';
 import DeleteModal from './delete-modal';
 import UpdateMcqModal from "./update-mcq-modal";
+import MathRenderer from "./math-renderer";
 
 const baseTPath = 'components.McqOptionsCard';
 
@@ -67,7 +67,7 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
           <Col>
             <Card.Body>
               <div className="fs-5 fw-medium">
-                <SanitizedHtml html={mcq.question} />
+                <MathRenderer html={mcq.question} />
               </div>
               <div>
                 <ol type="a" className="choice-list">
@@ -75,7 +75,7 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
                     <li key={index}>
                       <Row>
                         <Col xs="auto" className={choice.isCorrect && choice.isCorrect === true ? 'text-success': ''}>
-                          {choice.text}
+                          <MathRenderer html={choice.text} />
                         </Col>
                         {choice.isCorrect && choice.isCorrect === true && (
                           <Col className="text-success">  
