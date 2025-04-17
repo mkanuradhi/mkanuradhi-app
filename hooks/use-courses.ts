@@ -4,7 +4,18 @@ import { ApiError } from "@/errors/api-error";
 import Course from "@/interfaces/i-course";
 import CourseView from "@/interfaces/i-course-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { activateCourse, createCourseEn, deactivateCourse, deleteCourse, getActivatedCourses, getCourseById, getCourses, updateCourseEn, updateCourseSi } from "@/services/course-service";
+import {
+  activateCourse,
+  createCourseEn,
+  deactivateCourse,
+  deleteCourse,
+  getActivatedCourses,
+  getCourseById,
+  getCourseByPath,
+  getCourses,
+  updateCourseEn,
+  updateCourseSi
+} from "@/services/course-service";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useCoursesQuery = (page: number, size: number, initialCourses?: PaginatedResult<Course>) => {
@@ -38,6 +49,14 @@ export const useCourseByIdQuery = (id: string) => {
     queryKey: ['course', id],
     queryFn: () => getCourseById(id),
     refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
+  });
+};
+
+export const useCourseViewByPathQuery = (lang: string, path: string) => {
+  return useQuery<CourseView, ApiError>({
+    queryKey: ['course', lang, path],
+    queryFn: () => getCourseByPath(lang, path),
+    refetchOnWindowFocus: false,
   });
 };
 

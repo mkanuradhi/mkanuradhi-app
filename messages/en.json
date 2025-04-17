@@ -54,7 +54,11 @@
         "pageTitle": "Courses",
         "pageDescription": "I am conducting many courses in the field of computing, specializing in meta-heuristic optimization and machine learning.",
         "pageKeywords": "courses, subjects, degree, masters",
-        "title": "Courses"
+        "Quizzes": {
+          "pageTitle": "Quizzes",
+          "pageDescription": "Explore engaging and interactive quizzes designed to test your knowledge across various topics. Challenge yourself, learn new facts, and track your progress with our fun and educational quizzes.",
+          "pageKeywords": "quizzes, questions, basics, understanding"
+        }
       }
     },
     "Research": {
@@ -689,6 +693,11 @@
       "blog": "Blog",
       "share": "Share this post"
     },
+    "CoursesContainer": {
+      "home": "Home",
+      "teaching": "Teaching",
+      "title": "Courses"
+    },
     "CourseCard": {
       "credits": "{value} Credits"
     },
@@ -698,7 +707,37 @@
       "courses": "Courses",
       "share": "Share this course",
       "credits": "{value} Credits",
-      "quizzes": "Quizzes"
+      "quizzes": "Quizzes",
+      "ready": "Ready to test your knowledge?",
+      "quizzesLink": "Try out {count} {quizzesWord}",
+      "countSuffix": "",
+      "quizzesWord": "quizzes",
+      "quizWord": "quiz"
+    },
+    "QuizzesContainer": {
+      "home": "Home",
+      "teaching": "Teaching",
+      "courses": "Courses",
+      "title": "Quizzes",
+      "failCourse": "Failed to load course"
+    },
+    "QuizViewer": {
+      "home": "Home",
+      "teaching": "Teaching",
+      "courses": "Courses",
+      "quizzes": "Quizzes",
+      "failCourse": "Failed to load course",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "numOfQuestions": "Questions",
+      "start": "Start the quiz"
+    },
+    "QuizCard": {
+      "title": "Quizzes",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "numOfQuestions": "Questions",
+      "start": "Start"
     },
     "Footer": {
       "title": "Copyright \u00A9 {currentYear} Anuradha Ariyaratne.",
