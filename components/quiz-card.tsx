@@ -4,7 +4,6 @@ import { Button, Card } from "react-bootstrap";
 import { useLocale, useTranslations } from 'next-intl';
 import Quiz from '@/interfaces/i-quiz';
 import { capitalizeLang } from '@/utils/common-utils';
-import { useMcqsQuery } from '@/hooks/use-mcqs';
 import { useRouter } from '@/i18n/routing';
 
 const baseTPath = 'components.QuizCard';
@@ -21,9 +20,6 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz }) => {
   const langSuffix = capitalizeLang(locale);
   const title = quiz[`title${langSuffix}` as keyof Quiz] as string;
 
-  const { data: mcqsPaginatedResult, isPending: isPendingMcqs, isError: isMcqsError, isFetching: isFetchingMcqs, error: mcqsError } = useMcqsQuery(quiz.id);
-  const mcqs = mcqsPaginatedResult?.items ?? [];
-
   return (
     <Card className="my-3 shadow">
       <Card.Body>
@@ -36,9 +32,9 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz }) => {
             <b className="me-2">{t('duration')}:</b>{ t.rich('numMinutes', {mins: quiz.duration}) }
           </Card.Text>
         )}
-        {mcqs && (
+        {quiz.mcqs && (
           <Card.Text>
-            <b className="me-2">{t('numOfQuestions')}:</b>{mcqs.length}
+            <b className="me-2">{t('numOfQuestions')}:</b>{quiz.mcqs.length}
           </Card.Text>
         )}
         <Button onClick={() => router.push(`quizzes/${quiz.id}`)}>{t('start')}</Button>
