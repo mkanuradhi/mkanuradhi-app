@@ -20,6 +20,20 @@ export const getMcqs = async (quizId: string, page: number, size: number): Promi
   }
 };
 
+export const getActiveMcqs = async (quizId: string, page: number, size: number): Promise<PaginatedResult<Mcq>> => {
+  try {
+    const response = await axios.get<PaginatedResult<Mcq>>(`${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/active`, {
+      params: {
+        page,
+        size,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
 export const getMcqById = async (quizId: string, mcqId: string): Promise<Mcq> => {
   try {
     const response = await axios.get<Mcq>(`${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/${mcqId}`);

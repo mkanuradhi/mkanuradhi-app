@@ -3,7 +3,7 @@ import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import Mcq from "@/interfaces/i-mcq";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { activateMcq, createMcq, deactivateMcq, deleteMcq, getMcqById, getMcqs, updateMcq } from "@/services/mcq-service";
+import { activateMcq, createMcq, deactivateMcq, deleteMcq, getActiveMcqs, getMcqById, getMcqs, updateMcq } from "@/services/mcq-service";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 
@@ -11,6 +11,18 @@ export const useMcqsQuery = (quizId: string) => {
   return useQuery<PaginatedResult<Mcq>, ApiError>({
     queryKey: ['mcqs', quizId],
     queryFn: () => getMcqs(quizId, 0, 50),
+    placeholderData: (prevData) => prevData ?? {
+      items: [], 
+      pagination: { totalCount: 0, totalPages: 1, currentPage: 0, currentPageSize: 0 } 
+    }, // Keeps previous data until new data loads
+    refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
+  });
+};
+
+export const useActiveMcqsQuery = (quizId: string) => {
+  return useQuery<PaginatedResult<Mcq>, ApiError>({
+    queryKey: ['mcqs', quizId],
+    queryFn: () => getActiveMcqs(quizId, 0, 50),
     placeholderData: (prevData) => prevData ?? {
       items: [], 
       pagination: { totalCount: 0, totalPages: 1, currentPage: 0, currentPageSize: 0 } 
