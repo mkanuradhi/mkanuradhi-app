@@ -54,7 +54,11 @@
         "pageTitle": "පාඨමාලා",
         "pageDescription": "මම පරිගණක ක්ෂේත්‍රයේ බොහෝ පාඨමාලා පවත්වන අතර, මෙටා-හියුරිස්ටික් ප්‍රශස්තිකරණය සහ යන්ත්‍ර ඉගෙනීම පිළිබඳ විශේෂඥතාවක් දක්වනු ලැබේ.",
         "pageKeywords": "පාඨමාලා, විෂයයන්, උපාධිය, ශාස්ත්‍රපති",
-        "title": "පාඨමාලා"
+        "Quizzes": {
+          "pageTitle": "ප්‍රශ්නාවලි",
+          "pageDescription": "විවිධ මාතෘකා ඔස්සේ ඔබේ දැනුම පරීක්ෂා කිරීම සඳහා නිර්මාණය කර ඇති ආකර්ශනීය සහ අන්තර්ක්‍රියාකාරී ප්‍රශ්නාවලිය ගවේෂණය කරන්න. අපගේ විනෝදජනක සහ අධ්‍යාපනික ප්‍රශ්නාවලිය සමඟ ඔබටම අභියෝග කරන්න, නව කරුණු ඉගෙන ගන්න සහ ඔබේ ප්‍රගතිය නිරීක්ෂණය කරන්න.",
+          "pageKeywords": "ප්‍රශ්නාවලිය, ප්‍රශ්න, මූලික කරුණු, අවබෝධය"
+        }
       }
     },
     "Research": {
@@ -648,6 +652,14 @@
         },
         "Edit": {
           "title": "පාඨමාලාව සංස්කරණය කරන්න"
+        },
+        "Quizzes": {
+          "New": {
+            "title": "නව ප්‍රශ්නාවලියක් එක් කිරීම"
+          },
+          "Edit": {
+            "title": "ප්‍රශ්නාවලිය සංස්කරණය කරන්න"
+          }
         }
       }
     }
@@ -681,6 +693,11 @@
       "blog": "බ්ලොග්",
       "share": "මෙම සටහන බෙදා ගන්න"
     },
+    "CoursesContainer": {
+      "home": "මුල් පිටුව",
+      "teaching": "ඉගැන්වීම්",
+      "title": "පාඨමාලා"
+    },
     "CourseCard": {
       "credits": "ඒකක අගය {value}"
     },
@@ -690,7 +707,61 @@
       "courses": "පාඨමාලා",
       "share": "මෙම පාඨමාලාව බෙදා ගන්න",
       "credits": "ඒකක අගය {value}",
-      "quizzes": "ප්‍රශ්නාවලි"
+      "quizzes": "ප්‍රශ්නාවලි",
+      "ready": "ඔබේ දැනුම පරීක්ෂා කිරීමට සූදානම්ද?",
+      "quizzesLink": "{quizzesWord} {count} උත්සාහ කර බලන්න",
+      "countSuffix": "ක්",
+      "quizzesWord": "ප්‍රශ්නාවලි",
+      "quizWord": "ප්‍රශ්නාවලි"
+    },
+    "QuizzesContainer": {
+      "home": "මුල් පිටුව",
+      "teaching": "ඉගැන්වීම්",
+      "courses": "පාඨමාලා",
+      "title": "ප්‍රශ්නාවලි",
+      "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය."
+    },
+    "QuizViewer": {
+      "home": "මුල් පිටුව",
+      "teaching": "ඉගැන්වීම්",
+      "courses": "පාඨමාලා",
+      "quizzes": "ප්‍රශ්නාවලි",
+      "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය.",
+      "failMcqs": "ප්‍රශ්නාවලිය පූරණය කිරීමට අසමත් විය.",
+      "duration": "කාල සීමාව",
+      "numMinutes": "මිනිත්තු {mins}",
+      "numOfQuestions": "ප්‍රශ්න",
+      "questionProgress": "ප්‍රශ්න {total} න් {current} වන ප්‍රශ්නය",
+      "start": "ප්‍රශ්නාවලිය අරඹන්න",
+      "prev": "පෙර",
+      "next": "ඊළඟ",
+      "submit": "අවසන් කරන්න",
+      "confirmSubmitTitle": "අවසන් කිරීම තහවුරු කිරීම",
+      "confirmSubmitMessage": "ඔබට පිළිතුරු ලබාදී අවසන් කිරීමට අවශ්‍ය බව විශ්වාසද?",
+      "cancel": "නැත",
+      "confirm": "ඔව් අවසන් කරන්න",
+      "resultTitle": "ඔබේ ප්‍රතිඵල",
+      "question": "{num} වන ප්‍රශ්නය",
+      "scrollTop": "ආපසු ඉහළට",
+      "resultSummaryTitle": "කාර්ය සාධනය",
+      "totalQuestions": "මුළු ප්‍රශ්න",
+      "attemptedQuestions": "උත්සාහ කළ ප්‍රශ්න",
+      "notAttemptedQuestions": "උත්සාහ නොකළ ප්‍රශ්න",
+      "correctAnswers": "නිවැරදි පිළිතුරු",
+      "partialCorrectAnswers": "අර්ධ වශයෙන් නිවැරදි",
+      "incorrectAnswers": "වැරදි පිළිතුරු",
+      "correct": "නිවැරදියි",
+      "incorrect": "වැරදියි",
+      "partiallyCorrect": "අර්ධ වශයෙන් නිවැරදියි",
+      "notAttempted": "උත්සාහ කර නැත",
+      "finalScore": "අවසාන ලකුණු"
+    },
+    "QuizCard": {
+      "title": "ප්‍රශ්නාවලි",
+      "duration": "කාල සීමාව",
+      "numMinutes": "මිනිත්තු {mins}",
+      "numOfQuestions": "ප්‍රශ්න",
+      "start": "අරඹන්න"
     },
     "Footer": {
       "title": "ප්‍රකාශන හිමිකම \u00A9 {currentYear} අනුරාධා ආරියරත්න.",
@@ -962,6 +1033,7 @@
     "QuizOptionsCard": {
       "failQuiz": "ප්‍රශ්නාවලිය පූරණය කිරීමට අසමත් විය.",
       "read": "තව කියවන්න",
+      "edit": "සංස්කරණය කරන්න",
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",
       "delete": "මකන්න",
@@ -976,11 +1048,13 @@
       "deleteModalAccept": "ඔව්, මකන්න",
       "activateErrorTitle": "ප්‍රශ්නාවලිය සක්‍රිය කළ නොහැක",
       "deactivateErrorTitle": "ප්‍රශ්නාවලිය අක්‍රිය කළ නොහැක",
-      "deleteErrorTitle": "ප්‍රශ්නාවලිය මැකිය නොහැක"
+      "deleteErrorTitle": "ප්‍රශ්නාවලිය මැකිය නොහැක",
+      "activeQuestions": "ක්‍රියාකාරී ප්‍රශ්න ගණන"
     },
     "QuizOptionsViewer": {
       "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය.",
       "failQuiz": "ප්‍රශ්නාවලිය පූරණය කිරීමට අසමත් විය.",
+      "failMcqs": "බහුවරණ ප්‍රශ්න පූරණය කිරීමට අසමත් විය.",
       "dashboard": "පාලන පුවරුව",
       "courses": "පාඨමාලා",
       "quizzes": "ප්‍රශ්නාවලි",
@@ -988,7 +1062,88 @@
       "numMinutes": "මිනිත්තු {mins}",
       "availableFromUntil": "මෙය <strong>{from}</strong> සිට <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
       "availableFrom": "මෙය <strong>{from}</strong> සිට සක්‍රිය වේ.",
-      "availableUntil": "මෙය <strong>{until}</strong> දක්වා සක්‍රිය වේ."
+      "availableUntil": "මෙය <strong>{until}</strong> දක්වා සක්‍රිය වේ.",
+      "addNew": "නව බහුවරණ ප්‍රශ්නයක් එක් කරන්න",
+      "allQuestions": "සියලුම ප්‍රශ්න ගණන",
+      "activeQuestions": "ක්‍රියාකාරී ප්‍රශ්න ගණන"
+    },
+    "NewQuizFormsContainer": {
+      "stepGeneral": "පියවර 1: සාමාන්‍ය විස්තර එකතු කිරීම"
+    },
+    "NewQuizForm": {
+      "titleEnLabel": "ප්‍රශ්නාවලියේ මාතෘකාව ඉංග්‍රීසියෙන් (Title in English)",
+      "titleEnPlaceholder": "මාතෘකාව ඉංග්‍රීසියෙන් ඇතුළත් කරන්න",
+      "titleEnTooShort": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
+      "titleEnTooLong": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "titleEnRequired": "ඉංග්‍රීසි භාෂාවෙන් මාතෘකාව අවශ්‍යයි.",
+      "titleSiLabel": "ප්‍රශ්නාවලියේ මාතෘකාව සිංහලෙන්",
+      "titleSiPlaceholder": "මාතෘකාව සිංහලෙන් ඇතුළත් කරන්න.",
+      "titleSiTooShort": "සිංහල භාෂාවෙන් මාතෘකාව අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
+      "titleSiTooLong": "සිංහල භාෂාවෙන් මාතෘකාව අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "titleSiRequired": "සිංහල භාෂාවෙන් මාතෘකාව අවශ්‍යයි.",
+      "durationLabel": "කාල සීමාව",
+      "durationPlaceholder": "කාල සීමාව මිනිත්තු වලින් ඇතුළත් කරන්න",
+      "durationMinutes": "මිනිත්තු",
+      "durationHelp": "ප්‍රශ්නාවලියකට මිනිත්තු වලින් පවරා ඇති කාලය. ප්‍රශ්න ගණන සහ එක් එක් ප්‍රශ්නයට පිළිතුරු දීමට ගතවන කාලය සලකා බලන්න.",
+      "durationMustBeNumber": "කාලය මිනිත්තු නියෝජනය කල යුතු අතර වලංගු සංඛ්‍යාවක් විය යුතුය.",
+      "durationMustBeWholeNumber": "කාල සීමාව පූර්ණ සංඛ්‍යාවක් විය යුතුය. කරුණාකර දශම සංඛ්‍යා ඉවත් කරන්න.",
+      "durationTooLow": "සපයා ඇති කාල සීමාව ඉතා අඩුය. කරුණාකර මිනිත්තු {min} කට වඩා වැඩි ධන අගයක් ඇතුළත් කරන්න.",
+      "durationTooHigh": "සපයන ලද කාල සීමාව ඉතා ඉහළයි. කරුණාකර මිනිත්තු {max} කට වඩා අඩු ධන අගයක් ඇතුළත් කරන්න.",
+      "availableFromLabel": "ලබා ගත හැකි ආරම්භක දිනය සහ වේලාව",
+      "availableFromInputLabel": "වේලාව",
+      "availableFromPlaceholder": "ලබා ගත හැකි ආරම්භක දිනය සහ වේලාව ඇතුළත් කරන්න",
+      "availableFromMustBeDate": "ලබා ගත හැකි ආරම්භක දිනය සහ වේලාව වලංගු දිනයක් විය යුතුය.",
+      "availableUntilLabel": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව",
+      "availableUntilInputLabel": "වේලාව",
+      "availableUntilPlaceholder": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව ඇතුළත් කරන්න",
+      "availableUntilMustBeDate": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව වලංගු දිනයක් විය යුතුය.",
+      "availableUntilMustBeAfter": "ලබා ගත හැකි අවසන් දිනය සහ වේලාව ලබා ගත හැකි ආරම්භක දිනය සහ වේලාවට පසුව විය යුතුය.",
+      "cancel": "අවලංගු කරන්න",
+      "submit": "ඉදිරියට යන්න",
+      "submitting": "ඉදිරිපත් කරමින්..."
+    },
+    "UpdateQuizFormsContainer": {
+      "stepGeneral": "පියවර 1: සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
+    },
+    "McqOptionsCard": {
+      "failMcq": "බහුවරණ ප්‍රශ්නය පූරණය කිරීමට අපොහොසත් විය.",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> බහුවරණ ප්‍රශ්නය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "බහුවරණ ප්‍රශ්නය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "බහුවරණ ප්‍රශ්නය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "බහුවරණ ප්‍රශ්නය මැකිය නොහැක",
+      "editModalTitle": "බහුවරණ ප්‍රශ්නය සංස්කරණය",
+      "editModalCancel": "අවලංගු කරන්න",
+      "editModalSubmit": "සුරකින්න"
+    },
+    "NewMcqModal": {
+      "title": "නව බහුවරණ ප්‍රශ්නයක් එක් කරන්න",
+      "questionLabel": "ප්‍රශ්නය",
+      "questionPlaceholder": "ප්‍රශ්නය ඇතුළත් කරන්න",
+      "questionTooShort": "ප්‍රශ්නය අක්ෂර {min} කට වඩා දිගු විය යුතුය.",
+      "questionTooLong": "ප්‍රශ්නය අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "questionRequired": "ප්‍රශ්නය අවශ්‍යයි",
+      "choicesLabel": "තේරීම්",
+      "choiceTextRequired": "තේරීම් පෙළ අවශ්‍යයි",
+      "choicesRequired": "අවම වශයෙන් තේරීම් 2ක්වත් තිබිය යුතුය.",
+      "choicePlaceholder": "තේරීම් පෙළ ඇතුළත් කරන්න",
+      "choiceCorrectLabel": "නිවැරදි පිළිතුරකි",
+      "atLeastOneCorrectChoice": "අවම වශයෙන් එක් තේරීමක් හෝ නිවැරදි විය යුතුය.",
+      "choicesMustBeUnique": "තේරීම් අනන්‍ය විය යුතුය.",
+      "isMultiSelectLabel": "බහු විකල්ප තේරීම් සක්‍රිය කරන්න",
+      "isMultiSelectPlaceholder": "නිවැරදි උත්තර එකක් පමණක් තිබුණද, බහු විකල්ප තේරීම් සක්‍රිය කිරීමට මෙය තෝරන්න.",
+      "solutionExplanationLabel": "විසඳුම් විස්තරය",
+      "solutionExplanationPlaceholder": "විසඳුම් විස්තරය ඇතුළත් කරන්න",
+      "solutionExplanationTooLong": "විසඳුම් විස්තරය අක්ෂර {max}කට අඩු විය යුතුය",
+      "cancel": "අවලංගු කරන්න",
+      "submitting": "ඉදිරිපත් කරමින්...",
+      "submit": "ඉදිරිපත් කරන්න"
     }
   },
   "contexts": {

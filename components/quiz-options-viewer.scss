@@ -4,4 +4,25 @@
     text-decoration: none;
   }
 
+  .choice-list {
+    list-style: none;
+    counter-reset: item;
+    padding-left: 1.5rem;
+
+    li {
+      counter-increment: item;
+      position: relative;
+      padding-left: 1.5rem;
+      line-height: 180%;
+  
+      &::before {
+        content: counter(item, lower-alpha) ") ";
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+
+  }
+
 }

@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from '@/i18n/routing';
-import { Alert, Button, ButtonGroup, Card, Col, Modal, Row } from "react-bootstrap";
+import { Alert, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,7 @@ import { useActivateQuizMutation, useDeactivateQuizMutation, useDeleteQuizMutati
 import LoadingContainer from './loading-container';
 import { LANG_SI, LOCALE_EN, LOCALE_SI } from '@/constants/common-vars';
 import { getFormattedDateTime } from '@/utils/common-utils';
+import DeleteModal from './delete-modal';
 
 const baseTPath = 'components.QuizOptionsCard';
 
@@ -21,13 +22,13 @@ interface QuizOptionsCardProps {
 const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => {
   const t = useTranslations(baseTPath);
   const lang = useLocale();
-  const [show, setShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
   const router = useRouter();
 
   const { data: quiz, isPending: isPendingQuiz, isError: isQuizError, isFetching: isFetchingQuiz, error: quizError } = useQuizByIdQuery(courseId, quizId);
-  const { mutate: deleteQuizMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteQuizMutation(courseId);
-  const { mutate: activateQuizMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateQuizMutation(courseId);
-  const { mutate: deactivateQuizMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateQuizMutation(courseId);
+  const { mutate: deleteQuizMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteQuizMutation();
+  const { mutate: activateQuizMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateQuizMutation();
+  const { mutate: deactivateQuizMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivateQuizMutation();
 
   if ( isPendingQuiz || isFetchingQuiz ) {
     return (<LoadingContainer />);
@@ -75,13 +76,10 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
     );
   }
 
-  const handleDeleteCourse = async () => {
+  const handleDeleteQuiz = async () => {
     deleteQuizMutation({courseId, quizId});
-    handleClose();
+    setDeleteModalShow(false);
   }
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleActivate = () => {
     activateQuizMutation({courseId, quizId});
@@ -103,10 +101,15 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
               </Card.Title>
               <hr />
               <Card.Text>
-                <b>{t('duration')}:</b>{" "}{ t.rich('numMinutes', {mins: quiz.duration}) }
+                <b className="me-2">{t('duration')}:</b>{ t.rich('numMinutes', {mins: quiz.duration}) }
               </Card.Text>
               {formattedAvailable && (
                 <Card.Text>{formattedAvailable}</Card.Text>
+              )}
+              {quiz.mcqs && (
+                <Card.Text>
+                  <b className="me-2">{t('activeQuestions')}:</b>{quiz.mcqs.length}
+                </Card.Text>
               )}
               <Row className="align-items-center">
                 <Col className="mb-2">
@@ -116,6 +119,12 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                       onClick={() => router.push(`quizzes/${quiz.id}`)}
                     >
                       <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => router.push(`quizzes/${quizId}/edit`)}
+                    >
+                      <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
                     </Button>
                     <Button
                       variant={quiz.status === DocumentStatus.ACTIVE ? `warning` : `success`}
@@ -134,7 +143,7 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                   <Button
                     variant="danger"
                     className="me-2 my-1"
-                    onClick={handleShow}
+                    onClick={() => setDeleteModalShow(true)}
                     disabled={isPendingDelete}
                   >
                     <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
@@ -162,30 +171,20 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
             </Card.Body>
           </Col>
         </Row>
-        
-        <div>
-          <Modal show={show} onHide={handleClose} centered>
-            <Modal.Header closeButton>
-              <Modal.Title>{t('deleteModalTitle')}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {
-                t.rich('deleteModalMessage', {
-                  strong: () => <strong>{selectedTitle}</strong>,
-                })
-              }
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                {t('deleteModalCancel')}
-              </Button>
-              <Button variant="danger" onClick={handleDeleteCourse}>
-                {t('deleteModalAccept')}
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
       </Card>
+      <DeleteModal
+        title={t('deleteModalTitle')}
+        description={
+          t.rich('deleteModalMessage', {
+            strong: () => <strong>{selectedTitle}</strong>,
+          })
+        }
+        cancelText={t('deleteModalCancel')}
+        confirmText={t('deleteModalAccept')}
+        show={deleteModalShow}
+        onHide={() => setDeleteModalShow(false)}
+        onConfirm={handleDeleteQuiz}
+      />
     </>
   )
 }

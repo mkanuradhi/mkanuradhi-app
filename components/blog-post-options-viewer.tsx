@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import DOMPurify from 'dompurify';
-import { Alert, Breadcrumb, Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import { Alert, Breadcrumb, Button, Col, Container, Row } from 'react-bootstrap';
 import { Link, useRouter } from '@/i18n/routing';
 import Image from 'next/image';
 import { LOCALE_EN, LOCALE_SI } from '@/constants/common-vars';
@@ -12,7 +12,9 @@ import { faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-i
 import { useBlogPostByIdQuery, useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from '@/hooks/use-blog-posts';
 import LoadingContainer from './loading-container';
 import DocumentStatus from '@/enums/document-status';
+import DeleteModal from './delete-modal';
 import "./blog-post-options-viewer.scss";
+
 
 const baseTPath = 'components.BlogPostOptionsViewer';
 
@@ -29,7 +31,7 @@ const getSanitizedHtml = (html: string | undefined): string => {
 
 const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostId }) => {
   const t = useTranslations(baseTPath);
-  const [show, setShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
   const router = useRouter();
 
   const { data: blogPost, isPending, isError, isFetching, isSuccess, error: blogpostError } = useBlogPostByIdQuery(blogPostId);
@@ -56,12 +58,9 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
 
   const handleDeleteBlogPost = async () => {
     deleteBlogPostMutation(blogPost.id);
-    handleClose();
+    setDeleteModalShow(false);
     router.replace('/dashboard/blog');
   }
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handlePublish = () => {
     publishBlogPostMutation(blogPost.id);
@@ -172,7 +171,12 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
               />{" "}
               {blogPost.status === DocumentStatus.ACTIVE ? t('unpublish') : t('publish')}
             </Button>
-            <Button variant="danger" className="me-2" onClick={handleShow} disabled={isPendingDelete}>
+            <Button
+              variant="danger"
+              className="me-2"
+              onClick={() => setDeleteModalShow(true)}
+              disabled={isPendingDelete}
+            >
               <FontAwesomeIcon icon={faTrash} className="list-icon" /> { t('delete') }
             </Button>
           </Col>
@@ -207,28 +211,19 @@ const BlogPostOptionsViewer: React.FC<BlogPostOptionsViewerProps> = ({ blogPostI
             </Col>
           </Row>
         )}
-        <div>
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>{t('deleteModalTitle')}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {
-                t.rich('deleteModalMessage', {
-                  strong: () => <strong>{selectedTitle}</strong>,
-                })
-              }
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                {t('deleteModalCancel')}
-              </Button>
-              <Button variant="danger" onClick={handleDeleteBlogPost}>
-                {t('deleteModalAccept')}
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+        <DeleteModal
+          title={t('deleteModalTitle')}
+          description={
+            t.rich('deleteModalMessage', {
+              strong: () => <strong>{selectedTitle}</strong>,
+            })
+          }
+          cancelText={t('deleteModalCancel')}
+          confirmText={t('deleteModalAccept')}
+          show={deleteModalShow}
+          onHide={() => setDeleteModalShow(false)}
+          onConfirm={handleDeleteBlogPost}
+        />
       </Container>
     </>
   )

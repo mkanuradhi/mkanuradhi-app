@@ -22,7 +22,11 @@ const RequiredFormLabel: FC<RequiredFormLabelProps> = ({ required = true, toolti
             placement="top"
             overlay={<Tooltip id="required-tooltip">{langTooltip}</Tooltip>}
           >
-            <span className="text-danger" style={{ cursor: 'help' }}>*</span>
+            <span className="text-danger" style={{ cursor: 'help' }}>
+              <sup>
+                <i className="bi bi-asterisk" style={{ fontSize: '.5rem' }}></i>
+              </sup>
+            </span>
           </OverlayTrigger>
         )
       }

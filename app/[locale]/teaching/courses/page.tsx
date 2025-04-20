@@ -1,21 +1,13 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
-import { Col, Container, Row } from 'react-bootstrap';
 import CourseView from '@/interfaces/i-course-view';
 import { getActivatedCourses } from '@/services/course-service';
-import CourseCard from '@/components/course-card';
+import { GroupedCourses } from '@/interfaces/i-grouped-courses';
+import CoursesContainer from '@/components/courses-container';
 
 const baseTPath = 'pages.Teaching.Courses';
 
 export const revalidate = 60;
-
-interface GroupedCourses {
-  year: number;
-  locations: Array<{
-    location: string;
-    courses: CourseView[];
-  }>;
-}
 
 const groupCoursesByYearAndLocation = (items: CourseView[]): GroupedCourses[] => {
   const grouped: Record<number, Record<string, CourseView[]>> = {};
@@ -71,44 +63,14 @@ export async function generateMetadata ({ params }: { params: { locale: string }
 
 const CoursesPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
-  const t = await getTranslations({ locale, namespace: baseTPath });
 
   // Fetch and group courses.
   const coursesResponse = await getActivatedCourses(locale, 0, 100);
-  const groupedData = groupCoursesByYearAndLocation(coursesResponse.items);
+  const groupedCourses = groupCoursesByYearAndLocation(coursesResponse.items);
 
   return (
     <>
-      <div className="courses">
-        <Container fluid="md">
-          <Row className="mt-4">
-            <Col>
-              <h1>{t('title')}</h1>
-            </Col>
-          </Row>
-          <Row className="mt-3">
-            <Col>
-              {groupedData.map(group => (
-                <section key={group.year} className="mt-4">
-                  <h3>{group.year}</h3>
-                  {group.locations.map((locGroup, index) => (
-                    <div key={index} className="mb-4">
-                      <h6>{locGroup.location}</h6>
-                      <Row>
-                        {locGroup.courses.map(course => (
-                          <Col md={4} key={course.id} className="mb-3">
-                            <CourseCard course={course} />
-                          </Col>
-                        ))}
-                      </Row>
-                    </div>
-                  ))}
-                </section>
-              ))}
-            </Col>
-          </Row>
-        </Container>
-      </div>
+      <CoursesContainer groupedCourses={groupedCourses} />
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { API_BASE_URL, COURSES_PATH, QUIZZES_PATH } from "@/constants/api-paths";
+import { CreateQuizDto, UpdateQuizDto } from "@/dtos/quiz-dto";
 import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
 import PaginatedResult from "@/interfaces/i-paginated-result";
@@ -19,6 +20,20 @@ export const getQuizzes = async (courseId: string, page: number, size: number): 
   }
 };
 
+export const getQuizzesByCoursePath = async (coursePath: string, page: number, size: number): Promise<PaginatedResult<Quiz>> => {
+  try {
+    const response = await axios.get<PaginatedResult<Quiz>>(`${API_BASE_URL}${COURSES_PATH}/path/${coursePath}${QUIZZES_PATH}`, {
+      params: {
+        page,
+        size,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
 export const getQuizById = async (courseId: string, quizId: string): Promise<Quiz> => {
   try {
     const response = await axios.get<Quiz>(`${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}/${quizId}`);
@@ -28,10 +43,19 @@ export const getQuizById = async (courseId: string, quizId: string): Promise<Qui
   }
 };
 
+export const getQuizByCoursePathAndId = async (coursePath: string, quizId: string): Promise<Quiz> => {
+  try {
+    const response = await axios.get<Quiz>(`${API_BASE_URL}${COURSES_PATH}/path/${coursePath}${QUIZZES_PATH}/${quizId}`);
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
 export const activateQuiz = async (courseId: string, quizId: string): Promise<Quiz> => {
   try {
     const response = await axios.patch<Quiz>(
-      `${API_BASE_URL}${COURSES_PATH}/${courseId}/quizzes/${quizId}/toggle`,
+      `${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}/${quizId}/toggle`,
       { status: DocumentStatus.ACTIVE }
     );
     return response.data;
@@ -43,7 +67,7 @@ export const activateQuiz = async (courseId: string, quizId: string): Promise<Qu
 export const deactivateQuiz = async (courseId: string, quizId: string): Promise<Quiz> => {
   try {
     const response = await axios.patch<Quiz>(
-      `${API_BASE_URL}${COURSES_PATH}/${courseId}/quizzes/${quizId}/toggle`,
+      `${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}/${quizId}/toggle`,
       { status: DocumentStatus.INACTIVE }
     );
     return response.data;
@@ -54,11 +78,35 @@ export const deactivateQuiz = async (courseId: string, quizId: string): Promise<
 
 export const deleteQuiz = async (courseId: string, quizId: string) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}${COURSES_PATH}/${courseId}/quizzes/${quizId}`);
+    const response = await axios.delete(`${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}/${quizId}`);
     if (response.status !== 204) {
       throw new Error('Failed to delete quiz');
     }
     return { quizId, message: 'Quiz deleted successfully' };
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const createQuiz = async (courseId: string, quizDto: CreateQuizDto): Promise<Quiz> => {
+  try {
+    const response = await axios.post<Quiz>(
+      `${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}`,
+      quizDto
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const updateQuiz = async (courseId: string, quizId: string, quizDto: UpdateQuizDto): Promise<Quiz> => {
+  try {
+    const response = await axios.patch<Quiz>(
+      `${API_BASE_URL}${COURSES_PATH}/${courseId}${QUIZZES_PATH}/${quizId}`,
+      quizDto
+    );
+    return response.data;
   } catch (error) {
     throw handleApiError(error);
   }

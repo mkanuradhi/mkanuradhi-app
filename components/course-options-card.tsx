@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from '@/i18n/routing';
-import { Alert, Button, ButtonGroup, Card, Col, Modal, Row } from "react-bootstrap";
+import { Alert, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,9 @@ import { useState } from "react";
 import { useActivateCourseMutation, useDeactivateCourseMutation, useDeleteCourseMutation } from "@/hooks/use-courses";
 import DocumentStatus from "@/enums/document-status";
 import Course from "@/interfaces/i-course";
+import DeleteModal from './delete-modal';
 import "./course-options-card.scss";
+
 
 const baseTPath = 'components.CourseOptionsCard';
 
@@ -19,7 +21,7 @@ interface CourseOptionsCardProps {
 const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
-  const [show, setShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
   const router = useRouter();
 
   const formattedCredits = course.credits ? course.credits.toFixed(1) : course.credits;
@@ -32,11 +34,8 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
 
   const handleDeleteCourse = async () => {
     deleteCourseMutation(course.id);
-    handleClose();
+    setDeleteModalShow(false)
   }
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleActivate = () => {
     activateCourseMutation(course.id);
@@ -107,7 +106,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
                   <Button
                     variant="danger"
                     className="me-2 my-1"
-                    onClick={handleShow}
+                    onClick={() => setDeleteModalShow(true)}
                     disabled={isPendingDelete}
                   >
                     <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
@@ -135,30 +134,20 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
             </Card.Body>
           </Col>
         </Row>
-        
-        <div>
-          <Modal show={show} onHide={handleClose} centered>
-            <Modal.Header closeButton>
-              <Modal.Title>{t('deleteModalTitle')}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {
-                t.rich('deleteModalMessage', {
-                  strong: () => <strong>{selectedTitle}</strong>,
-                })
-              }
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                {t('deleteModalCancel')}
-              </Button>
-              <Button variant="danger" onClick={handleDeleteCourse}>
-                {t('deleteModalAccept')}
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
       </Card>
+      <DeleteModal
+        title={t('deleteModalTitle')}
+        description={
+          t.rich('deleteModalMessage', {
+            strong: () => <strong>{selectedTitle}</strong>,
+          })
+        }
+        cancelText={t('deleteModalCancel')}
+        confirmText={t('deleteModalAccept')}
+        show={deleteModalShow}
+        onHide={() => setDeleteModalShow(false)}
+        onConfirm={handleDeleteCourse}
+      />
     </>
   )
 }

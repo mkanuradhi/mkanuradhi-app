@@ -44,8 +44,17 @@ export const Footer = () => {
               <OverlayTrigger
                 placement="top"
                 overlay={<Tooltip id="tooltip-heart">{t('ackTitle')}</Tooltip>}
+                trigger={['hover', 'focus']}
               >
-                <Button variant="link" size="sm" className="blank-btn" onClick={handleShow}>
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="blank-btn"
+                  onClick={(e) => {
+                    e.currentTarget.blur();
+                    handleShow();
+                  }}
+                >
                   <motion.svg
                     width="24" 
                     height="24" 

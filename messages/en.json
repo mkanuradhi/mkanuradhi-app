@@ -54,7 +54,11 @@
         "pageTitle": "Courses",
         "pageDescription": "I am conducting many courses in the field of computing, specializing in meta-heuristic optimization and machine learning.",
         "pageKeywords": "courses, subjects, degree, masters",
-        "title": "Courses"
+        "Quizzes": {
+          "pageTitle": "Quizzes",
+          "pageDescription": "Explore engaging and interactive quizzes designed to test your knowledge across various topics. Challenge yourself, learn new facts, and track your progress with our fun and educational quizzes.",
+          "pageKeywords": "quizzes, questions, basics, understanding"
+        }
       }
     },
     "Research": {
@@ -648,6 +652,14 @@
         },
         "Edit": {
           "title": "Edit Course"
+        },
+        "Quizzes": {
+          "New": {
+            "title": "Add New Quiz"
+          },
+          "Edit": {
+            "title": "Edit Quiz"
+          }
         }
       }
     }
@@ -681,6 +693,11 @@
       "blog": "Blog",
       "share": "Share this post"
     },
+    "CoursesContainer": {
+      "home": "Home",
+      "teaching": "Teaching",
+      "title": "Courses"
+    },
     "CourseCard": {
       "credits": "{value} Credits"
     },
@@ -690,7 +707,61 @@
       "courses": "Courses",
       "share": "Share this course",
       "credits": "{value} Credits",
-      "quizzes": "Quizzes"
+      "quizzes": "Quizzes",
+      "ready": "Ready to test your knowledge?",
+      "quizzesLink": "Try out {count} {quizzesWord}",
+      "countSuffix": "",
+      "quizzesWord": "quizzes",
+      "quizWord": "quiz"
+    },
+    "QuizzesContainer": {
+      "home": "Home",
+      "teaching": "Teaching",
+      "courses": "Courses",
+      "title": "Quizzes",
+      "failCourse": "Failed to load course"
+    },
+    "QuizViewer": {
+      "home": "Home",
+      "teaching": "Teaching",
+      "courses": "Courses",
+      "quizzes": "Quizzes",
+      "failCourse": "Failed to load course",
+      "failMcqs": "Failed to load mcqs",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "numOfQuestions": "Questions",
+      "questionProgress": "Question {current} of {total}",
+      "start": "Start the quiz",
+      "prev": "Previous",
+      "next": "Next",
+      "submit": "Submit",
+      "confirmSubmitTitle": "Confirm Submission",
+      "confirmSubmitMessage": "Are you sure you want to submit the answers?",
+      "cancel": "No",
+      "confirm": "Yes Submit",
+      "resultTitle": "Your Results",
+      "question": "Question {num}",
+      "scrollTop": "Back to Top",
+      "resultSummaryTitle": "Performance",
+      "totalQuestions": "Total Questions",
+      "attemptedQuestions": "Attempted Questions",
+      "notAttemptedQuestions": "Not Attempted",
+      "correctAnswers": "Correct Answers",
+      "partialCorrectAnswers": "Partially Correct",
+      "incorrectAnswers": "Incorrect Answers",
+      "correct": "Correct",
+      "incorrect": "Wrong",
+      "partiallyCorrect": "Partially Correct",
+      "notAttempted": "Not Attempted",
+      "finalScore": "Final Score"
+    },
+    "QuizCard": {
+      "title": "Quizzes",
+      "duration": "Duration",
+      "numMinutes": "{mins} minutes",
+      "numOfQuestions": "Questions",
+      "start": "Start"
     },
     "Footer": {
       "title": "Copyright \u00A9 {currentYear} Anuradha Ariyaratne.",
@@ -962,6 +1033,7 @@
     "QuizOptionsCard": {
       "failQuiz": "Fail to load the quiz",
       "read": "Read more",
+      "edit": "Edit",
       "activate": "Activate",
       "deactivate": "Deactivate",
       "delete": "Delete",
@@ -976,11 +1048,13 @@
       "deleteModalAccept": "Yes, Delete",
       "activateErrorTitle": "Cannot activate the quiz",
       "deactivateErrorTitle": "Cannot deactivate the quiz",
-      "deleteErrorTitle": "Cannot delete the quiz"
+      "deleteErrorTitle": "Cannot delete the quiz",
+      "activeQuestions": "Active questions"
     },
     "QuizOptionsViewer": {
       "failCourse": "Failed to load course",
       "failQuiz": "Failed to load quiz",
+      "failMcqs": "Failed to load MCQs",
       "dashboard": "Dashboard",
       "courses": "Courses",
       "quizzes": "Quizzes",
@@ -988,7 +1062,88 @@
       "numMinutes": "{mins} minutes",
       "availableFromUntil": "This will be enabled from <strong>{from}</strong> until <strong>{until}</strong>",
       "availableFrom": "This will be enabled from <strong>{from}</strong>",
-      "availableUntil": "This will be enabled until <strong>{until}</strong>"
+      "availableUntil": "This will be enabled until <strong>{until}</strong>",
+      "addNew": "Add New MCQ",
+      "allQuestions": "All questions",
+      "activeQuestions": "Active questions"
+    },
+    "NewQuizFormsContainer": {
+      "stepGeneral": "Step 1: Adding General Details"
+    },
+    "NewQuizForm": {
+      "titleEnLabel": "Quiz Title in English",
+      "titleEnPlaceholder": "Enter Title in English",
+      "titleEnTooShort": "Title in English must be more than {min} characters",
+      "titleEnTooLong": "Title in English must be less than {max} characters",
+      "titleEnRequired": "Title in English is required",
+      "titleSiLabel": "Quiz Title in Sinhala (ප්‍රශ්නාවලියේ මාතෘකාව)",
+      "titleSiPlaceholder": "Enter Title in Sinhala",
+      "titleSiTooShort": "Title in Sinhala must be more than {min} characters",
+      "titleSiTooLong": "Title in Sinhala must be less than {max} characters",
+      "titleSiRequired": "Title in Sinhala is required",
+      "durationLabel": "Duration",
+      "durationPlaceholder": "Enter duration in minutes",
+      "durationMinutes": "minutes",
+      "durationHelp": "Duration assigned per quiz in minutes. Consider the number of questions and the time required to answer each question.",
+      "durationMustBeNumber": "Duration must be a valid number represents minutes",
+      "durationMustBeWholeNumber": "Duration must be a whole number. Please remove any decimal values.",
+      "durationTooLow": "Provided duration is too low. Please enter a positive number greater than {min} minutes",
+      "durationTooHigh": "Provided duration is too high. Please enter a positive number less than {max} minutes",
+      "availableFromLabel": "Available From",
+      "availableFromInputLabel": "Time",
+      "availableFromPlaceholder": "Enter the available from date and time",
+      "availableFromMustBeDate": "Available From must be a valid date",
+      "availableUntilLabel": "Available Until",
+      "availableUntilInputLabel": "Time",
+      "availableUntilPlaceholder": "Enter the available until date and time",
+      "availableUntilMustBeDate": "Available until must be a valid date",
+      "availableUntilMustBeAfter": "Available until date must be after the available from date",
+      "cancel": "Cancel",
+      "submit": "Proceed",
+      "submitting": "Submitting..."
+    },
+    "UpdateQuizFormsContainer": {
+      "stepGeneral": "Step 1: Updating General Details"
+    },
+    "McqOptionsCard": {
+      "failMcq": "Fail to load the mcq",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the mcq: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the mcq",
+      "deactivateErrorTitle": "Cannot deactivate the mcq",
+      "deleteErrorTitle": "Cannot delete the mcq",
+      "editModalTitle": "Edit The Question",
+      "editModalCancel": "Cancel",
+      "editModalSubmit": "Save Changes"
+    },
+    "NewMcqModal": {
+      "title": "Add New MCQ",
+      "questionLabel": "Question",
+      "questionPlaceholder": "Enter the question",
+      "questionTooShort": "Question must be more than {min} characters long",
+      "questionTooLong": "Question must be less than {max} characters",
+      "questionRequired": "Question is required",
+      "choicesLabel": "Choices",
+      "choiceTextRequired": "Choice text is required",
+      "choicesRequired": "At least 2 choices should be present",
+      "choicePlaceholder": "Enter the choice text",
+      "choiceCorrectLabel": "Is correct",
+      "atLeastOneCorrectChoice": "At least one choice must be correct",
+      "choicesMustBeUnique": "Choices should be unique.",
+      "isMultiSelectLabel": "Enable multiple choices selection",
+      "isMultiSelectPlaceholder": "Select this to allow multiple choices, even if there's only one correct answer.",
+      "solutionExplanationLabel": "Solution Explaination",
+      "solutionExplanationPlaceholder": "Enter solution explaination",
+      "solutionExplanationTooLong": "Solution explanantion must be less than {max} characters",
+      "cancel": "Cancel",
+      "submitting": "Submitting...",
+      "submit": "Submit"
     }
   },
   "contexts": {

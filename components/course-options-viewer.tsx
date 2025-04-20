@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Alert, Breadcrumb, Button, ButtonGroup, Col, Container, Modal, Row } from 'react-bootstrap';
+import { Alert, Breadcrumb, Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import { Link, useRouter } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faListUl, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -9,8 +9,10 @@ import { useActivateCourseMutation, useCourseByIdQuery, useDeactivateCourseMutat
 import LoadingContainer from './loading-container';
 import DocumentStatus from '@/enums/document-status';
 import SanitizedHtml from './sanitized-html';
+import DeleteModal from './delete-modal';
 import 'react-quill/dist/quill.snow.css';
 import "./course-options-viewer.scss";
+
 
 const baseTPath = 'components.CourseOptionsViewer';
 
@@ -20,7 +22,7 @@ interface CourseOptionsViewerProps {
 
 const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) => {
   const t = useTranslations(baseTPath);
-  const [show, setShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
   const router = useRouter();
 
   const { data: course, isPending, isError, isFetching, error: courseError } = useCourseByIdQuery(courseId);
@@ -48,12 +50,9 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
 
   const handleDeleteCourse = async () => {
     deleteCourseMutation(course.id);
-    handleClose();
+    setDeleteModalShow(false);
     router.replace('/dashboard/courses');
   }
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleActivate = () => {
     activateCourseMutation(course.id);
@@ -190,7 +189,12 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
             </ButtonGroup>
           </Col>
           <Col xs="auto" className="mb-2">
-            <Button variant="danger" className="me-2" onClick={handleShow} disabled={isPendingDelete}>
+            <Button
+              variant="danger"
+              className="me-2"
+              onClick={() => setDeleteModalShow(true)}
+              disabled={isPendingDelete}
+            >
               <FontAwesomeIcon icon={faTrash} className="list-icon" /> { t('delete') }
             </Button>
           </Col>
@@ -225,28 +229,19 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
             </Col>
           </Row>
         )}
-        <div>
-          <Modal show={show} onHide={handleClose} centered>
-            <Modal.Header closeButton>
-              <Modal.Title>{t('deleteModalTitle')}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {
-                t.rich('deleteModalMessage', {
-                  strong: () => <strong>{selectedTitle}</strong>,
-                })
-              }
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                {t('deleteModalCancel')}
-              </Button>
-              <Button variant="danger" onClick={handleDeleteCourse}>
-                {t('deleteModalAccept')}
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+        <DeleteModal
+          title={t('deleteModalTitle')}
+          description={
+            t.rich('deleteModalMessage', {
+              strong: () => <strong>{selectedTitle}</strong>,
+            })
+          }
+          cancelText={t('deleteModalCancel')}
+          confirmText={t('deleteModalAccept')}
+          show={deleteModalShow}
+          onHide={() => setDeleteModalShow(false)}
+          onConfirm={handleDeleteCourse}
+        />
       </Container>
     </>
   )

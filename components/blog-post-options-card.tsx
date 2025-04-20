@@ -6,8 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import { useDeleteBlogPostMutation, usePublishBlogPostMutation, useUnpublishBlogPostMutation } from "@/hooks/use-blog-posts";
-import "./blog-post-options-card.scss";
 import DocumentStatus from "@/enums/document-status";
+import DeleteModal from "./delete-modal";
+import "./blog-post-options-card.scss";
+
 
 const baseTPath = 'components.BlogPostOptionsCard';
 
@@ -26,7 +28,7 @@ interface BlogPostOptionsCardProps {
 const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, summaryEn, titleSi, summarySi, img, path, status, dateTime}) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
-  const [show, setShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
 
   const selectedTitle = locale === "si" ? `'${titleSi}'` : `'${titleEn}'`;
 
@@ -36,11 +38,8 @@ const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, s
 
   const handleDeleteBlogPost = async () => {
     deleteBlogPostMutation(id);
-    handleClose();
+    setDeleteModalShow(false);
   }
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handlePublish = () => {
     publishBlogPostMutation(id);
@@ -107,7 +106,7 @@ const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, s
               <Button
                 variant="danger"
                 className="me-2 my-1"
-                onClick={handleShow}
+                onClick={() => setDeleteModalShow(true)}
                 disabled={isPendingDelete}
               >
                 <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
@@ -133,30 +132,20 @@ const BlogPostOptionsCard: React.FC<BlogPostOptionsCardProps> = ({id, titleEn, s
             </Card.Body>
           </Col>
         </Row>
-        
-        <div>
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>{t('deleteModalTitle')}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {
-                t.rich('deleteModalMessage', {
-                  strong: () => <strong>{selectedTitle}</strong>,
-                })
-              }
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                {t('deleteModalCancel')}
-              </Button>
-              <Button variant="danger" onClick={handleDeleteBlogPost}>
-                {t('deleteModalAccept')}
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
       </Card>
+      <DeleteModal
+        title={t('deleteModalTitle')}
+        description={
+          t.rich('deleteModalMessage', {
+            strong: () => <strong>{selectedTitle}</strong>,
+          })
+        }
+        cancelText={t('deleteModalCancel')}
+        confirmText={t('deleteModalAccept')}
+        show={deleteModalShow}
+        onHide={() => setDeleteModalShow(false)}
+        onConfirm={handleDeleteBlogPost}
+      />
     </>
   )
 }

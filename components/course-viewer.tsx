@@ -1,13 +1,14 @@
 "use client";
 import React from 'react';
-import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
+import { Breadcrumb, Button, Col, Container, Row } from 'react-bootstrap';
 import { useLocale, useTranslations } from 'next-intl';
 import CourseView from '@/interfaces/i-course-view';
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import SharePanel from './SharePanel';
 import SanitizedHtml from './sanitized-html';
 import 'react-quill/dist/quill.snow.css';
 import "./course-viewer.scss";
+import GlowLink from './GlowLink';
 
 const baseTPath = 'components.CourseViewer';
 
@@ -18,6 +19,8 @@ interface CourseViewerProps {
 const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
+  const router = useRouter();
+
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
   const fullUrl = `${baseUrl}/${locale}/teaching/courses/${courseView.path}`;
 
@@ -72,20 +75,27 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
               </Col>
             </Row>
             {courseView.quizzes && courseView.quizzes.length > 0 && (
-              <Row>
+              <Row className="">
                 <Col>
                   <h2 className="my-3">{t('quizzes')}</h2>
-                  <ol>
-                    {courseView.quizzes.map((quiz) => (
-                      <li key={quiz.id}>
-                        <Link href={`/teaching/courses/${courseView.path}/quizzes/${quiz.id}`}>{quiz.title}</Link>
-                      </li>
-                    ))}
-                  </ol>
+                  <div>
+                    <span className="me-2">{t('ready')}</span>
+                    <span>
+                      <GlowLink href={`${courseView.path}/quizzes`}>
+                        {
+                          t.rich('quizzesLink', {
+                            count: `${courseView.quizzes.length} ${t('countSuffix')}`,
+                            quizzesWord: courseView.quizzes.length > 1 ? t('quizzesWord') : t('quizWord'),
+                          })
+                        }
+                      </GlowLink>
+                    </span>
+                  </div>
                 </Col>
               </Row>
             )}
-            <Row className="my-3">
+            <hr />
+            <Row className="my-4">
               <Col>
                 <h6>{t('share')}</h6>
                 <SharePanel
