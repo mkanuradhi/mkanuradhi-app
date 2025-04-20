@@ -1136,6 +1136,8 @@
       "choiceCorrectLabel": "නිවැරදි පිළිතුරකි",
       "atLeastOneCorrectChoice": "අවම වශයෙන් එක් තේරීමක් හෝ නිවැරදි විය යුතුය.",
       "choicesMustBeUnique": "තේරීම් අනන්‍ය විය යුතුය.",
+      "isMultiSelectLabel": "බහු විකල්ප තේරීම් සක්‍රිය කරන්න",
+      "isMultiSelectPlaceholder": "නිවැරදි උත්තර එකක් පමණක් තිබුණද, බහු විකල්ප තේරීම් සක්‍රිය කිරීමට මෙය තෝරන්න.",
       "solutionExplanationLabel": "විසඳුම් විස්තරය",
       "solutionExplanationPlaceholder": "විසඳුම් විස්තරය ඇතුළත් කරන්න",
       "solutionExplanationTooLong": "විසඳුම් විස්තරය අක්ෂර {max}කට අඩු විය යුතුය",

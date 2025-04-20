@@ -1136,6 +1136,8 @@
       "choiceCorrectLabel": "Is correct",
       "atLeastOneCorrectChoice": "At least one choice must be correct",
       "choicesMustBeUnique": "Choices should be unique.",
+      "isMultiSelectLabel": "Enable multiple choices selection",
+      "isMultiSelectPlaceholder": "Select this to allow multiple choices, even if there's only one correct answer.",
       "solutionExplanationLabel": "Solution Explaination",
       "solutionExplanationPlaceholder": "Enter solution explaination",
       "solutionExplanationTooLong": "Solution explanantion must be less than {max} characters",

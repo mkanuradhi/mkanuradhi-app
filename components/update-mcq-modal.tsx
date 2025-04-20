@@ -35,6 +35,7 @@ const UpdateMcqModal: React.FC<UpdateMcqModalProps> = ({ quizId, mcqId, show, on
             { text: '', isCorrect: false },
             { text: '', isCorrect: false }
           ],
+          isMultiSelect: mcq.isMultiSelect,
           solutionExplanation: mcq.solutionExplanation,
           v: mcq.v || 0,
         }
@@ -44,6 +45,7 @@ const UpdateMcqModal: React.FC<UpdateMcqModalProps> = ({ quizId, mcqId, show, on
             { text: '', isCorrect: false },
             { text: '', isCorrect: false }
           ],
+          isMultiSelect: false,
           solutionExplanation: '',
           v: 0,
         };
@@ -57,6 +59,7 @@ const UpdateMcqModal: React.FC<UpdateMcqModalProps> = ({ quizId, mcqId, show, on
       const mcqDto: UpdateMcqDto = {
         question: values.question,
         choices: values.choices,
+        isMultiSelect: values.isMultiSelect,
         solutionExplanation: values.solutionExplanation,
         v: values.v
       };
@@ -183,6 +186,26 @@ const UpdateMcqModal: React.FC<UpdateMcqModalProps> = ({ quizId, mcqId, show, on
                           </div>
                         )}
                       </FieldArray>
+                    </BootstrapForm.Group>
+                    <BootstrapForm.Group className="mb-4" controlId="formIsMultiSelect">
+                      <BootstrapForm.Label>{t('isMultiSelectLabel')}</BootstrapForm.Label>
+                      <Field name="isMultiSelect">
+                        {({ field }: FieldProps) => (
+                          <div className="form-check">
+                            <input
+                              type="checkbox"
+                              {...field}
+                              checked={field.value}
+                              className="form-check-input"
+                              id="isMultiSelect"
+                            />
+                            <label className="form-check-label" htmlFor="isMultiSelect">
+                              {t('isMultiSelectPlaceholder')}
+                            </label>
+                          </div>
+                        )}
+                      </Field>
+                      <ErrorMessage name="isMultiSelect" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formSolutionExplanation">
                       <BootstrapForm.Label>{t('solutionExplanationLabel')}</BootstrapForm.Label>
