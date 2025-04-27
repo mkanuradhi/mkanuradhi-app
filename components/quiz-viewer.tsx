@@ -11,6 +11,7 @@ import LoadingContainer from './loading-container';
 import { capitalizeLang } from '@/utils/common-utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import MathRenderer from './math-renderer';
+import ScrollToTopButton from './scroll-to-top-button';
 import './quiz-viewer.scss';
 
 
@@ -441,9 +442,14 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
                     </div>
                   );
                 })}
-                <Button variant="primary" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                  {t('scrollTop')} <i className="bi bi-chevron-up"></i>
-                </Button>
+                {/* Floating Scroll to Top Button */}
+                <ScrollToTopButton
+                  threshold={200}
+                  bottom="5rem"
+                  right="1rem"
+                  ariaLabel={t('scrollTop')}
+                  title={t('scrollTop')}
+                />
               </Col>
             </Row>
           </>
