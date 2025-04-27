@@ -269,6 +269,16 @@
       "articlesTitle": "Journal Articles",
       "articles": [
         {
+          "year": "2025",
+          "description": "Samanthi, K. G. P. H., Fernando, T. G. I., and <strong>Ariyaratne, M.K.A.</strong> (2025). Conversational AI for cinnamon and coffee exports: Insights on price and yield. International Journal of Research in Computing, 4(i), 23–32.",
+          "url": "https://www.ijrcom.org/index.php/ijrc/article/view/142"
+        },
+        {
+          "year": "2025",
+          "description": "Deepal, D. A. A, De Silva, R., <strong>Ariyaratne, M.K.A.</strong>, and Fernando, T. G. I. (2025). Faces unveiled: A deep dive into modern face detection and recognition techniques. International Journal of Research in Computing, 4(i), 48–81.",
+          "url": "https://www.ijrcom.org/index.php/ijrc/article/view/137"
+        },
+        {
           "year": "2024",
           "description": "Dikwatta, U., Fernando, T.G.I. and <strong>Ariyaratne, M.K.A.</strong>, (2024). Exploring Mechanisms for Detecting Violent Content in Sinhala Image Posts: Ratio-nale with Unsupervised vs Supervised Techniques. International Journal of Research in Computing (IJRC), 2(2).",
           "url": "http://www.ijrcom.org/index.php/ijrc/article/view/123"
@@ -528,6 +538,13 @@
       ],
       "professionalTitle": "Professional Activities",
       "professionalExperiences": [
+        {
+          "post": "Session Chair",
+          "event": "11th International Conference on Multidisciplinary Approaches, 2025, Engineering, Physical Sciences, Technological Innovation track",
+          "duration": "03rd April 2025",
+          "location": "University of Sri Jayewardenepura, Sri Lanka.",
+          "url": null
+        },
         {
           "post": "Resource Person, Curriculum Development Workshop",
           "event": "Integrating Data Science and Business Economics, organized by the Department of Business Economics, Faculty of Management Studies and Commerce",
