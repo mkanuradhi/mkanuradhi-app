@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import NewMcqModal from './new-mcq-modal';
 import "./quiz-options-viewer.scss";
+import SanitizedHtml from './sanitized-html';
 
 
 const baseTPath = 'components.QuizOptionsViewer';
@@ -134,6 +135,16 @@ const QuizOptionsViewer: React.FC<QuizOptionsViewerProps> = ({ courseId, quizId 
           <Col>
             <h1>{ quiz.titleEn } | { quiz.titleSi }</h1>
             <hr />
+          </Col>
+        </Row>
+        <Row className="my-3">
+          <Col>
+            <SanitizedHtml html={quiz.descriptionEn} />
+          </Col>
+        </Row>
+        <Row className="my-3">
+          <Col>
+            <SanitizedHtml html={quiz.descriptionSi} />
           </Col>
         </Row>
         <Row>

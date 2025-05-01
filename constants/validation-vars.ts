@@ -38,7 +38,10 @@ export const MAX_COURSE_LOCATION_LENGTH = 180;
 
 // --------------- quiz ---------------
 export const MIN_QUIZ_TITLE_LENGTH = 3;
-export const MAX_QUIZ_TITLE_LENGTH = 100;
+export const MAX_QUIZ_TITLE_LENGTH = 160;
+
+export const MIN_QUIZ_DESCRIPTION_LENGTH = 3;
+export const MAX_QUIZ_DESCRIPTION_LENGTH = 700;
 
 export const MIN_QUIZ_DURATION = 2;
 export const MAX_QUIZ_DURATION = 180;

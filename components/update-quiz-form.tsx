@@ -39,6 +39,8 @@ const UpdateQuizForm: React.FC<UpdateQuizFormProps> = ({ courseId, quizId, onSuc
         ? {
             titleEn: quiz.titleEn || '',
             titleSi: quiz.titleSi || '',
+            descriptionEn: quiz.descriptionEn || '',
+            descriptionSi: quiz.descriptionSi || '',
             duration: quiz.duration || '',
             availableFrom: quiz.availableFrom || undefined,
             availableUntil: quiz.availableUntil || undefined,
@@ -47,6 +49,8 @@ const UpdateQuizForm: React.FC<UpdateQuizFormProps> = ({ courseId, quizId, onSuc
         : {
             titleEn: '',
             titleSi: '',
+            descriptionEn: '',
+            descriptionSi: '',
             duration: '',
             availableFrom: undefined,
             availableUntil: undefined,
@@ -61,6 +65,8 @@ const UpdateQuizForm: React.FC<UpdateQuizFormProps> = ({ courseId, quizId, onSuc
     const quizDto: UpdateQuizDto = {
       titleEn: values.titleEn,
       titleSi: values.titleSi,
+      descriptionEn: values.descriptionEn,
+      descriptionSi: values.descriptionSi,
       duration: values.duration === '' ? undefined : Number(values.duration),
       availableFrom: values.availableFrom,
       availableUntil: values.availableUntil,
@@ -110,6 +116,16 @@ const UpdateQuizForm: React.FC<UpdateQuizFormProps> = ({ courseId, quizId, onSuc
                     <RequiredFormLabel>{t('titleSiLabel')}</RequiredFormLabel>
                     <Field name="titleSi" type="text" placeholder={t('titleSiPlaceholder')} className="form-control" />
                     <ErrorMessage name="titleSi" component="p" className="text-danger mt-1" />
+                  </BootstrapForm.Group>
+                  <BootstrapForm.Group className="mb-4" controlId="formDescriptionEn">
+                    <RequiredFormLabel>{t('descriptionEnLabel')}</RequiredFormLabel>
+                    <Field as="textarea" name="descriptionEn" placeholder={t('descriptionEnPlaceholder')} className="form-control" rows={4} />
+                    <ErrorMessage name="descriptionEn" component="p" className="text-danger mt-1" />
+                  </BootstrapForm.Group>
+                  <BootstrapForm.Group className="mb-4" controlId="formDescriptionSi">
+                    <RequiredFormLabel>{t('descriptionSiLabel')}</RequiredFormLabel>
+                    <Field as="textarea" name="descriptionSi" placeholder={t('descriptionSiPlaceholder')} className="form-control" rows={4} />
+                    <ErrorMessage name="descriptionSi" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                   <BootstrapForm.Group className="mb-4" controlId="formDuration">
                     <BootstrapForm.Label>{t('durationLabel')}</BootstrapForm.Label>
