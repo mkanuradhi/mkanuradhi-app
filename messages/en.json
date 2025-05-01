@@ -777,7 +777,9 @@
       "partiallyCorrect": "Partially Correct",
       "notAttempted": "Not Attempted",
       "finalScore": "Final Score",
-      "attemptAgain": "Attempt Again"
+      "attemptAgain": "Attempt Again",
+      "timeLeft": "Time Left",
+      "timeTaken": "Time taken"
     },
     "QuizCard": {
       "title": "Quizzes",

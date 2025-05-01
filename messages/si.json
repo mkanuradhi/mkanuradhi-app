@@ -777,7 +777,9 @@
       "partiallyCorrect": "අර්ධ වශයෙන් නිවැරදියි",
       "notAttempted": "උත්සාහ කර නැත",
       "finalScore": "අවසාන ලකුණු",
-      "attemptAgain": "නැවත උත්සාහ කරන්න"
+      "attemptAgain": "නැවත උත්සාහ කරන්න",
+      "timeLeft": "ඉතිරි කාලය",
+      "timeTaken": "ගත වූ කාලය"
     },
     "QuizCard": {
       "title": "ප්‍රශ්නාවලි",

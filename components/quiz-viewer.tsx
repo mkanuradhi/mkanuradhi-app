@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Breadcrumb, Button, Card, Col, Container, Modal, Row } from 'react-bootstrap';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/routing';
@@ -12,8 +12,8 @@ import { capitalizeLang } from '@/utils/common-utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import MathRenderer from './math-renderer';
 import ScrollToTopButton from './scroll-to-top-button';
-import './quiz-viewer.scss';
 import SanitizedHtml from './sanitized-html';
+import './quiz-viewer.scss';
 
 
 const baseTPath = 'components.QuizViewer';
@@ -33,6 +33,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
   const [showQuitModal, setShowQuitModal] = useState(false);
   const [selectedChoices, setSelectedChoices] = useState<Record<number, number[]>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number>(quiz.duration * 60); // duration in seconds
 
   const langSuffix = capitalizeLang(locale);
   const title = quiz[`title${langSuffix}` as keyof Quiz] as string;
@@ -41,6 +42,29 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
   const { data: courseView, isPending: isPendingCourse, isError: isCourseError, isFetching: isFetchingCourse, error: courseError } = useCourseViewByPathQuery(locale, coursePath);
   const { data: mcqsPaginatedResult, isPending: isPendingMcqs, isError: isMcqsError, isFetching: isFetchingMcqs, error: mcqsError } = useActiveMcqsQuery(quiz.id);
   const mcqs: Mcq[] = mcqsPaginatedResult?.items ?? [];
+
+  useEffect(() => {
+    if (!started || submitted) return;
+  
+    const interval = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          setSubmitted(true); // auto-submit when time runs out
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  
+    return () => clearInterval(interval); // cleanup on unmount
+  }, [started, submitted]);
+
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
 
   if (isPendingCourse || isFetchingCourse || isPendingMcqs || isFetchingMcqs) {
     return (<LoadingContainer />);
@@ -142,6 +166,9 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
     }
   });
 
+  const totalDuration = quiz.duration * 60;
+  const timeTaken = totalDuration - timeLeft;
+
   const notAttemptedQuestions = totalQuestions - attemptedQuestions;
   const scorePercentage = Math.round((correctQuestions / totalQuestions) * 100);
 
@@ -161,6 +188,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
           setSelectedChoices({});
           setCurrentIndex(0);
           setStarted(true);
+          setTimeLeft(quiz.duration * 60);
         }}
       >
         <i className="bi bi-arrow-clockwise"></i>{' '}{t('attemptAgain')}
@@ -201,11 +229,13 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
                 <hr className="divider" />
               </Col>
             </Row>
-            <Row className="my-3">
-              <Col>
-                <SanitizedHtml html={description} />
-              </Col>
-            </Row>
+            {description && (
+              <Row className="my-3">
+                <Col>
+                  <SanitizedHtml html={description} />
+                </Col>
+              </Row>
+            )}
             <Row>
               <Col>
                 <p>
@@ -228,6 +258,14 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
         )}
         {started && !submitted && (/* quize */
           <>
+            <Row className="my-3">
+              <Col className="text-end">
+                <small className="text-muted d-inline-flex align-items-center gap-2">
+                  <i className="bi bi-clock"></i>
+                  {t('timeLeft')}: <span className="fw-semibold">{formatTime(timeLeft)}</span>
+                </small>
+              </Col>
+            </Row>
             <Row className="my-4">
               <Col>
                 <AnimatePresence mode="wait">
@@ -383,6 +421,13 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
                         <span className="text-success">
                           <i className="bi bi-check2-circle me-2"></i>
                           {t('correctAnswers')}: {correctQuestions}
+                        </span>
+                      </Col>
+
+                      <Col md={6} lg={4} className="mb-2">
+                        <span className="text-muted">
+                          <i className="bi bi-clock-history me-2"></i>
+                          {t('timeTaken')}: {formatTime(timeTaken)}
                         </span>
                       </Col>
                     </Row>
