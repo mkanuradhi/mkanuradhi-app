@@ -541,7 +541,7 @@
         {
           "post": "Session Chair",
           "event": "11th International Conference on Multidisciplinary Approaches, 2025, Engineering, Physical Sciences, Technological Innovation track",
-          "duration": "03rd April 2025",
+          "duration": "3rd April 2025",
           "location": "University of Sri Jayewardenepura, Sri Lanka.",
           "url": null
         },
@@ -752,11 +752,16 @@
       "start": "Start the quiz",
       "prev": "Previous",
       "next": "Next",
+      "quitQuiz": "Quit Quiz",
       "submit": "Submit",
+      "confirmQuitTitle": "Confirm Quiting",
+      "confirmQuitMessage": "Are you sure you want to quit the quiz? Your progress will be lost.",
+      "confirmQuit": "Yes, quit quiz",
       "confirmSubmitTitle": "Confirm Submission",
       "confirmSubmitMessage": "Are you sure you want to submit the answers?",
+      "unattemptedWarning": "You have {count} unanswered question(s).",
       "cancel": "No",
-      "confirm": "Yes Submit",
+      "confirmSubmit": "Yes Submit",
       "resultTitle": "Your Results",
       "question": "Question {num}",
       "scrollTop": "Back to Top",
@@ -771,7 +776,8 @@
       "incorrect": "Wrong",
       "partiallyCorrect": "Partially Correct",
       "notAttempted": "Not Attempted",
-      "finalScore": "Final Score"
+      "finalScore": "Final Score",
+      "attemptAgain": "Attempt Again"
     },
     "QuizCard": {
       "title": "Quizzes",

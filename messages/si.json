@@ -752,11 +752,16 @@
       "start": "ප්‍රශ්නාවලිය අරඹන්න",
       "prev": "පෙර",
       "next": "ඊළඟ",
+      "quitQuiz": "ඉවත් වන්න",
       "submit": "අවසන් කරන්න",
+      "confirmQuitTitle": "ඉවත් වීම තහවුරු කරන්න",
+      "confirmQuitMessage": "ඔබට ප්‍රශ්නාවලියෙන් ඉවත් වීමට අවශ්‍ය බව විශ්වාසද? ඔබේ ප්‍රගතිය නැති වී යනු ඇත.",
+      "confirmQuit": "ඔව්, ඉවත් වන්න",
       "confirmSubmitTitle": "අවසන් කිරීම තහවුරු කිරීම",
       "confirmSubmitMessage": "ඔබට පිළිතුරු ලබාදී අවසන් කිරීමට අවශ්‍ය බව විශ්වාසද?",
+      "unattemptedWarning": "ඔබ පිළිතුරු නොදුන් ප්‍රශ්න {count}ක් ඇත.",
       "cancel": "නැත",
-      "confirm": "ඔව් අවසන් කරන්න",
+      "confirmSubmit": "ඔව් අවසන් කරන්න",
       "resultTitle": "ඔබේ ප්‍රතිඵල",
       "question": "{num} වන ප්‍රශ්නය",
       "scrollTop": "ආපසු ඉහළට",
@@ -771,7 +776,8 @@
       "incorrect": "වැරදියි",
       "partiallyCorrect": "අර්ධ වශයෙන් නිවැරදියි",
       "notAttempted": "උත්සාහ කර නැත",
-      "finalScore": "අවසාන ලකුණු"
+      "finalScore": "අවසාන ලකුණු",
+      "attemptAgain": "නැවත උත්සාහ කරන්න"
     },
     "QuizCard": {
       "title": "ප්‍රශ්නාවලි",

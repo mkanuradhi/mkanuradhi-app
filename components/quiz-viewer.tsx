@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Breadcrumb, Button, Card, Col, Container, Modal, Row } from 'react-bootstrap';
 import { useLocale, useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import Quiz from '@/interfaces/i-quiz';
 import Mcq from '@/interfaces/i-mcq';
 import { useCourseViewByPathQuery } from '@/hooks/use-courses';
@@ -24,10 +24,12 @@ interface QuizViewerProps {
 
 const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
   const t = useTranslations(baseTPath);
+  const router = useRouter();
   const locale = useLocale();
   const [started, setStarted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [showQuitModal, setShowQuitModal] = useState(false);
   const [selectedChoices, setSelectedChoices] = useState<Record<number, number[]>>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -77,8 +79,17 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
   };
 
   const handleSubmit = () => {
+    setShowSubmitModal(false);
     setSubmitted(true);
-    console.log("Quiz submitted!", selectedChoices);
+  };
+
+  const handleQuit = () => {
+    setShowQuitModal(false);
+    setStarted(false);
+    setSelectedChoices({});
+    setCurrentIndex(0);
+
+    router.push(`/teaching/courses/${coursePath}/quizzes`);
   };
 
   const handleToggleChoice = (mcqIndex: number, choiceIndex: number) => {
@@ -131,6 +142,29 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
 
   const notAttemptedQuestions = totalQuestions - attemptedQuestions;
   const scorePercentage = Math.round((correctQuestions / totalQuestions) * 100);
+
+  const ResultsActions = () => (
+    <div className="d-flex justify-content-end gap-2 my-4 flex-wrap">
+      <Button
+        variant="outline-danger"
+        onClick={() => setShowQuitModal(true)}
+        className="btn-sm"
+      >
+        <i className="bi bi-x"></i>{' '}{t('quitQuiz')}
+      </Button>
+      <Button
+        variant="primary"
+        onClick={() => {
+          setSubmitted(false);
+          setSelectedChoices({});
+          setCurrentIndex(0);
+          setStarted(true);
+        }}
+      >
+        <i className="bi bi-arrow-clockwise"></i>{' '}{t('attemptAgain')}
+      </Button>
+    </div>
+  );
 
   return (
     <>
@@ -244,23 +278,43 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
               </Col>
             </Row>
             <Row className="my-4">
-              <Col className="text-start">
-                {currentIndex > 0 && (
-                  <Button onClick={handlePrev} variant="secondary">
-                    <i className="bi bi-chevron-left"></i> {t('prev')}
-                  </Button>
-                )}
-              </Col>
-              <Col className="text-end">
-                {currentIndex === mcqs.length - 1 ? (
-                  <Button variant="success" onClick={() => setShowConfirmModal(true)}>
-                    {t('submit')} <i className="bi bi-check"></i>
-                  </Button>
-                ) : (
-                  <Button onClick={handleNext}>
-                    {t('next')} <i className="bi bi-chevron-right"></i>
-                  </Button>
-                )}
+              <Col>
+                <div className="d-flex justify-content-between align-items-center gap-2">
+                  <div>
+                    {currentIndex > 0 && (
+                      <Button onClick={handlePrev} variant="secondary">
+                        <i className="bi bi-chevron-left"></i>{' '}{t('prev')}
+                      </Button>
+                    )}
+                  </div>
+                  <div className="d-flex align-items-center gap-2">
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => setShowQuitModal(true)}
+                    >
+                      <i className="bi bi-x"></i>{' '}
+                      <span className="d-none d-sm-inline">{t('quitQuiz')}</span>
+                    </Button>
+
+                    {currentIndex !== mcqs.length - 1 && (
+                      <Button variant="outline-success" onClick={() => setShowSubmitModal(true)}>
+                        <i className="bi bi-check"></i>{' '}
+                        <span className="d-none d-sm-inline">{t('submit')}</span>
+                      </Button>
+                    )}
+
+                    {currentIndex === mcqs.length - 1 ? (
+                      <Button variant="success" onClick={() => setShowSubmitModal(true)}>
+                        <i className="bi bi-check"></i>{' '}
+                        {t('submit')}
+                      </Button>
+                    ) : (
+                      <Button onClick={handleNext}>
+                        {t('next')}{' '}<i className="bi bi-chevron-right"></i>
+                      </Button>
+                    )}
+                  </div>
+                </div>
               </Col>
             </Row>
           </>
@@ -335,6 +389,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
                     </Row>
                   </Card.Body>
                 </Card> {/* result summary end */}
+                <ResultsActions />
                 {mcqs.map((mcq, mcqIndex) => {
                   const selected = selectedChoices[mcqIndex] ?? [];
 
@@ -442,6 +497,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
                     </div>
                   );
                 })}
+                <ResultsActions />
                 {/* Floating Scroll to Top Button */}
                 <ScrollToTopButton
                   threshold={200}
@@ -455,22 +511,40 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
           </>
         )}
       </Container>
-      <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
+      <Modal show={showQuitModal} onHide={() => setShowQuitModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>{t('confirmQuitTitle')}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {t('confirmQuitMessage')}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowQuitModal(false)}>
+            {t('cancel')}
+          </Button>
+          <Button variant="danger" onClick={handleQuit}>
+            {t('confirmQuit')}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showSubmitModal} onHide={() => setShowSubmitModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>{t('confirmSubmitTitle')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {t('confirmSubmitMessage')}
+          {notAttemptedQuestions > 0 && (
+            <p className="text-warning mt-3">
+              {t.rich('unattemptedWarning', { count: notAttemptedQuestions })}
+            </p>
+          )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>
+          <Button variant="secondary" onClick={() => setShowSubmitModal(false)}>
             {t('cancel')}
           </Button>
-          <Button variant="success" onClick={() => {
-            setShowConfirmModal(false);
-            handleSubmit();
-          }}>
-            {t('confirm')} <i className="bi bi-check"></i>
+          <Button variant="success" onClick={handleSubmit}>
+            {t('confirmSubmit')}
           </Button>
         </Modal.Footer>
       </Modal>
