@@ -1,7 +1,9 @@
 import * as yup from 'yup';
 import {
+  MAX_QUIZ_DESCRIPTION_LENGTH,
   MAX_QUIZ_DURATION,
   MAX_QUIZ_TITLE_LENGTH,
+  MIN_QUIZ_DESCRIPTION_LENGTH,
   MIN_QUIZ_DURATION,
   MIN_QUIZ_TITLE_LENGTH
 } from '@/constants/validation-vars';
@@ -16,6 +18,14 @@ export const getNewQuizSchema = (t: (key: string, values?: Record<string, any>) 
       .min(MIN_QUIZ_TITLE_LENGTH, t('titleSiTooShort', { min: MIN_QUIZ_TITLE_LENGTH }) )
       .max(MAX_QUIZ_TITLE_LENGTH, t('titleSiTooLong', { max: MAX_QUIZ_TITLE_LENGTH }) )
       .required(t('titleSiRequired')),
+    descriptionEn: yup.string()
+      .min(MIN_QUIZ_DESCRIPTION_LENGTH, t('descriptionEnTooShort', { min: MIN_QUIZ_DESCRIPTION_LENGTH }) )
+      .max(MAX_QUIZ_DESCRIPTION_LENGTH, t('descriptionEnTooLong', { max: MAX_QUIZ_DESCRIPTION_LENGTH }) )
+      .required(t('descriptionEnRequired')),
+    descriptionSi: yup.string()
+      .min(MIN_QUIZ_DESCRIPTION_LENGTH, t('descriptionSiTooShort', { min: MIN_QUIZ_DESCRIPTION_LENGTH }) )
+      .max(MAX_QUIZ_DESCRIPTION_LENGTH, t('descriptionSiTooLong', { max: MAX_QUIZ_DESCRIPTION_LENGTH }) )
+      .required(t('descriptionSiRequired')),
     duration: yup.number()
       .transform((value, originalValue) => {
         return originalValue === '' ? undefined : value;

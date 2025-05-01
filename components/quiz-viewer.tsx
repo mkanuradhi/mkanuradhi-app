@@ -13,6 +13,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import MathRenderer from './math-renderer';
 import ScrollToTopButton from './scroll-to-top-button';
 import './quiz-viewer.scss';
+import SanitizedHtml from './sanitized-html';
 
 
 const baseTPath = 'components.QuizViewer';
@@ -35,6 +36,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
 
   const langSuffix = capitalizeLang(locale);
   const title = quiz[`title${langSuffix}` as keyof Quiz] as string;
+  const description = quiz[`description${langSuffix}` as keyof Quiz] as string;
 
   const { data: courseView, isPending: isPendingCourse, isError: isCourseError, isFetching: isFetchingCourse, error: courseError } = useCourseViewByPathQuery(locale, coursePath);
   const { data: mcqsPaginatedResult, isPending: isPendingMcqs, isError: isMcqsError, isFetching: isFetchingMcqs, error: mcqsError } = useActiveMcqsQuery(quiz.id);
@@ -197,6 +199,11 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
               <Col>
                 <h1>{title}</h1>
                 <hr className="divider" />
+              </Col>
+            </Row>
+            <Row className="my-3">
+              <Col>
+                <SanitizedHtml html={description} />
               </Col>
             </Row>
             <Row>
