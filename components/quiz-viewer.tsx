@@ -196,6 +196,12 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
     </div>
   );
 
+  const getTimeColorClass = (seconds: number): string => {
+    if (seconds <= 60) return 'text-danger';
+    if (seconds <= 180) return 'text-warning';
+    return 'text-muted';
+  };
+
   return (
     <>
       <Container fluid="md" className="quiz-viewer">
@@ -262,7 +268,10 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
               <Col className="text-end">
                 <small className="text-muted d-inline-flex align-items-center gap-2">
                   <i className="bi bi-clock"></i>
-                  {t('timeLeft')}: <span className="fw-semibold">{formatTime(timeLeft)}</span>
+                  {t('timeLeft')}{': '}
+                  <span className={`fw-semibold time-display ${getTimeColorClass(timeLeft)} ${timeLeft <= 10 ? 'pulse-animation' : ''}`}>
+                    {formatTime(timeLeft)}
+                  </span>
                 </small>
               </Col>
             </Row>
