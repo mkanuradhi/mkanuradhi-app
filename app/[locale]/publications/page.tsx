@@ -77,6 +77,11 @@ const PublicationsPage = () => {
   const proceedingMessages = useMessages() as unknown as ProceedingMessages | undefined;
   const proceedings = proceedingMessages?.pages?.Publications?.proceedings as Publication[];
 
+  const countArticles = articles.length;
+  const countChapters = chapters.length;
+  const countProceedings = proceedings.length;
+  const countAll = countArticles + countChapters + countProceedings;
+
   return (
     <>
       <div className="publications">
@@ -85,7 +90,7 @@ const PublicationsPage = () => {
             <Col>
               <h1>{t('title')}</h1>
               <section>
-                <p>{t('description')}</p>
+                <p>{t.rich('description', {countArticles, countChapters, countProceedings, countAll})}</p>
               </section>
               <section>
                 <Container fluid="md">

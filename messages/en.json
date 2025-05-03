@@ -261,11 +261,11 @@
     },
     "Publications": {
       "pageTitle": "Publications",
-      "pageDescription": "To date, I have authored 19 publications, including 11 journal articles, 1 book chapter, and 7 conference proceedings.",
+      "pageDescription": "I have authored multiple publications, including journal articles, a book chapter, and conference proceedings.",
       "pageKeywords": "Journal, articles, proceedings, papers",
       "title": "Publications",
       "subTitle": "Papers",
-      "description": "To date, I have authored 19 publications, including 11 journal articles, 1 book chapter, and 7 conference proceedings.",
+      "description": "To date, I have authored {countAll} publications, including {countArticles} journal articles, {countChapters} book chapter, and {countProceedings} conference proceedings.",
       "articlesTitle": "Journal Articles",
       "articles": [
         {
@@ -777,7 +777,9 @@
       "partiallyCorrect": "Partially Correct",
       "notAttempted": "Not Attempted",
       "finalScore": "Final Score",
-      "attemptAgain": "Attempt Again"
+      "attemptAgain": "Attempt Again",
+      "timeLeft": "Time Left",
+      "timeTaken": "Time taken"
     },
     "QuizCard": {
       "title": "Quizzes",

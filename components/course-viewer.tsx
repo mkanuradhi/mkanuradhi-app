@@ -60,10 +60,10 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
                 {codeCredits && (
                   <h4 className="text-muted">{codeCredits}</h4>
                 )}
-                <div className="d-flex align-items-baseline">
-                  <span className="h1 mb-0 me-3">{courseView.title}</span>
+                <div>
+                  <h1>{courseView.title}</h1>
                   {courseView.subtitle && (
-                    <span className="h5 mb-0">{`(${courseView.subtitle})`}</span>
+                    <h6>{`(${courseView.subtitle})`}</h6>
                   )}
                 </div>
                 <hr className="divider" />
