@@ -6,6 +6,7 @@ import { CreateBlogPostTextEnDto, UpdateBlogPostTextEnDto, UpdateBlogPostTextSiD
 import { ApiError } from '@/errors/api-error';
 import BlogPostView from '@/interfaces/i-blog-post-view';
 import DocumentStatus from '@/enums/document-status';
+import { useAuth } from "@clerk/nextjs";
 
 export const useBlogPostsQuery = (page: number, size: number, initialBlogPosts?: PaginatedResult<BlogPost>) => {
   return useQuery<PaginatedResult<BlogPost>, ApiError>({
@@ -230,9 +231,14 @@ export const useUploadBlogPostPrimaryImageMutation = () => {
 
 export const useUpdateBlogPostEnMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto}) => updateBlogPostTextEn(variables.id, variables.blogPostTextEnDto),
+    mutationFn: async (variables: {id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto}) => {
+      const rawToken: string | null = await getToken();
+      const token: string | undefined = rawToken ?? undefined;
+      return updateBlogPostTextEn(variables.id, variables.blogPostTextEnDto, token);
+    },
     onSuccess: (updatedBlogPost) => {
       if (!updatedBlogPost || !updatedBlogPost.id) return;
 

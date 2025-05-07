@@ -133,11 +133,16 @@ export const uploadBlogPostPrimaryImage = async (id: string, formData: FormData)
   }
 };
 
-export const updateBlogPostTextEn = async (id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto): Promise<BlogPost> => {
+export const updateBlogPostTextEn = async (id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto, token?: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
       `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/en`,
-      blogPostTextEnDto
+      blogPostTextEnDto,
+      {
+        headers: {
+          ...(token ? { Authorization: `Bearer ${token}` } : {})
+        }
+      }
     );
     return response.data;
   } catch (error) {
