@@ -43,3 +43,10 @@ export const getFormattedDateTime = (locale: string, dateTime: Date): string => 
 }
 
 export const capitalizeLang = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1);
+
+export const buildHeaders = (token?: string, extraHeaders?: Record<string, string>) => ({
+  headers: {
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...(extraHeaders ?? {}),
+  },
+});

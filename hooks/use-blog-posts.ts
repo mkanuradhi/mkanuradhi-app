@@ -44,9 +44,13 @@ export const useBlogPostByIdQuery = (id: string) => {
 
 export const usePublishBlogPostMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (id: string) => publishBlogPost(id),
+    mutationFn: async (id: string) => {
+      const token = (await getToken()) ?? '';
+      return publishBlogPost(id, token);
+    },
     onSuccess: (_, id) => {
       // Update cache instantly instead of re-fetching
       queryClient.setQueryData(['blog-post', id], (oldData: BlogPost | undefined) => {
@@ -61,9 +65,13 @@ export const usePublishBlogPostMutation = () => {
 
 export const useUnpublishBlogPostMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (id: string) => unpublishBlogPost(id),
+    mutationFn: async (id: string) => {
+      const token = (await getToken()) ?? '';
+      return unpublishBlogPost(id, token);
+    },
     onSuccess: (_, id) => {
       // Update cache instantly
       queryClient.setQueryData(['blog-post', id], (oldData: BlogPost | undefined) => {
@@ -78,9 +86,13 @@ export const useUnpublishBlogPostMutation = () => {
 
 export const useDeleteBlogPostMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (id: string) => deleteBlogPost(id),
+    mutationFn: async (id: string) => {
+      const token = (await getToken()) ?? '';
+      return deleteBlogPost(id, token);
+    },
     onSuccess: (_, id) => {
       queryClient.removeQueries({ queryKey: ['blog-post', id] });
 
@@ -100,9 +112,13 @@ export const useDeleteBlogPostMutation = () => {
 
 export const useCreateBlogPostEnMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation<BlogPost, ApiError, CreateBlogPostTextEnDto, { previousBlogPosts?: PaginatedResult<BlogPost> }>({
-    mutationFn: (blogPostTextEnDto: CreateBlogPostTextEnDto) => createBlogPostTextEn(blogPostTextEnDto),
+    mutationFn: async (blogPostTextEnDto: CreateBlogPostTextEnDto) => {
+      const token = (await getToken()) ?? '';
+      return createBlogPostTextEn(blogPostTextEnDto, token);
+    },
     onMutate: async (newPostData) => {
       await queryClient.cancelQueries({ queryKey: ['blog-posts'] });
 
@@ -171,9 +187,13 @@ export const useCreateBlogPostEnMutation = () => {
 
 export const useUpdateBlogPostSiMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto}) => updateBlogPostTextSi(variables.id, variables.blogPostTextSiDto),
+    mutationFn: async (variables: {id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto}) => {
+      const token = (await getToken()) ?? '';
+      return updateBlogPostTextSi(variables.id, variables.blogPostTextSiDto, token);
+    },
     onSuccess: (updatedBlogPost) => {
       if (!updatedBlogPost || !updatedBlogPost.id) return;
 
@@ -202,9 +222,13 @@ export const useUpdateBlogPostSiMutation = () => {
 
 export const useUploadBlogPostPrimaryImageMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: ({ id, formData }: { id: string; formData: FormData }) => uploadBlogPostPrimaryImage(id, formData),
+    mutationFn: async ({ id, formData }: { id: string; formData: FormData }) => {
+      const token = (await getToken()) ?? '';
+      return uploadBlogPostPrimaryImage(id, formData, token);
+    },
 
     onSuccess: (updatedBlogPost) => {
       if (!updatedBlogPost || !updatedBlogPost.id) return;
@@ -235,8 +259,7 @@ export const useUpdateBlogPostEnMutation = () => {
 
   return useMutation({
     mutationFn: async (variables: {id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto}) => {
-      const rawToken: string | null = await getToken();
-      const token: string | undefined = rawToken ?? undefined;
+      const token = (await getToken()) ?? '';
       return updateBlogPostTextEn(variables.id, variables.blogPostTextEnDto, token);
     },
     onSuccess: (updatedBlogPost) => {
