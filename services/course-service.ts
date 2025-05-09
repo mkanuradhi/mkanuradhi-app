@@ -5,6 +5,7 @@ import { handleApiError } from "@/errors/api-error-handler";
 import Course from "@/interfaces/i-course";
 import CourseView from "@/interfaces/i-course-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
+import { buildHeaders } from "@/utils/common-utils";
 import axios from "axios";
 
 export const getCourses = async (page: number, size: number): Promise<PaginatedResult<Course>> => {
@@ -61,11 +62,12 @@ export const getActivatedCourses = async (lang: string, page: number, size: numb
   }
 };
 
-export const activateCourse = async (id: string): Promise<Course> => {
+export const activateCourse = async (id: string, token: string): Promise<Course> => {
   try {
     const response = await axios.patch<Course>(
       `${API_BASE_URL}${COURSES_PATH}/${id}/toggle`,
-      { status: DocumentStatus.ACTIVE }
+      { status: DocumentStatus.ACTIVE },
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -73,11 +75,12 @@ export const activateCourse = async (id: string): Promise<Course> => {
   }
 };
 
-export const deactivateCourse = async (id: string): Promise<Course> => {
+export const deactivateCourse = async (id: string, token: string): Promise<Course> => {
   try {
     const response = await axios.patch<Course>(
       `${API_BASE_URL}${COURSES_PATH}/${id}/toggle`,
-      { status: DocumentStatus.INACTIVE }
+      { status: DocumentStatus.INACTIVE },
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -85,9 +88,12 @@ export const deactivateCourse = async (id: string): Promise<Course> => {
   }
 };
 
-export const deleteCourse = async (id: string) => {
+export const deleteCourse = async (id: string, token: string) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}${COURSES_PATH}/${id}`);
+    const response = await axios.delete(
+      `${API_BASE_URL}${COURSES_PATH}/${id}`,
+      buildHeaders(token)
+    );
     if (response.status !== 204) {
       throw new Error('Failed to delete course');
     }
@@ -97,11 +103,12 @@ export const deleteCourse = async (id: string) => {
   }
 };
 
-export const createCourseEn = async (courseEnDto: CreateCourseEnDto): Promise<Course> => {
+export const createCourseEn = async (courseEnDto: CreateCourseEnDto, token: string): Promise<Course> => {
   try {
     const response = await axios.post<Course>(
       `${API_BASE_URL}${COURSES_PATH}`,
-      courseEnDto
+      courseEnDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -109,11 +116,12 @@ export const createCourseEn = async (courseEnDto: CreateCourseEnDto): Promise<Co
   }
 };
 
-export const updateCourseSi = async (id: string, courseSiDto: UpdateCourseSiDto): Promise<Course> => {
+export const updateCourseSi = async (id: string, courseSiDto: UpdateCourseSiDto, token: string): Promise<Course> => {
   try {
     const response = await axios.patch<Course>(
       `${API_BASE_URL}${COURSES_PATH}/${id}/si`,
-      courseSiDto
+      courseSiDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -121,11 +129,12 @@ export const updateCourseSi = async (id: string, courseSiDto: UpdateCourseSiDto)
   }
 };
 
-export const updateCourseEn = async (id: string, courseEnDto: UpdateCourseEnDto): Promise<Course> => {
+export const updateCourseEn = async (id: string, courseEnDto: UpdateCourseEnDto, token: string): Promise<Course> => {
   try {
     const response = await axios.patch<Course>(
       `${API_BASE_URL}${COURSES_PATH}/${id}/en`,
-      courseEnDto
+      courseEnDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
