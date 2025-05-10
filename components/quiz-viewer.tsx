@@ -35,6 +35,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
   const [submitted, setSubmitted] = useState(false);
   const [timeLeft, setTimeLeft] = useState<number>(quiz.duration * 60); // duration in seconds
   const [direction, setDirection] = useState(1);
+  const [showTimeUpModal, setShowTimeUpModal] = useState(false);
 
   const langSuffix = capitalizeLang(locale);
   const title = quiz[`title${langSuffix}` as keyof Quiz] as string;
@@ -51,7 +52,8 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
       setTimeLeft(prev => {
         if (prev <= 1) {
           clearInterval(interval);
-          setSubmitted(true); // auto-submit when time runs out
+          // setSubmitted(true); // auto-submit when time runs out
+          setShowTimeUpModal(true); 
           return 0;
         }
         return prev - 1;
@@ -134,6 +136,11 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
         : [...current, choiceIndex];
       return { ...prev, [mcqIndex]: updated };
     });
+  };
+
+  const handleTimeUpAcknowledge = () => {
+    setShowTimeUpModal(false);
+    setSubmitted(true);              // now switch to the results screen
   };
 
   const totalQuestions = mcqs.length;
@@ -276,7 +283,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
                 <small className="text-muted d-inline-flex align-items-center gap-2">
                   <i className="bi bi-clock"></i>
                   {t('timeLeft')}{': '}
-                  <span className={`fw-semibold time-display ${getTimeColorClass(timeLeft)} ${timeLeft <= 10 ? 'pulse-animation' : ''}`}>
+                  <span className={`fw-semibold bg-secondary-subtle px-1 rounded time-display ${getTimeColorClass(timeLeft)} ${timeLeft <= 10 ? 'pulse-animation' : ''}`}>
                     {formatTime(timeLeft)}
                   </span>
                 </small>
@@ -628,6 +635,25 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
           </Button>
           <Button variant="success" onClick={handleSubmit}>
             {t('confirmSubmit')}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal
+        show={showTimeUpModal}
+        onHide={handleTimeUpAcknowledge}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Header>
+          <Modal.Title>{t('timeUpTitle')}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {t('timeUpMessage')}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleTimeUpAcknowledge}>
+            {t('viewResults')}
           </Button>
         </Modal.Footer>
       </Modal>

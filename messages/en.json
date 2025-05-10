@@ -779,7 +779,10 @@
       "finalScore": "Final Score",
       "attemptAgain": "Attempt Again",
       "timeLeft": "Time Left",
-      "timeTaken": "Time taken"
+      "timeTaken": "Time taken",
+      "timeUpTitle": "Time's up!",
+      "timeUpMessage": "The allotted time has expired. Click the button below to view your results.",
+      "viewResults": "View results"
     },
     "QuizCard": {
       "title": "Quizzes",
