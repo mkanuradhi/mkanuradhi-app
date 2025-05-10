@@ -4,6 +4,7 @@ import { ApiError } from "@/errors/api-error";
 import Mcq from "@/interfaces/i-mcq";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import { activateMcq, createMcq, deactivateMcq, deleteMcq, getActiveMcqs, getMcqById, getMcqs, updateMcq } from "@/services/mcq-service";
+import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 
@@ -41,9 +42,13 @@ export const useMcqByIdQuery = (quizId: string, mcqId: string) => {
 
 export const useActivateMcqMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {quizId: string, mcqId: string}) => activateMcq(variables.quizId, variables.mcqId),
+    mutationFn: async (variables: {quizId: string, mcqId: string}) => {
+      const token = (await getToken()) ?? '';
+      return activateMcq(variables.quizId, variables.mcqId, token);
+    },
     onSuccess: (_, values) => {
       // Update cache instantly instead of re-fetching
       queryClient.setQueryData(['mcq', values.mcqId], (oldData: Mcq | undefined) => {
@@ -60,9 +65,13 @@ export const useActivateMcqMutation = () => {
 
 export const useDeactivateMcqMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {quizId: string, mcqId: string}) => deactivateMcq(variables.quizId, variables.mcqId),
+    mutationFn: async (variables: {quizId: string, mcqId: string}) => {
+      const token = (await getToken()) ?? '';
+      return deactivateMcq(variables.quizId, variables.mcqId, token);
+    },
     onSuccess: (_, values) => {
       // Update cache instantly
       queryClient.setQueryData(['mcq', values.mcqId], (oldData: Mcq | undefined) => {
@@ -79,9 +88,13 @@ export const useDeactivateMcqMutation = () => {
 
 export const useDeleteMcqMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {quizId: string, mcqId: string}) => deleteMcq(variables.quizId, variables.mcqId),
+    mutationFn: async (variables: {quizId: string, mcqId: string}) => {
+      const token = (await getToken()) ?? '';
+      return deleteMcq(variables.quizId, variables.mcqId, token);
+    },
     onSuccess: (_, values) => {
       queryClient.removeQueries({ queryKey: ['mcq', values.mcqId] });
 
@@ -103,9 +116,13 @@ export const useDeleteMcqMutation = () => {
 
 export const useCreateMcqMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation<Mcq, ApiError, { quizId: string; mcqDto: CreateMcqDto }>({
-    mutationFn: ({ quizId, mcqDto }) => createMcq(quizId, mcqDto),
+    mutationFn: async ({ quizId, mcqDto }) => {
+      const token = (await getToken()) ?? '';
+      return createMcq(quizId, mcqDto, token);
+    },
 
     onSuccess: (createdMcq, { quizId }) => {
       if (!createdMcq || !createdMcq.id) return;
@@ -143,9 +160,13 @@ export const useCreateMcqMutation = () => {
 
 export const useUpdateMcqMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {quizId: string, mcqId: string, mcqDto: UpdateMcqDto}) => updateMcq(variables.quizId, variables.mcqId, variables.mcqDto),
+    mutationFn: async (variables: {quizId: string, mcqId: string, mcqDto: UpdateMcqDto}) => {
+      const token = (await getToken()) ?? '';
+      return updateMcq(variables.quizId, variables.mcqId, variables.mcqDto, token);
+    },
     onSuccess: (updatedMcq) => {
       if (!updatedMcq || !updatedMcq.id) return;
 
