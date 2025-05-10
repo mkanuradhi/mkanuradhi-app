@@ -34,6 +34,7 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
   const [selectedChoices, setSelectedChoices] = useState<Record<number, number[]>>({});
   const [submitted, setSubmitted] = useState(false);
   const [timeLeft, setTimeLeft] = useState<number>(quiz.duration * 60); // duration in seconds
+  const [direction, setDirection] = useState(1);
 
   const langSuffix = capitalizeLang(locale);
   const title = quiz[`title${langSuffix}` as keyof Quiz] as string;
@@ -95,13 +96,19 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
   const fCode = courseView.code ? `${courseView.code} ` : '';
   const formattedCredits = courseView.credits ? courseView.credits.toFixed(1) : '';
   const formattedCourseTitle = `${courseView.year} ${fCode} ${formattedCredits} ${courseView.title}`;
-
+  
   const handleNext = () => {
-    if (currentIndex < mcqs.length - 1) setCurrentIndex(prev => prev + 1);
+    if (currentIndex < mcqs.length - 1) {
+      setDirection(1);
+      setCurrentIndex(prev => prev + 1);
+    }
   };
   
   const handlePrev = () => {
-    if (currentIndex > 0) setCurrentIndex(prev => prev - 1);
+    if (currentIndex > 0) {
+      setDirection(-1);
+      setCurrentIndex(prev => prev - 1);
+    }
   };
 
   const handleSubmit = () => {
@@ -277,12 +284,27 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
             </Row>
             <Row className="my-4">
               <Col>
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={currentIndex}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
+                    custom={direction}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    variants={{
+                      enter: (dir: number) => ({
+                        x: dir * 100,
+                        opacity: 0,
+                      }),
+                      center: {
+                        x: 0,
+                        opacity: 1,
+                      },
+                      exit: (dir: number) => ({
+                        x: -dir * 100,
+                        opacity: 0,
+                      }),
+                    }}
                     transition={{ duration: 0.4 }}
                   >
                     <div>
