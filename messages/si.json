@@ -658,7 +658,7 @@
           "title": "නව බ්ලොග් සටහනක් එක් කිරීම"
         },
         "Edit": {
-          "title": "බ්ලොග් සටහන සංස්කරණය කරන්න"
+          "title": "බ්ලොග් සටහන සංස්කරණය කිරීම"
         }
       },
       "Courses": {
@@ -668,15 +668,25 @@
           "title": "නව පාඨමාලාවක් එක් කිරීම"
         },
         "Edit": {
-          "title": "පාඨමාලාව සංස්කරණය කරන්න"
+          "title": "පාඨමාලාව සංස්කරණය කිරීම"
         },
         "Quizzes": {
           "New": {
             "title": "නව ප්‍රශ්නාවලියක් එක් කිරීම"
           },
           "Edit": {
-            "title": "ප්‍රශ්නාවලිය සංස්කරණය කරන්න"
+            "title": "ප්‍රශ්නාවලිය සංස්කරණය කිරීම"
           }
+        }
+      },
+      "Publications" : {
+        "title": "ප්‍රකාශන",
+        "addNew": "නව ප්‍රකාශනයක් එක් කරන්න",
+        "New": {
+          "title": "නව ප්‍රකාශනයක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "ප්‍රකාශනය සංස්කරණය කිරීම"
         }
       }
     }
@@ -1182,6 +1192,30 @@
       "cancel": "අවලංගු කරන්න",
       "submitting": "ඉදිරිපත් කරමින්...",
       "submit": "ඉදිරිපත් කරන්න"
+    },
+    "PublicationsTable": {
+      "failPublications": "ප්‍රකාශන පූරණය කිරීමට අසමත් විය.",
+      "noPublications": "ප්‍රදර්ශනය කිරීමට ප්‍රකාශන නොමැත.",
+      "refreshPublications": "ප්‍රකාශන නැවුම් කරමින්...",
+      "publications": "ප්‍රකාශන"
+    },
+    "PublicationOptionsCard": {
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> ප්‍රකාශනය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "ප්‍රකාශනය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "ප්‍රකාශනය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "ප්‍රකාශනය මැකිය නොහැක",
+      "article": "සඟරා ලිපිය",
+      "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "proceeding": "සම්මන්ත්‍රණ කටයුතු",
+      "bibtex": "බිබ්ටෙක්ස් (BibTex)"
     }
   },
   "contexts": {
@@ -1189,6 +1223,7 @@
       "dashboard": "පාලන පුවරුව",
       "blog": "බ්ලොග්",
       "courses": "පාඨමාලා",
+      "publications": "ප්‍රකාශන",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },

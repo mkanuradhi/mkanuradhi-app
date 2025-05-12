@@ -678,6 +678,16 @@
             "title": "Edit Quiz"
           }
         }
+      },
+      "Publications" : {
+        "title": "Publications",
+        "addNew": "Add New Publication",
+        "New": {
+          "title": "Add New Publication"
+        },
+        "Edit": {
+          "title": "Edit Publication"
+        }
       }
     }
   },
@@ -1182,6 +1192,30 @@
       "cancel": "Cancel",
       "submitting": "Submitting...",
       "submit": "Submit"
+    },
+    "PublicationsTable": {
+      "failPublications": "Failed to load publications",
+      "noPublications": "No publications to display",
+      "refreshPublications": "Refreshing publications...",
+      "publications": "publications"
+    },
+    "PublicationOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the publication: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the publication",
+      "deactivateErrorTitle": "Cannot deactivate the publication",
+      "deleteErrorTitle": "Cannot delete the publication",
+      "article": "Journal Article",
+      "chapter": "Book Chapter",
+      "proceeding": "Conference Proceeding",
+      "bibtex": "BibTex"
     }
   },
   "contexts": {
@@ -1189,6 +1223,7 @@
       "dashboard": "Dashboard",
       "blog": "Blog",
       "courses": "Courses",
+      "publications": "Publications",
       "studentCourses": "Student Courses"
     }
   },

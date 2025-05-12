@@ -34,6 +34,7 @@ export const SideBarProvider: React.FC<SideBarProviderProps> = ({children}) => {
   const adminLinks = [
     { title: t('blog'), path: `/dashboard/blog` },
     { title: t('courses'), path: `/dashboard/courses` },
+    { title: t('publications'), path: `/dashboard/publications` },
   ];
 
   const studentLinks = [

@@ -14,6 +14,7 @@ const isProtectedRoute = createRouteMatcher([
 const isAdminRoute = createRouteMatcher([
   '/(si|en)/dashboard/blogs(.*)',
   '/(si|en)/dashboard/courses(.*)',
+  '/(si|en)/dashboard/publications(.*)',
   '/(si|en)/dashboard/students(.*)',
 ]);
 const isStudentRoute = createRouteMatcher([
