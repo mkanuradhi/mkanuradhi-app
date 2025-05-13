@@ -1200,7 +1200,6 @@
       "publications": "publications"
     },
     "PublicationOptionsCard": {
-      "read": "Read More",
       "edit": "Edit",
       "activate": "Activate",
       "deactivate": "Deactivate",

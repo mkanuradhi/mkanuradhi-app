@@ -21,7 +21,7 @@ export interface CreatePublicationDto {
 	authors: PublicationAuthorDto[];
 	publicationStatus: PublicationStatus;
 	tags: string[];
-	paperUrl: string;
+	publicationUrl: string;
 	pdfUrl: string;
 	doiUrl: string;
 	arxivUrl: string;

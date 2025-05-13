@@ -28,7 +28,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
   const { mutate: activatePublicationMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivatePublicationMutation();
   const { mutate: deactivatePublicationMutation, isPending: isPendingDeactivate, isError: isDeactivateError, error: deactivateError } = useDeactivatePublicationMutation();
 
-  const handleDeleteCourse = async () => {
+  const handleDeletePublication = async () => {
     deletePublicationMutation(publication.id);
     setDeleteModalShow(false)
   }
@@ -86,13 +86,13 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
           </Card.Text>
           <div className="mb-3">
             { publication.authors.map((author, index) => (
-              <span key={index} className={`me-3 ${author.isMe ? 'fw-bold': ''}`}>{author.name}</span>
+              <span key={index} className={`me-2 ${author.isMe ? 'fw-bold': ''}`}>{author.name}</span>
             ))}
           </div>
           <div className="mb-3">
-            {publication.paperUrl && (
+            {publication.publicationUrl && (
               <p>
-                Publication URL: <GlowLink href={publication.paperUrl} newTab={true} withArrow={true}>{publication.paperUrl}</GlowLink>
+                Publication URL: <GlowLink href={publication.publicationUrl} newTab={true} withArrow={true}>{publication.publicationUrl}</GlowLink>
               </p>
             )}
             {publication.pdfUrl && (
@@ -136,12 +136,6 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
           <Row className="align-items-center">
             <Col className="mb-2">
               <ButtonGroup>
-                <Button
-                  variant="primary"
-                  onClick={() => router.push(`publications/${publication.id}`)}
-                >
-                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
-                </Button>
                 <Button
                   variant="secondary"
                   onClick={() => router.push(`publications/${publication.id}/edit`)}
@@ -203,7 +197,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
         confirmText={t('deleteModalAccept')}
         show={deleteModalShow}
         onHide={() => setDeleteModalShow(false)}
-        onConfirm={handleDeleteCourse}
+        onConfirm={handleDeletePublication}
       />
     </>
   )
