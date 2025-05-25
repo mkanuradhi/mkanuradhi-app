@@ -679,7 +679,7 @@
           }
         }
       },
-      "Publications" : {
+      "Publications": {
         "title": "ප්‍රකාශන",
         "addNew": "නව ප්‍රකාශනයක් එක් කරන්න",
         "New": {
@@ -1214,7 +1214,20 @@
       "article": "සඟරා ලිපිය",
       "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
       "proceeding": "සම්මන්ත්‍රණ කටයුතු",
+      "preprint": "පූර්ව මුද්‍රණය",
+      "in_review": "සමාලෝචනයට ලක්ව ඇත",
+      "accepted": "පිළිගත්",
+      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ",
+      "publicationUrl": "ප්‍රකාශන (Publication) වෙබ් ලිපිනය",
+      "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
+      "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",
+      "preprintUrl": "පූර්ව මුද්‍රණ (Preprint) වෙබ් ලිපිනය",
+      "tags": "ටැග්ස්",
+      "abstract": "සාරාංශය",
       "bibtex": "බිබ්ටෙක්ස් (BibTex)"
+    },
+    "NewPublicationFormsContainer": {
+      "stepGeneral": "මූලික විස්තර ඇතුළත් කිරීම"
     }
   },
   "contexts": {

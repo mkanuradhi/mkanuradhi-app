@@ -679,7 +679,7 @@
           }
         }
       },
-      "Publications" : {
+      "Publications": {
         "title": "Publications",
         "addNew": "Add New Publication",
         "New": {
@@ -1214,7 +1214,20 @@
       "article": "Journal Article",
       "chapter": "Book Chapter",
       "proceeding": "Conference Proceeding",
+      "preprint": "Preprint",
+      "in_review": "Under Review",
+      "accepted": "Accepted",
+      "correspondingAuthor": "Corresponding author",
+      "publicationUrl": "Publication URL",
+      "pdfUrl": "PDF URL",
+      "doiUrl": "DOI URL",
+      "preprintUrl": "Preprint URL",
+      "tags": "Tags",
+      "abstract": "Abstract",
       "bibtex": "BibTex"
+    },
+    "NewPublicationFormsContainer": {
+      "stepGeneral": "Adding Basic Details"
     }
   },
   "contexts": {

@@ -5,7 +5,8 @@ import { VersionDto } from "./base-dto";
 
 interface PublicationAuthorDto {
   name: string;
-  isMe: boolean; 
+  isMe: boolean;
+  corresponding: boolean;
 }
 
 export interface ActivationPublicationDto {
@@ -16,7 +17,6 @@ export interface CreatePublicationDto {
   type: PublicationType;
 	year: number;
 	title: string;
-	description: string;
   source: string;
 	authors: PublicationAuthorDto[];
 	publicationStatus: PublicationStatus;
@@ -24,7 +24,8 @@ export interface CreatePublicationDto {
 	publicationUrl: string;
 	pdfUrl: string;
 	doiUrl: string;
-	arxivUrl: string;
+	preprintUrl: string;
+	abstract: string;
 	bibtex: string;
 }
 

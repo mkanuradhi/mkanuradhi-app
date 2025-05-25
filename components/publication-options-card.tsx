@@ -3,7 +3,7 @@ import { useRouter } from '@/i18n/routing';
 import { Alert, Badge, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faBookOpenReader, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import { useActivatePublicationMutation, useDeactivatePublicationMutation, useDeletePublicationMutation } from '@/hooks/use-publications';
 import DocumentStatus from "@/enums/document-status";
@@ -11,6 +11,7 @@ import Publication from '@/interfaces/i-publication';
 import DeleteModal from './delete-modal';
 import PublicationType from '@/enums/publication-type';
 import GlowLink from './GlowLink';
+import PublicationStatus from '@/enums/publication-status';
 
 
 const baseTPath = 'components.PublicationOptionsCard';
@@ -75,48 +76,60 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
           <Card.Title>
             { publication.title }
           </Card.Title>
-          <hr />
-          { publication.description && (
-            <Card.Text>
-              { publication.description }
-            </Card.Text>
+          {publication.publicationStatus !== PublicationStatus.PUBLISHED && (
+            <div className="text-muted fst-italic small mt-1">
+              {t(publication.publicationStatus.toLowerCase())}
+            </div>
           )}
+          <hr />
           <Card.Text>
             { publication.source }
           </Card.Text>
           <div className="mb-3">
-            { publication.authors.map((author, index) => (
-              <span key={index} className={`me-2 ${author.isMe ? 'fw-bold': ''}`}>{author.name}</span>
+            {publication.authors.map((author, index) => (
+              <span key={index} className="me-1">
+                <span className={author.isMe ? 'fw-bold' : ''}>
+                  {author.name}
+                </span>
+                {author.corresponding && (
+                  <sup className="text-muted" title={t('correspondingAuthor')}>
+                    <i className="bi bi-asterisk" style={{ fontSize: '0.65rem' }}></i>
+                  </sup>
+                )}
+                {index < publication.authors.length - 1 && <span>,</span>}
+              </span>
             ))}
           </div>
           <div className="mb-3">
             {publication.publicationUrl && (
               <p>
-                Publication URL: <GlowLink href={publication.publicationUrl} newTab={true} withArrow={true}>{publication.publicationUrl}</GlowLink>
+                <label className="fw-semibold me-1">{t('publicationUrl')}:</label>
+                <GlowLink href={publication.publicationUrl} newTab={true} withArrow={true}>{publication.publicationUrl}</GlowLink>
               </p>
             )}
             {publication.pdfUrl && (
               <p>
-                PDF URL: <GlowLink href={publication.pdfUrl} newTab={true} withArrow={true}>{publication.pdfUrl}</GlowLink>
+                <label className="fw-semibold me-1">{t('pdfUrl')}:</label>
+                <GlowLink href={publication.pdfUrl} newTab={true} withArrow={true}>{publication.pdfUrl}</GlowLink>
               </p>
             )}
             {publication.doiUrl && (
               <p>
-                DOI URL: <GlowLink href={publication.doiUrl} newTab={true} withArrow={true}>{publication.doiUrl}</GlowLink>
+                <label className="fw-semibold me-1">{t('doiUrl')}:</label>
+                <GlowLink href={publication.doiUrl} newTab={true} withArrow={true}>{publication.doiUrl}</GlowLink>
               </p>
             )}
-            {publication.arxivUrl && (
+            {publication.preprintUrl && (
               <p>
-                arXiv URL: <GlowLink href={publication.arxivUrl} newTab={true} withArrow={true}>{publication.arxivUrl}</GlowLink>
+                <label className="fw-semibold me-1">{t('preprintUrl')}:</label>
+                <GlowLink href={publication.preprintUrl} newTab={true} withArrow={true}>{publication.preprintUrl}</GlowLink>
               </p>
             )}
           </div>
           <div className="mb-3">
-            { publication.publicationStatus && (
-              <p>Publication Status: {publication.publicationStatus}</p>
-            )}
             { publication.tags && publication.tags.length > 0 && (
-              <p>Tags:{' '}
+              <p>
+                <label className="fw-semibold me-1">{t('tags')}:</label>
                 { publication.tags.map((tag, index) => (
                   <Badge key={index} pill bg="success" className="me-1">
                     {tag}
@@ -125,6 +138,14 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
               </p>
             ) }
           </div>
+          { publication.abstract && (
+            <div className="my-3">
+              <label className="fw-semibold">{t('abstract')}</label>
+              <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                <code>{publication.abstract}</code>
+              </pre>
+            </div>
+          )}
           { publication.bibtex && (
             <div className="my-3">
               <label className="fw-semibold">{t('bibtex')}</label>
