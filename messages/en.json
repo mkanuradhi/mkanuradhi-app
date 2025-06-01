@@ -1200,6 +1200,7 @@
       "publications": "publications"
     },
     "PublicationOptionsCard": {
+      "read": "Read More",
       "edit": "Edit",
       "activate": "Activate",
       "deactivate": "Deactivate",
@@ -1222,9 +1223,37 @@
       "pdfUrl": "PDF URL",
       "doiUrl": "DOI URL",
       "preprintUrl": "Preprint URL",
+      "tags": "Tags"
+    },
+    "PublicationOptionsViewer": {
+      "failPublication": "Failed to load publication",
+      "dashboard": "Dashboard",
+      "publications": "Publications",
+      "article": "Journal Article",
+      "chapter": "Book Chapter",
+      "proceeding": "Conference Proceeding",
+      "preprint": "Preprint",
+      "in_review": "Under Review",
+      "accepted": "Accepted",
+      "correspondingAuthor": "Corresponding author",
+      "publicationUrl": "Publication URL",
+      "pdfUrl": "PDF URL",
+      "doiUrl": "DOI URL",
+      "preprintUrl": "Preprint URL",
       "tags": "Tags",
       "abstract": "Abstract",
-      "bibtex": "BibTex"
+      "bibtex": "BibTex",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the publication: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the publication",
+      "deactivateErrorTitle": "Cannot deactivate the publication",
+      "deleteErrorTitle": "Cannot delete the publication"
     },
     "NewPublicationFormsContainer": {
       "stepGeneral": "Adding Basic Details"

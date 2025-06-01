@@ -1200,6 +1200,7 @@
       "publications": "ප්‍රකාශන"
     },
     "PublicationOptionsCard": {
+      "read": "තව කියවන්න",
       "edit": "සංස්කරණය කරන්න",
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",
@@ -1214,9 +1215,26 @@
       "article": "සඟරා ලිපිය",
       "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
       "proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
-      "preprint": "පූර්ව මුද්‍රණය",
-      "in_review": "සමාලෝචනයට ලක්ව ඇත",
-      "accepted": "පිළිගත්",
+      "preprint": "පූර්ව මුද්‍රණය (Preprint)",
+      "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
+      "accepted": "පිළිගත් (Accepted)",
+      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ",
+      "publicationUrl": "ප්‍රකාශන (Publication) වෙබ් ලිපිනය",
+      "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
+      "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",
+      "preprintUrl": "පූර්ව මුද්‍රණ (Preprint) වෙබ් ලිපිනය",
+      "tags": "ටැග්ස්"
+    },
+    "PublicationOptionsViewer": {
+      "failPublication": "ප්‍රකාශනය පූරණය කිරීමට අසමත් විය.",
+      "dashboard": "පාලන පුවරුව",
+      "publications": "ප්‍රකාශන",
+      "article": "සඟරා ලිපිය",
+      "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "preprint": "පූර්ව මුද්‍රණය (Preprint)",
+      "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
+      "accepted": "පිළිගත් (Accepted)",
       "correspondingAuthor": "සම්බන්ධීකාරක කතෘ",
       "publicationUrl": "ප්‍රකාශන (Publication) වෙබ් ලිපිනය",
       "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
@@ -1224,7 +1242,18 @@
       "preprintUrl": "පූර්ව මුද්‍රණ (Preprint) වෙබ් ලිපිනය",
       "tags": "ටැග්ස්",
       "abstract": "සාරාංශය",
-      "bibtex": "බිබ්ටෙක්ස් (BibTex)"
+      "bibtex": "බිබ්ටෙක්ස් (BibTex)",
+      "edit": "සංස්කරණ",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> ප්‍රකාශනය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "ප්‍රකාශනය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "ප්‍රකාශනය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "ප්‍රකාශනය මැකිය නොහැක"
     },
     "NewPublicationFormsContainer": {
       "stepGeneral": "මූලික විස්තර ඇතුළත් කිරීම"

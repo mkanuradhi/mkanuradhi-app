@@ -3,7 +3,7 @@ import { useRouter } from '@/i18n/routing';
 import { Alert, Badge, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faBookOpenReader, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import { useActivatePublicationMutation, useDeactivatePublicationMutation, useDeletePublicationMutation } from '@/hooks/use-publications';
 import DocumentStatus from "@/enums/document-status";
@@ -138,25 +138,15 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
               </p>
             ) }
           </div>
-          { publication.abstract && (
-            <div className="my-3">
-              <label className="fw-semibold">{t('abstract')}</label>
-              <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                <code>{publication.abstract}</code>
-              </pre>
-            </div>
-          )}
-          { publication.bibtex && (
-            <div className="my-3">
-              <label className="fw-semibold">{t('bibtex')}</label>
-              <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                <code>{publication.bibtex}</code>
-              </pre>
-            </div>
-          )}
           <Row className="align-items-center">
             <Col className="mb-2">
               <ButtonGroup>
+                <Button
+                  variant="primary"
+                  onClick={() => router.push(`publications/${publication.id}`)}
+                >
+                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
+                </Button>
                 <Button
                   variant="secondary"
                   onClick={() => router.push(`publications/${publication.id}/edit`)}
