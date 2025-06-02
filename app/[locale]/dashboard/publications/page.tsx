@@ -6,7 +6,6 @@ import PublicationsTable from '@/components/publications-table';
 import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import ActiveStep from '@/enums/active-step';
 
 const baseTPath = 'pages.Dashboard.Publications';
 

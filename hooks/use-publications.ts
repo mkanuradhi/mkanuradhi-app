@@ -19,7 +19,7 @@ export const usePublicationsQuery = (page: number, size: number, initialPublicat
     initialDataUpdatedAt: 0,
     placeholderData: (prevData) => prevData ?? {
       items: [], 
-      pagination: { totalCount: 0, totalPages: 1, currentPage: 0, currentPageSize: 0 }
+      pagination: { totalCount: 0, totalPages: 1, currentPage: page, currentPageSize: 0 }
     }, // Keeps previous data until new data loads
     refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
   });
@@ -165,7 +165,7 @@ export const useUpdatePublicationMutation = () => {
       if (!updatedPublication || !updatedPublication.id) return;
 
       // Update publication list cache
-      queryClient.setQueryData([PUBLICATION_QUERY_KEY, updatedPublication.id], (oldData?: PaginatedResult<Publication>) => {
+      queryClient.setQueryData([PUBLICATIONS_QUERY_KEY, updatedPublication.id], (oldData?: PaginatedResult<Publication>) => {
         if (!oldData) return;
 
         return {

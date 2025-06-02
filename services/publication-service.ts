@@ -98,7 +98,7 @@ export const createPublication = async (publicationDto: CreatePublicationDto, to
 
 export const updatePublication = async (publicationId: string, publicationDto: UpdatePublicationDto, token: string): Promise<Publication> => {
   try {
-    const response = await axios.patch<Publication>(
+    const response = await axios.put<Publication>(
       `${API_BASE_URL}${PUBLICATIONS_PATH}/${publicationId}`,
       publicationDto,
       buildHeaders(token)

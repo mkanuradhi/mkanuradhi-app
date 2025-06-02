@@ -1333,6 +1333,9 @@
       "cancel": "Cancel",
       "submitting": "Submitting...",
       "submit": "Submit"
+    },
+    "UpdatePublicationFormsContainer": {
+      "stepGeneral": "Updating General Details"
     }
   },
   "contexts": {

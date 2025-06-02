@@ -1333,6 +1333,9 @@
       "cancel": "අවලංගු කරන්න",
       "submitting": "ඉදිරිපත් කරමින්...",
       "submit": "ඉදිරියට යන්න"
+    },
+    "UpdatePublicationFormsContainer": {
+      "stepGeneral": "සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
     }
   },
   "contexts": {
