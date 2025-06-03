@@ -119,35 +119,78 @@ export const useCreatePublicationMutation = () => {
   const queryClient = useQueryClient();
   const { getToken } = useAuth();
 
-  return useMutation<Publication, ApiError, { publicationDto: CreatePublicationDto }>({
-    mutationFn: async ({ publicationDto }) => {
+  return useMutation<Publication, ApiError, CreatePublicationDto, { previousPublications?: PaginatedResult<Publication> }>({
+    mutationFn: async (publicationDto: CreatePublicationDto) => {
       const token = (await getToken()) ?? '';
       return createPublication(publicationDto, token);
     },
 
-    onSuccess: (createdPublication) => {
-      if (!createdPublication || !createdPublication.id) return;
+    onMutate: async (newPublicationData) => {
+      await queryClient.cancelQueries({ queryKey: [PUBLICATIONS_QUERY_KEY] });
 
-      // Update publication list
+      // Snapshot current publications for rollback
+      const previousPublications = queryClient.getQueryData<PaginatedResult<Publication>>([PUBLICATIONS_QUERY_KEY]);
+
+      const defaultPagination = { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 };
+
+      // Optimistically add a temp publication
       queryClient.setQueryData([PUBLICATIONS_QUERY_KEY], (oldData?: PaginatedResult<Publication>) => {
         if (!oldData) {
           return {
-            items: [createdPublication],
+            items: [{ id: 'temp-id', ...newPublicationData }],
+            pagination: defaultPagination,
           };
         }
 
         return {
           ...oldData,
-          items: [createdPublication, ...oldData.items],
+          items: [{ id: 'temp-id', ...newPublicationData }, ...oldData.items],
+          pagination: {
+            ...oldData.pagination,
+            totalCount: oldData.pagination.totalCount + 1,
+          },
         };
       });
 
+      return { previousPublications };
+    },
+
+    onSuccess: (createdPublication) => {
+      if (!createdPublication || !createdPublication.id) return;
+
+      // Replace the temp publication with the actual one
+      queryClient.setQueryData([PUBLICATIONS_QUERY_KEY], (oldData?: PaginatedResult<Publication>) => {
+        if (!oldData) {
+          return {
+            items: [createdPublication],
+            pagination: { totalCount: 1, totalPages: 1, currentPage: 1, currentPageSize: 1 },
+          };
+        }
+
+        return {
+          ...oldData,
+          items: oldData.items.map((pub) =>
+            pub.id === 'temp-id' ? createdPublication : pub
+          ),
+          pagination: {
+            ...oldData.pagination,
+            totalCount: Math.max(oldData.pagination.totalCount, oldData.items.length),
+          },
+        };
+      });
+
+      // Also cache the individual publication
       queryClient.setQueryData([PUBLICATION_QUERY_KEY, createdPublication.id], createdPublication);
     },
 
-    // Optional: handle errors
-    onError: (error) => {
-      console.error("Create publication failed:", error);
+    onError: (_error, _newPublicationData, context) => {
+      if (context?.previousPublications) {
+        queryClient.setQueryData([PUBLICATIONS_QUERY_KEY], context.previousPublications);
+      }
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: [PUBLICATIONS_QUERY_KEY], refetchType: 'active' });
     },
   });
 };
@@ -165,7 +208,7 @@ export const useUpdatePublicationMutation = () => {
       if (!updatedPublication || !updatedPublication.id) return;
 
       // Update publication list cache
-      queryClient.setQueryData([PUBLICATIONS_QUERY_KEY, updatedPublication.id], (oldData?: PaginatedResult<Publication>) => {
+      queryClient.setQueryData([PUBLICATIONS_QUERY_KEY], (oldData?: PaginatedResult<Publication>) => {
         if (!oldData) return;
 
         return {
