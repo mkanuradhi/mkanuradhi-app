@@ -41,7 +41,7 @@ const UpdatePublicationForm: React.FC<UpdatePublicationFormProps> = ({ publicati
               { name: '', isMe: false, corresponding: false },
             ],
             publicationStatus: publication.publicationStatus || PublicationStatus.PUBLISHED,
-            tags: publication.tags?.length > 0 ? publication.tags : [''],
+            tags: publication.tags?.length > 0 ? publication.tags : [],
             publicationUrl: publication.publicationUrl || '',
             pdfUrl: publication.pdfUrl || '',
             doiUrl: publication.doiUrl || '',

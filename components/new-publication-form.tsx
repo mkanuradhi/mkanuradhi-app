@@ -26,7 +26,7 @@ const initialValues = {
     { name: '', isMe: false, corresponding: false },
   ],
   publicationStatus: PublicationStatus.PUBLISHED,
-  tags: [''],
+  tags: [],
   publicationUrl: '',
 	pdfUrl: '',
 	doiUrl: '',
@@ -65,7 +65,7 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
     };
     
     try {
-      const createdPublication = await createPublicationMutation({publicationDto});
+      const createdPublication = await createPublicationMutation(publicationDto);
       // Call parent's onSuccess with the created id
       onSuccess(createdPublication);
     } catch (error: any) {
@@ -159,7 +159,6 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
                                   <div className="form-check">
                                     <Field name={`authors.${index}.isMe`}>
                                       {({ field, form }: FieldProps) => {
-                                        const alreadySelected = values.authors.some((author, i) => i !== index && author.isMe);
                                         const handleChange = () => {
                                           const updated = values.authors.map((author, i) => ({
                                             ...author,
