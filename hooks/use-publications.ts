@@ -13,7 +13,7 @@ const GROUPED_PUBLICATIONS_QUERY_KEY = 'grouped-publications';
 
 export const usePublicationsQuery = (page: number, size: number, initialPublications?: PaginatedResult<Publication>) => {
   return useQuery<PaginatedResult<Publication>, ApiError>({
-    queryKey: [PUBLICATIONS_QUERY_KEY],
+    queryKey: [PUBLICATIONS_QUERY_KEY, page, size],
     queryFn: () => getPublications(page, size),
     initialData: initialPublications,
     initialDataUpdatedAt: 0,
