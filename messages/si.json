@@ -1287,6 +1287,8 @@
       "sourceTooLong": "මූලාශ්‍රය අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
       "authorsLabel": "කතුවරුන්",
       "authorPlaceholder": "කර්තෘගේ නම",
+      "authorAffiliationPlaceholder": "අනුබද්ධ ආයතනය (උදා: දෙපාර්තමේන්තුව, විශ්වවිද්‍යාලය)",
+      "authorProfileUrlPlaceholder": "පැතිකඩ URL (උදා: ORCID, Google Scholar)",
       "authorIsMeLabel": "මේ මමයි",
       "authorCorrespondingLabel": "සම්බන්ධීකාරක කතෘ",
       "authorRemove": "කර්තෘ ඉවත් කරන්න",

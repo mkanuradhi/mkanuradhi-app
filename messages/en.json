@@ -1287,6 +1287,8 @@
       "sourceTooLong": "Source must be less than {max} characters",
       "authorsLabel": "Authors",
       "authorPlaceholder": "Name of the author",
+      "authorAffiliationPlaceholder": "Affiliation (e.g., Department, University)",
+      "authorProfileUrlPlaceholder": "Profile URL (e.g., ORCID, Google Scholar)",
       "authorIsMeLabel": "This is me",
       "authorCorrespondingLabel": "Corresponding Author",
       "authorRemove": "Remove author",

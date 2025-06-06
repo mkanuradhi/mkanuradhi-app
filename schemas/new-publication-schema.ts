@@ -40,6 +40,8 @@ export const getNewPublicationSchema = (t: (key: string, values?: Record<string,
       .of(
         yup.object({
           name: yup.string().trim().required(t('authorNameRequired')),
+          affiliation: yup.string().nullable(),
+          profileUrl: yup.string().url(t('urlMustBeValid')).nullable(),
           isMe: yup.boolean(),
           corresponding: yup.boolean(),
         })

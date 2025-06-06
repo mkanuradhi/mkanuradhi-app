@@ -38,7 +38,7 @@ const UpdatePublicationForm: React.FC<UpdatePublicationFormProps> = ({ publicati
             title: publication.title || '',
             source: publication.source || '',
             authors: publication.authors ? publication.authors : [
-              { name: '', isMe: false, corresponding: false },
+              { name: '', affiliation: '', profileUrl: '', isMe: false, corresponding: false },
             ],
             publicationStatus: publication.publicationStatus || PublicationStatus.PUBLISHED,
             tags: publication.tags?.length > 0 ? publication.tags : [],
@@ -56,7 +56,7 @@ const UpdatePublicationForm: React.FC<UpdatePublicationFormProps> = ({ publicati
             title: '',
             source: '',
             authors: [
-              { name: '', isMe: false, corresponding: false },
+              { name: '', affiliation: '', profileUrl: '', isMe: false, corresponding: false },
             ],
             publicationStatus: PublicationStatus.PUBLISHED,
             tags: [''],
@@ -188,6 +188,34 @@ const UpdatePublicationForm: React.FC<UpdatePublicationFormProps> = ({ publicati
                                   >
                                     <FontAwesomeIcon icon={faMinus} />
                                   </Button>
+                                </div>
+
+                                {/* Profile URL */}
+                                <div className="my-2">
+                                  <Field name={`authors.${index}.profileUrl`}>
+                                    {({ field }: FieldProps) => (
+                                      <BootstrapForm.Control
+                                        {...field}
+                                        type="url"
+                                        placeholder={t('authorProfileUrlPlaceholder')}
+                                      />
+                                    )}
+                                  </Field>
+                                  <ErrorMessage name={`authors.${index}.profileUrl`} component="p" className="text-danger mt-1" />
+                                </div>
+
+                                {/* Affiliation */}
+                                <div className="my-2">
+                                  <Field name={`authors.${index}.affiliation`}>
+                                    {({ field }: FieldProps) => (
+                                      <BootstrapForm.Control
+                                        {...field}
+                                        type="text"
+                                        placeholder={t('authorAffiliationPlaceholder')}
+                                      />
+                                    )}
+                                  </Field>
+                                  <ErrorMessage name={`authors.${index}.affiliation`} component="p" className="text-danger mt-1" />
                                 </div>
 
                                 <div className="d-flex gap-4 ps-1">
