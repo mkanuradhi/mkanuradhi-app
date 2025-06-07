@@ -90,52 +90,41 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
               <Row className="align-items-center mt-3">
                 <Col className="mb-2">
                   <ButtonGroup>
-                    <OverlayTrigger
-                      key={updateModalShow ? 'open' : 'closed'}
-                      placement="top"
-                      overlay={<Tooltip id="tooltip-edit">{t('edit')}</Tooltip>}
+                    <Button
+                      variant="secondary"
+                      aria-label={t('edit')}
+                      onClick={() => setUpdateModalShow(true)}
                     >
-                      <Button
-                        variant="secondary"
-                        aria-label={t('edit')}
-                        onClick={() => setUpdateModalShow(true)}
-                      >
-                        <FontAwesomeIcon icon={faPen} />
-                      </Button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                      placement="top"
-                      overlay={<Tooltip id="tooltip-toggle">{mcq.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}</Tooltip>}
+                      <FontAwesomeIcon icon={faPen} className="me-1" />
+                      <span className="d-none d-sm-inline">{t('edit')}</span>
+                    </Button>
+                    <Button
+                      variant={mcq.status === DocumentStatus.ACTIVE ? `warning` : `success`}
+                      aria-label={mcq.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+                      onClick={mcq.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
+                      disabled={isPendingActivate || isPendingDeactivate}
                     >
-                      <Button
-                        variant={mcq.status === DocumentStatus.ACTIVE ? `warning` : `success`}
-                        onClick={mcq.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
-                        disabled={isPendingActivate || isPendingDeactivate}
-                        aria-label={mcq.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
-                      >
-                        <FontAwesomeIcon
-                          icon={mcq.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
-                        />
-                      </Button>
-                    </OverlayTrigger>
+                      <FontAwesomeIcon
+                        icon={mcq.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
+                        className="me-1"
+                      />
+                      <span className="d-none d-sm-inline">
+                        {mcq.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+                      </span>
+                    </Button>
                   </ButtonGroup>
                 </Col>
                 <Col xs="auto" className="mb-2">
-                  <OverlayTrigger
-                    key={deleteModalShow ? 'open' : 'closed'}
-                    placement="top"
-                    overlay={<Tooltip id="tooltip-delete">{t('delete')}</Tooltip>}
+                  <Button
+                    variant="danger"
+                    aria-label={t('delete')}
+                    className="me-2 my-1"
+                    onClick={() => setDeleteModalShow(true)}
+                    disabled={isPendingDelete}
                   >
-                    <Button
-                      variant="danger"
-                      className="me-2 my-1"
-                      onClick={() => setDeleteModalShow(true)}
-                      disabled={isPendingDelete}
-                      aria-label={t('delete')}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </Button>
-                  </OverlayTrigger>
+                    <FontAwesomeIcon icon={faTrash} />
+                    <span className="d-none d-sm-inline">{t('delete')}</span>
+                  </Button>
                 </Col>
               </Row>
               {isActivateError && activateError && (

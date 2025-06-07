@@ -116,37 +116,46 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                   <ButtonGroup>
                     <Button
                       variant="primary"
+                      aria-label={t('read')}
                       onClick={() => router.push(`quizzes/${quiz.id}`)}
                     >
-                      <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
+                      <FontAwesomeIcon icon={faBookOpenReader} className="me-1" />
+                      <span className="d-none d-sm-inline">{t('read')}</span>
                     </Button>
                     <Button
                       variant="secondary"
+                      aria-label={t('edit')}
                       onClick={() => router.push(`quizzes/${quizId}/edit`)}
                     >
-                      <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
+                      <FontAwesomeIcon icon={faPen} className="me-1" />
+                      <span className="d-none d-sm-inline">{t('edit')}</span>
                     </Button>
                     <Button
                       variant={quiz.status === DocumentStatus.ACTIVE ? `warning` : `success`}
+                      aria-label={quiz.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
                       onClick={quiz.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
                       disabled={isPendingActivate || isPendingDeactivate}
                     >
                       <FontAwesomeIcon
                         icon={quiz.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
                         className="me-1"
-                      />{" "}
-                      {quiz.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+                      />
+                      <span className="d-none d-sm-inline">
+                        {quiz.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+                      </span>
                     </Button>
                   </ButtonGroup>
                 </Col>
                 <Col xs="auto" className="mb-2">
                   <Button
                     variant="danger"
+                    aria-label={t('delete')}
                     className="me-2 my-1"
                     onClick={() => setDeleteModalShow(true)}
                     disabled={isPendingDelete}
                   >
-                    <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
+                    <FontAwesomeIcon icon={faTrash} className="me-1" />
+                    <span className="d-none d-sm-inline">{t('delete')}</span>
                   </Button>
                 </Col>
               </Row>

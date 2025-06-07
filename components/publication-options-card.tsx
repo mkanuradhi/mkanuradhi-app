@@ -143,37 +143,46 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
               <ButtonGroup>
                 <Button
                   variant="primary"
+                  aria-label={t('read')}
                   onClick={() => router.push(`publications/${publication.id}`)}
                 >
-                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" /> { t('read') }
+                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" />
+                  <span className="d-none d-sm-inline">{t('read')}</span>
                 </Button>
                 <Button
                   variant="secondary"
+                  aria-label={t('edit')}
                   onClick={() => router.push(`publications/${publication.id}/edit`)}
                 >
-                  <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
+                  <FontAwesomeIcon icon={faPen} className="me-1" />
+                  <span className="d-none d-sm-inline">{t('edit')}</span>
                 </Button>
                 <Button
                   variant={publication.status === DocumentStatus.ACTIVE ? `warning` : `success`}
+                  aria-label={publication.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
                   onClick={publication.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
                   disabled={isPendingActivate || isPendingDeactivate}
                 >
                   <FontAwesomeIcon
                     icon={publication.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
                     className="me-1"
-                  />{" "}
-                  {publication.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+                  />
+                  <span className="d-none d-sm-inline">
+                    {publication.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
+                  </span>
                 </Button>
               </ButtonGroup>
             </Col>
             <Col xs="auto" className="mb-2">
               <Button
                 variant="danger"
+                aria-label={t('delete')}
                 className="me-2 my-1"
                 onClick={() => setDeleteModalShow(true)}
                 disabled={isPendingDelete}
               >
-                <FontAwesomeIcon icon={faTrash} className="me-1" /> { t('delete') }
+                <FontAwesomeIcon icon={faTrash} className="me-1" />
+                <span className="d-none d-sm-inline">{t('delete')}</span>
               </Button>
             </Col>
           </Row>
