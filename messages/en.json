@@ -1155,6 +1155,7 @@
     },
     "McqOptionsCard": {
       "failMcq": "Fail to load the mcq",
+      "solutionExplanation": "Solution Explanation",
       "edit": "Edit",
       "activate": "Activate",
       "deactivate": "Deactivate",

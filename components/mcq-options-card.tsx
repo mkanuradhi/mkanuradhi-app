@@ -87,6 +87,16 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
                   ))}
                 </ol>
               </div>
+              {mcq.solutionExplanation && mcq.solutionExplanation.length > 0 && (
+                <Row>
+                  <Col>
+                    <h6>{t('solutionExplanation')}</h6>
+                    <div className="solution-explaination">
+                      <MathRenderer html={mcq.solutionExplanation} /> 
+                    </div>
+                  </Col>
+                </Row>
+              )}
               <Row className="align-items-center mt-3">
                 <Col className="mb-2">
                   <ButtonGroup>

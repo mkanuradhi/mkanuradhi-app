@@ -1155,6 +1155,7 @@
     },
     "McqOptionsCard": {
       "failMcq": "බහුවරණ ප්‍රශ්නය පූරණය කිරීමට අපොහොසත් විය.",
+      "solutionExplanation": "විසඳුම් විස්තරය",
       "edit": "සංස්කරණය කරන්න",
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",
