@@ -1200,6 +1200,9 @@
       "refreshPublications": "ප්‍රකාශන නැවුම් කරමින්...",
       "publications": "ප්‍රකාශන"
     },
+    "PublicationAuthors": {
+      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ"
+    },
     "PublicationOptionsCard": {
       "read": "තව කියවන්න",
       "edit": "සංස්කරණය කරන්න",
@@ -1219,7 +1222,6 @@
       "preprint": "පූර්ව මුද්‍රණය (Preprint)",
       "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
       "accepted": "පිළිගත් (Accepted)",
-      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ",
       "publicationUrl": "ප්‍රකාශන (Publication) වෙබ් ලිපිනය",
       "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
       "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",
@@ -1236,7 +1238,6 @@
       "preprint": "පූර්ව මුද්‍රණය (Preprint)",
       "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
       "accepted": "පිළිගත් (Accepted)",
-      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ",
       "publicationUrl": "ප්‍රකාශන (Publication) වෙබ් ලිපිනය",
       "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
       "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",

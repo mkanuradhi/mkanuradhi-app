@@ -12,6 +12,7 @@ import DeleteModal from './delete-modal';
 import PublicationType from '@/enums/publication-type';
 import GlowLink from './GlowLink';
 import PublicationStatus from '@/enums/publication-status';
+import PublicationAuthors from './publication-authors';
 
 
 const baseTPath = 'components.PublicationOptionsCard';
@@ -85,21 +86,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
           <Card.Text>
             { publication.source }
           </Card.Text>
-          <div className="mb-3">
-            {publication.authors.map((author, index) => (
-              <span key={index} className="me-1">
-                <span className={author.isMe ? 'fw-bold' : ''}>
-                  {author.name}
-                </span>
-                {author.corresponding && (
-                  <sup className="text-muted" title={t('correspondingAuthor')}>
-                    <i className="bi bi-asterisk" style={{ fontSize: '0.65rem' }}></i>
-                  </sup>
-                )}
-                {index < publication.authors.length - 1 && <span>,</span>}
-              </span>
-            ))}
-          </div>
+          <PublicationAuthors authors={publication.authors} />
           <div className="mb-3">
             {publication.publicationUrl && (
               <p>

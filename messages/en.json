@@ -1200,6 +1200,9 @@
       "refreshPublications": "Refreshing publications...",
       "publications": "publications"
     },
+    "PublicationAuthors": {
+      "correspondingAuthor": "Corresponding author"
+    },
     "PublicationOptionsCard": {
       "read": "Read More",
       "edit": "Edit",
@@ -1219,7 +1222,6 @@
       "preprint": "Preprint",
       "in_review": "Under Review",
       "accepted": "Accepted",
-      "correspondingAuthor": "Corresponding author",
       "publicationUrl": "Publication URL",
       "pdfUrl": "PDF URL",
       "doiUrl": "DOI URL",
@@ -1236,7 +1238,6 @@
       "preprint": "Preprint",
       "in_review": "Under Review",
       "accepted": "Accepted",
-      "correspondingAuthor": "Corresponding author",
       "publicationUrl": "Publication URL",
       "pdfUrl": "PDF URL",
       "doiUrl": "DOI URL",

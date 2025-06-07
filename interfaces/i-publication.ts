@@ -2,7 +2,7 @@ import DocumentStatus from "../enums/document-status";
 import PublicationStatus from "../enums/publication-status";
 import PublicationType from "../enums/publication-type";
 
-interface PublicationAuthor {
+export interface PublicationAuthor {
   name: string;
   affiliation: string;
   profileUrl: string;

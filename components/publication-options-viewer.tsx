@@ -12,6 +12,7 @@ import PublicationStatus from '@/enums/publication-status';
 import GlowLink from './GlowLink';
 import DocumentStatus from '@/enums/document-status';
 import DeleteModal from './delete-modal';
+import PublicationAuthors from './publication-authors';
 import "./publication-options-viewer.scss";
 
 
@@ -118,19 +119,7 @@ const PublicationOptionsViewer: React.FC<PublicationOptionsViewerProps> = ({ pub
         </Row>
         <Row className="my-3">
           <Col>
-            {publication.authors.map((author, index) => (
-              <span key={index} className="me-1">
-                <span className={author.isMe ? 'fw-bold' : ''}>
-                  {author.name}
-                </span>
-                {author.corresponding && (
-                  <sup className="text-muted" title={t('correspondingAuthor')}>
-                    <i className="bi bi-asterisk" style={{ fontSize: '0.65rem' }}></i>
-                  </sup>
-                )}
-                {index < publication.authors.length - 1 && <span>,</span>}
-              </span>
-            ))}
+            <PublicationAuthors authors={publication.authors} />
           </Col>
         </Row>
         <Row>
