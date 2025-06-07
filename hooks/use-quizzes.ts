@@ -4,6 +4,7 @@ import { ApiError } from "@/errors/api-error";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import Quiz from "@/interfaces/i-quiz";
 import { activateQuiz, createQuiz, deactivateQuiz, deleteQuiz, getQuizById, getQuizzes, updateQuiz } from "@/services/quiz-service";
+import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useQuizzesQuery = (courseId: string) => {
@@ -28,9 +29,13 @@ export const useQuizByIdQuery = (courseId: string, quizId: string) => {
 
 export const useActivateQuizMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {courseId: string, quizId: string}) => activateQuiz(variables.courseId, variables.quizId),
+    mutationFn: async (variables: {courseId: string, quizId: string}) => {
+      const token = (await getToken()) ?? '';
+      return activateQuiz(variables.courseId, variables.quizId, token);
+    },
     onSuccess: (_, values) => {
       // Update cache instantly instead of re-fetching
       queryClient.setQueryData(['quiz', values.quizId], (oldData: Quiz | undefined) => {
@@ -47,9 +52,13 @@ export const useActivateQuizMutation = () => {
 
 export const useDeactivateQuizMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {courseId: string, quizId: string}) => deactivateQuiz(variables.courseId, variables.quizId),
+    mutationFn: async (variables: {courseId: string, quizId: string}) => {
+      const token = (await getToken()) ?? '';
+      return deactivateQuiz(variables.courseId, variables.quizId, token);
+    },
     onSuccess: (_, values) => {
       // Update cache instantly
       queryClient.setQueryData(['quiz', values.quizId], (oldData: Quiz | undefined) => {
@@ -66,9 +75,13 @@ export const useDeactivateQuizMutation = () => {
 
 export const useDeleteQuizMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {courseId: string, quizId: string}) => deleteQuiz(variables.courseId, variables.quizId),
+    mutationFn: async (variables: {courseId: string, quizId: string}) => {
+      const token = (await getToken()) ?? '';
+      return deleteQuiz(variables.courseId, variables.quizId, token);
+    },
     onSuccess: (_, values) => {
       queryClient.removeQueries({ queryKey: ['quiz', values.quizId] });
 
@@ -90,9 +103,13 @@ export const useDeleteQuizMutation = () => {
 
 export const useCreateQuizMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation<Quiz, ApiError, { courseId: string; quizDto: CreateQuizDto }, { previousQuizzes?: PaginatedResult<Quiz> }>({
-    mutationFn: (variables: {courseId: string, quizDto: CreateQuizDto}) => createQuiz(variables.courseId, variables.quizDto),
+    mutationFn: async (variables: {courseId: string, quizDto: CreateQuizDto}) => {
+      const token = (await getToken()) ?? '';
+      return createQuiz(variables.courseId, variables.quizDto, token);
+    },
     onMutate: async (newQuizData) => {
       await queryClient.cancelQueries({ queryKey: ['quizzes'] });
 
@@ -161,9 +178,13 @@ export const useCreateQuizMutation = () => {
 
 export const useUpdateQuizMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {courseId: string, quizId: string, quizDto: UpdateQuizDto}) => updateQuiz(variables.courseId, variables.quizId, variables.quizDto),
+    mutationFn: async (variables: {courseId: string, quizId: string, quizDto: UpdateQuizDto}) => {
+      const token = (await getToken()) ?? '';
+      return updateQuiz(variables.courseId, variables.quizId, variables.quizDto, token);
+    },
     onSuccess: (updatedQuiz) => {
       if (!updatedQuiz || !updatedQuiz.id) return;
 

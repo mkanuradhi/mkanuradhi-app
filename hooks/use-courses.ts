@@ -16,6 +16,7 @@ import {
   updateCourseEn,
   updateCourseSi
 } from "@/services/course-service";
+import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useCoursesQuery = (page: number, size: number, initialCourses?: PaginatedResult<Course>) => {
@@ -62,9 +63,13 @@ export const useCourseViewByPathQuery = (lang: string, path: string) => {
 
 export const useActivateCourseMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (id: string) => activateCourse(id),
+    mutationFn: async (id: string) => {
+      const token = (await getToken()) ?? '';
+      return activateCourse(id, token);
+    },
     onSuccess: (_, id) => {
       // Update cache instantly instead of re-fetching
       queryClient.setQueryData(['course', id], (oldData: Course | undefined) => {
@@ -79,9 +84,13 @@ export const useActivateCourseMutation = () => {
 
 export const useDeactivateCourseMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (id: string) => deactivateCourse(id),
+    mutationFn: async (id: string) => {
+      const token = (await getToken()) ?? '';
+      return deactivateCourse(id, token);
+    },
     onSuccess: (_, id) => {
       // Update cache instantly
       queryClient.setQueryData(['course', id], (oldData: Course | undefined) => {
@@ -96,9 +105,13 @@ export const useDeactivateCourseMutation = () => {
 
 export const useDeleteCourseMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (id: string) => deleteCourse(id),
+    mutationFn: async (id: string) => {
+      const token = (await getToken()) ?? '';
+      return deleteCourse(id, token);
+    },
     onSuccess: (_, id) => {
       queryClient.removeQueries({ queryKey: ['course', id] });
 
@@ -118,9 +131,13 @@ export const useDeleteCourseMutation = () => {
 
 export const useCreateCourseEnMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation<Course, ApiError, CreateCourseEnDto, { previousCourses?: PaginatedResult<Course> }>({
-    mutationFn: (courseEnDto: CreateCourseEnDto) => createCourseEn(courseEnDto),
+    mutationFn: async (courseEnDto: CreateCourseEnDto) => {
+      const token = (await getToken()) ?? '';
+      return createCourseEn(courseEnDto, token);
+    },
     onMutate: async (newCourseData) => {
       await queryClient.cancelQueries({ queryKey: ['courses'] });
 
@@ -189,9 +206,13 @@ export const useCreateCourseEnMutation = () => {
 
 export const useUpdateCourseSiMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {id: string, courseSiDto: UpdateCourseSiDto}) => updateCourseSi(variables.id, variables.courseSiDto),
+    mutationFn: async (variables: {id: string, courseSiDto: UpdateCourseSiDto}) => {
+      const token = (await getToken()) ?? '';
+      return updateCourseSi(variables.id, variables.courseSiDto, token);
+    },
     onSuccess: (updatedCourse) => {
       if (!updatedCourse || !updatedCourse.id) return;
 
@@ -220,9 +241,13 @@ export const useUpdateCourseSiMutation = () => {
 
 export const useUpdateCourseEnMutation = () => {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
 
   return useMutation({
-    mutationFn: (variables: {id: string, courseEnDto: UpdateCourseEnDto}) => updateCourseEn(variables.id, variables.courseEnDto),
+    mutationFn: async (variables: {id: string, courseEnDto: UpdateCourseEnDto}) => {
+      const token = (await getToken()) ?? '';
+      return updateCourseEn(variables.id, variables.courseEnDto, token);
+    },
     onSuccess: (updatedCourse) => {
       if (!updatedCourse || !updatedCourse.id) return;
 

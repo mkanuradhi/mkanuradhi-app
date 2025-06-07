@@ -46,8 +46,8 @@ const NewQuizForm: React.FC<NewQuizFormProps> = ({ courseId, onSuccess }) => {
     const quizDto: CreateQuizDto = {
       titleEn: values.titleEn,
       titleSi: values.titleSi,
-      descriptionEn: values.titleEn,
-      descriptionSi: values.titleSi,
+      descriptionEn: values.descriptionEn,
+      descriptionSi: values.descriptionSi,
       duration: values.duration === '' ? undefined : Number(values.duration),
       availableFrom: values.availableFrom,
       availableUntil: values.availableUntil,

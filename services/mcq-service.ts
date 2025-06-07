@@ -4,6 +4,7 @@ import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
 import Mcq from "@/interfaces/i-mcq";
 import PaginatedResult from "@/interfaces/i-paginated-result";
+import { buildHeaders } from "@/utils/common-utils";
 import axios from "axios";
 
 export const getMcqs = async (quizId: string, page: number, size: number): Promise<PaginatedResult<Mcq>> => {
@@ -43,11 +44,12 @@ export const getMcqById = async (quizId: string, mcqId: string): Promise<Mcq> =>
   }
 };
 
-export const activateMcq = async (quizId: string, mcqId: string): Promise<Mcq> => {
+export const activateMcq = async (quizId: string, mcqId: string, token: string): Promise<Mcq> => {
   try {
     const response = await axios.patch<Mcq>(
       `${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/${mcqId}/toggle`,
-      { status: DocumentStatus.ACTIVE }
+      { status: DocumentStatus.ACTIVE },
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -55,11 +57,12 @@ export const activateMcq = async (quizId: string, mcqId: string): Promise<Mcq> =
   }
 };
 
-export const deactivateMcq = async (quizId: string, mcqId: string): Promise<Mcq> => {
+export const deactivateMcq = async (quizId: string, mcqId: string, token: string): Promise<Mcq> => {
   try {
     const response = await axios.patch<Mcq>(
       `${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/${mcqId}/toggle`,
-      { status: DocumentStatus.INACTIVE }
+      { status: DocumentStatus.INACTIVE },
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -67,9 +70,12 @@ export const deactivateMcq = async (quizId: string, mcqId: string): Promise<Mcq>
   }
 };
 
-export const deleteMcq = async (quizId: string, mcqId: string) => {
+export const deleteMcq = async (quizId: string, mcqId: string, token: string) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/${mcqId}`);
+    const response = await axios.delete(
+      `${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/${mcqId}`,
+      buildHeaders(token)
+    );
     if (response.status !== 204) {
       throw new Error('Failed to delete mcq');
     }
@@ -79,11 +85,12 @@ export const deleteMcq = async (quizId: string, mcqId: string) => {
   }
 };
 
-export const createMcq = async (quizId: string, mcqDto: CreateMcqDto): Promise<Mcq> => {
+export const createMcq = async (quizId: string, mcqDto: CreateMcqDto, token: string): Promise<Mcq> => {
   try {
     const response = await axios.post<Mcq>(
       `${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}`,
-      mcqDto
+      mcqDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -91,11 +98,12 @@ export const createMcq = async (quizId: string, mcqDto: CreateMcqDto): Promise<M
   }
 };
 
-export const updateMcq = async (quizId: string, mcqId: string, mcqDto: UpdateMcqDto): Promise<Mcq> => {
+export const updateMcq = async (quizId: string, mcqId: string, mcqDto: UpdateMcqDto, token: string): Promise<Mcq> => {
   try {
     const response = await axios.patch<Mcq>(
       `${API_BASE_URL}${QUIZZES_PATH}/${quizId}${MCQS_PATH}/${mcqId}`,
-      mcqDto
+      mcqDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {

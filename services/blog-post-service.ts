@@ -5,6 +5,7 @@ import { handleApiError } from "@/errors/api-error-handler";
 import BlogPost from "@/interfaces/i-blog-post";
 import BlogPostView from "@/interfaces/i-blog-post-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
+import { buildHeaders } from "@/utils/common-utils";
 import axios from "axios";
 
 export const getBlogPosts = async (page: number, size: number): Promise<PaginatedResult<BlogPost>> => {
@@ -61,11 +62,12 @@ export const getPublishedBlogPosts = async (lang: string, page: number, size: nu
   }
 };
 
-export const publishBlogPost = async (id: string): Promise<BlogPost> => {
+export const publishBlogPost = async (id: string, token: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
       `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/toggle`,
-      { status: DocumentStatus.ACTIVE }
+      { status: DocumentStatus.ACTIVE },
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -73,11 +75,12 @@ export const publishBlogPost = async (id: string): Promise<BlogPost> => {
   }
 };
 
-export const unpublishBlogPost = async (id: string): Promise<BlogPost> => {
+export const unpublishBlogPost = async (id: string, token: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
       `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/toggle`,
-      { status: DocumentStatus.INACTIVE }
+      { status: DocumentStatus.INACTIVE },
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -85,9 +88,12 @@ export const unpublishBlogPost = async (id: string): Promise<BlogPost> => {
   }
 };
 
-export const deleteBlogPost = async (id: string) => {
+export const deleteBlogPost = async (id: string, token: string) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}${BLOG_POSTS_PATH}/${id}`);
+    const response = await axios.delete(
+      `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}`,
+      buildHeaders(token)
+    );
     if (response.status !== 204) {
       throw new Error('Failed to delete blog post');
     }
@@ -97,11 +103,12 @@ export const deleteBlogPost = async (id: string) => {
   }
 };
 
-export const createBlogPostTextEn = async (blogPostTextEnDto: CreateBlogPostTextEnDto): Promise<BlogPost> => {
+export const createBlogPostTextEn = async (blogPostTextEnDto: CreateBlogPostTextEnDto, token: string): Promise<BlogPost> => {
   try {
     const response = await axios.post<BlogPost>(
       `${API_BASE_URL}${BLOG_POSTS_PATH}`,
-      blogPostTextEnDto
+      blogPostTextEnDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -109,11 +116,12 @@ export const createBlogPostTextEn = async (blogPostTextEnDto: CreateBlogPostText
   }
 };
 
-export const updateBlogPostTextSi = async (id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto): Promise<BlogPost> => {
+export const updateBlogPostTextSi = async (id: string, blogPostTextSiDto: UpdateBlogPostTextSiDto, token: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
       `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/si`,
-      blogPostTextSiDto
+      blogPostTextSiDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -121,11 +129,12 @@ export const updateBlogPostTextSi = async (id: string, blogPostTextSiDto: Update
   }
 };
 
-export const uploadBlogPostPrimaryImage = async (id: string, formData: FormData): Promise<BlogPost> => {
+export const uploadBlogPostPrimaryImage = async (id: string, formData: FormData, token: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
       `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/primary-image`,
-      formData
+      formData,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {
@@ -133,11 +142,12 @@ export const uploadBlogPostPrimaryImage = async (id: string, formData: FormData)
   }
 };
 
-export const updateBlogPostTextEn = async (id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto): Promise<BlogPost> => {
+export const updateBlogPostTextEn = async (id: string, blogPostTextEnDto: UpdateBlogPostTextEnDto, token: string): Promise<BlogPost> => {
   try {
     const response = await axios.patch<BlogPost>(
       `${API_BASE_URL}${BLOG_POSTS_PATH}/${id}/en`,
-      blogPostTextEnDto
+      blogPostTextEnDto,
+      buildHeaders(token)
     );
     return response.data;
   } catch (error) {

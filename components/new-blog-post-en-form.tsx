@@ -161,7 +161,7 @@ const NewBlogPostEnForm: FC<NewBlogPostEnFormProps> = ({ onSuccess }) => {
                   </Button>
                 </div>
                 {status && status.error && (
-                  <div className="alert alert-danger">{status.error}</div>
+                  <div className="alert alert-danger mt-3">{status.error}</div>
                 )}
               </Form>
             )}

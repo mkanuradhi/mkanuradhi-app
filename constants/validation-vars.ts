@@ -51,3 +51,19 @@ export const MIN_MCQ_QUESTION_LENGTH = 3;
 export const MAX_MCQ_QUESTION_LENGTH = 1000;
 
 export const MAX_MCQ_EXPLANATION_LENGTH = 2000;
+
+// --------------- publication ---------------
+export const MIN_PUBLICATION_YEAR = 2010;
+export const MAX_PUBLICATION_YEAR = 2040;
+
+export const MIN_PUBLICATION_TITLE_LENGTH = 5;
+export const MAX_PUBLICATION_TITLE_LENGTH = 320;
+
+export const MIN_PUBLICATION_SOURCE_LENGTH = 0;
+export const MAX_PUBLICATION_SOURCE_LENGTH = 1000;
+
+export const MAX_PUBLICATION_URL_LENGTH = 400;
+
+export const MAX_PUBLICATION_ABSTRACT_LENGTH = 4800;
+
+export const MAX_PUBLICATION_BIBTEX_LENGTH = 4500;

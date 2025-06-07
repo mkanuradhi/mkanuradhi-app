@@ -658,7 +658,7 @@
           "title": "නව බ්ලොග් සටහනක් එක් කිරීම"
         },
         "Edit": {
-          "title": "බ්ලොග් සටහන සංස්කරණය කරන්න"
+          "title": "බ්ලොග් සටහන සංස්කරණය කිරීම"
         }
       },
       "Courses": {
@@ -668,15 +668,25 @@
           "title": "නව පාඨමාලාවක් එක් කිරීම"
         },
         "Edit": {
-          "title": "පාඨමාලාව සංස්කරණය කරන්න"
+          "title": "පාඨමාලාව සංස්කරණය කිරීම"
         },
         "Quizzes": {
           "New": {
             "title": "නව ප්‍රශ්නාවලියක් එක් කිරීම"
           },
           "Edit": {
-            "title": "ප්‍රශ්නාවලිය සංස්කරණය කරන්න"
+            "title": "ප්‍රශ්නාවලිය සංස්කරණය කිරීම"
           }
+        }
+      },
+      "Publications": {
+        "title": "ප්‍රකාශන",
+        "addNew": "නව ප්‍රකාශනයක් එක් කරන්න",
+        "New": {
+          "title": "නව ප්‍රකාශනයක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "ප්‍රකාශනය සංස්කරණය කිරීම"
         }
       }
     }
@@ -779,7 +789,10 @@
       "finalScore": "අවසාන ලකුණු",
       "attemptAgain": "නැවත උත්සාහ කරන්න",
       "timeLeft": "ඉතිරි කාලය",
-      "timeTaken": "ගත වූ කාලය"
+      "timeTaken": "ගත වූ කාලය",
+      "timeUpTitle": "කාලය අවසන්!",
+      "timeUpMessage": "නියමිත කාලය අවසන් වී ඇත. ඔබේ ප්‍රතිඵල බැලීමට පහතින් ඇති බොත්තම ක්ලික් කරන්න.",
+      "viewResults": "ප්‍රතිඵල බලන්න"
     },
     "QuizCard": {
       "title": "ප්‍රශ්නාවලි",
@@ -1142,6 +1155,7 @@
     },
     "McqOptionsCard": {
       "failMcq": "බහුවරණ ප්‍රශ්නය පූරණය කිරීමට අපොහොසත් විය.",
+      "solutionExplanation": "විසඳුම් විස්තරය",
       "edit": "සංස්කරණය කරන්න",
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",
@@ -1179,6 +1193,153 @@
       "cancel": "අවලංගු කරන්න",
       "submitting": "ඉදිරිපත් කරමින්...",
       "submit": "ඉදිරිපත් කරන්න"
+    },
+    "PublicationsTable": {
+      "failPublications": "ප්‍රකාශන පූරණය කිරීමට අසමත් විය.",
+      "noPublications": "ප්‍රදර්ශනය කිරීමට ප්‍රකාශන නොමැත.",
+      "refreshPublications": "ප්‍රකාශන නැවුම් කරමින්...",
+      "publications": "ප්‍රකාශන"
+    },
+    "PublicationAuthors": {
+      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ"
+    },
+    "PublicationOptionsCard": {
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> ප්‍රකාශනය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "ප්‍රකාශනය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "ප්‍රකාශනය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "ප්‍රකාශනය මැකිය නොහැක",
+      "article": "සඟරා ලිපිය",
+      "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "preprint": "පූර්ව මුද්‍රණය (Preprint)",
+      "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
+      "accepted": "පිළිගත් (Accepted)",
+      "publicationUrl": "ප්‍රකාශන (Publication) වෙබ් ලිපිනය",
+      "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
+      "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",
+      "preprintUrl": "පූර්ව මුද්‍රණ (Preprint) වෙබ් ලිපිනය",
+      "tags": "ටැග්ස්"
+    },
+    "PublicationOptionsViewer": {
+      "failPublication": "ප්‍රකාශනය පූරණය කිරීමට අසමත් විය.",
+      "dashboard": "පාලන පුවරුව",
+      "publications": "ප්‍රකාශන",
+      "article": "සඟරා ලිපිය",
+      "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "preprint": "පූර්ව මුද්‍රණය (Preprint)",
+      "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
+      "accepted": "පිළිගත් (Accepted)",
+      "publicationUrl": "ප්‍රකාශන (Publication) වෙබ් ලිපිනය",
+      "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
+      "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",
+      "preprintUrl": "පූර්ව මුද්‍රණ (Preprint) වෙබ් ලිපිනය",
+      "tags": "ටැග්ස්",
+      "abstract": "සාරාංශය",
+      "bibtex": "බිබ්ටෙක්ස් (BibTex)",
+      "edit": "සංස්කරණ",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> ප්‍රකාශනය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "ප්‍රකාශනය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "ප්‍රකාශනය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "ප්‍රකාශනය මැකිය නොහැක"
+    },
+    "NewPublicationFormsContainer": {
+      "stepGeneral": "මූලික විස්තර ඇතුළත් කිරීම"
+    },
+    "NewPublicationForm": {
+      "typeLabel": "ප්‍රකාශන වර්ගය (Type)",
+      "typeInvalid": "තෝරාගත් වර්ගය වලංගු නොවේ.",
+      "typeRequired": "ප්‍රකාශන වර්ගය අවශ්‍යයි",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "සඟරා ලිපි (Journal Article)",
+        "BOOK_CHAPTER": "පොත් පරිච්ඡේද (Book Chapter)",
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා (Conference Proceeding)"
+      },
+      "yearLabel": "ප්‍රකාශිත වර්ෂය (Year)",
+      "yearPlaceholder": "ප්‍රකාශිත වර්ෂය ඇතුළත් කරන්න",
+      "yearMustBeNumber": "වර්ෂය වලංගු අංකයක් විය යුතුය.",
+      "yearMustBeAnInteger": "වර්ෂය වලංගු පූර්ණ සංඛ්‍යාවක් විය යුතුය (දශම සංඛ්‍යා සඳහා අවසර නැත)",
+      "yearTooLow": "සපයා ඇති වර්ෂය වලංගු නොවේ. කරුණාකර {min} හෝ ඊට පසු වසරක් ඇතුළත් කරන්න.",
+      "yearTooHigh": "සපයා ඇති වර්ෂය වලංගු නොවේ. කරුණාකර {max} ට නොඅඩු වසරක් ඇතුළත් කරන්න.",
+      "yearInvalid": "වලංගු නොවන වසරකි. කරුණාකර වලංගු ඉලක්කම් 4ක වසරක් සපයන්න.",
+      "yearRequired": "වර්ෂය අවශ්‍යයි",
+      "titleLabel": "ප්‍රකාශනයේ මාතෘකාව (Title)",
+      "titlePlaceholder": "මාතෘකාව ඇතුළත් කරන්න",
+      "titleTooShort": "මාතෘකාව අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
+      "titleTooLong": "මාතෘකාව අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "titleRequired": "මාතෘකාව අවශ්‍යයි.",
+      "sourceLabel": "ප්‍රකාශනයේ මූලාශ්‍රය",
+      "sourcePlaceholder": "මූලාශ්‍රය ඇතුළත් කරන්න",
+      "sourceHelp": "ප්‍රකාශනය පළ වූ හෝ පළ වීමට අදහස් කරන සඟරාවේ, පොතේ හෝ සම්මන්ත්‍රණයේ නම.",
+      "sourceTooShort": "මූලාශ්‍රය අක්ෂර {min} කට වඩා වැඩි විය යුතුය.",
+      "sourceTooLong": "මූලාශ්‍රය අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "authorsLabel": "කතුවරුන්",
+      "authorPlaceholder": "කර්තෘගේ නම",
+      "authorAffiliationPlaceholder": "අනුබද්ධ ආයතනය (උදා: දෙපාර්තමේන්තුව, විශ්වවිද්‍යාලය)",
+      "authorProfileUrlPlaceholder": "පැතිකඩ URL (උදා: ORCID, Google Scholar)",
+      "authorIsMeLabel": "මේ මමයි",
+      "authorCorrespondingLabel": "සම්බන්ධීකාරක කතෘ",
+      "authorRemove": "කර්තෘ ඉවත් කරන්න",
+      "authorAdd": "කර්තෘවරයෙකු එක් කරන්න",
+      "authorsRequired": "කතුවරුන් අවශ්‍යයි",
+      "authorNameRequired": "කර්තෘගේ නම අවශ්‍යයි",
+      "authorCannotRemoveLast": "අවම වශයෙන් එක් කතුවරයෙකු අවශ්‍ය වේ.",
+      "authorExactlyOneIsMe": "හරියටම එක් කතුවරයෙකු 'මම' ලෙස සලකුණු කළ යුතුය.",
+      "authorAtMostOneCorresponding": "උපරිම වශයෙන් එක් සම්බන්ධීකාරක කතුවරයෙකු තෝරා ගත හැකිය.",
+      "authorsMustBeUnique": "කර්තෘ නම් අනන්‍ය විය යුතුය.",
+      "publicationStatusLabel": "ප්‍රකාශන තත්ත්වය",
+      "publicationStatus": {
+        "PUBLISHED": "ප්‍රකාශිත (PUBLISHED)",
+        "ACCEPTED": "පිළිගැනීම ලැබූ (ACCEPTED)",
+        "IN_REVIEW": "සමාලෝචනයේ පවතී (IN REVIEW)",
+        "PREPRINT": "පූර්ව මුද්‍රණය (PREPRINT)"
+      },
+      "publicationStatusRequired": "ප්‍රකාශන තත්ත්වය අවශ්‍යයි",
+      "publicationStatusInvalid": "ප්‍රකාශන තත්ත්වය වලංගු නොවේ.",
+      "tagsLabel": "ටැග් (Tags)",
+      "tagsHelp": "ප්‍රකාශනයේ කැපී පෙනෙන අංග ඉස්මතු කිරීම සඳහා 'Q1', 'හොඳම පත්‍රිකාව' වැනි කෙටි විස්තර හෝ වෙනත් පිළිගැනීම් එක් කරන්න.",
+      "tagsRemove": "ටැගය ඉවත් කරන්න",
+      "tagsAdd": "ටැගයක් එක් කරන්න",
+      "publicationUrlLabel": "ප්‍රකාශන වෙබ් ලිපිනය",
+      "publicationUrlPlaceholder": "ප්‍රකාශන වෙබ් ලිපිනය ඇතුළත් කරන්න",
+      "publicationUrlHelp": "තිබේ නම්, නිල ප්‍රකාශන පිටුවට සබැඳියක් සපයන්න.",
+      "urlMustBeValid": "වෙබ් ලිපිනය වලංගු එකක් විය යුතුය.",
+      "urlTooLong": "වෙබ් ලිපිනය දිග වැඩියි. එය අකුරු {max} කට වඩා අඩු විය යුතුය.",
+      "pdfUrlLabel": "පීඩීඑෆ් වෙබ් ලිපිනය",
+      "pdfUrlPlaceholder": "පීඩීඑෆ්  වෙබ් ලිපිනය ඇතුලත් කරන්න",
+      "pdfUrlHelp": "තිබේ නම්, ප්‍රකාශනයේ පීඩීඑෆ් අනුවාදයට සෘජු සබැඳියක් සපයන්න.",
+      "doiUrlLabel": "DOI වෙබ් ලිපිනය",
+      "doiUrlPlaceholder": "DOI වෙබ් ලිපිනය ඇතුළත් කරන්න",
+      "doiUrlHelp": "ප්‍රකාශනය සඳහා DOI (ඩිජිටල් වස්තු හඳුනාගැනීමේ) සබැඳිය තිබේ නම් එය සපයන්න.",
+      "preprintUrlLabel": "පූර්ව මුද්‍රණ වෙබ් ලිපිනය",
+      "preprintUrlPlaceholder": "පූර්ව මුද්‍රණ වෙබ් ලිපිනය ඇතුළත් කරන්න",
+      "preprintUrlHelp": "ප්‍රසිද්ධියේ ප්‍රවේශ විය හැකි නම්, ප්‍රකාශනයේ පූර්ව මුද්‍රණ අනුවාදයට සබැඳියක් සපයන්න.",
+      "abstractLabel": "සාරාංශය (Abstract)",
+      "abstractPlaceholder": "ප්‍රකාශනයේ සාරාංශය ඇතුළත් කරන්න",
+      "abstractTooLong": "සාරාංශය අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "bibtexLabel": "බිබ්ටෙක්ස් (BibTex)",
+      "bibtexPlaceholder": "ප්‍රකාශනයේ බිබ්ටෙක්ස් ඇතුළත් කරන්න",
+      "bibtexTooLong": "බිබ්ටෙක්ස් අක්ෂර {max} කට වඩා අඩු විය යුතුය.",
+      "cancel": "අවලංගු කරන්න",
+      "submitting": "ඉදිරිපත් කරමින්...",
+      "submit": "ඉදිරියට යන්න"
+    },
+    "UpdatePublicationFormsContainer": {
+      "stepGeneral": "සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
     }
   },
   "contexts": {
@@ -1186,6 +1347,7 @@
       "dashboard": "පාලන පුවරුව",
       "blog": "බ්ලොග්",
       "courses": "පාඨමාලා",
+      "publications": "ප්‍රකාශන",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },
