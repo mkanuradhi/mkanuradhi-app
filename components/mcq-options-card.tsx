@@ -132,7 +132,7 @@ const McqOptionsCard: React.FC<McqOptionsCardProps> = ({quizId, mcqId}) => {
                     onClick={() => setDeleteModalShow(true)}
                     disabled={isPendingDelete}
                   >
-                    <FontAwesomeIcon icon={faTrash} />
+                    <FontAwesomeIcon icon={faTrash} className="me-1" />
                     <span className="d-none d-sm-inline">{t('delete')}</span>
                   </Button>
                 </Col>
