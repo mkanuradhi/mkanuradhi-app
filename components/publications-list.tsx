@@ -41,18 +41,22 @@ const PublicationsList: React.FC<PublicationsListProps> = ({ filters }) => {
   if (filters.search.trim() !== '') {
     const searchLower = filters.search.toLowerCase();
     filtered = filtered.filter(pub => {
+      const inYear = String(pub.year).includes(searchLower);
       const inTitle = pub.title.toLowerCase().includes(searchLower);
       const inSource = pub.source?.toLowerCase().includes(searchLower);
       const inAuthors = pub.authors?.some(author =>
-        `${author.name}`.toLowerCase().includes(searchLower)
+        author.name.toLowerCase().includes(searchLower)
       );
       const inAffiliations = pub.authors?.some(author =>
-        `${author.affiliation}`.toLowerCase().includes(searchLower)
+        author.affiliation?.toLowerCase().includes(searchLower)
+      );
+      const inTags = pub.tags?.some(tag =>
+        tag?.toLowerCase().includes(searchLower)
       );
       const inAbstract = pub.abstract?.toLowerCase().includes(searchLower);
       const inBibtex = pub.bibtex?.toLowerCase().includes(searchLower);
 
-      return inTitle || inSource || inAuthors || inAffiliations || inAbstract || inBibtex;
+      return inYear || inTitle || inSource || inAuthors || inAffiliations || inTags || inAbstract || inBibtex;
     });
   }
 
