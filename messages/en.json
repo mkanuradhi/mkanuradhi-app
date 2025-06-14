@@ -1194,6 +1194,32 @@
       "submitting": "Submitting...",
       "submit": "Submit"
     },
+    "PublicationsFilters": {
+      "all": "All Types",
+      "journal_article": "Journal Articles",
+      "book_chapter": "Book Chapters",
+      "conference_proceeding": "Conference Proceedings",
+      "year-desc": "Newest First",
+      "year-asc": "Oldest First",
+      "searchPlaceholder": "Search by anything..."
+    },
+    "PublicationsList": {
+      "fail": "Failed to load publications",
+      "noMatch": "No publications match the selected filters."
+    },
+    "PublicationCard": {
+      "journal_article": "Journal Article",
+      "book_chapter": "Book Chapter",
+      "conference_proceeding": "Conference Proceeding",
+      "preprint": "Preprint",
+      "in_review": "Under Review",
+      "accepted": "Accepted",
+      "doi": "DOI",
+      "pdf": "PDF",
+      "arxiv": "arXiv",
+      "abstract": "Abstract",
+      "bibtex": "BibTex"
+    },
     "PublicationsTable": {
       "failPublications": "Failed to load publications",
       "noPublications": "No publications to display",
@@ -1216,9 +1242,9 @@
       "activateErrorTitle": "Cannot activate the publication",
       "deactivateErrorTitle": "Cannot deactivate the publication",
       "deleteErrorTitle": "Cannot delete the publication",
-      "article": "Journal Article",
-      "chapter": "Book Chapter",
-      "proceeding": "Conference Proceeding",
+      "journal_article": "Journal Article",
+      "book_chapter": "Book Chapter",
+      "conference_proceeding": "Conference Proceeding",
       "preprint": "Preprint",
       "in_review": "Under Review",
       "accepted": "Accepted",

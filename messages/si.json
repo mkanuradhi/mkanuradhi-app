@@ -1194,6 +1194,32 @@
       "submitting": "ඉදිරිපත් කරමින්...",
       "submit": "ඉදිරිපත් කරන්න"
     },
+    "PublicationsFilters": {
+      "all": "සියලු වර්ග",
+      "journal_article": "සඟරා ලිපි",
+      "book_chapter": "පොත් පරිච්ඡේද",
+      "conference_proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "year-desc": "නවතම දෑ ප්‍රථමයෙන්",
+      "year-asc": "පැරණිම දෑ ප්‍රථමයෙන්",
+      "searchPlaceholder": "ඕනෑම දෙයකින් සොයන්න..."
+    },
+    "PublicationsList": {
+      "fail": "ප්‍රකාශන පූරණය කිරීමට අසමත් විය",
+      "noMatch": "තෝරාගත් පෙරහන් වලට ගැළපෙන ප්‍රකාශන කිසිවක් නැත."
+    },
+    "PublicationCard": {
+      "journal_article": "සඟරා ලිපිය",
+      "book_chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "conference_proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "preprint": "පූර්ව මුද්‍රණය (Preprint)",
+      "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
+      "accepted": "පිළිගත් (Accepted)",
+      "doi": "ඩීඕඅයි",
+      "pdf": "පීඩීඑෆ්",
+      "arxiv": "පූර්ව මුද්‍රණය",
+      "abstract": "සාරාංශය",
+      "bibtex": "BibTeX සටහන"
+    },
     "PublicationsTable": {
       "failPublications": "ප්‍රකාශන පූරණය කිරීමට අසමත් විය.",
       "noPublications": "ප්‍රදර්ශනය කිරීමට ප්‍රකාශන නොමැත.",
@@ -1216,9 +1242,9 @@
       "activateErrorTitle": "ප්‍රකාශනය සක්‍රිය කළ නොහැක",
       "deactivateErrorTitle": "ප්‍රකාශනය අක්‍රිය කළ නොහැක",
       "deleteErrorTitle": "ප්‍රකාශනය මැකිය නොහැක",
-      "article": "සඟරා ලිපිය",
-      "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
-      "proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "journal_article": "සඟරා ලිපිය",
+      "book_chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "conference_proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
       "preprint": "පූර්ව මුද්‍රණය (Preprint)",
       "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
       "accepted": "පිළිගත් (Accepted)",

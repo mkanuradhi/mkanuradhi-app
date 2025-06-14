@@ -43,6 +43,19 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
     deactivatePublicationMutation(publication.id);
   }
 
+  const getTypeIcon = () => {
+    switch (publication.type) {
+      case PublicationType.JOURNAL_ARTICLE:
+        return <FontAwesomeIcon icon={faNewspaper} className="text-primary" />;
+      case PublicationType.BOOK_CHAPTER:
+        return <FontAwesomeIcon icon={faBook} className="text-success" />;
+      case PublicationType.CONFERENCE_PROCEEDING:
+        return <FontAwesomeIcon icon={faMicrophone} className="text-warning" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <Card className="my-3 shadow publication-options-card">
@@ -53,24 +66,8 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
                 <span>{publication.year}</span>
               </Col>
               <Col xs="auto">
-                {publication.type === PublicationType.JOURNAL_ARTICLE && (
-                  <>
-                    <span className="me-2">{t('article')}</span>
-                    <FontAwesomeIcon icon={faNewspaper} className="text-primary" />
-                  </>
-                )}
-                {publication.type === PublicationType.BOOK_CHAPTER && (
-                  <>
-                    <span className="me-2">{t('chapter')}</span>
-                    <FontAwesomeIcon icon={faBook} className="text-success" />
-                  </>
-                )}
-                {publication.type === PublicationType.CONFERENCE_PROCEEDING && (
-                  <>
-                    <span className="me-2">{t('proceeding')}</span>
-                    <FontAwesomeIcon icon={faMicrophone} className="text-warning" />
-                  </>
-                )}
+                <span className="me-2">{t(publication.type.toLowerCase())}</span>
+                {getTypeIcon()}
               </Col>
             </Row>
           </Card.Subtitle>
