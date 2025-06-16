@@ -303,7 +303,7 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
                         </option>
                       ))}
                     </Field>
-                    <ErrorMessage name="type" component="p" className="text-danger mt-1" />
+                    <ErrorMessage name="publicationStatus" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
 
                   <BootstrapForm.Group className="mb-4" controlId="formTags">

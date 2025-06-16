@@ -4,22 +4,22 @@ import PublicationStatus from "../enums/publication-status";
 import { VersionDto } from "./base-dto";
 
 interface PublicationAuthorDto {
-  name: string;
+	name: string;
 	affiliation: string;
-  profileUrl: string;
-  isMe: boolean;
-  corresponding: boolean;
+	profileUrl: string;
+	isMe: boolean;
+	corresponding: boolean;
 }
 
 export interface ActivationPublicationDto {
-  status: DocumentStatus;
+	status: DocumentStatus;
 }
 
 export interface CreatePublicationDto {
-  type: PublicationType;
+	type: PublicationType;
 	year: number;
 	title: string;
-  source: string;
+	source: string;
 	authors: PublicationAuthorDto[];
 	publicationStatus: PublicationStatus;
 	tags: string[];
@@ -32,7 +32,7 @@ export interface CreatePublicationDto {
 	abstract: string;
 	bibtex: string;
 	ris: string;
-  publishedDate?: Date;
+	publishedDate?: Date | null;
 }
 
 export interface UpdatePublicationDto extends CreatePublicationDto, VersionDto {
