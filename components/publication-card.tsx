@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Badge, Card, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faFilePdf, faFlask, faLink, faMicrophone, faNewspaper, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faFilePdf, faFilePowerpoint, faFlask, faLink, faMicrophone, faNewspaper, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import Publication from '@/interfaces/i-publication';
 import PublicationType from '@/enums/publication-type';
 import PublicationStatus from '@/enums/publication-status';
@@ -20,9 +20,9 @@ interface PublicationCardProps {
 
 const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
   const t = useTranslations(baseTPath);
-  const [expanded, setExpanded] = useState<'abstract' | 'bibtex' | null>(null);
+  const [expanded, setExpanded] = useState<'abstract' | 'keywords' | 'bibtex' | 'ris' | null>(null);
 
-  const toggleSection = (section: 'abstract' | 'bibtex') => {
+  const toggleSection = (section: 'abstract' | 'keywords' | 'bibtex' | 'ris') => {
     setExpanded(prev => (prev === section ? null : section));
   };
 
@@ -55,19 +55,6 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
         {icon && <FontAwesomeIcon icon={icon} className={iconClass} />}
       </>
     );
-  };
-
-  const getTypeIcon = () => {
-    switch (publication.type) {
-      case PublicationType.JOURNAL_ARTICLE:
-        return <FontAwesomeIcon icon={faNewspaper} className="text-primary" />;
-      case PublicationType.BOOK_CHAPTER:
-        return <FontAwesomeIcon icon={faBook} className="text-success" />;
-      case PublicationType.CONFERENCE_PROCEEDING:
-        return <FontAwesomeIcon icon={faMicrophone} className="text-warning" />;
-      default:
-        return null;
-    }
   };
 
   return (
@@ -150,6 +137,19 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
               </span>
             </Link>
           )}
+          {publication.slidesUrl && (
+            <Link
+              href={publication.slidesUrl}
+              className="d-inline-flex align-items-center gap-1 text-decoration-none"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-warning d-inline-flex align-items-center gap-1">
+                <FontAwesomeIcon icon={faFilePowerpoint} />
+                <span>{t('slides')}</span>
+              </span>
+            </Link>
+          )}
         </div>
 
         <div className="mb-2 small">
@@ -162,13 +162,31 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
               {t('abstract')}
             </span>
           )}
+          {publication.keywords && publication.keywords.length > 0 && (
+            <span
+              role="button"
+              onClick={() => toggleSection('keywords')}
+              className="me-3 text-info-emphasis cursor-pointer"
+            >
+              {t('keywords')}
+            </span>
+          )}
           {publication.bibtex && (
             <span
               role="button"
               onClick={() => toggleSection('bibtex')}
-              className="text-success cursor-pointer"
+              className="me-3 text-success cursor-pointer"
             >
               {t('bibtex')}
+            </span>
+          )}
+          {publication.ris && (
+            <span
+              role="button"
+              onClick={() => toggleSection('ris')}
+              className="me-3 text-secondary cursor-pointer"
+            >
+              {t('ris')}
             </span>
           )}
         </div>
@@ -189,6 +207,25 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
             </motion.div>
           )}
 
+          {expanded === 'keywords' && publication.keywords && publication.keywords.length > 0 && (
+            <motion.div
+              key="keywords"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm d-flex flex-wrap gap-2">
+                {publication.keywords.map((keyword, index) => (
+                  <Badge key={index} bg="light" text="dark" pill className="small">
+                    {keyword}
+                  </Badge>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
           {expanded === 'bibtex' && publication.bibtex && (
             <motion.div
               key="bibtex"
@@ -200,6 +237,21 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
             >
               <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
                 <code>{publication.bibtex}</code>
+              </pre>
+            </motion.div>
+          )}
+
+          {expanded === 'ris' && publication.ris && (
+            <motion.div
+              key="ris"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                <code>{publication.ris}</code>
               </pre>
             </motion.div>
           )}

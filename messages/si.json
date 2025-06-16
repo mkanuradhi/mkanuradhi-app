@@ -1217,8 +1217,11 @@
       "doi": "ඩීඕඅයි",
       "pdf": "පීඩීඑෆ්",
       "arxiv": "පූර්ව මුද්‍රණය",
+      "slides": "ස්ලයිඩ්ස්",
       "abstract": "සාරාංශය",
-      "bibtex": "BibTeX සටහන"
+      "keywords": "මූල පද",
+      "bibtex": "BibTeX සටහන",
+      "ris": "RIS සටහන"
     },
     "PublicationsTable": {
       "failPublications": "ප්‍රකාශන පූරණය කිරීමට අසමත් විය.",
@@ -1252,7 +1255,9 @@
       "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
       "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",
       "preprintUrl": "පූර්ව මුද්‍රණ (Preprint) වෙබ් ලිපිනය",
-      "tags": "ටැග්ස්"
+      "slidesUrl": "ස්ලයිඩ්ස් (Slides) වෙබ් ලිපිනය",
+      "tags": "ටැග්ස්",
+      "publishedDate": "ප්‍රකාශිත දිනය"
     },
     "PublicationOptionsViewer": {
       "failPublication": "ප්‍රකාශනය පූරණය කිරීමට අසමත් විය.",
@@ -1268,9 +1273,13 @@
       "pdfUrl": "පිඩිඑෆ් (PDF) වෙබ් ලිපිනය",
       "doiUrl": "ඩීඕඅයි (DOI)  වෙබ් ලිපිනය",
       "preprintUrl": "පූර්ව මුද්‍රණ (Preprint) වෙබ් ලිපිනය",
+      "slidesUrl": "ස්ලයිඩ්ස් (Slides) වෙබ් ලිපිනය",
       "tags": "ටැග්ස්",
+      "keywords": "මූල පද",
       "abstract": "සාරාංශය",
       "bibtex": "බිබ්ටෙක්ස් (BibTex)",
+      "ris": "RIS",
+      "publishedDate": "ප්‍රකාශිත දිනය",
       "edit": "සංස්කරණ",
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",

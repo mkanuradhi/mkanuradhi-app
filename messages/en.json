@@ -1217,8 +1217,11 @@
       "doi": "DOI",
       "pdf": "PDF",
       "arxiv": "arXiv",
+      "slides": "Slides",
       "abstract": "Abstract",
-      "bibtex": "BibTex"
+      "keywords": "Keywords",
+      "bibtex": "BibTex",
+      "ris": "RIS"
     },
     "PublicationsTable": {
       "failPublications": "Failed to load publications",
@@ -1252,7 +1255,9 @@
       "pdfUrl": "PDF URL",
       "doiUrl": "DOI URL",
       "preprintUrl": "Preprint URL",
-      "tags": "Tags"
+      "slidesUrl": "Slides URL",
+      "tags": "Tags",
+      "publishedDate": "Published Date"
     },
     "PublicationOptionsViewer": {
       "failPublication": "Failed to load publication",
@@ -1268,9 +1273,13 @@
       "pdfUrl": "PDF URL",
       "doiUrl": "DOI URL",
       "preprintUrl": "Preprint URL",
+      "slidesUrl": "Slides URL",
       "tags": "Tags",
+      "keywords": "Keywords",
       "abstract": "Abstract",
       "bibtex": "BibTex",
+      "ris": "RIS",
+      "publishedDate": "Published Date",
       "edit": "Edit",
       "activate": "Activate",
       "deactivate": "Deactivate",
