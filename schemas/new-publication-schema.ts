@@ -73,6 +73,13 @@ export const getNewPublicationSchema = (t: (key: string, values?: Record<string,
           ? originalValue.filter(v => v && v.trim() !== '')
           : []
       ),
+    keywords: yup.array()
+      .of(yup.string().trim())
+      .transform((value, originalValue) =>
+        Array.isArray(originalValue)
+          ? originalValue.filter(v => v && v.trim() !== '')
+          : []
+      ),
     publicationUrl: yup.string()
       .url(t('urlMustBeValid'))
       .nullable()
@@ -102,6 +109,13 @@ export const getNewPublicationSchema = (t: (key: string, values?: Record<string,
       .transform((value, originalValue) => {
         return originalValue === '' ? undefined : value;
       }),
+    slidesUrl: yup.string()
+      .url(t('urlMustBeValid'))
+      .notRequired()
+      .max(MAX_PUBLICATION_URL_LENGTH, t('urlTooLong', { max: MAX_PUBLICATION_URL_LENGTH }) )
+      .transform((value, originalValue) => {
+        return originalValue === '' ? undefined : value;
+      }),
     abstract: yup.string()
       .notRequired()
       .max(MAX_PUBLICATION_ABSTRACT_LENGTH, t('abstractTooLong', { max: MAX_PUBLICATION_ABSTRACT_LENGTH }) )
@@ -111,6 +125,21 @@ export const getNewPublicationSchema = (t: (key: string, values?: Record<string,
     bibtex: yup.string()
       .notRequired()
       .max(MAX_PUBLICATION_BIBTEX_LENGTH, t('bibtexTooLong', { max: MAX_PUBLICATION_BIBTEX_LENGTH }) )
+      .transform((value, originalValue) => {
+        return originalValue === '' ? undefined : value;
+      }),
+    ris: yup.string()
+      .notRequired()
+      .max(MAX_PUBLICATION_BIBTEX_LENGTH, t('risTooLong', { max: MAX_PUBLICATION_BIBTEX_LENGTH }) )
+      .transform((value, originalValue) => {
+        return originalValue === '' ? undefined : value;
+      }),
+    publishedDate: yup.date()
+      .nullable()
+      .notRequired()
+      .min(new Date('2010-01-01'), t('publishedDateTooEarly'))
+      .max(new Date(), t('publishedDateCannotBeInFuture'))
+      .typeError(t('publishedDateInvalid'))
       .transform((value, originalValue) => {
         return originalValue === '' ? undefined : value;
       }),
