@@ -22,7 +22,7 @@
         "වත්මන් කාලයේ, මම ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලයේ පරිගණක විද්‍යා අංශයේ ජ්‍යෙෂ්ඨ කථිකාචාර්යවරයෙකු ලෙස කටයුතු කරමි. මාගේ ආචාර්ය උපාධිය ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලයෙන් ලබා ගත් අතර, එය අධීක්ෂණය කළේ මහාචාර්ය ටී ජී අයි ප්‍රනාන්දු සහ සම්මානනීය මහාචාර්ය සුනේත්‍රා වීරකෝන් යන අයයි.",
         "මම 2022 සිට වත්මන් කාලය දක්වා යුනෙස්කෝ විසින් පිහිටුවා ඇති OWSD සංවිධානයේ අනුබද්ධයෙකු වෙමි. මම ශ්‍රී ලංකාවේ විද්‍යා සහ කෘත්‍රිම බුද්ධිය සඳහා ප්‍රමුඛ සංවිධාන වන SLAAS සහ SLAAI සංගම්වල ජීවිත කාලය පුරා සාමාජිකයෙකුද වෙමි.",
         "2018 සිට 2024 දක්වා, මම ස්ප්‍රිංගර් සඟරා වන Evolutionary Intelligence සහ Soft Computing සඟරාවන් සඳහා විචාරකයෙකු ලෙස සේවය කළෙමි.",
-        "දත්ත විද්‍යා ක්ෂේත්‍රයේ මාගේ දැනුම තවදුරටත් වර්ධනය කිරීම සඳහා, වත්මන් කාලයේ මම ෆින්ලන්තයේ තම්පෙරේ විශ්වවිද්‍යාලයේ දත්ත විද්‍යා පිළිබඳ පශ්චාත් උපාධිය හදාරමින් සිටිමි."
+        "දැනට මම ශ්‍රී ජයවර්ධනපුර විශ්ව විද්‍යාලයේ දත්ත විද්‍යාව සහ කෘත්‍රිම බුද්ධිය පිළිබඳ පශ්චාත් උපාධි වැඩසටහනේ සම්බන්ධීකාරක ලෙස සේවය කරමි."
       ],
       "interestTitle": "රුචිකත්වයන්",
       "interests": [
@@ -38,7 +38,7 @@
       "educationTitle": "අධ්‍යාපනය",
       "educations": [
         "2018, පරිගණක විද්‍යාව පිළිබඳ ආචාර්ය උපාධිය, ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව.",
-        "දත්ත විද්‍යාව පිළිබඳ ශාස්ත්‍රපති උපාධිය, (අධ්‍යයනය කරමින්), තම්පෙරේ විශ්වවිද්‍යාලය, ෆින්ලන්තය.",
+        "2025, දත්ත විද්‍යාව පිළිබඳ ශාස්ත්‍රපති උපාධිය, තම්පෙරේ විශ්වවිද්‍යාලය, ෆින්ලන්තය.",
         "2012, විද්‍යාවේදී (ගෞරව) විශේෂ උපාධිය, ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව."
       ],
       "technicalSkillsTitle": "තාක්ෂණික කුසලතා සහ මෙවලම්"
@@ -92,6 +92,23 @@
           ]
         },
         {
+          "degree": "විද්‍යාපති උපාධිය",
+          "topic": "ෆයර්ෆ්ලයි ඇල්ගොරිතම භාවිතයෙන් කාර්ය සාධනශීලී කුලකකරණය - කේන්ද්‍රයන්හි චලනයන් සහිත ප්‍රභේදයකි",
+          "university": "තොරතුරු තාක්ෂණ හා සන්නිවේදන විද්‍යා පීඨය, තම්පෙරේ විශ්ව විද්‍යාලය, ෆින්ලන්තය.",
+          "year": "2025",
+          "abstractTitle": "සාරාංශය",
+          "abstracts": [
+            "Clustering is a fundamental problem in data analysis, often used to partition datasets into meaningful groups. However, the effectiveness of clustering methods largely depends on the nature of the dataset and the specifc objectives of the task. Traditional clustering methods, such as K-Means, have limitations in handling datasets with varying distributions, cluster shapes, and densities. Moreover, these methods often require pre-specifying the number of clusters (K), which may not align with real-world data complexities. This thesis addresses these limitations by proposing a modifed Firefy Algorithm (FA) for automatic clustering with centroid movements.",
+            "The proposed algorithm integrates meta-heuristic principles to overcome the challenges associated with traditional clustering methods. Unlike canonical approaches that rely solely on proximity, our method introduces a multi-objective ftness function that considers compactness, separation, and a novel total Traveling Salesman Problem (TSP) penalty to ensure both effcient clustering and optimal navigation within clusters. The algorithm employs a self-tuning mechanism to adaptively determine the optimal number of clusters (K) and uses a unique centroid movement strategy to refine cluster boundaries dynamically. These innovations allow the algorithm to achieve robust clustering outcomes without reliance on initial cluster center selection or manual specifcation of K.",
+            "The practical application of the proposed algorithm is also explored in the thesis in the context of a robotic sensor network for the persistent monitoring of large areas. The dataset used for experiments consists of two-dimensional spatial data, refecting the challenges of clustering in real-world scenarios. Computational experiments compare the performance of the modifed Firefy Algorithm with the K-Means algorithm, revealing that the proposed approach not only mitigates initialization dependency but also produces clusters that facilitate shorter navigation paths within clusters. For instance, the total path distance for clusters formed using the proposed method was reduced signifcantly compared to K-Means, emphasizing its suitability for navigation-centric applications.",
+            "The findings demonstrate the effectiveness of the Firefy Algorithm in addressing clustering problems characterized by complex data distributions and multi-objective goals. Future work will explore extending the algorithm's capabilities to higher-dimensional data and developing self-tuning mechanisms for algorithmic parameters, further enhancing its adaptability and applicability in diverse clustering scenarios."
+          ],
+          "keywordsTitle": "මූල පද",
+          "keywords": [
+            "Firefy Algorithm", "Clustering", "Automatic K", "K means", "Centroid Movements"
+          ]
+        },
+        {
           "degree": "ප්‍රථම උපාධිය",
           "topic": "ෆයර්ෆ්ලයි (කණමැදිරි) ඇල්ගොරිතමය සමග ස්වභාවධර්මයෙන් ප්‍රේරිත ඇල්ගොරිතම පිළිබඳ සංසන්දනාත්මක අධ්‍යයනයක්",
           "university": "පරිගණක විද්‍යා දෙපාර්තමේන්තුව, ව්‍යවහාරික විද්‍යා පීඨය, ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව.",
@@ -115,16 +132,6 @@
             "Firefly Algorithm", "Genetic Algorithms", "Particle Swarm Optimization Algorithm",
             "Ant Colony Systems", "Travelling Salesman Problem",
             "Evolutionary Discrete Firefly Algorithm [EDFA]", "Nature Inspired Algorithms"
-          ]
-        },
-        {
-          "degree": "විද්‍යාපති උපාධිය",
-          "topic": "ෆයර්ෆ්ලයි ඇල්ගොරිතම භාවිතයෙන් කාර්ය සාධනශීලී කුලකකරණය - කේන්ද්‍රයන්හි චලනයන් සහිත ප්‍රභේදයකි",
-          "university": "තොරතුරු තාක්ෂණ හා සන්නිවේදන විද්‍යා පීඨය, තම්පෙරේ විශ්ව විද්‍යාලය, ෆින්ලන්තය.",
-          "year": "",
-          "abstractTitle": "ක්‍රියාත්මක වෙමින්",
-          "abstracts": [
-            "උපාධිය හදාරමින් සිටී..."
           ]
         }
       ],
