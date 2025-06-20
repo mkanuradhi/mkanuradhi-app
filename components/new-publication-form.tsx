@@ -13,6 +13,8 @@ import Publication from '@/interfaces/i-publication';
 import { CreatePublicationDto } from '@/dtos/publication-dto';
 import PublicationType from '@/enums/publication-type';
 import PublicationStatus from '@/enums/publication-status';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 const baseTPath = 'components.NewPublicationForm';
@@ -27,12 +29,16 @@ const initialValues = {
   ],
   publicationStatus: PublicationStatus.PUBLISHED,
   tags: [],
+  keywords: [],
   publicationUrl: '',
 	pdfUrl: '',
 	doiUrl: '',
 	preprintUrl: '',
+	slidesUrl: '',
 	abstract: '',
 	bibtex: '',
+	ris: '',
+	publishedDate: undefined,
 }
 
 interface NewPublicationFormProps {
@@ -56,12 +62,16 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
       authors: values.authors,
       publicationStatus: values.publicationStatus,
       tags: values.tags,
+      keywords: values.keywords,
       publicationUrl: values.publicationUrl,
       pdfUrl: values.pdfUrl,
       doiUrl: values.doiUrl,
       preprintUrl: values.preprintUrl,
+      slidesUrl: values.slidesUrl,
       abstract: values.abstract,
       bibtex: values.bibtex,
+      ris: values.ris,
+      publishedDate: values.publishedDate ? new Date(new Date(values.publishedDate).toDateString()) : undefined,
     };
     
     try {
@@ -293,7 +303,7 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
                         </option>
                       ))}
                     </Field>
-                    <ErrorMessage name="type" component="p" className="text-danger mt-1" />
+                    <ErrorMessage name="publicationStatus" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
 
                   <BootstrapForm.Group className="mb-4" controlId="formTags">
@@ -318,6 +328,30 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
                     </FieldArray>
                     <BootstrapForm.Text className="text-muted">{t('tagsHelp')}</BootstrapForm.Text>
                     <ErrorMessage name="tags" component="p" className="text-danger mt-1" />
+                  </BootstrapForm.Group>
+
+                  <BootstrapForm.Group className="mb-4" controlId="formKeywords">
+                    <BootstrapForm.Label>{t('keywordsLabel')}</BootstrapForm.Label>
+                    <FieldArray name="keywords">
+                      {({ push, remove }) => (
+                        <div>
+                          { values.keywords && values.keywords.length > 0 && 
+                            values.keywords.map((_, index) => (
+                              <div key={index} className="d-flex mb-2 align-items-center">
+                                <Field name={`keywords.${index}`} className="form-control me-2" />
+                                <Button variant="danger" type="button" onClick={() => remove(index)} title={t('keywordsRemove')}>
+                                  <FontAwesomeIcon icon={faMinus} />
+                                </Button>
+                              </div>
+                          ))}
+                          <Button variant="primary" type="button" onClick={() => push('')} title={t('keywordsAdd')}>
+                            <FontAwesomeIcon icon={faPlus} />
+                          </Button>
+                        </div>
+                      )}
+                    </FieldArray>
+                    <BootstrapForm.Text className="text-muted">{t('keywordsHelp')}</BootstrapForm.Text>
+                    <ErrorMessage name="keywords" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
 
                   <BootstrapForm.Group className="mb-4" controlId="formPublicationUrl">
@@ -348,6 +382,13 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
                     <ErrorMessage name="preprintUrl" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
 
+                  <BootstrapForm.Group className="mb-4" controlId="formSlidesUrl">
+                    <BootstrapForm.Label>{t('slidesUrlLabel')}</BootstrapForm.Label>
+                    <Field name="slidesUrl" type="url" placeholder={t('slidesUrlPlaceholder')} className="form-control" />
+                    <BootstrapForm.Text className="text-muted">{t('slidesUrlHelp')}</BootstrapForm.Text>
+                    <ErrorMessage name="slidesUrl" component="p" className="text-danger mt-1" />
+                  </BootstrapForm.Group>
+
                   <BootstrapForm.Group className="mb-4" controlId="formAbstract">
                     <BootstrapForm.Label>{t('abstractLabel')}</BootstrapForm.Label>
                     <Field as="textarea" name="abstract" placeholder={t('abstractPlaceholder')} className="form-control" rows={4} />
@@ -358,6 +399,33 @@ const NewPublicationForm: React.FC<NewPublicationFormProps> = ({ onSuccess }) =>
                     <BootstrapForm.Label>{t('bibtexLabel')}</BootstrapForm.Label>
                     <Field as="textarea" name="bibtex" placeholder={t('bibtexPlaceholder')} className="form-control" rows={4} />
                     <ErrorMessage name="bibtex" component="p" className="text-danger mt-1" />
+                  </BootstrapForm.Group>
+
+                  <BootstrapForm.Group className="mb-4" controlId="formRis">
+                    <BootstrapForm.Label>{t('risLabel')}</BootstrapForm.Label>
+                    <Field as="textarea" name="ris" placeholder={t('risPlaceholder')} className="form-control" rows={4} />
+                    <ErrorMessage name="ris" component="p" className="text-danger mt-1" />
+                  </BootstrapForm.Group>
+
+                  <BootstrapForm.Group className="mb-4" controlId="formPublishedDate">
+                    <BootstrapForm.Label>{t('publishedDateLabel')}</BootstrapForm.Label>
+                    <Field name="publishedDate" type="text" className="form-control">
+                      {({ field, form }: FieldProps) => (
+                        <DatePicker
+                          wrapperClassName="w-100"
+                          className="form-control"
+                          closeOnScroll={true}
+                          isClearable={true}
+                          showIcon={true}
+                          selected={field.value ? new Date(field.value) : null}
+                          onChange={date => form.setFieldValue(field.name, date)}
+                          dateFormat="dd-MM-yyyy"
+                          placeholderText={t('publishedDatePlaceholder')}
+                          icon={<i className="bi bi-calendar2-check-fill"></i>}
+                        />
+                      )}
+                    </Field>
+                    <ErrorMessage name="publishedDate" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                 </fieldset>
 

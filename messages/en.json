@@ -22,7 +22,7 @@
         "Currently I work as a senior lecturer in the Department of Computer Science, University of Sri Jayewardenepura. I earned my PhD in computer science from University of Sri Jayewardenepura, Sri Lanka, under the supervision of Professor TGI Fernando and Emeritus Professor Sunethra Weerakoon.",
         "I'm a fellow of OWSD, founded by UNESCO, from 2022 to present. I am also a life member of SLAAS and SLAAI associations, which are premier organizations of science  and artificial intelligence in Sri Lanka.",
         "From 2018 to 2024, I served as a reviewer for the springer journals; Evolutionary Intelligence and Soft Computing.",
-        "To enhance my knowledge further in the field of Data Science, currently I am following a M.Sc. in Data Science in Tampere University, Finland."
+        "Currently I am serving as the Coordinator for the MSc in Data Science and Artificial Intelligence program at the University of Sri Jayewardenepura."
       ],
       "interestTitle": "Interests",
       "interests": [
@@ -38,7 +38,7 @@
       "educationTitle": "Education",
       "educations": [
         "PhD in Computer Science, 2018, University of Sri Jayewardenepura, Sri Lanka.",
-        "MSc in Data Science, (Reading), Tampere University, Finland.",
+        "MSc in Data Science, 2025, Tampere University, Finland.",
         "BSc (Hons) Special Degree in Computer Science, 2012, University of Sri Jayewardenepura, Sri Lanka."
       ],
       "technicalSkillsTitle": "Technical Skills and Tools"
@@ -92,6 +92,23 @@
           ]
         },
         {
+          "degree": "M.Sc",
+          "topic": "Effective Clustering with Firefly Algorithms - A Variant with Centroid Movements",
+          "university": "Faculty of Information and Communication Technology, Tampere University, Finland.",
+          "year": "2025",
+          "abstractTitle": "Abstract",
+          "abstracts": [
+            "Clustering is a fundamental problem in data analysis, often used to partition datasets into meaningful groups. However, the effectiveness of clustering methods largely depends on the nature of the dataset and the specifc objectives of the task. Traditional clustering methods, such as K-Means, have limitations in handling datasets with varying distributions, cluster shapes, and densities. Moreover, these methods often require pre-specifying the number of clusters (K), which may not align with real-world data complexities. This thesis addresses these limitations by proposing a modifed Firefy Algorithm (FA) for automatic clustering with centroid movements.",
+            "The proposed algorithm integrates meta-heuristic principles to overcome the challenges associated with traditional clustering methods. Unlike canonical approaches that rely solely on proximity, our method introduces a multi-objective ftness function that considers compactness, separation, and a novel total Traveling Salesman Problem (TSP) penalty to ensure both effcient clustering and optimal navigation within clusters. The algorithm employs a self-tuning mechanism to adaptively determine the optimal number of clusters (K) and uses a unique centroid movement strategy to refine cluster boundaries dynamically. These innovations allow the algorithm to achieve robust clustering outcomes without reliance on initial cluster center selection or manual specifcation of K.",
+            "The practical application of the proposed algorithm is also explored in the thesis in the context of a robotic sensor network for the persistent monitoring of large areas. The dataset used for experiments consists of two-dimensional spatial data, refecting the challenges of clustering in real-world scenarios. Computational experiments compare the performance of the modifed Firefy Algorithm with the K-Means algorithm, revealing that the proposed approach not only mitigates initialization dependency but also produces clusters that facilitate shorter navigation paths within clusters. For instance, the total path distance for clusters formed using the proposed method was reduced signifcantly compared to K-Means, emphasizing its suitability for navigation-centric applications.",
+            "The findings demonstrate the effectiveness of the Firefy Algorithm in addressing clustering problems characterized by complex data distributions and multi-objective goals. Future work will explore extending the algorithm's capabilities to higher-dimensional data and developing self-tuning mechanisms for algorithmic parameters, further enhancing its adaptability and applicability in diverse clustering scenarios."
+          ],
+          "keywordsTitle": "Keywords",
+          "keywords": [
+            "Firefy Algorithm", "Clustering", "Automatic K", "K means", "Centroid Movements"
+          ]
+        },
+        {
           "degree": "B.Sc",
           "topic": "A Comparative study on Nature Inspired Algorithms with Firefly Algorithm",
           "university": "Department of Computer Science, Faculty of Applied Sciences , University of Sri Jayewardenepura, Sri Lanka.",
@@ -115,16 +132,6 @@
             "Firefly Algorithm", "Genetic Algorithms", "Particle Swarm Optimization Algorithm",
             "Ant Colony Systems", "Travelling Salesman Problem",
             "Evolutionary Discrete Firefly Algorithm [EDFA]", "Nature Inspired Algorithms"
-          ]
-        },
-        {
-          "degree": "M.Sc",
-          "topic": "Effective Clustering with Firefly Algorithm - A Variant with Centroid Movements",
-          "university": "Faculty of Information Technology and Communication Sciences, Tampere University, Finland.",
-          "year": "",
-          "abstractTitle": "On going",
-          "abstracts": [
-            "Currently reading..."
           ]
         }
       ],
@@ -1194,6 +1201,36 @@
       "submitting": "Submitting...",
       "submit": "Submit"
     },
+    "PublicationsFilters": {
+      "all": "All Types",
+      "journal_article": "Journal Articles",
+      "book_chapter": "Book Chapters",
+      "conference_proceeding": "Conference Proceedings",
+      "year-desc": "Newest First",
+      "year-asc": "Oldest First",
+      "searchPlaceholder": "Search by anything..."
+    },
+    "PublicationsList": {
+      "summary": "Found {total, plural, =0 {no publications} =1 {1 publication} other {# publications}}{articles, plural, =0 {} other {, including {articles} journal article{articles, plural, one {} other {s}}}}{chapters, plural, =0 {} other {, {chapters} book chapter{chapters, plural, one {} other {s}}}}{proceedings, plural, =0 {} other {, {proceedings} conference proceeding{proceedings, plural, one {} other {s}}}}.",
+      "fail": "Failed to load publications",
+      "noMatch": "No publications match the selected filters."
+    },
+    "PublicationCard": {
+      "journal_article": "Journal Article",
+      "book_chapter": "Book Chapter",
+      "conference_proceeding": "Conference Proceeding",
+      "preprint": "Preprint",
+      "in_review": "Under Review",
+      "accepted": "Accepted",
+      "doi": "DOI",
+      "pdf": "PDF",
+      "arxiv": "arXiv",
+      "slides": "Slides",
+      "abstract": "Abstract",
+      "keywords": "Keywords",
+      "bibtex": "BibTex",
+      "ris": "RIS"
+    },
     "PublicationsTable": {
       "failPublications": "Failed to load publications",
       "noPublications": "No publications to display",
@@ -1216,9 +1253,9 @@
       "activateErrorTitle": "Cannot activate the publication",
       "deactivateErrorTitle": "Cannot deactivate the publication",
       "deleteErrorTitle": "Cannot delete the publication",
-      "article": "Journal Article",
-      "chapter": "Book Chapter",
-      "proceeding": "Conference Proceeding",
+      "journal_article": "Journal Article",
+      "book_chapter": "Book Chapter",
+      "conference_proceeding": "Conference Proceeding",
       "preprint": "Preprint",
       "in_review": "Under Review",
       "accepted": "Accepted",
@@ -1226,7 +1263,9 @@
       "pdfUrl": "PDF URL",
       "doiUrl": "DOI URL",
       "preprintUrl": "Preprint URL",
-      "tags": "Tags"
+      "slidesUrl": "Slides URL",
+      "tags": "Tags",
+      "publishedDate": "Published Date"
     },
     "PublicationOptionsViewer": {
       "failPublication": "Failed to load publication",
@@ -1242,9 +1281,13 @@
       "pdfUrl": "PDF URL",
       "doiUrl": "DOI URL",
       "preprintUrl": "Preprint URL",
+      "slidesUrl": "Slides URL",
       "tags": "Tags",
+      "keywords": "Keywords",
       "abstract": "Abstract",
       "bibtex": "BibTex",
+      "ris": "RIS",
+      "publishedDate": "Published Date",
       "edit": "Edit",
       "activate": "Activate",
       "deactivate": "Deactivate",
@@ -1314,6 +1357,10 @@
       "tagsHelp": "Add short descriptors like 'Q1', 'Best Paper', or other recognitions to highlight notable aspects of the publication.",
       "tagsRemove": "Remove tag",
       "tagsAdd": "Add a tag",
+      "keywordsLabel": "Keywords",
+      "keywordsHelp": "Add keywords of the publication.",
+      "keywordsRemove": "Remove keyword",
+      "keywordsAdd": "Add a keyword",
       "publicationUrlLabel": "Publication URL",
       "publicationUrlPlaceholder": "Enter the publication URL",
       "publicationUrlHelp": "Provide a link to the official publication page, if available.",
@@ -1328,12 +1375,23 @@
       "preprintUrlLabel": "Preprint URL",
       "preprintUrlPlaceholder": "Enter the preprint URL",
       "preprintUrlHelp": "Provide a link to the preprint version of the publication, if publicly accessible.",
+      "slidesUrlLabel": "Slides URL",
+      "slidesUrlPlaceholder": "Enter the slides URL",
+      "slidesUrlHelp": "Provide a link to the slides of the publication, if publicly accessible.",
       "abstractLabel": "Abstract",
       "abstractPlaceholder": "Enter the abstract of the publication",
       "abstractTooLong": "Abstract must be less than {max} characters",
       "bibtexLabel": "Bibtex",
       "bibtexPlaceholder": "Enter the bibtex of the publication",
       "bibtexTooLong": "Bibtex must be less than {max} characters",
+      "risLabel": "RIS",
+      "risPlaceholder": "Enter the ris of the publication",
+      "risTooLong": "RIS must be less than {max} characters",
+      "publishedDateLabel": "Published Date",
+      "publishedDatePlaceholder": "Enter the published date, if you know it",
+      "publishedDateTooEarly": "Date is too early. Please choose a valid published date after 2010.",
+      "publishedDateCannotBeInFuture": "Published date cannot be in the future.",
+      "publishedDateInvalid": "Please enter a valid published date.",
       "cancel": "Cancel",
       "submitting": "Submitting...",
       "submit": "Submit"

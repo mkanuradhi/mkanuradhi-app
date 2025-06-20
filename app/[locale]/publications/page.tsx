@@ -2,8 +2,7 @@ import React from 'react';
 import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import parse from 'html-react-parser';
-import GlowLink from '@/components/GlowLink';
+import PublicationsViewer from '@/components/publications-viewer';
 
 const baseTPath = 'pages.Publications';
 
@@ -89,92 +88,9 @@ const PublicationsPage = () => {
           <Row className="my-4">
             <Col>
               <h1>{t('title')}</h1>
-              <section>
-                <p>{t.rich('description', {countArticles, countChapters, countProceedings, countAll})}</p>
-              </section>
-              <section>
-                <Container fluid="md">
-                  <Row>
-                    <Col>
-                      <h2>{t('articlesTitle')}</h2>
-                    </Col>
-                  </Row>
-                  {articles.map((article, index) => (
-                    <Row key={index} className="mt-3">
-                      <Col xs={2} sm={1}>
-                        <strong>{article.year}</strong>
-                      </Col>
-                      <Col>
-                        {article.description && (
-                          <p>{parse(article.description)}</p>
-                        )}
-                        {article.level && (
-                          <p>{article.level}</p>
-                        )}
-                        {article.url && (
-                          <p className="text-break">
-                            <GlowLink href={article.url} newTab={true} withArrow={true}>{article.url}</GlowLink>
-                          </p>
-                        )}
-                      </Col>
-                    </Row>
-                  ))}
-                </Container>
-              </section>
-              <section>
-                <Container fluid="md">
-                  <Row>
-                    <Col>
-                      <h2>{t('chaptersTitle')}</h2>
-                    </Col>
-                  </Row>
-                  {chapters.map((chapter, index) => (
-                    <Row key={index} className="mt-3">
-                      <Col xs={2} sm={1}>
-                        <strong>{chapter.year}</strong>
-                      </Col>
-                      <Col>
-                        {chapter.description && (
-                          <p>{parse(chapter.description)}</p>
-                        )}
-                        {chapter.url && (
-                          <p className="text-break">
-                            <GlowLink href={chapter.url} newTab={true} withArrow={true}>{chapter.url}</GlowLink>
-                          </p>
-                        )}
-                      </Col>
-                    </Row>
-                  ))}
-                </Container>
-              </section>
-              <section>
-                <Container fluid="md">
-                  <Row>
-                    <Col>
-                      <h2>{t('conferenceTitle')}</h2>
-                    </Col>
-                  </Row>
-                  {proceedings.map((proceeding, index) => (
-                    <Row key={index} className="mt-3">
-                      <Col xs={2} sm={1}>
-                        <strong>{proceeding.year}</strong>
-                      </Col>
-                      <Col>
-                        {proceeding.description && (
-                          <p>{parse(proceeding.description)}</p>
-                        )}
-                        {proceeding.url && (
-                          <p className="text-break">
-                            <GlowLink href={proceeding.url} newTab={true} withArrow={true}>{proceeding.url}</GlowLink>
-                          </p>
-                        )}
-                      </Col>
-                    </Row>
-                  ))}
-                </Container>
-              </section>
             </Col>
           </Row>
+          <PublicationsViewer />
         </Container>
       </div>
     </>

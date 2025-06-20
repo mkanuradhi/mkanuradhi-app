@@ -13,6 +13,8 @@ import PublicationType from '@/enums/publication-type';
 import GlowLink from './GlowLink';
 import PublicationStatus from '@/enums/publication-status';
 import PublicationAuthors from './publication-authors';
+import { getFormattedDate } from '@/utils/common-utils';
+import { LOCALE_EN } from '@/constants/common-vars';
 
 
 const baseTPath = 'components.PublicationOptionsCard';
@@ -43,6 +45,19 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
     deactivatePublicationMutation(publication.id);
   }
 
+  const getTypeIcon = () => {
+    switch (publication.type) {
+      case PublicationType.JOURNAL_ARTICLE:
+        return <FontAwesomeIcon icon={faNewspaper} className="text-primary" />;
+      case PublicationType.BOOK_CHAPTER:
+        return <FontAwesomeIcon icon={faBook} className="text-success" />;
+      case PublicationType.CONFERENCE_PROCEEDING:
+        return <FontAwesomeIcon icon={faMicrophone} className="text-warning" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <Card className="my-3 shadow publication-options-card">
@@ -53,24 +68,8 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
                 <span>{publication.year}</span>
               </Col>
               <Col xs="auto">
-                {publication.type === PublicationType.JOURNAL_ARTICLE && (
-                  <>
-                    <span className="me-2">{t('article')}</span>
-                    <FontAwesomeIcon icon={faNewspaper} className="text-primary" />
-                  </>
-                )}
-                {publication.type === PublicationType.BOOK_CHAPTER && (
-                  <>
-                    <span className="me-2">{t('chapter')}</span>
-                    <FontAwesomeIcon icon={faBook} className="text-success" />
-                  </>
-                )}
-                {publication.type === PublicationType.CONFERENCE_PROCEEDING && (
-                  <>
-                    <span className="me-2">{t('proceeding')}</span>
-                    <FontAwesomeIcon icon={faMicrophone} className="text-warning" />
-                  </>
-                )}
+                <span className="me-2">{t(publication.type.toLowerCase())}</span>
+                {getTypeIcon()}
               </Col>
             </Row>
           </Card.Subtitle>
@@ -112,6 +111,12 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
                 <GlowLink href={publication.preprintUrl} newTab={true} withArrow={true}>{publication.preprintUrl}</GlowLink>
               </p>
             )}
+            {publication.slidesUrl && (
+              <p>
+                <label className="fw-semibold me-1">{t('slidesUrl')}:</label>
+                <GlowLink href={publication.slidesUrl} newTab={true} withArrow={true}>{publication.slidesUrl}</GlowLink>
+              </p>
+            )}
           </div>
           <div className="mb-3">
             { publication.tags && publication.tags.length > 0 && (
@@ -125,6 +130,16 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
               </p>
             ) }
           </div>
+          {publication.publishedDate && (
+            <Row>
+              <Col>
+                <p>
+                  <label className="fw-semibold me-1">{t('publishedDate')}:</label>
+                  <span>{ getFormattedDate(LOCALE_EN, publication.publishedDate) }</span>
+                </p>
+              </Col>
+            </Row>
+          )}
           <Row className="align-items-center">
             <Col className="mb-2">
               <ButtonGroup>

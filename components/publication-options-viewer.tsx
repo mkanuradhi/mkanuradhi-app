@@ -13,6 +13,8 @@ import GlowLink from './GlowLink';
 import DocumentStatus from '@/enums/document-status';
 import DeleteModal from './delete-modal';
 import PublicationAuthors from './publication-authors';
+import { getFormattedDate } from '@/utils/common-utils';
+import { LOCALE_EN } from '@/constants/common-vars';
 import "./publication-options-viewer.scss";
 
 
@@ -148,6 +150,12 @@ const PublicationOptionsViewer: React.FC<PublicationOptionsViewerProps> = ({ pub
                 <GlowLink href={publication.preprintUrl} newTab={true} withArrow={true}>{publication.preprintUrl}</GlowLink>
               </p>
             )}
+            {publication.slidesUrl && (
+              <p>
+                <label className="fw-semibold me-1">{t('slidesUrl')}:</label>
+                <GlowLink href={publication.slidesUrl} newTab={true} withArrow={true}>{publication.slidesUrl}</GlowLink>
+              </p>
+            )}
           </Col>
         </Row>
         { publication.tags && publication.tags.length > 0 && (
@@ -158,6 +166,20 @@ const PublicationOptionsViewer: React.FC<PublicationOptionsViewerProps> = ({ pub
                 { publication.tags.map((tag, index) => (
                   <Badge key={index} pill bg="success" className="me-1">
                     {tag}
+                  </Badge>
+                ))}
+              </p>
+            </Col>
+          </Row>
+        ) }
+        { publication.keywords && publication.keywords.length > 0 && (
+          <Row>
+            <Col>
+              <p>
+                <label className="fw-semibold me-1">{t('keywords')}:</label>
+                { publication.keywords.map((keyword, index) => (
+                  <Badge key={index} pill bg="info" className="me-1">
+                    {keyword}
                   </Badge>
                 ))}
               </p>
@@ -185,6 +207,28 @@ const PublicationOptionsViewer: React.FC<PublicationOptionsViewerProps> = ({ pub
                   <code>{publication.bibtex}</code>
                 </pre>
               </div>
+            </Col>
+          </Row>
+        )}
+        { publication.ris && (
+          <Row>
+            <Col>
+              <div className="my-3">
+                <label className="fw-semibold">{t('ris')}</label>
+                <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                  <code>{publication.ris}</code>
+                </pre>
+              </div>
+            </Col>
+          </Row>
+        )}
+        {publication.publishedDate && (
+          <Row>
+            <Col>
+              <p>
+                <label className="fw-semibold me-1">{t('publishedDate')}:</label>
+                <span>{ getFormattedDate(LOCALE_EN, publication.publishedDate) }</span>
+              </p>
             </Col>
           </Row>
         )}
