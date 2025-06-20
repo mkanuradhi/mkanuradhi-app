@@ -1211,12 +1211,13 @@
       "searchPlaceholder": "ඕනෑම දෙයකින් සොයන්න..."
     },
     "PublicationsList": {
+      "summary": "{total, plural, =0 {ප්‍රකාශන නොමැත} =1 {ප්‍රකාශනයක් හමුවී ඇත} other {ප්‍රකාශන {total} ක් හමුවී ඇත}}{articles, plural, =0 {} other {, ඇතුළත් වන්නේ සඟරා ලිපි {articles, plural, one {#} other {#}}}}{chapters, plural, =0 {} other {, පොත් පරිච්ඡේද {chapters, plural, one {#} other {#}}}}{proceedings, plural, =0 {} other {, සම්මන්ත්‍රණ පත්‍රිකා {proceedings, plural, one {#} other {#}}}}.",
       "fail": "ප්‍රකාශන පූරණය කිරීමට අසමත් විය",
       "noMatch": "තෝරාගත් පෙරහන් වලට ගැළපෙන ප්‍රකාශන කිසිවක් නැත."
     },
     "PublicationCard": {
       "journal_article": "සඟරා ලිපිය",
-      "book_chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "book_chapter": "පොත් පරිච්ඡේද",
       "conference_proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
       "preprint": "පූර්ව මුද්‍රණය (Preprint)",
       "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
@@ -1253,7 +1254,7 @@
       "deactivateErrorTitle": "ප්‍රකාශනය අක්‍රිය කළ නොහැක",
       "deleteErrorTitle": "ප්‍රකාශනය මැකිය නොහැක",
       "journal_article": "සඟරා ලිපිය",
-      "book_chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "book_chapter": "පොත් පරිච්ඡේද",
       "conference_proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
       "preprint": "පූර්ව මුද්‍රණය (Preprint)",
       "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
@@ -1271,7 +1272,7 @@
       "dashboard": "පාලන පුවරුව",
       "publications": "ප්‍රකාශන",
       "article": "සඟරා ලිපිය",
-      "chapter": "සමාලෝචිත පොත් පරිච්ඡේද",
+      "chapter": "පොත් පරිච්ඡේද",
       "proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
       "preprint": "පූර්ව මුද්‍රණය (Preprint)",
       "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",

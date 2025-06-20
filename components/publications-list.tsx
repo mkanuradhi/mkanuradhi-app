@@ -5,6 +5,7 @@ import { useGroupedPublicationsQuery } from '@/hooks/use-publications';
 import PublicationCard from './publication-card';
 import LoadingContainer from './loading-container';
 import { useTranslations } from 'next-intl';
+import PublicationType from '@/enums/publication-type';
 
 const baseTPath = 'components.PublicationsList';
 
@@ -70,18 +71,61 @@ const PublicationsList: React.FC<PublicationsListProps> = ({ filters }) => {
     return 0;
   });
 
+  const getSummaryText = () => {
+    const total = filtered.length;
+    const typeCounts = {
+      articles: 0,
+      chapters: 0,
+      proceedings: 0
+    };
+
+    for (const pub of filtered) {
+      switch (pub.type) {
+        case PublicationType.JOURNAL_ARTICLE:
+          typeCounts.articles++;
+          break;
+        case PublicationType.BOOK_CHAPTER:
+          typeCounts.chapters++;
+          break;
+        case PublicationType.CONFERENCE_PROCEEDING:
+          typeCounts.proceedings++;
+          break;
+      }
+    }
+
+    return t('summary', {
+      total,
+      articles: typeCounts.articles,
+      chapters: typeCounts.chapters,
+      proceedings: typeCounts.proceedings
+    });
+  };
+
   if (filtered.length === 0) {
-    return <p>{t('noMatch')}</p>;
+    return (
+      <Row>
+        <Col>
+            <p className="text-muted small mb-1">{t('noMatch')}</p>
+        </Col>
+      </Row>
+    );
   }
 
   return (
-    <Row>
-      {filtered.map((pub) => (
-        <Col key={pub.id} md={12} className="mb-2">
-          <PublicationCard publication={pub} />
-        </Col>
-      ))}
-    </Row>
+    <>
+      <Row>
+        <Col>
+          <p className="text-muted small mb-1">{getSummaryText()}</p>
+        </Col>    
+      </Row>
+      <Row>
+        {filtered.map((pub) => (
+          <Col key={pub.id} md={12} className="mb-2">
+            <PublicationCard publication={pub} />
+          </Col>
+        ))}
+      </Row>
+    </>
   );
 };
 

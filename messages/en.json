@@ -1211,6 +1211,7 @@
       "searchPlaceholder": "Search by anything..."
     },
     "PublicationsList": {
+      "summary": "Found {total, plural, =0 {no publications} =1 {1 publication} other {# publications}}{articles, plural, =0 {} other {, including {articles} journal article{articles, plural, one {} other {s}}}}{chapters, plural, =0 {} other {, {chapters} book chapter{chapters, plural, one {} other {s}}}}{proceedings, plural, =0 {} other {, {proceedings} conference proceeding{proceedings, plural, one {} other {s}}}}.",
       "fail": "Failed to load publications",
       "noMatch": "No publications match the selected filters."
     },
