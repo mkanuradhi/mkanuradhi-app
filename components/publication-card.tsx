@@ -93,10 +93,13 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
           </div>
         )}
 
-        <p className="mb-1">{publication.source}</p>
+        {publication.source && (
+          <p className="mb-1">{publication.source}</p>
+        )}
 
         <PublicationAuthors authors={publication.authors} />
 
+        {(publication.doiUrl || publication.pdfUrl || publication.preprintUrl || publication.slidesUrl) && (
         <div className="d-flex flex-wrap gap-3 align-items-center mb-3 small">
           {publication.doiUrl && (
             <Link
@@ -151,6 +154,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
             </Link>
           )}
         </div>
+        )}
 
         <div className="mb-2 small">
           {publication.abstract && (

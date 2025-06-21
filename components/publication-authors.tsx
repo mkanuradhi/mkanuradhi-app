@@ -24,7 +24,7 @@ const PublicationAuthors: React.FC<Props> = ({ authors }) => {
 
   return (
     <>
-      <div className="publication-authors mb-3">
+      <div className="publication-authors mb-1">
         {/* Authors with superscripted affiliations and links */}
         <div className="mb-2">
           {authors.map((author, index) => {
