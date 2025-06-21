@@ -19,17 +19,21 @@ interface PublicationsListProps {
 
 const PublicationsList: React.FC<PublicationsListProps> = ({ filters }) => {
   const t = useTranslations(baseTPath);
-  const { data, isLoading, isError } = useGroupedPublicationsQuery();
+  const { data, isLoading, isFetching, isError } = useGroupedPublicationsQuery();
 
-  { isLoading && (
-    <LoadingContainer />
-  )}
+  if (isLoading || isFetching) {
+    return (<LoadingContainer />);
+  }
 
-  { isError || !data && (
-    <Row>
-      <Col>{t('fail')}</Col>
-    </Row>
-  )}
+  if (isError || !data) {
+    return (
+      <Row>
+        <Col>
+          <p className="text-muted small mb-1">{t('fail')}</p>
+        </Col>
+      </Row>
+    );
+  }
 
   // Flatten grouped publications
   const allPublications = data ? Object.values(data).flat() : [];
