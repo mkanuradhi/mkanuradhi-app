@@ -27,7 +27,7 @@ const PublicationsFilters: React.FC<PublicationsFiltersProps> = ({ filters, onCh
 
   return (
     <Row className="mb-3">
-      <Col sm={4}>
+      <Col sm={4} className="mb-1 mb-md-0">
         <Form.Control
           type="search"
           placeholder={t('searchPlaceholder')}
@@ -36,7 +36,7 @@ const PublicationsFilters: React.FC<PublicationsFiltersProps> = ({ filters, onCh
           onChange={(e) => onChange({ ...filters, search: e.target.value })}
         />
       </Col>
-      <Col sm={4}>
+      <Col sm={4} className="mb-1 mb-md-0">
         <Form.Select name="type" value={filters.type} onChange={handleChange}>
           <option value="all">{t('all')}</option>
           <option value={PublicationType.JOURNAL_ARTICLE}>{t(PublicationType.JOURNAL_ARTICLE.toLowerCase())}</option>
@@ -44,7 +44,7 @@ const PublicationsFilters: React.FC<PublicationsFiltersProps> = ({ filters, onCh
           <option value={PublicationType.CONFERENCE_PROCEEDING}>{t(PublicationType.CONFERENCE_PROCEEDING.toLowerCase())}</option>
         </Form.Select>
       </Col>
-      <Col sm={4}>
+      <Col sm={4} className="mb-1 mb-md-0">
         <Form.Select name="sortBy" value={filters.sortBy} onChange={handleChange}>
           <option value="year-desc">{t('year-desc')}</option>
           <option value="year-asc">{t('year-asc')}</option>
