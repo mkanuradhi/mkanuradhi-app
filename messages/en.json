@@ -659,6 +659,7 @@
       "userId": "User Id: {userId}",
       "roleMessage": "You logged in as {roles}",
       "Blog": {
+        "pageTitle": "Blog Dashboard",
         "title": "Blog",
         "addNew": "Add New Blog Post",
         "New": {
@@ -669,6 +670,7 @@
         }
       },
       "Courses": {
+        "pageTitle": "Courses Dashboard",
         "title": "Courses",
         "addNew": "Add New Course",
         "New": {
@@ -687,6 +689,7 @@
         }
       },
       "Publications": {
+        "pageTitle": "Publications Dashboard",
         "title": "Publications",
         "addNew": "Add New Publication",
         "New": {
