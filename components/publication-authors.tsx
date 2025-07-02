@@ -53,6 +53,11 @@ const PublicationAuthors: React.FC<Props> = ({ authors }) => {
                     <i className="bi bi-asterisk" style={{ fontSize: '0.65rem' }}></i>
                   </sup>
                 )}
+                {author.equallyContributed && (
+                  <sup className="text-muted ms-1" title={t('equallyContributed')}>
+                    <span>&#8224;</span>
+                  </sup>
+                )}
                 {index < authors.length - 1 && <span className="me-2">,</span>}
               </span>
             );

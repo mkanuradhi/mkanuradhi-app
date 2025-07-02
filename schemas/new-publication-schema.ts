@@ -44,6 +44,7 @@ export const getNewPublicationSchema = (t: (key: string, values?: Record<string,
           profileUrl: yup.string().url(t('urlMustBeValid')).nullable(),
           isMe: yup.boolean(),
           corresponding: yup.boolean(),
+          equallyContributed: yup.boolean(),
         })
       )
       .min(1, t('authorsRequired'))
@@ -62,6 +63,14 @@ export const getNewPublicationSchema = (t: (key: string, values?: Record<string,
       )
       .test('max-one-corresponding', t('authorAtMostOneCorresponding'), (authors) =>
         authors ? authors.filter(a => a.corresponding).length <= 1 : true
+      )
+      .test(
+        'at-least-two-equal-contributors',
+        t('atLeastTwoEqualContributors'),
+        function (authors) {
+          const equalCount = (authors || []).filter(a => a.equallyContributed).length;
+          return equalCount === 0 || equalCount >= 2;
+        }
       ),
     publicationStatus: yup.string()
       .oneOf(Object.values(PublicationStatus), t('publicationStatusInvalid'))

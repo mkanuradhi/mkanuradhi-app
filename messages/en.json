@@ -1252,7 +1252,8 @@
       "publications": "publications"
     },
     "PublicationAuthors": {
-      "correspondingAuthor": "Corresponding author"
+      "correspondingAuthor": "Corresponding author",
+      "equallyContributed": "Equally contributed"
     },
     "PublicationOptionsCard": {
       "read": "Read More",
@@ -1350,6 +1351,7 @@
       "authorProfileUrlPlaceholder": "Profile URL (e.g., ORCID, Google Scholar)",
       "authorIsMeLabel": "This is me",
       "authorCorrespondingLabel": "Corresponding Author",
+      "authorEquallyContributedLabel": "Equally Contributed",
       "authorRemove": "Remove author",
       "authorAdd": "Add an author",
       "authorsRequired": "Authors are required",
@@ -1358,6 +1360,7 @@
       "authorExactlyOneIsMe": "Exactly one author must be marked as 'me'.",
       "authorAtMostOneCorresponding": "At most one corresponding author can be selected.",
       "authorsMustBeUnique": "Author names must be unique",
+      "atLeastTwoEqualContributors": "At least two authors must be marked as equally contributed.",
       "publicationStatusLabel": "Publication Status",
       "publicationStatus": {
         "PUBLISHED": "PUBLISHED",

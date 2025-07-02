@@ -1252,7 +1252,8 @@
       "publications": "ප්‍රකාශන"
     },
     "PublicationAuthors": {
-      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ"
+      "correspondingAuthor": "සම්බන්ධීකාරක කතෘ",
+      "equallyContributed": "සමානව දායක විය"
     },
     "PublicationOptionsCard": {
       "read": "තව කියවන්න",
@@ -1350,6 +1351,7 @@
       "authorProfileUrlPlaceholder": "පැතිකඩ URL (උදා: ORCID, Google Scholar)",
       "authorIsMeLabel": "මේ මමයි",
       "authorCorrespondingLabel": "සම්බන්ධීකාරක කතෘ",
+      "authorEquallyContributedLabel": "සමානව දායක විය",
       "authorRemove": "කර්තෘ ඉවත් කරන්න",
       "authorAdd": "කර්තෘවරයෙකු එක් කරන්න",
       "authorsRequired": "කතුවරුන් අවශ්‍යයි",
@@ -1358,6 +1360,7 @@
       "authorExactlyOneIsMe": "හරියටම එක් කතුවරයෙකු 'මම' ලෙස සලකුණු කළ යුතුය.",
       "authorAtMostOneCorresponding": "උපරිම වශයෙන් එක් සම්බන්ධීකාරක කතුවරයෙකු තෝරා ගත හැකිය.",
       "authorsMustBeUnique": "කර්තෘ නම් අනන්‍ය විය යුතුය.",
+      "atLeastTwoEqualContributors": "අවම වශයෙන් කතුවරුන් දෙදෙනෙකු සමානව දායක වූ බවට සලකුණු කළ යුතුය.",
       "publicationStatusLabel": "ප්‍රකාශන තත්ත්වය",
       "publicationStatus": {
         "PUBLISHED": "ප්‍රකාශිත (PUBLISHED)",
