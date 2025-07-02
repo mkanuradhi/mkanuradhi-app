@@ -698,6 +698,17 @@
         "Edit": {
           "title": "Edit Publication"
         }
+      },
+      "Research": {
+        "pageTitle": "Research Dashboard",
+        "title": "Research",
+        "addNew": "Add New Research",
+        "New": {
+          "title": "Add New Research"
+        },
+        "Edit": {
+          "title": "Edit Research"
+        }
       }
     }
   },
@@ -1401,6 +1412,44 @@
     },
     "UpdatePublicationFormsContainer": {
       "stepGeneral": "Updating General Details"
+    },
+    "ResearchTable": {
+      "failResearch": "Failed to load research",
+      "noResearch": "No research to display",
+      "refreshResearch": "Refreshing research...",
+      "research": "research"
+    },
+    "ResearchOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the research: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the research",
+      "deactivateErrorTitle": "Cannot deactivate the research",
+      "deleteErrorTitle": "Cannot delete the research",
+      "mine": "Own research",
+      "bsc": "BSc",
+      "msc": "MSc",
+      "mphil": "MPhil",
+      "phd": "PhD",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "thesisUrl": "Thesis URL",
+      "githubUrl": "Github URL",
+      "slidesUrl": "Slides URL",
+      "startedDate": "Started Date",
+      "completedDate": "Completed Date"
+    },
+    "ResearchSupervisors": {
+      "main_supervisor": "Main",
+      "co_supervisor": "Co",
+      "main_supervisor-title": "Main Supervisor",
+      "co_supervisor-title": "Co Supervisor"
     }
   },
   "contexts": {
@@ -1409,6 +1458,7 @@
       "blog": "Blog",
       "courses": "Courses",
       "publications": "Publications",
+      "research": "Research",
       "studentCourses": "Student Courses"
     }
   },

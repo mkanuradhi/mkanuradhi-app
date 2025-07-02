@@ -698,6 +698,17 @@
         "Edit": {
           "title": "ප්‍රකාශනය සංස්කරණය කිරීම"
         }
+      },
+      "Research": {
+        "pageTitle": "පර්යේෂණ පුවරුව",
+        "title": "පර්යේෂණ",
+        "addNew": "නව පර්යේෂණයක් එක් කරන්න",
+        "New": {
+          "title": "නව පර්යේෂණයක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "පර්යේෂණය සංස්කරණය කිරීම"
+        }
       }
     }
   },
@@ -1401,6 +1412,44 @@
     },
     "UpdatePublicationFormsContainer": {
       "stepGeneral": "සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
+    },
+    "ResearchTable": {
+      "failResearch": "පර්යේෂණ පූරණය කිරීමට අසමත් විය.",
+      "noResearch": "ප්‍රදර්ශනය කිරීමට පර්යේෂණ නොමැත.",
+      "refreshResearch": "පර්යේෂණ නැවුම් කරමින්...",
+      "research": "පර්යේෂණ"
+    },
+    "ResearchOptionsCard": {
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> පර්යේෂණය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "පර්යේෂණය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "පර්යේෂණය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "පර්යේෂණය මැකිය නොහැක",
+      "mine": "මගේ පර්යේෂණ",
+      "bsc": "විද්‍යාවේදී (BSc)",
+      "msc": "ශාස්ත්‍රපති (MSc)",
+      "mphil": "දර්ශනපති (MPhil)",
+      "phd": "දර්ශනසූරී (PhD)",
+      "in_progress": "සිදුවෙමින් පවතී",
+      "completed": "අවසන් කළ",     
+      "thesisUrl": "නිබන්ධන (Thesis) වෙබ් ලිපිනය",
+      "githubUrl": "ගිට්හබ් (Github) වෙබ් ලිපිනය",
+      "slidesUrl": "ස්ලයිඩ්ස් (Slides) වෙබ් ලිපිනය",
+      "startedDate": "ආරම්භ කළ දිනය",
+      "completedDate": "සම්පූර්ණ කළ දිනය"
+    },
+    "ResearchSupervisors": {
+      "main_supervisor": "ප්‍රධාන",
+      "co_supervisor": "සම",
+      "main_supervisor-title": "ප්‍රධාන අධීක්ෂක",
+      "co_supervisor-title": "සම අධීක්ෂක"
     }
   },
   "contexts": {
@@ -1409,6 +1458,7 @@
       "blog": "බ්ලොග්",
       "courses": "පාඨමාලා",
       "publications": "ප්‍රකාශන",
+      "research": "පර්යේෂණ",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },
