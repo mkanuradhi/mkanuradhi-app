@@ -1,7 +1,6 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Button, Col, Row } from 'react-bootstrap';
-import { getPublications } from '@/services/publication-service';
 import ResearchTable from '@/components/research-table';
 import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
