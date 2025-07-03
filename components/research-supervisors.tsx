@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { ResearchSupervisor } from "@/interfaces/i-research";
 import "./research-supervisors.scss";
+import SupervisorRole from "@/enums/supervisor-role";
 
 const baseTPath = 'components.ResearchSupervisors';
 
@@ -48,9 +49,14 @@ const ResearchSupervisors: React.FC<Props> = ({ supervisors }) => {
                   <sup className="text-muted ms-1">{affNumber}</sup>
                 )}
                 {supervisor.role && (
-                  <sub className="text-muted" title={t(`${supervisor.role.toLowerCase()}-title`)}>
-                    {t(supervisor.role.toLowerCase())}
-                  </sub>
+                  <sup className="text-muted ms-1" title={t(supervisor.role.toLowerCase())}>
+                    {supervisor.role === SupervisorRole.MAIN_SUPERVISOR && (
+                      <span>&#9733;</span> // filled star symbol
+                    )}
+                    {supervisor.role === SupervisorRole.CO_SUPERVISOR && (
+                      <span>&#9734;</span> // outlined star symbol
+                    )}
+                  </sup>
                 )}
                 {index < supervisors.length - 1 && <span className="me-2">,</span>}
               </span>

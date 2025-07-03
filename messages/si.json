@@ -1449,10 +1449,8 @@
       "completedDate": "සම්පූර්ණ කළ දිනය"
     },
     "ResearchSupervisors": {
-      "main_supervisor": "ප්‍රධාන",
-      "co_supervisor": "සම",
-      "main_supervisor-title": "ප්‍රධාන අධීක්ෂක",
-      "co_supervisor-title": "සම අධීක්ෂක"
+      "main_supervisor": "ප්‍රධාන අධීක්ෂක",
+      "co_supervisor": "සම අධීක්ෂක"
     }
   },
   "contexts": {

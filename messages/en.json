@@ -1449,10 +1449,8 @@
       "completedDate": "Completed Date"
     },
     "ResearchSupervisors": {
-      "main_supervisor": "Main",
-      "co_supervisor": "Co",
-      "main_supervisor-title": "Main Supervisor",
-      "co_supervisor-title": "Co Supervisor"
+      "main_supervisor": "Main Supervisor",
+      "co_supervisor": "Co Supervisor"
     }
   },
   "contexts": {
