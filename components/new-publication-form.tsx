@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage, FieldProps, FieldArray } from 'formik';
-import { Col, Row, Form as BootstrapForm, Button, InputGroup } from 'react-bootstrap';
+import { Col, Row, Form as BootstrapForm, Button } from 'react-bootstrap';
 import { getNewPublicationSchema } from '@/schemas/new-publication-schema';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

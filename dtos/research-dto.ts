@@ -19,7 +19,7 @@ export interface ActivationResearchDto {
 export interface CreateResearchDto {
   type: DegreeType;
   degree: string;
-  completedYear: number;
+  completedYear?: number;
   title: string;
   location: string;
   abstract: string;
@@ -31,8 +31,8 @@ export interface CreateResearchDto {
   studentName: string;
   supervisionStatus: SupervisionStatus;
   registrationNumber: string;
-  startedDate: Date;
-  completedDate: Date;
+  startedDate?: Date;
+  completedDate?: Date;
   isMine: boolean;
 }
 

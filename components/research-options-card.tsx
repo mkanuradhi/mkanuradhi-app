@@ -1,9 +1,9 @@
 "use client";
 import { useRouter } from '@/i18n/routing';
-import { Alert, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
+import { Alert, Badge, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookOpenReader, faCertificate, faCheckCircle, faEye, faEyeSlash, faHourglassHalf, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpenReader, faCheckCircle, faEye, faEyeSlash, faHourglassHalf, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import { useActivateResearchMutation, useDeactivateResearchMutation, useDeleteResearchMutation } from '@/hooks/use-research';
 import DocumentStatus from "@/enums/document-status";
@@ -59,10 +59,10 @@ const ResearchOptionsCard: React.FC<ResearchOptionsCardProps> = ({research}) => 
       <Card className="my-3 shadow research-options-card">
         <Card.Body>
           <Card.Subtitle className="my-2">
-            <Row className="align-items-center">
+            <Row className="align-items-center mb-2">
               <Col>
                 {research.isMine && (
-                  <FontAwesomeIcon icon={faCertificate} className="text-success me-2" title={t('mine')} />
+                  <Badge bg="success" className="me-2">{t('mine')}</Badge>
                 )}
                 {research.completedYear && (
                   <span>{research.completedYear} - </span>

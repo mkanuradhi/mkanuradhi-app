@@ -6,7 +6,7 @@ import { useActivateResearchMutation, useDeactivateResearchMutation, useDeleteRe
 import LoadingContainer from './loading-container';
 import { Alert, Badge, Breadcrumb, Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCertificate, faCheckCircle, faEye, faEyeSlash, faHourglassHalf, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faEye, faEyeSlash, faHourglassHalf, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import GlowLink from './GlowLink';
 import DocumentStatus from '@/enums/document-status';
 import DeleteModal from './delete-modal';
@@ -14,6 +14,8 @@ import ResearchSupervisors from './research-supervisors';
 import { getFormattedDate } from '@/utils/common-utils';
 import { LOCALE_EN } from '@/constants/common-vars';
 import SupervisionStatus from '@/enums/supervision-status';
+import SanitizedHtml from './sanitized-html';
+import 'react-quill/dist/quill.snow.css';
 import "./research-options-viewer.scss";
 
 
@@ -88,10 +90,10 @@ const ResearchOptionsViewer: React.FC<ResearchOptionsViewerProps> = ({ researchI
             </Breadcrumb>
           </Col>
         </Row>
-        <Row className="align-items-center">
+        <Row className="align-items-center mb-2">
           <Col>
             {research.isMine && (
-              <FontAwesomeIcon icon={faCertificate} className="text-success me-2" title={t('mine')} />
+              <Badge bg="success" className="me-2">{t('mine')}</Badge>
             )}
             {research.completedYear && (
               <span>{research.completedYear} - </span>
@@ -167,6 +169,16 @@ const ResearchOptionsViewer: React.FC<ResearchOptionsViewerProps> = ({ researchI
             )}
           </Col>
         </Row>
+        {research.abstract && (
+          <Row>
+            <Col>
+              <div className="my-3">
+                <label className="fw-semibold mb-2">{t('abstract')}</label>
+                <SanitizedHtml html={research.abstract} className="ql-content" />
+              </div>
+            </Col>
+          </Row>
+        )}
         { research.keywords && research.keywords.length > 0 && (
           <Row>
             <Col>
@@ -181,18 +193,6 @@ const ResearchOptionsViewer: React.FC<ResearchOptionsViewerProps> = ({ researchI
             </Col>
           </Row>
         ) }
-        { research.abstract && (
-          <Row>
-            <Col>
-              <div className="my-3">
-                <label className="fw-semibold">{t('abstract')}</label>
-                <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                  <code>{research.abstract}</code>
-                </pre>
-              </div>
-            </Col>
-          </Row>
-        )}
         {research.startedDate && (
           <Row>
             <Col>
