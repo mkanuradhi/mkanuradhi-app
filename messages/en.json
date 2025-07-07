@@ -15,6 +15,7 @@
       "oiTooltip": "ORCID",
       "rgTooltip": "ResearchGate",
       "scTooltip": "Scopus",
+      "wsTooltip": "Web of Science",
       "aboutTitle": "About Me",
       "aboutDescriptions": [
         "I am a passionate lecturer and a researcher in the field of computing, specializing in meta-heuristic optimization and machine learning. My research area has mainly comprised of finding promising solutions for different real world optimizations tasks appear in different fields such as Sports, Agriculture, Numerical optimization and many other.",
