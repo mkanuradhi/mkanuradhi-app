@@ -16,7 +16,7 @@ interface ExternalLinkBarProps {
 
 const ExternalLinkBar: React.FC<ExternalLinkBarProps> = ({ links }) => (
   <Container className="external-link-bar">
-    <Row className="margin-row">
+    <Row className="margin-row gy-2">
       {links.map((link, index) => (
         <Col key={index} className="d-flex justify-content-center align-items-center">
           <OverlayTrigger

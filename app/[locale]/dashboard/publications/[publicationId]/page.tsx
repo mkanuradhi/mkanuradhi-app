@@ -1,13 +1,13 @@
 import React from 'react';
 import PublicationOptionsViewer from '@/components/publication-options-viewer';
 
-interface CourseOptionsPageProps {
+interface PublicationOptionsPageProps {
   params: {
     publicationId: string;
   };
 }
 
-const CourseOptionsPage: React.FC<CourseOptionsPageProps> = ({ params }) => {
+const PublicationOptionsPage: React.FC<PublicationOptionsPageProps> = ({ params }) => {
   const { publicationId } = params;
 
   return (
@@ -17,4 +17,4 @@ const CourseOptionsPage: React.FC<CourseOptionsPageProps> = ({ params }) => {
   );
 }
 
-export default CourseOptionsPage;
+export default PublicationOptionsPage;

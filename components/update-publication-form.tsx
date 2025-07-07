@@ -40,7 +40,7 @@ const UpdatePublicationForm: React.FC<UpdatePublicationFormProps> = ({ publicati
             title: publication.title || '',
             source: publication.source || '',
             authors: publication.authors ? publication.authors : [
-              { name: '', affiliation: '', profileUrl: '', isMe: false, corresponding: false },
+              { name: '', affiliation: '', profileUrl: '', isMe: false, corresponding: false, equallyContributed: false },
             ],
             publicationStatus: publication.publicationStatus || PublicationStatus.PUBLISHED,
             tags: publication.tags?.length > 0 ? publication.tags : [],
@@ -62,7 +62,7 @@ const UpdatePublicationForm: React.FC<UpdatePublicationFormProps> = ({ publicati
             title: '',
             source: '',
             authors: [
-              { name: '', affiliation: '', profileUrl: '', isMe: false, corresponding: false },
+              { name: '', affiliation: '', profileUrl: '', isMe: false, corresponding: false, equallyContributed: false },
             ],
             publicationStatus: PublicationStatus.PUBLISHED,
             tags: [''],
@@ -287,6 +287,34 @@ const UpdatePublicationForm: React.FC<UpdatePublicationFormProps> = ({ publicati
                                             />
                                             <label className="form-check-label" htmlFor={`author-${index}-corresponding`}>
                                               {t('authorCorrespondingLabel')}
+                                            </label>
+                                          </>
+                                        );
+                                      }}
+                                    </Field>
+                                  </div>
+
+                                  {/* 'equally contributed' Checkbox */}
+                                  <div className="form-check">
+                                    <Field name={`authors.${index}.equallyContributed`}>
+                                      {({ field, form }: FieldProps) => {
+                                        const handleChange = () => {
+                                          form.setFieldValue(
+                                            `authors.${index}.equallyContributed`,
+                                            !field.value
+                                          );
+                                        };
+                                        return (
+                                          <>
+                                            <input
+                                              type="checkbox"
+                                              className="form-check-input"
+                                              id={`author-${index}-equallyContributed`}
+                                              checked={field.value}
+                                              onChange={handleChange}
+                                            />
+                                            <label className="form-check-label" htmlFor={`author-${index}-equallyContributed`}>
+                                              {t('authorEquallyContributedLabel')}
                                             </label>
                                           </>
                                         );

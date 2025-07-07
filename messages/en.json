@@ -15,6 +15,7 @@
       "oiTooltip": "ORCID",
       "rgTooltip": "ResearchGate",
       "scTooltip": "Scopus",
+      "wsTooltip": "Web of Science",
       "aboutTitle": "About Me",
       "aboutDescriptions": [
         "I am a passionate lecturer and a researcher in the field of computing, specializing in meta-heuristic optimization and machine learning. My research area has mainly comprised of finding promising solutions for different real world optimizations tasks appear in different fields such as Sports, Agriculture, Numerical optimization and many other.",
@@ -659,6 +660,7 @@
       "userId": "User Id: {userId}",
       "roleMessage": "You logged in as {roles}",
       "Blog": {
+        "pageTitle": "Blog Dashboard",
         "title": "Blog",
         "addNew": "Add New Blog Post",
         "New": {
@@ -669,6 +671,7 @@
         }
       },
       "Courses": {
+        "pageTitle": "Courses Dashboard",
         "title": "Courses",
         "addNew": "Add New Course",
         "New": {
@@ -687,6 +690,7 @@
         }
       },
       "Publications": {
+        "pageTitle": "Publications Dashboard",
         "title": "Publications",
         "addNew": "Add New Publication",
         "New": {
@@ -694,6 +698,17 @@
         },
         "Edit": {
           "title": "Edit Publication"
+        }
+      },
+      "Research": {
+        "pageTitle": "Research Dashboard",
+        "title": "Research",
+        "addNew": "Add New Research",
+        "New": {
+          "title": "Add New Research"
+        },
+        "Edit": {
+          "title": "Edit Research"
         }
       }
     }
@@ -1238,7 +1253,8 @@
       "publications": "publications"
     },
     "PublicationAuthors": {
-      "correspondingAuthor": "Corresponding author"
+      "correspondingAuthor": "Corresponding author",
+      "equallyContributed": "Equally contributed"
     },
     "PublicationOptionsCard": {
       "read": "Read More",
@@ -1336,6 +1352,7 @@
       "authorProfileUrlPlaceholder": "Profile URL (e.g., ORCID, Google Scholar)",
       "authorIsMeLabel": "This is me",
       "authorCorrespondingLabel": "Corresponding Author",
+      "authorEquallyContributedLabel": "Equally Contributed",
       "authorRemove": "Remove author",
       "authorAdd": "Add an author",
       "authorsRequired": "Authors are required",
@@ -1344,6 +1361,7 @@
       "authorExactlyOneIsMe": "Exactly one author must be marked as 'me'.",
       "authorAtMostOneCorresponding": "At most one corresponding author can be selected.",
       "authorsMustBeUnique": "Author names must be unique",
+      "atLeastTwoEqualContributors": "At least two authors must be marked as equally contributed.",
       "publicationStatusLabel": "Publication Status",
       "publicationStatus": {
         "PUBLISHED": "PUBLISHED",
@@ -1397,6 +1415,183 @@
       "submit": "Submit"
     },
     "UpdatePublicationFormsContainer": {
+      "failPublication": "An error occurred while loading the publication",
+      "stepGeneral": "Updating General Details"
+    },
+    "ResearchTable": {
+      "failResearch": "Failed to load research",
+      "noResearch": "No research to display",
+      "refreshResearch": "Refreshing research...",
+      "research": "research"
+    },
+    "ResearchOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the research: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the research",
+      "deactivateErrorTitle": "Cannot deactivate the research",
+      "deleteErrorTitle": "Cannot delete the research",
+      "mine": "Own",
+      "bsc": "BSc",
+      "msc": "MSc",
+      "mphil": "MPhil",
+      "phd": "PhD",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "thesisUrl": "Thesis URL",
+      "githubUrl": "Github URL",
+      "slidesUrl": "Slides URL",
+      "startedDate": "Started Date",
+      "completedDate": "Completed Date"
+    },
+    "ResearchSupervisors": {
+      "main_supervisor": "Main Supervisor",
+      "co_supervisor": "Co Supervisor"
+    },
+    "ResearchOptionsViewer": {
+      "failResearch": "Failed to load research",
+      "dashboard": "Dashboard",
+      "research": "Research",
+      "mine": "Own",
+      "bsc": "BSc",
+      "msc": "MSc",
+      "mphil": "MPhil",
+      "phd": "PhD",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "degree": "Degree",
+      "location": "Location",
+      "studentName": "Name of the Student",
+      "supervisors": "Supervisors",
+      "thesisUrl": "Thesis URL",
+      "githubUrl": "Github URL",
+      "slidesUrl": "Slides URL",
+      "keywords": "Keywords",
+      "abstract": "Abstract",
+      "startedDate": "Started Date",
+      "completedDate": "Completed Date",
+      "registrationNumber": "Registration Number",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the research: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the research",
+      "deactivateErrorTitle": "Cannot deactivate the research",
+      "deleteErrorTitle": "Cannot delete the research"
+    },
+    "NewResearchFormsContainer": {
+      "stepGeneral": "Adding Basic Details"
+    },
+    "NewResearchForm": {
+      "typeLabel": "Type",
+      "typeInvalid": "The selected type is invalid",
+      "typeRequired": "Degree type is required",
+      "degreeType": {
+        "BSC": "BSc",
+        "MSC": "MSc",
+        "MPHIL": "MPhil",
+        "PHD": "PhD"
+      },
+      "degreeLabel": "Name of the Degree",
+      "degreePlaceholder": "For example: BSc in Computer Science",
+      "degreeRequired": "Degree name is required",
+      "degreeTooShort": "Degree name must be more than {min} characters",
+      "degreeTooLong": "Degree name is too long. Must be less than {max} characters",
+      "yearLabel": "Completed Year",
+      "yearPlaceholder": "Enter completed year",
+      "yearMustBeNumber": "Year must be a valid number",
+      "yearMustBeAnInteger": "Year must be a valid integer (no decimals allowed)",
+      "yearTooLow": "The provided year is not valid. Please enter a year of {min} or later",
+      "yearTooHigh": "The provided year is not valid. Please enter a year no later than {max}",
+      "yearInvalid": "Invalid year. Please provide a valid 4-digit year",
+      "yearRequiredWithCompletedDate": "Completed year is required if completed date is provided.",
+      "titleLabel": "Title of the Research",
+      "titlePlaceholder": "Enter the Title",
+      "titleTooShort": "Title must be more than {min} characters",
+      "titleTooLong": "Title must be less than {max} characters",
+      "titleRequired": "Title is required",
+      "locationLabel": "Location",
+      "locationPlaceholder": "Enter the location",
+      "locationHelp": "The name of the department, faculty or university where the research was conducted.",
+      "locationTooShort": "Location must be more than {min} characters",
+      "locationTooLong": "location must be less than {max} characters",
+      "abstractLabel": "Abstract",
+      "abstractPlaceholder": "Enter the abstract of the publication",
+      "abstractTooLong": "Abstract must be less than {max} characters",
+      "supervisorsLabel": "Supervisors",
+      "supervisorPlaceholder": "Name of the supervisor",
+      "supervisorAffiliationPlaceholder": "Affiliation (e.g., Department, University)",
+      "supervisorProfileUrlPlaceholder": "Profile URL (e.g., ORCID, Google Scholar)",
+      "supervisorIsMeLabel": "This is me",
+      "supervisorRole": {
+        "MAIN_SUPERVISOR": "MAIN SUPERVISOR",
+        "CO_SUPERVISOR": "CO SUPERVISOR"
+      },
+      "supervisorRemove": "Remove supervisor",
+      "supervisorAdd": "Add a supervisor",
+      "supervisorsRequired": "Supervisors are required",
+      "supervisorNameRequired": "Supervisor name is required",
+      "supervisorRoleInvalid": "Supervisor role is invalid",
+      "supervisorCannotRemoveLast": "At least one supervisor is required",
+      "supervisorExactlyOneIsMe": "One supervisor must be marked as 'me'.",
+      "supervisorCannotIsMe": "No supervisor can be marked as 'me', since this your own research work.",
+      "supervisorsMustBeUnique": "Supervisor names must be unique",
+      "keywordsLabel": "Keywords",
+      "keywordsHelp": "Add keywords of the research.",
+      "keywordsRemove": "Remove keyword",
+      "keywordsAdd": "Add a keyword",
+      "thesisUrlLabel": "Thesis URL",
+      "thesisUrlPlaceholder": "Enter the thesis URL",
+      "thesisUrlHelp": "Provide a link to the official thesis page, if available.",
+      "urlMustBeValid": "Url must be a valid URL",
+      "urlTooLong": "Url is too long. It must be less than {max} characters",
+      "githubUrlLabel": "Github URL",
+      "githubUrlPlaceholder": "Enter the github URL",
+      "githubUrlHelp": "Provide a link to the github code repository of the research, if available.",
+      "slidesUrlLabel": "Slides URL",
+      "slidesUrlPlaceholder": "Enter the slides URL",
+      "slidesUrlHelp": "Provide a link to the slides of the research, if publicly accessible.",
+      "studentNameLabel": "Name of the Student",
+      "studentNamePlaceholder": "Enter the name of the student",
+      "studentNameTooLong": "Name of the student is too long. Must be less than {max} characters",
+      "supervisionStatusLabel": "Supervision Status",
+      "supervisionStatus": {
+        "IN_PROGRESS": "IN PROGRESS",
+        "COMPLETED": "COMPLETED"
+      },
+      "supervisionStatusRequired": "Supervision status is required",
+      "supervisionStatusInvalid": "Supervision status is invalid",
+      "registrationNumberLabel": "Registration Number",
+      "registrationNumberPlaceholder": "Enter the registration number",
+      "registrationNumberTooLong": "Registration number is too long. Must be less than {max} characters",
+      "startedDateLabel": "Started Date",
+      "startedDatePlaceholder": "Enter the started date, if you know it",
+      "startedDateTooEarly": "Date is too early. Please choose a valid started date after {min}.",
+      "startedDateCannotBeInFuture": "Started date cannot be in the future.",
+      "startedDateInvalid": "Please enter a valid started date.",
+      "completedDateLabel": "Completed Date",
+      "completedDatePlaceholder": "Enter the completed date, if you know it",
+      "completedDateTooEarly": "Date is too early. Please choose a valid completed date after {min}.",
+      "completedDateCannotBeInFuture": "Completed date cannot be in the future.",
+      "completedDateInvalid": "Please enter a valid completed date.",
+      "completedDateMustBeAfterStarted": "Completed date must be after the started date",
+      "isMineLabel": "This is my own research work",
+      "cancel": "Cancel",
+      "submitting": "Submitting...",
+      "submit": "Submit"
+    },
+    "UpdateResearchFormsContainer": {
+      "failResearch": "An error occurred while loading the research",
       "stepGeneral": "Updating General Details"
     }
   },
@@ -1406,6 +1601,7 @@
       "blog": "Blog",
       "courses": "Courses",
       "publications": "Publications",
+      "research": "Research",
       "studentCourses": "Student Courses"
     }
   },

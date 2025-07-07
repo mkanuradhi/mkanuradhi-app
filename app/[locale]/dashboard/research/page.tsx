@@ -1,14 +1,13 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Button, Col, Row } from 'react-bootstrap';
-import { getBlogPosts } from '@/services/blog-post-service';
-import BlogTable from '@/components/blog-table';
+import ResearchTable from '@/components/research-table';
 import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import ActiveStep from '@/enums/active-step';
+import { getResearches } from '@/services/research-service';
 
-const baseTPath = 'pages.Dashboard.Blog';
+const baseTPath = 'pages.Dashboard.Research';
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -37,11 +36,11 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const BlogPage = async ({ params }: { params: { locale: string } }) => {
+const ResearchPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
 
-  const initialPaginatedResult = await getBlogPosts(0, 10);
+  const initialPaginatedResult = await getResearches(0, 10);
 
   return (
     <>
@@ -52,20 +51,20 @@ const BlogPage = async ({ params }: { params: { locale: string } }) => {
       </Row>
       <Row>
         <Col>
-          <Link href={`/dashboard/blog/new?step=${ActiveStep.EN}`}>
+          <Link href={`/dashboard/research/new`}>
             <Button>
-              <FontAwesomeIcon icon={faPlus} className="me-1" aria-hidden="true" />{ t('addNew') }
+              <FontAwesomeIcon icon={faPlus} className="me-2" aria-hidden="true" />{ t('addNew') }
             </Button>
           </Link>
         </Col>
       </Row>
       <Row>
         <Col>
-          <BlogTable initialBlogPosts={initialPaginatedResult} />
+          <ResearchTable initialResearch={initialPaginatedResult} />
         </Col>
       </Row>
     </>
   )
 }
 
-export default BlogPage;
+export default ResearchPage;

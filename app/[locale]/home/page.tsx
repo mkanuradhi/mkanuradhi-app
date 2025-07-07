@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
 import ScopusIcon from '@/icons/ScopusIcon';
+import WebOfScienceIcon from '@/icons/WebOfScienceIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ExternalLinkBar from '@/components/ExternalLinkBar';
@@ -86,7 +87,7 @@ export default function HomePage() {
   const externalLinks = [
     {
       tooltipText: `${t('gsTooltip')}`,
-      url: 'https://scholar.google.com/citations?hl=en&user=-O25soMAAAAJ',
+      url: 'https://scholar.google.com/citations?user=-O25soMAAAAJ',
       faIcon: faGoogleScholar,
     },
     {
@@ -108,6 +109,11 @@ export default function HomePage() {
       tooltipText: `${t('scTooltip')}`,
       url: 'https://www.scopus.com/authid/detail.uri?authorId=57188855115',
       customIcon: <ScopusIcon size={30} />,
+    },
+    {
+      tooltipText: `${t('wsTooltip')}`,
+      url: 'https://www.webofscience.com/wos/author/record/NRY-6429-2025',
+      customIcon: <WebOfScienceIcon size={30} />,
     },
   ];
 

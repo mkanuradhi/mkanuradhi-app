@@ -67,3 +67,20 @@ export const MAX_PUBLICATION_URL_LENGTH = 400;
 export const MAX_PUBLICATION_ABSTRACT_LENGTH = 4900;
 
 export const MAX_PUBLICATION_BIBTEX_LENGTH = 4900;
+
+// --------------- research ---------------
+export const MIN_RESEARCH_YEAR = 2010;
+export const MAX_RESEARCH_YEAR = 2040;
+
+export const MIN_RESEARCH_TITLE_LENGTH = 5;
+export const MAX_RESEARCH_TITLE_LENGTH = 320;
+
+export const MIN_RESEARCH_LOCATION_LENGTH = 3;
+export const MAX_RESEARCH_LOCATION_LENGTH = 500;
+
+export const MAX_RESEARCH_ABSTRACT_LENGTH = 4900;
+
+export const MAX_RESEARCH_URL_LENGTH = 400;
+
+
+

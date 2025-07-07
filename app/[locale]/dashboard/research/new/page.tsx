@@ -1,10 +1,9 @@
 import React from 'react';
-import UpdateQuizFormsContainer from '@/components/update-quiz-forms-container';
-import { getTranslations } from 'next-intl/server';
 import { Col, Row } from 'react-bootstrap';
+import { getTranslations } from 'next-intl/server';
+import NewResearchFormsContainer from '@/components/new-research-forms-container';
 
-
-const baseTPath = 'pages.Dashboard.Courses.Quizzes.Edit';
+const baseTPath = 'pages.Dashboard.Research.New';
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -33,16 +32,8 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-interface EditQuizPageProps {
-  params: {
-    courseId: string;
-    quizId: string;
-  };
-}
-
-const EditQuizPage: React.FC<EditQuizPageProps> = async ({ params }) => {
+const NewResearchPage = async () => {
   const t = await getTranslations(baseTPath);
-  const { courseId, quizId } = params;
 
   return (
     <>
@@ -51,9 +42,9 @@ const EditQuizPage: React.FC<EditQuizPageProps> = async ({ params }) => {
           <h1>{t('title')}</h1>
         </Col>
       </Row>
-      <UpdateQuizFormsContainer courseId={courseId} quizId={quizId} />
+      <NewResearchFormsContainer />
     </>
-  )
+  );
 }
 
-export default EditQuizPage;
+export default NewResearchPage;
