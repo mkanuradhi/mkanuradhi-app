@@ -24,7 +24,8 @@ export const getNewResearchSchema = (t: (key: string, values?: Record<string, an
       .max(MAX_RESEARCH_TITLE_LENGTH, t('degreeTooLong', { max: MAX_RESEARCH_TITLE_LENGTH })),
     completedYear: yup.number()
       .transform((value, originalValue) => {
-        return originalValue === '' ? undefined : value;
+        const trimmed = typeof originalValue === 'string' ? originalValue.trim() : originalValue;
+        return trimmed === '' ? null : value;
       })
       .nullable()
       .notRequired()
@@ -35,7 +36,18 @@ export const getNewResearchSchema = (t: (key: string, values?: Record<string, an
       .test('validYearLength', t('yearInvalid'), value => {
         if (value === undefined || value === null) return true; // allow empty
         return /^\d{4}$/.test(value.toString());
-      }),
+      })
+      .test(
+        'requiredIfCompletedDate',
+        t('yearRequiredWithCompletedDate'),
+        function (value) {
+          const { completedDate } = this.parent;
+          if (completedDate && (value === undefined || value === null)) {
+            return false;
+          }
+          return true;
+        }
+      ),
     title: yup.string()
       .min(MIN_RESEARCH_TITLE_LENGTH, t('titleTooShort', { min: MIN_RESEARCH_TITLE_LENGTH }) )
       .max(MAX_RESEARCH_TITLE_LENGTH, t('titleTooLong', { max: MAX_RESEARCH_TITLE_LENGTH }) )
