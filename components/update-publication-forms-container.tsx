@@ -22,7 +22,7 @@ const UpdatePublicationFormsContainer:React.FC<UpdatePublicationFormsContainerPr
   const stepParam = searchParams.get("step") as ActiveStep | null;
   const t = useTranslations(baseTPath);
 
-  const { data: publication } = usePublicationByIdQuery(publicationId);
+  const { data: publication, isError, error } = usePublicationByIdQuery(publicationId);
   const [step, setStep] = useState<ActiveStep>(stepParam || ActiveStep.GENERAL);
 
   const stepLabels: Partial<Record<ActiveStep, string>> = {
@@ -33,13 +33,24 @@ const UpdatePublicationFormsContainer:React.FC<UpdatePublicationFormsContainerPr
     router.push(`/dashboard/publications/${publicationId}`);
   };
 
+  if (isError && error) {
+    return (
+      <Row className="my-3">
+        <Col>
+          <h4>{t('failPublication')}</h4>
+          <p>{error.message}</p>
+        </Col>
+      </Row>
+    );
+  }
+
   return (
     <>
       <Row className="my-3">
         <Col>
           <h4>{stepLabels[step]}</h4>
         </Col>
-      </Row>
+      </Row>             
       <Row>
         <Col>
           { step === ActiveStep.GENERAL && publication && (

@@ -1415,6 +1415,7 @@
       "submit": "Submit"
     },
     "UpdatePublicationFormsContainer": {
+      "failPublication": "An error occurred while loading the publication",
       "stepGeneral": "Updating General Details"
     },
     "ResearchTable": {

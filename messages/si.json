@@ -1415,6 +1415,7 @@
       "submit": "ඉදිරියට යන්න"
     },
     "UpdatePublicationFormsContainer": {
+      "failPublication": "ප්‍රකාශනය පූරණය කිරීමේදී දෝෂයක් ඇති විය",
       "stepGeneral": "සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
     },
     "ResearchTable": {
