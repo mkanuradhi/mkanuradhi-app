@@ -15,6 +15,7 @@ import LoadingContainer from './loading-container';
 import DeliveryMode from '@/enums/delivery-mode';
 import RequiredFormLabel from './required-form-label';
 import RichTextEditor from './rich-text-editor';
+import DegreeType from '@/enums/degree-type';
 
 const baseTPath = 'components.NewCourseEnForm';
 
@@ -34,6 +35,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
     return course
       ? {
           year: course.year,
+          degreeType: course.degreeType || DegreeType.BSC,
           code: course.code,
           credits: course.credits,
           mode: course.mode || DeliveryMode.PHYSICAL,
@@ -45,6 +47,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
         }
       : {
           year: new Date().getFullYear(),
+          degreeType: DegreeType.BSC,
           code: '',
           credits: undefined,
           mode: DeliveryMode.PHYSICAL,
@@ -88,6 +91,7 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
   ) => {
     const courseEnDto: UpdateCourseEnDto = {
       year: values.year,
+      degreeType: values.degreeType,
       code: values.code,
       credits: values.credits,
       mode: values.mode,
@@ -137,6 +141,17 @@ const UpdateCourseEnForm: FC<UpdateCourseEnFormProps> = ({ id, onSuccess }) => {
                       <RequiredFormLabel>{t('yearLabel')}</RequiredFormLabel>
                       <Field name="year" type="text" placeholder={t('yearPlaceholder')} className="form-control" />
                       <ErrorMessage name="year" component="p" className="text-danger mt-1" />
+                    </BootstrapForm.Group>
+                    <BootstrapForm.Group className="mb-4" controlId="formDegreeType">
+                      <RequiredFormLabel>{t('degreeTypeLabel')}</RequiredFormLabel>
+                      <Field as="select" name="degreeType" className="form-select">
+                        {Object.values(DegreeType).map((type) => (
+                          <option key={type} value={type}>
+                            {t(`degreeType.${type}`)}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage name="degreeType" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formCode">
                       <BootstrapForm.Label>{t('codeLabel')}</BootstrapForm.Label>

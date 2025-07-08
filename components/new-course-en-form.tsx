@@ -13,11 +13,13 @@ import { CreateCourseEnDto } from '@/dtos/course-dto';
 import DeliveryMode from '@/enums/delivery-mode';
 import RequiredFormLabel from './required-form-label';
 import RichTextEditor from './rich-text-editor';
+import DegreeType from '@/enums/degree-type';
 
 const baseTPath = 'components.NewCourseEnForm';
 
 const initialValues = {
   year: new Date().getFullYear(),
+  degreeType: DegreeType.BSC,
   code: '',
   credits: undefined,
   mode: DeliveryMode.PHYSICAL,
@@ -68,6 +70,7 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
   ) => {
     const courseEnDto: CreateCourseEnDto = {
       year: values.year,
+      degreeType: values.degreeType,
       code: values.code,
       credits: values.credits,
       mode: values.mode,
@@ -106,6 +109,17 @@ const NewCourseEnForm: FC<NewCourseEnFormProps> = ({ onSuccess }) => {
                     <RequiredFormLabel>{t('yearLabel')}</RequiredFormLabel>
                     <Field name="year" type="text" placeholder={t('yearPlaceholder')} className="form-control" />
                     <ErrorMessage name="year" component="p" className="text-danger mt-1" />
+                  </BootstrapForm.Group>
+                  <BootstrapForm.Group className="mb-4" controlId="formDegreeType">
+                    <RequiredFormLabel>{t('degreeTypeLabel')}</RequiredFormLabel>
+                    <Field as="select" name="degreeType" className="form-select">
+                      {Object.values(DegreeType).map((type) => (
+                        <option key={type} value={type}>
+                          {t(`degreeType.${type}`)}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage name="degreeType" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                   <BootstrapForm.Group className="mb-4" controlId="formCode">
                     <BootstrapForm.Label>{t('codeLabel')}</BootstrapForm.Label>

@@ -1,8 +1,10 @@
 import DeliveryMode from "@/enums/delivery-mode";
 import { VersionDto } from "./base-dto";
+import DegreeType from "@/enums/degree-type";
 
 export interface CreateCourseEnDto {
   year: number;
+  degreeType: DegreeType;
   code?: string;
   credits?: number | undefined;
   mode: DeliveryMode;

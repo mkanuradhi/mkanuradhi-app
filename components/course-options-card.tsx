@@ -54,6 +54,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
             <Card.Body>
               <Card.Subtitle>
                 { course.year && `${course.year} ` }
+                { course.degreeType && ` - ${t(`degreeType.${course.degreeType}`)}` }
               </Card.Subtitle>
               <Card.Title>
                 { course.code && `${course.code} ` }

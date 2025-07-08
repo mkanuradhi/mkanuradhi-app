@@ -81,7 +81,10 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
           <Col>
             <Row>
               <Col>
-                <h3>{course.year}</h3>
+                <h5>
+                  {course.year}
+                  {course.degreeType && ` - ${t(`degreeType.${course.degreeType}`)}`}
+                </h5>
                 <h1>
                   { course.code && `${course.code} ` }
                   { course.credits && `${formattedCredits} ` }
@@ -124,7 +127,10 @@ const CourseOptionsViewer: React.FC<CourseOptionsViewerProps> = ({ courseId }) =
           <Col>
             <Row>
               <Col>
-                <h3>{course.year}</h3>
+                <h5>
+                  {course.year}
+                  {course.degreeType && ` - ${t(`degreeType.${course.degreeType}`)}`}
+                </h5>
                 <h1>
                 { course.code && `${course.code} ` }
                 { course.credits && `${formattedCredits} ` }
