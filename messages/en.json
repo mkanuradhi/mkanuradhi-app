@@ -1632,6 +1632,22 @@
     "UpdateResearchFormsContainer": {
       "failResearch": "An error occurred while loading the research",
       "stepGeneral": "Updating General Details"
+    },
+    "ThesesViewer": {
+      "abstract": "Abstract",
+      "supervisors": "Supervisors",
+      "keywords": "Keywords",
+      "thesis": "Thesis",
+      "github": "Github",
+      "slides": "Slides"
+    },
+    "ResearchViewer": {
+      "abstract": "Abstract",
+      "supervisors": "Supervisors",
+      "keywords": "Keywords",
+      "thesis": "Thesis",
+      "github": "Github",
+      "slides": "Slides"
     }
   },
   "contexts": {

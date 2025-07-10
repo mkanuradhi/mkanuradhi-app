@@ -1,78 +1,13 @@
 import React from 'react';
-import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import ThesisDisplayer from '@/components/ThesisDisplayer';
-import CurrentProjectsDisplayer from '@/components/CurrentProjectsDisplayer';
-import PastProjectsDisplayer from '@/components/PastProjectsDisplayer';
+import { getResearches } from '@/services/research-service';
+import ThesesViewer from '@/components/theses-viewer';
+import SupervisionStatus from '@/enums/supervision-status';
+import DegreeType from '@/enums/degree-type';
+import ResearchViewer from '@/components/research-viewer';
 
 const baseTPath = 'pages.Research';
-
-interface ThesisDetail extends AbstractDetails {
-  degree: string;
-  topic: string;
-  university: string;
-  year: string;
-  keywordsTitle?: string;
-  keywords?: string[];
-}
-
-interface CurrentProject {
-  studentName: string;
-  degree: string;
-  topic: string;
-  year: string;
-  supervisorsTitle: string;
-  supervisors: string[];
-}
-
-interface PastProject extends CurrentProject, AbstractDetails {
-}
-
-interface AbstractDetails {
-  abstractTitle: string;
-  abstracts: string[];
-}
-
-interface ThesisMessages {
-  pages: {
-    Research: {
-      thesisDetails: ThesisDetail[];
-    };
-  };
-}
-
-interface CurrentUnderGradProjectMessages {
-  pages: {
-    Research: {
-      currentUnderGradProjects: CurrentProject[];
-    };
-  };
-}
-
-interface CurrentPostGradProjectMessages {
-  pages: {
-    Research: {
-      currentPostGradProjects: CurrentProject[];
-    };
-  };
-}
-
-interface PastUnderGradProjectMessages {
-  pages: {
-    Research: {
-      pastUnderGradProjects: PastProject[];
-    };
-  };
-}
-
-interface PastPostGradProjectMessages {
-  pages: {
-    Research: {
-      pastPostGradProjects: PastProject[];
-    };
-  };
-}
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -98,23 +33,40 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const ResearchPage = () => {
-  const t = useTranslations(baseTPath);
+const ResearchPage = async () => {
+  const t = await getTranslations(baseTPath);
 
-  const thesisMessages = useMessages() as unknown as ThesisMessages | undefined;
-  const thesisDetails = thesisMessages?.pages?.Research?.thesisDetails as ThesisDetail[];
+  const researchPaginatedResult = await getResearches(0, 100);
 
-  const currentUnderGradProjectMessages = useMessages() as unknown as CurrentUnderGradProjectMessages | undefined;
-  const currentUnderGradProjects = currentUnderGradProjectMessages?.pages?.Research?.currentUnderGradProjects as CurrentProject[];
-
-  const currentPostGradProjectMessages = useMessages() as unknown as CurrentPostGradProjectMessages | undefined;
-  const currentPostGradProjects = currentPostGradProjectMessages?.pages?.Research?.currentPostGradProjects as CurrentProject[];
-
-  const pastUnderGradProjectMessages = useMessages() as unknown as PastUnderGradProjectMessages | undefined;
-  const pastUnderGradProjects = pastUnderGradProjectMessages?.pages?.Research?.pastUnderGradProjects as PastProject[];
-
-  const pastPostGradProjectMessages = useMessages() as unknown as PastPostGradProjectMessages | undefined;
-  const pastPostGradProjects = pastPostGradProjectMessages?.pages?.Research?.pastPostGradProjects as PastProject[];
+  const theses = researchPaginatedResult.items?.filter(item => item.isMine === true) || [];
+  const inProgressUnderGradResearch = (
+    researchPaginatedResult.items?.filter(item =>
+      !item.isMine &&
+      item.supervisionStatus === SupervisionStatus.IN_PROGRESS &&
+      (item.type === DegreeType.DIPLOMA || item.type === DegreeType.HIGHER_DIPLOMA || item.type === DegreeType.BSC)
+    ) ?? []
+  );
+  const completedUnderGradResearch = (
+    researchPaginatedResult.items?.filter(item =>
+      !item.isMine &&
+      item.supervisionStatus === SupervisionStatus.COMPLETED &&
+      (item.type === DegreeType.DIPLOMA || item.type === DegreeType.HIGHER_DIPLOMA || item.type === DegreeType.BSC)
+    ) ?? []
+  );
+  const inProgressPostGradResearch = (
+    researchPaginatedResult.items?.filter(item =>
+      !item.isMine &&
+      item.supervisionStatus === SupervisionStatus.IN_PROGRESS &&
+      (item.type === DegreeType.POSTGRADUATE_DIPLOMA || item.type === DegreeType.MSC || item.type === DegreeType.MPHIL || item.type === DegreeType.PHD)
+    ) ?? []
+  );
+  const completedPostGradResearch = (
+    researchPaginatedResult.items?.filter(item =>
+      !item.isMine &&
+      item.supervisionStatus === SupervisionStatus.COMPLETED &&
+      (item.type === DegreeType.POSTGRADUATE_DIPLOMA || item.type === DegreeType.MSC || item.type === DegreeType.MPHIL || item.type === DegreeType.PHD)
+    ) ?? []
+  );
 
   return (
     <>
@@ -128,30 +80,30 @@ const ResearchPage = () => {
               </section>
               <section className="mt-4 mb-2">
                 <h3>{t('thesisTitle')}</h3>
-                <ThesisDisplayer thesisDetails={thesisDetails} />
+                <ThesesViewer theses={theses} />
               </section>
-              {currentUnderGradProjects.length > 0 && (
+              {inProgressUnderGradResearch.length > 0 && (
                 <section className="mt-4 mb-2">
                   <h3>{t('currentUnderGradTitle')}</h3>
-                  <CurrentProjectsDisplayer currentProjects={currentUnderGradProjects} />
+                  <ResearchViewer researches={inProgressUnderGradResearch} />
                 </section>
               )}
-              {currentPostGradProjects.length > 0 && (
-                <section className="mt-4 mb-2">
-                  <h3>{t('currentPostGradTitle')}</h3>
-                  <CurrentProjectsDisplayer currentProjects={currentPostGradProjects} />
-                </section>
-              )}
-              {pastUnderGradProjects.length > 0 && (
+              {completedUnderGradResearch.length > 0 && (
                 <section className="mt-4 mb-2">
                   <h3>{t('pastUnderGradTitle')}</h3>
-                  <PastProjectsDisplayer pastProjects={pastUnderGradProjects} />
+                  <ResearchViewer researches={completedUnderGradResearch} />
                 </section>
               )}
-              {pastPostGradProjects.length > 0 && (
+              {inProgressPostGradResearch.length > 0 && (
+                <section className="mt-4 mb-2">
+                  <h3>{t('currentPostGradTitle')}</h3>
+                  <ResearchViewer researches={inProgressPostGradResearch} />
+                </section>
+              )}
+              {completedPostGradResearch.length > 0 && (
                 <section className="mt-4 mb-2">
                   <h3>{t('pastPostGradTitle')}</h3>
-                  <PastProjectsDisplayer pastProjects={pastPostGradProjects} />
+                  <ResearchViewer researches={completedPostGradResearch} />
                 </section>
               )}
             </Col>

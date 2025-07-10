@@ -1632,6 +1632,22 @@
     "UpdateResearchFormsContainer": {
       "failResearch": "පර්යේෂණය පූරණය කිරීමේදී දෝෂයක් ඇති විය",
       "stepGeneral": "සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
+    },
+    "ThesesViewer": {
+      "abstract": "සාරාංශය",
+      "supervisors": "අධීක්ෂකවරුන්",
+      "keywords": "මූල පද",
+      "thesis": "නිබන්ධනය",
+      "github": "ගිට්හබ්",
+      "slides": "ස්ලයිඩ්ස්"
+    },
+    "ResearchViewer": {
+      "abstract": "සාරාංශය",
+      "supervisors": "අධීක්ෂකවරුන්",
+      "keywords": "මූල පද",
+      "thesis": "නිබන්ධනය",
+      "github": "ගිට්හබ්",
+      "slides": "ස්ලයිඩ්ස්"
     }
   },
   "contexts": {
