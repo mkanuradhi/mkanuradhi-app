@@ -9,6 +9,22 @@ import ResearchViewer from '@/components/research-viewer';
 
 const baseTPath = 'pages.Research';
 
+const DEGREE_ORDER: Record<DegreeType, number> = {
+  [DegreeType.PHD]: 1,
+  [DegreeType.MPHIL]: 2,
+  [DegreeType.MSC]: 3,
+  [DegreeType.POSTGRADUATE_DIPLOMA]: 4,
+  [DegreeType.BSC]: 5,
+  [DegreeType.HIGHER_DIPLOMA]: 6,
+  [DegreeType.DIPLOMA]: 7,
+};
+
+const sortByDegreeType = (a: { type: DegreeType }, b: { type: DegreeType }) => {
+  const orderA = DEGREE_ORDER[a.type] ?? 99;
+  const orderB = DEGREE_ORDER[b.type] ?? 99;
+  return orderA - orderB;
+};
+
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
@@ -38,35 +54,33 @@ const ResearchPage = async () => {
 
   const researchPaginatedResult = await getResearches(0, 100);
 
-  const theses = researchPaginatedResult.items?.filter(item => item.isMine === true) || [];
-  const inProgressUnderGradResearch = (
-    researchPaginatedResult.items?.filter(item =>
+  const theses = researchPaginatedResult.items
+    ?.filter(item => item.isMine === true)
+    .sort(sortByDegreeType) || [];
+  const inProgressUnderGradResearch = researchPaginatedResult.items
+    ?.filter(item =>
       !item.isMine &&
       item.supervisionStatus === SupervisionStatus.IN_PROGRESS &&
       (item.type === DegreeType.DIPLOMA || item.type === DegreeType.HIGHER_DIPLOMA || item.type === DegreeType.BSC)
-    ) ?? []
-  );
-  const completedUnderGradResearch = (
-    researchPaginatedResult.items?.filter(item =>
+    ).sort(sortByDegreeType) ?? [];
+  const completedUnderGradResearch = researchPaginatedResult.items
+    ?.filter(item =>
       !item.isMine &&
       item.supervisionStatus === SupervisionStatus.COMPLETED &&
       (item.type === DegreeType.DIPLOMA || item.type === DegreeType.HIGHER_DIPLOMA || item.type === DegreeType.BSC)
-    ) ?? []
-  );
-  const inProgressPostGradResearch = (
-    researchPaginatedResult.items?.filter(item =>
+    ).sort(sortByDegreeType) ?? [];
+  const inProgressPostGradResearch = researchPaginatedResult.items
+    ?.filter(item =>
       !item.isMine &&
       item.supervisionStatus === SupervisionStatus.IN_PROGRESS &&
       (item.type === DegreeType.POSTGRADUATE_DIPLOMA || item.type === DegreeType.MSC || item.type === DegreeType.MPHIL || item.type === DegreeType.PHD)
-    ) ?? []
-  );
-  const completedPostGradResearch = (
-    researchPaginatedResult.items?.filter(item =>
+    ).sort(sortByDegreeType) ?? [];
+  const completedPostGradResearch = researchPaginatedResult.items
+    ?.filter(item =>
       !item.isMine &&
       item.supervisionStatus === SupervisionStatus.COMPLETED &&
       (item.type === DegreeType.POSTGRADUATE_DIPLOMA || item.type === DegreeType.MSC || item.type === DegreeType.MPHIL || item.type === DegreeType.PHD)
-    ) ?? []
-  );
+    ).sort(sortByDegreeType) ?? [];
 
   return (
     <>

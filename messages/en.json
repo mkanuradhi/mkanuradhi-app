@@ -162,7 +162,7 @@
           ]
         }
       ],
-      "pastUnderGradTitle": "Undergraduate Research Projects Supervised",
+      "pastUnderGradTitle": "Completed Undergraduate Research Projects",
       "pastUnderGradProjects": [
         {
           "studentName": "I.M.T.P.K. Ilankoon",
@@ -249,7 +249,7 @@
           ]
         }
       ],
-      "pastPostGradTitle": "Postgraduate Projects Supervised",
+      "pastPostGradTitle": "Completed Postgraduate Projects",
       "pastPostGradProjects": [
         {
           "studentName": "P.H.H.P.N. De Silva",
@@ -1634,6 +1634,15 @@
       "stepGeneral": "Updating General Details"
     },
     "ThesesViewer": {
+      "degreeType": {
+        "BSC": "BSc",
+        "MSC": "MSc",
+        "MPHIL": "MPhil",
+        "PHD": "PhD",
+        "HIGHER_DIPLOMA": "Higher Diploma",
+        "DIPLOMA": "Diploma",
+        "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
+      },
       "abstract": "Abstract",
       "supervisors": "Supervisors",
       "keywords": "Keywords",
@@ -1642,6 +1651,16 @@
       "slides": "Slides"
     },
     "ResearchViewer": {
+      "degreeType": {
+        "BSC": "BSc",
+        "MSC": "MSc",
+        "MPHIL": "MPhil",
+        "PHD": "PhD",
+        "HIGHER_DIPLOMA": "Higher Diploma",
+        "DIPLOMA": "Diploma",
+        "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
+      },
+      "studentName": "Researcher:",
       "abstract": "Abstract",
       "supervisors": "Supervisors",
       "keywords": "Keywords",

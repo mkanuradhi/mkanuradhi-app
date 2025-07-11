@@ -136,7 +136,7 @@
           ]
         }
       ],
-      "currentUnderGradTitle": "සිදුවෙමින් පවතින උපාධි පර්යේෂණ ව්‍යාපෘති",
+      "currentUnderGradTitle": "කරමින් පවතින උපාධි පර්යේෂණ ව්‍යාපෘති",
       "currentUnderGradProjects": [
         {
           "studentName": "E. S. Sithpahan",
@@ -149,7 +149,7 @@
           ]
         }
       ],
-      "currentPostGradTitle": "සිදුවෙමින් පවතින පශ්චාත් උපාධි පර්යේෂණ ව්‍යාපෘති",
+      "currentPostGradTitle": "කරමින් පවතින පශ්චාත් උපාධි පර්යේෂණ ව්‍යාපෘති",
       "currentPostGradProjects": [
         {
           "studentName": "S.C.M.de S Sirisuriya",
@@ -162,7 +162,7 @@
           ]
         }
       ],
-      "pastUnderGradTitle": "අධීක්ෂණය කරන ලද උපාධි අපේක්ෂක පර්යේෂණ ව්‍යාපෘති",
+      "pastUnderGradTitle": "අධීක්ෂණය කරන ලද උපාධි පර්යේෂණ ව්‍යාපෘති",
       "pastUnderGradProjects": [
         {
           "studentName": "I.M.T.P.K. Ilankoon",
@@ -249,7 +249,7 @@
           ]
         }
       ],
-      "pastPostGradTitle": "අධීක්ෂණය කරන ලද පශ්චාත් උපාධි ව්‍යාපෘති",
+      "pastPostGradTitle": "අධීක්ෂණය කරන ලද පශ්චාත් උපාධි පර්යේෂණ ව්‍යාපෘති",
       "pastPostGradProjects": [
         {
           "studentName": "P.H.H.P.N. De Silva",
@@ -1634,6 +1634,15 @@
       "stepGeneral": "සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
     },
     "ThesesViewer": {
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී (BSc)",
+        "MSC": "ශාස්ත්‍රපති (MSc)",
+        "MPHIL": "දර්ශනපති (MPhil)",
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
+      },
       "abstract": "සාරාංශය",
       "supervisors": "අධීක්ෂකවරුන්",
       "keywords": "මූල පද",
@@ -1642,6 +1651,16 @@
       "slides": "ස්ලයිඩ්ස්"
     },
     "ResearchViewer": {
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී (BSc)",
+        "MSC": "ශාස්ත්‍රපති (MSc)",
+        "MPHIL": "දර්ශනපති (MPhil)",
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
+      },
+      "studentName": "පර්යේෂක:",
       "abstract": "සාරාංශය",
       "supervisors": "අධීක්ෂකවරුන්",
       "keywords": "මූල පද",

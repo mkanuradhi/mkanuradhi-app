@@ -24,7 +24,7 @@ const ThesesViewer: React.FC<ThesisViewerProps> = ({ theses }) => {
         {theses.map((thesis, index) => (
           <Accordion.Item key={index} eventKey={`${index}`}>
             <Accordion.Header>
-              {thesis.type} - {thesis.title}
+              {t(`degreeType.${thesis.type}`)} - {thesis.title}
             </Accordion.Header>
             <Accordion.Body>
               <div>

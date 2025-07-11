@@ -24,9 +24,16 @@ const ResearchViewer: React.FC<ResearchViewerProps> = ({ researches }) => {
         {researches.map((research, index) => (
           <Accordion.Item key={index} eventKey={`${index}`}>
             <Accordion.Header>
-              <span className="me-2">{index + 1 + '.'}</span>{research.studentName} - {research.title}
+              <span className="me-2">{index + 1 + '.'}</span>{t(`degreeType.${research.type}`)} - {research.title}
             </Accordion.Header>
             <Accordion.Body>
+              {research.studentName && (
+                <div>
+                  <p>
+                    <span className="me-2">{t('studentName')}</span><strong>{research.studentName}</strong>
+                  </p>
+                </div>
+              )}
               {research.degree && (
                 <div>
                   <p>{research.degree}</p>
