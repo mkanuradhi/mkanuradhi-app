@@ -1602,6 +1602,7 @@
       "slidesUrlHelp": "Provide a link to the slides of the research, if publicly accessible.",
       "studentNameLabel": "Name of the Student",
       "studentNamePlaceholder": "Enter the name of the student",
+      "studentNameRequired": "Name of the student is required when this is not your own research work.",
       "studentNameTooLong": "Name of the student is too long. Must be less than {max} characters",
       "supervisionStatusLabel": "Supervision Status",
       "supervisionStatus": {

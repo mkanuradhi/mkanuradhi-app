@@ -1602,6 +1602,7 @@
       "slidesUrlHelp": "පොදු වශයෙන් පිවිසිය හැකි නම්, පර්යේෂණයට අදාල ස්ලයිඩ් පත්‍ර වල සබැඳියක් ලබා දෙන්න.",
       "studentNameLabel": "ශිෂ්‍යයාගේ නම",
       "studentNamePlaceholder": "ශිෂ්‍යයාගේ නම ඇතුළත් කරන්න",
+      "studentNameRequired": "මෙය ඔබගේම පර්යේෂණ කාර්යයක් නොවන නිසා ශිෂ්‍යයාගේ නම අවශ්‍ය වේ.",
       "studentNameTooLong": "ශිෂ්‍යයාගේ නම දිග වැඩියි. අකුරු {max} ට වඩා අඩු විය යුතුයි.",
       "supervisionStatusLabel": "අධීක්ෂණ තත්ත්වය",
       "supervisionStatus": {
