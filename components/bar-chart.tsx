@@ -16,6 +16,7 @@ interface BarChartProps {
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
   xAxisLabel?: string;
   yAxisLabel?: string;
+  integerOnlyYTicks?: boolean;
 }
 
 const BarChart: React.FC<BarChartProps> = ({
@@ -26,6 +27,7 @@ const BarChart: React.FC<BarChartProps> = ({
   tickLabelFormat = 'truncate',
   xAxisLabel,
   yAxisLabel,
+  integerOnlyYTicks,
 }) => {
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
@@ -85,6 +87,7 @@ const BarChart: React.FC<BarChartProps> = ({
           legend: yAxisLabel ?? keys[0],
           legendPosition: 'middle',
           legendOffset: -50,
+          tickValues: integerOnlyYTicks ? 'every 1' : undefined
         }}
         enableLabel={false}
         labelSkipWidth={12}

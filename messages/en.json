@@ -659,6 +659,10 @@
       "welcome": "Welcome, {fullname}!",
       "userId": "User Id: {userId}",
       "roleMessage": "You logged in as {roles}",
+      "yearlyPublications": "Yearly Publications",
+      "year": "Year",
+      "count": "Count",
+      "yearlyPublicationsByType": "Yearly Publications by Type",
       "Blog": {
         "pageTitle": "Blog Dashboard",
         "title": "Blog",

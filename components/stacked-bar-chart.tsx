@@ -16,6 +16,7 @@ interface StackedBarChartProps {
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
   xAxisLabel?: string;
   yAxisLabel?: string;
+  integerOnlyYTicks?: boolean;
 }
 
 const StackedBarChart: React.FC<StackedBarChartProps> = ({
@@ -26,6 +27,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
   tickLabelFormat = 'truncate',
   xAxisLabel,
   yAxisLabel,
+  integerOnlyYTicks,
 }) => {
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
@@ -85,6 +87,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
           legend: yAxisLabel ?? keys.join(', '),
           legendPosition: 'middle',
           legendOffset: -50,
+          tickValues: integerOnlyYTicks ? 'every 1' : undefined
         }}
         enableLabel={false}
         labelSkipWidth={12}
