@@ -11,6 +11,7 @@ interface BarCardProps {
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
   xAxisLabel?: string;
   yAxisLabel?: string;
+  integerOnlyYTicks?: boolean;
 }
 
 const BarCard: React.FC<BarCardProps> = ({
@@ -20,7 +21,8 @@ const BarCard: React.FC<BarCardProps> = ({
   indexBy,
   tickLabelFormat = 'initials',
   xAxisLabel,
-  yAxisLabel
+  yAxisLabel,
+  integerOnlyYTicks,
 }) => {
   return (
     <Card className="h-100">
@@ -33,6 +35,7 @@ const BarCard: React.FC<BarCardProps> = ({
           tickLabelFormat={tickLabelFormat}
           xAxisLabel={xAxisLabel}
           yAxisLabel={yAxisLabel}
+          integerOnlyYTicks={integerOnlyYTicks}
         />
       </Card.Body>
     </Card>

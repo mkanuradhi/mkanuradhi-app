@@ -659,6 +659,10 @@
       "welcome": "{fullname}, සාදරයෙන් පිළිගනිමු!",
       "userId": "පරිශීලක හඳුනා ගැනීමේ අංකය: {userId}",
       "roleMessage": "ඔබ {roles} ලෙස පිවිසී ඇත",
+      "yearlyPublications": "වාර්ෂික ප්‍රකාශන",
+      "year": "වර්ෂය",
+      "count": "ගණන",
+      "yearlyPublicationsByType": "වර්ගය අනුව වාර්ෂික ප්‍රකාශන",
       "Blog": {
         "pageTitle": "බ්ලොග් පුවරුව",
         "title": "බ්ලොග්",

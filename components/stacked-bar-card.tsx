@@ -11,6 +11,7 @@ interface StackedBarCardProps {
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
   xAxisLabel?: string;
   yAxisLabel?: string;
+  integerOnlyYTicks?: boolean;
 }
 
 const StackedBarCard: React.FC<StackedBarCardProps> = ({
@@ -20,7 +21,8 @@ const StackedBarCard: React.FC<StackedBarCardProps> = ({
   indexBy,
   tickLabelFormat = 'initials',
   xAxisLabel,
-  yAxisLabel
+  yAxisLabel,
+  integerOnlyYTicks,
 }) => {
   return (
     <Card className="h-100">
@@ -33,6 +35,7 @@ const StackedBarCard: React.FC<StackedBarCardProps> = ({
           tickLabelFormat={tickLabelFormat}
           xAxisLabel={xAxisLabel}
           yAxisLabel={yAxisLabel}
+          integerOnlyYTicks={integerOnlyYTicks}
         />
       </Card.Body>
     </Card>

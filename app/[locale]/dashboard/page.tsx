@@ -77,10 +77,26 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
             <Row>
               <Col md={6} className="mb-3">
-                <BarCard title={"Yearly Publications"} data={yearlyPublications} keys={['count']} indexBy="year" />
+                <BarCard
+                  title={t('yearlyPublications')}
+                  data={yearlyPublications}
+                  keys={['count']}
+                  indexBy="year"
+                  xAxisLabel={t('year')}
+                  yAxisLabel={t('count')}
+                  integerOnlyYTicks={true}
+                />
               </Col>
               <Col md={6} className="mb-3">
-                <StackedBarCard title={"Yearly Publications by Type"} data={yearlyPublicationsByType} keys={Object.values(PublicationType)} indexBy="year" yAxisLabel='Count' />
+                <StackedBarCard
+                  title={t('yearlyPublicationsByType')}
+                  data={yearlyPublicationsByType}
+                  keys={Object.values(PublicationType)}
+                  indexBy="year"
+                  xAxisLabel={t('year')}
+                  yAxisLabel={t('count')}
+                  integerOnlyYTicks={true}
+                />
               </Col>
             </Row>
 
