@@ -16,6 +16,7 @@ import {
   MIN_COURSE_YEAR,
 } from '@/constants/validation-vars'
 import DeliveryMode from '@/enums/delivery-mode';
+import DegreeType from '@/enums/degree-type';
 
 export const getNewCourseEnSchema = (t: (key: string, values?: Record<string, any>) => string) => {
   return yup.object({
@@ -30,6 +31,9 @@ export const getNewCourseEnSchema = (t: (key: string, values?: Record<string, an
         (value) => value !== undefined && value.toString().length === 4
       )
       .required(t('yearRequired')),
+    degreeType: yup.string()
+      .oneOf(Object.values(DegreeType), t('degreeTypeInvalid'))
+      .required(t('degreeTypeRequired')),
     code: yup.string()
       .min(MIN_COURSE_CODE_LENGTH, t('codeTooShort', { min: MIN_COURSE_CODE_LENGTH }) )
       .max(MAX_COURSE_CODE_LENGTH, t('codeTooLong', { max: MAX_COURSE_CODE_LENGTH }) ),

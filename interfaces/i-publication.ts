@@ -37,4 +37,14 @@ interface Publication {
   v: number;
 }
 
+export interface YearlyPublicationStat {
+  year: string;
+  count: number;
+}
+
+export interface YearlyPublicationByTypeStat {
+  year: string;
+  [type: string]: number | string;
+}
+
 export default Publication;

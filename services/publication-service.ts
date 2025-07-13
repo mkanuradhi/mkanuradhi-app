@@ -1,7 +1,7 @@
 import { API_BASE_URL, PUBLICATIONS_PATH } from "@/constants/api-paths";
 import { handleApiError } from "@/errors/api-error-handler";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import Publication from "@/interfaces/i-publication";
+import Publication, { YearlyPublicationByTypeStat, YearlyPublicationStat } from "@/interfaces/i-publication";
 import axios from "axios";
 import { ActivationPublicationDto, CreatePublicationDto, UpdatePublicationDto } from "../dtos/publication-dto";
 import DocumentStatus from "@/enums/document-status";
@@ -102,6 +102,28 @@ export const updatePublication = async (publicationId: string, publicationDto: U
       `${API_BASE_URL}${PUBLICATIONS_PATH}/${publicationId}`,
       publicationDto,
       buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getYearlyPublications = async (): Promise<YearlyPublicationStat[]> => {
+  try {
+    const response = await axios.get<YearlyPublicationStat[]>(
+      `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/yearly`
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getYearlyPublicationsByType = async (): Promise<YearlyPublicationByTypeStat[]> => {
+  try {
+    const response = await axios.get<YearlyPublicationByTypeStat[]>(
+      `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/yearly-by-type`
     );
     return response.data;
   } catch (error) {

@@ -136,7 +136,7 @@
           ]
         }
       ],
-      "currentUnderGradTitle": "සිදුවෙමින් පවතින උපාධි පර්යේෂණ ව්‍යාපෘති",
+      "currentUnderGradTitle": "කරමින් පවතින උපාධි පර්යේෂණ ව්‍යාපෘති",
       "currentUnderGradProjects": [
         {
           "studentName": "E. S. Sithpahan",
@@ -149,7 +149,7 @@
           ]
         }
       ],
-      "currentPostGradTitle": "සිදුවෙමින් පවතින පශ්චාත් උපාධි පර්යේෂණ ව්‍යාපෘති",
+      "currentPostGradTitle": "කරමින් පවතින පශ්චාත් උපාධි පර්යේෂණ ව්‍යාපෘති",
       "currentPostGradProjects": [
         {
           "studentName": "S.C.M.de S Sirisuriya",
@@ -162,7 +162,7 @@
           ]
         }
       ],
-      "pastUnderGradTitle": "අධීක්ෂණය කරන ලද උපාධි අපේක්ෂක පර්යේෂණ ව්‍යාපෘති",
+      "pastUnderGradTitle": "අධීක්ෂණය කරන ලද උපාධි පර්යේෂණ ව්‍යාපෘති",
       "pastUnderGradProjects": [
         {
           "studentName": "I.M.T.P.K. Ilankoon",
@@ -249,7 +249,7 @@
           ]
         }
       ],
-      "pastPostGradTitle": "අධීක්ෂණය කරන ලද පශ්චාත් උපාධි ව්‍යාපෘති",
+      "pastPostGradTitle": "අධීක්ෂණය කරන ලද පශ්චාත් උපාධි පර්යේෂණ ව්‍යාපෘති",
       "pastPostGradProjects": [
         {
           "studentName": "P.H.H.P.N. De Silva",
@@ -966,6 +966,15 @@
     "CourseOptionsCard": {
       "read": "තව කියවන්න",
       "edit": "සංස්කරණය කරන්න",
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී (BSc)",
+        "MSC": "ශාස්ත්‍රපති (MSc)",
+        "MPHIL": "දර්ශනපති (MPhil)",
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
+      },
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",
       "delete": "මකන්න",
@@ -982,6 +991,15 @@
       "dashboard": "පාලන පුවරුව",
       "courses": "පාඨමාලා",
       "edit": "සංස්කරණ",
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී (BSc)",
+        "MSC": "ශාස්ත්‍රපති (MSc)",
+        "MPHIL": "දර්ශනපති (MPhil)",
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
+      },
       "activate": "සක්‍රිය කරන්න",
       "deactivate": "අක්‍රිය කරන්න",
       "delete": "මකන්න",
@@ -1005,6 +1023,18 @@
       "yearTooHigh": "සපයා ඇති වර්ෂය ඉතා වැඩිය. කරුණාකර {max} හෝ ඊට පෙර වසරක් ඇතුළත් කරන්න.",
       "yearInvalid": "වලංගු නොවන වසරකි. කරුණාකර වලංගු ඉලක්කම් 4ක වසරක් සපයන්න.",
       "yearRequired": "වසර අවශ්‍යයි",
+      "degreeTypeLabel": "උපාධි වර්ගය (Degree Type)",
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී (BSc)",
+        "MSC": "ශාස්ත්‍රපති (MSc)",
+        "MPHIL": "දර්ශනපති (MPhil)",
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
+      },
+      "degreeTypeInvalid": "උපාධි වර්ගය වලංගු නොවේ",
+      "degreeTypeRequired": "උපාධි වර්ගය අවශ්‍යයි.",
       "codeLabel": "පාඨමාලා කේතය (Code)",
       "codePlaceholder": "උදා: CSC 3401",
       "codeTooShort": "පාඨමාලා කේතය අක්ෂර {min} ට වඩා වැඩි විය යුතුය.",
@@ -1442,6 +1472,9 @@
       "msc": "ශාස්ත්‍රපති (MSc)",
       "mphil": "දර්ශනපති (MPhil)",
       "phd": "දර්ශනසූරී (PhD)",
+      "higher_diploma": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+      "diploma": "ඩිප්ලෝමා (Diploma)",
+      "postgraduate_diploma": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)",
       "in_progress": "සිදුවෙමින් පවතී",
       "completed": "අවසන් කළ",
       "thesisUrl": "නිබන්ධන (Thesis) වෙබ් ලිපිනය",
@@ -1463,6 +1496,9 @@
       "msc": "ශාස්ත්‍රපති (MSc)",
       "mphil": "දර්ශනපති (MPhil)",
       "phd": "දර්ශනසූරී (PhD)",
+      "higher_diploma": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+      "diploma": "ඩිප්ලෝමා (Diploma)",
+      "postgraduate_diploma": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)",
       "in_progress": "සිදුවෙමින් පවතී",
       "completed": "අවසන් කළ",
       "degree": "උපාධිය",
@@ -1500,7 +1536,10 @@
         "BSC": "විද්‍යාවේදී (BSc)",
         "MSC": "ශාස්ත්‍රපති (MSc)",
         "MPHIL": "දර්ශනපති (MPhil)",
-        "PHD": "දර්ශනසූරී (PhD)"
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
       },
       "degreeLabel": "උපාධි නාමය",
       "degreePlaceholder": "උදාහරණයක් ලෙස: BSc in Computer Science",
@@ -1563,6 +1602,7 @@
       "slidesUrlHelp": "පොදු වශයෙන් පිවිසිය හැකි නම්, පර්යේෂණයට අදාල ස්ලයිඩ් පත්‍ර වල සබැඳියක් ලබා දෙන්න.",
       "studentNameLabel": "ශිෂ්‍යයාගේ නම",
       "studentNamePlaceholder": "ශිෂ්‍යයාගේ නම ඇතුළත් කරන්න",
+      "studentNameRequired": "මෙය ඔබගේම පර්යේෂණ කාර්යයක් නොවන නිසා ශිෂ්‍යයාගේ නම අවශ්‍ය වේ.",
       "studentNameTooLong": "ශිෂ්‍යයාගේ නම දිග වැඩියි. අකුරු {max} ට වඩා අඩු විය යුතුයි.",
       "supervisionStatusLabel": "අධීක්ෂණ තත්ත්වය",
       "supervisionStatus": {
@@ -1593,6 +1633,41 @@
     "UpdateResearchFormsContainer": {
       "failResearch": "පර්යේෂණය පූරණය කිරීමේදී දෝෂයක් ඇති විය",
       "stepGeneral": "සාමාන්‍ය විස්තර සංස්කරණය කිරීම"
+    },
+    "ThesesViewer": {
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී (BSc)",
+        "MSC": "ශාස්ත්‍රපති (MSc)",
+        "MPHIL": "දර්ශනපති (MPhil)",
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
+      },
+      "abstract": "සාරාංශය",
+      "supervisors": "අධීක්ෂකවරුන්",
+      "keywords": "මූල පද",
+      "thesis": "නිබන්ධනය",
+      "github": "ගිට්හබ්",
+      "slides": "ස්ලයිඩ්ස්"
+    },
+    "ResearchViewer": {
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී (BSc)",
+        "MSC": "ශාස්ත්‍රපති (MSc)",
+        "MPHIL": "දර්ශනපති (MPhil)",
+        "PHD": "දර්ශනසූරී (PhD)",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා (Higher Diploma)",
+        "DIPLOMA": "ඩිප්ලෝමා (Diploma)",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා (Postgraduate Diploma)"
+      },
+      "studentName": "පර්යේෂක:",
+      "abstract": "සාරාංශය",
+      "supervisors": "අධීක්ෂකවරුන්",
+      "keywords": "මූල පද",
+      "thesis": "නිබන්ධනය",
+      "github": "ගිට්හබ්",
+      "slides": "ස්ලයිඩ්ස්"
     }
   },
   "contexts": {

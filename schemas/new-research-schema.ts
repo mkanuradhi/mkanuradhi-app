@@ -135,6 +135,13 @@ export const getNewResearchSchema = (t: (key: string, values?: Record<string, an
       .max(MAX_RESEARCH_TITLE_LENGTH, t('studentNameTooLong', { max: MAX_RESEARCH_TITLE_LENGTH }) )
       .transform((value, originalValue) => {
         return originalValue === '' ? undefined : value;
+      })
+      .test('studentNameRequiredIfNotMine', t('studentNameRequired'), function (value) {
+        const { isMine } = this.parent;
+        if (isMine === false) {
+          return !!value && value.trim() !== '';
+        }
+        return true;
       }),
     supervisionStatus: yup.string()
       .oneOf(Object.values(SupervisionStatus), t('supervisionStatusInvalid'))
