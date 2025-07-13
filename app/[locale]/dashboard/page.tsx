@@ -3,6 +3,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
+import BarCard from '@/components/bar-card';
+import { getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import StackedBarCard from '@/components/stacked-bar-card';
+import PublicationType from '@/enums/publication-type';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -44,6 +48,19 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   const memberRoles = sessionClaims?.metadata?.roles as Role[] || [];
 
+  const yearlyPublications = (await getYearlyPublications()).map(item => ({
+    year: `${item.year}`,
+    count: item.count,
+  }));
+
+  const yearlyPublicationsByType = (await getYearlyPublicationsByType()).map(item => {
+    const { year, ...rest } = item;
+    return {
+      year: `${year}`,
+      ...rest,
+    };
+  });
+
   return (
     <>
       <Container>
@@ -53,6 +70,20 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
             <h4>{t.rich('welcome', {fullname: user?.fullName})}</h4>
             <p>{t.rich('userId', {userId: userId})}</p>
             <p>{t.rich('roleMessage', {roles: memberRoles.join(", ")})}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+
+            <Row>
+              <Col md={6} className="mb-3">
+                <BarCard title={"Yearly Publications"} data={yearlyPublications} keys={['count']} indexBy="year" />
+              </Col>
+              <Col md={6} className="mb-3">
+                <StackedBarCard title={"Yearly Publications by Type"} data={yearlyPublicationsByType} keys={Object.values(PublicationType)} indexBy="year" yAxisLabel='Count' />
+              </Col>
+            </Row>
+
           </Col>
         </Row>
       </Container>

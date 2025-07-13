@@ -74,3 +74,20 @@ export const toInitials = (text: string, withDots: boolean = true): string => {
     return initialsArray.join('');
   }
 };
+
+export const formatChartTickLabel = (label: string, format: 'truncate' | 'initials' | 'full', maxLen: number): string => {
+  if (label.length <= maxLen || format === 'full') return label;
+
+  if (format === 'truncate') {
+    return `${label.slice(0, maxLen)}…`;
+  }
+
+  if (format === 'initials') {
+    return label
+      .split(/\s+/)
+      .map(word => word.charAt(0).toUpperCase())
+      .join('');
+  }
+
+  return label;
+};

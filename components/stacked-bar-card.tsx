@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
 import { Card } from "react-bootstrap";
-import BarChart from './bar-chart';
+import StackedBarChart from './stacked-bar-chart';
 
-interface BarCardProps {
+interface StackedBarCardProps {
   title?: string;
   data: { [key: string]: string | number }[];
   keys: string[];
@@ -13,7 +13,7 @@ interface BarCardProps {
   yAxisLabel?: string;
 }
 
-const BarCard: React.FC<BarCardProps> = ({
+const StackedBarCard: React.FC<StackedBarCardProps> = ({
   title,
   data,
   keys,
@@ -26,7 +26,7 @@ const BarCard: React.FC<BarCardProps> = ({
     <Card className="h-100">
       <Card.Body>
         {title && <Card.Title>{title}</Card.Title>}
-        <BarChart
+        <StackedBarChart
           data={data}
           keys={keys}
           indexBy={indexBy}
@@ -39,4 +39,4 @@ const BarCard: React.FC<BarCardProps> = ({
   );
 };
 
-export default BarCard;
+export default StackedBarCard;

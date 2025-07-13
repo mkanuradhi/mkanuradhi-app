@@ -6,7 +6,7 @@ import { useTheme } from '@/hooks/useTheme';
 import { useContainerWidth } from '@/hooks/use-container-width';
 import { formatChartTickLabel } from '@/utils/common-utils';
 
-interface BarChartProps {
+interface StackedBarChartProps {
   data: {
     [key: string]: string | number;
   }[];
@@ -18,7 +18,7 @@ interface BarChartProps {
   yAxisLabel?: string;
 }
 
-const BarChart: React.FC<BarChartProps> = ({
+const StackedBarChart: React.FC<StackedBarChartProps> = ({
   data,
   keys,
   indexBy,
@@ -43,13 +43,13 @@ const BarChart: React.FC<BarChartProps> = ({
     }
   }, [width]);
 
-  // Calculate tick skipping based on data length
   let skip = 1;
   if (data.length > 30) {
     skip = 5;
   } else if (data.length > 15) {
     skip = 2;
   }
+
   const tickValues = data
     .filter((_, i) => i % skip === 0)
     .map(d => d[indexBy] as string);
@@ -82,7 +82,7 @@ const BarChart: React.FC<BarChartProps> = ({
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: yAxisLabel ?? keys[0],
+          legend: yAxisLabel ?? keys.join(', '),
           legendPosition: 'middle',
           legendOffset: -50,
         }}
@@ -92,10 +92,11 @@ const BarChart: React.FC<BarChartProps> = ({
         labelTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
         animate={true}
         role="application"
-        ariaLabel="Bar chart"
+        ariaLabel="Stacked bar chart"
+        groupMode="stacked" // explicitly set to stacked
       />
     </div>
   );
 };
 
-export default BarChart;
+export default StackedBarChart;
