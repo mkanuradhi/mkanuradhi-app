@@ -1,16 +1,14 @@
 
 export const truncateText = (text: string, maxLength: number = 100, appendEllipsis: boolean = true): string => {
-  if (!text) return "";
-  if (text?.length <= maxLength) return text;
+  if (!text || text.length <= maxLength) return text;
 
-  let truncated = text.substring(0, maxLength);
-  let lastSpaceIndex = truncated.lastIndexOf(" ");
+  const truncated = text.slice(0, maxLength);
+  const lastSpace = truncated.lastIndexOf(' ');
 
-  if (lastSpaceIndex > 0) {
-    truncated = truncated.substring(0, lastSpaceIndex);
-  }
+  const result =
+    lastSpace > 0 ? truncated.slice(0, lastSpace) : truncated;
 
-  return truncated + (appendEllipsis ? " ..." : "");
+  return appendEllipsis ? `${result}…` : result;
 };
 
 export const getFormattedDate = (locale: string, dateTime: Date) => {
@@ -50,3 +48,29 @@ export const buildHeaders = (token?: string, extraHeaders?: Record<string, strin
     ...(extraHeaders ?? {}),
   },
 });
+
+export const getCssVar = (name: string): string => {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+export const toInitials = (text: string, withDots: boolean = true): string => {
+  if (!text) return '';
+
+  const normalized = String(text).normalize('NFC').trim();
+
+  if (normalized === '') return '';
+
+  const words = normalized.split(/\s+/);
+
+  const initialsArray = words
+    .map(word => word.charAt(0).toUpperCase())
+    .filter(Boolean);
+
+  if (initialsArray.length === 0) return '';
+
+  if (withDots) {
+    return `${initialsArray.join('.')}.`;
+  } else {
+    return initialsArray.join('');
+  }
+};
