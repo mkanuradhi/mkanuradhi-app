@@ -95,7 +95,7 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                   indexBy="year"
                   xAxisLabel={t('year')}
                   yAxisLabel={t('count')}
-                  integerOnlyYTicks={true}
+                  integerOnlyYTicks={false}
                 />
               </Col>
             </Row>
