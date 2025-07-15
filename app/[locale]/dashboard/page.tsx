@@ -4,9 +4,10 @@ import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
 import BarCard from '@/components/bar-card';
-import { getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import { getPublicationsByType, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
+import PieCard from '@/components/pie-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -61,6 +62,12 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     };
   });
 
+  const publicationsByType = (await getPublicationsByType()).map(item => ({
+    id: item.type,
+    value: item.count,
+    label: t(`publicationType.${item.type}`),
+  }));
+
   return (
     <>
       <Container>
@@ -96,6 +103,13 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                   xAxisLabel={t('year')}
                   yAxisLabel={t('count')}
                   integerOnlyYTicks={false}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <PieCard
+                  title={t('publicationsByType')}
+                  data={publicationsByType}
+                  innerRadius={0.5}
                 />
               </Col>
             </Row>

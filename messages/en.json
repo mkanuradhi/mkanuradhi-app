@@ -663,6 +663,12 @@
       "year": "Year",
       "count": "Count",
       "yearlyPublicationsByType": "Yearly Publications by Type",
+      "publicationsByType": "Publications by Type",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "JOURNAL ARTICLE",
+        "BOOK_CHAPTER": "BOOK CHAPTER",
+        "CONFERENCE_PROCEEDING": "CONFERENCE PROCEEDING"
+      },
       "Blog": {
         "pageTitle": "Blog Dashboard",
         "title": "Blog",
