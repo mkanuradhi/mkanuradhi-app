@@ -57,7 +57,7 @@ const BarChart: React.FC<BarChartProps> = ({
     .map(d => d[indexBy] as string);
 
   return (
-    <div ref={ref} style={{ height: 400, width: '100%' }}>
+    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
       <ResponsiveBar
         data={data}
         keys={keys}

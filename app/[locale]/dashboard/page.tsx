@@ -49,9 +49,12 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   const memberRoles = sessionClaims?.metadata?.roles as Role[] || [];
 
+  const countLabel = t('count');
+  const yearLabel = t('year');
+
   const yearlyPublications = (await getYearlyPublications()).map(item => ({
     year: `${item.year}`,
-    count: item.count,
+    [countLabel]: item.count,
   }));
 
   const yearlyPublicationsByType = (await getYearlyPublicationsByType()).map(item => {
@@ -63,10 +66,29 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   });
 
   const publicationsByType = (await getPublicationsByType()).map(item => ({
-    id: item.type,
+    id: t(`publicationType.${item.type}`),
     value: item.count,
-    label: t(`publicationType.${item.type}`),
   }));
+
+  const translatedPublicationTypes = Object.fromEntries(
+    Object.values(PublicationType).map(key => [key, t(`publicationType.${key}`)])
+  );
+
+  const translatedYearlyPublicationsByType = yearlyPublicationsByType.map(item => {
+    const { year, ...rest } = item;
+
+    const localizedEntry = Object.fromEntries(
+      Object.entries(rest).map(([key, value]) => [
+        translatedPublicationTypes[key], // localize the key
+        value,
+      ])
+    );
+
+    return {
+      year: `${year}`,
+      ...localizedEntry,
+    };
+  });
 
   return (
     <>
@@ -87,21 +109,21 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                 <BarCard
                   title={t('yearlyPublications')}
                   data={yearlyPublications}
-                  keys={['count']}
+                  keys={[countLabel]}
                   indexBy="year"
-                  xAxisLabel={t('year')}
-                  yAxisLabel={t('count')}
+                  xAxisLabel={yearLabel}
+                  yAxisLabel={countLabel}
                   integerOnlyYTicks={true}
                 />
               </Col>
               <Col md={6} className="mb-3">
                 <StackedBarCard
                   title={t('yearlyPublicationsByType')}
-                  data={yearlyPublicationsByType}
-                  keys={Object.values(PublicationType)}
+                  data={translatedYearlyPublicationsByType}
+                  keys={Object.values(translatedPublicationTypes)}
                   indexBy="year"
-                  xAxisLabel={t('year')}
-                  yAxisLabel={t('count')}
+                  xAxisLabel={yearLabel}
+                  yAxisLabel={countLabel}
                   integerOnlyYTicks={false}
                 />
               </Col>

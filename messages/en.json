@@ -665,9 +665,9 @@
       "yearlyPublicationsByType": "Yearly Publications by Type",
       "publicationsByType": "Publications by Type",
       "publicationType": {
-        "JOURNAL_ARTICLE": "JOURNAL ARTICLE",
-        "BOOK_CHAPTER": "BOOK CHAPTER",
-        "CONFERENCE_PROCEEDING": "CONFERENCE PROCEEDING"
+        "JOURNAL_ARTICLE": "Journal Article",
+        "BOOK_CHAPTER": "Book Chapter",
+        "CONFERENCE_PROCEEDING": "Conference Proceeding"
       },
       "Blog": {
         "pageTitle": "Blog Dashboard",

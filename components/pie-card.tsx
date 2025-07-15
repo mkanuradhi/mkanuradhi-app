@@ -19,7 +19,7 @@ const PieCard: React.FC<PieCardProps> = ({
   return (
     <Card className="h-100">
       <Card.Body>
-        {title && <Card.Title>{title}</Card.Title>}
+        {title && <Card.Title className="text-center">{title}</Card.Title>}
         <PieChart
           data={data}
           innerRadius={innerRadius}

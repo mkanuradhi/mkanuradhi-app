@@ -57,7 +57,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
     .map(d => d[indexBy] as string);
 
   return (
-    <div ref={ref} style={{ height: 400, width: '100%' }}>
+    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
       <ResponsiveBar
         data={data}
         keys={keys}
@@ -102,7 +102,8 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
                 translateY: 0,
                 itemsSpacing: 3,
                 itemWidth: 100,
-                itemHeight: 25
+                itemHeight: 25,
+                symbolShape: 'circle',
             }
           ]
         }
