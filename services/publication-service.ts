@@ -141,3 +141,19 @@ export const getPublicationsByType = async (): Promise<PublicationByTypeStat[]> 
     throw handleApiError(error);
   }
 };
+
+export const getRecentPublications = async (limit: number): Promise<Publication[]> => {
+  try {
+    const response = await axios.get<Publication[]>(
+      `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/recent`,
+      {
+        params: {
+          limit,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};

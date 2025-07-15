@@ -669,6 +669,7 @@
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
         "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
       },
+      "recentPublications": "මෑතකාලීන ප්‍රකාශන",
       "Blog": {
         "pageTitle": "බ්ලොග් පුවරුව",
         "title": "බ්ලොග්",
@@ -1678,6 +1679,14 @@
       "thesis": "නිබන්ධනය",
       "github": "ගිට්හබ්",
       "slides": "ස්ලයිඩ්ස්"
+    },
+    "RecentPublicationCard": {
+      "noPublications": "මෑතකාලීන ප්‍රකාශන නැත",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "සඟරා ලිපි",
+        "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
+      }
     }
   },
   "contexts": {

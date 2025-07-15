@@ -669,6 +669,7 @@
         "BOOK_CHAPTER": "Book Chapter",
         "CONFERENCE_PROCEEDING": "Conference Proceeding"
       },
+      "recentPublications": "Recent Publications",
       "Blog": {
         "pageTitle": "Blog Dashboard",
         "title": "Blog",
@@ -1678,6 +1679,14 @@
       "thesis": "Thesis",
       "github": "Github",
       "slides": "Slides"
+    },
+    "RecentPublicationCard": {
+      "noPublications": "No recent publications",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "Journal Article",
+        "BOOK_CHAPTER": "Book Chapter",
+        "CONFERENCE_PROCEEDING": "Conference Proceeding"
+      }
     }
   },
   "contexts": {
