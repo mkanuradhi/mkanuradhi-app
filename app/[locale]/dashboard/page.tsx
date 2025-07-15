@@ -4,9 +4,11 @@ import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
 import BarCard from '@/components/bar-card';
-import { getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import { getPublicationsByType, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
+import PieCard from '@/components/pie-card';
+import RecentPublicationCard from '@/components/recent-publication-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -48,9 +50,12 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   const memberRoles = sessionClaims?.metadata?.roles as Role[] || [];
 
+  const countLabel = t('count');
+  const yearLabel = t('year');
+
   const yearlyPublications = (await getYearlyPublications()).map(item => ({
     year: `${item.year}`,
-    count: item.count,
+    [countLabel]: item.count,
   }));
 
   const yearlyPublicationsByType = (await getYearlyPublicationsByType()).map(item => {
@@ -60,6 +65,33 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
       ...rest,
     };
   });
+
+  const publicationsByType = (await getPublicationsByType()).map(item => ({
+    id: t(`publicationType.${item.type}`),
+    value: item.count,
+  }));
+
+  const translatedPublicationTypes = Object.fromEntries(
+    Object.values(PublicationType).map(key => [key, t(`publicationType.${key}`)])
+  );
+
+  const translatedYearlyPublicationsByType = yearlyPublicationsByType.map(item => {
+    const { year, ...rest } = item;
+
+    const localizedEntry = Object.fromEntries(
+      Object.entries(rest).map(([key, value]) => [
+        translatedPublicationTypes[key], // localize the key
+        value,
+      ])
+    );
+
+    return {
+      year: `${year}`,
+      ...localizedEntry,
+    };
+  });
+
+  const recentPublications = await getRecentPublications(5);
 
   return (
     <>
@@ -80,22 +112,35 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                 <BarCard
                   title={t('yearlyPublications')}
                   data={yearlyPublications}
-                  keys={['count']}
+                  keys={[countLabel]}
                   indexBy="year"
-                  xAxisLabel={t('year')}
-                  yAxisLabel={t('count')}
+                  xAxisLabel={yearLabel}
+                  yAxisLabel={countLabel}
                   integerOnlyYTicks={true}
                 />
               </Col>
               <Col md={6} className="mb-3">
                 <StackedBarCard
                   title={t('yearlyPublicationsByType')}
-                  data={yearlyPublicationsByType}
-                  keys={Object.values(PublicationType)}
+                  data={translatedYearlyPublicationsByType}
+                  keys={Object.values(translatedPublicationTypes)}
                   indexBy="year"
-                  xAxisLabel={t('year')}
-                  yAxisLabel={t('count')}
-                  integerOnlyYTicks={true}
+                  xAxisLabel={yearLabel}
+                  yAxisLabel={countLabel}
+                  integerOnlyYTicks={false}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <PieCard
+                  title={t('publicationsByType')}
+                  data={publicationsByType}
+                  innerRadius={0.5}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <RecentPublicationCard
+                  title={t('recentPublications')}
+                  publications={recentPublications}
                 />
               </Col>
             </Row>

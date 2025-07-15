@@ -27,7 +27,7 @@ const StackedBarCard: React.FC<StackedBarCardProps> = ({
   return (
     <Card className="h-100">
       <Card.Body>
-        {title && <Card.Title>{title}</Card.Title>}
+        {title && <Card.Title className="text-center">{title}</Card.Title>}
         <StackedBarChart
           data={data}
           keys={keys}

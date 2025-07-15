@@ -27,7 +27,7 @@ const BarCard: React.FC<BarCardProps> = ({
   return (
     <Card className="h-100">
       <Card.Body>
-        {title && <Card.Title>{title}</Card.Title>}
+        {title && <Card.Title className="text-center">{title}</Card.Title>}
         <BarChart
           data={data}
           keys={keys}

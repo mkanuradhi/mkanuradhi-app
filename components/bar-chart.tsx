@@ -57,7 +57,7 @@ const BarChart: React.FC<BarChartProps> = ({
     .map(d => d[indexBy] as string);
 
   return (
-    <div ref={ref} style={{ height: 400, width: '100%' }}>
+    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
       <ResponsiveBar
         data={data}
         keys={keys}
@@ -65,7 +65,7 @@ const BarChart: React.FC<BarChartProps> = ({
         theme={nivoTheme}
         margin={{ top: 30, right: 30, bottom: 50, left: 60 }}
         padding={0.3}
-        colors={{ scheme: 'nivo' }}
+        colors={{ scheme: 'tableau10' }}
         borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
         axisBottom={{
           tickSize: 5,
@@ -87,12 +87,11 @@ const BarChart: React.FC<BarChartProps> = ({
           legend: yAxisLabel ?? keys[0],
           legendPosition: 'middle',
           legendOffset: -50,
-          tickValues: integerOnlyYTicks ? 'every 1' : undefined
+          format: integerOnlyYTicks
+            ? (value) => (Number.isInteger(value) ? value : '')
+            : undefined,
         }}
-        enableLabel={false}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
+        enableLabel={false} // disable the number on the bar
         animate={true}
         role="application"
         ariaLabel="Bar chart"
