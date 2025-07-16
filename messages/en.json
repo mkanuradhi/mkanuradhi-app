@@ -669,6 +669,7 @@
         "BOOK_CHAPTER": "Book Chapter",
         "CONFERENCE_PROCEEDING": "Conference Proceeding"
       },
+      "allPublications": "All Publications",
       "recentPublications": "Recent Publications",
       "Blog": {
         "pageTitle": "Blog Dashboard",

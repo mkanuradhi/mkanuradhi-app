@@ -1,48 +1,55 @@
 "use client";
 import React from 'react';
 import { Card } from "react-bootstrap";
-import BarChart from './bar-chart';
+import LineChart from './line-chart';
 
-interface BarCardProps {
+interface SeriesPoint {
+  x: string | number;
+  y: number;
+}
+
+interface Series {
+  id: string; // legend label
+  data: SeriesPoint[];
+}
+
+interface LineCardProps {
   title?: string;
-  data: { [key: string]: string | number }[];
-  keys: string[];
-  indexBy: string;
+  data: Series[];
   maxTickLabelLength?: number;
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
   xAxisLabel?: string;
   yAxisLabel?: string;
   integerOnlyYTicks?: boolean;
+  showArea?: boolean;
 }
 
-const BarCard: React.FC<BarCardProps> = ({
+const LineCard: React.FC<LineCardProps> = ({
   title,
   data,
-  keys,
-  indexBy,
   maxTickLabelLength = 6,
-  tickLabelFormat = 'initials',
+  tickLabelFormat = 'truncate',
   xAxisLabel,
   yAxisLabel,
   integerOnlyYTicks,
+  showArea,
 }) => {
   return (
     <Card className="h-100">
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        <BarChart
+        <LineChart
           data={data}
-          keys={keys}
-          indexBy={indexBy}
           maxTickLabelLength={maxTickLabelLength}
           tickLabelFormat={tickLabelFormat}
           xAxisLabel={xAxisLabel}
           yAxisLabel={yAxisLabel}
           integerOnlyYTicks={integerOnlyYTicks}
+          showArea={showArea}
         />
       </Card.Body>
     </Card>
   );
 };
 
-export default BarCard;
+export default LineCard;

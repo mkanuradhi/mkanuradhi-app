@@ -1,7 +1,7 @@
 import { API_BASE_URL, PUBLICATIONS_PATH } from "@/constants/api-paths";
 import { handleApiError } from "@/errors/api-error-handler";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import Publication, { PublicationByTypeStat, YearlyPublicationByTypeStat, YearlyPublicationStat } from "@/interfaces/i-publication";
+import Publication, { PublicationByTypeStat, PublicationKeywordFrequencyStat, YearlyPublicationByTypeStat, YearlyPublicationStat } from "@/interfaces/i-publication";
 import axios from "axios";
 import { ActivationPublicationDto, CreatePublicationDto, UpdatePublicationDto } from "../dtos/publication-dto";
 import DocumentStatus from "@/enums/document-status";
@@ -151,6 +151,17 @@ export const getRecentPublications = async (limit: number): Promise<Publication[
           limit,
         },
       }
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getPublicationKeywordFrequencies = async (): Promise<PublicationKeywordFrequencyStat[]> => {
+  try {
+    const response = await axios.get<PublicationKeywordFrequencyStat[]>(
+      `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/keywords`
     );
     return response.data;
   } catch (error) {
