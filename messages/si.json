@@ -669,6 +669,7 @@
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
         "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
       },
+      "allPublications": "සියලුම ප්‍රකාශන",
       "recentPublications": "මෑතකාලීන ප්‍රකාශන",
       "Blog": {
         "pageTitle": "බ්ලොග් පුවරුව",

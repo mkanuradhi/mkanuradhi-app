@@ -9,6 +9,7 @@ import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
 import PieCard from '@/components/pie-card';
 import RecentPublicationCard from '@/components/recent-publication-card';
+import LineCard from '@/components/line-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -53,10 +54,19 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   const countLabel = t('count');
   const yearLabel = t('year');
 
-  const yearlyPublications = (await getYearlyPublications()).map(item => ({
+  const yearlyPublications = await getYearlyPublications();
+
+  const translatedYearlyPublicationsBar = yearlyPublications.map(item => ({
     year: `${item.year}`,
     [countLabel]: item.count,
   }));
+
+  const translatedYearlyPublicationsLine = [
+  {
+    id: t('allPublications'),
+    data: yearlyPublications.map(item => ({ x: `${item.year}`, y: item.count })),
+  },
+];
 
   const yearlyPublicationsByType = (await getYearlyPublicationsByType()).map(item => {
     const { year, ...rest } = item;
@@ -100,23 +110,30 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
           <Col>
             <h1>{t('title')}</h1>
             <h4>{t.rich('welcome', {fullname: user?.fullName})}</h4>
-            <p>{t.rich('userId', {userId: userId})}</p>
-            <p>{t.rich('roleMessage', {roles: memberRoles.join(", ")})}</p>
           </Col>
         </Row>
         <Row>
           <Col>
 
             <Row>
-              <Col md={6} className="mb-3">
+              {/* <Col md={6} className="mb-3">
                 <BarCard
                   title={t('yearlyPublications')}
-                  data={yearlyPublications}
+                  data={translatedYearlyPublicationsBar}
                   keys={[countLabel]}
                   indexBy="year"
                   xAxisLabel={yearLabel}
                   yAxisLabel={countLabel}
                   integerOnlyYTicks={true}
+                />
+              </Col> */}
+              <Col md={6} className="mb-3">
+                <LineCard
+                  title={t('yearlyPublications')}
+                  data={translatedYearlyPublicationsLine}
+                  xAxisLabel={yearLabel}
+                  yAxisLabel={countLabel}
+                  integerOnlyYTicks={false}
                 />
               </Col>
               <Col md={6} className="mb-3">
@@ -145,6 +162,14 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
               </Col>
             </Row>
 
+          </Col>
+        </Row>
+        <Row>
+          <Col md={8}>
+            <small>{t.rich('userId', {userId: userId})}</small>
+          </Col>
+          <Col>
+            <small>{t.rich('roleMessage', {roles: memberRoles.join(", ")})}</small>
           </Col>
         </Row>
       </Container>
