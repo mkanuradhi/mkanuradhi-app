@@ -4,12 +4,13 @@ import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
 import BarCard from '@/components/bar-card';
-import { getPublicationsByType, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import { getPublicationKeywordFrequencies, getPublicationsByType, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
 import PieCard from '@/components/pie-card';
 import RecentPublicationCard from '@/components/recent-publication-card';
 import LineCard from '@/components/line-card';
+import WordCloudCard from '@/components/word-cloud-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -103,6 +104,13 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   const recentPublications = await getRecentPublications(5);
 
+  const publicationKeywords = await getPublicationKeywordFrequencies();
+
+  const translatedPublicationKeywords = publicationKeywords.map(item => ({
+    text: `${item.keyword}`,
+    value: item.count,
+  }));
+
   return (
     <>
       <Container>
@@ -158,6 +166,12 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                 <RecentPublicationCard
                   title={t('recentPublications')}
                   publications={recentPublications}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <WordCloudCard
+                  title={t('recentPublications')}
+                  data={translatedPublicationKeywords}
                 />
               </Col>
             </Row>

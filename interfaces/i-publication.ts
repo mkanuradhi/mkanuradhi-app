@@ -52,4 +52,9 @@ export interface PublicationByTypeStat {
   count: number;
 }
 
+export interface PublicationKeywordFrequencyStat {
+  keyword: string;
+  count: number;
+}
+
 export default Publication;
