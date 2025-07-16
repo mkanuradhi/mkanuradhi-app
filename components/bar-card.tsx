@@ -8,6 +8,7 @@ interface BarCardProps {
   data: { [key: string]: string | number }[];
   keys: string[];
   indexBy: string;
+  maxTickLabelLength?: number;
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
   xAxisLabel?: string;
   yAxisLabel?: string;
@@ -19,6 +20,7 @@ const BarCard: React.FC<BarCardProps> = ({
   data,
   keys,
   indexBy,
+  maxTickLabelLength = 6,
   tickLabelFormat = 'initials',
   xAxisLabel,
   yAxisLabel,
@@ -32,6 +34,7 @@ const BarCard: React.FC<BarCardProps> = ({
           data={data}
           keys={keys}
           indexBy={indexBy}
+          maxTickLabelLength={maxTickLabelLength}
           tickLabelFormat={tickLabelFormat}
           xAxisLabel={xAxisLabel}
           yAxisLabel={yAxisLabel}

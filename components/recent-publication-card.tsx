@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Badge, Card, ListGroup } from "react-bootstrap";
+import { Badge, Card } from "react-bootstrap";
 import Publication from '@/interfaces/i-publication';
 import PublicationType from '@/enums/publication-type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
