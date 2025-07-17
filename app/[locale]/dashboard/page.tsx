@@ -170,7 +170,7 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
               </Col>
               <Col md={6} className="mb-3">
                 <WordCloudCard
-                  title={t('recentPublications')}
+                  title={t('publicationKeywordCloud')}
                   data={translatedPublicationKeywords}
                 />
               </Col>
@@ -180,10 +180,20 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
         </Row>
         <Row>
           <Col md={8}>
-            <small>{t.rich('userId', {userId: userId})}</small>
+            <small>
+              {t.rich('userIdMessage', {
+                userId,
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </small>
           </Col>
           <Col>
-            <small>{t.rich('roleMessage', {roles: memberRoles.join(", ")})}</small>
+            <small>
+              {t.rich('roleMessage', {
+                roles: memberRoles.join(", "),
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </small>
           </Col>
         </Row>
       </Container>

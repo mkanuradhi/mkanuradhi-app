@@ -657,8 +657,8 @@
       "pageKeywords": "dashboard, control panel",
       "title": "Dashboard",
       "welcome": "Welcome, {fullname}!",
-      "userId": "User Id: {userId}",
-      "roleMessage": "You logged in as {roles}",
+      "userIdMessage": "User Id: <strong>{userId}</strong>",
+      "roleMessage": "You logged in as <strong>{roles}</strong>",
       "yearlyPublications": "Yearly Publications",
       "year": "Year",
       "count": "Count",
@@ -671,6 +671,7 @@
       },
       "allPublications": "All Publications",
       "recentPublications": "Recent Publications",
+      "publicationKeywordCloud": "My Publications, in Words",
       "Blog": {
         "pageTitle": "Blog Dashboard",
         "title": "Blog",
