@@ -1,11 +1,12 @@
 import { API_BASE_URL, PUBLICATIONS_PATH } from "@/constants/api-paths";
 import { handleApiError } from "@/errors/api-error-handler";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import Publication, { PublicationByTypeStat, PublicationKeywordFrequencyStat, YearlyPublicationByTypeStat, YearlyPublicationStat } from "@/interfaces/i-publication";
+import Publication from "@/interfaces/i-publication";
 import axios from "axios";
 import { ActivationPublicationDto, CreatePublicationDto, UpdatePublicationDto } from "../dtos/publication-dto";
 import DocumentStatus from "@/enums/document-status";
 import { buildHeaders } from "@/utils/common-utils";
+import { LabelValueStat, YearlyGroupStat } from "@/interfaces/i-stat";
 
 
 export const getPublications = async (page: number, size: number): Promise<PaginatedResult<Publication>> => {
@@ -109,9 +110,9 @@ export const updatePublication = async (publicationId: string, publicationDto: U
   }
 };
 
-export const getYearlyPublications = async (): Promise<YearlyPublicationStat[]> => {
+export const getYearlyPublications = async (): Promise<LabelValueStat[]> => {
   try {
-    const response = await axios.get<YearlyPublicationStat[]>(
+    const response = await axios.get<LabelValueStat[]>(
       `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/yearly`
     );
     return response.data;
@@ -120,9 +121,9 @@ export const getYearlyPublications = async (): Promise<YearlyPublicationStat[]> 
   }
 };
 
-export const getYearlyPublicationsByType = async (): Promise<YearlyPublicationByTypeStat[]> => {
+export const getYearlyPublicationsByType = async (): Promise<YearlyGroupStat[]> => {
   try {
-    const response = await axios.get<YearlyPublicationByTypeStat[]>(
+    const response = await axios.get<YearlyGroupStat[]>(
       `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/yearly-by-type`
     );
     return response.data;
@@ -131,9 +132,9 @@ export const getYearlyPublicationsByType = async (): Promise<YearlyPublicationBy
   }
 };
 
-export const getPublicationsByType = async (): Promise<PublicationByTypeStat[]> => {
+export const getPublicationsByType = async (): Promise<LabelValueStat[]> => {
   try {
-    const response = await axios.get<PublicationByTypeStat[]>(
+    const response = await axios.get<LabelValueStat[]>(
       `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/by-type`
     );
     return response.data;
@@ -158,9 +159,9 @@ export const getRecentPublications = async (limit: number): Promise<Publication[
   }
 };
 
-export const getPublicationKeywordFrequencies = async (): Promise<PublicationKeywordFrequencyStat[]> => {
+export const getPublicationKeywordFrequencies = async (): Promise<LabelValueStat[]> => {
   try {
-    const response = await axios.get<PublicationKeywordFrequencyStat[]>(
+    const response = await axios.get<LabelValueStat[]>(
       `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/keywords`
     );
     return response.data;

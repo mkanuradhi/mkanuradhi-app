@@ -58,14 +58,14 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   const yearlyPublications = await getYearlyPublications();
 
   const translatedYearlyPublicationsBar = yearlyPublications.map(item => ({
-    year: `${item.year}`,
-    [countLabel]: item.count,
+    year: `${item.label}`,
+    [countLabel]: item.value,
   }));
 
   const translatedYearlyPublicationsLine = [
   {
     id: t('allPublications'),
-    data: yearlyPublications.map(item => ({ x: `${item.year}`, y: item.count })),
+    data: yearlyPublications.map(item => ({ x: `${item.label}`, y: item.value })),
   },
 ];
 
@@ -78,8 +78,8 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   });
 
   const publicationsByType = (await getPublicationsByType()).map(item => ({
-    id: t(`publicationType.${item.type}`),
-    value: item.count,
+    id: t(`publicationType.${item.label}`),
+    value: item.value,
   }));
 
   const translatedPublicationTypes = Object.fromEntries(
@@ -107,8 +107,8 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   const publicationKeywords = await getPublicationKeywordFrequencies();
 
   const translatedPublicationKeywords = publicationKeywords.map(item => ({
-    text: `${item.keyword}`,
-    value: item.count,
+    text: `${item.label}`,
+    value: item.value,
   }));
 
   return (
