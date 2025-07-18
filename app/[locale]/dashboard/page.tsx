@@ -12,6 +12,8 @@ import RecentPublicationCard from '@/components/recent-publication-card';
 import LineCard from '@/components/line-card';
 import WordCloudCard from '@/components/word-cloud-card';
 import PublicationSummaryCard from '@/components/publication-summary-card';
+import { getResearchSummary } from '@/services/research-service';
+import ResearchSummaryCard from '@/components/research-summary-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -114,6 +116,8 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   const publicationSummary = await getPublicationSummary();
 
+  const researchSummary = await getResearchSummary();
+
   return (
     <>
       <Container>
@@ -129,6 +133,9 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
             <Row>
               <Col md={4} className="mb-3">
                 <PublicationSummaryCard summary={publicationSummary} />
+              </Col>
+              <Col md={4} className="mb-3">
+                <ResearchSummaryCard summary={researchSummary} />
               </Col>
               {/* <Col md={6} className="mb-3">
                 <BarCard

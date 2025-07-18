@@ -1697,6 +1697,18 @@
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
         "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
       }
+    },
+    "ResearchSummaryCard": {
+      "title": "පර්යේෂණ",
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී",
+        "MSC": "ශාස්ත්‍රපති",
+        "MPHIL": "දර්ශනපති",
+        "PHD": "දර්ශනසූරී",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා",
+        "DIPLOMA": "ඩිප්ලෝමා",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා"
+      }
     }
   },
   "contexts": {

@@ -1697,6 +1697,18 @@
         "BOOK_CHAPTER": "Book Chapters",
         "CONFERENCE_PROCEEDING": "Conference Proceedings"
       }
+    },
+    "ResearchSummaryCard": {
+      "title": "Research",
+      "degreeType": {
+        "BSC": "BSc",
+        "MSC": "MSc",
+        "MPHIL": "MPhil",
+        "PHD": "PhD",
+        "HIGHER_DIPLOMA": "Higher Diploma",
+        "DIPLOMA": "Diploma",
+        "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
+      }
     }
   },
   "contexts": {
