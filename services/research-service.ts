@@ -4,6 +4,7 @@ import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import Research from "@/interfaces/i-research";
+import { SummaryStat } from "@/interfaces/i-stat";
 import { buildHeaders } from "@/utils/common-utils";
 import axios from "axios";
 
@@ -92,6 +93,17 @@ export const updateResearch = async (researchId: string, researchDto: UpdateRese
       `${API_BASE_URL}${RESEARCH_PATH}/${researchId}`,
       researchDto,
       buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getResearchSummary = async (): Promise<SummaryStat> => {
+  try {
+    const response = await axios.get<SummaryStat>(
+      `${API_BASE_URL}${RESEARCH_PATH}/stats/summary`
     );
     return response.data;
   } catch (error) {

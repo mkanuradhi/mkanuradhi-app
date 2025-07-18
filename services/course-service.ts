@@ -5,6 +5,7 @@ import { handleApiError } from "@/errors/api-error-handler";
 import Course from "@/interfaces/i-course";
 import CourseView from "@/interfaces/i-course-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
+import { SummaryStat } from "@/interfaces/i-stat";
 import { buildHeaders } from "@/utils/common-utils";
 import axios from "axios";
 
@@ -135,6 +136,17 @@ export const updateCourseEn = async (id: string, courseEnDto: UpdateCourseEnDto,
       `${API_BASE_URL}${COURSES_PATH}/${id}/en`,
       courseEnDto,
       buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getCourseSummary = async (): Promise<SummaryStat> => {
+  try {
+    const response = await axios.get<SummaryStat>(
+      `${API_BASE_URL}${COURSES_PATH}/stats/summary`
     );
     return response.data;
   } catch (error) {

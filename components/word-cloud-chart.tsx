@@ -1,8 +1,6 @@
 'use client';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { useNivoTheme } from '@/hooks/use-nivo-theme';
-import { useTheme } from '@/hooks/useTheme';
 import { useContainerWidth } from '@/hooks/use-container-width';
 const ReactD3WordCloud = dynamic(() => import('react-d3-cloud'), { ssr: false, });
 
@@ -14,13 +12,16 @@ interface WordCloudChartProps {
   newTab?: boolean;
 }
 
+export const randomRotate = () => {
+  const angles = [-75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75];
+  return angles[Math.floor(Math.random() * angles.length)];
+};
+
 const WordCloudChart: React.FC<WordCloudChartProps> = ({
   data,
   hrefBase = 'https://www.google.com/search?q=',
   newTab = true,
 }) => {
-  const { theme } = useTheme();
-  const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const WordCloudChart: React.FC<WordCloudChartProps> = ({
           font="Times"
           fontSize={(word) => 14 + Math.log2(word.value) * 6}
           spiral="rectangular"
-          rotate={() => ~~(Math.random() * 2) * 90}     /* 0° or 90° */
+          rotate={randomRotate}
           padding={3}
           onWordMouseOver={(e) =>
             ((e.target as SVGTextElement).style.cursor = 'pointer')

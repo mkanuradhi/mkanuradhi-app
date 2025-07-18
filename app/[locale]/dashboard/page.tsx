@@ -3,14 +3,18 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
-import BarCard from '@/components/bar-card';
-import { getPublicationKeywordFrequencies, getPublicationsByType, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import { getPublicationKeywordFrequencies, getPublicationsByType, getPublicationSummary, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
 import PieCard from '@/components/pie-card';
 import RecentPublicationCard from '@/components/recent-publication-card';
 import LineCard from '@/components/line-card';
 import WordCloudCard from '@/components/word-cloud-card';
+import PublicationSummaryCard from '@/components/publication-summary-card';
+import { getResearchSummary } from '@/services/research-service';
+import ResearchSummaryCard from '@/components/research-summary-card';
+import { getCourseSummary } from '@/services/course-service';
+import CourseSummaryCard from '@/components/course-summary-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -58,16 +62,16 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   const yearlyPublications = await getYearlyPublications();
 
   const translatedYearlyPublicationsBar = yearlyPublications.map(item => ({
-    year: `${item.year}`,
-    [countLabel]: item.count,
+    year: `${item.label}`,
+    [countLabel]: item.value,
   }));
 
   const translatedYearlyPublicationsLine = [
-  {
-    id: t('allPublications'),
-    data: yearlyPublications.map(item => ({ x: `${item.year}`, y: item.count })),
-  },
-];
+    {
+      id: t('allPublications'),
+      data: yearlyPublications.map(item => ({ x: `${item.label}`, y: item.value })),
+    },
+  ];
 
   const yearlyPublicationsByType = (await getYearlyPublicationsByType()).map(item => {
     const { year, ...rest } = item;
@@ -78,8 +82,8 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   });
 
   const publicationsByType = (await getPublicationsByType()).map(item => ({
-    id: t(`publicationType.${item.type}`),
-    value: item.count,
+    id: t(`publicationType.${item.label}`),
+    value: item.value,
   }));
 
   const translatedPublicationTypes = Object.fromEntries(
@@ -107,9 +111,15 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   const publicationKeywords = await getPublicationKeywordFrequencies();
 
   const translatedPublicationKeywords = publicationKeywords.map(item => ({
-    text: `${item.keyword}`,
-    value: item.count,
+    text: `${item.label}`,
+    value: item.value,
   }));
+
+  const publicationSummary = await getPublicationSummary();
+
+  const researchSummary = await getResearchSummary();
+
+  const courseSummary = await getCourseSummary();
 
   return (
     <>
@@ -124,17 +134,15 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
           <Col>
 
             <Row>
-              {/* <Col md={6} className="mb-3">
-                <BarCard
-                  title={t('yearlyPublications')}
-                  data={translatedYearlyPublicationsBar}
-                  keys={[countLabel]}
-                  indexBy="year"
-                  xAxisLabel={yearLabel}
-                  yAxisLabel={countLabel}
-                  integerOnlyYTicks={true}
-                />
-              </Col> */}
+              <Col md={4} className="mb-3">
+                <PublicationSummaryCard summary={publicationSummary} />
+              </Col>
+              <Col md={4} className="mb-3">
+                <ResearchSummaryCard summary={researchSummary} />
+              </Col>
+              <Col md={4} className="mb-3">
+                <CourseSummaryCard summary={courseSummary} />
+              </Col>
               <Col md={6} className="mb-3">
                 <LineCard
                   title={t('yearlyPublications')}
@@ -170,7 +178,7 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
               </Col>
               <Col md={6} className="mb-3">
                 <WordCloudCard
-                  title={t('recentPublications')}
+                  title={t('publicationKeywordCloud')}
                   data={translatedPublicationKeywords}
                 />
               </Col>
@@ -180,10 +188,20 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
         </Row>
         <Row>
           <Col md={8}>
-            <small>{t.rich('userId', {userId: userId})}</small>
+            <small>
+              {t.rich('userIdMessage', {
+                userId,
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </small>
           </Col>
           <Col>
-            <small>{t.rich('roleMessage', {roles: memberRoles.join(", ")})}</small>
+            <small>
+              {t.rich('roleMessage', {
+                roles: memberRoles.join(", "),
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </small>
           </Col>
         </Row>
       </Container>

@@ -657,8 +657,8 @@
       "pageKeywords": "dashboard, control panel",
       "title": "Dashboard",
       "welcome": "Welcome, {fullname}!",
-      "userId": "User Id: {userId}",
-      "roleMessage": "You logged in as {roles}",
+      "userIdMessage": "User Id: <strong>{userId}</strong>",
+      "roleMessage": "You logged in as <strong>{roles}</strong>",
       "yearlyPublications": "Yearly Publications",
       "year": "Year",
       "count": "Count",
@@ -671,6 +671,7 @@
       },
       "allPublications": "All Publications",
       "recentPublications": "Recent Publications",
+      "publicationKeywordCloud": "My Publications, in Words",
       "Blog": {
         "pageTitle": "Blog Dashboard",
         "title": "Blog",
@@ -1687,6 +1688,38 @@
         "JOURNAL_ARTICLE": "Journal Article",
         "BOOK_CHAPTER": "Book Chapter",
         "CONFERENCE_PROCEEDING": "Conference Proceeding"
+      }
+    },
+    "PublicationSummaryCard": {
+      "title": "Publications",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "Journal Articles",
+        "BOOK_CHAPTER": "Book Chapters",
+        "CONFERENCE_PROCEEDING": "Conference Proceedings"
+      }
+    },
+    "ResearchSummaryCard": {
+      "title": "Research",
+      "degreeType": {
+        "BSC": "BSc",
+        "MSC": "MSc",
+        "MPHIL": "MPhil",
+        "PHD": "PhD",
+        "HIGHER_DIPLOMA": "Higher Diploma",
+        "DIPLOMA": "Diploma",
+        "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
+      }
+    },
+    "CourseSummaryCard": {
+      "title": "Courses",
+      "degreeType": {
+        "BSC": "BSc",
+        "MSC": "MSc",
+        "MPHIL": "MPhil",
+        "PHD": "PhD",
+        "HIGHER_DIPLOMA": "Higher Diploma",
+        "DIPLOMA": "Diploma",
+        "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
       }
     }
   },

@@ -657,8 +657,8 @@
       "pageKeywords": "පාලන පුවරුව, පුවරුව",
       "title": "පාලන පුවරුව",
       "welcome": "{fullname}, සාදරයෙන් පිළිගනිමු!",
-      "userId": "පරිශීලක හඳුනා ගැනීමේ අංකය: {userId}",
-      "roleMessage": "ඔබ {roles} ලෙස පිවිසී ඇත",
+      "userIdMessage": "පරිශීලක හඳුනා ගැනීමේ අංකය: <strong>{userId}</strong>",
+      "roleMessage": "ඔබ <strong>{roles}</strong> ලෙස පිවිසී ඇත",
       "yearlyPublications": "වාර්ෂික ප්‍රකාශන",
       "year": "වර්ෂය",
       "count": "ගණන",
@@ -671,6 +671,7 @@
       },
       "allPublications": "සියලුම ප්‍රකාශන",
       "recentPublications": "මෑතකාලීන ප්‍රකාශන",
+      "publicationKeywordCloud": "මගේ ප්‍රකාශන, වචන වලින්",
       "Blog": {
         "pageTitle": "බ්ලොග් පුවරුව",
         "title": "බ්ලොග්",
@@ -1687,6 +1688,38 @@
         "JOURNAL_ARTICLE": "සඟරා ලිපි",
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
         "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
+      }
+    },
+    "PublicationSummaryCard": {
+      "title": "ප්‍රකාශන",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "සඟරා ලිපි",
+        "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
+      }
+    },
+    "ResearchSummaryCard": {
+      "title": "පර්යේෂණ",
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී",
+        "MSC": "ශාස්ත්‍රපති",
+        "MPHIL": "දර්ශනපති",
+        "PHD": "දර්ශනසූරී",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා",
+        "DIPLOMA": "ඩිප්ලෝමා",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා"
+      }
+    },
+    "CourseSummaryCard": {
+      "title": "පාඨමාලා",
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී",
+        "MSC": "ශාස්ත්‍රපති",
+        "MPHIL": "දර්ශනපති",
+        "PHD": "දර්ශනසූරී",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා",
+        "DIPLOMA": "ඩිප්ලෝමා",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා"
       }
     }
   },
