@@ -1689,6 +1689,14 @@
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
         "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
       }
+    },
+    "PublicationSummaryCard": {
+      "title": "ප්‍රකාශන",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "සඟරා ලිපි",
+        "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
+      }
     }
   },
   "contexts": {

@@ -1689,6 +1689,14 @@
         "BOOK_CHAPTER": "Book Chapter",
         "CONFERENCE_PROCEEDING": "Conference Proceeding"
       }
+    },
+    "PublicationSummaryCard": {
+      "title": "Publications",
+      "publicationType": {
+        "JOURNAL_ARTICLE": "Journal Articles",
+        "BOOK_CHAPTER": "Book Chapters",
+        "CONFERENCE_PROCEEDING": "Conference Proceedings"
+      }
     }
   },
   "contexts": {

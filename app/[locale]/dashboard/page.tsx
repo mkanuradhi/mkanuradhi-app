@@ -4,13 +4,14 @@ import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
 import BarCard from '@/components/bar-card';
-import { getPublicationKeywordFrequencies, getPublicationsByType, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import { getPublicationKeywordFrequencies, getPublicationsByType, getPublicationSummary, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
 import PieCard from '@/components/pie-card';
 import RecentPublicationCard from '@/components/recent-publication-card';
 import LineCard from '@/components/line-card';
 import WordCloudCard from '@/components/word-cloud-card';
+import PublicationSummaryCard from '@/components/publication-summary-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -63,11 +64,11 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
   }));
 
   const translatedYearlyPublicationsLine = [
-  {
-    id: t('allPublications'),
-    data: yearlyPublications.map(item => ({ x: `${item.label}`, y: item.value })),
-  },
-];
+    {
+      id: t('allPublications'),
+      data: yearlyPublications.map(item => ({ x: `${item.label}`, y: item.value })),
+    },
+  ];
 
   const yearlyPublicationsByType = (await getYearlyPublicationsByType()).map(item => {
     const { year, ...rest } = item;
@@ -111,6 +112,8 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     value: item.value,
   }));
 
+  const publicationSummary = await getPublicationSummary();
+
   return (
     <>
       <Container>
@@ -124,6 +127,9 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
           <Col>
 
             <Row>
+              <Col md={4} className="mb-3">
+                <PublicationSummaryCard summary={publicationSummary} />
+              </Col>
               {/* <Col md={6} className="mb-3">
                 <BarCard
                   title={t('yearlyPublications')}

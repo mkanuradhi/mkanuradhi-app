@@ -6,7 +6,7 @@ import axios from "axios";
 import { ActivationPublicationDto, CreatePublicationDto, UpdatePublicationDto } from "../dtos/publication-dto";
 import DocumentStatus from "@/enums/document-status";
 import { buildHeaders } from "@/utils/common-utils";
-import { LabelValueStat, YearlyGroupStat } from "@/interfaces/i-stat";
+import { LabelValueStat, SummaryStat, YearlyGroupStat } from "@/interfaces/i-stat";
 
 
 export const getPublications = async (page: number, size: number): Promise<PaginatedResult<Publication>> => {
@@ -163,6 +163,17 @@ export const getPublicationKeywordFrequencies = async (): Promise<LabelValueStat
   try {
     const response = await axios.get<LabelValueStat[]>(
       `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/keywords`
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getPublicationSummary = async (): Promise<SummaryStat> => {
+  try {
+    const response = await axios.get<SummaryStat>(
+      `${API_BASE_URL}${PUBLICATIONS_PATH}/stats/summary`
     );
     return response.data;
   } catch (error) {
