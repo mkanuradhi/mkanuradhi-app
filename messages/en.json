@@ -1709,6 +1709,18 @@
         "DIPLOMA": "Diploma",
         "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
       }
+    },
+    "CourseSummaryCard": {
+      "title": "Courses",
+      "degreeType": {
+        "BSC": "BSc",
+        "MSC": "MSc",
+        "MPHIL": "MPhil",
+        "PHD": "PhD",
+        "HIGHER_DIPLOMA": "Higher Diploma",
+        "DIPLOMA": "Diploma",
+        "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
+      }
     }
   },
   "contexts": {

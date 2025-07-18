@@ -3,7 +3,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
-import BarCard from '@/components/bar-card';
 import { getPublicationKeywordFrequencies, getPublicationsByType, getPublicationSummary, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
@@ -14,6 +13,8 @@ import WordCloudCard from '@/components/word-cloud-card';
 import PublicationSummaryCard from '@/components/publication-summary-card';
 import { getResearchSummary } from '@/services/research-service';
 import ResearchSummaryCard from '@/components/research-summary-card';
+import { getCourseSummary } from '@/services/course-service';
+import CourseSummaryCard from '@/components/course-summary-card';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -118,6 +119,8 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   const researchSummary = await getResearchSummary();
 
+  const courseSummary = await getCourseSummary();
+
   return (
     <>
       <Container>
@@ -137,17 +140,9 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
               <Col md={4} className="mb-3">
                 <ResearchSummaryCard summary={researchSummary} />
               </Col>
-              {/* <Col md={6} className="mb-3">
-                <BarCard
-                  title={t('yearlyPublications')}
-                  data={translatedYearlyPublicationsBar}
-                  keys={[countLabel]}
-                  indexBy="year"
-                  xAxisLabel={yearLabel}
-                  yAxisLabel={countLabel}
-                  integerOnlyYTicks={true}
-                />
-              </Col> */}
+              <Col md={4} className="mb-3">
+                <CourseSummaryCard summary={courseSummary} />
+              </Col>
               <Col md={6} className="mb-3">
                 <LineCard
                   title={t('yearlyPublications')}
