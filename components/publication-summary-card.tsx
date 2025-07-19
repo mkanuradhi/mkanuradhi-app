@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import type { SummaryStat } from '@/interfaces/i-stat';
 import { scaleOrdinal } from "d3-scale";
 import { schemeTableau10 } from "d3-scale-chromatic";
+import CountUpOnView from './count-up-on-view';
 
 const baseTPath = 'components.PublicationSummaryCard';
 
@@ -33,12 +34,14 @@ const PublicationSummaryCard: React.FC<PublicationSummaryCardProps> = ({ summary
     <Card className="shadow-sm">
       
       <Card.Body>
-        <h5 className="text-muted fw-semibold text-center mb-0">
+        <h6 className="text-muted fw-semibold text-center mb-0">
           {t("title")}
-        </h5>
+        </h6>
 
         <div className="text-center">
-          <span className="display-1">{total}</span>
+          <span className="display-3">
+            <CountUpOnView end={total} duration={2} />
+          </span>
         </div>
       </Card.Body>
 
@@ -51,7 +54,7 @@ const PublicationSummaryCard: React.FC<PublicationSummaryCardProps> = ({ summary
             return (
               <span
                 key={label}
-                className="px-3 py-1 rounded-pill small"
+                className="px-3 py-1 rounded-pill fs-9"
                 style={{
                   border: `1px solid ${c}`,
                   color: c,
