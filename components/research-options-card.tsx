@@ -14,6 +14,7 @@ import ResearchSupervisors from './research-supervisors';
 import { getFormattedDate } from '@/utils/common-utils';
 import { LOCALE_EN } from '@/constants/common-vars';
 import SupervisionStatus from '@/enums/supervision-status';
+import SupervisorRole from '@/enums/supervisor-role';
 
 const baseTPath = 'components.ResearchOptionsCard';
 
@@ -54,6 +55,48 @@ const ResearchOptionsCard: React.FC<ResearchOptionsCardProps> = ({research}) => 
     }
   };
 
+  const getRoleBadge = () => {
+  if (research.isMine) {
+    return (
+      <Badge bg="success" className="me-2">
+        {t('mine')}
+      </Badge>
+    );
+  }
+
+  if (!research.supervisors?.length) return null;
+
+  const roleMap: Record<
+    SupervisorRole,
+    { variant: string; labelKey: string }
+  > = {
+    [SupervisorRole.MAIN_SUPERVISOR]: {
+      variant: 'primary',
+      labelKey: 'mainSupervisor',
+    },
+    [SupervisorRole.CO_SUPERVISOR]: {
+      variant: 'secondary',
+      labelKey: 'coSupervisor',
+    },
+  };
+
+  return research.supervisors
+    .filter((sup) => sup.isMe)
+    .map((sup) => {
+      const { variant, labelKey } =
+        roleMap[sup.role as SupervisorRole] ?? {
+          variant: 'dark',
+          labelKey: sup.role, // fallback to raw enum value
+        };
+
+      return (
+        <Badge key={sup.name} bg={variant} className="me-2">
+          {t(labelKey, { default: sup.role })}
+        </Badge>
+      );
+    });
+};
+
   return (
     <>
       <Card className="my-3 shadow research-options-card">
@@ -61,9 +104,10 @@ const ResearchOptionsCard: React.FC<ResearchOptionsCardProps> = ({research}) => 
           <Card.Subtitle className="my-2">
             <Row className="align-items-center mb-2">
               <Col>
-                {research.isMine && (
+                {/* {research.isMine && (
                   <Badge bg="success" className="me-2">{t('mine')}</Badge>
-                )}
+                )} */}
+                {getRoleBadge()}
                 {research.completedYear && (
                   <span>{research.completedYear} - </span>
                 )}

@@ -1481,6 +1481,8 @@
       "deactivateErrorTitle": "පර්යේෂණය අක්‍රිය කළ නොහැක",
       "deleteErrorTitle": "පර්යේෂණය මැකිය නොහැක",
       "mine": "මගේ",
+      "mainSupervisor": "ප්‍රධාන",
+      "coSupervisor": "සම",
       "bsc": "විද්‍යාවේදී (BSc)",
       "msc": "ශාස්ත්‍රපති (MSc)",
       "mphil": "දර්ශනපති (MPhil)",

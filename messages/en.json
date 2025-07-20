@@ -1481,6 +1481,8 @@
       "deactivateErrorTitle": "Cannot deactivate the research",
       "deleteErrorTitle": "Cannot delete the research",
       "mine": "Own",
+      "mainSupervisor": "Main",
+      "coSupervisor": "Co",
       "bsc": "BSc",
       "msc": "MSc",
       "mphil": "MPhil",
