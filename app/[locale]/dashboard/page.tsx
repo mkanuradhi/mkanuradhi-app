@@ -126,8 +126,7 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
       <Container>
         <Row>
           <Col>
-            <h1>{t('title')}</h1>
-            <h4>{t.rich('welcome', {fullname: user?.fullName})}</h4>
+            <h1>{t.rich('welcome', {fullname: user?.fullName})}</h1>
           </Col>
         </Row>
         <Row>

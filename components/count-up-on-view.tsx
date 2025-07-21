@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useInView } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import "./count-up-on-view.scss";
 
 const CountUp = dynamic(() => import('react-countup').then(m => m.default), {
   ssr: false,
@@ -12,9 +13,20 @@ interface CountUpOnViewProps {
   end: number;
   duration?: number;
   separator?: string;
+  reserveSpace?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-const CountUpOnView: React.FC<CountUpOnViewProps> = ({ start = 1, end, duration = 2, separator = '' }) => {
+const CountUpOnView: React.FC<CountUpOnViewProps> = ({
+  start = 1,
+  end,
+  duration = 2,
+  separator = '',
+  reserveSpace = false,
+  className = "",
+  style,
+}) => {
   const spanRef = useRef<HTMLSpanElement>(null);
 
   /* Ask Framer Motion to observe that ref.
@@ -29,8 +41,15 @@ const CountUpOnView: React.FC<CountUpOnViewProps> = ({ start = 1, end, duration 
     if (isInView) setShouldStart(true);
   }, [isInView]);
 
+  const widthStyle = reserveSpace
+    ? { minWidth: `${String(end).length}ch` }
+    : undefined;
+
   return (
-    <span ref={spanRef}>
+    <span
+      ref={spanRef}
+      className={`tabular-digits ${className}`}
+      style={{ ...widthStyle, ...style }}>
       {shouldStart ? (
         <CountUp
           start={start}
