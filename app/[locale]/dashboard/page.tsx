@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
-import { getPublicationKeywordFrequencies, getPublicationsByType, getPublicationSummary, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import { getPublicationKeywordFrequencies, getPublicationSummary, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
 import PieCard from '@/components/pie-card';
@@ -81,7 +81,13 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     };
   });
 
-  const publicationsByType = (await getPublicationsByType()).map(item => ({
+  const publicationSummary = await getPublicationSummary();
+  const researchSummary = await getResearchSummary();
+  const courseSummary = await getCourseSummary();
+
+  const { grouped: { byType: publicationsByType } } = publicationSummary;
+
+  const translatedPublicationsByType = publicationsByType.map(item => ({
     id: t(`publicationType.${item.label}`),
     value: item.value,
   }));
@@ -114,12 +120,6 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     text: `${item.label}`,
     value: item.value,
   }));
-
-  const publicationSummary = await getPublicationSummary();
-
-  const researchSummary = await getResearchSummary();
-
-  const courseSummary = await getCourseSummary();
 
   return (
     <>
@@ -165,20 +165,20 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
               <Col md={6} className="mb-3">
                 <PieCard
                   title={t('publicationsByType')}
-                  data={publicationsByType}
+                  data={translatedPublicationsByType}
                   innerRadius={0.5}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <RecentPublicationCard
-                  title={t('recentPublications')}
-                  publications={recentPublications}
                 />
               </Col>
               <Col md={6} className="mb-3">
                 <WordCloudCard
                   title={t('publicationKeywordCloud')}
                   data={translatedPublicationKeywords}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <RecentPublicationCard
+                  title={t('recentPublications')}
+                  publications={recentPublications}
                 />
               </Col>
             </Row>
