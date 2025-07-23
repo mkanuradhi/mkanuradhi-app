@@ -121,6 +121,13 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     value: item.value,
   }));
 
+  const { grouped: { byType: researchByType } } = researchSummary;
+
+  const translatedResearchByType = researchByType.map(item => ({
+    id: t(`degreeType.${item.label}`),
+    value: item.value,
+  }));
+
   return (
     <>
       <Container>
@@ -179,6 +186,13 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                 <RecentPublicationCard
                   title={t('recentPublications')}
                   publications={recentPublications}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <PieCard
+                  title={t('researchByType')}
+                  data={translatedResearchByType}
+                  innerRadius={0.5}
                 />
               </Col>
             </Row>
