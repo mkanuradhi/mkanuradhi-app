@@ -27,13 +27,14 @@ const PieChart: React.FC<PieChartProps> = ({
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
+  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
 
   useEffect(() => {
     
   }, [width]);
 
   return (
-    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
+    <div ref={ref} style={{ height: height, width: '100%' }}>
       <ResponsivePie
         data={data}
         theme={nivoTheme}

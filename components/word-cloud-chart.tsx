@@ -23,17 +23,18 @@ const WordCloudChart: React.FC<WordCloudChartProps> = ({
   newTab = true,
 }) => {
   const { ref, width } = useContainerWidth();
+  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
 
   useEffect(() => {
     
   }, [width]);
 
   return (
-    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
+    <div ref={ref} style={{ height: height, width: '100%' }}>
       { width > 0 && (
         <ReactD3WordCloud
           width={width}
-          height={(width * 0.9)}
+          height={height}
           data={data}
           font="Times"
           fontSize={(word) => 14 + Math.log2(word.value) * 6}

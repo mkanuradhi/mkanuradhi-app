@@ -38,6 +38,7 @@ const LineChart: React.FC<LineChartProps> = ({
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
+  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
 
   const [axisBottomTickRotation, setAxisBottomTickRotation] = useState(0);
 
@@ -56,11 +57,11 @@ const LineChart: React.FC<LineChartProps> = ({
   const tickValues = xs.filter((_, i) => i % skip === 0);
 
   return (
-    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
+    <div ref={ref} style={{ height: height, width: '100%' }}>
       <ResponsiveLine
         data={data}
         theme={nivoTheme}
-        margin={{ top: 30, right: 30, bottom: 50, left: 60 }}
+        margin={{ top: 8, right: 8, bottom: 50, left: 60 }}
         colors={{ scheme: 'tableau10' }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 0, max: 'auto', stacked: true, reverse: false }}

@@ -17,7 +17,7 @@ const PieCard: React.FC<PieCardProps> = ({
   tickLabelFormat = 'truncate',
 }) => {
   return (
-    <Card className="h-100">
+    <Card>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         <PieChart

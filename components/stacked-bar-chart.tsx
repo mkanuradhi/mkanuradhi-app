@@ -32,6 +32,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
+  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
 
   const [axisBottomTickRotation, setAxisBottomTickRotation] = useState(0);
 
@@ -57,13 +58,13 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
     .map(d => d[indexBy] as string);
 
   return (
-    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
+    <div ref={ref} style={{ height: height, width: '100%' }}>
       <ResponsiveBar
         data={data}
         keys={keys}
         indexBy={indexBy}
         theme={nivoTheme}
-        margin={{ top: 30, right: 30, bottom: 50, left: 60 }}
+        margin={{ top: 8, right: 8, bottom: 50, left: 60 }}
         padding={0.3}
         colors={{ scheme: 'tableau10' }}
         valueScale={{ type: 'linear', nice: true, round: true, min: 0, max: 'auto', reverse: false, clamp: false }}
