@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { ResponsivePie } from '@nivo/pie';
 import { useNivoTheme } from '@/hooks/use-nivo-theme';
 import { useTheme } from '@/hooks/useTheme';
@@ -27,15 +27,18 @@ const PieChart: React.FC<PieChartProps> = ({
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
+  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
+
+  const filteredData = useMemo(() => data.filter(d => d.value > 0), [data]);
 
   useEffect(() => {
     
   }, [width]);
 
   return (
-    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
+    <div ref={ref} style={{ height: height, width: '100%' }}>
       <ResponsivePie
-        data={data}
+        data={filteredData}
         theme={nivoTheme}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
         innerRadius={innerRadius}

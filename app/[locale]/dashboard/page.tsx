@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
-import { getPublicationKeywordFrequencies, getPublicationsByType, getPublicationSummary, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
+import { getPublicationKeywordFrequencies, getPublicationSummary, getRecentPublications, getYearlyPublications, getYearlyPublicationsByType } from '@/services/publication-service';
 import StackedBarCard from '@/components/stacked-bar-card';
 import PublicationType from '@/enums/publication-type';
 import PieCard from '@/components/pie-card';
@@ -13,8 +13,9 @@ import WordCloudCard from '@/components/word-cloud-card';
 import PublicationSummaryCard from '@/components/publication-summary-card';
 import { getResearchSummary } from '@/services/research-service';
 import ResearchSummaryCard from '@/components/research-summary-card';
-import { getCourseSummary } from '@/services/course-service';
+import { getCourseSummary, getYearlyCoursesByType } from '@/services/course-service';
 import CourseSummaryCard from '@/components/course-summary-card';
+import DegreeType from '@/enums/degree-type';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -81,7 +82,13 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     };
   });
 
-  const publicationsByType = (await getPublicationsByType()).map(item => ({
+  const publicationSummary = await getPublicationSummary();
+  const researchSummary = await getResearchSummary();
+  const courseSummary = await getCourseSummary();
+
+  const { grouped: { byType: publicationsByType } } = publicationSummary;
+
+  const translatedPublicationsByType = publicationsByType.map(item => ({
     id: t(`publicationType.${item.label}`),
     value: item.value,
   }));
@@ -106,7 +113,7 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     };
   });
 
-  const recentPublications = await getRecentPublications(5);
+  const recentPublications = await getRecentPublications(4);
 
   const publicationKeywords = await getPublicationKeywordFrequencies();
 
@@ -115,19 +122,54 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     value: item.value,
   }));
 
-  const publicationSummary = await getPublicationSummary();
+  const { grouped: { byType: researchByType } } = researchSummary;
 
-  const researchSummary = await getResearchSummary();
+  const translatedResearchByType = researchByType.map(item => ({
+    id: t(`degreeType.${item.label}`),
+    value: item.value,
+  }));
 
-  const courseSummary = await getCourseSummary();
+  const { grouped: { byType: coursesByType } } = courseSummary;
+
+  const translatedCoursesByType = coursesByType.map(item => ({
+    id: t(`degreeType.${item.label}`),
+    value: item.value,
+  }));
+
+  const yearlyCoursesByType = (await getYearlyCoursesByType()).map(item => {
+    const { year, ...rest } = item;
+    return {
+      year: `${year}`,
+      ...rest,
+    };
+  });
+
+  const translatedDegreeTypes = Object.fromEntries(
+    Object.values(DegreeType).map(key => [key, t(`degreeType.${key}`)])
+  );
+
+  const translatedYearlyCoursesByType = yearlyCoursesByType.map(item => {
+    const { year, ...rest } = item;
+
+    const localizedEntry = Object.fromEntries(
+      Object.entries(rest).map(([key, value]) => [
+        translatedDegreeTypes[key], // localize the key
+        value,
+      ])
+    );
+
+    return {
+      year: `${year}`,
+      ...localizedEntry,
+    };
+  });
 
   return (
     <>
       <Container>
         <Row>
           <Col>
-            <h1>{t('title')}</h1>
-            <h4>{t.rich('welcome', {fullname: user?.fullName})}</h4>
+            <h1>{t.rich('welcome', {fullname: user?.fullName})}</h1>
           </Col>
         </Row>
         <Row>
@@ -166,8 +208,14 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
               <Col md={6} className="mb-3">
                 <PieCard
                   title={t('publicationsByType')}
-                  data={publicationsByType}
+                  data={translatedPublicationsByType}
                   innerRadius={0.5}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <WordCloudCard
+                  title={t('publicationKeywordCloud')}
+                  data={translatedPublicationKeywords}
                 />
               </Col>
               <Col md={6} className="mb-3">
@@ -177,9 +225,29 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                 />
               </Col>
               <Col md={6} className="mb-3">
-                <WordCloudCard
-                  title={t('publicationKeywordCloud')}
-                  data={translatedPublicationKeywords}
+                <PieCard
+                  title={t('researchByType')}
+                  data={translatedResearchByType}
+                  innerRadius={0.5}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <PieCard
+                  title={t('coursesByType')}
+                  data={translatedCoursesByType}
+                  innerRadius={0.5}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <StackedBarCard
+                  title={t('yearlyCoursesByType')}
+                  data={translatedYearlyCoursesByType}
+                  keys={Object.values(translatedDegreeTypes)}
+                  indexBy="year"
+                  xAxisLabel={yearLabel}
+                  yAxisLabel={countLabel}
+                  integerOnlyYTicks={false}
+                  legendAnchor='top-right'
                 />
               </Col>
             </Row>

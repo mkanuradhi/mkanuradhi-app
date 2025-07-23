@@ -672,6 +672,18 @@
       "allPublications": "සියලුම ප්‍රකාශන",
       "recentPublications": "මෑතකාලීන ප්‍රකාශන",
       "publicationKeywordCloud": "මගේ ප්‍රකාශන, වචන වලින්",
+      "researchByType": "වර්ගය අනුව පර්යේෂණ",
+      "degreeType": {
+        "BSC": "විද්‍යාවේදී",
+        "MSC": "ශාස්ත්‍රපති",
+        "MPHIL": "දර්ශනපති",
+        "PHD": "දර්ශනසූරී",
+        "HIGHER_DIPLOMA": "උසස් ඩිප්ලෝමා",
+        "DIPLOMA": "ඩිප්ලෝමා",
+        "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා"
+      },
+      "coursesByType": "වර්ගය අනුව පාඨමාලා",
+      "yearlyCoursesByType": "වර්ගය අනුව වාර්ෂික පාඨමාලා",
       "Blog": {
         "pageTitle": "බ්ලොග් පුවරුව",
         "title": "බ්ලොග්",
@@ -1481,6 +1493,8 @@
       "deactivateErrorTitle": "පර්යේෂණය අක්‍රිය කළ නොහැක",
       "deleteErrorTitle": "පර්යේෂණය මැකිය නොහැක",
       "mine": "මගේ",
+      "mainSupervisor": "ප්‍රධාන",
+      "coSupervisor": "සම",
       "bsc": "විද්‍යාවේදී (BSc)",
       "msc": "ශාස්ත්‍රපති (MSc)",
       "mphil": "දර්ශනපති (MPhil)",

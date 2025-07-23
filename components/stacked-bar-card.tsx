@@ -12,6 +12,7 @@ interface StackedBarCardProps {
   xAxisLabel?: string;
   yAxisLabel?: string;
   integerOnlyYTicks?: boolean;
+  legendAnchor?: 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left' | 'top-left' | 'center';
 }
 
 const StackedBarCard: React.FC<StackedBarCardProps> = ({
@@ -23,9 +24,10 @@ const StackedBarCard: React.FC<StackedBarCardProps> = ({
   xAxisLabel,
   yAxisLabel,
   integerOnlyYTicks,
+  legendAnchor = 'top-left',
 }) => {
   return (
-    <Card className="h-100">
+    <Card>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         <StackedBarChart
@@ -36,6 +38,7 @@ const StackedBarCard: React.FC<StackedBarCardProps> = ({
           xAxisLabel={xAxisLabel}
           yAxisLabel={yAxisLabel}
           integerOnlyYTicks={integerOnlyYTicks}
+          legendAnchor={legendAnchor}
         />
       </Card.Body>
     </Card>

@@ -1,0 +1,4 @@
+.tabular-digits {
+  font-variant-numeric: tabular-nums; /* modern browsers */
+  font-feature-settings: "tnum";      /* old fallback */
+}

@@ -19,7 +19,7 @@ const WordCloudCard: React.FC<WordCloudCardProps> = ({
   newTab,
 }) => {
   return (
-    <Card className="h-100">
+    <Card>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         <WordCloudChart data={data} hrefBase={hrefBase} newTab={newTab} />

@@ -31,7 +31,7 @@ const RecentPublicationCard: React.FC<RecentPublicationCardProps> = ({ title, pu
   };
 
   return (
-    <Card className="h-100">
+    <Card>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
 
@@ -48,9 +48,9 @@ const RecentPublicationCard: React.FC<RecentPublicationCardProps> = ({ title, pu
                   <span className="me-2" title={t(`publicationType.${pub.type}`)}>{getTypeIcon(pub.type)}</span>
                   {pub.publicationUrl ? (
                     <>
-                      <p className="">
+                      <p className="mb-1">
                         <GlowLink href={pub.publicationUrl} newTab={true} withArrow={true}>
-                          {pub.title}
+                          <small>{pub.title}</small>
                         </GlowLink>
                         <Badge pill bg="secondary" className="ms-2">{pub.year}</Badge>
                       </p>
@@ -58,7 +58,7 @@ const RecentPublicationCard: React.FC<RecentPublicationCardProps> = ({ title, pu
                   ) : (
                     <>
                       <p>
-                        <span>{pub.title}</span>
+                        <small>{pub.title}</small>
                         <Badge pill bg="secondary" className="ms-2">{pub.year}</Badge>
                       </p>
                     </>
