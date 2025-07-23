@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import { useNivoTheme } from '@/hooks/use-nivo-theme';
 import { useTheme } from '@/hooks/useTheme';
@@ -17,6 +17,7 @@ interface StackedBarChartProps {
   xAxisLabel?: string;
   yAxisLabel?: string;
   integerOnlyYTicks?: boolean;
+  legendAnchor?: 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left' | 'top-left' | 'center';
 }
 
 const StackedBarChart: React.FC<StackedBarChartProps> = ({
@@ -28,11 +29,26 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
   xAxisLabel,
   yAxisLabel,
   integerOnlyYTicks,
+  legendAnchor = 'top-left',
 }) => {
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
   const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
+
+  /* keep only series that have at least one non-zero value */
+  const keysWithData = useMemo(() => {
+    const present = new Set<string>();
+
+    for (const row of data) {
+      for (const k of keys) {
+        const v = row[k] as number | undefined;
+        if (typeof v === 'number' && v > 0) present.add(k);
+      }
+    }
+    // if *everything* is 0 keep the original keys, otherwise use filtered set
+    return present.size ? Array.from(present) : keys;
+  }, [data, keys]);
 
   const [axisBottomTickRotation, setAxisBottomTickRotation] = useState(0);
 
@@ -61,7 +77,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
     <div ref={ref} style={{ height: height, width: '100%' }}>
       <ResponsiveBar
         data={data}
-        keys={keys}
+        keys={keysWithData}
         indexBy={indexBy}
         theme={nivoTheme}
         margin={{ top: 8, right: 8, bottom: 50, left: 60 }}
@@ -97,7 +113,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
           [
             {
                 dataFrom: 'keys',
-                anchor: 'top-left',
+                anchor: legendAnchor,
                 direction: 'column',
                 translateX: 10,
                 translateY: 0,
