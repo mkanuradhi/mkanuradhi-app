@@ -683,6 +683,7 @@
         "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා"
       },
       "coursesByType": "වර්ගය අනුව පාඨමාලා",
+      "yearlyCoursesByType": "වර්ගය අනුව වාර්ෂික පාඨමාලා",
       "Blog": {
         "pageTitle": "බ්ලොග් පුවරුව",
         "title": "බ්ලොග්",

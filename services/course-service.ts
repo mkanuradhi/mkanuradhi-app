@@ -5,7 +5,7 @@ import { handleApiError } from "@/errors/api-error-handler";
 import Course from "@/interfaces/i-course";
 import CourseView from "@/interfaces/i-course-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { SummaryStat } from "@/interfaces/i-stat";
+import { SummaryStat, YearlyGroupStat } from "@/interfaces/i-stat";
 import { buildHeaders } from "@/utils/common-utils";
 import axios from "axios";
 
@@ -147,6 +147,17 @@ export const getCourseSummary = async (): Promise<SummaryStat> => {
   try {
     const response = await axios.get<SummaryStat>(
       `${API_BASE_URL}${COURSES_PATH}/stats/summary`
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getYearlyCoursesByType = async (): Promise<YearlyGroupStat[]> => {
+  try {
+    const response = await axios.get<YearlyGroupStat[]>(
+      `${API_BASE_URL}${COURSES_PATH}/stats/yearly-by-type`
     );
     return response.data;
   } catch (error) {

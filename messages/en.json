@@ -683,6 +683,7 @@
         "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
       },
       "coursesByType": "Courses by Type",
+      "yearlyCoursesByType": "Yearly Courses by Type",
       "Blog": {
         "pageTitle": "Blog Dashboard",
         "title": "Blog",

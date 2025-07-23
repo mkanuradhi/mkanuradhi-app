@@ -13,8 +13,9 @@ import WordCloudCard from '@/components/word-cloud-card';
 import PublicationSummaryCard from '@/components/publication-summary-card';
 import { getResearchSummary } from '@/services/research-service';
 import ResearchSummaryCard from '@/components/research-summary-card';
-import { getCourseSummary } from '@/services/course-service';
+import { getCourseSummary, getYearlyCoursesByType } from '@/services/course-service';
 import CourseSummaryCard from '@/components/course-summary-card';
+import DegreeType from '@/enums/degree-type';
 
 const baseTPath = 'pages.Dashboard';
 
@@ -112,7 +113,7 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     };
   });
 
-  const recentPublications = await getRecentPublications(5);
+  const recentPublications = await getRecentPublications(4);
 
   const publicationKeywords = await getPublicationKeywordFrequencies();
 
@@ -134,6 +135,34 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
     id: t(`degreeType.${item.label}`),
     value: item.value,
   }));
+
+  const yearlyCoursesByType = (await getYearlyCoursesByType()).map(item => {
+    const { year, ...rest } = item;
+    return {
+      year: `${year}`,
+      ...rest,
+    };
+  });
+
+  const translatedDegreeTypes = Object.fromEntries(
+    Object.values(DegreeType).map(key => [key, t(`degreeType.${key}`)])
+  );
+
+  const translatedYearlyCoursesByType = yearlyCoursesByType.map(item => {
+    const { year, ...rest } = item;
+
+    const localizedEntry = Object.fromEntries(
+      Object.entries(rest).map(([key, value]) => [
+        translatedDegreeTypes[key], // localize the key
+        value,
+      ])
+    );
+
+    return {
+      year: `${year}`,
+      ...localizedEntry,
+    };
+  });
 
   return (
     <>
@@ -207,6 +236,18 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
                   title={t('coursesByType')}
                   data={translatedCoursesByType}
                   innerRadius={0.5}
+                />
+              </Col>
+              <Col md={6} className="mb-3">
+                <StackedBarCard
+                  title={t('yearlyCoursesByType')}
+                  data={translatedYearlyCoursesByType}
+                  keys={Object.values(translatedDegreeTypes)}
+                  indexBy="year"
+                  xAxisLabel={yearLabel}
+                  yAxisLabel={countLabel}
+                  integerOnlyYTicks={false}
+                  legendAnchor='top-right'
                 />
               </Col>
             </Row>
