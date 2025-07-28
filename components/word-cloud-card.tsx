@@ -10,6 +10,7 @@ interface WordCloudCardProps {
   data: Word[];
   hrefBase?: string;
   newTab?: boolean;
+  angles?: number[];
 }
 
 const WordCloudCard: React.FC<WordCloudCardProps> = ({
@@ -17,15 +18,16 @@ const WordCloudCard: React.FC<WordCloudCardProps> = ({
   data,
   hrefBase,
   newTab,
+  angles,
 }) => {
   return (
     <Card>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        <WordCloudChart data={data} hrefBase={hrefBase} newTab={newTab} />
+        <WordCloudChart data={data} hrefBase={hrefBase} newTab={newTab} angles={angles} />
       </Card.Body>
     </Card>
   );
 };
 
-export default WordCloudCard;
+export default React.memo(WordCloudCard, (prev, next) => prev.data === next.data);
