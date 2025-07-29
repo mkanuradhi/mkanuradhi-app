@@ -8,6 +8,7 @@ interface PieCardProps {
   data: { id: string; value: number; label?: string; color?: string }[];
   innerRadius?: number;
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
+  heightPropotion?: number;
 }
 
 const PieCard: React.FC<PieCardProps> = ({
@@ -15,6 +16,7 @@ const PieCard: React.FC<PieCardProps> = ({
   data,
   innerRadius,
   tickLabelFormat = 'truncate',
+  heightPropotion,
 }) => {
   return (
     <Card>
@@ -24,6 +26,7 @@ const PieCard: React.FC<PieCardProps> = ({
           data={data}
           innerRadius={innerRadius}
           tickLabelFormat={tickLabelFormat}
+          heightPropotion={heightPropotion}
         />
       </Card.Body>
     </Card>

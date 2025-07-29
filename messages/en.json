@@ -1271,6 +1271,17 @@
       "submitting": "Submitting...",
       "submit": "Submit"
     },
+    "PublicationsViewer": {
+      "summary": "Found {total, plural, =0 {no publications} =1 {1 publication} other {# publications}}{articles, plural, =0 {} other {, including {articles} journal article{articles, plural, one {} other {s}}}}{chapters, plural, =0 {} other {, {chapters} book chapter{chapters, plural, one {} other {s}}}}{proceedings, plural, =0 {} other {, {proceedings} conference proceeding{proceedings, plural, one {} other {s}}}}.",
+      "noMatch": "No publications match the selected filters.",
+      "keywordsFail": "Keywords cannot be retrieved at the moment.",
+      "yearlyPublicationsFail": "Yearly publications cannot be retrieved at the moment.",
+      "count": "Count",
+      "year": "Year",
+      "keywordCloudTabTitle": "Keywords",
+      "trendTabTitle": "Trend",
+      "publicationsTabTitle": "Publications"
+    },
     "PublicationsFilters": {
       "all": "All Types",
       "journal_article": "Journal Articles",
@@ -1278,12 +1289,11 @@
       "conference_proceeding": "Conference Proceedings",
       "year-desc": "Newest First",
       "year-asc": "Oldest First",
+      "searchFilter": "Search and Filter",
       "searchPlaceholder": "Search by anything..."
     },
     "PublicationsList": {
-      "summary": "Found {total, plural, =0 {no publications} =1 {1 publication} other {# publications}}{articles, plural, =0 {} other {, including {articles} journal article{articles, plural, one {} other {s}}}}{chapters, plural, =0 {} other {, {chapters} book chapter{chapters, plural, one {} other {s}}}}{proceedings, plural, =0 {} other {, {proceedings} conference proceeding{proceedings, plural, one {} other {s}}}}.",
-      "fail": "Failed to load publications",
-      "noMatch": "No publications match the selected filters."
+      "fail": "Failed to load publications"
     },
     "PublicationCard": {
       "journal_article": "Journal Article",

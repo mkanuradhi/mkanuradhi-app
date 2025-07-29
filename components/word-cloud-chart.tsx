@@ -1,5 +1,4 @@
 'use client';
-import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useContainerWidth } from '@/hooks/use-container-width';
 const ReactD3WordCloud = dynamic(() => import('react-d3-cloud'), { ssr: false, });
@@ -10,24 +9,23 @@ interface WordCloudChartProps {
   data: Word[];
   hrefBase?: string;
   newTab?: boolean;
+  angles?: number[];
+  heightPropotion?: number;
 }
-
-export const randomRotate = () => {
-  const angles = [-75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75];
-  return angles[Math.floor(Math.random() * angles.length)];
-};
 
 const WordCloudChart: React.FC<WordCloudChartProps> = ({
   data,
   hrefBase = 'https://www.google.com/search?q=',
   newTab = true,
+  angles = [-75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75],
+  heightPropotion = 9/16, // 16:9 aspect ratio
 }) => {
   const { ref, width } = useContainerWidth();
-  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
+  const height = Math.max(200, Math.round(width * heightPropotion));
 
-  useEffect(() => {
-    
-  }, [width]);
+  const randomRotate = () => {
+    return angles[Math.floor(Math.random() * angles.length)];
+  };
 
   return (
     <div ref={ref} style={{ height: height, width: '100%' }}>

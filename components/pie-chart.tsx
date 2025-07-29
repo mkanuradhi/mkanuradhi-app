@@ -16,6 +16,7 @@ interface PieChartProps {
   innerRadius?: number;
   maxTickLabelLength?: number;
   tickLabelFormat?: 'truncate' | 'initials' | 'full';
+  heightPropotion?: number;
 }
 
 const PieChart: React.FC<PieChartProps> = ({
@@ -23,11 +24,12 @@ const PieChart: React.FC<PieChartProps> = ({
   innerRadius,
   maxTickLabelLength = 6,
   tickLabelFormat = 'truncate',
+  heightPropotion = 9/16, // 16:9 aspect ratio
 }) => {
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
-  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
+  const height = Math.max(200, Math.round(width * heightPropotion));
 
   const filteredData = useMemo(() => data.filter(d => d.value > 0), [data]);
 
