@@ -62,11 +62,6 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   const yearlyPublications = await getYearlyPublications();
 
-  const translatedYearlyPublicationsBar = yearlyPublications.map(item => ({
-    year: `${item.label}`,
-    [countLabel]: item.value,
-  }));
-
   const translatedYearlyPublicationsLine = [
     {
       id: t('allPublications'),
