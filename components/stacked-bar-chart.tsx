@@ -18,6 +18,7 @@ interface StackedBarChartProps {
   yAxisLabel?: string;
   integerOnlyYTicks?: boolean;
   legendAnchor?: 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left' | 'top-left' | 'center';
+  heightPropotion?: number;
 }
 
 const StackedBarChart: React.FC<StackedBarChartProps> = ({
@@ -30,11 +31,12 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
   yAxisLabel,
   integerOnlyYTicks,
   legendAnchor = 'top-left',
+  heightPropotion = 9/16, // 16:9 aspect ratio
 }) => {
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
-  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
+  const height = Math.max(200, Math.round(width * heightPropotion));
 
   /* keep only series that have at least one non-zero value */
   const keysWithData = useMemo(() => {

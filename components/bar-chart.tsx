@@ -17,6 +17,7 @@ interface BarChartProps {
   xAxisLabel?: string;
   yAxisLabel?: string;
   integerOnlyYTicks?: boolean;
+  heightPropotion?: number;
 }
 
 const BarChart: React.FC<BarChartProps> = ({
@@ -28,10 +29,12 @@ const BarChart: React.FC<BarChartProps> = ({
   xAxisLabel,
   yAxisLabel,
   integerOnlyYTicks,
+  heightPropotion = 9/16, // 16:9 aspect ratio
 }) => {
   const { theme } = useTheme();
   const nivoTheme = useNivoTheme(theme);
   const { ref, width } = useContainerWidth();
+  const height = Math.max(200, Math.round(width * heightPropotion));
 
   const [axisBottomTickRotation, setAxisBottomTickRotation] = useState(0);
 
@@ -57,7 +60,7 @@ const BarChart: React.FC<BarChartProps> = ({
     .map(d => d[indexBy] as string);
 
   return (
-    <div ref={ref} style={{ height: (width * 0.9), width: '100%' }}>
+    <div ref={ref} style={{ height: height, width: '100%' }}>
       <ResponsiveBar
         data={data}
         keys={keys}

@@ -10,6 +10,7 @@ interface WordCloudChartProps {
   hrefBase?: string;
   newTab?: boolean;
   angles?: number[];
+  heightPropotion?: number;
 }
 
 const WordCloudChart: React.FC<WordCloudChartProps> = ({
@@ -17,9 +18,10 @@ const WordCloudChart: React.FC<WordCloudChartProps> = ({
   hrefBase = 'https://www.google.com/search?q=',
   newTab = true,
   angles = [-75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75],
+  heightPropotion = 9/16, // 16:9 aspect ratio
 }) => {
   const { ref, width } = useContainerWidth();
-  const height = Math.max(200, Math.round(width * 9/16)); // 16:9 aspect ratio
+  const height = Math.max(200, Math.round(width * heightPropotion));
 
   const randomRotate = () => {
     return angles[Math.floor(Math.random() * angles.length)];

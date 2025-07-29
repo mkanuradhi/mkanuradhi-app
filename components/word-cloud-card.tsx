@@ -11,6 +11,7 @@ interface WordCloudCardProps {
   hrefBase?: string;
   newTab?: boolean;
   angles?: number[];
+  heightPropotion?: number;
 }
 
 const WordCloudCard: React.FC<WordCloudCardProps> = ({
@@ -19,12 +20,13 @@ const WordCloudCard: React.FC<WordCloudCardProps> = ({
   hrefBase,
   newTab,
   angles,
+  heightPropotion,
 }) => {
   return (
     <Card>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        <WordCloudChart data={data} hrefBase={hrefBase} newTab={newTab} angles={angles} />
+        <WordCloudChart data={data} hrefBase={hrefBase} newTab={newTab} angles={angles} heightPropotion={heightPropotion} />
       </Card.Body>
     </Card>
   );

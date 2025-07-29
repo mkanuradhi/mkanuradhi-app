@@ -13,6 +13,7 @@ interface BarCardProps {
   xAxisLabel?: string;
   yAxisLabel?: string;
   integerOnlyYTicks?: boolean;
+  heightPropotion?: number;
 }
 
 const BarCard: React.FC<BarCardProps> = ({
@@ -25,6 +26,7 @@ const BarCard: React.FC<BarCardProps> = ({
   xAxisLabel,
   yAxisLabel,
   integerOnlyYTicks,
+  heightPropotion,
 }) => {
   return (
     <Card className="h-100">
@@ -39,6 +41,7 @@ const BarCard: React.FC<BarCardProps> = ({
           xAxisLabel={xAxisLabel}
           yAxisLabel={yAxisLabel}
           integerOnlyYTicks={integerOnlyYTicks}
+          heightPropotion={heightPropotion}
         />
       </Card.Body>
     </Card>
