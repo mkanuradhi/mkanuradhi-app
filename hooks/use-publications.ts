@@ -3,13 +3,16 @@ import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import Publication from "@/interfaces/i-publication";
-import { activatePublication, createPublication, deactivatePublication, deletePublication, getGroupedPublications, getPublicationById, getPublications, updatePublication } from "@/services/publication-service";
+import { LabelValueStat } from "@/interfaces/i-stat";
+import { activatePublication, createPublication, deactivatePublication, deletePublication, getGroupedPublications, getPublicationById, getPublicationKeywordFrequencies, getPublications, getYearlyPublications, updatePublication } from "@/services/publication-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const PUBLICATION_QUERY_KEY = 'publication';
 const PUBLICATIONS_QUERY_KEY = 'publications';
 const GROUPED_PUBLICATIONS_QUERY_KEY = 'grouped-publications';
+const PUBLICATION_KEYWORD_FREQUENCIES_QUERY_KEY = 'publication-keyword-frequencies';
+const YEARLY_PUBLICATIONS_QUERY_KEY = 'yearly-publications';
 
 export const usePublicationsQuery = (page: number, size: number, initialPublications?: PaginatedResult<Publication>) => {
   return useQuery<PaginatedResult<Publication>, ApiError>({
@@ -227,5 +230,21 @@ export const useUpdatePublicationMutation = () => {
       queryClient.invalidateQueries({ queryKey: [PUBLICATION_QUERY_KEY, variables.publicationId] });
       queryClient.invalidateQueries({ queryKey: [PUBLICATIONS_QUERY_KEY], refetchType: 'active' });
     },
+  });
+};
+
+export const usePublicationKeywordFrequenciesQuery = () => {
+  return useQuery<LabelValueStat[], ApiError>({
+    queryKey: [PUBLICATION_KEYWORD_FREQUENCIES_QUERY_KEY],
+    queryFn: () => getPublicationKeywordFrequencies(),
+    refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
+  });
+};
+
+export const useYearlyPublicationsQuery = () => {
+  return useQuery<LabelValueStat[], ApiError>({
+    queryKey: [YEARLY_PUBLICATIONS_QUERY_KEY],
+    queryFn: () => getYearlyPublications(),
+    refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
   });
 };
