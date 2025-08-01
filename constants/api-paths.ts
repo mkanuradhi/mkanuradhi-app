@@ -1,5 +1,6 @@
 export const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
+export const CONTACT_PATH = '/contact';
 export const BLOG_POSTS_PATH = '/blog-posts';
 export const COURSES_PATH = '/courses';
 export const QUIZZES_PATH = '/quizzes';

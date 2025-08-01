@@ -8,15 +8,17 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
-import * as Yup from 'yup';
 import GlowLink from './GlowLink';
+import { getNewContactMessageSchema } from '@/schemas/new-contact-message-schema';
+import { CreateContactMessageDto } from '@/dtos/contact-dto';
+import { useCreateContactMessageMutation } from '@/hooks/use-contact-messages';
 
-const baseTPath = 'pages.Contact';
+const baseTPath = 'components.ContactForm';
 
-interface ContactFormValues {
-  name: string;
-  email: string;
-  message: string;
+const initialValues = {
+  name: '',
+  email: '',
+  message: '',
 }
 
 interface ContactFormProps {
@@ -25,50 +27,60 @@ interface ContactFormProps {
 const ContactForm: React.FC<ContactFormProps> = ({ }) => {
   const t = useTranslations(baseTPath);
   const { theme } = useTheme();
+  const { mutateAsync: createContactMessageMutation, isPending: isPendingCreateContactMessage } = useCreateContactMessageMutation();
 
-  const contactValidationSchema = Yup.object({
-    name: Yup.string()
-      .matches(/^[\p{L}\p{M}\s'-]+$/u, t('invalidName'))
-      .max(40, t('tooLongName'))
-      .required(t('requiredName')),
-    email: Yup.string()
-      .email(t('invalidEmail'))
-      .required(t('requiredEmail')),
-    message: Yup.string()
-      .max(300, t('tooLongMessage'))
-      .required(t('requiredMessage')),
-  });
+  const handleSubmit = async (
+    values: typeof initialValues,
+    { setSubmitting, resetForm }: FormikHelpers<typeof initialValues>
+  ) => {
 
-  const handleSubmit = async (values: ContactFormValues, { setSubmitting, resetForm }: FormikHelpers<ContactFormValues>) => {
+    const contactMessageDto: CreateContactMessageDto = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
+
     try {
-      const name = values.name?.toString().trim();
-      const email = values.email?.toString().trim();
-      const message = values.message?.toString().trim();
-
-      const notifyUrl = `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}${process.env.NEXT_PUBLIC_NOTIFY_PATH}`;
-      const response = await fetch(notifyUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-        }),
-      });
-
-      if (response.ok) {
-        toast.success(t('successResponse'));
-        resetForm();
-      } else {
-        toast.error(t('errorResponse'));
-      }
-    } catch (error) {
+      await createContactMessageMutation(contactMessageDto);
+      toast.success(t('successResponse'));
+      resetForm();
+      // Call parent's onSuccess with the created id
+      // onSuccess(createdPublication);
+    } catch (error: any) {
       toast.error(t('errorResponse'));
     } finally {
       setSubmitting(false);
     }
+
+    // try {
+    //   const name = values.name?.toString().trim();
+    //   const email = values.email?.toString().trim();
+    //   const message = values.message?.toString().trim();
+
+    //   const notifyUrl = `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}${process.env.NEXT_PUBLIC_NOTIFY_PATH}`;
+    //   const response = await fetch(notifyUrl, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       name,
+    //       email,
+    //       message,
+    //     }),
+    //   });
+
+    //   if (response.ok) {
+    //     toast.success(t('successResponse'));
+    //     resetForm();
+    //   } else {
+    //     toast.error(t('errorResponse'));
+    //   }
+    // } catch (error) {
+    //   toast.error(t('errorResponse'));
+    // } finally {
+    //   setSubmitting(false);
+    // }
   }
 
   return (
@@ -90,8 +102,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
           <Row className="my-4">
             <Col sm={10} md={8} lg={6} className="mx-auto">
               <Formik
-                initialValues={{ name: '', email: '', message: '' }}
-                validationSchema={contactValidationSchema}
+                initialValues={initialValues}
+                validationSchema={getNewContactMessageSchema(t)}
                 onSubmit={handleSubmit}
               >
                 {({ isSubmitting }) => (
