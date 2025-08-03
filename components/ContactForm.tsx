@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Col, Container, Form as BootstrapForm, Row } from "react-bootstrap";
 import { useTheme } from '@/hooks/useTheme';
 import { useTranslations } from 'next-intl';
@@ -12,6 +12,7 @@ import GlowLink from './GlowLink';
 import { getNewContactMessageSchema } from '@/schemas/new-contact-message-schema';
 import { CreateContactMessageDto } from '@/dtos/contact-dto';
 import { useCreateContactMessageMutation } from '@/hooks/use-contact-messages';
+import RecaptchaCheckbox, { RecaptchaCheckboxRef } from './recaptcha-checkbox';
 
 const baseTPath = 'components.ContactForm';
 
@@ -27,60 +28,39 @@ interface ContactFormProps {
 const ContactForm: React.FC<ContactFormProps> = ({ }) => {
   const t = useTranslations(baseTPath);
   const { theme } = useTheme();
+  const [token, setToken] = useState<string | null>(null);
   const { mutateAsync: createContactMessageMutation, isPending: isPendingCreateContactMessage } = useCreateContactMessageMutation();
+  const recaptchaRef = useRef<RecaptchaCheckboxRef>(null);
 
   const handleSubmit = async (
     values: typeof initialValues,
     { setSubmitting, resetForm }: FormikHelpers<typeof initialValues>
   ) => {
+    if (!token) {
+      toast.error(t('captchaRequired'));
+      setSubmitting(false);
+      return;
+    }
 
     const contactMessageDto: CreateContactMessageDto = {
       name: values.name,
       email: values.email,
       message: values.message,
+      captchaToken: token,
     };
 
     try {
       await createContactMessageMutation(contactMessageDto);
       toast.success(t('successResponse'));
       resetForm();
-      // Call parent's onSuccess with the created id
-      // onSuccess(createdPublication);
+      setToken(null);
+      recaptchaRef.current?.resetRecaptcha();
     } catch (error: any) {
       toast.error(t('errorResponse'));
     } finally {
       setSubmitting(false);
     }
 
-    // try {
-    //   const name = values.name?.toString().trim();
-    //   const email = values.email?.toString().trim();
-    //   const message = values.message?.toString().trim();
-
-    //   const notifyUrl = `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}${process.env.NEXT_PUBLIC_NOTIFY_PATH}`;
-    //   const response = await fetch(notifyUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       name,
-    //       email,
-    //       message,
-    //     }),
-    //   });
-
-    //   if (response.ok) {
-    //     toast.success(t('successResponse'));
-    //     resetForm();
-    //   } else {
-    //     toast.error(t('errorResponse'));
-    //   }
-    // } catch (error) {
-    //   toast.error(t('errorResponse'));
-    // } finally {
-    //   setSubmitting(false);
-    // }
   }
 
   return (
@@ -119,15 +99,18 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
                         <Field name="email" className="form-control" type="email" placeholder={t('emailPlaceholder')} />
                         <ErrorMessage name="email" component="p" className="text-danger" />
                       </BootstrapForm.Group>
-                      <BootstrapForm.Group controlId="formMessage" className="mb-4">
+                      <BootstrapForm.Group controlId="formMessage" className="mb-3">
                         <BootstrapForm.Label>{t('message')}</BootstrapForm.Label>
                         <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={3} />
                         <ErrorMessage name="message" component="p" className="text-danger" />
                       </BootstrapForm.Group>
-                      <BootstrapForm.Group controlId="formMessage" className="mb-4">
+                      <BootstrapForm.Group controlId="formMessage" className="mb-3">
                         <BootstrapForm.Text id="policy" muted>
                           {t('policyAgree1')} <GlowLink href="/policy" newTab={true} withArrow={true}>{t('policyAgreeLink1')}</GlowLink> {t('policyAgree2')}
                         </BootstrapForm.Text>
+                      </BootstrapForm.Group>
+                      <BootstrapForm.Group controlId="formCaptcha" className="d-flex justify-content-center mb-3">
+                        <RecaptchaCheckbox ref={recaptchaRef} onVerify={setToken} />
                       </BootstrapForm.Group>
                     </fieldset>
                     <Button type="submit" variant="primary" disabled={isSubmitting} className="mt-3">

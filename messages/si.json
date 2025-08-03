@@ -756,7 +756,8 @@
       "messageTooShort": "පණිවිඩය ඉතා කෙටියි. නිසි පණිවිඩයක් ලියන්න.",
       "messageTooLong": "පණිවිඩය දිග වැඩිය. උපරිම වශයෙන් අක්ෂර 300 ක් විය යුතුය.",
       "successResponse": "පණිවිඩය යවන ලදී!",
-      "errorResponse": "යම් දෝෂයක් සිදු විය. කරුණාකර පසුව උත්සාහ කරන්න."
+      "errorResponse": "යම් දෝෂයක් සිදු විය. කරුණාකර පසුව උත්සාහ කරන්න.",
+      "captchaRequired": "reCAPTCHA අවශ්‍යයි"
     },
     "BlogPostCard": {
       "readMore": "තව කියවන්න"

@@ -756,7 +756,8 @@
       "messageTooShort": "Message is too short. Write a proper message.",
       "messageTooLong": "Message is too long. Must be at most 300 characters.",
       "successResponse": "Message sent!",
-      "errorResponse": "Some error occurred. Please try later."
+      "errorResponse": "Some error occurred. Please try later.",
+      "captchaRequired": "reCAPTCHA required"
     },
     "BlogPostCard": {
       "readMore": "Read More"
