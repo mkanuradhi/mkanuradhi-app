@@ -48,6 +48,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
       email: values.email,
       message: values.message,
       captchaToken: token,
+      userAgent: navigator.userAgent,
+      screen: `${window.screen.width}x${window.screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language: navigator.language,
     };
 
     try {

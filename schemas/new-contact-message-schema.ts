@@ -4,7 +4,7 @@ export const getNewContactMessageSchema = (t: (key: string, values?: Record<stri
   return yup.object({
     name: yup.string()
       .matches(/^[\p{L}\p{M}\s'-]+$/u, t('nameInvalid'))
-      .min(4, t('nameTooShort') )
+      .min(3, t('nameTooShort') )
       .max(40, t('nameTooLong'))
       .required(t('nameRequired')),
     email: yup.string()
