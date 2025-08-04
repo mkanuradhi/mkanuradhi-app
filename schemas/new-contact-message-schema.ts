@@ -12,7 +12,7 @@ export const getNewContactMessageSchema = (t: (key: string, values?: Record<stri
       .max(50, t('emailTooLong'))
       .required(t('emailRequired')),
     message: yup.string()
-      .min(10, t('messageTooShort') )
+      .min(6, t('messageTooShort') )
       .max(300, t('messageTooLong'))
       .required(t('messageRequired')),
   });

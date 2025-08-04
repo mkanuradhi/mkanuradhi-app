@@ -2,6 +2,7 @@
 import React, { useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import { useTheme } from '@/hooks/useTheme';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { useLocale } from 'next-intl';
 
 // Define the interface for the component's exposed methods
 export interface RecaptchaCheckboxRef {
@@ -14,6 +15,7 @@ interface RecaptchaCheckboxProps {
 
 const RecaptchaCheckbox = forwardRef<RecaptchaCheckboxRef, RecaptchaCheckboxProps>(({ onVerify }, ref) => {
   const { theme } = useTheme();
+  const locale = useLocale();
   const [ready, setReady] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -31,10 +33,11 @@ const RecaptchaCheckbox = forwardRef<RecaptchaCheckboxRef, RecaptchaCheckboxProp
     <>
       <ReCAPTCHA
         ref={recaptchaRef}
-        key={theme}
+        key={`${theme}-${locale}`}
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
         theme={theme}
         size="normal"
+        hl={locale}
         onChange={(token: string | null) => {
           setReady(!!token);
           onVerify(token);

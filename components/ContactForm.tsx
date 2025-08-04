@@ -15,6 +15,7 @@ import { useCreateContactMessageMutation } from '@/hooks/use-contact-messages';
 import RecaptchaCheckbox, { RecaptchaCheckboxRef } from './recaptcha-checkbox';
 
 const baseTPath = 'components.ContactForm';
+const maxMessageLength = 300;
 
 const initialValues = {
   name: '',
@@ -86,15 +87,15 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
                 validationSchema={getNewContactMessageSchema(t)}
                 onSubmit={handleSubmit}
               >
-                {({ isSubmitting }) => (
+                {({ isSubmitting, values }) => (
                   <Form noValidate>
                     <fieldset disabled={isSubmitting}>
-                      <BootstrapForm.Group controlId="formName" className="mb-4">
+                      <BootstrapForm.Group controlId="formName" className="mb-3">
                         <BootstrapForm.Label>{t('name')}</BootstrapForm.Label>
                         <Field name="name" className="form-control" type="text" placeholder={t('namePlaceholder')} />
                         <ErrorMessage name="name" component="p" className="text-danger" />
                       </BootstrapForm.Group>
-                      <BootstrapForm.Group controlId="formEmail" className="mb-4">
+                      <BootstrapForm.Group controlId="formEmail" className="mb-3">
                         <BootstrapForm.Label>{t('email')}</BootstrapForm.Label>
                         <Field name="email" className="form-control" type="email" placeholder={t('emailPlaceholder')} />
                         <ErrorMessage name="email" component="p" className="text-danger" />
@@ -102,6 +103,9 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
                       <BootstrapForm.Group controlId="formMessage" className="mb-3">
                         <BootstrapForm.Label>{t('message')}</BootstrapForm.Label>
                         <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={3} />
+                        <div className="text-muted text-end small">
+                          {values.message.length} / {maxMessageLength}
+                        </div>
                         <ErrorMessage name="message" component="p" className="text-danger" />
                       </BootstrapForm.Group>
                       <BootstrapForm.Group controlId="formMessage" className="mb-3">
