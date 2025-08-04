@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { Montserrat, Noto_Serif_Sinhala } from "next/font/google";
+import { Montserrat, Noto_Sans_Sinhala } from "next/font/google";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import NavigationBar from "@/components/NavigationBar";
 import { Footer } from "@/components/Footer";
@@ -11,7 +11,7 @@ import { QueryProvider } from "@/contexts/query-provider";
 import { SideBarProvider } from "@/contexts/side-bar-provider";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
-const notoSerifSinhala = Noto_Serif_Sinhala({ subsets: ["latin", "sinhala"] });
+const notoSansSinhala = Noto_Sans_Sinhala({ subsets: ["sinhala", "latin"] });
 const GA_ID = `${process.env.NEXT_PUBLIC_GA_ID}`;
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
@@ -62,7 +62,7 @@ export default async function LocaleLayout({
 }) {
 
   const messages = await getMessages();
-  const langFontClass = locale === 'en' ? `${montserrat.className}` : `${notoSerifSinhala.className}`;
+  const langFontClass = locale === 'en' ? `${montserrat.className}` : `${notoSansSinhala.className}`;
   const localization = await getClerkLocalization(locale);
  
   return (

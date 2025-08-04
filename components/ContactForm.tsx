@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Col, Container, Form as BootstrapForm, Row } from "react-bootstrap";
 import { useTheme } from '@/hooks/useTheme';
 import { useTranslations } from 'next-intl';
@@ -8,15 +8,19 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
-import * as Yup from 'yup';
 import GlowLink from './GlowLink';
+import { getNewContactMessageSchema } from '@/schemas/new-contact-message-schema';
+import { CreateContactMessageDto } from '@/dtos/contact-dto';
+import { useCreateContactMessageMutation } from '@/hooks/use-contact-messages';
+import RecaptchaCheckbox, { RecaptchaCheckboxRef } from './recaptcha-checkbox';
 
-const baseTPath = 'pages.Contact';
+const baseTPath = 'components.ContactForm';
+const maxMessageLength = 300;
 
-interface ContactFormValues {
-  name: string;
-  email: string;
-  message: string;
+const initialValues = {
+  name: '',
+  email: '',
+  message: '',
 }
 
 interface ContactFormProps {
@@ -25,50 +29,43 @@ interface ContactFormProps {
 const ContactForm: React.FC<ContactFormProps> = ({ }) => {
   const t = useTranslations(baseTPath);
   const { theme } = useTheme();
+  const [token, setToken] = useState<string | null>(null);
+  const { mutateAsync: createContactMessageMutation, isPending: isPendingCreateContactMessage } = useCreateContactMessageMutation();
+  const recaptchaRef = useRef<RecaptchaCheckboxRef>(null);
 
-  const contactValidationSchema = Yup.object({
-    name: Yup.string()
-      .matches(/^[\p{L}\p{M}\s'-]+$/u, t('invalidName'))
-      .max(40, t('tooLongName'))
-      .required(t('requiredName')),
-    email: Yup.string()
-      .email(t('invalidEmail'))
-      .required(t('requiredEmail')),
-    message: Yup.string()
-      .max(300, t('tooLongMessage'))
-      .required(t('requiredMessage')),
-  });
+  const handleSubmit = async (
+    values: typeof initialValues,
+    { setSubmitting, resetForm }: FormikHelpers<typeof initialValues>
+  ) => {
+    if (!token) {
+      toast.error(t('captchaRequired'));
+      setSubmitting(false);
+      return;
+    }
 
-  const handleSubmit = async (values: ContactFormValues, { setSubmitting, resetForm }: FormikHelpers<ContactFormValues>) => {
+    const contactMessageDto: CreateContactMessageDto = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+      captchaToken: token,
+      userAgent: navigator.userAgent,
+      screen: `${window.screen.width}x${window.screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language: navigator.language,
+    };
+
     try {
-      const name = values.name?.toString().trim();
-      const email = values.email?.toString().trim();
-      const message = values.message?.toString().trim();
-
-      const notifyUrl = `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}${process.env.NEXT_PUBLIC_NOTIFY_PATH}`;
-      const response = await fetch(notifyUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-        }),
-      });
-
-      if (response.ok) {
-        toast.success(t('successResponse'));
-        resetForm();
-      } else {
-        toast.error(t('errorResponse'));
-      }
-    } catch (error) {
+      await createContactMessageMutation(contactMessageDto);
+      toast.success(t('successResponse'));
+      resetForm();
+      setToken(null);
+      recaptchaRef.current?.resetRecaptcha();
+    } catch (error: any) {
       toast.error(t('errorResponse'));
     } finally {
       setSubmitting(false);
     }
+
   }
 
   return (
@@ -90,32 +87,38 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
           <Row className="my-4">
             <Col sm={10} md={8} lg={6} className="mx-auto">
               <Formik
-                initialValues={{ name: '', email: '', message: '' }}
-                validationSchema={contactValidationSchema}
+                initialValues={initialValues}
+                validationSchema={getNewContactMessageSchema(t)}
                 onSubmit={handleSubmit}
               >
-                {({ isSubmitting }) => (
+                {({ isSubmitting, values }) => (
                   <Form noValidate>
                     <fieldset disabled={isSubmitting}>
-                      <BootstrapForm.Group controlId="formName" className="mb-4">
+                      <BootstrapForm.Group controlId="formName" className="mb-3">
                         <BootstrapForm.Label>{t('name')}</BootstrapForm.Label>
                         <Field name="name" className="form-control" type="text" placeholder={t('namePlaceholder')} />
                         <ErrorMessage name="name" component="p" className="text-danger" />
                       </BootstrapForm.Group>
-                      <BootstrapForm.Group controlId="formEmail" className="mb-4">
+                      <BootstrapForm.Group controlId="formEmail" className="mb-3">
                         <BootstrapForm.Label>{t('email')}</BootstrapForm.Label>
                         <Field name="email" className="form-control" type="email" placeholder={t('emailPlaceholder')} />
                         <ErrorMessage name="email" component="p" className="text-danger" />
                       </BootstrapForm.Group>
-                      <BootstrapForm.Group controlId="formMessage" className="mb-4">
+                      <BootstrapForm.Group controlId="formMessage" className="mb-3">
                         <BootstrapForm.Label>{t('message')}</BootstrapForm.Label>
                         <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={3} />
+                        <div className="text-muted text-end small">
+                          {values.message.length} / {maxMessageLength}
+                        </div>
                         <ErrorMessage name="message" component="p" className="text-danger" />
                       </BootstrapForm.Group>
-                      <BootstrapForm.Group controlId="formMessage" className="mb-4">
+                      <BootstrapForm.Group controlId="formMessage" className="mb-3">
                         <BootstrapForm.Text id="policy" muted>
                           {t('policyAgree1')} <GlowLink href="/policy" newTab={true} withArrow={true}>{t('policyAgreeLink1')}</GlowLink> {t('policyAgree2')}
                         </BootstrapForm.Text>
+                      </BootstrapForm.Group>
+                      <BootstrapForm.Group controlId="formCaptcha" className="d-flex justify-content-center mb-3">
+                        <RecaptchaCheckbox ref={recaptchaRef} onVerify={setToken} />
                       </BootstrapForm.Group>
                     </fieldset>
                     <Button type="submit" variant="primary" disabled={isSubmitting} className="mt-3">
