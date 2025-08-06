@@ -58,12 +58,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
       await createContactMessageMutation(contactMessageDto);
       toast.success(t('successResponse'));
       resetForm();
-      setToken(null);
-      recaptchaRef.current?.resetRecaptcha();
     } catch (error: any) {
       toast.error(t('errorResponse'));
     } finally {
+      setToken(null);
       setSubmitting(false);
+      recaptchaRef.current?.resetRecaptcha();
     }
 
   }
