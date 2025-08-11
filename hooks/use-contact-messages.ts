@@ -1,9 +1,10 @@
 import { CreateContactMessageDto } from "@/dtos/contact-dto";
 import { ApiError } from "@/errors/api-error";
-import ContactMessage from "@/interfaces/i-contact-message";
+import ContactMessage, { FullContactMessage } from "@/interfaces/i-contact-message";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { createContactMessage } from "@/services/contact-service";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createContactMessage, deleteContactMessage, getContactMessages, toggleReadContactMessage } from "@/services/contact-service";
+import { useAuth } from "@clerk/nextjs";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const CONTACT_MESSAGE_QUERY_KEY = 'contact-message';
 const CONTACT_MESSAGES_QUERY_KEY = 'contact-messages';
@@ -82,6 +83,69 @@ export const useCreateContactMessageMutation = () => {
 
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGES_QUERY_KEY], refetchType: 'active' });
+    },
+  });
+};
+
+export const useContactMessagesQuery = (page: number, size: number, initialContactMessages?: PaginatedResult<FullContactMessage>) => {
+  const { getToken } = useAuth();
+  
+  return useQuery<PaginatedResult<FullContactMessage>, ApiError>({
+    queryKey: [CONTACT_MESSAGES_QUERY_KEY, page, size],
+    queryFn: async () => {
+      const token = (await getToken()) ?? '';
+      return getContactMessages(page, size, token);
+    },
+    initialData: initialContactMessages,
+    initialDataUpdatedAt: 0,
+    placeholderData: (prevData) => prevData ?? {
+      items: [], 
+      pagination: { totalCount: 0, totalPages: 1, currentPage: page, currentPageSize: 0 }
+    }, // Keeps previous data until new data loads
+    refetchOnWindowFocus: false, // Prevents unnecessary API calls when switching tabs
+  });
+};
+
+export const useDeleteContactMessageMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async (contactMessageId: string) => {
+      const token = (await getToken()) ?? '';
+      return deleteContactMessage(contactMessageId, token);
+    },
+    onSuccess: (_, id) => {
+      queryClient.removeQueries({ queryKey: [CONTACT_MESSAGE_QUERY_KEY, id] });
+
+      // Update paginated list cache by filtering out the deleted contact message
+      queryClient.setQueryData([CONTACT_MESSAGES_QUERY_KEY], (oldData: PaginatedResult<FullContactMessage> | undefined) => {
+        if (!oldData) return;
+        return {
+          ...oldData,
+          items: oldData.items.filter(contactMessage => contactMessage.id !== id), // Remove deleted contact message
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGES_QUERY_KEY] });
+      queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGE_QUERY_KEY, id] });
+    },
+  });
+};
+
+export const useToggleReadContactMessageMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async (contactMessageId: string) => {
+      const token = (await getToken()) ?? '';
+      return toggleReadContactMessage(contactMessageId, token);
+    },
+    onSuccess: (updated, id) => {
+      queryClient.setQueryData([CONTACT_MESSAGE_QUERY_KEY, id], updated);
+      queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGES_QUERY_KEY] });
+      queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGE_QUERY_KEY, id] });
     },
   });
 };

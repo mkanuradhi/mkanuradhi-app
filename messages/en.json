@@ -712,6 +712,10 @@
         "Edit": {
           "title": "Edit Research"
         }
+      },
+      "Contact": {
+        "pageTitle": "Contact Messages Dashboard",
+        "title": "Contact Messages"
       }
     }
   },
@@ -1751,6 +1755,36 @@
         "DIPLOMA": "Diploma",
         "POSTGRADUATE_DIPLOMA": "Postgraduate Diploma"
       }
+    },
+    "ContactMessagesTable": {
+      "failContactMessages": "Failed to load contact messages",
+      "noContactMessages": "No contact messages to display",
+      "refreshContactMessages": "Refreshing contact messages...",
+      "contactMessages": "contact messages"
+    },
+    "ContactMessageOptionsCard": {
+      "markAsRead": "Mark as read",
+      "markAsUnread": "Mark as unread",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the message sent by: <strong>name</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "toggleErrorTitle": "Cannot toggle read the contact message",
+      "deleteErrorTitle": "Cannot delete the contact message",
+      "fromEmail": "From",
+      "ip": "IP",
+      "userAgent": "User Agent",
+      "browser": "Browser",
+      "screen": "Screen",
+      "timezone": "Timezone",
+      "language": "Language",
+      "city": "City",
+      "country": "Country",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "os": "OS",
+      "deviceType": "Device Type"
     }
   },
   "contexts": {
@@ -1760,6 +1794,7 @@
       "courses": "Courses",
       "publications": "Publications",
       "research": "Research",
+      "contactMessages": "Contact Messages",
       "studentCourses": "Student Courses"
     }
   },
