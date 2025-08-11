@@ -712,6 +712,10 @@
         "Edit": {
           "title": "පර්යේෂණය සංස්කරණය කිරීම"
         }
+      },
+      "Contact": {
+        "pageTitle": "සම්බන්ධතා පණිවිඩ පුවරුව",
+        "title": "සම්බන්ධතා පණිවිඩ"
       }
     }
   },
@@ -1751,6 +1755,36 @@
         "DIPLOMA": "ඩිප්ලෝමා",
         "POSTGRADUATE_DIPLOMA": "පශ්චාත් උපාධි ඩිප්ලෝමා"
       }
+    },
+    "ContactMessagesTable": {
+      "failContactMessages": "සම්බන්ධතා පණිවිඩ පූරණය කිරීමට අසමත් විය.",
+      "noContactMessages": "පෙන්වීමට සම්බන්ධතා පණිවිඩ නොමැත.",
+      "refreshContactMessages": "සම්බන්ධතා පණිවිඩ නැවුම් කරමින්...",
+      "contactMessages": "සම්බන්ධතා පණිවිඩ"
+    },
+    "ContactMessageOptionsCard": {
+      "markAsRead": "කියවූ ලෙස සලකුණු කරන්න",
+      "markAsUnread": "නොකියවූ ලෙස සලකුණු කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "<strong>name</strong> විසින් එවන ලද පණිවිඩය මකා දැමීමට ඔබට අවශ්‍ය බව ඔබට විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "toggleErrorTitle": "සම්බන්ධතා පණිවිඩය කියවීමට ටොගල කළ නොහැක.",
+      "deleteErrorTitle": "සම්බන්ධතා පණිවිඩය මකා දැමිය නොහැක.",
+      "fromEmail": "සිට",
+      "ip": "IP ලිපිනය",
+      "userAgent": "පරිශීලක නියෝජිතයා",
+      "browser": "බ්‍රව්සරය",
+      "screen": "තිරය",
+      "timezone": "කාල කලාපය",
+      "language": "භාෂාව",
+      "city": "නගරය",
+      "country": "රට",
+      "latitude": "අක්ෂාංශ",
+      "longitude": "දේශාංශ",
+      "os": "මෙහෙයුම් පද්ධතිය",
+      "deviceType": "උපාංග වර්ගය"
     }
   },
   "contexts": {
@@ -1760,6 +1794,7 @@
       "courses": "පාඨමාලා",
       "publications": "ප්‍රකාශන",
       "research": "පර්යේෂණ",
+      "contactMessages": "සම්බන්ධතා පණිවිඩ",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },
