@@ -76,7 +76,7 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                 </p>
               </Col>
             </Row>
-            {contactMessage.browser && (
+            {(contactMessage.browser || contactMessage.screen) && (
               <Row>
                 <Col xs={12} md={4}>
                   <p>
@@ -84,10 +84,6 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                     <span>{ contactMessage.browser }</span>
                   </p>
                 </Col>
-              </Row>
-            )}
-            {contactMessage.screen && (
-              <Row>
                 <Col>
                   <p>
                     <label className="fw-semibold me-1">{t('screen')}:</label>
@@ -96,7 +92,7 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                 </Col>
               </Row>
             )}
-            {contactMessage.timezone && (
+            {(contactMessage.timezone || contactMessage.language) && (
               <Row>
                 <Col xs={12} md={4}>
                   <p>
@@ -104,10 +100,6 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                     <span>{ contactMessage.timezone }</span>
                   </p>
                 </Col>
-              </Row>
-            )}
-            {contactMessage.language && (
-              <Row>
                 <Col>
                   <p>
                     <label className="fw-semibold me-1">{t('language')}:</label>
@@ -116,7 +108,7 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                 </Col>
               </Row>
             )}
-            {contactMessage.city && (
+            {(contactMessage.city || contactMessage.country) && (
               <Row>
                 <Col xs={12} md={4}>
                   <p>
@@ -124,10 +116,6 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                     <span>{ contactMessage.city }</span>
                   </p>
                 </Col>
-              </Row>
-            )}
-            {contactMessage.country && (
-              <Row>
                 <Col>
                   <p>
                     <label className="fw-semibold me-1">{t('country')}:</label>
@@ -136,7 +124,7 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                 </Col>
               </Row>
             )}
-            {contactMessage.latitude && (
+            {(contactMessage.latitude || contactMessage.longitude) && (
               <Row>
                 <Col xs={12} md={4}>
                   <p>
@@ -144,10 +132,6 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                     <span>{ contactMessage.latitude }</span>
                   </p>
                 </Col>
-              </Row>
-            )}
-            {contactMessage.longitude && (
-              <Row>
                 <Col>
                   <p>
                     <label className="fw-semibold me-1">{t('longitude')}:</label>
@@ -156,7 +140,7 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                 </Col>
               </Row>
             )}
-            {contactMessage.os && (
+            {(contactMessage.os || contactMessage.deviceType) && (
               <Row>
                 <Col xs={12} md={4}>
                   <p>
@@ -164,10 +148,6 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                     <span>{ contactMessage.os }</span>
                   </p>
                 </Col>
-              </Row>
-            )}
-            {contactMessage.deviceType && (
-              <Row>
                 <Col>
                   <p>
                     <label className="fw-semibold me-1">{t('deviceType')}:</label>
