@@ -60,3 +60,11 @@ export const toggleReadContactMessage = async (contactMessageId: string, token: 
     throw handleApiError(error);
   }
 };
+
+export const getUnreadContactMessageCount = async (token: string): Promise<number> => {
+  const res = await axios.get<{ count: number }>(
+    `${API_BASE_URL}${CONTACT_PATH}/unread/count`,
+    buildHeaders(token)
+  );
+  return res.data.count;
+};
