@@ -4,7 +4,7 @@ import { Button, Col, Container, Form as BootstrapForm, Row } from "react-bootst
 import { useTheme } from '@/hooks/useTheme';
 import { useTranslations } from 'next-intl';
 import { ToastContainer, toast } from 'react-toastify';
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
@@ -13,6 +13,7 @@ import { getNewContactMessageSchema } from '@/schemas/new-contact-message-schema
 import { CreateContactMessageDto } from '@/dtos/contact-dto';
 import { useCreateContactMessageMutation } from '@/hooks/use-contact-messages';
 import RecaptchaCheckbox, { RecaptchaCheckboxRef } from './recaptcha-checkbox';
+import EmailReveal from './email-reveal';
 
 const baseTPath = 'components.ContactForm';
 const maxMessageLength = 300;
@@ -80,7 +81,22 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
             <Col>
               <h1>{t('title')}</h1>
               <section>
-                <p>{t('description')}</p>
+                <p className="mb-2">{t('description')}</p>
+
+                <hr className="my-3 border-0" style={{ height: 1, background: "currentColor", opacity: .15 }} />
+
+                <div id="email-heading" className="mb-1 fw-semibold d-flex align-items-center gap-2">
+                  <FontAwesomeIcon icon={faEnvelope} className="text-body-secondary" aria-hidden />
+                  <span>{t('emailLabel')}</span>
+                </div>
+
+                <div className="d-flex flex-wrap gap-2">
+                  <EmailReveal user="mkanuradhi" domain="gmail.com" asLink="copy" />
+                </div>
+
+                <div className="mt-2 small text-body-secondary">
+                  {t('emailNote')}
+                </div>
               </section>
             </Col>
           </Row>

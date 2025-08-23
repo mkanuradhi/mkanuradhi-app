@@ -738,6 +738,8 @@
       "title": "Contact",
       "subTitle": "Collaborate",
       "description": "Feel free to reach out with any inquiries, collaborations, or opportunities. Whether you have questions about my research, are interested in working together, or simply want to connect, I'd love to hear from you.",
+      "emailLabel": "Email",
+      "emailNote": "Prefer email for collaborations or official requests. For quick questions, the form below is faster. Click the address to copy.",
       "name": "Name",
       "namePlaceholder": "Enter your name",
       "email": "Email",
@@ -1785,6 +1787,10 @@
       "longitude": "Longitude",
       "os": "OS",
       "deviceType": "Device Type"
+    },
+    "EmailReveal": {
+      "mailto": "Click to email",
+      "copy": "Click to copy"
     }
   },
   "contexts": {

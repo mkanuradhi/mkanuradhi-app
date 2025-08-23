@@ -1,0 +1,24 @@
+.contact-email-address {
+  display: inline-block;
+  padding: .125rem .5rem;
+  border-radius: .5rem;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  color: var(--bs-body-color);
+  text-decoration: underline dotted;
+
+  background-color: rgba(var(--bs-body-color-rgb), .08);
+  border: 1px solid rgba(var(--bs-body-color-rgb), .18);
+
+  transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.contact-email-address:hover {
+  background-color: rgba(var(--bs-body-color-rgb), .12);
+  border-color: rgba(var(--bs-body-color-rgb), .28);
+}
+
+.contact-email-address:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 .2rem var(--bs-focus-ring-color, rgba(var(--bs-primary-rgb, 13,110,253), .35));
+}
