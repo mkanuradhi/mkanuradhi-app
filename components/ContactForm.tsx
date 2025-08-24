@@ -33,6 +33,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
   const [token, setToken] = useState<string | null>(null);
   const { mutateAsync: createContactMessageMutation, isPending: isPendingCreateContactMessage } = useCreateContactMessageMutation();
   const recaptchaRef = useRef<RecaptchaCheckboxRef>(null);
+  const contactEmails = process.env.NEXT_PUBLIC_CONTACT_EMAILS?.split(',') || [];
 
   const handleSubmit = async (
     values: typeof initialValues,
@@ -85,18 +86,26 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
 
                 <hr className="my-3 border-0" style={{ height: 1, background: "currentColor", opacity: .15 }} />
 
-                <div id="email-heading" className="mb-1 fw-semibold d-flex align-items-center gap-2">
-                  <FontAwesomeIcon icon={faEnvelope} className="text-body-secondary" aria-hidden />
-                  <span>{t('emailLabel')}</span>
-                </div>
-
-                <div className="d-flex flex-wrap gap-2">
-                  <EmailReveal user="mkanuradhi" domain="gmail.com" asLink="copy" />
-                </div>
-
-                <div className="mt-2 small text-body-secondary">
-                  {t('emailNote')}
-                </div>
+                {contactEmails && contactEmails.length > 0 && (
+                  <div>
+                    <div id="email-heading" className="mb-1 fw-semibold d-flex align-items-center gap-2">
+                      <FontAwesomeIcon icon={faEnvelope} className="text-body-secondary" aria-hidden />
+                      <span>{t('emailLabel')}</span>
+                    </div>
+                    <div className="d-flex flex-wrap gap-4">
+                      {contactEmails.map((email) => {
+                        const [user, domain] = email.split('@');
+                        if (!user || !domain) return null;
+                        return (
+                          <EmailReveal key={email} user={user} domain={domain} asLink="copy" />
+                        );
+                      })}
+                    </div>
+                    <div className="mt-2 small text-body-secondary">
+                      {t('emailNote')}
+                    </div>
+                  </div>
+                )}
               </section>
             </Col>
           </Row>
@@ -122,7 +131,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
                       </BootstrapForm.Group>
                       <BootstrapForm.Group controlId="formMessage" className="mb-3">
                         <BootstrapForm.Label>{t('message')}</BootstrapForm.Label>
-                        <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={3} />
+                        <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={5} />
                         <div className="text-muted text-end small">
                           {values.message.length} / {maxMessageLength}
                         </div>
