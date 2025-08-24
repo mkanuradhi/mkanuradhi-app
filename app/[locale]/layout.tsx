@@ -71,8 +71,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <ClerkThemeProvider localization={localization}>
-              <SideBarProvider>
-                <QueryProvider>
+              <QueryProvider>
+                <SideBarProvider>
                   <div className="background-container">
                     <div className="overlay"></div>
                     <div className="background-image bg1"></div>
@@ -89,8 +89,8 @@ export default async function LocaleLayout({
                       <Footer />
                     </footer>
                   </div>
-                </QueryProvider>
-              </SideBarProvider>
+                </SideBarProvider>
+              </QueryProvider>
             </ClerkThemeProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

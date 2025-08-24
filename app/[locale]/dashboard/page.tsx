@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { getTranslations } from 'next-intl/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Role from '@/enums/role';
@@ -161,113 +161,112 @@ const DashboardPage = async ({ params }: { params: { locale: string } }) => {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <h1>{t.rich('welcome', {fullname: user?.fullName})}</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+      <Row>
+        <Col>
+          <h1>{t.rich('welcome', {fullname: user?.fullName})}</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
 
-            <Row>
-              <Col md={4} className="mb-3">
-                <PublicationSummaryCard summary={publicationSummary} />
-              </Col>
-              <Col md={4} className="mb-3">
-                <ResearchSummaryCard summary={researchSummary} />
-              </Col>
-              <Col md={4} className="mb-3">
-                <CourseSummaryCard summary={courseSummary} />
-              </Col>
-              <Col md={6} className="mb-3">
-                <LineCard
-                  title={t('yearlyPublications')}
-                  data={translatedYearlyPublicationsLine}
-                  xAxisLabel={yearLabel}
-                  yAxisLabel={countLabel}
-                  integerOnlyYTicks={false}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <StackedBarCard
-                  title={t('yearlyPublicationsByType')}
-                  data={translatedYearlyPublicationsByType}
-                  keys={Object.values(translatedPublicationTypes)}
-                  indexBy="year"
-                  xAxisLabel={yearLabel}
-                  yAxisLabel={countLabel}
-                  integerOnlyYTicks={false}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <PieCard
-                  title={t('publicationsByType')}
-                  data={translatedPublicationsByType}
-                  innerRadius={0.5}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <WordCloudCard
-                  title={t('publicationKeywordCloud')}
-                  data={translatedPublicationKeywords}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <RecentPublicationCard
-                  title={t('recentPublications')}
-                  publications={recentPublications}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <PieCard
-                  title={t('researchByType')}
-                  data={translatedResearchByType}
-                  innerRadius={0.5}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <PieCard
-                  title={t('coursesByType')}
-                  data={translatedCoursesByType}
-                  innerRadius={0.5}
-                />
-              </Col>
-              <Col md={6} className="mb-3">
-                <StackedBarCard
-                  title={t('yearlyCoursesByType')}
-                  data={translatedYearlyCoursesByType}
-                  keys={Object.values(translatedDegreeTypes)}
-                  indexBy="year"
-                  xAxisLabel={yearLabel}
-                  yAxisLabel={countLabel}
-                  integerOnlyYTicks={false}
-                  legendAnchor='top-right'
-                />
-              </Col>
-            </Row>
+          <Row>
+            <Col md={4} className="mb-3">
+              <PublicationSummaryCard summary={publicationSummary} />
+            </Col>
+            <Col md={4} className="mb-3">
+              <ResearchSummaryCard summary={researchSummary} />
+            </Col>
+            <Col md={4} className="mb-3">
+              <CourseSummaryCard summary={courseSummary} />
+            </Col>
+            <Col md={6} className="mb-3">
+              <LineCard
+                title={t('yearlyPublications')}
+                data={translatedYearlyPublicationsLine}
+                xAxisLabel={yearLabel}
+                yAxisLabel={countLabel}
+                integerOnlyYTicks={false}
+              />
+            </Col>
+            <Col md={6} className="mb-3">
+              <StackedBarCard
+                title={t('yearlyPublicationsByType')}
+                data={translatedYearlyPublicationsByType}
+                keys={Object.values(translatedPublicationTypes)}
+                indexBy="year"
+                xAxisLabel={yearLabel}
+                yAxisLabel={countLabel}
+                integerOnlyYTicks={false}
+              />
+            </Col>
+            <Col md={6} className="mb-3">
+              <PieCard
+                title={t('publicationsByType')}
+                data={translatedPublicationsByType}
+                innerRadius={0.5}
+              />
+            </Col>
+            <Col md={6} className="mb-3">
+              <WordCloudCard
+                title={t('publicationKeywordCloud')}
+                angles={[0, -90]}
+                data={translatedPublicationKeywords}
+              />
+            </Col>
+            <Col md={6} className="mb-3">
+              <RecentPublicationCard
+                title={t('recentPublications')}
+                publications={recentPublications}
+              />
+            </Col>
+            <Col md={6} className="mb-3">
+              <PieCard
+                title={t('researchByType')}
+                data={translatedResearchByType}
+                innerRadius={0.5}
+              />
+            </Col>
+            <Col md={6} className="mb-3">
+              <PieCard
+                title={t('coursesByType')}
+                data={translatedCoursesByType}
+                innerRadius={0.5}
+              />
+            </Col>
+            <Col md={6} className="mb-3">
+              <StackedBarCard
+                title={t('yearlyCoursesByType')}
+                data={translatedYearlyCoursesByType}
+                keys={Object.values(translatedDegreeTypes)}
+                indexBy="year"
+                xAxisLabel={yearLabel}
+                yAxisLabel={countLabel}
+                integerOnlyYTicks={false}
+                legendAnchor='top-right'
+              />
+            </Col>
+          </Row>
 
-          </Col>
-        </Row>
-        <Row>
-          <Col md={8}>
-            <small>
-              {t.rich('userIdMessage', {
-                userId,
-                strong: (chunks) => <strong>{chunks}</strong>,
-              })}
-            </small>
-          </Col>
-          <Col>
-            <small>
-              {t.rich('roleMessage', {
-                roles: memberRoles.join(", "),
-                strong: (chunks) => <strong>{chunks}</strong>,
-              })}
-            </small>
-          </Col>
-        </Row>
-      </Container>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={8}>
+          <small>
+            {t.rich('userIdMessage', {
+              userId,
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
+          </small>
+        </Col>
+        <Col>
+          <small>
+            {t.rich('roleMessage', {
+              roles: memberRoles.join(", "),
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
+          </small>
+        </Col>
+      </Row>
     </>
   )
 }

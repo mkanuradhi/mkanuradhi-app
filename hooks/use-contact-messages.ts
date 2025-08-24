@@ -2,12 +2,13 @@ import { CreateContactMessageDto } from "@/dtos/contact-dto";
 import { ApiError } from "@/errors/api-error";
 import ContactMessage, { FullContactMessage } from "@/interfaces/i-contact-message";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { createContactMessage, deleteContactMessage, getContactMessages, toggleReadContactMessage } from "@/services/contact-service";
+import { createContactMessage, deleteContactMessage, getContactMessages, getUnreadContactMessageCount, toggleReadContactMessage } from "@/services/contact-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const CONTACT_MESSAGE_QUERY_KEY = 'contact-message';
 const CONTACT_MESSAGES_QUERY_KEY = 'contact-messages';
+const CONTACT_MESSAGES_UNREAD_COUNT = 'contact-messages-unread-count';
 
 export const useCreateContactMessageMutation = () => {
   const queryClient = useQueryClient();
@@ -129,6 +130,7 @@ export const useDeleteContactMessageMutation = () => {
 
       queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGES_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGE_QUERY_KEY, id] });
+      queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGES_UNREAD_COUNT] });
     },
   });
 };
@@ -146,6 +148,22 @@ export const useToggleReadContactMessageMutation = () => {
       queryClient.setQueryData([CONTACT_MESSAGE_QUERY_KEY, id], updated);
       queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGES_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGE_QUERY_KEY, id] });
+      queryClient.invalidateQueries({ queryKey: [CONTACT_MESSAGES_UNREAD_COUNT] });
     },
+  });
+};
+
+export const useUnreadContactMessageCount = () => {
+  const { getToken } = useAuth();
+  return useQuery<number>({
+    queryKey: [CONTACT_MESSAGES_UNREAD_COUNT],
+    queryFn: async () => {
+      const token = (await getToken()) ?? '';
+      return getUnreadContactMessageCount(token);
+    },
+    staleTime: 5 * 60_000,      // 5 minutes “fresh”
+    refetchInterval: false,     // no polling
+    refetchOnWindowFocus: true, // refresh when the user returns
+    enabled: true               // let caller turn it on/off
   });
 };

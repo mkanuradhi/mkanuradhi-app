@@ -3,11 +3,12 @@ import React, { createContext, ReactNode, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import Role from "@/enums/role";
 import { useTranslations } from "next-intl";
+import { useUnreadContactMessageCount } from "@/hooks/use-contact-messages";
 
 const baseTPath = 'contexts.SideBar';
 
 interface SideBarContextType {
-  sidebarLinks: { title: string; path: string }[];
+  sidebarLinks: { title: string; path: string, info: string }[];
   showOffcanvas: boolean;
   handleClose: () => void;
   handleShow: () => void;
@@ -24,23 +25,24 @@ export const SideBarProvider: React.FC<SideBarProviderProps> = ({children}) => {
   const { user } = useUser();
   const memberRoles = user?.publicMetadata?.roles as Role[];
   const t = useTranslations(baseTPath);
+  const { data: unreadCount } = useUnreadContactMessageCount();
 
   const baseLinks = [
-    { title: t('dashboard'), path: `/dashboard`},
+    { title: t('dashboard'), path: `/dashboard`, info: '' },
   ];
 
   const sidebarLinks = [...baseLinks];
 
   const adminLinks = [
-    { title: t('blog'), path: `/dashboard/blog` },
-    { title: t('courses'), path: `/dashboard/courses` },
-    { title: t('publications'), path: `/dashboard/publications` },
-    { title: t('research'), path: `/dashboard/research` },
-    { title: t('contactMessages'), path: `/dashboard/contact` },
+    { title: t('blog'), path: `/dashboard/blog`, info: '' },
+    { title: t('courses'), path: `/dashboard/courses`, info: '' },
+    { title: t('publications'), path: `/dashboard/publications`, info: '' },
+    { title: t('research'), path: `/dashboard/research`, info: '' },
+    { title: t('contactMessages'), path: `/dashboard/contact`, info: unreadCount ? `${unreadCount}` : '' },
   ];
 
   const studentLinks = [
-    { title: t('studentCourses'), path: `/dashboard/student/courses` },
+    { title: t('studentCourses'), path: `/dashboard/student/courses`, info: '' },
   ];
 
   if (memberRoles?.includes(Role.ADMIN)) {
