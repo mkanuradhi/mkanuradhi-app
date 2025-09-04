@@ -512,9 +512,15 @@
       "administrativeTitle": "Administrative",
       "administrativeExperiences": [
         {
+          "post": "Senior Treasurer, Student Council",
+          "organization": "Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
+          "duration": "2024 - Present"
+        },
+        {
           "post": "Member, Quality Assurance Cell",
           "organization": "Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka",
-          "duration": "2025 - Present"
+          "duration": "2025 - Present",
+          "url": "https://www.graduate.sjp.ac.lk/qac/members/"
         },
         {
           "post": "Coordinator, MSc in Data Science and AI",
@@ -551,6 +557,27 @@
       ],
       "professionalTitle": "Professional Activities",
       "professionalExperiences": [
+        {
+          "post": "Co-Chair",
+          "event": "Publication Committee, 9th SLAAI - International Conference on Artificial Intelligence 2025",
+          "duration": "19th - 20th November 2025",
+          "location": "The Open University of Sri Lanka.",
+          "url": null
+        },
+        {
+          "post": "Judge",
+          "event": "FUTURUM 2.0 - AI Competition Finals, 11th Uni-In Alliance Research Symposium 2025",
+          "duration": "27th August 2025",
+          "location": "University of Sri Jayewardenepura, Sri Lanka.",
+          "url": null
+        },
+        {
+          "post": "Resource Person",
+          "event": "Workshop on ERC Application Procedure, organized by the Ethics Review Committee, Faculty of Applied Sciences (ERC-FAS)",
+          "duration": "31st July 2025",
+          "location": "University of Sri Jayewardenepura, Sri Lanka.",
+          "url": null
+        },
         {
           "post": "Session Chair",
           "event": "11th International Conference on Multidisciplinary Approaches, 2025, Engineering, Physical Sciences, Technological Innovation track",
