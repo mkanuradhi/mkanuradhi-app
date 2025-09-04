@@ -558,11 +558,11 @@
       "professionalTitle": "Professional Activities",
       "professionalExperiences": [
         {
-          "post": "Co-Chair",
-          "event": "Publication Committee, 9th SLAAI - International Conference on Artificial Intelligence 2025",
+          "post": "Co-Chair, Publication Committee",
+          "event": "9th SLAAI - International Conference on Artificial Intelligence 2025",
           "duration": "19th - 20th November 2025",
           "location": "The Open University of Sri Lanka.",
-          "url": null
+          "url": "https://slaai.lk/icai/2025/"
         },
         {
           "post": "Judge",
