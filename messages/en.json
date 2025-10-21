@@ -558,11 +558,18 @@
       "professionalTitle": "Professional Activities",
       "professionalExperiences": [
         {
-          "post": "Co-Chair",
-          "event": "Publication Committee, 9th SLAAI - International Conference on Artificial Intelligence 2025",
+          "post": "Main Organizer",
+          "event": "Best Undergraduate Artificial Intelligence Project Award 2025 - Sri Lanka Association for Artificial Intelligence (SLAAI)",
           "duration": "19th - 20th November 2025",
           "location": "The Open University of Sri Lanka.",
           "url": null
+        },
+        {
+          "post": "Co-Chair, Publication Committee",
+          "event": "9th SLAAI - International Conference on Artificial Intelligence 2025",
+          "duration": "19th - 20th November 2025",
+          "location": "The Open University of Sri Lanka.",
+          "url": "https://slaai.lk/icai/2025/"
         },
         {
           "post": "Judge",
@@ -597,14 +604,14 @@
           "event": "8th SLAAI - International Conference on Artificial Intelligence 2024",
           "duration": "18th - 19th December 2024",
           "location": "Gen. Sir John Kotelawala Defence University, Sri Lanka.",
-          "url": "https://slaai.lk/icai"
+          "url": "https://slaai.lk/icai/2024/"
         },
         {
           "post": "Session Chair, Technical session 1 - Parallel session 2",
           "event": "8th SLAAI - International Conference on Artificial Intelligence 2024",
           "duration": "18th - 19th December 2024",
           "location": "Gen. Sir John Kotelawala Defence University, Sri Lanka.",
-          "url": "https://slaai.lk/icai"
+          "url": "https://slaai.lk/icai/2024/"
         }
       ]
     },
