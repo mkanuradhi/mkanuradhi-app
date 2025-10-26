@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import CourseCard from './course-card';
 import { Link } from '@/i18n/routing';
+import ScrollReveal from './scroll-reveal';
 import "./courses-container.scss";
 
 const baseTPath = 'components.CoursesContainer';
@@ -45,10 +46,10 @@ const CoursesContainer: React.FC<CoursesContainerProps> = ({ groupedCourses }) =
                   <div key={index} className="mb-4">
                     <h6>{locGroup.location}</h6>
                     <Row>
-                      {locGroup.courses.map(course => (
-                        <Col md={4} key={course.id} className="mb-3">
+                      {locGroup.courses.map((course, index) => (
+                        <ScrollReveal key={course.id} className="col-md-4 mb-3" delay={index * 0.1}>
                           <CourseCard course={course} />
-                        </Col>
+                        </ScrollReveal>
                       ))}
                     </Row>
                   </div>

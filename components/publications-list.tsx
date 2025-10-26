@@ -5,6 +5,7 @@ import PublicationCard from './publication-card';
 import LoadingContainer from './loading-container';
 import { useTranslations } from 'next-intl';
 import Publication from '@/interfaces/i-publication';
+import ScrollReveal from './scroll-reveal';
 
 const baseTPath = 'components.PublicationsList';
 
@@ -36,9 +37,9 @@ const PublicationsList: React.FC<PublicationsListProps> = ({ publications, isLoa
     <>
       <Row>
         {publications.map((pub) => (
-          <Col key={pub.id} md={12} className="mb-2">
+          <ScrollReveal key={pub.id} className="col-md-12 mb-2">
             <PublicationCard publication={pub} />
-          </Col>
+          </ScrollReveal>
         ))}
       </Row>
     </>
