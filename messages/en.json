@@ -560,9 +560,23 @@
         {
           "post": "Main Organizer",
           "event": "Best Undergraduate Artificial Intelligence Project Award 2025 - Sri Lanka Association for Artificial Intelligence (SLAAI)",
-          "duration": "19th - 20th November 2025",
-          "location": "The Open University of Sri Lanka.",
+          "duration": null,
+          "location": null,
           "url": null
+        },
+        {
+          "post": "Judge",
+          "event": "Best Undergraduate Artificial Intelligence Project Award 2025 - Sri Lanka Association for Artificial Intelligence (SLAAI)",
+          "duration": null,
+          "location": null,
+          "url": null
+        },
+        {
+          "post": "Resource Person",
+          "event": "Workshop on \"From Wheels to Thinking Machines - The story of AI\" organized by the President's College, Maharagama.",
+          "duration": "23rd October 2025",
+          "location": "President's College, Maharagama.",
+          "url": "https://www.mkanuradhi.com/en/blog/workshop-from-wheels-to-thinking-machines-the-story-of-ai"
         },
         {
           "post": "Co-Chair, Publication Committee",

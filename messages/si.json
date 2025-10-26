@@ -560,9 +560,23 @@
         {
           "post": "ප්‍රධාන සංවිධායක",
           "event": "2025 වසරේ හොඳම උපාධි අපේක්ෂක කෘත්‍රිම බුද්ධි ව්‍යාපෘති සම්මානය - ශ්‍රී ලංකා කෘත්‍රිම බුද්ධි සංගමය (SLAAI)",
-          "duration": "2025 නොවැම්බර් 19 - 20",
-          "location": "ශ්‍රී ලංකා විවෘත විශ්වවිද්‍යාලය.",
+          "duration": null,
+          "location": null,
           "url": null
+        },
+        {
+          "post": "විනිසුරු",
+          "event": "2025 වසරේ හොඳම උපාධි අපේක්ෂක කෘත්‍රිම බුද්ධි ව්‍යාපෘති සම්මානය - ශ්‍රී ලංකා කෘත්‍රිම බුද්ධි සංගමය (SLAAI)",
+          "duration": null,
+          "location": null,
+          "url": null
+        },
+        {
+          "post": "සම්පත්දායක",
+          "event": "මහරගම ජනාධිපති විද්‍යාලය විසින් සංවිධානය කරන ලද \"From Wheels to Thinking Machines - AI හි කතාව\" පිළිබඳ වැඩමුළුව.",
+          "duration": "2025 ඔක්තෝම්බර් 23",
+          "location": "ජනාධිපති විද්‍යාලය, මහරගම.",
+          "url": "https://www.mkanuradhi.com/en/blog/workshop-from-wheels-to-thinking-machines-the-story-of-ai"
         },
         {
           "post": "සම සභාපති, ප්‍රකාශන කමිටුව",
