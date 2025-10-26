@@ -4,7 +4,7 @@ import { useBlogPostViewsQuery } from '@/hooks/use-blog-posts';
 import { useLocale, useTranslations } from 'next-intl';
 import LoadingContainer from './loading-container';
 import { Col, Row } from 'react-bootstrap';
-import BlogPostCard from './BlogPostCard';
+import BlogPostCard from './blog-post-card';
 import PaginationInfo from './pagination-info';
 import PaginationControls from './pagination-controls';
 import { useRouter } from '@/i18n/routing';
