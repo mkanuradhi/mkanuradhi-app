@@ -4,6 +4,7 @@ import { Link } from "@/i18n/routing";
 import CourseView from "@/interfaces/i-course-view";
 import { Card } from "react-bootstrap";
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 
 const baseTPath = 'components.CourseCard';
 
@@ -25,23 +26,35 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   const codeCredits = codeCreditsParts.join(" | ");
 
   return (
-    <Card className="h-100">
-      <Card.Body>
-        <Card.Title>
-          <Link href={`/teaching/courses/${course.path}`} className="stretched-link text-decoration-none">
-            {course.title}
-          </Link>
-        </Card.Title>
-        {codeCredits && (
-          <Card.Subtitle className="mb-2 text-muted">
-            {codeCredits}
-          </Card.Subtitle>
-        )}
-        <Card.Text>
-          {course.subtitle}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <motion.div
+      whileHover={{
+        scale: 1.03,
+        boxShadow: '0px 12px 30px rgba(var(--bs-body-color-rgb), 0.2)'
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 250,
+        damping: 20
+      }}
+    >
+      <Card className="h-100">
+        <Card.Body>
+          <Card.Title>
+            <Link href={`/teaching/courses/${course.path}`} className="stretched-link text-decoration-none">
+              {course.title}
+            </Link>
+          </Card.Title>
+          {codeCredits && (
+            <Card.Subtitle className="mb-2 text-muted">
+              {codeCredits}
+            </Card.Subtitle>
+          )}
+          <Card.Text>
+            {course.subtitle}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </motion.div>
   );
 };
 
