@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${baseUrl}/en`,
-      lastModified: new Date('2024-09-11'),
+      lastModified: new Date('2025-09-11'),
       changeFrequency: 'weekly',
       priority: 1.0,
       alternates: {
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/teaching`,
-      lastModified: new Date('2025-01-07'),
+      lastModified: new Date('2025-10-07'),
       changeFrequency: 'yearly',
       priority: 0.8,
       alternates: {
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/research`,
-      lastModified: new Date('2024-09-11'),
+      lastModified: new Date('2025-10-21'),
       changeFrequency: 'monthly',
       priority: 0.7,
       alternates: {
@@ -41,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/publications`,
-      lastModified: new Date('2024-12-17'),
+      lastModified: new Date('2025-10-17'),
       changeFrequency: 'yearly',
       priority: 0.6,
       alternates: {
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/awards`,
-      lastModified: new Date('2024-09-11'),
+      lastModified: new Date('2025-09-11'),
       changeFrequency: 'yearly',
       priority: 0.4,
       alternates: {
@@ -65,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/experience`,
-      lastModified: new Date('2025-01-17'),
+      lastModified: new Date('2025-10-17'),
       changeFrequency: 'monthly',
       priority: 0.5,
       alternates: {
@@ -77,7 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/blog`,
-      lastModified: new Date('2025-01-18'),
+      lastModified: new Date('2025-10-26'),
       changeFrequency: 'monthly',
       priority: 0.3,
       alternates: {
@@ -89,7 +89,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/contact`,
-      lastModified: new Date('2024-09-29'),
+      lastModified: new Date('2025-10-21'),
       changeFrequency: 'yearly',
       priority: 0.3,
       alternates: {
