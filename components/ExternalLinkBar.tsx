@@ -27,7 +27,7 @@ const ExternalLinkBar: React.FC<ExternalLinkBarProps> = ({ links }) => (
               </Tooltip>
             }
             >
-            <a href={link.url} target="_blank" rel="noopener noreferrer">
+            <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.tooltipText}>
               {link.faIcon ? (
                 <FontAwesomeIcon icon={link.faIcon} size="2x" />
               ) : (

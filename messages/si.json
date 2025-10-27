@@ -782,10 +782,13 @@
       "experience": "අත්දැකීම්",
       "blog": "බ්ලොග්",
       "contact": "සම්බන්ධ වන්න",
+      "changeLang": "භාෂාව මාරු කරන්න",
       "en": "ඉංග්‍රීසි (en)",
       "si": "සිංහල (සිං)",
       "dashboard": "පාලන පුවරුව",
-      "menu": "මෙනුව"
+      "menu": "මෙනුව",
+      "switchToDarkMode": "අඳුරු තේමාව වෙත මාරුවෙන්න",
+      "switchToLightMode": "දීප්තිමත් තේමාව වෙත මාරුවෙන්න"
     },
     "ContactForm": {
       "title": "සම්බන්ධ වන්න",

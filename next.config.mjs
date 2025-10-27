@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    // Allow loading from image CDN, i.ibb.co
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,6 +15,8 @@ const nextConfig = {
         search: '',
       },
     ],
+    // For automatic conversion
+    formats: ['image/avif', 'image/webp'],
   },
 };
 

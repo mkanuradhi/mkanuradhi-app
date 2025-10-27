@@ -782,10 +782,13 @@
       "experience": "Experience",
       "blog": "Blog",
       "contact": "Contact",
+      "changeLang": "Change language",
       "en": "English (en)",
       "si": "Sinhala (සිං)",
       "dashboard": "Dashboard",
-      "menu": "Menu"
+      "menu": "Menu",
+      "switchToDarkMode": "Switch to dark mode",
+      "switchToLightMode": "Switch to light mode"
     },
     "ContactForm": {
       "title": "Contact",
