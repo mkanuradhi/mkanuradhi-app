@@ -22,6 +22,24 @@ const isStudentRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (authFn, req: NextRequest) => {
+  const p = req.nextUrl.pathname;
+
+  // Do NOT localize/guard special files
+  if (
+    p === '/robots.txt' ||
+    p === '/sitemap.xml' ||
+    p === '/favicon.ico' ||
+    p.startsWith('/icons/') ||
+    p.startsWith('/manifest')
+  ) {
+    return NextResponse.next();
+  }
+
+  // Skip i18n for API/TRPC entirely
+  if (p.startsWith('/api') || p.startsWith('/trpc')) {
+    return NextResponse.next();
+  }
+
   // Process internationalization first, but do NOT override authentication
   const intlResponse = intlMiddleware(req);
 
@@ -63,7 +81,8 @@ export default clerkMiddleware(async (authFn, req: NextRequest) => {
 export const config = {
   matcher: [
     // Clerk middleware matchers
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/((?!_next|.*\\..*).*)',
     '/(api|trpc)(.*)',
 
     // Protect dashboard routes
