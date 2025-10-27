@@ -54,6 +54,7 @@ export const Footer = () => {
                     e.currentTarget.blur();
                     handleShow();
                   }}
+                  aria-label={t('ackTitle')}
                 >
                   <motion.svg
                     width="24" 

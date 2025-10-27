@@ -13,7 +13,7 @@ const MainImageDisplayer = () => {
         animate={{ y: 0, opacity: 1 }}  // Animate to the original position and full opacity
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <Image src={anuImage} alt="Anuradha" priority quality={100} className="main-image" />
+        <Image src={anuImage} alt="Anuradha" priority quality={75} className="main-image" />
       </motion.div>
     </>
   )
