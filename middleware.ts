@@ -30,7 +30,8 @@ export default clerkMiddleware(async (authFn, req: NextRequest) => {
     p === '/sitemap.xml' ||
     p === '/favicon.ico' ||
     p.startsWith('/icons/') ||
-    p.startsWith('/manifest')
+    p.startsWith('/manifest') ||
+    p.startsWith('/.well-known/') // optional: for security.txt or other well-known files
   ) {
     return NextResponse.next();
   }
