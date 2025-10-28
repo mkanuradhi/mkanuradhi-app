@@ -94,10 +94,13 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                   <FontAwesomeIcon icon={theme === 'light' ? faMoon : faSun} />
                 </Nav.Link>
                 <NavDropdown
-                  title={<><span className="bi bi-translate" aria-hidden="true"></span></>}
+                  title={
+                    <>
+                      <span className="bi bi-translate" aria-label={t('changeLang')} role="button"></span>
+                    </>
+                  }
                   id="collapsible-nav-dropdown"
                   align="end"
-                  aria-label={t('changeLang')}
                 >
                   <NavDropdown.Item onClick={() => changeLanguage('en')}>
                     { t('en') }

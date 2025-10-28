@@ -126,16 +126,16 @@ export default function HomePage() {
               <MainImageDisplayer />
               <div className="text-center">
                 <MovingGradientTitle text={t('title')} />
-                <h5>{t('subTitle')}</h5>
-                <h6>
+                <p className="h5 text-center">{t('subTitle')}</p>
+                <p className="h6 text-center">
                   <GlowLink href="https://www.sjp.ac.lk/" newTab={true}>{t('university')}</GlowLink>
-                </h6>
+                </p>
               </div>
               <ExternalLinkBar links={externalLinks} />
             </Col>
             <Col sm={7}>
               <div>
-                <h1 className="text-center">{t('aboutTitle')}</h1>
+                <h2 className="h1 text-center">{t('aboutTitle')}</h2>
                 {descriptions.map((desc, index) => (
                   <p key={index}>
                     {desc}
