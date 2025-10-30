@@ -774,6 +774,17 @@
       "Contact": {
         "pageTitle": "සම්බන්ධතා පණිවිඩ පුවරුව",
         "title": "සම්බන්ධතා පණිවිඩ"
+      },
+      "Awards": {
+        "pageTitle": "සම්මාන පුවරුව",
+        "title": "සම්මාන",
+        "addNew": "නව සම්මානයක් එක් කරන්න",
+        "New": {
+          "title": "නව සම්මානයක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "සම්මානය සංස්කරණය කිරීම"
+        }
       }
     }
   },
@@ -1852,6 +1863,34 @@
     "EmailReveal": {
       "mailto": "ඊමේල් කිරීමට ක්ලික් කරන්න",
       "copy": "පිටපත් කිරීමට ක්ලික් කරන්න"
+    },
+    "AwardsTable": {
+      "failAwards": "සම්මාන පූරණය කිරීමට අසමත් විය.",
+      "noAwards": "ප්‍රදර්ශනය කිරීමට සම්මාන නොමැත.",
+      "refreshAwards": "සම්මාන නැවුම් කරමින්...",
+      "awards": "සම්මාන"
+    },
+    "AwardOptionsCard": {
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය කරන්න",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> සම්මානය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "සම්මානය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "සම්මානය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "සම්මානය මැකිය නොහැක",
+      "awardType": {
+        "award": "සම්මානය",
+        "grant": "ප්‍රදාන",
+        "fellowship": "සහයෝගීතාවය",
+        "scholarship": "ශිෂ්‍යත්වය",
+        "prize": "ත්‍යාගය",
+        "recognition": "පිළිගැනීම"
+      }
     }
   },
   "contexts": {
@@ -1862,6 +1901,7 @@
       "publications": "ප්‍රකාශන",
       "research": "පර්යේෂණ",
       "contactMessages": "සම්බන්ධතා පණිවිඩ",
+      "awards": "සම්මාන",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },

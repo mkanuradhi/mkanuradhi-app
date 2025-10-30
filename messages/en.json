@@ -774,6 +774,17 @@
       "Contact": {
         "pageTitle": "Contact Messages Dashboard",
         "title": "Contact Messages"
+      },
+      "Awards": {
+        "pageTitle": "Awards Dashboard",
+        "title": "Awards",
+        "addNew": "Add New Award",
+        "New": {
+          "title": "Add New Award"
+        },
+        "Edit": {
+          "title": "Edit Award"
+        }
       }
     }
   },
@@ -1852,6 +1863,34 @@
     "EmailReveal": {
       "mailto": "Click to email",
       "copy": "Click to copy"
+    },
+    "AwardsTable": {
+      "failAwards": "Failed to load awards",
+      "noAwards": "No awards to display",
+      "refreshAwards": "Refreshing awards...",
+      "awards": "awards"
+    },
+    "AwardOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the award: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the award",
+      "deactivateErrorTitle": "Cannot deactivate the award",
+      "deleteErrorTitle": "Cannot delete the award",
+      "awardType": {
+        "award": "Award",
+        "grant": "Grant",
+        "fellowship": "Fellowship",
+        "scholarship": "Scholarship",
+        "prize": "Prize",
+        "recognition": "Recognition"
+      }
     }
   },
   "contexts": {
@@ -1862,6 +1901,7 @@
       "publications": "Publications",
       "research": "Research",
       "contactMessages": "Contact Messages",
+      "awards": "Awards",
       "studentCourses": "Student Courses"
     }
   },

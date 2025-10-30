@@ -28,7 +28,7 @@ interface Award {
   scope: AwardScope; // international | national | university | faculty | department
   role: AwardRole; // individual | team | supervisor
   result: AwardResult; // won | shortlisted | nominated | finalist
-  category: AwardCategory; // research, teaching, service, leadership, innovation
+  category: AwardCategory; // research | teaching | service | leadership | innovation | academic
 
   eventUrl: string; // award/issuer page
   relatedWorkUrl: string; // publication/project/talk that earned the award
