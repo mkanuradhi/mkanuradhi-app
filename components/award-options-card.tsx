@@ -5,13 +5,11 @@ import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward, faBookOpenReader, faCertificate, faEye, faEyeSlash, faGift, faGraduationCap, faMoneyCheckDollar, faPen, faPeopleGroup, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
-import { useActivateCourseMutation, useDeactivateCourseMutation, useDeleteCourseMutation } from "@/hooks/use-courses";
 import DocumentStatus from "@/enums/document-status";
 import Award from '@/interfaces/i-award';
 import AwardType from '@/enums/award-type';
 import DeleteModal from './delete-modal';
 import { useActivateAwardMutation, useDeactivateAwardMutation, useDeleteAwardMutation } from '@/hooks/use-awards';
-
 
 const baseTPath = 'components.AwardOptionsCard';
 
