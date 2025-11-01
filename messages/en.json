@@ -1891,6 +1891,46 @@
         "prize": "Prize",
         "recognition": "Recognition"
       }
+    },
+    "AwardOptionsViewer": {
+      "failAward": "Failed to load award",
+      "dashboard": "Dashboard",
+      "awards": "Awards",
+      "awardType": {
+        "award": "Award",
+        "grant": "Grant",
+        "fellowship": "Fellowship",
+        "scholarship": "Scholarship",
+        "prize": "Prize",
+        "recognition": "Recognition"
+      },
+      "role": "Awarded To",
+      "result": "Result",
+      "scope": "Scope",
+      "category": "Category",
+      "issuer": "Issuer",
+      "issuerLocation": "Issuer Location",
+      "ceremonyLocation": "Ceremony",
+      "coRecipients": "Co Recipients",
+      "eventUrl": "Event Url",
+      "relatedWorkUrl": "Related Work",
+      "monetaryValue": "Monetary Value",
+      "receivedDate": "Received Date",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the award: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the award",
+      "deactivateErrorTitle": "Cannot deactivate the award",
+      "deleteErrorTitle": "Cannot delete the award"
+    },
+    "RecordMetadata": {
+      "created": "Created",
+      "updated": "Last Updated"
     }
   },
   "contexts": {

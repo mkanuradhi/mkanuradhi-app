@@ -1891,6 +1891,46 @@
         "prize": "ත්‍යාගය",
         "recognition": "පිළිගැනීම"
       }
+    },
+    "AwardOptionsViewer": {
+      "failAward": "සම්මානය පූරණය කිරීමට අසමත් විය.",
+      "dashboard": "පාලන පුවරුව",
+      "awards": "සම්මාන",
+      "awardType": {
+        "award": "සම්මානය",
+        "grant": "ප්‍රදාන",
+        "fellowship": "සහයෝගීතාවය",
+        "scholarship": "ශිෂ්‍යත්වය",
+        "prize": "ත්‍යාගය",
+        "recognition": "පිළිගැනීම"
+      },
+      "role": "ප්‍රදානය කරන ලද්දේ",
+      "result": "ප්‍රතිඵලය",
+      "scope": "විෂය පථය",
+      "category": "වර්ගය",
+      "issuer": "පිරිනමනු ලැබූයේ",
+      "issuerLocation": "පිරිනැමුණු ලැබූ ආයතනයේ ස්ථානය",
+      "ceremonyLocation": "පිරිනැමූ ස්ථානය",
+      "coRecipients": "සම ලැබූවන්",
+      "eventUrl": "පිළිබඳ වෙබ් ලිපිනය",
+      "relatedWorkUrl": "අදාළ වැඩ වෙබ් ලිපිනය",
+      "monetaryValue": "මුදල් වටිනාකම",
+      "receivedDate": "ප්‍රදානය කළ දිනය",
+      "edit": "සංස්කරණ",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මැකීම තහවුරු කරන්න",
+      "deleteModalMessage": "ඔබට, <strong>මාතෘකාව</strong> සම්මානය මැකීමට අවශ්‍ය බව විශ්වාසද?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "සම්මානය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "සම්මානය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "සම්මානය මැකිය නොහැක"
+    },
+    "RecordMetadata": {
+      "created": "නිර්මාණය කළේ",
+      "updated": "යාවත්කාලීන කළේ"
     }
   },
   "contexts": {
