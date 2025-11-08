@@ -82,5 +82,18 @@ export const MAX_RESEARCH_ABSTRACT_LENGTH = 4900;
 
 export const MAX_RESEARCH_URL_LENGTH = 400;
 
+// --------------- award ---------------
+export const MIN_AWARD_TITLE_LENGTH = 3;
+export const MAX_AWARD_TITLE_LENGTH = 250;
 
+export const MIN_AWARD_DESCRIPTION_LENGTH = 3;
+export const MAX_AWARD_DESCRIPTION_LENGTH = 950;
+
+export const MIN_AWARD_YEAR = 2008;
+export const MAX_AWARD_YEAR = 2040;
+
+export const MAX_AWARD_CO_RECIPIENTS = 20;
+export const MAX_AWARD_CO_RECIPIENT_NAME_LENGTH = 140;
+
+export const MAX_AWARD_URL_LENGTH = 450;
 
