@@ -2034,6 +2034,10 @@
       "submit": "Proceed",
       "submitting": "Submitting..."
     },
+    "UpdateAwardFormsContainer": {
+      "stepEn": "Step 1: Updating English Details",
+      "stepSi": "Step 2: Updating Sinhala Details"
+    },
     "RecordMetadata": {
       "created": "Created",
       "updated": "Last Updated"

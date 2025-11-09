@@ -1,4 +1,4 @@
-import UpdateCourseFormsContainer from '@/components/update-course-forms-container';
+import UpdateAwardFormsContainer from '@/components/update-award-forms-container';
 import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
@@ -49,7 +49,7 @@ const EditAwardPage: React.FC<EditAwardPageProps> = async ({ params }) => {
           <h1>{t('title')}</h1>
         </Col>
       </Row>
-      <UpdateCourseFormsContainer id={awardId} />
+      <UpdateAwardFormsContainer id={awardId} />
     </>
   )
 }

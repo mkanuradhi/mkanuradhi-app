@@ -2034,6 +2034,10 @@
       "submit": "ඉදිරියට යන්න",
       "submitting": "යවමින්..."
     },
+    "UpdateAwardFormsContainer": {
+      "stepEn": "පියවර 1: ඉංග්‍රීසි විස්තර සංස්කරණය කිරීම",
+      "stepSi": "පියවර 2: සිංහල විස්තර සංස්කරණය කිරීම"
+    },
     "RecordMetadata": {
       "created": "නිර්මාණය කළේ",
       "updated": "යාවත්කාලීන කළේ"

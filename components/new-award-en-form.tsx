@@ -62,7 +62,7 @@ const NewAwardEnForm: FC<NewAwardEnFormProps> = ({ onSuccess }) => {
       issuerLocationEn: values.issuerLocationEn,
       ceremonyLocationEn: values.ceremonyLocationEn,
       coRecipientsEn: values.coRecipientsEn,
-      receivedDate: values.receivedDate ? new Date(new Date(values.receivedDate).toDateString()) : new Date(),
+      receivedDate: values.receivedDate ? new Date(values.receivedDate) : new Date(),
       type: values.type,
       scope: values.scope,
       role: values.role,
