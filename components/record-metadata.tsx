@@ -101,7 +101,7 @@ const RecordMetadata: React.FC<RecordMetadataProps> = ({
         {updatedBy && (
         <Col md={6} xs={12} className="mb-4">
           <Row>
-            <Col xs={12} className="mb-3 small text-warning">
+            <Col xs={12} className="mb-3 small text-info">
               <FontAwesomeIcon icon={faCalendarCheck} className="me-2" />
               <span>{t('updated')}</span>
             </Col>
