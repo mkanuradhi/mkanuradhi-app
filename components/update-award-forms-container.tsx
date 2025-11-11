@@ -7,9 +7,8 @@ import { useRouter } from '@/i18n/routing';
 import { useAwardByIdQuery } from '@/hooks/use-awards';
 import { useTranslations } from 'next-intl';
 import UpdateAwardEnForm from './update-award-en-form';
+import UpdateAwardSiForm from './update-award-si-form';
 import ActiveStep from '@/enums/active-step';
-
-
 
 const baseTPath = 'components.UpdateAwardFormsContainer';
 
@@ -54,8 +53,7 @@ const UpdateAwardFormsContainer:React.FC<UpdateAwardFormsContainerProps> = ({ id
             <UpdateAwardEnForm id={id} onSuccess={handleEnSubmit} />
           )}
           { step === ActiveStep.SI && award && (
-            <></>
-            // <UpdateAwardSiForm id={award.id} v={award.v} onSuccess={handleSiSubmit} />
+            <UpdateAwardSiForm id={award.id} v={award.v} onSuccess={handleSiSubmit} />
           )}
         </Col>
       </Row>
