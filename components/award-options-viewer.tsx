@@ -16,6 +16,7 @@ import GlowLink from './GlowLink';
 import Image from 'next/image';
 import RecordMetadata from './record-metadata';
 import "./award-options-viewer.scss";
+import SanitizedHtml from './sanitized-html';
 
 const baseTPath = 'components.AwardOptionsViewer';
 
@@ -168,11 +169,13 @@ const AwardOptionsViewer: React.FC<AwardOptionsViewerProps> = ({ awardId }) => {
                 <span>{ award.category }</span>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                { award.descriptionEn }
-              </Col>
-            </Row>
+            {award.descriptionEn && (
+              <Row>
+                <Col>
+                  <SanitizedHtml html={award.descriptionEn} />
+                </Col>
+              </Row>
+            )}
             <Row className="my-4">
               <Col md={6}>
                 <label className="fw-semibold me-1">{t('issuer')}:</label>
@@ -301,11 +304,13 @@ const AwardOptionsViewer: React.FC<AwardOptionsViewerProps> = ({ awardId }) => {
                 <span>{ award.category }</span>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                { award.descriptionSi }
-              </Col>
-            </Row>
+            {award.descriptionSi && (
+              <Row>
+                <Col>
+                  <SanitizedHtml html={award.descriptionSi} />
+                </Col>
+              </Row>
+            )}
             <Row className="my-4">
               <Col md={6}>
                 <label className="fw-semibold me-1">{t('issuer')}:</label>
@@ -377,7 +382,7 @@ const AwardOptionsViewer: React.FC<AwardOptionsViewerProps> = ({ awardId }) => {
             <ButtonGroup>
               <Button
                 variant="secondary"
-                onClick={() => router.push(`/dashboard/publications/${award.id}/edit`)}
+                onClick={() => router.push(`/dashboard/awards/${award.id}/edit`)}
               >
                 <FontAwesomeIcon icon={faPen} className="me-1" /> { t('edit') }
               </Button>

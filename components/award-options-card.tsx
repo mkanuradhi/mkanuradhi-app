@@ -10,6 +10,7 @@ import Award from '@/interfaces/i-award';
 import AwardType from '@/enums/award-type';
 import DeleteModal from './delete-modal';
 import { useActivateAwardMutation, useDeactivateAwardMutation, useDeleteAwardMutation } from '@/hooks/use-awards';
+import SanitizedHtml from './sanitized-html';
 
 const baseTPath = 'components.AwardOptionsCard';
 
@@ -86,12 +87,20 @@ const AwardOptionsCard: React.FC<AwardOptionsCardProps> = ({award}) => {
             { award.titleSi && `${award.titleSi} ` }
           </Card.Title>
           <hr />
-          <Card.Text>
-            { award.descriptionEn }
-          </Card.Text>
-          <Card.Text>
-            { award.descriptionSi }
-          </Card.Text>
+          {award.descriptionEn && (
+            <Row>
+              <Col>
+                <SanitizedHtml html={award.descriptionEn} />
+              </Col>
+            </Row>
+          )}
+          {award.descriptionSi && (
+            <Row>
+              <Col>
+                <SanitizedHtml html={award.descriptionSi} />
+              </Col>
+            </Row>
+          )}
           <Row className="align-items-center">
             <Col className="mb-2">
               <ButtonGroup>
