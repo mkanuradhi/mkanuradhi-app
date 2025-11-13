@@ -73,8 +73,9 @@ export const getNewAwardEnSchema = (t: (key: string, values?: Record<string, any
         }
       ),
     receivedDate: yup.date()
+          .nullable()
           .required(t('receivedDateRequired'))
-          .default(() => new Date()),
+          .typeError(t('receivedDateInvalid')),
     type: yup.string()
       .oneOf(Object.values(AwardType), t('typeInvalid'))
       .required(t('typeRequired')),

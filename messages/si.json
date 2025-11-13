@@ -1970,6 +1970,7 @@
       "receivedDateLabel": "ලැබුණු දිනය",
       "receivedDatePlaceholder": "ලැබුණු හෝ ලබා ගත හැකි දිනය ඇතුළත් කරන්න",
       "receivedDateRequired": "ලැබුණු දිනය අනිවාර්ය වේ.",
+      "receivedDateInvalid": "ලැබුණු දිනය වලංගු නොවේ.",
       "typeLabel": "සම්මාන වර්ගය",
       "awardType": {
         "AWARD": "සම්මානය (Award)",

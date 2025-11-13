@@ -18,8 +18,7 @@ import AwardScope from '@/enums/award-scope';
 import AwardRole from '@/enums/award-role';
 import AwardResult from '@/enums/award-result';
 import AwardCategory from '@/enums/award-category';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DatePickerPopover from './date-picker-popover';
 
 const baseTPath = 'components.NewAwardEnForm';
 
@@ -45,7 +44,7 @@ const UpdateAwardEnForm: FC<UpdateAwardEnFormProps> = ({ id, onSuccess }) => {
           issuerLocationEn: award.issuerLocationEn,
           ceremonyLocationEn: award.ceremonyLocationEn,
           coRecipientsEn: award.coRecipientsEn,
-          receivedDate: award.receivedDate ? new Date(award.receivedDate) : undefined,
+          receivedDate: award.receivedDate ? new Date(award.receivedDate) : null,
           type: award.type,
           scope: award.scope,
           role: award.role,
@@ -64,7 +63,7 @@ const UpdateAwardEnForm: FC<UpdateAwardEnFormProps> = ({ id, onSuccess }) => {
           issuerLocationEn: '',
           ceremonyLocationEn: '',
           coRecipientsEn: [],
-          receivedDate: undefined,
+          receivedDate: null,
           type: AwardType.AWARD,
           scope: AwardScope.UNIVERSITY,
           role: AwardRole.INDIVIDUAL,
@@ -196,20 +195,16 @@ const UpdateAwardEnForm: FC<UpdateAwardEnFormProps> = ({ id, onSuccess }) => {
                       <ErrorMessage name="coRecipientsEn" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formReceivedDate">
-                      <BootstrapForm.Label>{t('receivedDateLabel')}</BootstrapForm.Label>
-                      <Field name="receivedDate" type="text" className="form-control">
+                      <RequiredFormLabel>{t('receivedDateLabel')}</RequiredFormLabel>
+                      <Field name="receivedDate">
                         {({ field, form }: FieldProps) => (
-                          <DatePicker
-                            wrapperClassName="w-100"
-                            className="form-control"
-                            closeOnScroll={true}
-                            isClearable={true}
-                            showIcon={true}
+                          <DatePickerPopover
                             selected={field.value ? new Date(field.value) : null}
-                            onChange={date => form.setFieldValue(field.name, date)}
-                            dateFormat="dd-MM-yyyy"
-                            placeholderText={t('receivedDatePlaceholder')}
-                            icon={<i className="bi bi-calendar2-check-fill"></i>}
+                            onChange={(date) => {
+                              form.setFieldValue(field.name, date ?? null);
+                              form.setFieldTouched(field.name, true, false);
+                            }}
+                            placeholder={t('receivedDatePlaceholder')}
                           />
                         )}
                       </Field>

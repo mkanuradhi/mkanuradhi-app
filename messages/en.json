@@ -1970,6 +1970,7 @@
       "receivedDateLabel": "Received Date",
       "receivedDatePlaceholder": "Received or available date",
       "receivedDateRequired": "Received date is required.",
+      "receivedDateInvalid": "Received date is invalid.",
       "typeLabel": "Award Type",
       "awardType": {
         "AWARD": "Award",
