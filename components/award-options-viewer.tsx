@@ -223,7 +223,7 @@ const AwardOptionsViewer: React.FC<AwardOptionsViewerProps> = ({ awardId }) => {
               <Row>
                 <Col>
                   <label className="fw-semibold me-1">{t('monetaryValue')}:</label>
-                  <GlowLink href={award.monetaryValue} newTab={true} withArrow={true}>{award.monetaryValue}</GlowLink>
+                  <span>{ award.monetaryValue }</span>
                 </Col>
               </Row>
             )}
@@ -358,7 +358,7 @@ const AwardOptionsViewer: React.FC<AwardOptionsViewerProps> = ({ awardId }) => {
               <Row>
                 <Col>
                   <label className="fw-semibold me-1">{t('monetaryValue')}:</label>
-                  <GlowLink href={award.monetaryValue} newTab={true} withArrow={true}>{award.monetaryValue}</GlowLink>
+                  <span>{ award.monetaryValue }</span>
                 </Col>
               </Row>
             )}
