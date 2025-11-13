@@ -2076,6 +2076,35 @@
     "RecordMetadata": {
       "created": "නිර්මාණය කළේ",
       "updated": "යාවත්කාලීන කළේ"
+    },
+    "DatePickerPopover": {
+      "placeholder": "දිනය තෝරන්න",
+      "clear": "දිනය මකන්න",
+      "monthDropdownLabel": "මාසය",
+      "yearDropdownLabel": "වර්ෂය",
+      "months": {
+        "january": "ජනවාරි",
+        "february": "පෙබරවාරි",
+        "march": "මාර්තු",
+        "april": "අප්‍රේල්",
+        "may": "මැයි",
+        "june": "ජූනි",
+        "july": "ජූලි",
+        "august": "අගෝස්තු",
+        "september": "සැප්තැම්බර්",
+        "october": "ඔක්තෝබර්",
+        "november": "නොවැම්බර්",
+        "december": "දෙසැම්බර්"
+      },
+      "weekdays": {
+        "sunday": "ඉරි",
+        "monday": "සඳු",
+        "tuesday": "අඟ",
+        "wednesday": "බදා",
+        "thursday": "බ්‍රහ",
+        "friday": "සිකු",
+        "saturday": "සෙන"
+      }
     }
   },
   "contexts": {
