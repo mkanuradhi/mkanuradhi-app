@@ -184,7 +184,7 @@ const ContactMessageOptionsCard: React.FC<ContactMessageOptionsCardProps> = ({co
                 onClick={() => setDeleteModalShow(true)}
                 disabled={isPendingDelete}
               >
-                <FontAwesomeIcon icon={faTrash} className="me-1" />
+                <FontAwesomeIcon icon={faTrash} className="me-sm-1" />
                 <span className="d-none d-sm-inline">{t('delete')}</span>
               </Button>
             </Col>

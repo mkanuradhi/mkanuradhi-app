@@ -148,7 +148,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
                   aria-label={t('read')}
                   onClick={() => router.push(`publications/${publication.id}`)}
                 >
-                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" />
+                  <FontAwesomeIcon icon={faBookOpenReader} className="me-sm-1" />
                   <span className="d-none d-sm-inline">{t('read')}</span>
                 </Button>
                 <Button
@@ -156,7 +156,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
                   aria-label={t('edit')}
                   onClick={() => router.push(`publications/${publication.id}/edit`)}
                 >
-                  <FontAwesomeIcon icon={faPen} className="me-1" />
+                  <FontAwesomeIcon icon={faPen} className="me-sm-1" />
                   <span className="d-none d-sm-inline">{t('edit')}</span>
                 </Button>
                 <Button
@@ -167,7 +167,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
                 >
                   <FontAwesomeIcon
                     icon={publication.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
-                    className="me-1"
+                    className="me-sm-1"
                   />
                   <span className="d-none d-sm-inline">
                     {publication.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
@@ -183,7 +183,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
                 onClick={() => setDeleteModalShow(true)}
                 disabled={isPendingDelete}
               >
-                <FontAwesomeIcon icon={faTrash} className="me-1" />
+                <FontAwesomeIcon icon={faTrash} className="me-sm-1" />
                 <span className="d-none d-sm-inline">{t('delete')}</span>
               </Button>
             </Col>

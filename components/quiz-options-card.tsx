@@ -119,7 +119,7 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                       aria-label={t('read')}
                       onClick={() => router.push(`quizzes/${quiz.id}`)}
                     >
-                      <FontAwesomeIcon icon={faBookOpenReader} className="me-1" />
+                      <FontAwesomeIcon icon={faBookOpenReader} className="me-sm-1" />
                       <span className="d-none d-sm-inline">{t('read')}</span>
                     </Button>
                     <Button
@@ -127,7 +127,7 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                       aria-label={t('edit')}
                       onClick={() => router.push(`quizzes/${quizId}/edit`)}
                     >
-                      <FontAwesomeIcon icon={faPen} className="me-1" />
+                      <FontAwesomeIcon icon={faPen} className="me-sm-1" />
                       <span className="d-none d-sm-inline">{t('edit')}</span>
                     </Button>
                     <Button
@@ -138,7 +138,7 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                     >
                       <FontAwesomeIcon
                         icon={quiz.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
-                        className="me-1"
+                        className="me-sm-1"
                       />
                       <span className="d-none d-sm-inline">
                         {quiz.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
@@ -154,7 +154,7 @@ const QuizOptionsCard: React.FC<QuizOptionsCardProps> = ({courseId, quizId}) => 
                     onClick={() => setDeleteModalShow(true)}
                     disabled={isPendingDelete}
                   >
-                    <FontAwesomeIcon icon={faTrash} className="me-1" />
+                    <FontAwesomeIcon icon={faTrash} className="me-sm-1" />
                     <span className="d-none d-sm-inline">{t('delete')}</span>
                   </Button>
                 </Col>

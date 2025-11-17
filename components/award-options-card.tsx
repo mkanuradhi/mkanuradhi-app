@@ -109,7 +109,7 @@ const AwardOptionsCard: React.FC<AwardOptionsCardProps> = ({award}) => {
                   aria-label={t('read')}
                   onClick={() => router.push(`awards/${award.id}`)}
                 >
-                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" />
+                  <FontAwesomeIcon icon={faBookOpenReader} className="me-sm-1" />
                   <span className="d-none d-sm-inline">{t('read')}</span>
                 </Button>
                 <Button
@@ -117,7 +117,7 @@ const AwardOptionsCard: React.FC<AwardOptionsCardProps> = ({award}) => {
                   aria-label={t('edit')}
                   onClick={() => router.push(`awards/${award.id}/edit`)}
                 >
-                  <FontAwesomeIcon icon={faPen} className="me-1" />
+                  <FontAwesomeIcon icon={faPen} className="me-sm-1" />
                   <span className="d-none d-sm-inline">{t('edit')}</span>
                 </Button>
                 <Button
@@ -128,7 +128,7 @@ const AwardOptionsCard: React.FC<AwardOptionsCardProps> = ({award}) => {
                 >
                   <FontAwesomeIcon
                     icon={award.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
-                    className="me-1"
+                    className="me-sm-1"
                   />
                   <span className="d-none d-sm-inline">
                     {award.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
@@ -144,7 +144,7 @@ const AwardOptionsCard: React.FC<AwardOptionsCardProps> = ({award}) => {
                 onClick={() => setDeleteModalShow(true)}
                 disabled={isPendingDelete}
               >
-                <FontAwesomeIcon icon={faTrash} className="me-1" />
+                <FontAwesomeIcon icon={faTrash} className="me-sm-1" />
                 <span className="d-none d-sm-inline">{t('delete')}</span>
               </Button>
             </Col>
