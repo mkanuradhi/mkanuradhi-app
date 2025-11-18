@@ -101,7 +101,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/en/policy`,
-      lastModified: new Date('2024-09-26'),
+      lastModified: new Date('2025-11-17'),
       changeFrequency: 'yearly',
       priority: 0.2,
       alternates: {

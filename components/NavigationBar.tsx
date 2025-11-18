@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Container, ListGroup, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
+import { Badge, Button, Container, ListGroup, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useTranslations } from 'next-intl';
 import { useTheme } from "@/hooks/useTheme";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
@@ -142,6 +142,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                   onClick={handleClose}
                 >
                   {sidebarLink.title}
+                  {sidebarLink.info && (
+                    <span className="ms-2">
+                      <Badge bg="warning" pill>{ sidebarLink.info }</Badge>
+                    </span>
+                  )}
                 </ListGroup.Item>
               ))}
             </ListGroup>

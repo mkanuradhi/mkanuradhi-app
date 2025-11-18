@@ -1,0 +1,13 @@
+.award-options-viewer {
+
+  .primary-image-wrapper {
+    position: relative;
+    min-height: 20rem;
+    min-width: 100%;
+
+    .primary-image {
+      object-fit: cover;
+    }
+  }
+
+}

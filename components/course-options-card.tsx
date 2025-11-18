@@ -83,7 +83,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
                       aria-label={t('read')}
                       onClick={() => router.push(`courses/${course.id}`)}
                     >
-                      <FontAwesomeIcon icon={faBookOpenReader} className="me-1" />
+                      <FontAwesomeIcon icon={faBookOpenReader} className="me-sm-1" />
                       <span className="d-none d-sm-inline">{t('read')}</span>
                     </Button>
                     <Button
@@ -91,7 +91,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
                       aria-label={t('edit')}
                       onClick={() => router.push(`courses/${course.id}/edit`)}
                     >
-                      <FontAwesomeIcon icon={faPen} className="me-1" />
+                      <FontAwesomeIcon icon={faPen} className="me-sm-1" />
                       <span className="d-none d-sm-inline">{t('edit')}</span>
                     </Button>
                     <Button
@@ -102,7 +102,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
                     >
                       <FontAwesomeIcon
                         icon={course.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
-                        className="me-1"
+                        className="me-sm-1"
                       />
                       <span className="d-none d-sm-inline">
                         {course.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
@@ -118,7 +118,7 @@ const CourseOptionsCard: React.FC<CourseOptionsCardProps> = ({course}) => {
                     onClick={() => setDeleteModalShow(true)}
                     disabled={isPendingDelete}
                   >
-                    <FontAwesomeIcon icon={faTrash} className="me-1" />
+                    <FontAwesomeIcon icon={faTrash} className="me-sm-1" />
                     <span className="d-none d-sm-inline">{t('delete')}</span>
                   </Button>
                 </Col>

@@ -14,6 +14,10 @@ const nextConfig = {
         pathname: '/**',
         search: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
     ],
     // For automatic conversion
     formats: ['image/avif', 'image/webp'],

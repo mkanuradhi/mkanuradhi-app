@@ -175,7 +175,7 @@ const ResearchOptionsCard: React.FC<ResearchOptionsCardProps> = ({research}) => 
                   aria-label={t('read')}
                   onClick={() => router.push(`research/${research.id}`)}
                 >
-                  <FontAwesomeIcon icon={faBookOpenReader} className="me-1" />
+                  <FontAwesomeIcon icon={faBookOpenReader} className="me-sm-1" />
                   <span className="d-none d-sm-inline">{t('read')}</span>
                 </Button>
                 <Button
@@ -183,7 +183,7 @@ const ResearchOptionsCard: React.FC<ResearchOptionsCardProps> = ({research}) => 
                   aria-label={t('edit')}
                   onClick={() => router.push(`research/${research.id}/edit`)}
                 >
-                  <FontAwesomeIcon icon={faPen} className="me-1" />
+                  <FontAwesomeIcon icon={faPen} className="me-sm-1" />
                   <span className="d-none d-sm-inline">{t('edit')}</span>
                 </Button>
                 <Button
@@ -194,7 +194,7 @@ const ResearchOptionsCard: React.FC<ResearchOptionsCardProps> = ({research}) => 
                 >
                   <FontAwesomeIcon
                     icon={research.status === DocumentStatus.ACTIVE ? faEyeSlash : faEye}
-                    className="me-1"
+                    className="me-sm-1"
                   />
                   <span className="d-none d-sm-inline">
                     {research.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
@@ -210,7 +210,7 @@ const ResearchOptionsCard: React.FC<ResearchOptionsCardProps> = ({research}) => 
                 onClick={() => setDeleteModalShow(true)}
                 disabled={isPendingDelete}
               >
-                <FontAwesomeIcon icon={faTrash} className="me-1" />
+                <FontAwesomeIcon icon={faTrash} className="me-sm-1" />
                 <span className="d-none d-sm-inline">{t('delete')}</span>
               </Button>
             </Col>

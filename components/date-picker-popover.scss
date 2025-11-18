@@ -1,0 +1,74 @@
+.datepicker-popover {
+  max-width: none;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0.75rem 2rem rgba(var(--bs-body-color-rgb), 0.4);
+
+ .popover-body {
+    padding: 0.5rem 0.75rem;
+
+    /* Buttons row at bottom */
+    > .d-flex {
+      border-top: 1px solid var(--bs-border-color);
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+    }
+  }
+
+  .rdp {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    font-size: 0.9rem;
+  }
+
+  /* Fine-tune header spacing */
+  .rdp-caption {
+    padding: 0.25rem 0;
+    font-weight: 600;
+  }
+
+  /* Calendar grid */
+  .rdp-table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0.25rem;
+  }
+
+  /* Make all day buttons circular and sized */
+  .rdp-day_button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+  }
+
+  /* Today date - circled outline with normal text color and bold */
+  .rdp-today:not(.rdp-selected) .rdp-day_button {
+    font-weight: 600 !important;
+    color: var(--bs-body-color) !important;
+    border: 1px solid var(--bs-body-color) !important;
+    background-color: transparent !important;
+  }
+
+  /* Today date hover effect */
+  .rdp-today:not(.rdp-selected) .rdp-day_button:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.15) !important;
+  }
+
+  /* Selected day highlight */
+  .rdp-selected .rdp-day_button,
+  .rdp-selected .rdp-day_button:focus-visible {
+    background-color: var(--bs-primary) !important;
+    color: var(--bs-body-bg) !important;
+    font-weight: 600;
+    border: none !important;
+  }
+
+  /* Hover feedback */
+  .rdp-day:not(.rdp-selected) .rdp-day_button:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.15);
+  }
+
+}

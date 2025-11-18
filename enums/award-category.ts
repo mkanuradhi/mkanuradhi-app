@@ -1,0 +1,10 @@
+enum AwardCategory {
+  RESEARCH = 'RESEARCH',
+  TEACHING = 'TEACHING',
+  SERVICE = 'SERVICE',
+  LEADERSHIP = 'LEADERSHIP',
+  INNOVATION = 'INNOVATION',
+  ACADEMIC = 'ACADEMIC',
+}
+
+export default AwardCategory;

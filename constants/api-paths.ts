@@ -7,3 +7,4 @@ export const QUIZZES_PATH = '/quizzes';
 export const MCQS_PATH = '/mcqs';
 export const PUBLICATIONS_PATH = '/publications';
 export const RESEARCH_PATH = '/research';
+export const AWARDS_PATH = '/awards';

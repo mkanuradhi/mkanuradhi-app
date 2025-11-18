@@ -1,6 +1,6 @@
 "use client";
 import React, { FC, useMemo } from 'react';
-import { Formik, Form, Field, ErrorMessage, FieldArray, FieldProps } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Col, Row, Form as BootstrapForm, Button } from 'react-bootstrap';
 import { getNewCourseEnSchema } from '@/schemas/new-course-en-schema';
 import { useTranslations } from 'next-intl';
