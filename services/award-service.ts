@@ -112,3 +112,28 @@ export const updateAwardEn = async (id: string, awardEnDto: UpdateAwardEnDto, to
     throw handleApiError(error);
   }
 };
+
+export const uploadAwardPrimaryImage = async (id: string, formData: FormData, token: string): Promise<Award> => {
+  try {
+    const response = await axios.patch<Award>(
+      `${API_BASE_URL}${AWARDS_PATH}/${id}/primary-image`,
+      formData,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const deleteAwardPrimaryImage = async (awardId: string, token: string): Promise<Award> => {
+  try {
+    const response = await axios.delete<Award>(
+      `${API_BASE_URL}${AWARDS_PATH}/${awardId}/primary-image`,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};

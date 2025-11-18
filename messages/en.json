@@ -2172,7 +2172,8 @@
     },
     "UpdateAwardFormsContainer": {
       "stepEn": "Step 1: Updating English Details",
-      "stepSi": "Step 2: Updating Sinhala Details"
+      "stepSi": "Step 2: Updating Sinhala Details",
+      "stepPrimaryImage": "Step 3: Updating Primary Image"
     },
     "UpdateAwardSiForm": {
       "titleSiLabel": "Title in Sinhala (මාතෘකාව)",
@@ -2207,6 +2208,19 @@
       "coRecipientsMustBeUnique": "Co-recipient names must be unique.",
       "submit": "Proceed",
       "submitting": "Submitting..."
+    },
+    "UpdateAwardPrimaryImageForm": {
+      "dragActiveLabel": "Drop the image here ...",
+      "selectFileLabel": "Drag & drop image here, or click to select image",
+      "fileRejectionTitle": "Rejected Files",
+      "fileRejectionLabel": "{name} is rejected due following reasons",
+      "deletePrimaryImage": "Delete Primary Image",
+      "deleting": "Deleting...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "uploading": "Uploading...",
+      "noPrimaryImage": "No existing primary image to be shown",
+      "proceed": "Proceed"
     },
     "RecordMetadata": {
       "created": "Created",

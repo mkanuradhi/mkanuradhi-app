@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import UpdateAwardEnForm from './update-award-en-form';
 import UpdateAwardSiForm from './update-award-si-form';
 import ActiveStep from '@/enums/active-step';
+import UpdateAwardPrimaryImageForm from './update-award-primary-image-form';
 
 const baseTPath = 'components.UpdateAwardFormsContainer';
 
@@ -28,7 +29,7 @@ const UpdateAwardFormsContainer:React.FC<UpdateAwardFormsContainerProps> = ({ id
   const stepLabels: Partial<Record<ActiveStep, string>> = {
     [ActiveStep.EN]: t('stepEn'),
     [ActiveStep.SI]: t('stepSi'),
-    [ActiveStep.PRIMARY_IMAGE]: 'N/A',
+    [ActiveStep.PRIMARY_IMAGE]: t('stepPrimaryImage'),
   };
 
   const handleEnSubmit = (createdAward: Award) => {
@@ -37,6 +38,11 @@ const UpdateAwardFormsContainer:React.FC<UpdateAwardFormsContainerProps> = ({ id
   };
 
   const handleSiSubmit = (updatedAward: Award) => {
+    setStep(ActiveStep.PRIMARY_IMAGE);
+    router.push(`/dashboard/awards/${updatedAward.id}/edit?step=${ActiveStep.PRIMARY_IMAGE}`);
+  };
+
+  const handlePrimaryImageSubmit = (updatedAward: Award) => {
     router.push(`/dashboard/awards/${updatedAward.id}`);
   };
 
@@ -54,6 +60,9 @@ const UpdateAwardFormsContainer:React.FC<UpdateAwardFormsContainerProps> = ({ id
           )}
           { step === ActiveStep.SI && award && (
             <UpdateAwardSiForm id={award.id} v={award.v} onSuccess={handleSiSubmit} />
+          )}
+          { step === ActiveStep.PRIMARY_IMAGE && award && (
+            <UpdateAwardPrimaryImageForm id={award.id} onSuccess={handlePrimaryImageSubmit} />
           )}
         </Col>
       </Row>

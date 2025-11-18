@@ -3,7 +3,7 @@ import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import Award from "@/interfaces/i-award";
 import PaginatedResult from "@/interfaces/i-paginated-result";
-import { activateAward, createAwardEn, deactivateAward, deleteAward, getAwardById, getAwards, updateAwardEn, updateAwardSi } from "@/services/award-service";
+import { activateAward, createAwardEn, deactivateAward, deleteAward, deleteAwardPrimaryImage, getAwardById, getAwards, updateAwardEn, updateAwardSi, uploadAwardPrimaryImage } from "@/services/award-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -249,6 +249,73 @@ export const useUpdateAwardEnMutation = () => {
     onSettled: (_data, _error, variables) => {
       // Refetch only the updated award instead of all awards
       queryClient.invalidateQueries({ queryKey: [AWARD_QUERY_KEY, variables.id] });
+      queryClient.invalidateQueries({ queryKey: [AWARDS_QUERY_KEY], refetchType: 'active' });
+    },
+  });
+};
+
+export const useUploadAwardPrimaryImageMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async ({ id, formData }: { id: string; formData: FormData }) => {
+      const token = (await getToken()) ?? '';
+      return uploadAwardPrimaryImage(id, formData, token);
+    },
+
+    onSuccess: (updatedAward) => {
+      if (!updatedAward || !updatedAward.id) return;
+
+      // Update individual award cache
+      queryClient.setQueryData([AWARD_QUERY_KEY, updatedAward.id], updatedAward);
+
+      // Update paginated list cache
+      queryClient.setQueryData([AWARDS_QUERY_KEY], (oldData?: PaginatedResult<Award>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((post) =>
+            post.id === updatedAward.id ? updatedAward : post
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [AWARD_QUERY_KEY, updatedAward.id] });
+    },
+  });
+};
+
+export const useDeleteAwardPrimaryImageMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const token = (await getToken()) ?? '';
+      return deleteAwardPrimaryImage(id, token);
+    },
+
+    onSuccess: (updatedAward) => {
+      if (!updatedAward || !updatedAward.id) return;
+
+      // Update individual award cache
+      queryClient.setQueryData([AWARD_QUERY_KEY, updatedAward.id], updatedAward);
+
+      // Update paginated list cache
+      queryClient.setQueryData([AWARDS_QUERY_KEY], (oldData?: PaginatedResult<Award>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((post) =>
+            post.id === updatedAward.id ? updatedAward : post
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [AWARD_QUERY_KEY, updatedAward.id] });
       queryClient.invalidateQueries({ queryKey: [AWARDS_QUERY_KEY], refetchType: 'active' });
     },
   });
