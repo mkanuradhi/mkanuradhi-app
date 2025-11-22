@@ -10,7 +10,7 @@ import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ExternalLinkBar from '@/components/ExternalLinkBar';
 import MainImageDisplayer from '@/components/MainImageDisplayer';
 import GlowLink from '@/components/GlowLink';
-import ToolsSkillsDisplayer from '@/components/ToolsSkillsDisplayer';
+import ToolsSkillsDisplayer from '@/components/tools-skills-displayer';
 import MovingGradientTitle from '@/components/moving-gradient-title';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 import './home.scss';
