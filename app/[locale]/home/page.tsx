@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMessages, useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
 import ScopusIcon from '@/icons/ScopusIcon';
@@ -12,8 +12,8 @@ import MainImageDisplayer from '@/components/MainImageDisplayer';
 import GlowLink from '@/components/GlowLink';
 import ToolsSkillsDisplayer from '@/components/ToolsSkillsDisplayer';
 import MovingGradientTitle from '@/components/moving-gradient-title';
-import './home.scss';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
+import './home.scss';
 
 const baseTPath = 'pages.Home';
 
@@ -45,6 +45,12 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const messages = await getMessages() as any;
+
+  const getArrayFromMessages = (key: string): string[] => {
+    const keys = messages?.pages?.Home?.[key] || [];
+    return keys.map((k: string) => messages?.pages?.Home?.[k] || k);
+  };
 
   const personSchema = {
     '@context': 'https://schema.org',
@@ -54,22 +60,9 @@ export async function generateMetadata ({ params }: { params: { locale: string }
     url: baseUrl,
     image: `${baseUrl}/images/anuradha.png`,
     jobTitle: t('subTitle'),
-    description: t('description'),
+    description: t('pageDescription'),
     // Skills
-    knowsAbout: [
-      'Meta-heuristic optimization',
-      'Neural Networks',
-      'Swarm Intelligence',
-      'Machine Learning',
-      'Data Science',
-      'Artificial Intelligence',
-      'Natural Language Processing',
-      'Statistical Analysis',
-      'Python Programming',
-      'R Programming',
-      'Nature Inspired Computing',
-      'Nature Inspired Algorithms'
-    ],
+    knowsAbout: getArrayFromMessages('knowsAboutList'),
     // Social media links
     sameAs: [
       'https://scholar.google.com/citations?user=-O25soMAAAAJ',

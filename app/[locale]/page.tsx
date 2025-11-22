@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import HomePage from './home/page';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 
@@ -6,6 +6,12 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'pages.Home' });
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const messages = await getMessages() as any;
+  
+  const getArrayFromMessages = (key: string): string[] => {
+    const keys = messages?.pages?.Home?.[key] || [];
+    return keys.map((k: string) => messages?.pages?.Home?.[k] || k);
+  };
 
   const personSchema = {
     '@context': 'https://schema.org',
@@ -15,22 +21,9 @@ export async function generateMetadata ({ params }: { params: { locale: string }
     url: baseUrl,
     image: `${baseUrl}/images/anuradha.png`,
     jobTitle: t('subTitle'),
-    description: t('description'),
+    description: t('pageDescription'),
     // Skills
-    knowsAbout: [
-      'Meta-heuristic optimization',
-      'Neural Networks',
-      'Swarm Intelligence',
-      'Machine Learning',
-      'Data Science',
-      'Artificial Intelligence',
-      'Natural Language Processing',
-      'Statistical Analysis',
-      'Python Programming',
-      'R Programming',
-      'Nature Inspired Computing',
-      'Nature Inspired Algorithms'
-    ],
+    knowsAbout: getArrayFromMessages('knowsAboutList'),
     // Social media links
     sameAs: [
       'https://scholar.google.com/citations?user=-O25soMAAAAJ',
