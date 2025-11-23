@@ -77,23 +77,31 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 0;
-    animation: fadeBackground 20s infinite alternate;
   }
 
   .bg1 {
     background-image: url('/images/back1.jpg');
-    animation-delay: 0s;
+    animation: fadeOut 32s infinite;
   }
 
   .bg2 {
     background-image: url('/images/back2.jpg');
-    animation-delay: 10s;
+    animation: fadeIn 32s infinite;
   }
 }
 
-@keyframes fadeBackground {
+@keyframes fadeOut {
   0% { opacity: 1; }
+  35% { opacity: 1; }
   50% { opacity: 0; }
+  85% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  35% { opacity: 0; }
+  50% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
 }

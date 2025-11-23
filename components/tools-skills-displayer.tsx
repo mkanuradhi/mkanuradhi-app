@@ -22,6 +22,7 @@ import pandas from "@/public/icons/pandas-original.svg";
 import { Col, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import './tools-skills-displayer.scss';
 
 const baseTPath = 'pages.Home';
 
@@ -43,7 +44,8 @@ const ToolsSkillsDisplayer: React.FC = () => {
     },
     {
       img: latex,
-      title: 'Latex'
+      title: 'Latex',
+      needsBackground: true
     },
     {
       img: overleaf,
@@ -55,7 +57,8 @@ const ToolsSkillsDisplayer: React.FC = () => {
     },
     {
       img: tex,
-      title: 'Tex'
+      title: 'Tex',
+      needsBackground: true
     },
     {
       img: matplotlib,
@@ -107,12 +110,13 @@ const ToolsSkillsDisplayer: React.FC = () => {
     },
     {
       img: pandas,
-      title: 'pandas'
+      title: 'pandas',
+      needsBackground: true
     },
   ];
 
   return (
-    <>
+    <div className='tools-skills-displayer'>
       <Row className="mb-3">
         <h3>{t('technicalSkillsTitle')}</h3>
       </Row>
@@ -120,13 +124,13 @@ const ToolsSkillsDisplayer: React.FC = () => {
         {tools.map((tool, index) => (
           <Col key={index}>
             <div className="d-flex justify-content-center mb-2">
-              <Image src={tool.img} height={48} alt={tool.title} />
+              <Image src={tool.img} height={48} alt={tool.title} className={tool.needsBackground ? 'needs-bg' : ''} />
             </div>
             <p className="text-center">{tool.title}</p>
           </Col>
         ))}
       </Row>
-    </>
+    </div>
   )
 }
 

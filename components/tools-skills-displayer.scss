@@ -1,0 +1,15 @@
+.tools-skills-displayer {
+
+  img {
+    padding: 1px;
+  }
+
+  [data-bs-theme="dark"] & {
+    img.needs-bg {
+      background-color: var(--bs-emphasis-color);
+      background-color: color-mix(in srgb, var(--bs-emphasis-color) 90%, transparent);
+      border-radius: 10%;
+    }
+  }
+
+}
