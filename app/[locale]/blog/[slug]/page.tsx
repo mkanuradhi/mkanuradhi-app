@@ -29,6 +29,7 @@ export async function generateMetadata ({ params }: BlogPostPageProps) {
     title: blogPostView.title,
     description: blogPostView.pageDescription,
     keywords: blogPostView.keywords,
+    authors: [{ name: 'Anuradha Ariyaratne' }],
     creator: 'Anuradha',
     publisher: 'M K A Ariyaratne',
     alternates: {
