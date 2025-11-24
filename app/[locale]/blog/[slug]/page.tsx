@@ -29,9 +29,6 @@ export async function generateMetadata ({ params }: BlogPostPageProps) {
     title: blogPostView.title,
     description: blogPostView.pageDescription,
     keywords: blogPostView.keywords,
-    generator: 'React',
-    applicationName: 'mkanuradhi',
-    referrer: 'origin-when-cross-origin',
     creator: 'Anuradha',
     publisher: 'M K A Ariyaratne',
     alternates: {
@@ -45,6 +42,8 @@ export async function generateMetadata ({ params }: BlogPostPageProps) {
       title: blogPostView.title,
       description: blogPostView.pageDescription,
       siteName: 'mkanuradhi',
+      locale: locale === LANG_EN ? 'en_US' : 'si_LK',
+      alternateLocale: locale === LANG_EN ? 'si_LK' : 'en_US',
       url: `${baseUrl}/${locale}/blog/${slug}`,
       images: blogPostView.primaryImage ? [
         {
