@@ -111,6 +111,9 @@ const UpdateBlogPostPrimaryImageForm: React.FC<UpdateBlogPostPrimaryImageFormPro
                   </div>
               }
             </div>
+            <div className="text-muted small">
+              <p><strong>Recommended</strong>: High-quality landscape image (~1200×630 px), JPG or PNG, under 1 MB for best performance.</p>
+            </div>
           </Col>
         </Row>
         {files && files.length > 0 && (
