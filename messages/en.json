@@ -2276,6 +2276,34 @@
         "friday": "Fr",
         "saturday": "Sa"
       }
+    },
+    "AwardsTimelineItem": {
+      "showMore": "Show More",
+      "showLess": "Show Less",
+      "event": "Event",
+      "relatedWork": "Related Work",
+      "coRecipients": "Co-recipients",
+      "awardCategory": {
+        "RESEARCH": "Research",
+        "TEACHING": "Teaching",
+        "SERVICE": "Service",
+        "LEADERSHIP": "Leadership",
+        "INNOVATION": "Innovation",
+        "ACADEMIC": "Academic"
+      },
+      "awardScope": {
+        "INTERNATIONAL": "International",
+        "NATIONAL": "National",
+        "UNIVERSITY": "University",
+        "FACULTY": "Faculty",
+        "DEPARTMENT": "Department"
+      },
+      "awardResult": {
+        "WON": "Won",
+        "SHORTLISTED": "Shortlisted",
+        "NOMINATED": "Nominated",
+        "FINALIST": "Finalist"
+      }
     }
   },
   "contexts": {

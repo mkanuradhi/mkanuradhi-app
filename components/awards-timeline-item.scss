@@ -1,0 +1,284 @@
+.awards-timeline-item {
+  margin-bottom: 2rem;
+  margin-left: 0;
+  margin-right: 0;
+  
+  // Desktop layout
+  @media (min-width: 769px) {
+    align-items: stretch; // Align dot with card top
+  }
+  
+  // Mobile layout
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // ==================================================
+  // TIMELINE SPINE (Left Side: Dot + Line)
+  // ==================================================
+  .timeline-spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    min-height: 100%;
+    
+    // Desktop: margin to the right
+    @media (min-width: 769px) {
+      margin-right: 2rem;
+    }
+    
+    // Mobile: margin to the bottom
+    @media (max-width: 768px) {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+
+    // The DOT (Circle with Icon)
+    .dot {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      box-shadow: 0 4px 15px rgba(var(--bs-body-color-rgb), 0.2);
+      border: 4px solid white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      
+      i {
+        font-size: 24px;
+        color: white;
+      }
+      
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 30px rgba(var(--bs-body-color-rgb), 0.4);
+      }
+    }
+
+    // LINE CONTAINER (Gap + Line + Gap)
+    .line-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+      
+      @media (max-width: 768px) {
+        bottom: -1rem;
+      }
+      
+      .gap {
+        height: 20px;
+        width: 3px;
+        background: transparent;
+        flex-shrink: 0; // Don't compress gaps
+      }
+      
+      .line {
+        width: 3px;
+        flex: 1; // Grows to fill available space
+        background: linear-gradient(
+          to bottom,
+          var(--bs-secondary-text-emphasis) 0%,
+          var(--bs-dark-text-emphasis) 50%,
+          rgba(var(--bs-body-color-rgb), 1) 100%
+        );
+        box-shadow: 0 0 5px rgba(var(--bs-body-color-rgb), 0.2);
+        min-height: 60px;
+
+        @media (max-width: 768px) {
+          min-height: 20px;
+        }
+      }
+    }
+
+  }
+
+  // ==================================================
+  // CARD COLUMN (Right Side)
+  // ==================================================
+  .card-column {
+    padding: 0;
+    
+    @media (max-width: 768px) {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    // The Card Itself
+    .award-card {
+      box-shadow: 0 2px 8px rgba(var(--bs-body-color-rgb), 0.2);
+      transition: all 0.3s ease;
+      overflow: hidden; // Important for animations
+      
+      &:hover {
+        box-shadow: 0px 16px 32px rgba(var(--bs-body-color-rgb), 0.3);
+        transform: scale(1.01);
+      }
+    }
+  }
+
+  // ==================================================
+  // PRIMARY INFO (Always Visible)
+  // ==================================================
+  .primary-info {
+    margin-bottom: 1rem;
+    
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+      }
+    }
+    
+    .issuer {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.95rem;
+      }
+    }
+    
+    // Location with icon
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      
+      i {
+        margin-right: 0.5rem;
+        color: #667eea;
+      }
+    }
+  }
+
+  // Badge Row
+  .badge-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px; // Pill shape
+      letter-spacing: 0.5px;
+
+      @media (max-width: 768px) {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+  }
+
+  // ==================================================
+  // SECONDARY INFO (Expandable)
+  // ==================================================
+  .secondary-info {
+    margin-top: 1rem;
+    
+    hr {
+      margin: 1rem 0;
+      border: 0;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    // Quill editor content (if using rich text)
+    .ql-editor {
+      padding: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      
+      p {
+        margin-bottom: 0.75rem;
+      }
+      
+      ul, ol {
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+      }
+    }
+  }
+
+  // Detail Rows (location, money, co-recipients)
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    
+    i {
+      font-size: 1.1rem;
+      color: #667eea;
+      min-width: 20px; // Keeps icons aligned
+    }
+
+    span {
+      flex: 1;
+    }
+  }
+
+  // Link Buttons Container
+  .link-buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  // ==================================================
+  // TOGGLE BUTTON (Show More/Less)
+  // ==================================================
+  .toggle-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #667eea;
+    text-decoration: none;
+    
+    &:hover {
+      color: #764ba2;
+      text-decoration: none;
+    }
+    
+    i {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover i {
+      transform: translateY(2px);
+    }
+  }
+
+}
