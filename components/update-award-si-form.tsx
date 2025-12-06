@@ -1,7 +1,7 @@
 "use client";
 import React, { FC, useMemo } from 'react';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
-import { Col, Row, Form as BootstrapForm, Button } from 'react-bootstrap';
+import { Col, Row, Form as BootstrapForm, Button, Accordion, Badge } from 'react-bootstrap';
 import { getUpdateAwardSiSchema } from '@/schemas/update-award-si-schema';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +13,7 @@ import Award from '@/interfaces/i-award';
 import LoadingContainer from './loading-container';
 import RequiredFormLabel from './required-form-label';
 import RichTextEditor from './rich-text-editor';
+import EnReferenceAccordion from './en-reference-accordion';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const baseTPath = 'components.UpdateAwardSiForm';
@@ -103,11 +104,13 @@ const UpdateAwardSiForm: FC<UpdateAwardSiFormProps> = ({ id, onSuccess }) => {
                   <fieldset disabled={isSubmitting}>
                     <BootstrapForm.Group className="mb-4" controlId="formTitleSi">
                       <RequiredFormLabel>{t('titleSiLabel')}</RequiredFormLabel>
+                      <EnReferenceAccordion content={award.titleEn} />
                       <Field name="titleSi" type="text" placeholder={t('titleSiPlaceholder')} className="form-control" />
                       <ErrorMessage name="titleSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formDescriptionSi">
                       <RequiredFormLabel>{t('descriptionSiLabel')}</RequiredFormLabel>
+                      <EnReferenceAccordion content={award.descriptionEn} isHtml={true} />
                       <RichTextEditor
                         value={values.descriptionSi}
                         onChange={(content) => setFieldValue('descriptionSi', content)}
@@ -118,22 +121,28 @@ const UpdateAwardSiForm: FC<UpdateAwardSiFormProps> = ({ id, onSuccess }) => {
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formIssuerSi">
                       <RequiredFormLabel>{t('issuerSiLabel')}</RequiredFormLabel>
+                      <EnReferenceAccordion content={award.issuerEn} />
                       <Field name="issuerSi" placeholder={t('issuerSiPlaceholder')} className="form-control" />
                       <BootstrapForm.Text className="text-muted">{t('issuerSiHelp')}</BootstrapForm.Text>
                       <ErrorMessage name="issuerSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formIssuerLocationSi">
                       <BootstrapForm.Label>{t('issuerLocationSiLabel')}</BootstrapForm.Label>
+                      <EnReferenceAccordion content={award.issuerLocationEn} />
                       <Field name="issuerLocationSi" placeholder={t('issuerLocationSiPlaceholder')} className="form-control" />
                       <ErrorMessage name="issuerLocationSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formCeremonyLocationSi">
                       <BootstrapForm.Label>{t('ceremonyLocationSiLabel')}</BootstrapForm.Label>
+                      <EnReferenceAccordion content={award.ceremonyLocationEn} />
                       <Field name="ceremonyLocationSi" placeholder={t('ceremonyLocationSiPlaceholder')} className="form-control" />
                       <ErrorMessage name="ceremonyLocationSi" component="p" className="text-danger mt-1" />
                     </BootstrapForm.Group>
                     <BootstrapForm.Group className="mb-4" controlId="formCoRecipientsSi">
                       <BootstrapForm.Label>{t('coRecipientsSiLabel')}</BootstrapForm.Label>
+                      {award.coRecipientsEn && award.coRecipientsEn.length > 0 && (
+                        <EnReferenceAccordion content={award.coRecipientsEn.join(', ')} />
+                      )}
                       <FieldArray name="coRecipientsSi">
                         {({ push, remove }) => (
                           <div>

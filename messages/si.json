@@ -2304,6 +2304,10 @@
         "NOMINATED": "නාමයෝජනා ලැබූ",
         "FINALIST": "අවසාන තේරීම්ලාභී"
       }
+    },
+    "EnReferenceAccordion": {
+      "badgeLabel": "EN",
+      "title": "ඉංග්‍රීසි යොමුව"
     }
   },
   "contexts": {
