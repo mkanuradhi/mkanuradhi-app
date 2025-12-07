@@ -1,35 +1,10 @@
 import React from 'react';
-import { useMessages, useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
+import { getAwards } from '@/services/award-service';
+import AwardsTimeline from '@/components/awards-timeline';
 
 const baseTPath = 'pages.Awards';
-
-interface AwardDetail {
-  year: string;
-  descriptions: string[];
-}
-
-interface AwardMessages {
-  pages: {
-    Awards: {
-      awardDetails: AwardDetail[];
-    };
-  };
-}
-
-interface GrantDetail {
-  year: string;
-  description: string;
-}
-
-interface GrantMessages {
-  pages: {
-    Awards: {
-      grantDetails: GrantDetail[];
-    };
-  };
-}
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -61,15 +36,9 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const AwardsPage = () => {
-  const t = useTranslations(baseTPath);
-
-  const awardMessages = useMessages() as unknown as AwardMessages | undefined;
-  const awardDetails = awardMessages?.pages?.Awards?.awardDetails as AwardDetail[];
-
-  const grantMessages = useMessages() as unknown as GrantMessages | undefined;
-  const grantDetails = grantMessages?.pages?.Awards?.grantDetails as GrantDetail[];
-
+const AwardsPage = async () => {
+  const t = await getTranslations(baseTPath);
+  const awards = await getAwards(0, 100);
 
   return (
     <>
@@ -77,43 +46,12 @@ const AwardsPage = () => {
         <Container fluid="md">
           <Row className="my-4">
             <Col>
-              <h1>{t('title')}</h1>
               <section>
+                <h1>{t('title')}</h1>
                 <p>{t('description')}</p>
               </section>
               <section>
-                <Container fluid="md">
-                  <Row>
-                    <Col>
-                      <h2>{t('awardTitle')}</h2>
-                    </Col>
-                  </Row>
-                  {awardDetails.map((detail, index) => (
-                    <Row key={index} className="my-4">
-                      <Col xs={2} sm={1}><strong>{detail.year}</strong></Col>
-                      <Col>
-                        {detail.descriptions.map((desc, index) => (
-                          <p key={index}>{desc}</p>
-                        ))}
-                      </Col>
-                    </Row>
-                  ))}
-                </Container>
-              </section>
-              <section>
-                <Container fluid="md">
-                  <Row>
-                    <Col>
-                      <h2>{t('grantTitle')}</h2>
-                    </Col>
-                  </Row>
-                  {grantDetails.map((grant, index) => (
-                    <Row key={index} className="my-4">
-                      <Col xs={2} sm={1}><strong>{grant.year}</strong></Col>
-                      <Col>{grant.description}</Col>
-                    </Row>
-                  ))}
-                </Container>
+                <AwardsTimeline awards={awards.items} />
               </section>
             </Col>
           </Row>

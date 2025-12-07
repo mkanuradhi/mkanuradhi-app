@@ -2276,6 +2276,38 @@
         "friday": "සිකු",
         "saturday": "සෙන"
       }
+    },
+    "AwardsTimelineItem": {
+      "showMore": "තව පෙන්වන්න",
+      "showLess": "අඩුවෙන් පෙන්වන්න",
+      "event": "උත්සවය",
+      "relatedWork": "ආශ්‍රිත කාර්ය",
+      "coRecipients": "සම-ලැබූවන්",
+      "awardCategory": {
+        "RESEARCH": "පර්යේෂණ",
+        "TEACHING": "ඉගැන්වීම",
+        "SERVICE": "සේවා",
+        "LEADERSHIP": "නායකත්ව",
+        "INNOVATION": "නවෝත්පාදන",
+        "ACADEMIC": "අධ්‍යයන"
+      },
+      "awardScope": {
+        "INTERNATIONAL": "ජාත්‍යන්තර",
+        "NATIONAL": "ජාතික",
+        "UNIVERSITY": "විශ්ව විද්‍යාල",
+        "FACULTY": "පීඨ",
+        "DEPARTMENT": "දෙපාර්තමේන්තු"
+      },
+      "awardResult": {
+        "WON": "දිනාගත්තා",
+        "SHORTLISTED": "කෙටි ලැයිස්තුගත වූ",
+        "NOMINATED": "නාමයෝජනා ලැබූ",
+        "FINALIST": "අවසාන තේරීම්ලාභී"
+      }
+    },
+    "EnReferenceAccordion": {
+      "badgeLabel": "EN",
+      "title": "ඉංග්‍රීසි යොමුව"
     }
   },
   "contexts": {
