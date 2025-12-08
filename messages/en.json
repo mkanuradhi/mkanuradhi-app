@@ -416,50 +416,7 @@
       "pageKeywords": "Achievements, President's Award, Academic Excellence Award, Virtusa, scholarship",
       "title": "Awards and Grants",
       "subTitle": "Achievements",
-      "description": "I have had the honor of receiving several awards and grants throughout my academic journey.",
-      "awardTitle": "Awards",
-      "awardDetails": [
-        {
-          "year": "2023",
-          "descriptions": [
-            "Tampere University 100% tuition fee scholarship, Master’s Degree in Data Science 2023-2025, Finland.",
-            "Research awards for publishing full papers in a Refereed Journal that publishes at least two issues per year, University of Sri Jayewardenepura, Sri Lanka.",
-            "Research awards for publishing full papers in Journals indexed in Science Citation Index Expanded / Elsevier SCOPUS, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2022",
-          "descriptions": [
-            "Research awards for publishing full papers in a Refereed Journal that publishes at least two issues per year, University of Sri Jayewardenepura, Sri Lanka.",
-            "Research awards for publishing full papers in Journals indexed in Science Citation Index Expanded / Elsevier SCOPUS, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2021",
-          "descriptions": [
-            "Research awards for publishing full papers in a Refereed Journal that publishes at least two issues per year, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2019",
-          "descriptions": [
-            "President's Award for Scientific Research, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2012",
-          "descriptions": [
-            "Academic Excellence Award-Virtusa for the First Class Pass with the highest GPA, B.Sc. (Special) Degree in Computer Science 2012, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        }
-      ],
-      "grantTitle": "Grants",
-      "grantDetails": [
-        {
-          "year": "2016",
-          "description": "Travel grant for conference participation, General Sir John Ketelawala Defence University, Sri Lanka."
-        }
-      ]
+      "description": "I have had the honor of receiving several awards and grants throughout my academic journey."
     },
     "Experience": {
       "pageTitle": "Experience",
