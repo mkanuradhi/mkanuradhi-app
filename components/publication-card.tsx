@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Badge, Card, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faFilePdf, faFilePowerpoint, faFlask, faLink, faMicrophone, faNewspaper, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faFilePdf, faFilePowerpoint, faFlask, faLink, faMicrophone, faNewspaper } from "@fortawesome/free-solid-svg-icons";
 import Publication from '@/interfaces/i-publication';
 import PublicationType from '@/enums/publication-type';
 import PublicationStatus from '@/enums/publication-status';
@@ -14,6 +14,14 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const baseTPath = 'components.PublicationCard';
 
+// Quartile colors configuration
+const QUARTILE_COLORS = {
+  Q1: { backgroundColor: '#60CA46', color: '#fff' }, // Q1 Green
+  Q2: { backgroundColor: 'rgb(232, 213, 89)', color: '#fff' }, // Q2 Yellow
+  Q3: { backgroundColor: 'rgb(251, 163, 83)', color: '#fff' }, // Q3 Orange
+  Q4: { backgroundColor: 'rgb(221, 90, 78)', color: '#fff' }, // Q4 Red
+} as const;
+
 interface PublicationCardProps {
   publication: Publication;
 }
@@ -24,6 +32,10 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
 
   const toggleSection = (section: 'abstract' | 'keywords' | 'bibtex' | 'ris') => {
     setExpanded(prev => (prev === section ? null : section));
+  };
+
+  const getTagStyle = (tag: string) => {
+    return QUARTILE_COLORS[tag as keyof typeof QUARTILE_COLORS] || null;
   };
 
   const renderTypeOrStatus = () => {
@@ -96,11 +108,20 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
 
           {publication.tags && publication.tags.length > 0 && (
             <div className="mb-2">
-              {publication.tags.map((tag, index) => (
-                <Badge key={index} pill bg="secondary" className="me-1">
-                  {tag}
-                </Badge>
-              ))}
+              {publication.tags.map((tag, index) => {
+                const customStyle = getTagStyle(tag);
+                return (
+                  <Badge 
+                    key={index} 
+                    pill 
+                    bg={customStyle ? '' : 'secondary'}
+                    style={customStyle || undefined}
+                    className="me-1"
+                  >
+                    {tag}
+                  </Badge>
+                );
+              })}
             </div>
           )}
 
