@@ -83,202 +83,10 @@
       "subTitle": "Research Activities",
       "description": "From 2014, I have actively engaged in research in the fields of meta-heuristic optimization, nature inspired computing and machine learning.",
       "thesisTitle": "Theses / Dissertations",
-      "thesisDetails": [
-        {
-          "degree": "Ph.D",
-          "topic": "Firefly Algorithm Based Self-Tuning Algorithm to Solve Systems of Nonlinear Equations",
-          "university": "Department of Computer Science, Faculty of Graduate Studies, University of Sri Jayewardenepura, Sri Lanka.",
-          "year": "2018",
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "This thesis focuses on applying nature inspired algorithms for finding roots of systems of nonlinear equations. The developments have been done to solve single variable nonlinear equations, systems of nonlinear equations and in applying a self-tuning framework on tuning the parameters of the algorithms that are used for problem solving.",
-            "Fields including Engineering, Mathematics, Chemistry, Computer Science and Economics often encounter applications of univariate as well as systems of nonlinear equations. Providing solutions for such is challenging and the common method of solving them is the use of numerical methods. Numerical methods often have requirements to be fulfilled to begin with the process of finding approximations. The use of different optimization techniques in such situations have been widely applied in all fields of Engineering as the capabilities of computers continue to increase. The remarkable performance of nature inspired algorithms over other optimization techniques encourages researchers to apply them to various optimization problems. Recently developed algorithms like firefly algorithm, bat algorithm and artificial bee colony have shown their success over many difficult optimization tasks where other optimization techniques fail.",
-            "From the initial study, strengths and weaknesses of such algorithms were identified. Particularly, the firefly algorithm was identified as a suitable algorithm for the problem. This was later improved to solve univariate nonlinear equations having complex roots. The main consideration was paid on two important tasks; finding almost all real and complex roots within a reasonable range and omit the necessity of the continuity and differentiability of the functions which is essential for many numerical methods. While applying the firefly algorithm as the suitable metaheuristic algorithm, modifications to the original algorithm have been proposed also to identify solutions simultaneously (through archiving) and to identify the poorly performed populations (through a counter variable). Once completing a moving round by all fireflies, better ones (whose fitness is  easured against a predefined threshold) are noted and are put into an archive. Poor populations (which have not contributed to the archive) are identified at a predefined point and new fireflies are introduced to the population in a random manner. This random replacements enhance the exploration property. The proposed new firefly algorithm is named as Modified Firefly Algorithm (MODFA) to solve nonlinear equations.",
-            "Finding roots of a univariate nonlinear equation can be considered as a single objective problem, while finding roots of a nonlinear system can handle in either; as single objective or multi- objective. The current approach for handling multi-objective optimization problems is to employ the concept of Pareto optimality. But with the MODFA, finding roots of a system of nonlinear equations is handled as a single objective optimization problem. The new concept of archiving is introduced and with that, within a single run of the algorithm, many solutions can be obtained simultaneously. Another concept used here is a self-tuning framework which is used to tune the parameters of the used nature inspired algorithms. The purpose of using it for the study is to let the users use the algorithm without having knowledge about algorithm specific parameters. This is named as Self Tuning Modified Firefly Algorithm (STMODFA).",
-            "The performance of the newly proposed algorithm, is evaluated by comparing it with other algorithms such as genetic algorithms, particle swarm optimization Algorithm, differential evolution , harmony search, cuckoo search algorithm. According to the results obtained with these, it has been shown that the MODFA demonstrates better performance than the other nature inspired algorithms. It is hardly seen the ability of finding roots simultaneously by other algorithms.",
-            "Since representations can be easily handled, all implementations were implemented using MATLAB. For almost all univariate and systems of nonlinear equations, the accuracy of an approximation is set as 10^−2. Because the study focuses more on finding as many roots as possible within a single run. To increase the accuracy, later in this research, the concept of hybridization has been introduced. Hybrids of MODFA have been built with numerical as well as natural optimization techniques. This concept gave successful results enabling MODFA to find roots simultaneously with a high accuracy around 10^−12."
-          ],
-          "keywordsTitle": "Keywords",
-          "keywords": [
-            "Nature inspired algorithms", "Firefly algorithm", "Complex roots",
-            "Systems of nonlinear equations", "Self-tuning framework", "Archive",
-            "Root approximations"
-          ]
-        },
-        {
-          "degree": "M.Sc",
-          "topic": "Effective Clustering with Firefly Algorithms - A Variant with Centroid Movements",
-          "university": "Faculty of Information and Communication Technology, Tampere University, Finland.",
-          "year": "2025",
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "Clustering is a fundamental problem in data analysis, often used to partition datasets into meaningful groups. However, the effectiveness of clustering methods largely depends on the nature of the dataset and the specifc objectives of the task. Traditional clustering methods, such as K-Means, have limitations in handling datasets with varying distributions, cluster shapes, and densities. Moreover, these methods often require pre-specifying the number of clusters (K), which may not align with real-world data complexities. This thesis addresses these limitations by proposing a modifed Firefy Algorithm (FA) for automatic clustering with centroid movements.",
-            "The proposed algorithm integrates meta-heuristic principles to overcome the challenges associated with traditional clustering methods. Unlike canonical approaches that rely solely on proximity, our method introduces a multi-objective ftness function that considers compactness, separation, and a novel total Traveling Salesman Problem (TSP) penalty to ensure both effcient clustering and optimal navigation within clusters. The algorithm employs a self-tuning mechanism to adaptively determine the optimal number of clusters (K) and uses a unique centroid movement strategy to refine cluster boundaries dynamically. These innovations allow the algorithm to achieve robust clustering outcomes without reliance on initial cluster center selection or manual specifcation of K.",
-            "The practical application of the proposed algorithm is also explored in the thesis in the context of a robotic sensor network for the persistent monitoring of large areas. The dataset used for experiments consists of two-dimensional spatial data, refecting the challenges of clustering in real-world scenarios. Computational experiments compare the performance of the modifed Firefy Algorithm with the K-Means algorithm, revealing that the proposed approach not only mitigates initialization dependency but also produces clusters that facilitate shorter navigation paths within clusters. For instance, the total path distance for clusters formed using the proposed method was reduced signifcantly compared to K-Means, emphasizing its suitability for navigation-centric applications.",
-            "The findings demonstrate the effectiveness of the Firefy Algorithm in addressing clustering problems characterized by complex data distributions and multi-objective goals. Future work will explore extending the algorithm's capabilities to higher-dimensional data and developing self-tuning mechanisms for algorithmic parameters, further enhancing its adaptability and applicability in diverse clustering scenarios."
-          ],
-          "keywordsTitle": "Keywords",
-          "keywords": [
-            "Firefy Algorithm", "Clustering", "Automatic K", "K means", "Centroid Movements"
-          ]
-        },
-        {
-          "degree": "B.Sc",
-          "topic": "A Comparative study on Nature Inspired Algorithms with Firefly Algorithm",
-          "university": "Department of Computer Science, Faculty of Applied Sciences , University of Sri Jayewardenepura, Sri Lanka.",
-          "year": "2012",
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "The processes of optimization can be defined simply as an attempt of making something better or finding the best solution for a maximization or minimization problem.",
-            "The basic two approaches of optimization are classical and natural where in some problems classical approach works better and for some other problems natural methods are good.",
-            "Natural optimizing techniques, which are extracted from the behavior of natural world, are known as Nature Inspired optimization techniques. Ant colonies which mimic the natural food finding behavior of ants, particle swarm optimizations algorithms which takes the advantage of schooling behavior of fish or flocking behavior of birds are some examples for them.",
-            "In this research, the main purpose is to measure the optimizing performance of such nature inspired algorithms with one new nature inspired algorithm known as firefly inspired algorithm, which came to the stage, extracting the flashing behavior of fireflies.",
-            "Two major areas of nature inspired algorithms are evolutionary strategies and swarm intelligence. An evolutionary algorithm (EA) is a generic population-based metaheuristic optimization algorithm. An EA uses tools motivated by biological evolution: reproduction, mutation, recombination, and selection.",
-            "Swarm intelligence is another problem solving behavior, inspired by nature that emerges from the interaction of individual agents (e.g., bacteria, ants, termites, bees, spiders, fish, and birds) which communicate with other agents by acting on their local environments.",
-            "For this research, genetic algorithms is taken as an algorithm from evolutionary strategies and Ant colonies, particle swarm optimization from swarm intelligence to make the comparison with the firefly inspired algorithm, which is also an algorithm that belongs to swarm intelligence.",
-            "Travelling salesman problem, which is a representative of NP hard problems, was taken as the bench mark problem to employ all these algorithms.",
-            "Each algorithm was used to solve four TSP instances with 16, 29, 51 and 100 cities taken from the TSPLIB and statistics were taken appropriately. Another 5 instances of 29 cities were generated randomly and results were calculated for all four algorithms. The results of the study were manipulated using Matlab 2008.",
-            "For all 9 TSP instances, firefly algorithm gave the best results and sometimes ant colony systems too. Particle swarm optimization algorithm always scores the third place and Genetic algorithm performs last.",
-            "With the results obtained, it can be clearly said that the firefly algorithm is remarkably successful and better than other three algorithms in its discrete version."
-          ],
-          "keywordsTitle": "Keywords",
-          "keywords": [
-            "Firefly Algorithm", "Genetic Algorithms", "Particle Swarm Optimization Algorithm",
-            "Ant Colony Systems", "Travelling Salesman Problem",
-            "Evolutionary Discrete Firefly Algorithm [EDFA]", "Nature Inspired Algorithms"
-          ]
-        }
-      ],
       "currentUnderGradTitle": "On-going Undergraduate Research Projects",
-      "currentUnderGradProjects": [
-        {
-          "studentName": "E. S. Sithpahan",
-          "topic": "Interactive Money Saver, A Digital Till to Enhance Money Saving Interests Of Children",
-          "degree": "B.Sc. (Special) Degree in Computer Science",
-          "year": "2025",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "MKA Ariyaratne", "Ravindra De Silva"
-          ]
-        }
-      ],
       "currentPostGradTitle": "On-going Postgraduate Research Projects",
-      "currentPostGradProjects": [
-        {
-          "studentName": "S.C.M.de S Sirisuriya",
-          "topic": "Automatic Routing in 2D / 3D Environments using Deep Learning Algorithms",
-          "degree": "Ph.D. Degree in Computer Science",
-          "year": "2020 - present",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "TGI Fernando", "MKA Ariyaratne"
-          ]
-        }
-      ],
       "pastUnderGradTitle": "Completed Undergraduate Research Projects",
-      "pastUnderGradProjects": [
-        {
-          "studentName": "I.M.T.P.K. Ilankoon",
-          "topic": "Finding Playing Styles of Badminton Players Using Firefly Algorithm Based Clustering Algorithms",
-          "degree": "B.Sc. (Special) Degree in Computer Science",
-          "year": "2022",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "MKA Ariyaratne"
-          ],
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "Cluster analysis can be defined as applying clustering algorithms with the goal of finding hidden patterns or groupings in a dataset. Different clustering methods may provide different solutions for the same dataset. Traditional clustering algorithms are popular, but handling big data sets is beyond the ability of such methods. We propose three big data clustering methods, based on the Firefly Algorithm (FA). Three different fitness functions were defined on FA using inter cluster distance, intra cluster distance, silhouette value and Calinski-Harabasz Index. The algorithms find the most appropriate cluster centers for a given data set. The algorithms were tested with nine popular synthetic data sets, one medical data set and later applied on two badminton data sets to identify different playing styles of players based on physical characteristics. The results specify that the firefly algorithm could generate better clustering results with high accuracy. The algorithms cluster the players to find the most suitable playing strategy for a given player where expert knowledge is needed in labeling the clusters. Comparisons with a PSO based clustering algorithm (APSO) and traditional algorithms point out that the proposed firefly variants work similarly as the APSO method and surpass the performance of traditional algorithms."
-          ]
-        },
-        {
-          "studentName": "US Samarasinghe",
-          "topic": "An Expert System to Detect and Classify CNS Disorders Based on Eye Test Data Using SVM and Nature-Inspired Algorithms",
-          "degree": "B.Sc. (Special) Degree in Computer Science",
-          "year": "2022",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "MKA Ariyaratne"
-          ],
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "Changes in eye movements have a strong relationship with the changes in the brain. Several medical studies have revealed that in most CNS disorders, ocular manifestations are often associated with brain symptoms. To date, computational intelligence has not been used to study the relationship between eye movements and brain disorders. We propose a support vector machine (SVM) based machine learning solution to identify, five disorders related to the central nervous system; Amyotrophic Lateral Sclerosis (ALS), Multiple Sclerosis (MS), and Alzheimer’s Disease (AD), Parkinson’s Disease (PD), and Schizophrenia. Apart from the SVM, the proposed solution handles two major problems which occur in the data preprocessing stage; insufficiency of real eye test data and finding optimal features set for a particular disorder. An algorithm is developed to generate synthetic data and to find the optimal features set for a particular disorder, a solution based on particle swarm optimization is proposed. We trained the SVM models using the generated synthetic data and tested with the real data. The proposed system based on SVMs with linear, polynomial, and RBF kernels were able to identify the stages of the disorders, as diagnosed in medical studies. The SVM with the RBF kernel worked with an accuracy of 97% in identifying the existence of a CNS disorder. In classifying the stages of ALS, the linear kernel worked with an accuracy of 77% while the polynomial kernel worked with an accuracy of 100%, 90%, and 64% in classifying stages of MS, AD, and Schizophrenia. For PD, SVMs with all kernels gave an accuracy of 96%. The results are encouraging, giving sufficient evidence that the proposed system works better. We further illustrate the viability of our method by comparing the results with those obtained in previous medical studies."
-          ]
-        },
-        {
-          "studentName": "K.Katheesan",
-          "topic": "Exploring GA-based Cut Order Plan solutions and GA-based Cut-Panel Nesting for Apparel Industry",
-          "degree": "B.Sc. (Special) Degree in Computer Science",
-          "year": "2022",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "MKA Ariyaratne"
-          ],
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "The apparel industry is facing the challenge of minimizing production costs, with fabric cost being a significant expense. To address this challenge, this research focuses on developing high-speed processing algorithms for the Cut Order Plan (COP) in the apparel industry, aiming to generate near-optimal solutions that reduce fabric wastage and enhance profitability. By considering mathematical constraints and fabric characteristics, efficient COPs can be produced to minimize fabric cost, labor cost, and cutting time. This study proposes a genetic algorithm-based approach for cut order planning and cut panel nesting, addressing the limitations faced by existing commercial software. The research objectives include studying the garment industry’s production flow, exploring genetic algorithm and optimization techniques, investigating bin packing problems and vector graphics, evaluating the model’s performance, and comparing it with existing solutions. The ultimate goal is to apply genetic algorithms to produce optimal Cut Order Plans, reduce fabric waste, and increase business profits in the textile industry."
-          ]
-        },
-        {
-          "studentName": "A.D.H.Dasunika",
-          "topic": "A Comparative Study on Nature Inspired Algorithms Finding Optimal Policies in Reinforcement Learning",
-          "degree": "B.Sc. (Special) Degree in Computer Science",
-          "year": "2022",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "MKA Ariyaratne"
-          ],
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "Under machine learning, reinforcement learning (RL) has become a powerful machine learning technique aimed at maximizing an agent’s rewards over time by learning an optimal policy. However, achieving a balance between exploration and exploitation poses a challenge for RL agents. Existing action selection methods often require fine-tuning exploration parameters or involve computationally intensive processes to converge to optimality. To address these limitations, the integration of nature-inspired algorithms with RL has emerged as a promising approach. This research presents a comparative study on the performance of nature-inspired algorithms for finding optimal policies in RL. In this study two novel action selection methods, GWAS and EE-GWAS, inspired by the Grey Wolf Optimization algorithm, are proposed. GWAS applies the canonical Grey Wolf Optimization algorithm, while EE-GWAS enhances it with a specialized exploration parameter. The study also includes a re-implemented CAS action selection method, introduces a novel variant of CAS, and benchmarks against the epsilon greedy method. Experimental results highlight the significance of the exploration parameter in EEGWAS, which effectively balances exploration and exploitation, leading to optimized performance. The findings demonstrate that EE-GWAS consistently achieves above 50% performance in obtaining the optimal policy."
-          ]
-        },
-        {
-          "studentName": "N M Wijebandara",
-          "topic": "Optimizing the thickness of transmission cables in power stations in Sri Lanka concerning the power loss and the installation cost",
-          "degree": "B.Sc. (Special) Degree in Computer Science",
-          "year": "2021",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "MKA Ariyaratne"
-          ],
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "Long-distance power transmission is one of a main ways of losing power. Completely avoiding power loss in transmission is not possible. But this loss can be minimized. One way of minimizing power lost in transmission is increasing the thickness of transmission cables. But there is a problem with increasing thickness. That is the initial cost of the cable. When increasing thickness the cost also increases. The importance of finding an optimal cable thickness is a commonly discussed issue. It is so hard to find an optimal value manually. We are going to automate it using both deterministic and non-deterministic optimization algorithms. In this work, we represent this problem as an optimization problem and solve it using the Particle Swarm Optimization (PSO) algorithm and the Gradient descendant Algorithm. Comparisons carried out with the existing options revealed the success of the proposed approach."
-          ]
-        },
-        {
-          "studentName": "H Hansani",
-          "topic": "AGH; An Ant Genetic Hybrid Solution to Solve the Multi-model Traveling Salesmen Problem",
-          "degree": "B.Sc. (Special) Degree in Computer Science",
-          "year": "2020",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "MKA Ariyaratne"
-          ],
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "The concept of multi-model optimization brings the idea of finding all or most of the existing high quality solutions. Recent research on multi-model optimization (MMO) seemed to be using nature inspired algorithms in solving such interesting problems. Multi-model traveling salesman problem is an important but rarely addressed discrete MMO problem. This paper proposes a hybrid algorithm combining the Ant Colony Systems algorithm (ACS) with a modified genetic algorithm (MODGA) to solve multi-model traveling salesman problems (MMTSPs). The concept of the hybrid algorithm divides the solution into two parts where ACS is used to find an average quality solution which is then provided as a threshold to the MODGA to find other quality solutions as much as possible. Benchmark multi-model TSP problems have been used on the new algorithm to test its capability. 70% of the success PR and 0.6% of success SR values indicates the capability of the method solving MMTSPs. The results compared with several state of the art multi-model optimization algorithms showed that the proposed hybrid algorithm performs competitively with these algorithms. As the first approach to solve MMTSPs without niching strategies, improvements will lead the current algorithm to a greater place."
-          ]
-        }
-      ],
-      "pastPostGradTitle": "Completed Postgraduate Projects",
-      "pastPostGradProjects": [
-        {
-          "studentName": "P.H.H.P.N. De Silva",
-          "topic": "Optimum Plant Mix Selection for Urban Home Gardens: an Attempt on Genetic Algorithm and Integer Linear Programming",
-          "degree": "M.Sc. Degree in Industrial Mathematics",
-          "year": "2021",
-          "supervisorsTitle": "Supervisors",
-          "supervisors": [
-            "G.H.J. Lanel", "MKA Ariyaratne"
-          ],
-          "abstractTitle": "Abstract",
-          "abstracts": [
-            "Home gardening is a highly deliberated topic in the current world as a consequence of social, economic, and environmental benefits. Due to the lack of mathematical applications in non-profit-based home gardens, this study is mainly focused on the social and environmental aspects of home gardening rather than focusing on the economic perspective. Therefore, this study was scrutinized in an urban city in Sri Lanka where home gardening is disparate from the economic perspective due to various reasons. In the initial stage of the research process, a novel approach to plant ranking was proposed under the concept of home gardening. The Genetic Algorithm (GA) and Integer Linear Programming (ILP) models were proposed in this study under two scenarios and implemented using both primary and secondary data. Implementation of GA was performed using MATLAB software and parameter values were determined by the trial and error method. The second scenario was accomplished through the ILP model along with sensitivity analysis using Excel Solver. Both methods provided optimum plant mix effectively and efficiently for the selected garden considering a horizontal space."
-          ]
-        }
-      ]
+      "pastPostGradTitle": "Completed Postgraduate Projects"
     },
     "Publications": {
       "pageTitle": "Publications",
@@ -286,129 +94,7 @@
       "pageKeywords": "Journal, articles, proceedings, papers",
       "title": "Publications",
       "subTitle": "Papers",
-      "description": "To date, I have authored {countAll} publications, including {countArticles} journal articles, {countChapters} book chapter, and {countProceedings} conference proceedings.",
-      "articlesTitle": "Journal Articles",
-      "articles": [
-        {
-          "year": "2025",
-          "description": "Samanthi, K. G. P. H., Fernando, T. G. I., and <strong>Ariyaratne, M.K.A.</strong> (2025). Conversational AI for cinnamon and coffee exports: Insights on price and yield. International Journal of Research in Computing, 4(i), 23–32.",
-          "url": "https://www.ijrcom.org/index.php/ijrc/article/view/142"
-        },
-        {
-          "year": "2025",
-          "description": "Deepal, D. A. A, De Silva, R., <strong>Ariyaratne, M.K.A.</strong>, and Fernando, T. G. I. (2025). Faces unveiled: A deep dive into modern face detection and recognition techniques. International Journal of Research in Computing, 4(i), 48–81.",
-          "url": "https://www.ijrcom.org/index.php/ijrc/article/view/137"
-        },
-        {
-          "year": "2024",
-          "description": "Dikwatta, U., Fernando, T.G.I. and <strong>Ariyaratne, M.K.A.</strong>, (2024). Exploring Mechanisms for Detecting Violent Content in Sinhala Image Posts: Ratio-nale with Unsupervised vs Supervised Techniques. International Journal of Research in Computing (IJRC), 2(2).",
-          "url": "http://www.ijrcom.org/index.php/ijrc/article/view/123"
-        },
-        {
-          "year": "2023",
-          "description": "<strong>Ariyaratne, M. K. A.</strong>, and Hansani, H. (2023). AGH; An Ant Genetic Hybrid Solution to Solve the Multi-model Traveling Salesmen Problem. International Journal of Research in Computing (IJRC), 2(1).",
-          "url": "http://www.ijrcom.org/index.php/ijrc/article/view/117"
-        },
-        {
-          "year": "2023",
-          "description": "Ilankoon, I.M.T.P.K. , Samarasinghe, U. , <strong>Ariyaratne, M.K.A.</strong> and Silva, R.M.,2023. Finding Playing Styles of Badminton Players Using Firefly Algorithm Based Clustering Algorithms, Computer Science, (On Production)",
-          "level": "(Q4, IS (2023) : 0.83)",
-          "url": "https://journals.agh.edu.pl/csci/article/view/5116"
-        },
-        {
-          "year": "2022",
-          "description": "De Sirisuriya, S.C.M.S., Fernando, T.G.I., and <strong>Ariyaratne, M.K.A.</strong> , 2022. Algorithms for path optimizations: a short survey. Computing, 1-27.",
-          "level": "(Q2,IS (2021) : 2.420)",
-          "url": "https://link.springer.com/article/10.1007/s00607-022-01126-w"
-        },
-        {
-          "year": "2022",
-          "description": "<strong>Ariyaratne, M.K.A.</strong> and Silva, R.M., 2022. Meta-heuristics meet sports: a systematic review from the viewpoint of nature inspired algorithms. International Journal of Computer Science in Sport, 21(1), pp.49-92.",
-          "level": "(Q2, IS (2021) : 1.63)",
-          "url": "https://sciendo.com/es/article/10.2478/ijcss-2022-0003"
-        },
-        {
-          "year": "2022",
-          "description": "De Silva, P.H.H.P.N., Lanel, G., and <strong>Ariyaratne, M.K.A.</strong>, 2022. Optimum Plant Mix Selection for Urban Home Gardens: an Attempt on Genetic Algorithm and Integer Linear Programming. International Journal of Applied Sciences: Current and Future Research Trends, 15(1), 101–119.",
-          "url": "https://ijascfrtjournal.isrra.org/index.php/Applied_Sciences_Journal/article/view/1283"
-        },
-        {
-          "year": "2020",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. and Weerakoon, S., 2020. A self-tuning algorithm to approximate roots of systems of nonlinear equations based on the firefly algorithm. International Journal of Swarm Intelligence, 5(1), pp.60-96.",
-          "url": "https://www.inderscienceonline.com/doi/abs/10.1504/IJSI.2020.106406"
-        },
-        {
-          "year": "2019",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. and Weerakoon, S., 2019. Solving systems of nonlinear equations using a modified firefly algorithm (MODFA). Swarm and Evolutionary Computation, 48, pp.72-92.",
-          "level": "(Q1, IS (2019) : 8.75)",
-          "url": "https://www.sciencedirect.com/science/article/abs/pii/S2210650217306107?via%3Dihub"
-        },
-        {
-          "year": "2018",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. and Weerakoon, S., 2018. A self-tuning firefly algorithm to tune the parameters of ant colony system. International Journal of Swarm Intelligence, 3(4), pp.309-331.",
-          "url": "https://www.inderscienceonline.com/doi/abs/10.1504/IJSI.2018.091415"
-        },
-        {
-          "year": "2016",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. and Weerakoon, S., 2015. An Archived firefly Algorithm; A mathematical software to solve univariate nonlinear equations. Journal of ICTer. 9(1).",
-          "url": "https://journal.icter.org/index.php/ICTer/article/download/213/92"
-        },
-        {
-          "year": "2014",
-          "description": "<strong>Ariyaratne, M.K.A.</strong> and Fernando, T.G.I., 2014. A comparative study on nature inspired algorithms with firefly algorithm. International Journal of Engineering and Technology, 4(10), pp.611-617."
-        }
-      ],
-      "chaptersTitle": "Peer-Reviewed Book Chapters",
-      "chapters": [
-        {
-          "year": "2022",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. (2023). A Comprehensive Review of the Firefly Algorithms for Data Clustering. In: Biswas, A., Kalayci, C.B., Mirjalili, S.(eds) Advances in Swarm Intelligence. Studies in Computational Intelligence, vol 1054. Springer, Cham.",
-          "url": "https://doi.org/10.1007/978-3-031-09835-2_12" 
-        }
-      ],
-      "conferenceTitle": "Conference Proceedings",
-      "proceedings": [
-        {
-          "year": "2022",
-          "description": "Samarasinghe, U. S. and <strong>Ariyaratne, M. K. A.</strong> (2022, June 19-23). An expert system to detect and classify CNS disorders based on eye test data using SVM and Nature-Inspired Algorithms. Paper presented at the 21st International Conference on Artificial Intelligence and Soft Computing, Zakopane, Poland.",
-          "url": "https://link.springer.com/chapter/10.1007/978-3-031-23480-4_15"
-        },
-        {
-          "year": "2020",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. and Weerakoon, S., 2020, November. A Hybrid Algorithm to Solve Multi-model Optimization Problems Based on the Particle Swarm Optimization with a Modified Firefly Algorithm. In Proceedings of the Future Technologies Conference (pp. 308-325). Springer, Cham.",
-          "url": "https://link.springer.com/chapter/10.1007/978-3-030-63128-4_24"
-        },
-        {
-          "year": "2019",
-          "description": "<strong>Ariyaratne, M.K.A.</strong> and Marikar, F.M., 2019, December. Identification of the best teaching practice by VAK model in the computer degree programme. In 2019 International Conference on Advancements in Computing (ICAC) (pp. 216-219). IEEE.",
-          "url": "https://ieeexplore.ieee.org/abstract/document/9103343"
-        },
-        {
-          "year": "2017",
-          "description": "Paranagama, H.M.T., <strong>Ariyaratne, M.K.A.</strong> and Sirisuriya, S.C.M.D.S., 2017. A machine learning approach to classify sinhala songs based on user ratings. In 2017 Tenth international research conference (KDU)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1686/009.pdf"
-        },
-        {
-          "year": "2017",
-          "description": "Salgado, M.N.D., Charuka, P.U., Bashitha, K.P., Eshwarage, S.C. and <strong>Ariyaratne, M.K.A.</strong>, 2017. An Online Help Desk System to Help Students in Learning. In 2017 Tenth international research conference (KDU)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1702/022.pdf"
-        },
-        {
-          "year": "2016",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. and Weerakoon, S., 2016, July. A self-tuning modified firefly algorithm to solve univariate nonlinear equations with complex roots. In 2016 IEEE Congress on Evolutionary Computation (CEC) (pp.1477-1484). IEEE.",
-          "url": "http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7743964&isnumber=7743769"
-        },
-        {
-          "year": "2015",
-          "description": "<strong>Ariyaratne, M.K.A.</strong>, Fernando, T.G.I. and Weerakoon, S., 2015, August. A modified firefly algorithm to solve univariate nonlinear equations with complex roots. In 2015 Fifteenth International Conference on Advances in ICT for Emerging Regions (ICTer) (pp. 160-167). IEEE.",
-          "url": "https://ieeexplore.ieee.org/abstract/document/7377683"
-        },
-        {
-          "year": "2015",
-          "description": "<strong>Ariyaratne, M.K.A.</strong> and Pemarathne, W.P.J., 2015. A review of recent advancements of firefly algorithm; a modern nature inspired algorithm. In 2015 Eighth international research conference (KDU) (pp. 61-66)",
-          "url": "http://ir.kdu.ac.lk/bitstream/handle/345/1038/com-047.pdf"
-        }
-      ]
+      "description": "To date, I have authored {countAll} publications, including {countArticles} journal articles, {countChapters} book chapter, and {countProceedings} conference proceedings."
     },
     "Awards": {
       "pageTitle": "Awards and Grants",
@@ -416,50 +102,7 @@
       "pageKeywords": "Achievements, President's Award, Academic Excellence Award, Virtusa, scholarship",
       "title": "Awards and Grants",
       "subTitle": "Achievements",
-      "description": "I have had the honor of receiving several awards and grants throughout my academic journey.",
-      "awardTitle": "Awards",
-      "awardDetails": [
-        {
-          "year": "2023",
-          "descriptions": [
-            "Tampere University 100% tuition fee scholarship, Master’s Degree in Data Science 2023-2025, Finland.",
-            "Research awards for publishing full papers in a Refereed Journal that publishes at least two issues per year, University of Sri Jayewardenepura, Sri Lanka.",
-            "Research awards for publishing full papers in Journals indexed in Science Citation Index Expanded / Elsevier SCOPUS, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2022",
-          "descriptions": [
-            "Research awards for publishing full papers in a Refereed Journal that publishes at least two issues per year, University of Sri Jayewardenepura, Sri Lanka.",
-            "Research awards for publishing full papers in Journals indexed in Science Citation Index Expanded / Elsevier SCOPUS, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2021",
-          "descriptions": [
-            "Research awards for publishing full papers in a Refereed Journal that publishes at least two issues per year, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2019",
-          "descriptions": [
-            "President's Award for Scientific Research, Sri Lanka."
-          ]
-        },
-        {
-          "year": "2012",
-          "descriptions": [
-            "Academic Excellence Award-Virtusa for the First Class Pass with the highest GPA, B.Sc. (Special) Degree in Computer Science 2012, University of Sri Jayewardenepura, Sri Lanka."
-          ]
-        }
-      ],
-      "grantTitle": "Grants",
-      "grantDetails": [
-        {
-          "year": "2016",
-          "description": "Travel grant for conference participation, General Sir John Ketelawala Defence University, Sri Lanka."
-        }
-      ]
+      "description": "I have had the honor of receiving several awards and grants throughout my academic journey."
     },
     "Experience": {
       "pageTitle": "Experience",
@@ -524,6 +167,16 @@
       ],
       "administrativeTitle": "Administrative",
       "administrativeExperiences": [
+        {
+          "post": "Secretary",
+          "organization": "Sri Lanka Association for Artificial Intelligence (SLAAI) - 2026",
+          "duration": "2026 - Present"
+        },
+        {
+          "post": "Secretary, Research Committee",
+          "organization": "Sri Lanka Association for Artificial Intelligence (SLAAI) - 2025",
+          "duration": "2025"
+        },
         {
           "post": "Senior Treasurer, Student Council",
           "organization": "Faculty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka",
