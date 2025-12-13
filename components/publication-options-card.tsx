@@ -15,6 +15,7 @@ import PublicationStatus from '@/enums/publication-status';
 import PublicationAuthors from './publication-authors';
 import { getFormattedDate } from '@/utils/common-utils';
 import { LOCALE_EN } from '@/constants/common-vars';
+import PublicationTagBadge from './publication-tag';
 
 
 const baseTPath = 'components.PublicationOptionsCard';
@@ -123,9 +124,7 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
               <p>
                 <label className="fw-semibold me-1">{t('tags')}:</label>
                 { publication.tags.map((tag, index) => (
-                  <Badge key={index} pill bg="success" className="me-1">
-                    {tag}
-                  </Badge>
+                  <PublicationTagBadge key={index} tag={tag} />
                 ))}
               </p>
             ) }
