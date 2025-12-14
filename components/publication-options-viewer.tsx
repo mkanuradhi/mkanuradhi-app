@@ -16,7 +16,7 @@ import PublicationAuthors from './publication-authors';
 import { getFormattedDate } from '@/utils/common-utils';
 import { LOCALE_EN } from '@/constants/common-vars';
 import "./publication-options-viewer.scss";
-import PublicationTagBadge from './publication-tag';
+import PublicationTagBadge from './publication-tag-badge';
 
 
 const baseTPath = 'components.PublicationOptionsViewer';

@@ -15,7 +15,7 @@ import PublicationStatus from '@/enums/publication-status';
 import PublicationAuthors from './publication-authors';
 import { getFormattedDate } from '@/utils/common-utils';
 import { LOCALE_EN } from '@/constants/common-vars';
-import PublicationTagBadge from './publication-tag';
+import PublicationTagBadge from './publication-tag-badge';
 
 
 const baseTPath = 'components.PublicationOptionsCard';

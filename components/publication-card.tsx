@@ -11,7 +11,7 @@ import GlowLink from './GlowLink';
 import PublicationAuthors from './publication-authors';
 import { Link } from '@/i18n/routing';
 import { AnimatePresence, motion } from "framer-motion";
-import PublicationTagBadge from './publication-tag';
+import PublicationTagBadge from './publication-tag-badge';
 
 const baseTPath = 'components.PublicationCard';
 
