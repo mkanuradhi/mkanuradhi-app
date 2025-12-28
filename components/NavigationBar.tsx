@@ -3,7 +3,7 @@ import { useState } from "react";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge, Button, Container, ListGroup, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useTheme } from "@/hooks/useTheme";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Link, usePathname, useRouter } from '@/i18n/routing';
@@ -23,6 +23,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
   const router = useRouter();
   const pathname = usePathname();
   const { sidebarLinks, showOffcanvas, handleClose, handleShow } = useSideBar();
+  const locale = useLocale();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 40);
@@ -115,7 +116,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                       <UserButton.Link
                         label={t('dashboard')}
                         labelIcon={<FontAwesomeIcon icon={faEllipsisV} />}
-                        href="/dashboard"
+                        href={`/${locale}/dashboard`}
                       />
                     </UserButton.MenuItems>
                   </UserButton>

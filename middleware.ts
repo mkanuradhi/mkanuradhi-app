@@ -9,7 +9,7 @@ const intlMiddleware = createMiddleware(routing);
 
 // Define role-based route matchers
 const isProtectedRoute = createRouteMatcher([
-  '/(si|en)/dashboard(.*)',  // Language-prefixed paths
+  '/(si|en)/dashboard(.*)',
 ]);
 const isAdminRoute = createRouteMatcher([
   '/(si|en)/dashboard/blogs(.*)',
@@ -24,27 +24,29 @@ const isStudentRoute = createRouteMatcher([
 export default clerkMiddleware(async (authFn, req: NextRequest) => {
   const p = req.nextUrl.pathname;
 
-  // Do NOT localize/guard special files
-  if (
-    p === '/robots.txt' ||
-    p === '/sitemap.xml' ||
-    p === '/favicon.ico' ||
-    p.startsWith('/icons/') ||
-    p.startsWith('/manifest') ||
-    p.startsWith('/.well-known/') // optional: for security.txt or other well-known files
-  ) {
-    return NextResponse.next();
+  // For root path, let intl middleware handle locale detection first
+  if (p === '/') {
+    return intlMiddleware(req);
   }
 
-  // Skip i18n for API/TRPC entirely
-  if (p.startsWith('/api') || p.startsWith('/trpc')) {
-    return NextResponse.next();
+  // Block aggressive bots to reduce invocations
+  const userAgent = req.headers.get('user-agent') || '';
+  const badBots = [
+    'AhrefsBot', 'SemrushBot', 'MJ12bot', 'DotBot', 
+    'BLEXBot', 'DataForSeoBot'
+  ];
+  if (badBots.some(bot => userAgent.toLowerCase().includes(bot.toLowerCase()))) {
+    return new NextResponse('Forbidden', { status: 403 });
   }
 
-  // Process internationalization first, but do NOT override authentication
+  // Extract locale from path (si or en)
+  const localeMatch = p.match(/^\/(si|en)(\/|$)/);
+  const locale = localeMatch ? localeMatch[1] : 'en';
+
+  // Process internationalization first
   const intlResponse = intlMiddleware(req);
 
-  // If the requested page is NOT a protected route, just return the intl response
+  // If NOT a protected route, return early
   if (!isProtectedRoute(req)) {
     return intlResponse || NextResponse.next();
   }
@@ -52,28 +54,27 @@ export default clerkMiddleware(async (authFn, req: NextRequest) => {
   const auth = await authFn();
   const { userId, sessionClaims } = auth;
 
-  // If user tries to access protected routes but is not signed in, redirect to sign-in
+  // Redirect to sign-in with locale prefix if not authenticated
   if (!userId) {
-    return NextResponse.redirect(new URL('/sign-in', req.url));
+    return NextResponse.redirect(new URL(`/${locale}/sign-in`, req.url));
   }
 
   const memberRoles = sessionClaims?.metadata?.roles as Role[] || [];
-
   const isAdmin = memberRoles.includes(Role.ADMIN);
   const isStudent = memberRoles.includes(Role.STUDENT);
 
-  // If user has no roles, redirect them to the home page
+  // Redirect with locale if no roles
   if (memberRoles.length === 0) {
-    return NextResponse.redirect(new URL('/', req.url));
+    return NextResponse.redirect(new URL(`/${locale}`, req.url));
   }
 
-  // Enforce role-based access control
+  // Enforce role-based access with locale
   if (isAdminRoute(req) && !isAdmin) {
-    return NextResponse.redirect(new URL('/', req.url));
+    return NextResponse.redirect(new URL(`/${locale}`, req.url));
   }
 
   if (isStudentRoute(req) && !isStudent) {
-    return NextResponse.redirect(new URL('/', req.url));
+    return NextResponse.redirect(new URL(`/${locale}`, req.url));
   }
 
   return intlResponse || NextResponse.next();
@@ -81,16 +82,8 @@ export default clerkMiddleware(async (authFn, req: NextRequest) => {
 
 export const config = {
   matcher: [
-    // Clerk middleware matchers
-    // '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    '/((?!_next|.*\\..*).*)',
-    '/(api|trpc)(.*)',
-
-    // Protect dashboard routes
-    "/(si|en)/dashboard/:path*",
-
-    // Match only internationalized pathnames
-    '/',
-    '/(si|en)/:path*'
+    "/",                 // Root path for locale detection
+    "/(en|si)",          // Locale roots
+    "/(en|si)/:path*"    // All localized pages
   ]
 };
