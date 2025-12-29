@@ -7,7 +7,7 @@ import LoadingContainer from './loading-container';
 import { Alert, Badge, Breadcrumb, Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import PublicationType from '@/enums/publication-type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faAlignLeft, faBook, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import PublicationStatus from '@/enums/publication-status';
 import GlowLink from './GlowLink';
 import DocumentStatus from '@/enums/document-status';
@@ -100,6 +100,12 @@ const PublicationOptionsViewer: React.FC<PublicationOptionsViewerProps> = ({ pub
               <>
                 <span className="me-2">{t('proceeding')}</span>
                 <FontAwesomeIcon icon={faMicrophone} className="text-warning" />
+              </>
+            )}
+            {publication.type === PublicationType.ABSTRACT && (
+              <>
+                <span className="me-2">{t('abstract')}</span>
+                <FontAwesomeIcon icon={faAlignLeft} className="text-info" />
               </>
             )}
           </Col>

@@ -502,7 +502,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "Journal Article",
         "BOOK_CHAPTER": "Book Chapter",
-        "CONFERENCE_PROCEEDING": "Conference Proceeding"
+        "CONFERENCE_PROCEEDING": "Conference Proceeding",
+        "ABSTRACT": "Abstract"
       },
       "allPublications": "All Publications",
       "recentPublications": "Recent Publications",
@@ -1165,7 +1166,7 @@
       "submit": "Submit"
     },
     "PublicationsViewer": {
-      "summary": "Found {total, plural, =0 {no publications} =1 {1 publication} other {# publications}}{articles, plural, =0 {} other {, including {articles} journal article{articles, plural, one {} other {s}}}}{chapters, plural, =0 {} other {, {chapters} book chapter{chapters, plural, one {} other {s}}}}{proceedings, plural, =0 {} other {, {proceedings} conference proceeding{proceedings, plural, one {} other {s}}}}.",
+      "summary": "Found {total, plural, =0 {no publications} =1 {1 publication} other {# publications}}{articles, plural, =0 {} other {, including {articles} journal article{articles, plural, one {} other {s}}}}{chapters, plural, =0 {} other {, {chapters} book chapter{chapters, plural, one {} other {s}}}}{proceedings, plural, =0 {} other {, {proceedings} conference proceeding{proceedings, plural, one {} other {s}}}}{abstracts, plural, =0 {} other {, {abstracts} abstract{abstracts, plural, one {} other {s}}}}.",
       "noMatch": "No publications match the selected filters.",
       "keywordsFail": "Keywords cannot be retrieved at the moment.",
       "yearlyPublicationsFail": "Yearly publications cannot be retrieved at the moment.",
@@ -1180,6 +1181,7 @@
       "journal_article": "Journal Articles",
       "book_chapter": "Book Chapters",
       "conference_proceeding": "Conference Proceedings",
+      "abstract": "Abstracts",
       "year-desc": "Newest First",
       "year-asc": "Oldest First",
       "searchFilter": "Search and Filter",
@@ -1230,6 +1232,7 @@
       "journal_article": "Journal Article",
       "book_chapter": "Book Chapter",
       "conference_proceeding": "Conference Proceeding",
+      "abstract": "Abstract",
       "preprint": "Preprint",
       "in_review": "Under Review",
       "accepted": "Accepted",
@@ -1284,7 +1287,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "JOURNAL ARTICLE",
         "BOOK_CHAPTER": "BOOK CHAPTER",
-        "CONFERENCE_PROCEEDING": "CONFERENCE PROCEEDING"
+        "CONFERENCE_PROCEEDING": "CONFERENCE PROCEEDING",
+        "ABSTRACT": "ABSTRACT"
       },
       "yearLabel": "Published Year",
       "yearPlaceholder": "Enter published year",
@@ -1604,7 +1608,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "Journal Article",
         "BOOK_CHAPTER": "Book Chapter",
-        "CONFERENCE_PROCEEDING": "Conference Proceeding"
+        "CONFERENCE_PROCEEDING": "Conference Proceeding",
+        "ABSTRACT": "Abstract"
       }
     },
     "PublicationSummaryCard": {
@@ -1612,7 +1617,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "Journal Articles",
         "BOOK_CHAPTER": "Book Chapters",
-        "CONFERENCE_PROCEEDING": "Conference Proceedings"
+        "CONFERENCE_PROCEEDING": "Conference Proceedings",
+        "ABSTRACT": "Abstracts"
       }
     },
     "ResearchSummaryCard": {
