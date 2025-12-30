@@ -7,6 +7,7 @@ import { faCalendarAlt, faEnvelope, faSyncAlt } from '@fortawesome/free-solid-sv
 import "./page.scss";
 
 const baseTPath = 'pages.Policy';
+export const revalidate = 604800; // cache for 1 week
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;

@@ -6,8 +6,7 @@ import { GroupedCourses } from '@/interfaces/i-grouped-courses';
 import CoursesContainer from '@/components/courses-container';
 
 const baseTPath = 'pages.Teaching.Courses';
-
-export const revalidate = 60;
+export const revalidate = 7200; // cache for 2 hours
 
 const groupCoursesByYearAndLocation = (items: CourseView[]): GroupedCourses[] => {
   const grouped: Record<number, Record<string, CourseView[]>> = {};

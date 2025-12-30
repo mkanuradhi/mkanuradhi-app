@@ -6,8 +6,7 @@ import { getActivatedCourses } from '@/services/course-service';
 import CourseCard from '@/components/course-card';
 
 const baseTPath = 'pages.Teaching';
-
-export const revalidate = 60;
+export const revalidate = 7200; // cache for 2 hours
 
 interface GroupedCourses {
   year: number;

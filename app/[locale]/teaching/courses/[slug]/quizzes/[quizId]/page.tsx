@@ -4,6 +4,7 @@ import { ApiError } from '@/errors/api-error';
 import { getQuizByCoursePathAndId } from '@/services/quiz-service';
 import { notFound } from 'next/navigation';
 
+export const revalidate = 3600; // cache for 1 hour
 
 interface QuizPageProps {
   params: {

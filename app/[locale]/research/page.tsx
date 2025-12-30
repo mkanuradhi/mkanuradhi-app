@@ -8,6 +8,7 @@ import DegreeType from '@/enums/degree-type';
 import ResearchViewer from '@/components/research-viewer';
 
 const baseTPath = 'pages.Research';
+export const revalidate = 86400; // cache for 1 day
 
 const DEGREE_ORDER: Record<DegreeType, number> = {
   [DegreeType.PHD]: 1,

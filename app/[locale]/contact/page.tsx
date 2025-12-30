@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from '@/components/ContactForm';
 
 const baseTPath = 'pages.Contact';
+export const revalidate = 604800; // cache for 1 week
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;

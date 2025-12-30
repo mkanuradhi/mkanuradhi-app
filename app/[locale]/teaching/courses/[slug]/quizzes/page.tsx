@@ -5,8 +5,7 @@ import { getTranslations } from 'next-intl/server';
 
 
 const baseTPath = 'pages.Teaching.Courses.Quizzes';
-
-export const revalidate = 60;
+export const revalidate = 7200; // cache for 2 hours
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;

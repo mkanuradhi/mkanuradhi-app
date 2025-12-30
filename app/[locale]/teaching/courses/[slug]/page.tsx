@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { ApiError } from '@/errors/api-error';
 import CourseViewer from '@/components/course-viewer';
 
+export const revalidate = 3600; // cache for 1 hour
+
 interface CoursePageProps {
   params: {
     locale: string;

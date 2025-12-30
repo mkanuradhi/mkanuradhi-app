@@ -16,6 +16,7 @@ import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
+export const revalidate = 3600; // cache for 1 hour
 
 interface DescriptionMessages {
   pages: {
