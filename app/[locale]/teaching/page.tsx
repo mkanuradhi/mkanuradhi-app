@@ -100,7 +100,7 @@ const TeachingPage = async ({ params }: { params: { locale: string } }) => {
                       <h6>{locGroup.location}</h6>
                       <Row>
                         {locGroup.courses.map(course => (
-                          <Col md={4} key={course.id} className="mb-3">
+                          <Col xs={12} sm={12} md={6} lg={4} xxl={3} key={course.id} className="mb-3">
                             <CourseCard course={course} />
                           </Col>
                         ))}

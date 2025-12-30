@@ -5,6 +5,7 @@ import CourseView from "@/interfaces/i-course-view";
 import { Card } from "react-bootstrap";
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import PublicationTagBadge from './publication-tag-badge';
 
 const baseTPath = 'components.CourseCard';
 
@@ -27,6 +28,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 
   return (
     <motion.div
+      className="h-100"
       whileHover={{
         scale: 1.03,
         boxShadow: '0px 12px 30px rgba(var(--bs-body-color-rgb), 0.2)'
@@ -49,9 +51,16 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
               {codeCredits}
             </Card.Subtitle>
           )}
-          <Card.Text>
+          <div className="mb-2">
             {course.subtitle}
-          </Card.Text>
+          </div>
+          {course.quizzes && course.quizzes.length > 0 && (
+            <div className="text-end small">
+              <PublicationTagBadge
+                tag={t('quizCount', { count: course.quizzes.length })} 
+              />
+            </div>
+          )}
         </Card.Body>
       </Card>
     </motion.div>
