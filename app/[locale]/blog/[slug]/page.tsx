@@ -5,6 +5,8 @@ import { ApiError } from '@/errors/api-error';
 import { notFound } from 'next/navigation';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 
+export const revalidate = 86400; // cache for 1 day
+
 interface BlogPostPageProps {
   params: {
     locale: string;

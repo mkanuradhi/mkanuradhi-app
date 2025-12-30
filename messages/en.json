@@ -672,7 +672,8 @@
       "title": "Courses"
     },
     "CourseCard": {
-      "credits": "{value} Credits"
+      "credits": "{value} Credits",
+      "quizCount": "{count, plural, =1 {# Quiz} other {# Quizzes}}"
     },
     "CourseViewer": {
       "home": "Home",

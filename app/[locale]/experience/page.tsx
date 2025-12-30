@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import GlowLink from '@/components/GlowLink';
 
 const baseTPath = 'pages.Experience';
+export const revalidate = 604800; // cache for 1 week
 
 interface CareerPosition {
   post: string;

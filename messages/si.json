@@ -672,7 +672,8 @@
       "title": "පාඨමාලා"
     },
     "CourseCard": {
-      "credits": "ඒකක අගය {value}"
+      "credits": "ඒකක අගය {value}",
+      "quizCount": "{count, plural, =1 {# ප්‍රශ්නාවලියකි} other {ප්‍රශ්නාවලි #}}"
     },
     "CourseViewer": {
       "home": "මුල් පිටුව",

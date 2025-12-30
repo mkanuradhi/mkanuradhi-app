@@ -4,6 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import BlogPostsViewer from '@/components/blog-posts-viewer';
 
 const baseTPath = 'pages.Blog';
+export const revalidate = 7200; // cache for 2 hours
 
 interface BlogPageProps {
   params: {

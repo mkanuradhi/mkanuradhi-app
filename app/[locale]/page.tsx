@@ -2,6 +2,8 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import HomePage from './home/page';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 
+export const revalidate = 3600; // cache for 1 hour
+
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'pages.Home' });

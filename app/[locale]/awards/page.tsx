@@ -5,6 +5,7 @@ import { getAwards } from '@/services/award-service';
 import AwardsTimeline from '@/components/awards-timeline';
 
 const baseTPath = 'pages.Awards';
+export const revalidate = 604800; // cache for 1 week
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;

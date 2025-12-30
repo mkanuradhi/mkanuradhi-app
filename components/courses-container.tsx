@@ -47,7 +47,7 @@ const CoursesContainer: React.FC<CoursesContainerProps> = ({ groupedCourses }) =
                     <h6>{locGroup.location}</h6>
                     <Row>
                       {locGroup.courses.map((course, index) => (
-                        <ScrollReveal key={course.id} className="col-md-4 mb-3" delay={index * 0.1}>
+                        <ScrollReveal key={course.id} className="col-sm-12 col-md-6 col-lg-4 col-xxl-3 mb-3" delay={index * 0.1}>
                           <CourseCard course={course} />
                         </ScrollReveal>
                       ))}

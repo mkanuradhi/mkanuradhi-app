@@ -4,6 +4,7 @@ import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 
 const baseTPath = 'clerk.signIn';
+export const revalidate = 3600; // cache for 1 hour
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;

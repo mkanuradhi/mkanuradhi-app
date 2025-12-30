@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import PublicationsViewer from '@/components/publications-viewer';
 
 const baseTPath = 'pages.Publications';
+export const revalidate = 86400; // cache for 1 day
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
