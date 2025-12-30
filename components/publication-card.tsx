@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Badge, Card, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faFilePdf, faFilePowerpoint, faFlask, faLink, faMicrophone, faNewspaper } from "@fortawesome/free-solid-svg-icons";
+import { faAlignLeft, faBook, faFilePdf, faFilePowerpoint, faFlask, faLink, faMicrophone, faNewspaper } from "@fortawesome/free-solid-svg-icons";
 import Publication from '@/interfaces/i-publication';
 import PublicationType from '@/enums/publication-type';
 import PublicationStatus from '@/enums/publication-status';
@@ -42,12 +42,14 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
       [PublicationType.JOURNAL_ARTICLE]: faNewspaper,
       [PublicationType.BOOK_CHAPTER]: faBook,
       [PublicationType.CONFERENCE_PROCEEDING]: faMicrophone,
+      [PublicationType.ABSTRACT]: faAlignLeft,
     }[publication.type];
 
     const iconClass = {
       [PublicationType.JOURNAL_ARTICLE]: 'text-primary',
       [PublicationType.BOOK_CHAPTER]: 'text-success',
       [PublicationType.CONFERENCE_PROCEEDING]: 'text-warning',
+      [PublicationType.ABSTRACT]: 'text-info',
     }[publication.type];
 
     return (

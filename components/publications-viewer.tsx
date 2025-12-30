@@ -88,7 +88,8 @@ const PublicationsViewer = () => {
     const typeCounts = {
       articles: 0,
       chapters: 0,
-      proceedings: 0
+      proceedings: 0,
+      abstracts: 0,
     };
 
     for (const pub of filteredPublications) {
@@ -102,6 +103,9 @@ const PublicationsViewer = () => {
         case PublicationType.CONFERENCE_PROCEEDING:
           typeCounts.proceedings++;
           break;
+        case PublicationType.ABSTRACT:
+          typeCounts.abstracts++;
+          break;
       }
     }
 
@@ -113,7 +117,8 @@ const PublicationsViewer = () => {
       total,
       articles: typeCounts.articles,
       chapters: typeCounts.chapters,
-      proceedings: typeCounts.proceedings
+      proceedings: typeCounts.proceedings,
+      abstracts: typeCounts.abstracts,
     });
   };
 

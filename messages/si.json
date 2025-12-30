@@ -229,6 +229,20 @@
       "professionalTitle": "වෘත්තීය ක්‍රියාකාරකම්",
       "professionalExperiences": [
         {
+          "post": "සාමාජික",
+          "event": "ශ්‍රී ලංකා තොරතුරු හා සන්නිවේදන තාක්ෂණ සේවයේ (2026) 2 වන පන්තියේ II ශ්‍රේණියට බඳවා ගැනීම සඳහා විභාග ප්‍රශ්න පත්‍රය සැකසීම සඳහා කමිටුව",
+          "duration": null,
+          "location": "ශ්‍රී ලංකා විභාග දෙපාර්තමේන්තුව.",
+          "url": null
+        },
+        {
+          "post": "සාමාජික",
+          "event": "ශ්‍රී ලංකා විද්‍යාත්මක සේවයේ විධායක සේවයේ III ශ්‍රේණියේ තනතුරු සඳහා බඳවා ගැනීම සඳහා උපාධි සුදුසුකම් සහ I ශ්‍රේණියට උසස් කිරීම සඳහා පශ්චාත් උපාධි සුදුසුකම් තීරණය කිරීම සඳහා කමිටුව (2025)",
+          "duration": null,
+          "location": "රාජ්‍ය පරිපාලන, පළාත් සභා සහ පළාත් පාලන අමාත්‍යාංශය, ශ්‍රී ලංකාව.",
+          "url": null
+        },
+        {
           "post": "ප්‍රධාන සංවිධායක",
           "event": "2025 වසරේ හොඳම උපාධි අපේක්ෂක කෘත්‍රිම බුද්ධි ව්‍යාපෘති සම්මානය - ශ්‍රී ලංකා කෘත්‍රිම බුද්ධි සංගමය (SLAAI)",
           "duration": null,
@@ -502,7 +516,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "සඟරා ලිපි",
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
-        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා",
+        "ABSTRACT": "සාරාංශ"
       },
       "allPublications": "සියලුම ප්‍රකාශන",
       "recentPublications": "මෑතකාලීන ප්‍රකාශන",
@@ -1165,7 +1180,7 @@
       "submit": "ඉදිරිපත් කරන්න"
     },
     "PublicationsViewer": {
-      "summary": "{total, plural, =0 {ප්‍රකාශන නොමැත} =1 {ප්‍රකාශනයක් හමුවී ඇත} other {ප්‍රකාශන {total} ක් හමුවී ඇත}}{articles, plural, =0 {} other {, ඇතුළත් වන්නේ සඟරා ලිපි {articles, plural, one {#} other {#}}}}{chapters, plural, =0 {} other {, පොත් පරිච්ඡේද {chapters, plural, one {#} other {#}}}}{proceedings, plural, =0 {} other {, සම්මන්ත්‍රණ පත්‍රිකා {proceedings, plural, one {#} other {#}}}}.",
+      "summary": "{total, plural, =0 {ප්‍රකාශන නොමැත} =1 {ප්‍රකාශනයක් හමුවී ඇත} other {ප්‍රකාශන {total} ක් හමුවී ඇත}}{articles, plural, =0 {} other {, ඇතුළත් වන්නේ සඟරා ලිපි {articles, plural, one {#} other {#}}}}{chapters, plural, =0 {} other {, පොත් පරිච්ඡේද {chapters, plural, one {#} other {#}}}}{proceedings, plural, =0 {} other {, සම්මන්ත්‍රණ පත්‍රිකා {proceedings, plural, one {#} other {#}}}}{abstracts, plural, =0 {} other {, සාරාංශ {abstracts, plural, one {#} other {#}}}}.",
       "noMatch": "තෝරාගත් පෙරහන් වලට ගැළපෙන ප්‍රකාශන කිසිවක් නැත.",
       "keywordsFail": "මූල පද පූරණය කිරීමට අසමත් විය.",
       "yearlyPublicationsFail": "වාර්ෂික ප්‍රකාශන පූරණය කිරීමට අසමත් විය.",
@@ -1180,6 +1195,7 @@
       "journal_article": "සඟරා ලිපි",
       "book_chapter": "පොත් පරිච්ඡේද",
       "conference_proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "abstract": "සාරාංශ",
       "year-desc": "නවතම දෑ ප්‍රථමයෙන්",
       "year-asc": "පැරණිම දෑ ප්‍රථමයෙන්",
       "searchFilter": "සොයන්න සහ පෙරහන් කරන්න",
@@ -1230,6 +1246,7 @@
       "journal_article": "සඟරා ලිපිය",
       "book_chapter": "පොත් පරිච්ඡේද",
       "conference_proceeding": "සම්මන්ත්‍රණ පත්‍රිකා",
+      "abstract": "සාරාංශය",
       "preprint": "පූර්ව මුද්‍රණය (Preprint)",
       "in_review": "සමාලෝචනයට ලක්ව ඇත (In Review)",
       "accepted": "පිළිගත් (Accepted)",
@@ -1284,7 +1301,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "සඟරා ලිපි (Journal Article)",
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද (Book Chapter)",
-        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා (Conference Proceeding)"
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා (Conference Proceeding)",
+        "ABSTRACT": "සාරාංශය (Abstract)"
       },
       "yearLabel": "ප්‍රකාශිත වර්ෂය (Year)",
       "yearPlaceholder": "ප්‍රකාශිත වර්ෂය ඇතුළත් කරන්න",
@@ -1604,7 +1622,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "සඟරා ලිපි",
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
-        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා",
+        "ABSTRACT": "සාරාංශ"
       }
     },
     "PublicationSummaryCard": {
@@ -1612,7 +1631,8 @@
       "publicationType": {
         "JOURNAL_ARTICLE": "සඟරා ලිපි",
         "BOOK_CHAPTER": "පොත් පරිච්ඡේද",
-        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා"
+        "CONFERENCE_PROCEEDING": "සම්මන්ත්‍රණ පත්‍රිකා",
+        "ABSTRACT": "සාරාංශ"
       }
     },
     "ResearchSummaryCard": {

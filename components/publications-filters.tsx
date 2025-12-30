@@ -49,6 +49,7 @@ const PublicationsFilters: React.FC<PublicationsFiltersProps> = ({ filters, onCh
             <option value={PublicationType.JOURNAL_ARTICLE}>{t(PublicationType.JOURNAL_ARTICLE.toLowerCase())}</option>
             <option value={PublicationType.BOOK_CHAPTER}>{t(PublicationType.BOOK_CHAPTER.toLowerCase())}</option>
             <option value={PublicationType.CONFERENCE_PROCEEDING}>{t(PublicationType.CONFERENCE_PROCEEDING.toLowerCase())}</option>
+            <option value={PublicationType.ABSTRACT}>{t(PublicationType.ABSTRACT.toLowerCase())}</option>
           </Form.Select>
         </Col>
         <Col sm={12} className="mb-3 mb-md-0">

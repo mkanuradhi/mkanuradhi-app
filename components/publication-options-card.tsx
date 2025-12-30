@@ -3,7 +3,7 @@ import { useRouter } from '@/i18n/routing';
 import { Alert, Badge, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faBookOpenReader, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faAlignLeft, faBook, faBookOpenReader, faEye, faEyeSlash, faMicrophone, faNewspaper, faPen, faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import { useActivatePublicationMutation, useDeactivatePublicationMutation, useDeletePublicationMutation } from '@/hooks/use-publications';
 import DocumentStatus from "@/enums/document-status";
@@ -54,6 +54,8 @@ const PublicationOptionsCard: React.FC<PublicationOptionsCardProps> = ({publicat
         return <FontAwesomeIcon icon={faBook} className="text-success" />;
       case PublicationType.CONFERENCE_PROCEEDING:
         return <FontAwesomeIcon icon={faMicrophone} className="text-warning" />;
+      case PublicationType.ABSTRACT:
+        return <FontAwesomeIcon icon={faAlignLeft} className="text-info" />;
       default:
         return null;
     }
