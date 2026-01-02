@@ -601,6 +601,32 @@
           "title": "Edit Award"
         }
       }
+    },
+    "Visualizations": {
+      "pageTitle": "Visualizations",
+      "pageDescription": "Visualize data and insights.",
+      "pageKeywords": "data, visualization, insights",
+      "title": "Visualizations",
+      "description": "Visual demonstrations that bring nature-inspired algorithms to life, helping students and researchers intuitively understand swarm intelligence, search behavior, and optimization dynamics.",
+      "visuals": {
+        "ffy2d": {
+          "title": "Watching Fireflies Converge",
+          "description": "Firefly algorithm instance to find the minimum of a simple nonlinear function"
+        },
+        "bat2d": {
+          "title": "Bat Algorithm - 2D",
+          "description": "A 2D visualization of the Bat Algorithm."
+        },
+        "vis3": {
+          "title": "Visualization 3",
+          "description": "A 2D visualization of the Visualization 3."
+        }
+      },
+      "ffy2d": {
+        "pageTitle": "Firefly Algorithm - 2D",
+        "pageDescription": "A 2D visualization of the Firefly Algorithm.",
+        "pageKeywords": "firefly, algorithm, 2d, visualization"
+      }
     }
   },
   "components": {
@@ -1982,6 +2008,41 @@
     "EnReferenceAccordion": {
       "badgeLabel": "EN",
       "title": "English Reference"
+    },
+    "Ffy2DContainer": {
+      "backLabel": "Back to Visualizations",
+      "title": "Firefly Algorithm to Find the Minimum",
+      "para1": "Firefly Algorithm (FA) is a meta-heuristic algorithm inspired by the flashing behavior of fireflies. It was proposed by a researcher <link>Xin-She Yang</link> based on this natural phenomenon.",
+      "moreLabel": "Click to read more on firefly algorithm",
+      "para2": "The following gives the concept of the FA algorithm",
+      "item1": "Each solution for the selected problem, is considered and called as a firefly",
+      "item2": "All the fireflies have a Brightness or we call fitness value.",
+      "item3": "During iterations, fireflies in the population will move towards better fireflies.",
+      "para3": "There are several algorithm specific parameters, the users should know to adjust to obtain optimal solutions.",
+      "para4": "In the original implementation, Yang has proposed following ranges for safer initialization.",
+      "item4": "β₀ : 1, Initial attractiveness of a firefly.",
+      "item5": "α : ∈ [0,1], Randomization parameter",
+      "item6": "γ : ∈ [0.01, 100] Light absorption coefficient",
+      "item7": "δ : ∈ [0.9, 1] Randomness reduction factor",
+      "para5": "The following demonstration shows how firefly algorithm can be used to find the minimum of a simple nonlinear function within the range [-3, 3]. You may play with these parameter values to see how the optimization process changes with different parameter values",
+      "chartLoadingLabel": "Loading chart...",
+      "iteration": "Iteration",
+      "bestPosition": "Best Position",
+      "bestFitness": "Best Fitness",
+      "chartTitle": "Firefly Algorithm Optimization",
+      "fireflies": "Fireflies",
+      "bestSolution": "Best Solution",
+      "initVisual": "Initializing visualization...",
+      "play": "Play",
+      "pause": "Pause",
+      "step": "Step",
+      "reset": "Reset",
+      "parameters": "Parameters",
+      "noOfFireflies": "Number of Fireflies",
+      "randomization": "Randomization",
+      "attractiveness": "Attractiveness",
+      "absorption": "Absorption",
+      "iterations": "Iterations"
     }
   },
   "contexts": {
