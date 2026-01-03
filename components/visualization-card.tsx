@@ -6,13 +6,16 @@ import { motion } from 'framer-motion';
 
 
 interface VisualizationCardProps {
-  title: string;
-  description: string;
-  path: string;
-  image: string;
+  visual: {
+    id: number;
+    title: string;
+    description: string;
+    path: string;
+    image: string;
+  }
 }
 
-const VisualizationCard: React.FC<VisualizationCardProps> = ({ title, description, path, image }) => {
+const VisualizationCard: React.FC<VisualizationCardProps> = ({ visual }) => {
 
   return (
     <motion.div
@@ -30,15 +33,15 @@ const VisualizationCard: React.FC<VisualizationCardProps> = ({ title, descriptio
       <Card className="h-100">
         <Card.Body>
           <Card.Title>
-            <Link href={path} className="stretched-link text-decoration-none">
-              {title}
+            <Link href={visual.path} className="stretched-link text-decoration-none">
+              {visual.title}
             </Link>
           </Card.Title>
           <Card.Text>
-            {description}
+            {visual.description}
           </Card.Text>
         </Card.Body>
-        <Card.Img variant="bottom" src={`/images/visualizations/${image}`} />
+        <Card.Img variant="bottom" src={`/images/visualizations/${visual.image}`} />
       </Card>
     </motion.div>
   );

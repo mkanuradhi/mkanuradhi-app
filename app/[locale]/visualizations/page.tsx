@@ -1,8 +1,7 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { Link } from '@/i18n/routing';
-import VisualizationCard from '@/components/visualization-card';
+import { Col, Container, Row } from 'react-bootstrap';
+import VisualizationsContainer from '@/components/visualizations-container';
 
 const baseTPath = 'pages.Visualizations';
 export const revalidate = 604800; // cache for 1 week
@@ -47,7 +46,7 @@ const VisualizationsPage = async () => {
     //   title: t('visuals.bat2d.title'),
     //   description: t('visuals.bat2d.description'),
     //   path: '/visualizations/bat-algorithm-2d',
-    //   image: '',
+    //   image: 'bat-alg.jpg',
     // },
     // {
     //   id: 3,
@@ -66,17 +65,11 @@ const VisualizationsPage = async () => {
           <p className="lead">{t('description')}</p>
         </Container>
       </section>
-      <section className='content'>
-        <Container fluid="xl">
-          <Row>
-            {visuals.map(visual => (
-              <Col key={visual.id} sm={6} md={4} xxl={3} className="mb-4">
-                <VisualizationCard title={visual.title} description={visual.description} path={visual.path} image={visual.image} />
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+      <Row>
+        <Col>
+          <VisualizationsContainer visuals={visuals} />
+        </Col>
+      </Row>
     </div>
   )
 }
