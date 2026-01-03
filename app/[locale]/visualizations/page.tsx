@@ -61,7 +61,7 @@ const VisualizationsPage = async () => {
     <div className="visualizations">
       <section className='hero my-4'>
         <Container fluid="xl">
-          <h1 className="display-1">{t('title')}</h1>
+          <h1 className="display-1 mb-4">{t('title')}</h1>
           <p className="lead">{t('description')}</p>
         </Container>
       </section>
