@@ -2,7 +2,7 @@ import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import CourseView from '@/interfaces/i-course-view';
-import { getActivatedCourses } from '@/services/course-service';
+import { getCachedActivatedCourses } from '@/services/course-service';
 import CourseCard from '@/components/course-card';
 
 const baseTPath = 'pages.Teaching';
@@ -73,7 +73,7 @@ const TeachingPage = async ({ params }: { params: { locale: string } }) => {
   const t = await getTranslations({ locale, namespace: baseTPath });
 
   // Fetch and group courses.
-  const coursesResponse = await getActivatedCourses(locale, 0, 100);
+  const coursesResponse = await getCachedActivatedCourses(locale, 0, 100);
   const groupedData = groupCoursesByYearAndLocation(coursesResponse.items);
 
   return (

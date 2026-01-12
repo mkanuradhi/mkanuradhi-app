@@ -1,3 +1,4 @@
+import { ApiError } from "@/errors/api-error";
 
 export const truncateText = (text: string, maxLength: number = 100, appendEllipsis: boolean = true): string => {
   if (!text || text.length <= maxLength) return text;
@@ -172,4 +173,26 @@ export const getContrastTextColor = (backgroundColor: string): string => {
   
   // Return black for light backgrounds, white for dark backgrounds
   return luminance > 0.5 ? '#000000' : '#FFFFFF';
+};
+
+export const handleFetchResponse = async (response: Response, context?: string) => {
+  if (!response.ok) {
+    let errorMessage = 'An unexpected error occurred';
+    let errorData;
+    
+    try {
+      errorData = await response.json();
+      errorMessage = errorData.message || errorMessage;
+    } catch {
+      errorMessage = response.statusText || errorMessage;
+    }
+    
+    if (context) {
+      errorMessage = `${context}: ${errorMessage}`;
+    }
+    
+    throw new ApiError(errorMessage, response.status, errorData);
+  }
+  
+  return response.json();
 };

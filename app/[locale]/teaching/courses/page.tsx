@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import CourseView from '@/interfaces/i-course-view';
-import { getActivatedCourses } from '@/services/course-service';
+import { getCachedActivatedCourses } from '@/services/course-service';
 import { GroupedCourses } from '@/interfaces/i-grouped-courses';
 import CoursesContainer from '@/components/courses-container';
 
@@ -64,7 +64,7 @@ const CoursesPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
 
   // Fetch and group courses.
-  const coursesResponse = await getActivatedCourses(locale, 0, 100);
+  const coursesResponse = await getCachedActivatedCourses(locale, 0, 100);
   const groupedCourses = groupCoursesByYearAndLocation(coursesResponse.items);
 
   return (

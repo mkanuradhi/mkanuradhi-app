@@ -6,7 +6,7 @@ import Course from "@/interfaces/i-course";
 import CourseView from "@/interfaces/i-course-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import { SummaryStat, YearlyGroupStat } from "@/interfaces/i-stat";
-import { buildHeaders } from "@/utils/common-utils";
+import { buildHeaders, handleFetchResponse } from "@/utils/common-utils";
 import axios from "axios";
 
 export const getCourses = async (page: number, size: number): Promise<PaginatedResult<Course>> => {
@@ -45,6 +45,23 @@ export const getCourseByPath = async (lang: string, path: string): Promise<Cours
   }
 };
 
+export const getCachedCourseByPath = async (lang: string, path: string): Promise<CourseView> => {
+  try {
+    const url = `${API_BASE_URL}${COURSES_PATH}/path/${path}?lang=${lang}`;
+    
+    const response = await fetch(url, {
+      next: {
+        revalidate: 3600, // cache for 1 hour
+        tags: ['course-views', `course-view-${path}`, `course-view-${path}-${lang}`] // For on-demand revalidation
+      },
+    });
+
+    return await handleFetchResponse(response, `Failed to fetch course: ${path}`);
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
 export const getActivatedCourses = async (lang: string, page: number, size: number): Promise<PaginatedResult<CourseView>> => {
   try {
     const response = await axios.get<PaginatedResult<CourseView>>(`${API_BASE_URL}${COURSES_PATH}/search`, {
@@ -58,6 +75,23 @@ export const getActivatedCourses = async (lang: string, page: number, size: numb
       },
     });
     return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getCachedActivatedCourses = async (lang: string, page: number, size: number): Promise<PaginatedResult<CourseView>> => {
+  try {
+    const url = `${API_BASE_URL}${COURSES_PATH}/search?q=&page=${page}&size=${size}&status=${DocumentStatus.ACTIVE}&sort=latest&lang=${lang}`;
+
+    const response = await fetch(url, {
+      next: {
+        revalidate: 3600, // cache for 1 hour
+        tags: ['course-views', `course-views-${lang}`] // For on-demand revalidation
+      },
+    });
+
+    return await handleFetchResponse(response, `Failed to fetch courses`);
   } catch (error) {
     throw handleApiError(error);
   }
