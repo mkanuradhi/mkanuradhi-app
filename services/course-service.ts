@@ -52,7 +52,7 @@ export const getCachedCourseByPath = async (lang: string, path: string): Promise
     const response = await fetch(url, {
       next: {
         revalidate: 3600, // cache for 1 hour
-        tags: ['courses', `course-${path}`] // For on-demand revalidation
+        tags: ['course-views', `course-view-${path}`, `course-view-${path}-${lang}`] // For on-demand revalidation
       },
     });
 
@@ -75,6 +75,23 @@ export const getActivatedCourses = async (lang: string, page: number, size: numb
       },
     });
     return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getCachedActivatedCourses = async (lang: string, page: number, size: number): Promise<PaginatedResult<CourseView>> => {
+  try {
+    const url = `${API_BASE_URL}${COURSES_PATH}/search?q=&page=${page}&size=${size}&status=${DocumentStatus.ACTIVE}&sort=latest&lang=${lang}`;
+
+    const response = await fetch(url, {
+      next: {
+        revalidate: 3600, // cache for 1 hour
+        tags: ['course-views', `course-views-${lang}`] // For on-demand revalidation
+      },
+    });
+
+    return await handleFetchResponse(response, `Failed to fetch courses`);
   } catch (error) {
     throw handleApiError(error);
   }
