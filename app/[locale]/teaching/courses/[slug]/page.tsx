@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCourseByPath } from '@/services/course-service';
+import { getCachedCourseByPath } from '@/services/course-service';
 import { notFound } from 'next/navigation';
 import { ApiError } from '@/errors/api-error';
 import CourseViewer from '@/components/course-viewer';
@@ -17,7 +17,7 @@ export async function generateMetadata ({ params }: CoursePageProps) {
   const { locale, slug } = params;
   let courseView;
   try {
-    courseView = await getCourseByPath(locale, slug);
+    courseView = await getCachedCourseByPath(locale, slug);
   } catch (error: any) {
     if (error instanceof ApiError && (error.status === 404 || error.status === 400)) {
       notFound();
@@ -65,7 +65,7 @@ const CoursePage: React.FC<CoursePageProps> = async ({ params }) => {
   const { locale, slug } = params;
   let courseView;
   try {
-    courseView = await getCourseByPath(locale, slug);
+    courseView = await getCachedCourseByPath(locale, slug);
   } catch (error: any) {
     if (error instanceof ApiError && (error.status === 404 || error.status === 400)) {
       notFound();

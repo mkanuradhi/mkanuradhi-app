@@ -6,7 +6,7 @@ import Course from "@/interfaces/i-course";
 import CourseView from "@/interfaces/i-course-view";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import { SummaryStat, YearlyGroupStat } from "@/interfaces/i-stat";
-import { buildHeaders } from "@/utils/common-utils";
+import { buildHeaders, handleFetchResponse } from "@/utils/common-utils";
 import axios from "axios";
 
 export const getCourses = async (page: number, size: number): Promise<PaginatedResult<Course>> => {
@@ -40,6 +40,23 @@ export const getCourseByPath = async (lang: string, path: string): Promise<Cours
       },
     });
     return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getCachedCourseByPath = async (lang: string, path: string): Promise<CourseView> => {
+  try {
+    const url = `${API_BASE_URL}${COURSES_PATH}/path/${path}?lang=${lang}`;
+    
+    const response = await fetch(url, {
+      next: {
+        revalidate: 3600, // cache for 1 hour
+        tags: ['courses', `course-${path}`] // For on-demand revalidation
+      },
+    });
+
+    return await handleFetchResponse(response, `Failed to fetch course: ${path}`);
   } catch (error) {
     throw handleApiError(error);
   }
