@@ -84,8 +84,16 @@ const middleware = async (req: NextRequest, event: NextFetchEvent) => {
   }
 
   // For public routes, just use intl middleware
-  // This prevents Clerk from adding no-cache headers
-  return intlMiddleware(req);
+  const response = intlMiddleware(req);
+  
+  if (response) {
+    // Delete the cache-control header
+    response.headers.delete('cache-control');
+    response.headers.delete('Cache-Control');
+  }
+  
+  return response || NextResponse.next();
+
 };
 
 export default middleware;
