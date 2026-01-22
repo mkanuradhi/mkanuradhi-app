@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge, Button, Container, ListGroup, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
@@ -24,6 +24,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
   const pathname = usePathname();
   const { sidebarLinks, showOffcanvas, handleClose, handleShow } = useSideBar();
   const locale = useLocale();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 40);
@@ -59,11 +64,15 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
         transition={{ duration: 0.3 }}
       >
         <Container fluid="md">
-          <SignedIn>
-            <Button variant="outline" className="d-md-none" onClick={handleShow}>
-              <FontAwesomeIcon icon={faEllipsisV} />
-            </Button>
-          </SignedIn>
+          {isMounted && (
+            <Suspense fallback={null}>
+              <SignedIn>
+                <Button variant="outline" className="d-md-none" onClick={handleShow}>
+                  <FontAwesomeIcon icon={faEllipsisV} />
+                </Button>
+              </SignedIn>
+            </Suspense>
+          )}
           <Navbar.Brand as={Link} href="/">
             {t('title')}
           </Navbar.Brand>
@@ -110,17 +119,21 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                     { t('si') }
                   </NavDropdown.Item>
                 </NavDropdown>
-                <SignedIn>
-                  <UserButton>
-                    <UserButton.MenuItems>
-                      <UserButton.Link
-                        label={t('dashboard')}
-                        labelIcon={<FontAwesomeIcon icon={faEllipsisV} />}
-                        href={`/${locale}/dashboard`}
-                      />
-                    </UserButton.MenuItems>
-                  </UserButton>
-                </SignedIn>
+                {isMounted && (
+                  <Suspense fallback={<div className="ms-2" style={{ width: '32px', height: '32px' }} />}>
+                    <SignedIn>
+                      <UserButton>
+                        <UserButton.MenuItems>
+                          <UserButton.Link
+                            label={t('dashboard')}
+                            labelIcon={<FontAwesomeIcon icon={faEllipsisV} />}
+                            href={`/${locale}/dashboard`}
+                          />
+                        </UserButton.MenuItems>
+                      </UserButton>
+                    </SignedIn>
+                  </Suspense>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
