@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { Montserrat, Noto_Sans_Sinhala } from "next/font/google";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import NavigationBar from "@/components/NavigationBar";
@@ -9,13 +9,24 @@ import ClerkThemeProvider from "@/contexts/clerk-theme-provider";
 import { getClerkLocalization } from "@/utils/server/clerk-localization";
 import { QueryProvider } from "@/contexts/query-provider";
 import { SideBarProvider } from "@/contexts/side-bar-provider";
+import { routing } from "@/i18n/routing";
+import notFound from "./not-found";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const notoSansSinhala = Noto_Sans_Sinhala({ subsets: ["sinhala", "latin"] });
 const GA_ID = `${process.env.NEXT_PUBLIC_GA_ID}`;
 
-export async function generateMetadata ({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
+
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{locale: string}>;
+};
+
+export async function generateMetadata ({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: '' });
 
   return {
@@ -53,13 +64,14 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
  
-export default async function LocaleLayout({
-  children,
-  params: {locale}
-}: {
-  children: React.ReactNode;
-  params: {locale: string};
-}) {
+export default async function LocaleLayout({ children, params }: Props) {
+  const {locale} = await params;
+
+   if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
 
   const messages = await getMessages();
   const langFontClass = locale === 'en' ? `${montserrat.className}` : `${notoSansSinhala.className}`;
