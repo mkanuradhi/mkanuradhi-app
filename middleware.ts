@@ -27,15 +27,13 @@ const isPublicStaticPage = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  console.log(`Middleware invoked for: ${req.nextUrl.pathname}`);
+  
   if (isPublicStaticPage(req)) {
     return intlMiddleware(req);
   }
-  console.log(`----- Not a public page: ${req.nextUrl.pathname}`);
 
   const { pathname } = req.nextUrl;
   const locale = pathname.split('/')[1] || 'en';
-  console.log(`---- Detected locale: ${locale}`);
 
   // Handle Protected Routes
   if (isProtectedRoute(req)) {

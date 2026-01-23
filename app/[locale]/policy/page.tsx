@@ -1,9 +1,9 @@
 import React from 'react';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Alert, Card, CardBody, Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faEnvelope, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import { generateLocaleParams } from '@/utils/static-params';
+import { routing } from '@/i18n/routing';
 import "./page.scss";
 
 const baseTPath = 'pages.Policy';
@@ -11,17 +11,12 @@ const baseTPath = 'pages.Policy';
 export const dynamicParams = true;
 export const revalidate = 604800; // cache for 1 week
 
-// export async function generateStaticParams() {
-//   return [
-//     { locale: 'en' },
-//     { locale: 'si' }
-//   ];
-// }
+export async function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
 
-export const generateStaticParams = generateLocaleParams;
-
-export async function generateMetadata ({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export async function generateMetadata ({ params }: { params: Promise<{locale: string}> }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: baseTPath });
 
   return {
@@ -44,8 +39,10 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const PrivacyPage =  async ({ params }: { params: { locale: string } }) => {
-  const { locale } = params;
+const PrivacyPage =  async ({ params }: { params: Promise<{locale: string}> }) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   const t = await getTranslations({ locale, namespace: baseTPath });
   const messages = await getMessages({ locale }) as any;
 
