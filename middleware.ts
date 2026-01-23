@@ -19,8 +19,19 @@ const isAdminRoute = createRouteMatcher([
 const isStudentRoute = createRouteMatcher([
   '/(si|en)/dashboard/student/courses(.*)',
 ]);
+const isPublicStaticPage = createRouteMatcher([
+  '/(si|en)/policy',
+  '/(si|en)/contact',
+  '/(si|en)/experience',
+  '/(si|en)', // homepage
+]);
 
 export default clerkMiddleware(async (auth, req) => {
+  
+  if (isPublicStaticPage(req)) {
+    return intlMiddleware(req);
+  }
+
   const { pathname } = req.nextUrl;
   const locale = pathname.split('/')[1] || 'en';
 
