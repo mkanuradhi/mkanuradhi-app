@@ -1,13 +1,24 @@
 import React from 'react';
-import { useMessages, useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { Alert, Card, CardBody, Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faEnvelope, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import { generateLocaleParams } from '@/utils/static-params';
 import "./page.scss";
 
 const baseTPath = 'pages.Policy';
+
+export const dynamicParams = true;
 export const revalidate = 604800; // cache for 1 week
+
+// export async function generateStaticParams() {
+//   return [
+//     { locale: 'en' },
+//     { locale: 'si' }
+//   ];
+// }
+
+export const generateStaticParams = generateLocaleParams;
 
 export async function generateMetadata ({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -33,9 +44,10 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const PrivacyPage = () => {
-  const t = useTranslations(baseTPath);
-  const messages = useMessages() as any;
+const PrivacyPage =  async ({ params }: { params: { locale: string } }) => {
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: baseTPath });
+  const messages = await getMessages({ locale }) as any;
 
   const getArrayFromMessages = (key: string): string[] => {
     return messages?.pages?.Policy?.[key] || [];
