@@ -30,6 +30,7 @@ export async function generateMetadata ({ params }: { params: Promise<{ locale: 
   const t = await getTranslations({ locale, namespace: '' });
 
   return {
+    metadataBase: new URL('https://mkanuradhi.com'),
     title: {
       template: `%s - ${t('title')}`,
       default: `${t('title')}`,
@@ -42,7 +43,7 @@ export async function generateMetadata ({ params }: { params: Promise<{ locale: 
         default: `${t('title')}`,
       },
       description: t('description'),
-      url: "https://www.mkanuradhi.com",
+      url: "https://mkanuradhi.com",
       siteName: 'mkanuradhi',
       type: 'website',
       locale: 'en_US',
