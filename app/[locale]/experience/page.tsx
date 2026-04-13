@@ -1,6 +1,5 @@
 import React from 'react';
-import { useMessages, useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import GlowLink from '@/components/GlowLink';
 
@@ -14,22 +13,6 @@ interface CareerPosition {
   url: string;
 }
 
-interface AcademicCareerPositionMessages {
-  pages: {
-    Experience: {
-      academicExperiences: CareerPosition[];
-    };
-  };
-}
-
-interface AdministrativeCareerPositionMessages {
-  pages: {
-    Experience: {
-      administrativeExperiences: CareerPosition[];
-    };
-  };
-}
-
 interface ProfessionalPosition {
   post: string;
   event: string;
@@ -38,16 +21,8 @@ interface ProfessionalPosition {
   url: string;
 }
 
-interface ProfessionalPositionMessages {
-  pages: {
-    Experience: {
-      professionalExperiences: ProfessionalPosition[];
-    };
-  };
-}
-
-export async function generateMetadata ({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export async function generateMetadata ({ params }: { params: Promise<{locale: string}> }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: baseTPath });
 
   return {
@@ -70,17 +45,16 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const ExperiencePage = () => {
-  const t = useTranslations(baseTPath);
+const ExperiencePage = async ({ params }: { params: Promise<{locale: string}> }) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-  const academicCareerPositionMessages = useMessages() as unknown as AcademicCareerPositionMessages | undefined;
-  const academicCareerPositions = academicCareerPositionMessages?.pages?.Experience?.academicExperiences as CareerPosition[];
-  
-  const administrativeCareerPositionMessages = useMessages() as unknown as AdministrativeCareerPositionMessages | undefined;
-  const administrativeCareerPositions = administrativeCareerPositionMessages?.pages?.Experience?.administrativeExperiences as CareerPosition[];
+  const t = await getTranslations({ locale, namespace: baseTPath });
+  const messages = await getMessages({ locale }) as any;
 
-  const professionalPositionMessages = useMessages() as unknown as ProfessionalPositionMessages | undefined;
-  const professionalPositions = professionalPositionMessages?.pages?.Experience?.professionalExperiences as ProfessionalPosition[];
+  const academicCareerPositions = messages?.pages?.Experience?.academicExperiences as CareerPosition[];
+  const administrativeCareerPositions = messages?.pages?.Experience?.administrativeExperiences as CareerPosition[];
+  const professionalPositions = messages?.pages?.Experience?.professionalExperiences as ProfessionalPosition[];
 
   return (
     <>

@@ -1,14 +1,13 @@
 import React from 'react';
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import PublicationsViewer from '@/components/publications-viewer';
 
 const baseTPath = 'pages.Publications';
 export const revalidate = 86400; // cache for 1 day
 
-export async function generateMetadata ({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export async function generateMetadata ({ params }: { params: Promise<{locale: string}> }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: baseTPath });
 
   return {
@@ -31,8 +30,11 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const PublicationsPage = () => {
-  const t = useTranslations(baseTPath);
+const PublicationsPage = async ({ params }: { params: Promise<{locale: string}> }) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  
+  const t = await getTranslations({ locale, namespace: baseTPath });
 
   return (
     <>
