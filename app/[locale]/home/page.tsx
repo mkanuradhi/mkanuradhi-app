@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMessages, useTranslations } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
 import ScopusIcon from '@/icons/ScopusIcon';
@@ -18,32 +18,8 @@ import './home.scss';
 const baseTPath = 'pages.Home';
 export const revalidate = 3600; // cache for 1 hour
 
-interface DescriptionMessages {
-  pages: {
-    Home: {
-      aboutDescriptions: string[];
-    };
-  };
-}
-
-interface InterestMessages {
-  pages: {
-    Home: {
-      interests: string[];
-    };
-  };
-}
-
-interface EducationMessages {
-  pages: {
-    Home: {
-      educations: string[];
-    };
-  };
-}
-
-export async function generateMetadata ({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export async function generateMetadata ({ params }: { params: Promise<{locale: string}> }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: baseTPath });
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
   const messages = await getMessages() as any;
@@ -126,18 +102,17 @@ export async function generateMetadata ({ params }: { params: { locale: string }
     }
   };
 };
- 
-export default function HomePage() {
-  const t = useTranslations(baseTPath);
 
-  const descriptionMessages = useMessages() as unknown as DescriptionMessages | undefined;
-  const descriptions = descriptionMessages?.pages?.Home?.aboutDescriptions as string[];
+const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  
+  const t = await getTranslations({ locale, namespace: baseTPath });
+  const messages = await getMessages({ locale }) as any;
 
-  const interestMessages = useMessages() as unknown as InterestMessages | undefined;
-  const interests = interestMessages?.pages?.Home?.interests as string[];
-
-  const educationMessages = useMessages() as unknown as EducationMessages | undefined;
-  const educations = educationMessages?.pages?.Home?.educations as string[];
+  const descriptions = messages?.pages?.Home?.aboutDescriptions as string[];
+  const interests = messages?.pages?.Home?.interests as string[];
+  const educations = messages?.pages?.Home?.educations as string[];
 
   const externalLinks = [
     {
@@ -231,3 +206,5 @@ export default function HomePage() {
     </>
   );
 }
+
+export default HomePage;

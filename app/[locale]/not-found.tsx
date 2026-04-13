@@ -2,14 +2,13 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { getTranslations } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import GlowLink from '@/components/GlowLink';
 
 const baseTPath = 'pages.NotFound';
 
-export async function generateMetadata ({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export async function generateMetadata () {
+  const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: baseTPath });
 
   return {
@@ -32,8 +31,11 @@ export async function generateMetadata ({ params }: { params: { locale: string }
   };
 };
 
-const NotFound = () => {
-  const t = useTranslations(baseTPath);
+const NotFound = async () => {
+  const locale = await getLocale();
+  setRequestLocale(locale);
+  
+  const t = await getTranslations({ locale, namespace: baseTPath });
 
   return (
     <>
