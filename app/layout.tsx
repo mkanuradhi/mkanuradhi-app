@@ -14,9 +14,10 @@ export async function generateMetadata () {
     description: '',
     keywords: '',
     openGraph: {
+      metadataBase: new URL('https://mkanuradhi.com'),
       title: 'M K A Ariyaratne',
       description: '',
-      url: "https://www.mkanuradhi.com",
+      url: "https://mkanuradhi.com",
       siteName: 'mkanuradhi',
       type: 'website',
       locale: 'en_US',
