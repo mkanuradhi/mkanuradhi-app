@@ -7,6 +7,7 @@ import "./globals.scss";
 export async function generateMetadata () {
 
   return {
+    metadataBase: new URL('https://mkanuradhi.com'),
     title: {
       template: `%s - M K A Ariyaratne`,
       default: `M K A Ariyaratne`,
@@ -14,7 +15,6 @@ export async function generateMetadata () {
     description: '',
     keywords: '',
     openGraph: {
-      metadataBase: new URL('https://mkanuradhi.com'),
       title: 'M K A Ariyaratne',
       description: '',
       url: "https://mkanuradhi.com",
