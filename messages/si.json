@@ -600,6 +600,17 @@
         "Edit": {
           "title": "සම්මානය සංස්කරණය කිරීම"
         }
+      },
+      "Books": {
+        "pageTitle": "පොත් පුවරුව",
+        "title": "පොත්",
+        "addNew": "නව පොතක් එක් කරන්න",
+        "New": {
+          "title": "නව පොතක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "පොතක් සංස්කරණය කිරීම"
+        }
       }
     },
     "Visualizations": {
@@ -2043,6 +2054,206 @@
       "attractiveness": "ආකර්ශනීය බව",
       "absorption": "අවශෝෂණය",
       "iterations": "පුනරාවර්තන"
+    },
+    "NewBookForm": {
+      "titleEnLabel": "මාතෘකාව (ඉංග්‍රීසි)",
+      "titleEnPlaceholder": "පිරිසිදු කේතයේ කලාව",
+      "titleSiLabel": "මාතෘකාව (සිංහල)",
+      "titleSiPlaceholder": "The Art of Clean Code",
+
+      "subtitleEnLabel": "උපශීර්ෂය (ඉංග්‍රීසි)",
+      "subtitleEnPlaceholder": "කියවිය හැකි මෘදුකාංග ලිවීම",
+      "subtitleSiLabel": "උපශීර්ෂය (සිංහල)",
+      "subtitleSiPlaceholder": "Writing Readable Software",
+
+      "descriptionEnLabel": "කෙටි විස්තරය (ඉංග්‍රීසි)",
+      "descriptionEnPlaceholder": "පොත පිළිබඳ කෙටි විස්තරයක් ලියන්න...",
+      "descriptionSiLabel": "කෙටි විස්තරය (සිංහල)",
+      "descriptionSiPlaceholder": "Short description in English...",
+
+      "contentEnLabel": "සම්පූර්ණ විස්තරය (ඉංග්‍රීසි)",
+      "contentEnPlaceholder": "පොත පිළිබඳ සම්පූර්ණ විස්තරය ලියන්න...",
+      "contentSiLabel": "සම්පූර්ණ විස්තරය (සිංහල)",
+      "contentSiPlaceholder": "Full description in English...",
+
+      "publisherEnLabel": "ප්‍රකාශකයා (ඉංග්‍රීසි)",
+      "publisherEnPlaceholder": "කේත ප්‍රකාශන",
+      "publisherSiLabel": "ප්‍රකාශකයා (සිංහල)",
+      "publisherSiPlaceholder": "Code Publications",
+
+      "authorsLabel": "කතුවරුන්",
+      "authorLabel": "කතුවරයා {number}",
+      "addAuthor": "කතුවරයෙකු එකතු කරන්න",
+      "removeAuthor": "ඉවත් කරන්න",
+      "authorNameEnLabel": "නම (ඉංග්‍රීසි)",
+      "authorNameEnPlaceholder": "Jane Smith",
+      "authorNameSiLabel": "නම (සිංහල)",
+      "authorNameSiPlaceholder": "ජේන් ස්මිත්",
+      "authorRoleLabel": "භූමිකාව",
+      "authorProfileUrlLabel": "පැතිකඩ සබැඳිය",
+      "authorProfileUrlPlaceholder": "https://example.com/jane",
+
+      "authorRole": {
+        "author":    "කතුවරයා",
+        "co-author": "සහ-කතුවරයා",
+        "editor":    "සංස්කාරක",
+        "reviewer":  "සමාලෝචක"
+      },
+
+      "subjectLabel": "විෂය ක්ෂේත්‍ර",
+      "subjectHelp":  "පොතේ විෂය ක්ෂේත්‍ර එකතු කරන්න. උදා: පරිගණක විද්‍යාව, කෘත්‍රිම බුද්ධිය",
+      "addSubject":   "විෂය ක්ෂේත්‍රයක් එකතු කරන්න",
+      "subjectEnPlaceholder": "Computer Science",
+      "subjectSiPlaceholder": "පරිගණක විද්‍යාව",
+
+      "writtenLangLabel": "ලියැවුණු භාෂාව",
+      "bookLanguage": {
+        "en": "ඉංග්‍රීසි",
+        "si": "සිංහල"
+      },
+
+      "publishedYearLabel":       "ප්‍රකාශන වර්ෂය",
+      "publishedYearPlaceholder": "2025",
+
+      "editionLabel":       "සංස්කරණය",
+      "editionPlaceholder": "1 වන සංස්කරණය",
+
+      "isbnLabel":       "ISBN",
+      "isbnPlaceholder": "978-3-16-148410-0",
+
+      "pagesLabel":       "පිටු ගණන",
+      "pagesPlaceholder": "280",
+
+      "tagsLabel":       "ටැග්",
+      "tagsHelp":        "ටැගයක් ටයිප් කර Enter 누르거나 + බොත්තම ඔබන්න",
+      "tagsPlaceholder": "ටැගයක් ඇතුළත් කරන්න",
+
+      "coverImageLabel":       "කවර පින්තූරයේ සබැඳිය",
+      "coverImagePlaceholder": "https://example.com/cover.jpg",
+
+      "buyLinkLabel":       "මිලදී ගැනීමේ සබැඳිය",
+      "buyLinkPlaceholder": "https://example.com/buy",
+      "buyLinkHelp":        "පොත මිලදී ගත හැකි වෙබ් ලිපිනය",
+
+      "pdfTeaserLabel":       "PDF පෙරදසුන් සබැඳිය",
+      "pdfTeaserPlaceholder": "https://example.com/teaser.pdf",
+
+      "featuredLabel": "විශේෂාංගගත",
+      "featuredNo":    "නැත",
+      "featuredYes":   "ඔව්",
+
+      "displayOrderLabel":       "දර්ශන අනුපිළිවෙල",
+      "displayOrderPlaceholder": "1",
+      "displayOrderHelp":        "පොත් ලැයිස්තුවේ දිස්වන අනුපිළිවෙල. අඩු අගයක් = ඉහළට",
+
+      "cancel":     "අවලංගු කරන්න",
+      "submit":     "පොත සුරකින්න",
+      "submitting": "සුරකිමින්...",
+
+      "titleEnRequired":          "ඉංග්‍රීසි මාතෘකාව අවශ්‍යයි.",
+      "titleEnTooShort":          "ඉංග්‍රීසි මාතෘකාව අඩු තරම් අකුරු {min}ක් විය යුතුයි.",
+      "titleEnTooLong":           "ඉංග්‍රීසි මාතෘකාව අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "titleSiTooLong":           "සිංහල මාතෘකාව අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+
+      "subtitleEnTooLong":        "ඉංග්‍රීසි උපශීර්ෂය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "subtitleSiTooLong":        "සිංහල උපශීර්ෂය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+
+      "descriptionEnRequired":    "ඉංග්‍රීසි කෙටි විස්තරය අවශ්‍යයි.",
+      "descriptionEnTooShort":    "ඉංග්‍රීසි කෙටි විස්තරය අඩු තරම් අකුරු {min}ක් විය යුතුයි.",
+      "descriptionEnTooLong":     "ඉංග්‍රීසි කෙටි විස්තරය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "descriptionSiTooLong":     "සිංහල කෙටි විස්තරය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+
+      "contentEnRequired":        "ඉංග්‍රීසි සම්පූර්ණ විස්තරය අවශ්‍යයි.",
+      "contentEnTooShort":        "ඉංග්‍රීසි සම්පූර්ණ විස්තරය අඩු තරම් අකුරු {min}ක් විය යුතුයි.",
+      "contentEnTooLong":         "ඉංග්‍රීසි සම්පූර්ණ විස්තරය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "contentSiTooLong":         "සිංහල සම්පූර්ණ විස්තරය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+
+      "publisherEnRequired":      "ඉංග්‍රීසි ප්‍රකාශකයාගේ නම අවශ්‍යයි.",
+      "publisherEnTooShort":      "ඉංග්‍රීසි ප්‍රකාශකයාගේ නම අඩු තරම් අකුරු {min}ක් විය යුතුයි.",
+      "publisherEnTooLong":       "ඉංග්‍රීසි ප්‍රකාශකයාගේ නම අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "publisherSiTooLong":       "සිංහල ප්‍රකාශකයාගේ නම අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+
+      "authorsRequired":          "අඩු තරම් කතුවරයෙකු අවශ්‍යයි.",
+      "authorsTooMany":           "කතුවරුන් {max}දෙනෙකුට වඩා ඇතුළත් කළ නොහැකිය.",
+      "authorNameEnRequired":     "ඉංග්‍රීසි කතුවරයාගේ නම අවශ්‍යයි.",
+      "authorNameEnTooShort":     "ඉංග්‍රීසි කතුවරයාගේ නම අඩු තරම් අකුරු 2ක් විය යුතුයි.",
+      "authorNameEnTooLong":      "ඉංග්‍රීසි කතුවරයාගේ නම අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "authorNameSiTooLong":      "සිංහල කතුවරයාගේ නම අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "authorRoleRequired":       "කතුවරයාගේ භූමිකාව අවශ්‍යයි.",
+      "authorRoleInvalid":        "අවලංගු කතුවරයා භූමිකාවකි.",
+
+      "subjectEnTooLong":         "ඉංග්‍රීසි විෂය ක්ෂේත්‍රය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "subjectSiTooLong":         "සිංහල විෂය ක්ෂේත්‍රය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "subjectsTooMany":          "විෂය ක්ෂේත්‍ර {max}කට වඩා ඇතුළත් කළ නොහැකිය.",
+
+      "writtenLangRequired":      "ලියැවුණු භාෂාව අවශ්‍යයි.",
+      "writtenLangInvalid":       "අවලංගු භාෂාවකි.",
+
+      "publishedYearRequired":    "ප්‍රකාශන වර්ෂය අවශ්‍යයි.",
+      "publishedYearMustBeNumber": "ප්‍රකාශන වර්ෂය සංඛ්‍යාවක් විය යුතුයි.",
+      "publishedYearMustBeInteger": "ප්‍රකාශන වර්ෂය පූර්ණ සංඛ්‍යාවක් විය යුතුයි.",
+      "publishedYearTooLow":      "ප්‍රකාශන වර්ෂය {min}ට පෙර විය නොහැකිය.",
+      "publishedYearTooHigh":     "ප්‍රකාශන වර්ෂය අනාගතයේ විය නොහැකිය.",
+
+      "editionTooLong":           "සංස්කරණය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "isbnTooLong":              "ISBN අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "pagesMustBeNumber":        "පිටු ගණන සංඛ්‍යාවක් විය යුතුයි.",
+      "pagesMustBeInteger":       "පිටු ගණන පූර්ණ සංඛ්‍යාවක් විය යුතුයි.",
+      "pagesTooLow":              "පිටු ගණන අඩු තරම් 1ක් විය යුතුයි.",
+
+      "tagTooLong":               "ටැගය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "tagsTooMany":              "ටැග් {max}කට වඩා ඇතුළත් කළ නොහැකිය.",
+
+      "urlMustBeValid":           "වලංගු URL ලිපිනයක් විය යුතුයි.",
+      "urlTooLong":               "URL ලිපිනය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+
+      "displayOrderMustBeNumber":  "දර්ශන අනුපිළිවෙල සංඛ්‍යාවක් විය යුතුයි.",
+      "displayOrderMustBeInteger": "දර්ශන අනුපිළිවෙල පූර්ණ සංඛ්‍යාවක් විය යුතුයි.",
+      "displayOrderTooLow":        "දර්ශන අනුපිළිවෙල ශුන්‍යයට වඩා අඩු විය නොහැකිය."
+    },
+    "BookOptionsViewer": {
+      "dashboard":    "පාලන පුවරුව",
+      "books":        "පොත්",
+      "edit":         "සංස්කරණය කරන්න",
+      "activate":     "සක්‍රිය කරන්න",
+      "deactivate":   "අක්‍රිය කරන්න",
+      "delete":       "මකන්න",
+      "active":       "සක්‍රිය",
+      "inactive":     "අක්‍රිය",
+      "featured":     "විශේෂිත",
+      "localeEn":     "ඉංග්‍රීසි",
+      "localeSi":     "සිංහල",
+      "noCover":      "ආවරණ රූපයක් නොමැත",
+      "noTitle":      "මාතෘකාවක් නොමැත",
+      "failBook":     "පොත පූරණය කිරීමට අසමත් විය.",
+      "publishedYear":"ප්‍රකාශිත වර්ෂය",
+      "writtenLang":  "ලිඛිත භාෂාව",
+      "langEnglish":  "ඉංග්‍රීසි",
+      "langSinhala":  "සිංහල",
+      "edition":      "සංස්කරණය",
+      "pages":        "පිටු",
+      "isbn":         "ජාත්‍යන්තර සම්මත පොත් අංකය (ISBN)",
+      "displayOrder": "දර්ශන අනුපිළිවෙල",
+      "publisher":    "ප්‍රකාශක",
+      "subjects":     "විෂයයන්",
+      "authors":      "කර්තෘවරුන්",
+      "description":  "විස්තරය",
+      "content":      "අන්තර්ගතය",
+      "tags":         "ටැග්",
+      "links":        "සබැඳි",
+      "authorRole": {
+        "author":    "කර්තෘ",
+        "co-author": "සම කර්තෘ",
+        "editor":    "සංස්කාරක",
+        "reviewer":  "සමාලෝචක"
+      },
+      "activateErrorTitle":   "පොත සක්‍රිය කිරීමට අසමත් විය.",
+      "deactivateErrorTitle": "පොත අක්‍රිය කිරීමට අසමත් විය.",
+      "deleteErrorTitle":     "පොත මැකීමට අසමත් විය.",
+      "deleteModalTitle":     "පොත මකන්න",
+      "deleteModalMessage":   "ඔබට, <strong>title</strong> පොත මැකීමට අවශ්‍ය බව විශ්වාසද? මෙම ක්‍රියාව ආපසු හැරවිය නොහැක.",
+      "deleteModalCancel":    "නැත",
+      "deleteModalAccept":    "ඔව්, මකන්න"
     }
   },
   "contexts": {
@@ -2054,6 +2265,7 @@
       "research": "පර්යේෂණ",
       "contactMessages": "සම්බන්ධතා පණිවිඩ",
       "awards": "සම්මාන",
+      "books": "පොත්",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },

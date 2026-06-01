@@ -97,3 +97,29 @@ export const MAX_AWARD_CO_RECIPIENT_NAME_LENGTH = 140;
 
 export const MAX_AWARD_URL_LENGTH = 450;
 
+// --------------- book ---------------
+export const MIN_BOOK_TITLE_LENGTH        = 2;
+export const MAX_BOOK_TITLE_LENGTH        = 500;
+
+export const MIN_BOOK_DESCRIPTION_LENGTH  = 2;
+export const MAX_BOOK_DESCRIPTION_LENGTH  = 1000;
+
+export const MIN_BOOK_CONTENT_LENGTH      = 2;
+export const MAX_BOOK_CONTENT_LENGTH      = 5000;
+
+export const MIN_BOOK_PUBLISHED_YEAR      = 1900;
+export const MAX_BOOK_PUBLISHED_YEAR      = new Date().getFullYear();
+
+export const MAX_BOOK_AUTHORS             = 10;
+export const MAX_BOOK_AUTHOR_NAME_LENGTH  = 200;
+
+export const MAX_BOOK_SUBJECTS            = 10;
+export const MAX_BOOK_SUBJECT_LENGTH      = 100;
+
+export const MAX_BOOK_TAGS                = 20;
+export const MAX_BOOK_TAG_LENGTH          = 50;
+
+export const MAX_BOOK_URL_LENGTH          = 500;
+
+export const MAX_BOOK_ISBN_LENGTH         = 20;
+export const MAX_BOOK_EDITION_LENGTH      = 100;
