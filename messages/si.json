@@ -2118,8 +2118,18 @@
       "editionLabel":       "සංස්කරණය",
       "editionPlaceholder": "1 වන සංස්කරණය",
 
-      "isbnLabel":       "ISBN",
-      "isbnPlaceholder": "978-3-16-148410-0",
+      "isbnsLabel":      "ISBN අගයන්",
+      "isbnLabel":      "ISBN {number}",
+      "isbnValueLabel":  "ISBN",
+      "removeIsbnLabel": "ඉවත් කරන්න",
+      "isbnValuePlaceholder": "978-x-xx-xxxxxx-x",
+      "addIsbnLabel": "ISBN එකතු කරන්න",
+      "isbnFormatLabel": "ISBN ආකෘතිය",
+      "isbnFormat": {
+        "paperback": "කඩදාසි කවරය (Paperback)",
+        "hardcover": "දෘඪ කවරය (Hardcover)",
+        "ebook":     "ඊ-පොත (eBook)"
+      },
 
       "pagesLabel":       "පිටු ගණන",
       "pagesPlaceholder": "280",
@@ -2139,8 +2149,7 @@
       "pdfTeaserPlaceholder": "https://example.com/teaser.pdf",
 
       "featuredLabel": "විශේෂාංගගත",
-      "featuredNo":    "නැත",
-      "featuredYes":   "ඔව්",
+      "featuredCheckboxLabel": "මෙම පොත විශේෂාංගගත ලෙස සලකුණු කරන්න",
 
       "displayOrderLabel":       "දර්ශන අනුපිළිවෙල",
       "displayOrderPlaceholder": "1",

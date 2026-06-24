@@ -15,9 +15,9 @@ import { useRouter } from '@/i18n/routing';
 import { useCreateBookMutation } from '@/hooks/use-books';
 import { CreateBookDto } from '@/dtos/book-dto';
 import { getNewBookSchema } from '@/schemas/new-book-schema';
-import { BookAuthorRole, BookLanguage } from '@/enums/book-enums';
+import { BookAuthorRole, BookIsbnFormat, BookLanguage } from '@/enums/book-enums';
 import RequiredFormLabel from './required-form-label';
-import Book from '@/interfaces/i-book';
+import Book, { BookIsbn } from '@/interfaces/i-book';
 
 const baseTPath = 'components.NewBookForm';
 
@@ -34,13 +34,10 @@ const initialValues = {
   writtenLang:   BookLanguage.ENGLISH,
   publishedYear: new Date().getFullYear(),
   edition:       '',
-  isbn:          '',
+  isbns:         [] as BookIsbn[],
   pages:         '',
   tags:          [] as string[],
-  coverImage:    '',
-  previewImages: [] as string[],
   buyLink:       '',
-  pdfTeaser:     '',
   featured:      false,
   displayOrder:  '',
   tagInput:      '', // local ui state — not sent to API
@@ -51,6 +48,17 @@ const initialValues = {
 interface NewBookFormProps {
   onSuccess: (book: Book) => void;
 }
+
+// Safe error message — only renders string errors, ignores nested objects
+  const SafeErrorMessage = ({ name }: { name: string }) => (
+    <ErrorMessage name={name}>
+      {(msg) =>
+        typeof msg === 'string' ? (
+          <p className="text-danger mt-1">{msg}</p>
+        ) : null
+      }
+    </ErrorMessage>
+  );
 
 // ---- Component ------------------------------------------------
 
@@ -85,13 +93,13 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
       writtenLang:   values.writtenLang,
       publishedYear: Number(values.publishedYear),
       edition:       values.edition?.trim()  || undefined,
-      isbn:          values.isbn?.trim()     || undefined,
+      isbns:         values.isbns.map(a => ({
+        format:      a.format,
+        value:       a.value.trim(),
+      })),
       pages:         values.pages ? Number(values.pages) : undefined,
       tags:          values.tags,
-      coverImage:    values.coverImage?.trim()  || undefined,
-      previewImages: values.previewImages,
       buyLink:       values.buyLink?.trim()     || undefined,
-      pdfTeaser:     values.pdfTeaser?.trim()   || undefined,
       featured:      values.featured,
       displayOrder:  values.displayOrder ? Number(values.displayOrder) : undefined,
     };
@@ -105,17 +113,6 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
       actions.setSubmitting(false);
     }
   };
-
-  // Safe error message — only renders string errors, ignores nested objects
-  const SafeErrorMessage = ({ name }: { name: string }) => (
-    <ErrorMessage name={name}>
-      {(msg) =>
-        typeof msg === 'string' ? (
-          <p className="text-danger mt-1">{msg}</p>
-        ) : null
-      }
-    </ErrorMessage>
-  );
 
   // ---- Render ------------------------------------------------
 
@@ -359,11 +356,55 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                   <ErrorMessage name="edition" component="p" className="text-danger mt-1" />
                 </BootstrapForm.Group>
 
-                {/* ---- ISBN ------------------------------------------------ */}
-                <BootstrapForm.Group className="mb-4" controlId="formIsbn">
-                  <BootstrapForm.Label>{t('isbnLabel')}</BootstrapForm.Label>
-                  <Field name="isbn" type="text" placeholder={t('isbnPlaceholder')} className="form-control" />
-                  <ErrorMessage name="isbn" component="p" className="text-danger mt-1" />
+                {/* ---- ISBNs ----------------------------------------------- */}
+                <BootstrapForm.Group className="mb-4">
+                  <BootstrapForm.Label>{t('isbnsLabel')}</BootstrapForm.Label>
+                  <FieldArray name="isbns">
+                    {({ push, remove }) => (
+                      <div>
+                        {values.isbns.map((_, index) => (
+                          <div key={index} className="border rounded p-3 mb-3">
+                            <div className="d-flex justify-content-between align-items-center mb-3">
+                              <strong>{t('isbnLabel', { number: index + 1 })}</strong>
+                                <Button variant="danger" size="sm" type="button" onClick={() => remove(index)}>
+                                  <FontAwesomeIcon icon={faMinus} /> {t('removeIsbnLabel')}
+                                </Button>
+                            </div>
+
+                            {/* ISBN value and format - side by side */}
+                            <Row>
+                              <Col md={6}>
+                                <BootstrapForm.Group className="mb-3" controlId={`formIsbnValue${index}`}>
+                                  <RequiredFormLabel>{t('isbnValueLabel')}</RequiredFormLabel>
+                                  <Field name={`isbns.${index}.value`} type="text" placeholder={t('isbnValuePlaceholder')} className="form-control" />
+                                  <SafeErrorMessage name={`isbns.${index}.value`} />
+                                </BootstrapForm.Group>
+                              </Col>
+                              <Col md={6}>
+                                <BootstrapForm.Group className="mb-3" controlId={`formIsbnFormat${index}`}>
+                                  <RequiredFormLabel>{t('isbnFormatLabel')}</RequiredFormLabel>
+                                  <Field as="select" name={`isbns.${index}.format`} className="form-select">
+                                    {Object.values(BookIsbnFormat).map(format => (
+                                      <option key={format} value={format}>
+                                        {String(t(`isbnFormat.${format}`))}
+                                      </option>
+                                    ))}
+                                  </Field>
+                                  <SafeErrorMessage name={`isbns.${index}.format`} />
+                                </BootstrapForm.Group>
+                              </Col>
+                            </Row>
+                          </div>
+                        ))}
+                        <Button variant="outline-primary" type="button" onClick={() =>
+                          push({ value: '', format: BookIsbnFormat.PAPERBACK })
+                        }>
+                          <FontAwesomeIcon icon={faPlus} className="me-1" /> {t('addIsbnLabel')}
+                        </Button>
+                        <SafeErrorMessage name="isbns" />
+                      </div>
+                    )}
+                  </FieldArray>
                 </BootstrapForm.Group>
 
                 {/* ---- Pages ------------------------------------------------ */}
@@ -423,13 +464,6 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                   <ErrorMessage name="tags" component="p" className="text-danger mt-1" />
                 </BootstrapForm.Group>
 
-                {/* ---- Cover image ------------------------------------------------ */}
-                <BootstrapForm.Group className="mb-4" controlId="formCoverImage">
-                  <BootstrapForm.Label>{t('coverImageLabel')}</BootstrapForm.Label>
-                  <Field name="coverImage" type="url" placeholder={t('coverImagePlaceholder')} className="form-control" />
-                  <ErrorMessage name="coverImage" component="p" className="text-danger mt-1" />
-                </BootstrapForm.Group>
-
                 {/* ---- Buy link ------------------------------------------------ */}
                 <BootstrapForm.Group className="mb-4" controlId="formBuyLink">
                   <BootstrapForm.Label>{t('buyLinkLabel')}</BootstrapForm.Label>
@@ -438,20 +472,22 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                   <ErrorMessage name="buyLink" component="p" className="text-danger mt-1" />
                 </BootstrapForm.Group>
 
-                {/* ---- PDF teaser ------------------------------------------------ */}
-                <BootstrapForm.Group className="mb-4" controlId="formPdfTeaser">
-                  <BootstrapForm.Label>{t('pdfTeaserLabel')}</BootstrapForm.Label>
-                  <Field name="pdfTeaser" type="url" placeholder={t('pdfTeaserPlaceholder')} className="form-control" />
-                  <ErrorMessage name="pdfTeaser" component="p" className="text-danger mt-1" />
-                </BootstrapForm.Group>
-
                 {/* ---- Featured ------------------------------------------------ */}
                 <BootstrapForm.Group className="mb-4" controlId="formFeatured">
                   <BootstrapForm.Label>{t('featuredLabel')}</BootstrapForm.Label>
-                  <Field as="select" name="featured" className="form-select">
-                    <option value="false">{t('featuredNo')}</option>
-                    <option value="true">{t('featuredYes')}</option>
-                  </Field>
+                  <div className="d-flex align-items-center gap-2">
+                    <Field
+                      name="featured"
+                      type="checkbox"
+                      id="formFeatured"
+                      className="form-check-input"
+                      checked={values.featured}
+                      onChange={() => setFieldValue('featured', !values.featured)}
+                    />
+                    <label htmlFor="formFeatured" className="form-check-label">
+                      {t('featuredCheckboxLabel')}
+                    </label>
+                  </div>
                   <ErrorMessage name="featured" component="p" className="text-danger mt-1" />
                 </BootstrapForm.Group>
 

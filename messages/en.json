@@ -2118,8 +2118,18 @@
       "editionLabel":       "Edition",
       "editionPlaceholder": "1st Edition",
 
-      "isbnLabel":       "ISBN",
-      "isbnPlaceholder": "978-3-16-148410-0",
+      "isbnsLabel":      "ISBNs",
+      "isbnLabel":      "ISBN {number}",
+      "isbnValueLabel":  "ISBN",
+      "removeIsbnLabel": "Remove",
+      "isbnValuePlaceholder": "978-x-xx-xxxxxx-x",
+      "addIsbnLabel": "Add ISBN",
+      "isbnFormatLabel": "Format",
+      "isbnFormat": {
+        "paperback": "Paperback",
+        "hardcover": "Hardcover",
+        "ebook":     "eBook"
+      },
 
       "pagesLabel":       "Pages",
       "pagesPlaceholder": "280",
@@ -2139,8 +2149,7 @@
       "pdfTeaserPlaceholder": "https://example.com/teaser.pdf",
 
       "featuredLabel": "Featured",
-      "featuredNo":    "No",
-      "featuredYes":   "Yes",
+      "featuredCheckboxLabel": "Mark this book as featured",
 
       "displayOrderLabel":       "Display order",
       "displayOrderPlaceholder": "1",

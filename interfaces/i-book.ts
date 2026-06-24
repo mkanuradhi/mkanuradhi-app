@@ -1,4 +1,4 @@
-import { BookAuthorRole, BookLanguage } from "@/enums/book-enums";
+import { BookAuthorRole, BookIsbnFormat, BookLanguage } from "@/enums/book-enums";
 import DocumentStatus from "@/enums/document-status";
 import { LocalizedString } from "@/types/locale.types";
 import AppUser from "./i-app-user";
@@ -9,41 +9,47 @@ export interface BookAuthor {
   profileUrl?: string;
 }
 
+export interface BookIsbn {
+  format: BookIsbnFormat;
+  value: string;
+}
 
 interface Book {
   id: string;
 
-  title:       LocalizedString;
-  subtitle?:   LocalizedString;
+  title: LocalizedString;
+  subtitle?: LocalizedString;
   description: LocalizedString;
-  content:     LocalizedString;
-  subject:     LocalizedString[];
-  authors:     BookAuthor[];
+  content: LocalizedString;
+  subject: LocalizedString[];
+  authors: BookAuthor[];
   writtenLang: BookLanguage;
-  path:        string;
+  path: string;
 
-  publisher:     LocalizedString;
+  publisher: LocalizedString;
   publishedYear: number;
-  edition?:      string;
-  isbn?:         string;
-  pages?:        number;
-  tags:          string[];
+  edition?: string;
+  isbns?: BookIsbn[];
+  pages?: number;
+  tags: string[];
 
-  coverImage?:   string;
-  previewImages: string[];
-  buyLink?:      string;
-  pdfTeaser?:    string;
+  // Media & links
+  coverImage?:    string;
+  previewImages?:  string[];
+  buyLink?:        string;
+  pdfTeaser?:     string;
 
+  // Portfolio display
   featured:      boolean;
   displayOrder?: number;
 
-  status:     DocumentStatus;
-  deleted:    boolean;
-  createdAt:  Date;
-  updatedAt:  Date;
+  status: DocumentStatus;
+  deleted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
   createdBy?: AppUser;
   updatedBy?: AppUser;
-  v:          number;
+  v: number;
 }
 
 // Shared author shape for localized DTOs
@@ -67,7 +73,7 @@ export interface LocalizedBook {
   publisher:     string;
   publishedYear: number;
   edition?:      string;
-  isbn?:         string;
+  isbns?:        BookIsbn[];
   pages?:        number;
   tags:          string[];
   coverImage?:   string;
@@ -77,6 +83,7 @@ export interface LocalizedBook {
   featured:      boolean;
 }
 
+// Public list/card — light, one locale resolved
 export interface LocalizedSummaryBook {
   id:            string;
   title:         string;
