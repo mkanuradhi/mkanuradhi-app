@@ -2268,6 +2268,26 @@
       "deleteModalMessage":   "Are you sure you want to delete <strong>title</strong>? This action cannot be undone.",
       "deleteModalCancel":    "Cancel",
       "deleteModalAccept":    "Delete"
+    },
+    "BooksTable": {
+      "failBooks": "Failed to load books",
+      "noBooks": "No books to display",
+      "refreshBooks": "Refreshing books...",
+      "books": "books"
+    },
+    "BookOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the book: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the book",
+      "deactivateErrorTitle": "Cannot deactivate the book",
+      "deleteErrorTitle": "Cannot delete the book"
     }
   },
   "contexts": {

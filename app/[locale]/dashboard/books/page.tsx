@@ -1,11 +1,12 @@
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Button, Col, Row } from 'react-bootstrap';
-import AwardsTable from '@/components/awards-table';
-import { getAwards } from '@/services/award-service';
 import { Link } from '@/i18n/routing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { getBooks } from '@/services/book-service';
+import { auth } from "@clerk/nextjs/server";
+import BooksTable from '@/components/books-table';
 
 const baseTPath = 'pages.Dashboard.Books';
 
@@ -39,8 +40,10 @@ export async function generateMetadata ({ params }: { params: { locale: string }
 const BooksPage = async ({ params }: { params: { locale: string } }) => {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: baseTPath });
+  const { getToken } = await auth();
+  const token = (await getToken()) ?? '';
 
-  const initialPaginatedResult = await getAwards(0, 10);
+  const initialPaginatedResult = await getBooks(0, 10, token);
 
   return (
     <>
@@ -60,7 +63,7 @@ const BooksPage = async ({ params }: { params: { locale: string } }) => {
       </Row>
       <Row>
         <Col>
-          <AwardsTable initialAwards={initialPaginatedResult} />
+          <BooksTable initialBooks={initialPaginatedResult} />
         </Col>
       </Row>
     </>

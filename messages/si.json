@@ -2268,6 +2268,26 @@
       "deleteModalMessage":   "ඔබට, <strong>title</strong> පොත මැකීමට අවශ්‍ය බව විශ්වාසද? මෙම ක්‍රියාව ආපසු හැරවිය නොහැක.",
       "deleteModalCancel":    "නැත",
       "deleteModalAccept":    "ඔව්, මකන්න"
+    },
+    "BooksTable": {
+      "failBooks": "පොත් පූරණය කිරීමට අපොහොසත් විය",
+      "noBooks": "ප්‍රදර්ශනය කිරීමට පොත් නැත",
+      "refreshBooks": "පොත් නැවුම් කරමින්...",
+      "books": "පොත්"
+    },
+    "BookOptionsCard": {
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මකා දැමීම තහවුරු කිරීම",
+      "deleteModalMessage": "ඔබට පොත මකා දැමීමට අවශ්‍ය බව ඔබට විශ්වාසද: <strong>title</strong>?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "පොත සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "පොත අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "පොත මකා දැමිය නොහැක"
     }
   },
   "contexts": {
