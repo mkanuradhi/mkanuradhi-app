@@ -9,7 +9,7 @@ import {
   useDeleteBookMutation,
 } from '@/hooks/use-books';
 import LoadingContainer from './loading-container';
-import { Alert, Breadcrumb, Button, ButtonGroup, Col, Row } from 'react-bootstrap';
+import { Alert, Breadcrumb, Button, ButtonGroup, Card, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEye,
@@ -27,6 +27,8 @@ import Image from 'next/image';
 import GlowLink from './GlowLink';
 import { BookAuthor } from '@/interfaces/i-book';
 import { BookLanguage } from '@/enums/book-enums';
+import SanitizedHtml from './sanitized-html';
+import Badge from 'react-bootstrap/Badge';
 
 const baseTPath = 'components.BookOptionsViewer';
 
@@ -79,12 +81,9 @@ const AuthorList: React.FC<AuthorListProps> = ({ authors, isSi, authorRoleLabel 
           <div className="flex-grow-1">
             <span style={{ fontSize: 14 }}>{name}</span>
           </div>
-          <span
-            className="badge"
-            style={{ fontSize: 11, background: 'var(--bs-secondary-bg)', color: 'var(--bs-secondary-color)', border: '0.5px solid var(--bs-border-color)', fontWeight: 400 }}
-          >
+          <Badge pill bg="secondary">
             {authorRoleLabel(author.role)}
-          </span>
+          </Badge>
           {author.profileUrl && (
             <a href={author.profileUrl} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: 'var(--bs-info)' }}>
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
@@ -139,7 +138,7 @@ const SubjectChips: React.FC<SubjectChipsProps> = ({ subjects, isSi, label }) =>
 
   return (
     <div className="mb-3">
-      <div className="section-label mb-2">{label}</div>
+      <h4 className="h5 mt-2">{label}</h4>
       <div>
         {visible.map((s, i) => (
           <span
@@ -169,16 +168,10 @@ const TagList: React.FC<{ tags: string[]; label: string }> = ({ tags, label }) =
   if (!tags || tags.length === 0) return null;
   return (
     <div className="mb-3">
-      <div className="section-label mb-2">{label}</div>
+      <h4 className="mb-2">{label}</h4>
       <div>
         {tags.map((tag, i) => (
-          <span
-            key={i}
-            className="badge me-1 mb-1"
-            style={{ background: 'var(--bs-secondary-bg)', color: 'var(--bs-secondary-color)', border: '0.5px solid var(--bs-border-color)', fontWeight: 400, fontSize: 11 }}
-          >
-            {tag}
-          </span>
+          <Badge key={i} bg="secondary" className="me-2 mb-2">{tag}</Badge>
         ))}
       </div>
     </div>
@@ -232,24 +225,17 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
     const description = si ? book.description.si  : book.description.en;
     const content     = si ? book.content.si      : book.content.en;
     const publisher   = si ? book.publisher.si    : book.publisher.en;
-    const localeName  = si ? t('localeSi')        : t('localeEn');
 
     const metaItems: MetaItem[] = [
       { label: t('publishedYear'), value: book.publishedYear },
       { label: t('writtenLang'),   value: writtenLangLabel   },
       { label: t('edition'),       value: book.edition       },
       { label: t('pages'),         value: book.pages         },
-      { label: t('isbn'),          value: book.isbn          },
       { label: t('displayOrder'),  value: book.displayOrder  },
     ];
 
     return (
       <div>
-        {/* Locale label */}
-        <div className="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1"
-          style={{ fontSize: 12, fontWeight: 500, background: 'var(--bs-secondary-bg)', border: '0.5px solid var(--bs-border-color)', borderRadius: 6, color: 'var(--bs-secondary-color)' }}>
-          {localeName}
-        </div>
 
         {/* Cover + title block */}
         <div className="d-flex gap-3 align-items-start mb-3">
@@ -266,17 +252,17 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
             </div>
           )}
           <div className="flex-grow-1">
-            <h1 className="h4 mb-1 d-flex align-items-center gap-2 flex-wrap">
+            <h1 className="mb-1 d-flex align-items-center gap-2 flex-wrap">
               {title || <span className="text-muted fst-italic">{t('noTitle')}</span>}
               {book.featured && (
                 <FontAwesomeIcon icon={faStar} style={{ color: '#BA7517', fontSize: 16 }} title={t('featured')} />
               )}
             </h1>
-            {subtitle && <p className="text-secondary mb-2" style={{ fontSize: 15 }}>{subtitle}</p>}
+            {subtitle && <h2 className="h4 text-secondary mb-2">{subtitle}</h2>}
             <span className={`badge ${book.status === DocumentStatus.ACTIVE ? 'bg-success' : 'bg-warning text-dark'}`}>
               {book.status === DocumentStatus.ACTIVE ? t('active') : t('inactive')}
             </span>
-            <p className="mt-2 mb-0" style={{ fontSize: 11, color: 'var(--bs-secondary-color)', fontFamily: 'monospace' }}>
+            <p className="font-monospace text-muted mt-2 mb-0">
               path: {book.path}
             </p>
           </div>
@@ -289,12 +275,29 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
 
         <hr />
 
+        {book.isbns && (
+          <Row className='my-4'>
+            {book.isbns.map((isbn, index) => (
+              <Col md={4} key={index}>
+                <Card border="secondary" className='w-100'>
+                  <Card.Body>
+                    <Card.Title className='text-center'>{t('isbnValue', {value: isbn.value})}</Card.Title>
+                    <Card.Text className='text-center'>{t(`isbnFormat.${isbn.format}`)}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        )}
+
         {/* Publisher */}
         {publisher && (
-          <div className="mb-3">
-            <div className="section-label mb-1">{t('publisher')}</div>
-            <div style={{ fontSize: 14 }}>{publisher}</div>
-          </div>
+          <Row>
+            <Col>
+              <h4 className='mb-2'>{t('publisher')}</h4>
+              <div>{publisher}</div>
+            </Col>
+          </Row>
         )}
 
         {/* Subjects */}
@@ -308,7 +311,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
 
         {/* Authors */}
         <div className="mb-3">
-          <div className="section-label mb-2">{t('authors')}</div>
+          <h4 className="mb-2">{t('authors')}</h4>
           <AuthorList
             authors={book.authors}
             isSi={si}
@@ -320,18 +323,23 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
 
         {/* Description */}
         {description && (
-          <div className="mb-3">
-            <div className="section-label mb-1">{t('description')}</div>
-            <p style={{ fontSize: 14, color: 'var(--bs-secondary-color)' }}>{description}</p>
-          </div>
+          <Row>
+            <Col>
+              <h4 className="mb-2">{t('description')}</h4>
+              <div>{description}</div>
+            </Col>
+          </Row>
         )}
+
+        <hr />
 
         {/* Content */}
         {content && (
-          <div className="mb-3">
-            <div className="section-label mb-1">{t('content')}</div>
-            <p style={{ fontSize: 14, color: 'var(--bs-secondary-color)' }}>{content}</p>
-          </div>
+          <Row>
+            <Col>
+              <SanitizedHtml html={content} />
+            </Col>
+          </Row>
         )}
 
         <hr />
@@ -342,7 +350,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
         {/* Links */}
         {(book.buyLink || book.pdfTeaser || book.coverImage) && (
           <div className="mb-3">
-            <div className="section-label mb-2">{t('links')}</div>
+            <h4 className="mb-2">{t('links')}</h4>
             {book.buyLink && (
               <div className="mb-1">
                 <GlowLink href={book.buyLink} newTab withArrow>{book.buyLink}</GlowLink>

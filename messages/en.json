@@ -2246,7 +2246,12 @@
       "langSinhala":  "Sinhala",
       "edition":      "Edition",
       "pages":        "Pages",
-      "isbn":         "ISBN",
+      "isbnValue":    "ISBN {value}",
+      "isbnFormat": {
+        "paperback": "Paperback",
+        "hardcover": "Hardcover",
+        "ebook":     "eBook"
+      },
       "displayOrder": "Display order",
       "publisher":    "Publisher",
       "subjects":     "Subjects",

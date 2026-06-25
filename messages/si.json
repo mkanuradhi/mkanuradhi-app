@@ -2246,7 +2246,12 @@
       "langSinhala":  "සිංහල",
       "edition":      "සංස්කරණය",
       "pages":        "පිටු",
-      "isbn":         "ජාත්‍යන්තර සම්මත පොත් අංකය (ISBN)",
+      "isbnValue":    "ISBN {value}",
+      "isbnFormat": {
+        "paperback": "කඩදාසි කවරය (Paperback)",
+        "hardcover": "දෘඪ කවරය (Hardcover)",
+        "ebook":     "ඊ-පොත (eBook)"
+      },
       "displayOrder": "දර්ශන අනුපිළිවෙල",
       "publisher":    "ප්‍රකාශක",
       "subjects":     "විෂයයන්",
