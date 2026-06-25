@@ -18,7 +18,7 @@ import {
   MIN_BOOK_PUBLISHED_YEAR,
   MIN_BOOK_TITLE_LENGTH,
 } from '@/constants/validation-vars';
-import { BookAuthorRole, BookLanguage } from '@/enums/book-enums';
+import { BookAuthorRole, BookIsbnFormat, BookLanguage } from '@/enums/book-enums';
 
 export const getNewBookSchema = (t: (key: string, values?: Record<string, any>) => string) => {
   return yup.object({
@@ -152,9 +152,35 @@ export const getNewBookSchema = (t: (key: string, values?: Record<string, any>) 
       .max(MAX_BOOK_EDITION_LENGTH, t('editionTooLong', { max: MAX_BOOK_EDITION_LENGTH }))
       .notRequired(),
 
-    isbn: yup.string()
-      .trim()
-      .max(MAX_BOOK_ISBN_LENGTH, t('isbnTooLong', { max: MAX_BOOK_ISBN_LENGTH }))
+    // ISBNs
+
+    isbns: yup.array()
+      .of(
+        yup.object({
+          value: yup.string()
+            .trim()
+            .max(MAX_BOOK_ISBN_LENGTH, t('isbnTooLong', { max: MAX_BOOK_ISBN_LENGTH }))
+            .required(t('isbnValueRequired')),
+          format: yup.string()
+            .oneOf(Object.values(BookIsbnFormat), t('isbnFormatInvalid'))
+            .required(t('isbnFormatRequired')),
+        })
+      )
+      .max(
+        Object.values(BookIsbnFormat).length,
+        t('isbnsTooMany', { max: Object.values(BookIsbnFormat).length })
+      )
+      .test(
+        'unique-isbn-formats',
+        t('isbnFormatDuplicate'),
+        (isbns) => {
+          if (!isbns) return true;
+          const formats = isbns
+            .map((isbn) => isbn.format)
+            .filter(Boolean);
+          return formats.length === new Set(formats).size;
+        }
+      )
       .notRequired(),
 
     pages: yup.number()

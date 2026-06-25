@@ -236,8 +236,8 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                             <div className="d-flex justify-content-between align-items-center mb-3">
                               <strong>{t('authorLabel', { number: index + 1 })}</strong>
                               {values.authors.length > 1 && (
-                                <Button variant="danger" size="sm" type="button" onClick={() => remove(index)}>
-                                  <FontAwesomeIcon icon={faMinus} /> {t('removeAuthor')}
+                                <Button variant="danger" size="sm" type="button" onClick={() => remove(index)} title={t('removeAuthor')}>
+                                  <FontAwesomeIcon icon={faMinus} />
                                 </Button>
                               )}
                             </div>
@@ -366,8 +366,8 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                           <div key={index} className="border rounded p-3 mb-3">
                             <div className="d-flex justify-content-between align-items-center mb-3">
                               <strong>{t('isbnLabel', { number: index + 1 })}</strong>
-                                <Button variant="danger" size="sm" type="button" onClick={() => remove(index)}>
-                                  <FontAwesomeIcon icon={faMinus} /> {t('removeIsbnLabel')}
+                                <Button variant="danger" size="sm" type="button" onClick={() => remove(index)} title={t('removeIsbnLabel')}>
+                                  <FontAwesomeIcon icon={faMinus} />
                                 </Button>
                             </div>
 
