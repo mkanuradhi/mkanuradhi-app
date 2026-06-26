@@ -2223,7 +2223,9 @@
 
       "displayOrderMustBeNumber":  "Display order must be a number.",
       "displayOrderMustBeInteger": "Display order must be a whole number.",
-      "displayOrderTooLow":        "Display order cannot be negative."
+      "displayOrderTooLow":        "Display order cannot be negative.",
+
+      "versionRequired": "Version is required for updates."
     },
     "BookOptionsViewer": {
       "dashboard":    "Dashboard",

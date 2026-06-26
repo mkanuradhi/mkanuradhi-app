@@ -2223,7 +2223,9 @@
 
       "displayOrderMustBeNumber":  "දර්ශන අනුපිළිවෙල සංඛ්‍යාවක් විය යුතුයි.",
       "displayOrderMustBeInteger": "දර්ශන අනුපිළිවෙල පූර්ණ සංඛ්‍යාවක් විය යුතුයි.",
-      "displayOrderTooLow":        "දර්ශන අනුපිළිවෙල ශුන්‍යයට වඩා අඩු විය නොහැකිය."
+      "displayOrderTooLow":        "දර්ශන අනුපිළිවෙල ශුන්‍යයට වඩා අඩු විය නොහැකිය.",
+
+      "versionRequired": "යාවත්කාලීන කිරීම් සඳහා අනුවාදය (Version) අවශ්‍ය වේ."
     },
     "BookOptionsViewer": {
       "dashboard":    "පාලන පුවරුව",

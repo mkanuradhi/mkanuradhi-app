@@ -1,4 +1,4 @@
-import { CreateBookDto } from "@/dtos/book-dto";
+import { CreateBookDto, UpdateBookDto } from "@/dtos/book-dto";
 import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import Book, { LocalizedBook, LocalizedSummaryBook } from "@/interfaces/i-book";
@@ -12,6 +12,7 @@ import {
   getBooks,
   getLocalizedBookByPath,
   getLocalizedBooks,
+  updateBook,
 } from "@/services/book-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -224,6 +225,41 @@ export const useDeleteBookMutation = () => {
         };
       });
       queryClient.invalidateQueries({ queryKey: [BOOKS_QUERY_KEY] });
+    },
+  });
+};
+
+export const useUpdateBookMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async (variables: {id: string, bookDto: UpdateBookDto}) => {
+      const token = (await getToken()) ?? '';
+      return updateBook(variables.id, variables.bookDto, token);
+    },
+    onSuccess: (updatedBook) => {
+      if (!updatedBook || !updatedBook.id) return;
+
+      // Update individual book cache
+      queryClient.setQueryData([BOOK_QUERY_KEY, updatedBook.id], updatedBook);
+
+      // Update book list cache
+      queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData?: PaginatedResult<Book>) => {
+        if (!oldData) return;
+
+        return {
+          ...oldData,
+          items: oldData.items.map((book) => 
+            book.id === updatedBook.id ? updatedBook : book
+          ),
+        };
+      });
+    },
+    onSettled: (_data, _error, variables) => {
+      // Refetch only the updated award instead of all awards
+      queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, variables.id] });
+      queryClient.invalidateQueries({ queryKey: [BOOKS_QUERY_KEY], refetchType: 'active' });
     },
   });
 };

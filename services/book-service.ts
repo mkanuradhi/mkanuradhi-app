@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_BASE_URL, BOOKS_PATH, LOCALIZED_BOOKS_PATH } from "@/constants/api-paths";
-import { ActivationBookDto, CreateBookDto } from "@/dtos/book-dto";
+import { ActivationBookDto, CreateBookDto, UpdateBookDto } from "@/dtos/book-dto";
 import { handleApiError } from "@/errors/api-error-handler";
 import Book, { LocalizedBook, LocalizedSummaryBook } from "@/interfaces/i-book";
 import PaginatedResult from "@/interfaces/i-paginated-result";
@@ -100,6 +100,19 @@ export const deactivateBook = async (
     const response = await axios.patch<Book>(
       `${API_BASE_URL}${BOOKS_PATH}/${bookId}/toggle`,
       activationDto,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const updateBook = async (id: string, bookDto: UpdateBookDto, token: string): Promise<Book> => {
+  try {
+    const response = await axios.put<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${id}`,
+      bookDto,
       buildHeaders(token)
     );
     return response.data;
