@@ -38,7 +38,7 @@ const BookOptionsCard: React.FC<BookOptionsCardProps> = ({book}) => {
     activateBookMutation(book.id);
   }
 
-  const handleDeativate = () => {
+  const handleDeactivate = () => {
     deactivateBookMutation(book.id);
   }
 
@@ -49,15 +49,28 @@ const BookOptionsCard: React.FC<BookOptionsCardProps> = ({book}) => {
       <Card className="my-3 shadow book-options-card">
         <Row className="g-0">
           {hasImage && (
-            <Col xs={12} md={4} className="d-flex align-self-stretch">
-              <Card.Img 
-                src={book.coverImage} 
-                className="rounded-start rounded-end-0 object-fit-cover w-100"
-                style={{ maxHeight: '32rem', minHeight: '16rem' }}
-              />
-            </Col>
+            <>
+            {/* Mobile */}
+              <Col xs={12} className="d-md-none">
+                <Card.Img
+                  src={book.coverImage}
+                  className="rounded-top rounded-bottom-0 object-fit-cover w-100"
+                  style={{ maxHeight: "24rem", minHeight: "16rem" }}
+                />
+              </Col>
+              {/* Desktop */}
+              <Col md={4} className="d-none d-md-flex">
+                <div className="position-relative w-100 overflow-hidden">
+                  <Card.Img 
+                    src={book.coverImage} 
+                    className="position-absolute rounded-start rounded-end-0 object-fit-cover w-100 h-100"
+                    style={{ inset: 0 }}
+                  />
+                </div>
+              </Col>
+            </>
           )}
-          <Col md={hasImage ? 8 : 12}>
+          <Col xs={12} md={hasImage ? 8 : 12}>
             <Card.Body>
               <Card.Subtitle className="my-2">
                 <Row className="align-items-center">
@@ -109,7 +122,7 @@ const BookOptionsCard: React.FC<BookOptionsCardProps> = ({book}) => {
                     <Button
                       variant={book.status === DocumentStatus.ACTIVE ? `warning` : `success`}
                       aria-label={book.status === DocumentStatus.ACTIVE ? t('deactivate') : t('activate')}
-                      onClick={book.status === DocumentStatus.ACTIVE ? handleDeativate : handleActivate}
+                      onClick={book.status === DocumentStatus.ACTIVE ? handleDeactivate : handleActivate}
                       disabled={isPendingActivate || isPendingDeactivate}
                     >
                       <FontAwesomeIcon
