@@ -610,6 +610,9 @@
         },
         "Edit": {
           "title": "Edit Book"
+        },
+        "EditCoverImage": {
+          "title": "Edit Cover Image"
         }
       }
     },
@@ -2295,6 +2298,22 @@
       "activateErrorTitle": "Cannot activate the book",
       "deactivateErrorTitle": "Cannot deactivate the book",
       "deleteErrorTitle": "Cannot delete the book"
+    },
+    "UpdateBookCoverImageForm": {
+      "noCoverImage": "No cover image uploaded yet.",
+      "deleteCoverImage": "Delete cover image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
     }
   },
   "contexts": {

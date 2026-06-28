@@ -23,12 +23,13 @@ import DocumentStatus from '@/enums/document-status';
 import DeleteModal from './delete-modal';
 import { LANG_SI } from '@/constants/common-vars';
 import RecordMetadata from './record-metadata';
-import Image from 'next/image';
 import GlowLink from './GlowLink';
 import { BookAuthor } from '@/interfaces/i-book';
 import { BookLanguage } from '@/enums/book-enums';
 import SanitizedHtml from './sanitized-html';
 import Badge from 'react-bootstrap/Badge';
+import EditableImage from './editable-image';
+import EditableImagePlaceholder from './editable-image-placeholder';
 
 const baseTPath = 'components.BookOptionsViewer';
 
@@ -36,7 +37,7 @@ interface BookOptionsViewerProps {
   bookId: string;
 }
 
-// ── Helper: author initials ───────────────────────────────────────────────────
+// Helper: author initials
 
 const getInitials = (name: string): string => {
   return name
@@ -47,14 +48,14 @@ const getInitials = (name: string): string => {
     .toUpperCase();
 };
 
-// ── Helper: locale-aware author name ─────────────────────────────────────────
+// Helper: locale-aware author name
 
 const getAuthorName = (author: BookAuthor, isSi: boolean): string => {
   if (isSi) return author.name.si || author.name.en || '';
   return author.name.en || author.name.si || '';
 };
 
-// ── Sub-component: Author list ────────────────────────────────────────────────
+// Sub-component: Author list
 
 interface AuthorListProps {
   authors: BookAuthor[];
@@ -95,7 +96,7 @@ const AuthorList: React.FC<AuthorListProps> = ({ authors, isSi, authorRoleLabel 
   </div>
 );
 
-// ── Sub-component: Metadata grid ──────────────────────────────────────────────
+// Sub-component: Metadata grid
 
 interface MetaItem {
   label: string;
@@ -121,7 +122,7 @@ const MetaGrid: React.FC<{ items: MetaItem[] }> = ({ items }) => {
   );
 };
 
-// ── Sub-component: Subject chips ──────────────────────────────────────────────
+// Sub-component: Subject chips
 
 interface SubjectChipsProps {
   subjects: { en?: string; si?: string }[];
@@ -162,7 +163,7 @@ const SubjectChips: React.FC<SubjectChipsProps> = ({ subjects, isSi, label }) =>
   );
 };
 
-// ── Sub-component: Tag chips ──────────────────────────────────────────────────
+// Sub-component: Tag chips
 
 const TagList: React.FC<{ tags: string[]; label: string }> = ({ tags, label }) => {
   if (!tags || tags.length === 0) return null;
@@ -178,7 +179,7 @@ const TagList: React.FC<{ tags: string[]; label: string }> = ({ tags, label }) =
   );
 };
 
-// ── Main component ────────────────────────────────────────────────────────────
+// Main component
 
 const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
   const t = useTranslations(baseTPath);
@@ -217,7 +218,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
     ? t('langSinhala')
     : t('langEnglish');
 
-  // ── Locale section renderer ───────────────────────────────────────────────
+  // Locale section renderer
 
   const renderSection = (si: boolean) => {
     const title       = si ? book.title.si       : book.title.en;
@@ -240,16 +241,19 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
         {/* Cover + title block */}
         <div className="d-flex gap-3 align-items-start mb-3">
           {book.coverImage ? (
-            <div style={{ width: 90, height: 126, position: 'relative', flexShrink: 0, borderRadius: 6, overflow: 'hidden' }}>
-              <Image src={book.coverImage} alt={title || ''} fill style={{ objectFit: 'cover' }} />
-            </div>
+            <EditableImage
+              src={book.coverImage}
+              alt={title || ''}
+              editHref={`/dashboard/books/${book.id}/edit/cover-image`}
+              width={90}
+              height={126}
+            />
           ) : (
-            <div
-              className="d-flex align-items-center justify-content-center flex-shrink-0"
-              style={{ width: 90, height: 126, background: 'var(--bs-secondary-bg)', border: '0.5px solid var(--bs-border-color)', borderRadius: 6, color: 'var(--bs-secondary-color)', fontSize: 12 }}
-            >
-              {t('noCover')}
-            </div>
+            <EditableImagePlaceholder
+              editHref={`/dashboard/books/${book.id}/edit/cover-image`}
+              width={90}
+              height={126}
+            />
           )}
           <div className="flex-grow-1">
             <h1 className="mb-1 d-flex align-items-center gap-2 flex-wrap">
@@ -372,7 +376,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
     );
   };
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // Render
 
   return (
     <div>

@@ -137,3 +137,28 @@ export const deleteBook = async (
     throw handleApiError(error);
   }
 };
+
+export const uploadCoverImage = async (bookId: string, formData: FormData, token: string): Promise<Book> => {
+  try {
+    const response = await axios.patch<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/cover-image`,
+      formData,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const deleteCoverImage = async (bookId: string, token: string): Promise<Book> => {
+  try {
+    const response = await axios.delete<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/cover-image`,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};

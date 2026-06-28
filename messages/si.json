@@ -610,6 +610,9 @@
         },
         "Edit": {
           "title": "පොතක් සංස්කරණය කිරීම"
+        },
+        "EditCoverImage": {
+          "title": "කවර රූපය සංස්කරණය කරන්න"
         }
       }
     },
@@ -2295,6 +2298,22 @@
       "activateErrorTitle": "පොත සක්‍රිය කළ නොහැක",
       "deactivateErrorTitle": "පොත අක්‍රිය කළ නොහැක",
       "deleteErrorTitle": "පොත මකා දැමිය නොහැක"
+    },
+    "UpdateBookCoverImageForm": {
+      "noCoverImage": "තවමත් කවරයේ රූපයක් උඩුගත කර නොමැත.",
+      "deleteCoverImage": "කවර රූපය මකන්න",
+      "deleting": "මකමින්...",
+      "dragActiveLabel": "රූපය මෙතනට දාන්න...",
+      "selectFileLabel": "රූපයක් මෙතැනට ඇද දමන්න, නැතහොත් තේරීමට ක්ලික් කරන්න",
+      "selectedFileNameLabel": "නම",
+      "selectedFileSizeLabel": "ප්‍රමාණය",
+      "selectedFileDimensionsLabel": "මානයන්",
+      "uploading": "උඩුගත කරමින්...",
+      "upload": "උඩුගත කරන්න",
+      "remove": "ඉවත් කරන්න",
+      "fileRejectionTitle": "ගොනුව ප්‍රතික්ෂේප කරන ලදී",
+      "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
+      "done": "අවසන් කරන්න"
     }
   },
   "contexts": {
