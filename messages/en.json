@@ -613,6 +613,9 @@
         },
         "EditCoverImage": {
           "title": "Edit Cover Image"
+        },
+        "EditPreviewImages": {
+          "title": "Edit Preview Images"
         }
       }
     },
@@ -2261,16 +2264,18 @@
       "publisher":    "Publisher",
       "subjects":     "Subjects",
       "authors":      "Authors",
-      "description":  "Description",
-      "content":      "Content",
-      "tags":         "Tags",
-      "links":        "Links",
       "authorRole": {
         "author":    "Author",
         "co-author": "Co-author",
         "editor":    "Editor",
         "reviewer":  "Reviewer"
       },
+      "description":  "Description",
+      "content":      "Content",
+      "tags":         "Tags",
+      "links":        "Links",
+      "previewImages":"Preview Images",
+      "addPreviewImages":"Add Preview Images",
       "activateErrorTitle":   "Failed to activate book.",
       "deactivateErrorTitle": "Failed to deactivate book.",
       "deleteErrorTitle":     "Failed to delete book.",
@@ -2312,6 +2317,20 @@
       "upload": "Upload",
       "remove": "Remove",
       "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "UpdateBookPreviewImagesForm": {
+      "noPreviewImages": "No preview images uploaded yet.",
+      "dragActiveLabel": "Drop the images here...",
+      "selectFilesLabel": "Drag and drop an images here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "Files Rejected",
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
     }

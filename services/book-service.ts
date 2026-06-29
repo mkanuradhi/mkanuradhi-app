@@ -162,3 +162,16 @@ export const deleteCoverImage = async (bookId: string, token: string): Promise<B
     throw handleApiError(error);
   }
 };
+
+export const uploadPreviewImages = async (bookId: string, formData: FormData, token: string): Promise<Book> => {
+  try {
+    const response = await axios.patch<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/preview-images`,
+      formData,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};

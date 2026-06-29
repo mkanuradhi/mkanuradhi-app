@@ -18,6 +18,7 @@ import {
   faStar,
   faTrash,
   faArrowUpRightFromSquare,
+  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import DocumentStatus from '@/enums/document-status';
 import DeleteModal from './delete-modal';
@@ -352,7 +353,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
         <TagList tags={book.tags} label={t('tags')} />
 
         {/* Links */}
-        {(book.buyLink || book.pdfTeaser || book.coverImage) && (
+        {(book.buyLink || book.pdfTeaser) && (
           <div className="mb-3">
             <h4 className="mb-2">{t('links')}</h4>
             {book.buyLink && (
@@ -365,13 +366,39 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
                 <GlowLink href={book.pdfTeaser} newTab withArrow>{book.pdfTeaser}</GlowLink>
               </div>
             )}
-            {book.coverImage && (
-              <div className="mb-1">
-                <GlowLink href={book.coverImage} newTab withArrow>{book.coverImage}</GlowLink>
-              </div>
-            )}
           </div>
         )}
+
+        {/* Preview Images */}
+        <Row className='my-4'>
+          <Col>
+            <h4>{t('previewImages')}</h4>
+
+            {book.previewImages && (
+              <Row className='mb-4 g-4'>
+                {book.previewImages.map((pi) => (
+                  <Col xs={12} sm={6} md={4} xxl={3} key={pi.id}>
+                    <Card className='w-100'>
+                      <Card.Img variant="top" src={pi.url} className={!pi.caption ? "rounded-bottom" : undefined} />
+                      {pi.caption && (
+                        <Card.Body>
+                          <Card.Text className='text-center mb-0'>
+                            {si ? pi.caption?.si : pi.caption.en}
+                          </Card.Text>
+                        </Card.Body>
+                      )}
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            )}
+            <Link href={`/dashboard/books/${book.id}/edit/preview-images`}>
+              <Button variant="outline-primary">
+                <FontAwesomeIcon icon={faPlus} className="me-1" /> {t('addPreviewImages')}
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </div>
     );
   };

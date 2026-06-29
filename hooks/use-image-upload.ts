@@ -67,11 +67,14 @@ export const useImageUpload = ({
 
   // clearFiles
   const clearFiles = useCallback(() => {
-    setFiles([]);
+    setFiles(prevFiles => {
+      prevFiles.forEach(file => URL.revokeObjectURL(file.preview));
+      return [];
+    });
   }, []);
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
-    setFiles([]);
+    clearFiles();
 
     if (!acceptedFiles?.length) return;
 
@@ -98,7 +101,7 @@ export const useImageUpload = ({
       );
 
       setFiles(previewFiles);
-  }, []);
+  }, [clearFiles]);
 
   useEffect(() => {
     return () => {

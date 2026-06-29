@@ -15,6 +15,7 @@ import {
   getLocalizedBooks,
   updateBook,
   uploadCoverImage,
+  uploadPreviewImages,
 } from "@/services/book-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -326,6 +327,45 @@ export const useDeleteCoverImageMutation = () => {
       });
 
       queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, updatedBook.id] });
+    },
+  });
+};
+
+export const useUploadPreviewImagesMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async ({ id, formData }: { id: string; formData: FormData }) => {
+      const token = (await getToken()) ?? "";
+      return uploadPreviewImages(id, formData, token);
+    },
+
+    onSuccess: updatedBook => {
+      if (!updatedBook || !updatedBook.id) return;
+
+      queryClient.setQueryData(
+        [BOOK_QUERY_KEY, updatedBook.id],
+        updatedBook
+      );
+
+      queryClient.setQueryData(
+        [BOOKS_QUERY_KEY],
+        (oldData?: PaginatedResult<Book>) => {
+          if (!oldData) return oldData;
+
+          return {
+            ...oldData,
+            items: oldData.items.map(book =>
+              book.id === updatedBook.id ? updatedBook : book
+            ),
+          };
+        }
+      );
+
+      queryClient.invalidateQueries({
+        queryKey: [BOOK_QUERY_KEY, updatedBook.id],
+      });
     },
   });
 };
