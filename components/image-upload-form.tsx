@@ -223,14 +223,14 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({
       <Row className="mb-3">
         <Col>
           <Alert variant="danger" show={showRejectFileWarn} onClose={() => setShowRejectFileWarn(false)} dismissible>
-            <Alert.Heading>
+            <Alert.Heading className='mb-3'>
               <i className="bi bi-exclamation-circle"></i> {labels.fileRejectionTitle}
             </Alert.Heading>
 
+            <div className='d-flex flex-column gap-3'>
             {fileRejections.map(({ file, errors }) => (
               <div key={file.name} className="mb-0">
                 <p className='mb-0'>{labels.fileRejectionName(file.name)}</p>
-
                 <ul className="mb-0 mt-1">
                   {errors.map(error => (
                     <li key={error.code}>{error.message}</li>
@@ -238,6 +238,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({
                 </ul>
               </div>
             ))}
+            </div>
           </Alert>
         </Col>
       </Row>
