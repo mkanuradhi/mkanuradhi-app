@@ -175,3 +175,15 @@ export const uploadPreviewImages = async (bookId: string, formData: FormData, to
     throw handleApiError(error);
   }
 };
+
+export const deletePreviewImage = async (bookId: string, previewImageId: string, token: string): Promise<Book> => {
+  try {
+    const response = await axios.delete<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/preview-images/${previewImageId}`,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};

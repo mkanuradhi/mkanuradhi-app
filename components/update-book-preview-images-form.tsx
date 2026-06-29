@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Col, Row } from 'react-bootstrap';
-import { useBookByIdQuery, useUploadPreviewImagesMutation } from '@/hooks/use-books';
+import { useBookByIdQuery, useDeletePreviewImageMutation, useUploadPreviewImagesMutation } from '@/hooks/use-books';
 import LoadingContainer from './loading-container';
 import ImagesUploadForm from './images-upload-form';
 
@@ -17,6 +17,7 @@ const UpdateBookPreviewImagesForm: React.FC<UpdateBookPreviewImagesFormProps> = 
 
   const { data: book, isPending, isError, isFetching, isSuccess, error } = useBookByIdQuery(bookId);
   const { mutateAsync: uploadPreviewImagesMutation, isPending: isPendingUpload } = useUploadPreviewImagesMutation();
+  const { mutateAsync: deletePreviewImageMutation, isPending: isPendingDelete } = useDeletePreviewImageMutation();
 
   // Loading / error states
 
@@ -40,7 +41,9 @@ const UpdateBookPreviewImagesForm: React.FC<UpdateBookPreviewImagesFormProps> = 
       altText={book.title.en || ""}
       fieldName="previewImages"
       onUpload={(formData) => uploadPreviewImagesMutation({ id: bookId, formData })}
+      onDelete={(previewImageId) => deletePreviewImageMutation({bookId, previewImageId})}
       isPendingUpload={isPendingUpload}
+      isPendingDelete={isPendingDelete}
       doneHref={`/dashboard/books/${bookId}`}
       maxSize={5 * 1024 * 1024}
       maxFiles={15}

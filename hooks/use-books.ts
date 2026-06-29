@@ -9,6 +9,7 @@ import {
   deactivateBook,
   deleteBook,
   deleteCoverImage,
+  deletePreviewImage,
   getBookById,
   getBooks,
   getLocalizedBookByPath,
@@ -366,6 +367,38 @@ export const useUploadPreviewImagesMutation = () => {
       queryClient.invalidateQueries({
         queryKey: [BOOK_QUERY_KEY, updatedBook.id],
       });
+    },
+  });
+};
+
+export const useDeletePreviewImageMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async ({ bookId, previewImageId }: { bookId: string; previewImageId: string }) => {
+      const token = (await getToken()) ?? '';
+      return deletePreviewImage(bookId, previewImageId, token);
+    },
+
+    onSuccess: (updatedBook) => {
+      if (!updatedBook || !updatedBook.id) return;
+
+      // Update individual book cache
+      queryClient.setQueryData([BOOK_QUERY_KEY, updatedBook.id], updatedBook);
+
+      // Update paginated list cache
+      queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData?: PaginatedResult<Book>) => {
+        if (!oldData) return;
+        return {
+          ...oldData,
+          items: oldData.items.map(book =>
+            book.id === updatedBook.id ? updatedBook : book
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, updatedBook.id] });
     },
   });
 };

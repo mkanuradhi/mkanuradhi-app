@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch, faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "@/i18n/routing";
 import { useImageUpload } from "@/hooks/use-image-upload";
+import { LocalizedString } from "@/types/locale.types";
 
 // Labels interface
 
@@ -27,6 +28,7 @@ interface ExistingImage {
   id: string;
   url: string;
   displayOrder?: number;
+  caption?: LocalizedString;
 }
 
 interface ImagesUploadFormProps {
@@ -34,7 +36,9 @@ interface ImagesUploadFormProps {
   altText: string;
   fieldName: string;
   onUpload: (formData: FormData) => Promise<any>;
+  onDelete: (imageId: string) => Promise<any>;
   isPendingUpload: boolean;
+  isPendingDelete: boolean;
   doneHref: string;
   maxSize?: number;
   maxFiles: number;
@@ -47,7 +51,9 @@ const ImagesUploadForm: React.FC<ImagesUploadFormProps> = ({
   altText,
   fieldName,
   onUpload,
+  onDelete,
   isPendingUpload,
+  isPendingDelete,
   doneHref,
   maxSize = 5 * 1024 * 1024,
   maxFiles,
@@ -88,6 +94,11 @@ const ImagesUploadForm: React.FC<ImagesUploadFormProps> = ({
     clearFiles();
   };
 
+  const handleDelete = async (imageId: string) => {
+    if (!imageId) return;
+    await onDelete(imageId);
+  };
+
   return (
     <div>
       {/* Existing images */}
@@ -97,18 +108,20 @@ const ImagesUploadForm: React.FC<ImagesUploadFormProps> = ({
             <div className="d-flex flex-wrap gap-3">
               {currentImages.map(image => (
                 <Card key={image.id} style={{ width: maxImageSize }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={image.url}
-                    alt={altText}
-                    style={{
-                      width: "100%",
-                      height: maxImageSize,
-                      objectFit: "contain",
-                      borderTopLeftRadius: "var(--bs-card-inner-border-radius)",
-                      borderTopRightRadius: "var(--bs-card-inner-border-radius)",
-                    }}
-                  />
+                  <Card.Img variant="top" src={image.url} />
+                  <Card.Body>
+                    <Card.Text className='text-center mb-2'>
+                      {image.caption?.en ?? image.caption?.si}
+                    </Card.Text>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      onClick={() => handleDelete(image.id)}
+                      disabled={isPendingDelete || isPendingUpload}
+                    >
+                      <FontAwesomeIcon icon={faTrash} className="me-1" /> {labels.remove}
+                    </Button>
+                  </Card.Body>
                 </Card>
               ))}
             </div>
