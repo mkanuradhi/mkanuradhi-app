@@ -2161,6 +2161,13 @@
       "displayOrderPlaceholder": "1",
       "displayOrderHelp":        "පොත් ලැයිස්තුවේ දිස්වන අනුපිළිවෙල. අඩු අගයක් = ඉහළට",
 
+      "previewImages":"පෙරදසුන්",
+      "previewImageCaption": "රූප ශීර්ෂය",
+      "previewImageCaptionEnLabel": "රූප ශීර්ෂය (ඉංග්‍රීසි)",
+      "previewImageCaptionEnPlaceholder": "Short description of the image",
+      "previewImageCaptionSiLabel": "රූප ශීර්ෂය (සිංහල)",
+      "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරය",
+
       "cancel":     "අවලංගු කරන්න",
       "submit":     "පොත සුරකින්න",
       "submitting": "සුරකිමින්...",

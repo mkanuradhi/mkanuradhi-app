@@ -2161,6 +2161,13 @@
       "displayOrderPlaceholder": "1",
       "displayOrderHelp":        "Order in which this book appears in the list. Lower number = higher position.",
 
+      "previewImages": "Preview Images",
+      "previewImageCaption": "Caption",
+      "previewImageCaptionEnLabel": "Caption (English)",
+      "previewImageCaptionEnPlaceholder": "Short description of the image",
+      "previewImageCaptionSiLabel": "Caption (Sinhala)",
+      "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරයක්",
+
       "cancel":     "Cancel",
       "submit":     "Save book",
       "submitting": "Saving...",

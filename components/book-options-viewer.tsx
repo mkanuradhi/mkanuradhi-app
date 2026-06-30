@@ -221,12 +221,12 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
 
   // Locale section renderer
 
-  const renderSection = (si: boolean) => {
-    const title       = si ? book.title.si       : book.title.en;
-    const subtitle    = si ? book.subtitle?.si    : book.subtitle?.en;
-    const description = si ? book.description.si  : book.description.en;
-    const content     = si ? book.content.si      : book.content.en;
-    const publisher   = si ? book.publisher.si    : book.publisher.en;
+  const renderSection = (isSin: boolean) => {
+    const title       = isSin ? book.title.si       : book.title.en;
+    const subtitle    = isSin ? book.subtitle?.si    : book.subtitle?.en;
+    const description = isSin ? book.description.si  : book.description.en;
+    const content     = isSin ? book.content.si      : book.content.en;
+    const publisher   = isSin ? book.publisher.si    : book.publisher.en;
 
     const metaItems: MetaItem[] = [
       { label: t('publishedYear'), value: book.publishedYear },
@@ -308,7 +308,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
         {/* Subjects */}
         <SubjectChips
           subjects={book.subject}
-          isSi={si}
+          isSi={isSin}
           label={t('subjects')}
         />
 
@@ -319,7 +319,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
           <h4 className="mb-2">{t('authors')}</h4>
           <AuthorList
             authors={book.authors}
-            isSi={si}
+            isSi={isSin}
             authorRoleLabel={(role) => t(`authorRole.${role}`)}
           />
         </div>
@@ -374,22 +374,26 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
           <Col>
             <h4>{t('previewImages')}</h4>
 
-            {book.previewImages && (
+            {book.previewImages && book.previewImages.length > 0 && (
               <Row className='mb-4 g-4'>
-                {book.previewImages.map((pi) => (
-                  <Col xs={12} sm={6} md={4} xxl={3} key={pi.id}>
-                    <Card className='w-100'>
-                      <Card.Img variant="top" src={pi.url} className={!pi.caption ? "rounded-bottom" : undefined} />
-                      {pi.caption && (
-                        <Card.Body>
-                          <Card.Text className='text-center mb-0'>
-                            {si ? pi.caption?.si : pi.caption.en}
-                          </Card.Text>
-                        </Card.Body>
-                      )}
-                    </Card>
-                  </Col>
-                ))}
+                {[...book.previewImages]
+                  .sort((a, b) => a.displayOrder - b.displayOrder)
+                  .map((pi) => {
+                    const caption = isSin ? pi.caption?.si : pi.caption?.en;
+                    return (
+                      <Col xs={12} sm={6} md={6} xl={4} xxl={3} key={pi.id}>
+                        <Card className='w-100'>
+                          <Card.Img variant="top" src={pi.url} className={!caption ? "rounded-bottom" : undefined} />
+                          
+                          {caption && (
+                            <Card.Body>
+                              <Card.Text className='text-center mb-0'>{caption}</Card.Text>
+                            </Card.Body>
+                          )}
+                        </Card>
+                      </Col>
+                    );
+                })}
               </Row>
             )}
             <Link href={`/dashboard/books/${book.id}/edit/preview-images`}>

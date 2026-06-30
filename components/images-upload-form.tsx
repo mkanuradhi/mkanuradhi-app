@@ -27,7 +27,6 @@ export interface ImagesUploadLabels {
 interface ExistingImage {
   id: string;
   url: string;
-  displayOrder?: number;
   caption?: LocalizedString;
 }
 
@@ -108,19 +107,28 @@ const ImagesUploadForm: React.FC<ImagesUploadFormProps> = ({
             <div className="d-flex flex-wrap gap-3">
               {currentImages.map(image => (
                 <Card key={image.id} style={{ width: maxImageSize }}>
-                  <Card.Img variant="top" src={image.url} />
-                  <Card.Body>
-                    <Card.Text className='text-center mb-2'>
-                      {image.caption?.en ?? image.caption?.si}
-                    </Card.Text>
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      onClick={() => handleDelete(image.id)}
-                      disabled={isPendingDelete || isPendingUpload}
-                    >
-                      <FontAwesomeIcon icon={faTrash} className="me-1" /> {labels.remove}
-                    </Button>
+                  <Card.Img variant="top" src={image.url} style={{ maxHeight: '16rem' }} />
+                  <Card.Body className="d-flex flex-column">
+                    {image.caption?.en && (
+                      <Card.Text className='text-center mb-2'>
+                        {image.caption.en}
+                      </Card.Text>
+                    )}
+                    {image.caption?.si && (
+                      <Card.Text className='text-center mb-2'>
+                        {image.caption.si}
+                      </Card.Text>
+                    )}
+                    <div className="mt-auto">
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => handleDelete(image.id)}
+                        disabled={isPendingDelete || isPendingUpload}
+                      >
+                        <FontAwesomeIcon icon={faTrash} className="me-1" /> {labels.remove}
+                      </Button>
+                    </div>
                   </Card.Body>
                 </Card>
               ))}

@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
-import { Col, Row, Form as BootstrapForm, Button, Nav } from 'react-bootstrap';
+import { Col, Row, Form as BootstrapForm, Button, Nav, Card } from 'react-bootstrap';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -78,6 +78,12 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
       buyLink:       book.buyLink       ?? '',
       featured:      book.featured,
       displayOrder:  book.displayOrder  ?? '',
+      previewImages: book.previewImages?.map(pi => ({
+        id: pi.id,
+        url: pi.url,
+        caption: {en: pi.caption?.en, si: pi.caption?.si},
+        displayOrder: pi.displayOrder,
+      })),
       tagInput:      '',
       v:             book.v,
     };
@@ -117,6 +123,11 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
       buyLink:      values.buyLink?.trim() || undefined,
       featured:     values.featured,
       displayOrder: values.displayOrder ? Number(values.displayOrder) : undefined,
+      previewImages: values.previewImages?.map(pi => ({
+        id: pi.id,
+        caption: { en: pi.caption?.en, si: pi.caption?.si || undefined },
+        displayOrder: pi.displayOrder
+      })),
       v:            values.v,
     };
 
@@ -497,32 +508,98 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   <ErrorMessage name="buyLink" component="p" className="text-danger mt-1" />
                 </BootstrapForm.Group>
 
+                <Row>
                 {/* ── Featured ────────────────────────────────────────────── */}
-                <BootstrapForm.Group className="mb-4" controlId="formFeatured">
-                  <BootstrapForm.Label>{t('featuredLabel')}</BootstrapForm.Label>
-                  <div className="d-flex align-items-center gap-2">
-                    <Field
-                      name="featured"
-                      type="checkbox"
-                      id="formFeatured"
-                      className="form-check-input"
-                      checked={values.featured}
-                      onChange={() => setFieldValue('featured', !values.featured)}
-                    />
-                    <label htmlFor="formFeatured" className="form-check-label">
-                      {t('featuredCheckboxLabel')}
-                    </label>
-                  </div>
-                  <ErrorMessage name="featured" component="p" className="text-danger mt-1" />
-                </BootstrapForm.Group>
+                  <Col xs={12} md={6}>
+                    <BootstrapForm.Group className="mb-4" controlId="formFeatured">
+                      <BootstrapForm.Label>{t('featuredLabel')}</BootstrapForm.Label>
+                      <div className="d-flex align-items-center gap-2">
+                        <Field
+                          name="featured"
+                          type="checkbox"
+                          id="formFeatured"
+                          className="form-check-input"
+                          checked={values.featured}
+                          onChange={() => setFieldValue('featured', !values.featured)}
+                        />
+                        <label htmlFor="formFeatured" className="form-check-label">
+                          {t('featuredCheckboxLabel')}
+                        </label>
+                      </div>
+                      <ErrorMessage name="featured" component="p" className="text-danger mt-1" />
+                    </BootstrapForm.Group>
+                  </Col>
+                  {/* ── Display order ───────────────────────────────────────── */}
+                  <Col xs={12} md={6}>
+                    <BootstrapForm.Group className="mb-4" controlId="formDisplayOrder">
+                      <BootstrapForm.Label>{t('displayOrderLabel')}</BootstrapForm.Label>
+                      <Field name="displayOrder" type="number" placeholder={t('displayOrderPlaceholder')} className="form-control" />
+                      <BootstrapForm.Text className="text-muted">{t('displayOrderHelp')}</BootstrapForm.Text>
+                      <ErrorMessage name="displayOrder" component="p" className="text-danger mt-1" />
+                    </BootstrapForm.Group>
+                  </Col>
+                </Row>
 
-                {/* ── Display order ───────────────────────────────────────── */}
-                <BootstrapForm.Group className="mb-4" controlId="formDisplayOrder">
-                  <BootstrapForm.Label>{t('displayOrderLabel')}</BootstrapForm.Label>
-                  <Field name="displayOrder" type="number" placeholder={t('displayOrderPlaceholder')} className="form-control" />
-                  <BootstrapForm.Text className="text-muted">{t('displayOrderHelp')}</BootstrapForm.Text>
-                  <ErrorMessage name="displayOrder" component="p" className="text-danger mt-1" />
-                </BootstrapForm.Group>
+                {/* Preview Images */}
+                {book.previewImages && book.previewImages.length > 0 && (
+                <Row className='mb-4'>
+                  <Col>
+                    <h4>{t('previewImages')}</h4>
+                      <div className=''>
+                        {[...book.previewImages]
+                        .sort((a, b) => a.displayOrder - b.displayOrder)
+                        .map((pi, index) => (
+                          <Card key={pi.id} className='my-3 shadow'>
+                            <Row className='g-0'>
+                              {/* Mobile */}
+                              <Col xs={12} className="d-md-none">
+                                <Card.Img
+                                  src={pi.url}
+                                  className="rounded-top rounded-bottom-0 object-fit-cover w-100"
+                                  style={{ maxHeight: "24rem", minHeight: "16rem" }}
+                                />
+                              </Col>
+                              {/* Desktop */}
+                              <Col md={4} className="d-none d-md-flex">
+                                <div className="position-relative w-100 overflow-hidden">
+                                  <Card.Img 
+                                    src={pi.url} 
+                                    className="position-absolute rounded-start rounded-end-0 object-fit-cover w-100 h-100"
+                                    style={{ inset: 0 }}
+                                  />
+                                </div>
+                              </Col>
+                              <Col xs={12} md={8}>
+                                <Card.Body>
+                                  <Card.Title>
+                                    {t('previewImageCaption')}
+                                  </Card.Title>
+                                  <Row>
+                                    <Col xs={12}>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formPreviewImageCaptionEn${index}`}>
+                                        <BootstrapForm.Label>{t('previewImageCaptionEnLabel')}</BootstrapForm.Label>
+                                        <Field name={`previewImages.${index}.caption.en`} type="text" placeholder={t('previewImageCaptionEnPlaceholder')} className="form-control" />
+                                        <SafeErrorMessage name={`previewImages.${index}.caption.en`} />
+                                      </BootstrapForm.Group>
+                                    </Col>
+                                    <Col>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formPreviewImageCaptionSi${index}`}>
+                                        <BootstrapForm.Label>{t('previewImageCaptionSiLabel')}</BootstrapForm.Label>
+                                        <Field name={`previewImages.${index}.caption.si`} type="text" placeholder={t('previewImageCaptionSiPlaceholder')} className="form-control" />
+                                        <SafeErrorMessage name={`previewImages.${index}.caption.si`} />
+                                      </BootstrapForm.Group>
+                                    </Col>
+                                  </Row>
+                                </Card.Body>
+                              </Col>
+                            </Row>
+                          </Card>
+                        ))}
+                      </div>
+                    
+                  </Col>
+                </Row>
+                )}
 
               </fieldset>
 

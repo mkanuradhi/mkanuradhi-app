@@ -33,6 +33,12 @@ export interface CreateBookDto {
   displayOrder?: number;
 }
 
+export interface UpdateBookPreviewImageDto {
+  id:           string;
+  caption?:     LocalizedString;
+  displayOrder: number;
+}
+
 export interface UpdateBookDto {
   title:       LocalizedString;
   subtitle?:   LocalizedString;
@@ -52,6 +58,7 @@ export interface UpdateBookDto {
   buyLink?:       string;
   featured:      boolean;
   displayOrder?:  number;
+  previewImages?: UpdateBookPreviewImageDto[];
 
   v: number;    // always required — never optional
 }
