@@ -35,6 +35,30 @@ const SafeErrorMessage = ({ name }: { name: string }) => (
   </ErrorMessage>
 );
 
+// Preview image reorder helper
+// const movePreviewImage = (
+//   images: { id: string; url: string; caption: { en?: string; si?: string }; displayOrder: number }[],
+//   fromIndex: number,
+//   toIndex: number
+// ) => {
+//   const updated = [...images];
+//   const [moved] = updated.splice(fromIndex, 1);
+//   updated.splice(toIndex, 0, moved);
+//   return updated.map((img, i) => ({ ...img, displayOrder: i + 1 }));
+// };
+
+const movePreviewImage = (
+  images: { id: string; url: string; caption: { en?: string; si?: string }; displayOrder: number }[] | undefined,
+  fromIndex: number,
+  toIndex: number
+) => {
+  if (!images) return images;
+  const updated = [...images];
+  const [moved] = updated.splice(fromIndex, 1);
+  updated.splice(toIndex, 0, moved);
+  return updated.map((img, i) => ({ ...img, displayOrder: i + 1 }));
+};
+
 // Props
 
 interface UpdateBookFormProps {
@@ -575,14 +599,16 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                 </Row>
 
                 {/* Preview Images */}
-                {book.previewImages && book.previewImages.length > 0 && (
+                {values.previewImages && values.previewImages.length > 0 && (
                 <Row className='mb-4'>
                   <Col>
                     <h4>{t('previewImages')}</h4>
                       <div className=''>
-                        {[...book.previewImages]
+                        {[...values.previewImages]
                         .sort((a, b) => a.displayOrder - b.displayOrder)
-                        .map((pi, index) => (
+                        .map((pi, index, sortedArr) => {
+                          const originalIndex = values.previewImages!.findIndex(img => img.id === pi.id);
+                          return (
                           <Card key={pi.id} className='my-3 shadow'>
                             <Row className='g-0'>
                               {/* Mobile */}
@@ -605,9 +631,57 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                               </Col>
                               <Col xs={12} md={8}>
                                 <Card.Body>
-                                  <Card.Title>
+                                  {/* ---- Order controls ------------------------------------------- */}
+                                  <div className="d-flex justify-content-between align-items-center mb-3">
+                                    <Card.Title className="mb-0">
+                                      {t('previewImageCaption')}
+                                    </Card.Title>
+                                    <div className="d-flex gap-1">
+                                      <Button
+                                        variant="outline-secondary"
+                                        size="sm"
+                                        type="button"
+                                        disabled={index === 0}
+                                        title={t('moveUp')}
+                                        onClick={() => {
+                                          const originalIndex = values.previewImages!.findIndex(img => img.id === pi.id);
+                                          const prevItem = sortedArr[index - 1];
+                                          const prevOriginalIndex = values.previewImages!.findIndex(img => img.id === prevItem.id);
+                                          setFieldValue(
+                                            'previewImages',
+                                            movePreviewImage(values.previewImages, originalIndex, prevOriginalIndex)
+                                          );
+                                        }}
+                                      >
+                                        <i className="bi bi-arrow-up" aria-hidden="true" />
+                                      </Button>
+                                      <Button
+                                        variant="outline-secondary"
+                                        size="sm"
+                                        type="button"
+                                        disabled={index === sortedArr.length - 1}
+                                        title={t('moveDown')}
+                                        onClick={() => {
+                                          const originalIndex = values.previewImages!.findIndex(img => img.id === pi.id);
+                                          const nextItem = sortedArr[index + 1];
+                                          const nextOriginalIndex = values.previewImages!.findIndex(img => img.id === nextItem.id);
+                                          setFieldValue(
+                                            'previewImages',
+                                            movePreviewImage(values.previewImages, originalIndex, nextOriginalIndex)
+                                          );
+                                        }}
+                                      >
+                                        <i className="bi bi-arrow-down" aria-hidden="true" />
+                                      </Button>
+                                      <span className="text-muted small ms-2 align-self-center">
+                                        {index + 1} / {sortedArr.length}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  {/* <Card.Title>
                                     {t('previewImageCaption')}
-                                  </Card.Title>
+                                  </Card.Title> */}
+                                  {/* ---- Captions ------------------------------------------- */}
                                   <Row>
                                     <Col xs={12}>
                                       <BootstrapForm.Group className="mb-3" controlId={`formPreviewImageCaptionEn${index}`}>
@@ -617,10 +691,10 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                                       </BootstrapForm.Group>
                                     </Col>
                                     <Col>
-                                      <BootstrapForm.Group className="mb-3" controlId={`formPreviewImageCaptionSi${index}`}>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formPreviewImageCaptionSi${originalIndex}`}>
                                         <BootstrapForm.Label>{t('previewImageCaptionSiLabel')}</BootstrapForm.Label>
-                                        <Field name={`previewImages.${index}.caption.si`} type="text" placeholder={t('previewImageCaptionSiPlaceholder')} className="form-control" />
-                                        <SafeErrorMessage name={`previewImages.${index}.caption.si`} />
+                                        <Field name={`previewImages.${originalIndex}.caption.si`} type="text" placeholder={t('previewImageCaptionSiPlaceholder')} className="form-control" />
+                                        <SafeErrorMessage name={`previewImages.${originalIndex}.caption.si`} />
                                       </BootstrapForm.Group>
                                     </Col>
                                   </Row>
@@ -628,7 +702,8 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                               </Col>
                             </Row>
                           </Card>
-                        ))}
+                        );
+                        })}
                       </div>
                     
                   </Col>
