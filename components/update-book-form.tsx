@@ -281,58 +281,84 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   <FieldArray name="authors">
                     {({ push, remove }) => (
                       <div>
-                        {values.authors.map((_, index) => (
-                          <div key={index} className="border rounded p-3 mb-3">
-                            <div className="d-flex justify-content-between align-items-center mb-3">
-                              <strong>{t('authorLabel', { number: index + 1 })}</strong>
-                              {values.authors.length > 1 && (
-                                <Button variant="danger" size="sm" type="button" onClick={() => remove(index)}>
-                                  <FontAwesomeIcon icon={faMinus} /> {t('removeAuthor')}
-                                </Button>
+                        {values.authors.map((au, index) => (
+                          <Card key={index} className="shadow mb-3">
+                            <Row className='g-0'>
+                              {au.imageUrl && (
+                              <Col xs={12} className="d-md-none">{/* Mobile */}
+                                <Card.Img
+                                  src={au.imageUrl}
+                                  className="rounded-top rounded-bottom-0 object-fit-cover w-100"
+                                  style={{ maxHeight: "16rem", minHeight: "12rem" }}
+                                />
+                              </Col>
                               )}
-                            </div>
-                            <Row>
-                              <Col md={6}>
-                                <BootstrapForm.Group className="mb-3" controlId={`formAuthorNameEn${index}`}>
-                                  <RequiredFormLabel>{t('authorNameEnLabel')}</RequiredFormLabel>
-                                  <Field name={`authors.${index}.name.en`} type="text" placeholder={t('authorNameEnPlaceholder')} className="form-control" />
-                                  <SafeErrorMessage name={`authors.${index}.name.en`} />
-                                </BootstrapForm.Group>
+                              {au.imageUrl && (
+                              <Col md={4} className="d-none d-md-flex">{/* Desktop */}
+                                <div className="position-relative w-100 overflow-hidden">
+                                  <Card.Img 
+                                    src={au.imageUrl} 
+                                    className="position-absolute rounded-start rounded-end-0 object-fit-cover w-100 h-100"
+                                    style={{ inset: 0 }}
+                                  />
+                                </div>
                               </Col>
-                              <Col md={6}>
-                                <BootstrapForm.Group className="mb-3" controlId={`formAuthorNameSi${index}`}>
-                                  <BootstrapForm.Label>{t('authorNameSiLabel')}</BootstrapForm.Label>
-                                  <Field name={`authors.${index}.name.si`} type="text" placeholder={t('authorNameSiPlaceholder')} className="form-control" />
-                                  <SafeErrorMessage name={`authors.${index}.name.si`} />
-                                </BootstrapForm.Group>
+                              )}
+                              <Col xs={12} md={au.imageUrl ? 8 : 12}>
+                                <Card.Body>
+                                  <div className="d-flex justify-content-between align-items-center mb-3">
+                                    <strong>{t('authorLabel', { number: index + 1 })}</strong>
+                                    {values.authors.length > 1 && (
+                                      <Button variant="danger" size="sm" type="button" onClick={() => remove(index)}>
+                                        <FontAwesomeIcon icon={faMinus} /> {t('removeAuthor')}
+                                      </Button>
+                                    )}
+                                  </div>
+                                  <Row>
+                                    <Col md={6}>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formAuthorNameEn${index}`}>
+                                        <RequiredFormLabel>{t('authorNameEnLabel')}</RequiredFormLabel>
+                                        <Field name={`authors.${index}.name.en`} type="text" placeholder={t('authorNameEnPlaceholder')} className="form-control" />
+                                        <SafeErrorMessage name={`authors.${index}.name.en`} />
+                                      </BootstrapForm.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formAuthorNameSi${index}`}>
+                                        <BootstrapForm.Label>{t('authorNameSiLabel')}</BootstrapForm.Label>
+                                        <Field name={`authors.${index}.name.si`} type="text" placeholder={t('authorNameSiPlaceholder')} className="form-control" />
+                                        <SafeErrorMessage name={`authors.${index}.name.si`} />
+                                      </BootstrapForm.Group>
+                                    </Col>
+                                  </Row>
+                                  <Row>
+                                    <Col md={6}>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formAuthorRole${index}`}>
+                                        <RequiredFormLabel>{t('authorRoleLabel')}</RequiredFormLabel>
+                                        <Field as="select" name={`authors.${index}.role`} className="form-select">
+                                          {Object.values(BookAuthorRole).map(role => (
+                                            <option key={role} value={role}>
+                                              {String(t(`authorRole.${role}`))}
+                                            </option>
+                                          ))}
+                                        </Field>
+                                        <SafeErrorMessage name={`authors.${index}.role`} />
+                                      </BootstrapForm.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formAuthorProfileUrl${index}`}>
+                                        <BootstrapForm.Label>{t('authorProfileUrlLabel')}</BootstrapForm.Label>
+                                        <Field name={`authors.${index}.profileUrl`} type="url" placeholder={t('authorProfileUrlPlaceholder')} className="form-control" />
+                                        <SafeErrorMessage name={`authors.${index}.profileUrl`} />
+                                      </BootstrapForm.Group>
+                                    </Col>
+                                  </Row>
+                                </Card.Body>
                               </Col>
                             </Row>
-                            <Row>
-                              <Col md={6}>
-                                <BootstrapForm.Group className="mb-3" controlId={`formAuthorRole${index}`}>
-                                  <RequiredFormLabel>{t('authorRoleLabel')}</RequiredFormLabel>
-                                  <Field as="select" name={`authors.${index}.role`} className="form-select">
-                                    {Object.values(BookAuthorRole).map(role => (
-                                      <option key={role} value={role}>
-                                        {String(t(`authorRole.${role}`))}
-                                      </option>
-                                    ))}
-                                  </Field>
-                                  <SafeErrorMessage name={`authors.${index}.role`} />
-                                </BootstrapForm.Group>
-                              </Col>
-                              <Col md={6}>
-                                <BootstrapForm.Group className="mb-3" controlId={`formAuthorProfileUrl${index}`}>
-                                  <BootstrapForm.Label>{t('authorProfileUrlLabel')}</BootstrapForm.Label>
-                                  <Field name={`authors.${index}.profileUrl`} type="url" placeholder={t('authorProfileUrlPlaceholder')} className="form-control" />
-                                  <SafeErrorMessage name={`authors.${index}.profileUrl`} />
-                                </BootstrapForm.Group>
-                              </Col>
-                            </Row>
-                          </div>
+                          </Card>
                         ))}
                         <Button variant="outline-primary" type="button" onClick={() =>
-                          push({ name: { en: '', si: '' }, role: BookAuthorRole.AUTHOR, profileUrl: '' })
+                          push({ name: { en: '', si: '' }, role: BookAuthorRole.AUTHOR, profileUrl: '', imageUrl: '' })
                         }>
                           <FontAwesomeIcon icon={faPlus} className="me-1" /> {t('addAuthor')}
                         </Button>
