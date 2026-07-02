@@ -2352,6 +2352,7 @@
       "done": "Done"
     },
     "UpdateBookAuthorImageForm": {
+      "subtitle": "Author: {authorName}",
       "noAuthorImage": "No author image uploaded yet.",
       "deleteAuthorImage": "Delete author image",
       "deleting": "Deleting...",

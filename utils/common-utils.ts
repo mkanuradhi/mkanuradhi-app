@@ -1,4 +1,5 @@
 import { ApiError } from "@/errors/api-error";
+import { DEFAULT_LOCALE, Locale, LocalizedString } from "@/types/locale.types";
 
 export const truncateText = (text: string, maxLength: number = 100, appendEllipsis: boolean = true): string => {
   if (!text || text.length <= maxLength) return text;
@@ -195,4 +196,9 @@ export const handleFetchResponse = async (response: Response, context?: string) 
   }
   
   return response.json();
+};
+
+export const localizeField = (field: LocalizedString | undefined, locale: Locale): string => {
+  if (!field) return "";
+  return field[locale] ?? field[DEFAULT_LOCALE] ?? Object.values(field).find(v => !!v) ?? '';
 };

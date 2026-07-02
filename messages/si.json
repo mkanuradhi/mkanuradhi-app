@@ -2352,6 +2352,7 @@
       "done": "අවසන් කරන්න"
     },
     "UpdateBookAuthorImageForm": {
+      "subtitle": "කර්තෘ: {authorName}",
       "noAuthorImage": "තවමත් කර්තෘ රූපයක් උඩුගත කර නොමැත.",
       "deleteAuthorImage": "කර්තෘ රූපය මකන්න",
       "deleting": "මකමින්...",
