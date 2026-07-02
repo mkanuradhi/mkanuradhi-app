@@ -19,6 +19,7 @@ import { BookAuthorRole, BookIsbnFormat, BookLanguage } from '@/enums/book-enums
 import RequiredFormLabel from './required-form-label';
 import LoadingContainer from './loading-container';
 import { Link } from '@/i18n/routing';
+import { MAX_BOOK_CONTENT_LENGTH, MAX_BOOK_DESCRIPTION_LENGTH } from '@/constants/validation-vars';
 
 const baseTPath = 'components.NewBookForm';
 
@@ -62,9 +63,11 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
       publisher:     { en: book.publisher.en   ?? '', si: book.publisher.si   ?? '' },
       subject:       book.subject.map(s => ({ en: s.en ?? '', si: s.si ?? '' })),
       authors:       book.authors.map(a => ({
+        id:         a.id,
         name:       { en: a.name.en ?? '', si: a.name.si ?? '' },
         role:       a.role,
         profileUrl: a.profileUrl ?? '',
+        imageUrl:   a.imageUrl ?? '',
       })),
       writtenLang:   book.writtenLang,
       publishedYear: book.publishedYear,
@@ -107,6 +110,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                      .filter(s => s.en.trim() || s.si.trim())
                      .map(s => ({ en: s.en.trim() || undefined, si: s.si.trim() || undefined })),
       authors: values.authors.map(a => ({
+        id:         a.id,
         name:       { en: a.name.en.trim(), si: a.name.si.trim() || undefined },
         role:       a.role,
         profileUrl: a.profileUrl?.trim() || undefined,
@@ -178,10 +182,10 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   onSelect={(key) => setActiveLocale(key as 'en' | 'si')}
                 >
                   <Nav.Item>
-                    <Nav.Link eventKey="en">English</Nav.Link>
+                    <Nav.Link eventKey="en">{t('localeTabEnTitle')}</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="si">සිංහල</Nav.Link>
+                    <Nav.Link eventKey="si">{t('localeTabSiTitle')}</Nav.Link>
                   </Nav.Item>
                 </Nav>
 
@@ -222,6 +226,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   <BootstrapForm.Group className="mb-4" controlId="formDescriptionEn">
                     <RequiredFormLabel>{t('descriptionEnLabel')}</RequiredFormLabel>
                     <Field name="description.en" as="textarea" rows={3} placeholder={t('descriptionEnPlaceholder')} className="form-control" />
+                    <BootstrapForm.Text className="text-muted">{t('descriptionEnHelp', { max: MAX_BOOK_DESCRIPTION_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="description.en" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                 )}
@@ -229,6 +234,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   <BootstrapForm.Group className="mb-4" controlId="formDescriptionSi">
                     <BootstrapForm.Label>{t('descriptionSiLabel')}</BootstrapForm.Label>
                     <Field name="description.si" as="textarea" rows={3} placeholder={t('descriptionSiPlaceholder')} className="form-control" />
+                    <BootstrapForm.Text className="text-muted">{t('descriptionSiHelp', { max: MAX_BOOK_DESCRIPTION_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="description.si" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                 )}
@@ -238,6 +244,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   <BootstrapForm.Group className="mb-4" controlId="formContentEn">
                     <RequiredFormLabel>{t('contentEnLabel')}</RequiredFormLabel>
                     <Field name="content.en" as="textarea" rows={6} placeholder={t('contentEnPlaceholder')} className="form-control" />
+                    <BootstrapForm.Text className="text-muted">{t('contentEnHelp', { max: MAX_BOOK_CONTENT_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="content.en" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                 )}
@@ -245,6 +252,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   <BootstrapForm.Group className="mb-4" controlId="formContentSi">
                     <BootstrapForm.Label>{t('contentSiLabel')}</BootstrapForm.Label>
                     <Field name="content.si" as="textarea" rows={6} placeholder={t('contentSiPlaceholder')} className="form-control" />
+                    <BootstrapForm.Text className="text-muted">{t('contentSiHelp', { max: MAX_BOOK_CONTENT_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="content.si" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                 )}

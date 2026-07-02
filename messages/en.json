@@ -2062,6 +2062,9 @@
       "iterations": "Iterations"
     },
     "NewBookForm": {
+      "localeTabEnTitle": "English (en)",
+      "localeTabSiTitle": "සිංහල (si)",
+
       "titleEnLabel": "Title (English)",
       "titleEnPlaceholder": "The Art of Clean Code",
       "titleSiLabel": "Title (Sinhala)",
@@ -2074,13 +2077,17 @@
 
       "descriptionEnLabel": "Description (English)",
       "descriptionEnPlaceholder": "Short description shown on book cards...",
+      "descriptionEnHelp": "This will be displayed on the book card. Cannot exceed {max} characters.",
       "descriptionSiLabel": "Description (Sinhala)",
       "descriptionSiPlaceholder": "පොත පිළිබඳ කෙටි විස්තරය...",
+      "descriptionSiHelp": "This will be displayed on the book card. Cannot exceed {max} characters.",
 
       "contentEnLabel": "Content (English)",
       "contentEnPlaceholder": "Full book description...",
+      "contentEnHelp": "This is the full description of the book. Cannot exceed {max} characters.",
       "contentSiLabel": "Content (Sinhala)",
       "contentSiPlaceholder": "සම්පූර්ණ විස්තරය...",
+      "contentSiHelp": "This is the full description of the book. Cannot exceed {max} characters.",
 
       "publisherEnLabel": "Publisher (English)",
       "publisherEnPlaceholder": "Code Publications",

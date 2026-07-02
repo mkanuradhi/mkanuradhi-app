@@ -33,6 +33,13 @@ export interface CreateBookDto {
   displayOrder?: number;
 }
 
+export interface UpdateBookAuthorDto {
+  id:          string;
+  name:        LocalizedString;
+  role:        BookAuthorRole;
+  profileUrl?: string;
+}
+
 export interface UpdateBookPreviewImageDto {
   id:           string;
   caption?:     LocalizedString;
@@ -45,7 +52,7 @@ export interface UpdateBookDto {
   description: LocalizedString;
   content:     LocalizedString;
   subject:     LocalizedString[];
-  authors:     BookAuthorDto[];
+  authors:     UpdateBookAuthorDto[];
   writtenLang: BookLanguage;
 
   publisher:     LocalizedString;

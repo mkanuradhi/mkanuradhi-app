@@ -2062,6 +2062,9 @@
       "iterations": "පුනරාවර්තන"
     },
     "NewBookForm": {
+      "localeTabEnTitle": "English (en)",
+      "localeTabSiTitle": "සිංහල (si)",
+
       "titleEnLabel": "මාතෘකාව (ඉංග්‍රීසි)",
       "titleEnPlaceholder": "පිරිසිදු කේතයේ කලාව",
       "titleSiLabel": "මාතෘකාව (සිංහල)",
@@ -2074,13 +2077,17 @@
 
       "descriptionEnLabel": "කෙටි විස්තරය (ඉංග්‍රීසි)",
       "descriptionEnPlaceholder": "පොත පිළිබඳ කෙටි විස්තරයක් ලියන්න...",
+      "descriptionEnHelp": "මෙය පොත් කාඩ්පතේ පෙන්වනු ඇත. අක්ෂර {max} ඉක්මවිය නොහැක.",
       "descriptionSiLabel": "කෙටි විස්තරය (සිංහල)",
       "descriptionSiPlaceholder": "Short description in English...",
+      "descriptionSiHelp": "මෙය පොත් කාඩ්පතේ පෙන්වනු ඇත. අක්ෂර {max} ඉක්මවිය නොහැක.",
 
       "contentEnLabel": "සම්පූර්ණ විස්තරය (ඉංග්‍රීසි)",
       "contentEnPlaceholder": "පොත පිළිබඳ සම්පූර්ණ විස්තරය ලියන්න...",
+      "contentEnHelp": "මෙය පොතේ සම්පූර්ණ විස්තරය වන අතර {max} අක්ෂර ඉක්මවිය නොහැක.",
       "contentSiLabel": "සම්පූර්ණ විස්තරය (සිංහල)",
       "contentSiPlaceholder": "Full description in English...",
+      "contentSiHelp": "මෙය පොතේ සම්පූර්ණ විස්තරය වන අතර {max} අක්ෂර ඉක්මවිය නොහැක.",
 
       "publisherEnLabel": "ප්‍රකාශකයා (ඉංග්‍රීසි)",
       "publisherEnPlaceholder": "කේත ප්‍රකාශන",
