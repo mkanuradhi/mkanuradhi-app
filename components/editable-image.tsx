@@ -10,6 +10,7 @@ interface EditableImageProps {
   editHref:  string;
   width:     number;
   height:    number;
+  borderRadius?: string;
 }
 
 const EditableImage: React.FC<EditableImageProps> = ({
@@ -18,12 +19,13 @@ const EditableImage: React.FC<EditableImageProps> = ({
   editHref,
   width,
   height,
+  borderRadius = '6px',
 }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
-      style={{ position: 'relative', width, height, borderRadius: 6, overflow: 'hidden', flexShrink: 0 }}
+      style={{ position: 'relative', width, height, borderRadius, overflow: 'hidden', flexShrink: 0 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -39,11 +41,11 @@ const EditableImage: React.FC<EditableImageProps> = ({
         justifyContent:  'center',
         opacity:         hovered ? 1 : 0,
         transition:      'opacity 0.2s ease',
-        borderRadius:    6,
+        borderRadius:    borderRadius,
       }}>
         <Link href={editHref}>
-          <Button variant="light" size="sm">
-            <i className="bi bi-pencil-fill"></i>
+          <Button variant="light" size="sm" className="p-1">
+            <i className="bi bi-pencil-fill small"></i>
           </Button>
         </Link>
       </div>

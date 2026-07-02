@@ -7,6 +7,7 @@ import {
   activateBook,
   createBook,
   deactivateBook,
+  deleteAuthorImage,
   deleteBook,
   deleteCoverImage,
   deletePreviewImage,
@@ -15,6 +16,7 @@ import {
   getLocalizedBookByPath,
   getLocalizedBooks,
   updateBook,
+  uploadAuthorImage,
   uploadCoverImage,
   uploadPreviewImages,
 } from "@/services/book-service";
@@ -308,6 +310,70 @@ export const useDeleteCoverImageMutation = () => {
     mutationFn: async (bookId: string) => {
       const token = (await getToken()) ?? '';
       return deleteCoverImage(bookId, token);
+    },
+
+    onSuccess: (updatedBook) => {
+      if (!updatedBook || !updatedBook.id) return;
+
+      // Update individual book cache
+      queryClient.setQueryData([BOOK_QUERY_KEY, updatedBook.id], updatedBook);
+
+      // Update paginated list cache
+      queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData?: PaginatedResult<Book>) => {
+        if (!oldData) return;
+        return {
+          ...oldData,
+          items: oldData.items.map(book =>
+            book.id === updatedBook.id ? updatedBook : book
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, updatedBook.id] });
+    },
+  });
+};
+
+export const useUploadAuthorImageMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async ({ bookId, authorId, formData }: { bookId: string; authorId: string; formData: FormData }) => {
+      const token = (await getToken()) ?? '';
+      return uploadAuthorImage(bookId, authorId, formData, token);
+    },
+
+    onSuccess: (updatedBook) => {
+      if (!updatedBook || !updatedBook.id) return;
+
+      // Update individual book cache
+      queryClient.setQueryData([BOOK_QUERY_KEY, updatedBook.id], updatedBook);
+
+      // Update paginated list cache
+      queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData?: PaginatedResult<Book>) => {
+        if (!oldData) return;
+        return {
+          ...oldData,
+          items: oldData.items.map(book =>
+            book.id === updatedBook.id ? updatedBook : book
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, updatedBook.id] });
+    },
+  });
+};
+
+export const useDeleteAuthorImageMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async ({bookId, authorId}: {bookId: string, authorId: string}) => {
+      const token = (await getToken()) ?? '';
+      return deleteAuthorImage(bookId, authorId, token);
     },
 
     onSuccess: (updatedBook) => {

@@ -59,12 +59,13 @@ const getAuthorName = (author: BookAuthor, isSi: boolean): string => {
 // Sub-component: Author list
 
 interface AuthorListProps {
+  bookId: string;
   authors: BookAuthor[];
   isSi: boolean;
   authorRoleLabel: (role: string) => string;
 }
 
-const AuthorList: React.FC<AuthorListProps> = ({ authors, isSi, authorRoleLabel }) => (
+const AuthorList: React.FC<AuthorListProps> = ({bookId, authors, isSi, authorRoleLabel }) => (
   <div>
     {authors.map((author, index) => {
       const name = getAuthorName(author, isSi);
@@ -74,14 +75,31 @@ const AuthorList: React.FC<AuthorListProps> = ({ authors, isSi, authorRoleLabel 
           className="d-flex align-items-center gap-2 py-2"
           style={{ borderBottom: index < authors.length - 1 ? '0.5px solid var(--bs-border-color)' : 'none' }}
         >
-          <div
+          {/* <div
             className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
             style={{ width: 32, height: 32, background: 'var(--bs-info-bg-subtle)', color: 'var(--bs-info)', fontSize: 11, fontWeight: 500 }}
           >
             {getInitials(name)}
-          </div>
+          </div> */}
+          {author.imageUrl ? (
+            <EditableImage
+              src={author.imageUrl}
+              alt={getInitials(name)}
+              editHref={`/dashboard/books/${bookId}/edit/author-image/${author.id}`}
+              width={40}
+              height={40}
+              borderRadius='100%'
+            />
+          ) : (
+            <EditableImagePlaceholder
+              editHref={`/dashboard/books/${bookId}/edit/author-image/${author.id}`}
+              width={40}
+              height={40}
+              borderRadius='100%'
+            />
+          )}
           <div className="flex-grow-1">
-            <span style={{ fontSize: 14 }}>{name}</span>
+            <span>{name}</span>
           </div>
           <Badge pill bg="secondary">
             {authorRoleLabel(author.role)}
@@ -248,12 +266,14 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
               editHref={`/dashboard/books/${book.id}/edit/cover-image`}
               width={90}
               height={126}
+              borderRadius='6px'
             />
           ) : (
             <EditableImagePlaceholder
               editHref={`/dashboard/books/${book.id}/edit/cover-image`}
               width={90}
               height={126}
+              borderRadius='6px'
             />
           )}
           <div className="flex-grow-1">
@@ -318,6 +338,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
         <div className="mb-3">
           <h4 className="mb-2">{t('authors')}</h4>
           <AuthorList
+            bookId={book.id}
             authors={book.authors}
             isSi={isSin}
             authorRoleLabel={(role) => t(`authorRole.${role}`)}
