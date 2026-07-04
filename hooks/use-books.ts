@@ -11,6 +11,7 @@ import {
   deleteBook,
   deleteCoverImage,
   deletePreviewImage,
+  deleteSampleFile,
   getBookById,
   getBooks,
   getLocalizedBookByPath,
@@ -19,6 +20,7 @@ import {
   uploadAuthorImage,
   uploadCoverImage,
   uploadPreviewImages,
+  uploadSampleFile,
 } from "@/services/book-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -263,7 +265,7 @@ export const useUpdateBookMutation = () => {
       });
     },
     onSettled: (_data, _error, variables) => {
-      // Refetch only the updated award instead of all awards
+      // Refetch only the updated book instead of all books
       queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, variables.id] });
       queryClient.invalidateQueries({ queryKey: [BOOKS_QUERY_KEY], refetchType: 'active' });
     },
@@ -445,6 +447,70 @@ export const useDeletePreviewImageMutation = () => {
     mutationFn: async ({ bookId, previewImageId }: { bookId: string; previewImageId: string }) => {
       const token = (await getToken()) ?? '';
       return deletePreviewImage(bookId, previewImageId, token);
+    },
+
+    onSuccess: (updatedBook) => {
+      if (!updatedBook || !updatedBook.id) return;
+
+      // Update individual book cache
+      queryClient.setQueryData([BOOK_QUERY_KEY, updatedBook.id], updatedBook);
+
+      // Update paginated list cache
+      queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData?: PaginatedResult<Book>) => {
+        if (!oldData) return;
+        return {
+          ...oldData,
+          items: oldData.items.map(book =>
+            book.id === updatedBook.id ? updatedBook : book
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, updatedBook.id] });
+    },
+  });
+};
+
+export const useUploadSampleFileMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async ({ id, formData }: { id: string; formData: FormData }) => {
+      const token = (await getToken()) ?? '';
+      return uploadSampleFile(id, formData, token);
+    },
+
+    onSuccess: (updatedBook) => {
+      if (!updatedBook || !updatedBook.id) return;
+
+      // Update individual book cache
+      queryClient.setQueryData([BOOK_QUERY_KEY, updatedBook.id], updatedBook);
+
+      // Update paginated list cache
+      queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData?: PaginatedResult<Book>) => {
+        if (!oldData) return;
+        return {
+          ...oldData,
+          items: oldData.items.map(book =>
+            book.id === updatedBook.id ? updatedBook : book
+          ),
+        };
+      });
+
+      queryClient.invalidateQueries({ queryKey: [BOOK_QUERY_KEY, updatedBook.id] });
+    },
+  });
+};
+
+export const useDeleteSampleFileMutation = () => {
+  const queryClient = useQueryClient();
+  const { getToken } = useAuth();
+
+  return useMutation({
+    mutationFn: async (bookId: string) => {
+      const token = (await getToken()) ?? '';
+      return deleteSampleFile(bookId, token);
     },
 
     onSuccess: (updatedBook) => {

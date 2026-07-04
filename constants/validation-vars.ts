@@ -123,3 +123,7 @@ export const MAX_BOOK_URL_LENGTH          = 500;
 
 export const MAX_BOOK_ISBN_LENGTH         = 20;
 export const MAX_BOOK_EDITION_LENGTH      = 100;
+
+export const MAX_BOOK_IMAGE_SIZE          = 5 * 1024 * 1024; // 5MB
+export const MAX_BOOK_IMAGES              = 15;
+export const MAX_BOOK_FILE_SIZE           = 15 * 1024 * 1024; // 15MB

@@ -2,23 +2,23 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Col, Row } from 'react-bootstrap';
-import { useBookByIdQuery, useDeleteCoverImageMutation, useUploadCoverImageMutation } from '@/hooks/use-books';
+import { useBookByIdQuery, useDeleteSampleFileMutation, useUploadSampleFileMutation } from '@/hooks/use-books';
 import LoadingContainer from './loading-container';
-import ImageUploadForm from './image-upload-form';
-import { MAX_BOOK_IMAGE_SIZE } from '@/constants/validation-vars';
+import FileUploadForm from './file-upload-form';
+import { MAX_BOOK_FILE_SIZE } from '@/constants/validation-vars';
 
-const baseTPath = 'components.UpdateBookCoverImageForm';
+const baseTPath = 'components.UpdateBookSampleFileForm';
 
-interface UpdateBookCoverImageFormProps {
+interface UpdateBookSampleFileFormProps {
   bookId: string;
 }
 
-const UpdateBookCoverImageForm: React.FC<UpdateBookCoverImageFormProps> = ({ bookId }) => {
+const UpdateBookSampleFileForm: React.FC<UpdateBookSampleFileFormProps> = ({ bookId }) => {
   const t = useTranslations(baseTPath);
 
   const { data: book, isPending, isError, isFetching, isSuccess, error } = useBookByIdQuery(bookId);
-  const { mutateAsync: uploadCoverImageMutation, isPending: isPendingUpload } = useUploadCoverImageMutation();
-  const { mutateAsync: deleteCoverImageMutation, isPending: isPendingDelete } = useDeleteCoverImageMutation();
+  const { mutateAsync: uploadSampleFileMutation, isPending: isPendingUpload } = useUploadSampleFileMutation();
+  const { mutateAsync: deleteSampleFileMutation, isPending: isPendingDelete } = useDeleteSampleFileMutation();
 
   // Loading / error states
 
@@ -37,31 +37,30 @@ const UpdateBookCoverImageForm: React.FC<UpdateBookCoverImageFormProps> = ({ boo
   // Render
 
   return (
-    <ImageUploadForm
-      currentImageUrl={book.coverImage}
+    <FileUploadForm
+      currentFileUrl={book.pdfTeaser}
       altText={book.title.en || ''}
-      fieldName="coverImage"
-      onUpload={(formData) => uploadCoverImageMutation({ id: bookId, formData })}
-      onDelete={() => deleteCoverImageMutation(bookId)}
+      fieldName="pdfTeaser"
+      onUpload={(formData) => uploadSampleFileMutation({ id: bookId, formData })}
+      onDelete={() => deleteSampleFileMutation(bookId)}
       isPendingUpload={isPendingUpload}
       isPendingDelete={isPendingDelete}
       doneHref={`/dashboard/books/${bookId}`}
-      maxSize={MAX_BOOK_IMAGE_SIZE}
-      maxImageSize={300}
+      maxSize={MAX_BOOK_FILE_SIZE}
+      accept={['application/pdf']}
       labels={{
-        noImage:            t('noCoverImage'),
-        deleteImage:        t('deleteCoverImage'),
+        noFile:             t('noSampleFile'),
+        deleteFile:         t('deleteSampleFile'),
         deleting:           t('deleting'),
         dragActive:         t('dragActiveLabel'),
         selectFile:         t('selectFileLabel'),
         selectedFileName:   t('selectedFileNameLabel'),
         selectedFileSize:   t('selectedFileSizeLabel'),
-        selectedFileDimensions: t('selectedFileDimensionsLabel'),
         uploading:          t('uploading'),
         upload:             t('upload'),
         remove:             t('remove'),
         fileRejectionTitle: t('fileRejectionTitle'),
-        fileRejectionName: (name) => t.rich('fileRejectionName', {
+        fileRejectionName:  (name) => t.rich('fileRejectionName', {
           name,
           strong: (chunks) => <strong>{chunks}</strong>,
         }),
@@ -71,4 +70,4 @@ const UpdateBookCoverImageForm: React.FC<UpdateBookCoverImageFormProps> = ({ boo
   );
 };
 
-export default UpdateBookCoverImageForm;
+export default UpdateBookSampleFileForm;

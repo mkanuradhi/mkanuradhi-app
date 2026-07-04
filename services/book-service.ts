@@ -212,3 +212,28 @@ export const deletePreviewImage = async (bookId: string, previewImageId: string,
     throw handleApiError(error);
   }
 };
+
+export const uploadSampleFile = async (bookId: string, formData: FormData, token: string): Promise<Book> => {
+  try {
+    const response = await axios.patch<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/pdf-teaser`,
+      formData,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const deleteSampleFile = async (bookId: string, token: string): Promise<Book> => {
+  try {
+    const response = await axios.delete<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/pdf-teaser`,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};

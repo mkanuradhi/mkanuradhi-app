@@ -5,6 +5,7 @@ import { Col, Row } from 'react-bootstrap';
 import { useBookByIdQuery, useDeletePreviewImageMutation, useUploadPreviewImagesMutation } from '@/hooks/use-books';
 import LoadingContainer from './loading-container';
 import ImagesUploadForm from './images-upload-form';
+import { MAX_BOOK_IMAGE_SIZE, MAX_BOOK_IMAGES } from '@/constants/validation-vars';
 
 const baseTPath = 'components.UpdateBookPreviewImagesForm';
 
@@ -45,8 +46,8 @@ const UpdateBookPreviewImagesForm: React.FC<UpdateBookPreviewImagesFormProps> = 
       isPendingUpload={isPendingUpload}
       isPendingDelete={isPendingDelete}
       doneHref={`/dashboard/books/${bookId}`}
-      maxSize={5 * 1024 * 1024}
-      maxFiles={15}
+      maxSize={MAX_BOOK_IMAGE_SIZE}
+      maxFiles={MAX_BOOK_IMAGES}
       labels={{
         noImages: t("noPreviewImages"),
         dragActive: t("dragActiveLabel"),

@@ -19,6 +19,7 @@ import {
   faTrash,
   faArrowUpRightFromSquare,
   faPlus,
+  faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import DocumentStatus from '@/enums/document-status';
 import DeleteModal from './delete-modal';
@@ -373,22 +374,37 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
         {/* Tags */}
         <TagList tags={book.tags} label={t('tags')} />
 
-        {/* Links */}
-        {(book.buyLink || book.pdfTeaser) && (
-          <div className="mb-3">
-            <h4 className="mb-2">{t('links')}</h4>
-            {book.buyLink && (
+        {/* Buy Link */}
+        { book.buyLink && (
+          <Row className="mb-3">
+            <Col>
+              <h4 className="mb-2">{t('links')}</h4>
               <div className="mb-1">
                 <GlowLink href={book.buyLink} newTab withArrow>{book.buyLink}</GlowLink>
               </div>
-            )}
-            {book.pdfTeaser && (
-              <div className="mb-1">
-                <GlowLink href={book.pdfTeaser} newTab withArrow>{book.pdfTeaser}</GlowLink>
-              </div>
-            )}
-          </div>
+            </Col>
+          </Row>
         )}
+
+        <Row className="mb-3">
+          <Col md={12}>
+            <h4 className="mb-2">{t('sampleFile')}</h4>
+          </Col>
+          {book.pdfTeaser && (
+          <Col xs={12} md={9}>
+            <div className="mb-1">
+              <GlowLink href={book.pdfTeaser} newTab withArrow>{book.pdfTeaser}</GlowLink>
+            </div>
+          </Col>
+          )}
+          <Col xs={12} md={3}>
+            <Link href={`/dashboard/books/${book.id}/edit/sample-file`}>
+              <Button variant="outline-primary">
+                <FontAwesomeIcon icon={faPencil} className="me-1" /> {t('addSampleFile')}
+              </Button>
+            </Link>
+          </Col>
+        </Row>
 
         {/* Preview Images */}
         <Row className='my-4'>

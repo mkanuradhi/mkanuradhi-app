@@ -7,6 +7,7 @@ import LoadingContainer from './loading-container';
 import ImageUploadForm from './image-upload-form';
 import { Locale } from '@/types/locale.types';
 import { localizeField } from '@/utils/common-utils';
+import { MAX_BOOK_IMAGE_SIZE } from '@/constants/validation-vars';
 
 const baseTPath = 'components.UpdateBookAuthorImageForm';
 
@@ -56,7 +57,7 @@ const UpdateBookAuthorImageForm: React.FC<UpdateBookAuthorImageFormProps> = ({ b
         isPendingUpload={isPendingUpload}
         isPendingDelete={isPendingDelete}
         doneHref={`/dashboard/books/${bookId}`}
-        maxSize={5 * 1024 * 1024}
+        maxSize={MAX_BOOK_IMAGE_SIZE}
         maxImageSize={300}
         labels={{
           noImage:            t('noAuthorImage'),
