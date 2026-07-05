@@ -622,6 +622,9 @@
         },
         "EditSampleFile": {
           "title": "Edit Sample File"
+        },
+        "EditPublisherImage": {
+          "title": "Edit Publisher Image"
         }
       }
     },
@@ -2095,10 +2098,17 @@
       "contentSiPlaceholder": "සම්පූර්ණ විස්තරය...",
       "contentSiHelp": "This is the full description of the book. Cannot exceed {max} characters.",
 
-      "publisherEnLabel": "Publisher (English)",
-      "publisherEnPlaceholder": "Code Publications",
-      "publisherSiLabel": "Publisher (Sinhala)",
-      "publisherSiPlaceholder": "කේත ප්‍රකාශන",
+      "publisherLabel": "Publisher",
+      "publisherNameEnLabel": "Publisher (English)",
+      "publisherNameEnPlaceholder": "Sample Publications",
+      "publisherNameSiLabel": "Publisher (Sinhala)",
+      "publisherNameSiPlaceholder": "සාම්පල් ප්‍රකාශකයෝ",
+      "publisherAddressEnLabel": "Publisher Address (English)",
+      "publisherAddressEnPlaceholder": "123, Sample Street, Colombo, Sri Lanka",
+      "publisherAddressSiLabel": "Publisher Address (Sinhala)",
+      "publisherAddressSiPlaceholder": "123, සාම්පල් වීදිය, කොළඹ, ශ්‍රී ලංකාව",
+      "publisherWebUrlLabel": "Publisher Website",
+      "publisherWebUrlPlaceholder": "https://sample-publications.lk",
 
       "authorsLabel": "Authors",
       "authorLabel": "Author {number}",
@@ -2180,6 +2190,8 @@
       "previewImageCaptionEnPlaceholder": "Short description of the image",
       "previewImageCaptionSiLabel": "Caption (Sinhala)",
       "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරයක්",
+      "moveUp": "Move Up",
+      "moveDown": "Move Down",
 
       "cancel":     "Cancel",
       "submit":     "Save book",
@@ -2203,10 +2215,18 @@
       "contentEnTooLong":          "English content cannot exceed {max} characters.",
       "contentSiTooLong":          "Sinhala content cannot exceed {max} characters.",
 
-      "publisherEnRequired":       "English publisher name is required.",
-      "publisherEnTooShort":       "English publisher name must be at least {min} characters.",
-      "publisherEnTooLong":        "English publisher name cannot exceed {max} characters.",
-      "publisherSiTooLong":        "Sinhala publisher name cannot exceed {max} characters.",
+      "publisherNameEnRequired":    "English publisher name is required.",
+      "publisherNameEnTooShort":    "English publisher name must be at least {min} characters.",
+      "publisherNameEnTooLong":     "English publisher name cannot exceed {max} characters.",
+      "publisherNameSiRequired":    "Publisher name in Sinhala is required.",
+      "publisherNameSiTooShort":    "Publisher name in Sinhala must be at least {min} characters.",
+      "publisherNameSiTooLong":     "Publisher name in Sinhala cannot exceed {max} characters.",
+      "publisherAddressEnRequired": "English publisher address is required.",
+      "publisherAddressEnTooShort": "English publisher address must be at least {min} characters.",
+      "publisherAddressEnTooLong":  "English publisher address cannot exceed {max} characters.",
+      "publisherAddressSiRequired": "Publisher address in Sinhala is required.",
+      "publisherAddressSiTooShort": "Publisher address in Sinhala must be at least {min} characters.",
+      "publisherAddressSiTooLong":  "Publisher address in Sinhala cannot exceed {max} characters.",
 
       "authorsRequired":           "At least one author is required.",
       "authorsTooMany":            "Cannot exceed {max} authors.",
@@ -2381,6 +2401,22 @@
       "selectFileLabel": "Drag and drop a file here, or click to select",
       "selectedFileNameLabel": "Name",
       "selectedFileSizeLabel": "Size",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "UpdateBookPublisherImageForm": {
+      "noPublisherImage": "No publisher image uploaded yet.",
+      "deletePublisherImage": "Delete publisher image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
       "uploading": "Uploading...",
       "upload": "Upload",
       "remove": "Remove",

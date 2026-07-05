@@ -188,6 +188,31 @@ export const deleteAuthorImage = async (bookId: string, authorId: string, token:
   }
 };
 
+export const uploadPublisherImage = async (bookId: string, formData: FormData, token: string): Promise<Book> => {
+  try {
+    const response = await axios.patch<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/publisher-image`,
+      formData,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const deletePublisherImage = async (bookId: string, token: string): Promise<Book> => {
+  try {
+    const response = await axios.delete<Book>(
+      `${API_BASE_URL}${BOOKS_PATH}/${bookId}/publisher-image`,
+      buildHeaders(token)
+    );
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
 export const uploadPreviewImages = async (bookId: string, formData: FormData, token: string): Promise<Book> => {
   try {
     const response = await axios.patch<Book>(

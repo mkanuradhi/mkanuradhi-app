@@ -1,7 +1,7 @@
 "use client";
 import React, { FC, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
-import { Col, Row, Form as BootstrapForm, Button, Nav } from 'react-bootstrap';
+import { Col, Row, Form as BootstrapForm, Button, Nav, Card } from 'react-bootstrap';
 import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -29,9 +29,17 @@ const initialValues = {
   subtitle:    { en: '', si: '' },
   description: { en: '', si: '' },
   content:     { en: '', si: '' },
-  publisher:   { en: '', si: '' },
+  publisher:   { 
+    name:    { en: '', si: '' }, 
+    address: { en: '', si: '' }, 
+    webUrl:  ''
+  },
   subject:     [] as { en: string; si: string }[],
-  authors:     [{ name: { en: '', si: '' }, role: BookAuthorRole.AUTHOR, profileUrl: '' }],
+  authors:     [{
+    name: { en: '', si: '' },
+    role: BookAuthorRole.AUTHOR,
+    profileUrl: ''
+  }],
   writtenLang:   BookLanguage.ENGLISH,
   publishedYear: new Date().getFullYear(),
   edition:       '',
@@ -82,7 +90,11 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                      : undefined,
       description: { en: values.description.en.trim(), si: values.description.si.trim() || undefined },
       content:     { en: values.content.en.trim(),     si: values.content.si.trim()     || undefined },
-      publisher:   { en: values.publisher.en.trim(),   si: values.publisher.si.trim()   || undefined },
+      publisher:   {
+        name:    { en: values.publisher.name.en.trim(), si: values.publisher.name.si.trim() || undefined },
+        address: { en: values.publisher.address.en.trim(), si: values.publisher.address.si.trim() || undefined },
+        webUrl:  values.publisher.webUrl?.trim() || undefined,
+      },
       subject:     values.subject
                      .filter(s => s.en.trim() || s.si.trim())
                      .map(s => ({ en: s.en.trim() || undefined, si: s.si.trim() || undefined })),
@@ -212,23 +224,61 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                   </BootstrapForm.Group>
                 )}
 
-                {/* ---- Publisher ------------------------------------------------ */}
-                {activeLocale === 'en' && (
-                  <BootstrapForm.Group className="mb-4" controlId="formPublisherEn">
-                    <RequiredFormLabel>{t('publisherEnLabel')}</RequiredFormLabel>
-                    <Field name="publisher.en" type="text" placeholder={t('publisherEnPlaceholder')} className="form-control" />
-                    <ErrorMessage name="publisher.en" component="p" className="text-danger mt-1" />
-                  </BootstrapForm.Group>
-                )}
-                {activeLocale === 'si' && (
-                  <BootstrapForm.Group className="mb-4" controlId="formPublisherSi">
-                    <BootstrapForm.Label>{t('publisherSiLabel')}</BootstrapForm.Label>
-                    <Field name="publisher.si" type="text" placeholder={t('publisherSiPlaceholder')} className="form-control" />
-                    <ErrorMessage name="publisher.si" component="p" className="text-danger mt-1" />
-                  </BootstrapForm.Group>
-                )}
-
                 <hr />
+
+                {/* ── Publisher ───────────────────────────────────────────── */}
+                <BootstrapForm.Group className="mb-4" controlId="formPublisher">
+                  <RequiredFormLabel>{t('publisherLabel')}</RequiredFormLabel>
+                  <Card className="shadow mb-3">
+                    <Row className='g-0'>
+                      <Col xs={12}>
+                        <Card.Body>
+                          <Row>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherNameEn`}>
+                                <RequiredFormLabel>{t('publisherNameEnLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.name.en`} type="text" placeholder={t('publisherNameEnPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.name.en`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherNameSi`}>
+                                <RequiredFormLabel>{t('publisherNameSiLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.name.si`} type="text" placeholder={t('publisherNameSiPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.name.si`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherAddressEn`}>
+                                <RequiredFormLabel>{t('publisherAddressEnLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.address.en`} type="text" placeholder={t('publisherAddressEnPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.address.en`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherAddressSi`}>
+                                <RequiredFormLabel>{t('publisherAddressSiLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.address.si`} type="text" placeholder={t('publisherAddressSiPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.address.si`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={12}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherWebUrl`}>
+                                <BootstrapForm.Label>{t('publisherWebUrlLabel')}</BootstrapForm.Label>
+                                <Field name={`publisher.webUrl`} type="url" placeholder={t('publisherWebUrlPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.webUrl`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                          </Row>
+                        </Card.Body>
+                      </Col>
+                    </Row>
+                  </Card>
+                </BootstrapForm.Group>
 
                 {/* ---- Authors ------------------------------------------------ */}
                 <BootstrapForm.Group className="mb-4">

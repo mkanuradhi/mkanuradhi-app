@@ -21,6 +21,7 @@ import LoadingContainer from './loading-container';
 import { Link } from '@/i18n/routing';
 import { MAX_BOOK_CONTENT_LENGTH, MAX_BOOK_DESCRIPTION_LENGTH } from '@/constants/validation-vars';
 
+// intenstionally use NewBookForm translation namespace for UpdateBookForm, since the fields are the same
 const baseTPath = 'components.NewBookForm';
 
 // Safe error message
@@ -35,18 +36,6 @@ const SafeErrorMessage = ({ name }: { name: string }) => (
   </ErrorMessage>
 );
 
-// Preview image reorder helper
-// const movePreviewImage = (
-//   images: { id: string; url: string; caption: { en?: string; si?: string }; displayOrder: number }[],
-//   fromIndex: number,
-//   toIndex: number
-// ) => {
-//   const updated = [...images];
-//   const [moved] = updated.splice(fromIndex, 1);
-//   updated.splice(toIndex, 0, moved);
-//   return updated.map((img, i) => ({ ...img, displayOrder: i + 1 }));
-// };
-
 const movePreviewImage = (
   images: { id: string; url: string; caption: { en?: string; si?: string }; displayOrder: number }[] | undefined,
   fromIndex: number,
@@ -54,8 +43,8 @@ const movePreviewImage = (
 ) => {
   if (!images) return images;
   const updated = [...images];
-  const [moved] = updated.splice(fromIndex, 1);
-  updated.splice(toIndex, 0, moved);
+  // swap the two items directly
+  [updated[fromIndex], updated[toIndex]] = [updated[toIndex], updated[fromIndex]];
   return updated.map((img, i) => ({ ...img, displayOrder: i + 1 }));
 };
 
@@ -84,7 +73,11 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
       subtitle:      { en: book.subtitle?.en   ?? '', si: book.subtitle?.si   ?? '' },
       description:   { en: book.description.en ?? '', si: book.description.si ?? '' },
       content:       { en: book.content.en     ?? '', si: book.content.si     ?? '' },
-      publisher:     { en: book.publisher.en   ?? '', si: book.publisher.si   ?? '' },
+      publisher:     {
+        name:    { en: book.publisher?.name.en ?? '', si: book.publisher?.name.si ?? '' },
+        address: { en: book.publisher?.address.en ?? '', si: book.publisher?.address.si ?? '' },
+        webUrl:  book.publisher?.webUrl ?? '',
+      },
       subject:       book.subject.map(s => ({ en: s.en ?? '', si: s.si ?? '' })),
       authors:       book.authors.map(a => ({
         id:         a.id,
@@ -108,7 +101,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
       previewImages: book.previewImages?.map(pi => ({
         id: pi.id,
         url: pi.url,
-        caption: {en: pi.caption?.en, si: pi.caption?.si},
+        caption: {en: pi.caption?.en ?? '', si: pi.caption?.si ?? ''},
         displayOrder: pi.displayOrder,
       })),
       tagInput:      '',
@@ -129,7 +122,11 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                      : undefined,
       description: { en: values.description.en.trim(), si: values.description.si.trim() || undefined },
       content:     { en: values.content.en.trim(),     si: values.content.si.trim()     || undefined },
-      publisher:   { en: values.publisher.en.trim(),   si: values.publisher.si.trim()   || undefined },
+      publisher:   {
+        name:    { en: values.publisher.name.en.trim(), si: values.publisher.name.si.trim() || undefined },
+        address: { en: values.publisher.address.en.trim(), si: values.publisher.address.si.trim() || undefined },
+        webUrl:  values.publisher.webUrl?.trim() || undefined,
+      },
       subject:     values.subject
                      .filter(s => s.en.trim() || s.si.trim())
                      .map(s => ({ en: s.en.trim() || undefined, si: s.si.trim() || undefined })),
@@ -153,7 +150,9 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
       displayOrder: values.displayOrder ? Number(values.displayOrder) : undefined,
       previewImages: values.previewImages?.map(pi => ({
         id: pi.id,
-        caption: { en: pi.caption?.en, si: pi.caption?.si || undefined },
+        caption: { 
+          en: pi.caption?.en || undefined,
+          si: pi.caption?.si || undefined },
         displayOrder: pi.displayOrder
       })),
       v:            values.v,
@@ -267,7 +266,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                 {activeLocale === 'en' && (
                   <BootstrapForm.Group className="mb-4" controlId="formContentEn">
                     <RequiredFormLabel>{t('contentEnLabel')}</RequiredFormLabel>
-                    <Field name="content.en" as="textarea" rows={6} placeholder={t('contentEnPlaceholder')} className="form-control" />
+                    <Field name="content.en" as="textarea" rows={10} placeholder={t('contentEnPlaceholder')} className="form-control" />
                     <BootstrapForm.Text className="text-muted">{t('contentEnHelp', { max: MAX_BOOK_CONTENT_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="content.en" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
@@ -275,29 +274,87 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                 {activeLocale === 'si' && (
                   <BootstrapForm.Group className="mb-4" controlId="formContentSi">
                     <BootstrapForm.Label>{t('contentSiLabel')}</BootstrapForm.Label>
-                    <Field name="content.si" as="textarea" rows={6} placeholder={t('contentSiPlaceholder')} className="form-control" />
+                    <Field name="content.si" as="textarea" rows={10} placeholder={t('contentSiPlaceholder')} className="form-control" />
                     <BootstrapForm.Text className="text-muted">{t('contentSiHelp', { max: MAX_BOOK_CONTENT_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="content.si" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
                 )}
 
-                {/* ── Publisher ───────────────────────────────────────────── */}
-                {activeLocale === 'en' && (
-                  <BootstrapForm.Group className="mb-4" controlId="formPublisherEn">
-                    <RequiredFormLabel>{t('publisherEnLabel')}</RequiredFormLabel>
-                    <Field name="publisher.en" type="text" placeholder={t('publisherEnPlaceholder')} className="form-control" />
-                    <ErrorMessage name="publisher.en" component="p" className="text-danger mt-1" />
-                  </BootstrapForm.Group>
-                )}
-                {activeLocale === 'si' && (
-                  <BootstrapForm.Group className="mb-4" controlId="formPublisherSi">
-                    <BootstrapForm.Label>{t('publisherSiLabel')}</BootstrapForm.Label>
-                    <Field name="publisher.si" type="text" placeholder={t('publisherSiPlaceholder')} className="form-control" />
-                    <ErrorMessage name="publisher.si" component="p" className="text-danger mt-1" />
-                  </BootstrapForm.Group>
-                )}
-
                 <hr />
+
+                {/* ── Publisher ───────────────────────────────────────────── */}
+                <BootstrapForm.Group className="mb-4" controlId="formPublisher">
+                  <RequiredFormLabel>{t('publisherLabel')}</RequiredFormLabel>
+                  <Card className="shadow mb-3">
+                    <Row className='g-0'>
+                      {book.publisher?.imageUrl && (
+                      <Col xs={12} className="d-md-none">{/* Mobile */}
+                        <Card.Img
+                          src={book.publisher?.imageUrl}
+                          className="rounded-top rounded-bottom-0 object-fit-cover w-100"
+                          style={{ maxHeight: "16rem", minHeight: "12rem" }}
+                        />
+                      </Col>
+                      )}
+                      {book.publisher?.imageUrl && (
+                      <Col md={3} className="d-none d-md-flex">{/* Desktop */}
+                        <div className="position-relative w-100 overflow-hidden">
+                          <Card.Img 
+                            src={book.publisher?.imageUrl} 
+                            className="position-absolute rounded-start rounded-end-0 object-fit-cover w-100 h-100"
+                            style={{ inset: 0 }}
+                          />
+                        </div>
+                      </Col>
+                      )}
+                      <Col xs={12} md={book.publisher?.imageUrl ? 9 : 12}>
+                        <Card.Body>
+                          <Row>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherNameEn`}>
+                                <RequiredFormLabel>{t('publisherNameEnLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.name.en`} type="text" placeholder={t('publisherNameEnPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.name.en`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherNameSi`}>
+                                <RequiredFormLabel>{t('publisherNameSiLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.name.si`} type="text" placeholder={t('publisherNameSiPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.name.si`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherAddressEn`}>
+                                <RequiredFormLabel>{t('publisherAddressEnLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.address.en`} type="text" placeholder={t('publisherAddressEnPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.address.en`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                            <Col md={6}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherAddressSi`}>
+                                <RequiredFormLabel>{t('publisherAddressSiLabel')}</RequiredFormLabel>
+                                <Field name={`publisher.address.si`} type="text" placeholder={t('publisherAddressSiPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.address.si`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={12}>
+                              <BootstrapForm.Group className="mb-3" controlId={`formPublisherWebUrl`}>
+                                <BootstrapForm.Label>{t('publisherWebUrlLabel')}</BootstrapForm.Label>
+                                <Field name={`publisher.webUrl`} type="url" placeholder={t('publisherWebUrlPlaceholder')} className="form-control" />
+                                <SafeErrorMessage name={`publisher.webUrl`} />
+                              </BootstrapForm.Group>
+                            </Col>
+                          </Row>
+                        </Card.Body>
+                      </Col>
+                    </Row>
+                  </Card>
+                </BootstrapForm.Group>
 
                 {/* ── Authors ─────────────────────────────────────────────── */}
                 <BootstrapForm.Group className="mb-4">
@@ -395,7 +452,6 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                 {/* ── Subject ─────────────────────────────────────────────── */}
                 <BootstrapForm.Group className="mb-4">
                   <BootstrapForm.Label>{t('subjectLabel')}</BootstrapForm.Label>
-                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectHelp')}</BootstrapForm.Text>
                   <FieldArray name="subject">
                     {({ push, remove }) => (
                       <div>
@@ -423,6 +479,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                       </div>
                     )}
                   </FieldArray>
+                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectHelp')}</BootstrapForm.Text>
                 </BootstrapForm.Group>
 
                 {/* ── Written language ────────────────────────────────────── */}
@@ -644,7 +701,6 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                                         disabled={index === 0}
                                         title={t('moveUp')}
                                         onClick={() => {
-                                          const originalIndex = values.previewImages!.findIndex(img => img.id === pi.id);
                                           const prevItem = sortedArr[index - 1];
                                           const prevOriginalIndex = values.previewImages!.findIndex(img => img.id === prevItem.id);
                                           setFieldValue(
@@ -678,16 +734,13 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                                       </span>
                                     </div>
                                   </div>
-                                  {/* <Card.Title>
-                                    {t('previewImageCaption')}
-                                  </Card.Title> */}
                                   {/* ---- Captions ------------------------------------------- */}
                                   <Row>
                                     <Col xs={12}>
-                                      <BootstrapForm.Group className="mb-3" controlId={`formPreviewImageCaptionEn${index}`}>
+                                      <BootstrapForm.Group className="mb-3" controlId={`formPreviewImageCaptionEn${originalIndex}`}>
                                         <BootstrapForm.Label>{t('previewImageCaptionEnLabel')}</BootstrapForm.Label>
-                                        <Field name={`previewImages.${index}.caption.en`} type="text" placeholder={t('previewImageCaptionEnPlaceholder')} className="form-control" />
-                                        <SafeErrorMessage name={`previewImages.${index}.caption.en`} />
+                                        <Field name={`previewImages.${originalIndex}.caption.en`} type="text" placeholder={t('previewImageCaptionEnPlaceholder')} className="form-control" />
+                                        <SafeErrorMessage name={`previewImages.${originalIndex}.caption.en`} />
                                       </BootstrapForm.Group>
                                     </Col>
                                     <Col>

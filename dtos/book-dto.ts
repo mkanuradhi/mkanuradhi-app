@@ -7,6 +7,12 @@ export interface BookAuthorDto {
   profileUrl?: string;
 }
 
+export interface BookPublisherDto {
+  name: LocalizedString;
+  address: LocalizedString;
+  webUrl?: string;
+}
+
 export interface BookIsbnDto {
   format: BookIsbnFormat;
   value: string;
@@ -21,7 +27,7 @@ export interface CreateBookDto {
   authors:     BookAuthorDto[];
   writtenLang: BookLanguage;
 
-  publisher:     LocalizedString;
+  publisher:     BookPublisherDto;
   publishedYear: number;
   edition?:      string;
   isbns?:        BookIsbnDto[];
@@ -55,7 +61,7 @@ export interface UpdateBookDto {
   authors:     UpdateBookAuthorDto[];
   writtenLang: BookLanguage;
 
-  publisher:     LocalizedString;
+  publisher:     BookPublisherDto;
   publishedYear: number;
   edition?:      string;
   isbns?:        BookIsbnDto[];

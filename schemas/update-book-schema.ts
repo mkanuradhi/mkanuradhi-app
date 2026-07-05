@@ -61,12 +61,37 @@ export const getUpdateBookSchema = (t: (key: string, values?: Record<string, any
     }).required(),
 
     publisher: yup.object({
-      en: yup.string()
-        .trim()
-        .min(MIN_BOOK_TITLE_LENGTH, t('publisherEnTooShort', { min: MIN_BOOK_TITLE_LENGTH }))
-        .max(MAX_BOOK_TITLE_LENGTH, t('publisherEnTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
-        .required(t('publisherEnRequired')),
-      si: yup.string().trim().max(MAX_BOOK_TITLE_LENGTH, t('publisherSiTooLong', { max: MAX_BOOK_TITLE_LENGTH })).notRequired(),
+      name: yup.object({
+        en: yup.string()
+          .trim()
+          .min(MIN_BOOK_TITLE_LENGTH, t('publisherNameEnTooShort', { min: MIN_BOOK_TITLE_LENGTH }))
+          .max(MAX_BOOK_TITLE_LENGTH, t('publisherNameEnTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
+          .required(t('publisherNameEnRequired')),
+        si: yup.string()
+          .trim()
+          .max(MAX_BOOK_TITLE_LENGTH, t('publisherNameSiTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
+          .notRequired(),
+      }).required(),
+
+      address: yup.object({
+        en: yup.string()
+          .trim()
+          .min(MIN_BOOK_TITLE_LENGTH, t('publisherAddressEnTooShort', { min: MIN_BOOK_TITLE_LENGTH }))
+          .max(MAX_BOOK_TITLE_LENGTH, t('publisherAddressEnTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
+          .required(t('publisherAddressEnRequired')),
+        si: yup.string()
+          .trim()
+          .max(MAX_BOOK_TITLE_LENGTH, t('publisherAddressSiTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
+          .notRequired(),
+      }).required(),
+
+      webUrl: yup.string()
+        .url(t('urlMustBeValid'))
+        .max(MAX_BOOK_URL_LENGTH, t('urlTooLong', { max: MAX_BOOK_URL_LENGTH }))
+        .notRequired()
+        .transform((value, originalValue) =>
+          originalValue === '' ? undefined : value
+        ),
     }).required(),
 
     // Authors
