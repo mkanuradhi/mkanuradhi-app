@@ -76,12 +76,6 @@ const AuthorList: React.FC<AuthorListProps> = ({bookId, authors, isSi, authorRol
           className="d-flex align-items-center gap-2 py-2"
           style={{ borderBottom: index < authors.length - 1 ? '0.5px solid var(--bs-border-color)' : 'none' }}
         >
-          {/* <div
-            className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
-            style={{ width: 32, height: 32, background: 'var(--bs-info-bg-subtle)', color: 'var(--bs-info)', fontSize: 11, fontWeight: 500 }}
-          >
-            {getInitials(name)}
-          </div> */}
           {author.imageUrl ? (
             <EditableImage
               src={author.imageUrl}
@@ -115,6 +109,15 @@ const AuthorList: React.FC<AuthorListProps> = ({bookId, authors, isSi, authorRol
     })}
   </div>
 );
+
+const OptionalLink: React.FC<{ href?: string; children: React.ReactNode; className?: string }> = ({ href, children, className }) =>
+  href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      {children}
+    </a>
+  ) : (
+    <>{children}</>
+  );
 
 // Sub-component: Metadata grid
 
@@ -245,7 +248,6 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
     const subtitle    = isSin ? book.subtitle?.si    : book.subtitle?.en;
     const description = isSin ? book.description.si  : book.description.en;
     const content     = isSin ? book.content.si      : book.content.en;
-    const publisher   = isSin ? book.publisher.si    : book.publisher.en;
 
     const metaItems: MetaItem[] = [
       { label: t('publishedYear'), value: book.publishedYear },
@@ -316,16 +318,6 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
           </Row>
         )}
 
-        {/* Publisher */}
-        {publisher && (
-          <Row>
-            <Col>
-              <h4 className='mb-2'>{t('publisher')}</h4>
-              <div>{publisher}</div>
-            </Col>
-          </Row>
-        )}
-
         {/* Subjects */}
         <SubjectChips
           subjects={book.subject}
@@ -367,6 +359,53 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
               <SanitizedHtml html={content} />
             </Col>
           </Row>
+        )}
+
+        <hr />
+
+        {/* Publisher */}
+        {book.publisher && (
+          <>
+            <Row className="mb-3">
+              <Col>
+                <h4 className="mb-2">{t('publisher')}</h4>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col>
+                <div className="d-flex align-items-center gap-3">
+                  {book.publisher.imageUrl ? (
+                    <EditableImage
+                      src={book.publisher.imageUrl}
+                      alt={`${book.publisher.name.en} logo`}
+                      editHref={`/dashboard/books/${bookId}/edit/publisher-image`}
+                      width={40}
+                      height={40}
+                      borderRadius='100%'
+                    />
+                  ) : (
+                    <EditableImagePlaceholder
+                      editHref={`/dashboard/books/${bookId}/edit/publisher-image`}
+                      width={40}
+                      height={40}
+                      borderRadius='100%'
+                    />
+                  )}
+
+                  <div>
+                    <h6 className="mb-0">
+                      <OptionalLink href={book.publisher.webUrl} className="text-decoration-none">
+                        {isSin ? book.publisher.name.si : book.publisher.name.en}
+                      </OptionalLink>
+                    </h6>
+                    <div className="text-muted small">
+                      {isSin ? book.publisher.address.si : book.publisher.address.en}
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </>
         )}
 
         <hr />
