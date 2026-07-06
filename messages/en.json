@@ -600,6 +600,32 @@
         "Edit": {
           "title": "Edit Award"
         }
+      },
+      "Books": {
+        "pageTitle": "Books Dashboard",
+        "title": "Books",
+        "addNew": "Add New Book",
+        "New": {
+          "title": "Add New Book"
+        },
+        "Edit": {
+          "title": "Edit Book"
+        },
+        "EditCoverImage": {
+          "title": "Edit Cover Image"
+        },
+        "EditPreviewImages": {
+          "title": "Edit Preview Images"
+        },
+        "EditAuthorImage": {
+          "title": "Edit Author Image"
+        },
+        "EditSampleFile": {
+          "title": "Edit Sample File"
+        },
+        "EditPublisherImage": {
+          "title": "Edit Publisher Image"
+        }
       }
     },
     "Visualizations": {
@@ -2043,6 +2069,360 @@
       "attractiveness": "Attractiveness",
       "absorption": "Absorption",
       "iterations": "Iterations"
+    },
+    "NewBookForm": {
+      "localeTabEnTitle": "English (en)",
+      "localeTabSiTitle": "සිංහල (si)",
+
+      "titleEnLabel": "Title (English)",
+      "titleEnPlaceholder": "The Art of Clean Code",
+      "titleSiLabel": "Title (Sinhala)",
+      "titleSiPlaceholder": "පිරිසිදු කේතයේ කලාව",
+
+      "subtitleEnLabel": "Subtitle (English)",
+      "subtitleEnPlaceholder": "Writing Readable and Maintainable Software",
+      "subtitleSiLabel": "Subtitle (Sinhala)",
+      "subtitleSiPlaceholder": "කියවිය හැකි සහ නඩත්තු කළ හැකි මෘදුකාංග ලිවීම",
+
+      "descriptionEnLabel": "Description (English)",
+      "descriptionEnPlaceholder": "Short description shown on book cards...",
+      "descriptionEnHelp": "This will be displayed on the book card. Cannot exceed {max} characters.",
+      "descriptionSiLabel": "Description (Sinhala)",
+      "descriptionSiPlaceholder": "පොත පිළිබඳ කෙටි විස්තරය...",
+      "descriptionSiHelp": "This will be displayed on the book card. Cannot exceed {max} characters.",
+
+      "contentEnLabel": "Content (English)",
+      "contentEnPlaceholder": "Full book description...",
+      "contentEnHelp": "This is the full description of the book. Cannot exceed {max} characters.",
+      "contentSiLabel": "Content (Sinhala)",
+      "contentSiPlaceholder": "සම්පූර්ණ විස්තරය...",
+      "contentSiHelp": "This is the full description of the book. Cannot exceed {max} characters.",
+
+      "publisherLabel": "Publisher",
+      "publisherNameEnLabel": "Publisher (English)",
+      "publisherNameEnPlaceholder": "Sample Publications",
+      "publisherNameSiLabel": "Publisher (Sinhala)",
+      "publisherNameSiPlaceholder": "සාම්පල් ප්‍රකාශකයෝ",
+      "publisherAddressEnLabel": "Publisher Address (English)",
+      "publisherAddressEnPlaceholder": "123, Sample Street, Colombo, Sri Lanka",
+      "publisherAddressSiLabel": "Publisher Address (Sinhala)",
+      "publisherAddressSiPlaceholder": "123, සාම්පල් වීදිය, කොළඹ, ශ්‍රී ලංකාව",
+      "publisherWebUrlLabel": "Publisher Website",
+      "publisherWebUrlPlaceholder": "https://sample-publications.lk",
+
+      "authorsLabel": "Authors",
+      "authorLabel": "Author {number}",
+      "addAuthor": "Add author",
+      "removeAuthor": "Remove author",
+      "authorNameEnLabel": "Name (English)",
+      "authorNameEnPlaceholder": "Jane Smith",
+      "authorNameSiLabel": "Name (Sinhala)",
+      "authorNameSiPlaceholder": "ජේන් ස්මිත්",
+      "authorRoleLabel": "Role",
+      "authorProfileUrlLabel": "Profile URL",
+      "authorProfileUrlPlaceholder": "https://example.com/jane",
+
+      "authorRole": {
+        "author":    "Author",
+        "co-author": "Co-author",
+        "editor":    "Editor",
+        "reviewer":  "Reviewer"
+      },
+
+      "subjectLabel": "Subjects",
+      "subjectHelp":  "Add the academic or professional subjects this book covers. e.g. Computer Science, Artificial Intelligence",
+      "addSubject":   "Add subject",
+      "subjectEnPlaceholder": "Computer Science",
+      "subjectSiPlaceholder": "පරිගණක විද්‍යාව",
+
+      "writtenLangLabel": "Written language",
+      "bookLanguage": {
+        "en": "English",
+        "si": "Sinhala"
+      },
+
+      "publishedYearLabel":       "Published year",
+      "publishedYearPlaceholder": "2025",
+
+      "editionLabel":       "Edition",
+      "editionPlaceholder": "1st Edition",
+
+      "isbnsLabel":      "ISBNs",
+      "isbnLabel":      "ISBN {number}",
+      "isbnValueLabel":  "ISBN",
+      "removeIsbnLabel": "Remove ISBN",
+      "isbnValuePlaceholder": "978-x-xx-xxxxxx-x",
+      "addIsbnLabel": "Add ISBN",
+      "isbnFormatLabel": "Format",
+      "isbnFormat": {
+        "paperback": "Paperback",
+        "hardcover": "Hardcover",
+        "ebook":     "eBook"
+      },
+
+      "pagesLabel":       "Pages",
+      "pagesPlaceholder": "280",
+
+      "tagsLabel":       "Tags",
+      "tagsHelp":        "Type a tag and press Enter or click + to add",
+      "tagsPlaceholder": "Add a tag",
+
+      "coverImageLabel":       "Cover image URL",
+      "coverImagePlaceholder": "https://example.com/cover.jpg",
+
+      "buyLinkLabel":       "Buy link",
+      "buyLinkPlaceholder": "https://example.com/buy",
+      "buyLinkHelp":        "URL where this book can be purchased",
+
+      "pdfTeaserLabel":       "PDF teaser URL",
+      "pdfTeaserPlaceholder": "https://example.com/teaser.pdf",
+
+      "featuredLabel": "Featured",
+      "featuredCheckboxLabel": "Mark this book as featured",
+
+      "displayOrderLabel":       "Display order",
+      "displayOrderPlaceholder": "1",
+      "displayOrderHelp":        "Order in which this book appears in the list. Lower number = higher position.",
+
+      "previewImages": "Preview Images",
+      "previewImageCaption": "Caption",
+      "previewImageCaptionEnLabel": "Caption (English)",
+      "previewImageCaptionEnPlaceholder": "Short description of the image",
+      "previewImageCaptionSiLabel": "Caption (Sinhala)",
+      "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරයක්",
+      "moveUp": "Move Up",
+      "moveDown": "Move Down",
+
+      "cancel":     "Cancel",
+      "submit":     "Save book",
+      "submitting": "Saving...",
+
+      "titleEnRequired":           "English title is required.",
+      "titleEnTooShort":           "English title must be at least {min} characters.",
+      "titleEnTooLong":            "English title cannot exceed {max} characters.",
+      "titleSiTooLong":            "Sinhala title cannot exceed {max} characters.",
+
+      "subtitleEnTooLong":         "English subtitle cannot exceed {max} characters.",
+      "subtitleSiTooLong":         "Sinhala subtitle cannot exceed {max} characters.",
+
+      "descriptionEnRequired":     "English description is required.",
+      "descriptionEnTooShort":     "English description must be at least {min} characters.",
+      "descriptionEnTooLong":      "English description cannot exceed {max} characters.",
+      "descriptionSiTooLong":      "Sinhala description cannot exceed {max} characters.",
+
+      "contentEnRequired":         "English content is required.",
+      "contentEnTooShort":         "English content must be at least {min} characters.",
+      "contentEnTooLong":          "English content cannot exceed {max} characters.",
+      "contentSiTooLong":          "Sinhala content cannot exceed {max} characters.",
+
+      "publisherNameEnRequired":    "English publisher name is required.",
+      "publisherNameEnTooShort":    "English publisher name must be at least {min} characters.",
+      "publisherNameEnTooLong":     "English publisher name cannot exceed {max} characters.",
+      "publisherNameSiRequired":    "Publisher name in Sinhala is required.",
+      "publisherNameSiTooShort":    "Publisher name in Sinhala must be at least {min} characters.",
+      "publisherNameSiTooLong":     "Publisher name in Sinhala cannot exceed {max} characters.",
+      "publisherAddressEnRequired": "English publisher address is required.",
+      "publisherAddressEnTooShort": "English publisher address must be at least {min} characters.",
+      "publisherAddressEnTooLong":  "English publisher address cannot exceed {max} characters.",
+      "publisherAddressSiRequired": "Publisher address in Sinhala is required.",
+      "publisherAddressSiTooShort": "Publisher address in Sinhala must be at least {min} characters.",
+      "publisherAddressSiTooLong":  "Publisher address in Sinhala cannot exceed {max} characters.",
+
+      "authorsRequired":           "At least one author is required.",
+      "authorsTooMany":            "Cannot exceed {max} authors.",
+      "authorNameEnRequired":      "English author name is required.",
+      "authorNameEnTooShort":      "English author name must be at least 2 characters.",
+      "authorNameEnTooLong":       "English author name cannot exceed {max} characters.",
+      "authorNameSiTooLong":       "Sinhala author name cannot exceed {max} characters.",
+      "authorRoleRequired":        "Author role is required.",
+      "authorRoleInvalid":         "Invalid author role.",
+
+      "subjectEnTooLong":          "English subject cannot exceed {max} characters.",
+      "subjectSiTooLong":          "Sinhala subject cannot exceed {max} characters.",
+      "subjectsTooMany":           "Cannot exceed {max} subjects.",
+
+      "writtenLangRequired":       "Written language is required.",
+      "writtenLangInvalid":        "Invalid written language.",
+
+      "publishedYearRequired":     "Published year is required.",
+      "publishedYearMustBeNumber": "Published year must be a number.",
+      "publishedYearMustBeInteger":"Published year must be a whole number.",
+      "publishedYearTooLow":       "Published year cannot be before {min}.",
+      "publishedYearTooHigh":      "Published year cannot be in the future.",
+
+      "editionTooLong":            "Edition cannot exceed {max} characters.",
+      "isbnTooLong":               "ISBN cannot exceed {max} characters.",
+      "isbnValueRequired":         "ISBN value is required.",
+      "isbnFormatInvalid":         "Invalid ISBN format.",
+      "isbnFormatDuplicate":       "Duplicate ISBN format.",
+      "isbnFormatRequired":        "ISBN format is required.",
+      "isbnsTooMany":              "Cannot exceed {max} ISBN formats.",
+      "pagesMustBeNumber":         "Pages must be a number.",
+      "pagesMustBeInteger":        "Pages must be a whole number.",
+      "pagesTooLow":               "Pages must be at least 1.",
+
+      "tagTooLong":                "Tag cannot exceed {max} characters.",
+      "tagsTooMany":               "Cannot exceed {max} tags.",
+
+      "urlMustBeValid":            "Must be a valid URL.",
+      "urlTooLong":                "URL cannot exceed {max} characters.",
+
+      "displayOrderMustBeNumber":  "Display order must be a number.",
+      "displayOrderMustBeInteger": "Display order must be a whole number.",
+      "displayOrderTooLow":        "Display order cannot be negative.",
+
+      "versionRequired": "Version is required for updates."
+    },
+    "BookOptionsViewer": {
+      "dashboard":    "Dashboard",
+      "books":        "Books",
+      "edit":         "Edit",
+      "activate":     "Activate",
+      "deactivate":   "Deactivate",
+      "delete":       "Delete",
+      "active":       "Active",
+      "inactive":     "Inactive",
+      "featured":     "Featured",
+      "localeEn":     "English",
+      "localeSi":     "සිංහල",
+      "noCover":      "No cover",
+      "noTitle":      "No title",
+      "failBook":     "Failed to load book.",
+      "publishedYear":"Published year",
+      "writtenLang":  "Written in",
+      "langEnglish":  "English",
+      "langSinhala":  "Sinhala",
+      "edition":      "Edition",
+      "pages":        "Pages",
+      "isbnValue":    "ISBN {value}",
+      "isbnFormat": {
+        "paperback": "Paperback",
+        "hardcover": "Hardcover",
+        "ebook":     "eBook"
+      },
+      "displayOrder": "Display order",
+      "publisher":    "Publisher",
+      "subjects":     "Subjects",
+      "authors":      "Authors",
+      "authorRole": {
+        "author":    "Author",
+        "co-author": "Co-author",
+        "editor":    "Editor",
+        "reviewer":  "Reviewer"
+      },
+      "description":  "Description",
+      "content":      "Content",
+      "tags":         "Tags",
+      "links":        "Buy Link",
+      "sampleFile":    "Sample File",
+      "previewImages":"Preview Images",
+      "addPreviewImages":"Add Preview Images",
+      "addSampleFile":"Edit File",
+      "activateErrorTitle":   "Failed to activate book.",
+      "deactivateErrorTitle": "Failed to deactivate book.",
+      "deleteErrorTitle":     "Failed to delete book.",
+      "deleteModalTitle":     "Delete book",
+      "deleteModalMessage":   "Are you sure you want to delete <strong>title</strong>? This action cannot be undone.",
+      "deleteModalCancel":    "Cancel",
+      "deleteModalAccept":    "Delete"
+    },
+    "BooksTable": {
+      "failBooks": "Failed to load books",
+      "noBooks": "No books to display",
+      "refreshBooks": "Refreshing books...",
+      "books": "books"
+    },
+    "BookOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the book: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the book",
+      "deactivateErrorTitle": "Cannot deactivate the book",
+      "deleteErrorTitle": "Cannot delete the book"
+    },
+    "UpdateBookCoverImageForm": {
+      "noCoverImage": "No cover image uploaded yet.",
+      "deleteCoverImage": "Delete cover image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "UpdateBookPreviewImagesForm": {
+      "noPreviewImages": "No preview images uploaded yet.",
+      "dragActiveLabel": "Drop the images here...",
+      "selectFilesLabel": "Drag and drop an images here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "Files Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "UpdateBookAuthorImageForm": {
+      "subtitle": "Author: {authorName}",
+      "noAuthorImage": "No author image uploaded yet.",
+      "deleteAuthorImage": "Delete author image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "UpdateBookSampleFileForm": {
+      "noSampleFile": "No sample file uploaded yet.",
+      "deleteSampleFile": "Delete sample file",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the file here...",
+      "selectFileLabel": "Drag and drop a file here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "UpdateBookPublisherImageForm": {
+      "noPublisherImage": "No publisher image uploaded yet.",
+      "deletePublisherImage": "Delete publisher image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
     }
   },
   "contexts": {
@@ -2054,6 +2434,7 @@
       "research": "Research",
       "contactMessages": "Contact Messages",
       "awards": "Awards",
+      "books": "Books",
       "studentCourses": "Student Courses"
     }
   },
