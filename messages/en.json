@@ -653,6 +653,13 @@
         "pageDescription": "A 2D visualization of the Firefly Algorithm.",
         "pageKeywords": "firefly, algorithm, 2d, visualization"
       }
+    },
+    "Books": {
+      "pageTitle": "Books",
+      "pageDescription": "Explore my published books, covering topics in computer science, AI, metaheuristics, and more.",
+      "pageKeywords": "books, publications, computer science, metaheuristics, AI",
+      "title": "Books",
+      "description": "I believe knowledge is most valuable when it is shared. My books are written to make complex topics practical, accessible, and engaging, with the hope of supporting lifelong learning and inspiring curiosity."
     }
   },
   "components": {
@@ -2423,6 +2430,13 @@
       "fileRejectionTitle": "File Rejected",
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
+    },
+    "BookCard": {
+      "language": {
+        "en": "English",
+        "si": "Sinhala"
+      },
+      "viewDetails": "View Details"
     }
   },
   "contexts": {

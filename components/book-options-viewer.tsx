@@ -345,7 +345,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
           <Row>
             <Col>
               <h4 className="mb-2">{t('description')}</h4>
-              <div>{description}</div>
+              <SanitizedHtml html={description} />
             </Col>
           </Row>
         )}
