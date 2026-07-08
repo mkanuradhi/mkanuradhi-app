@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
 import { getLocalizedBooks } from '@/services/book-service';
 import BooksViewer from '@/components/books-viewer';
+import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 
 const baseTPath = 'pages.Books';
 export const revalidate = 604800; // cache for 1 week
@@ -15,10 +16,20 @@ export async function generateMetadata ({ params }: { params: { locale: string }
     title: t('pageTitle'),
     description: t('pageDescription'),
     keywords: t('pageKeywords'),
+    alternates: {
+      canonical: `/${locale}/books`,
+      languages: {
+        en: `/${LANG_EN}/books`,
+        si: `/${LANG_SI}/books`,
+      },
+    },
     openGraph: {
       title: t('pageTitle'),
       description: t('pageDescription'),
       type: 'website',
+      url: `/${locale}/books`,
+      siteName: 'mkanuradhi',
+      locale: locale === LANG_SI ? 'si_LK' : 'en_US',
       images: [
         {
           url: '/images/mkanuradhi.png',
@@ -33,6 +44,12 @@ export async function generateMetadata ({ params }: { params: { locale: string }
           alt: 'MKA',
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('pageTitle'),
+      description: t('pageDescription'),
+      images: ['/images/mkanuradhi.png'],
     }
   };
 };
