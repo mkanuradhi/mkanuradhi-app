@@ -26,8 +26,8 @@ import DeleteModal from './delete-modal';
 import { LANG_SI } from '@/constants/common-vars';
 import RecordMetadata from './record-metadata';
 import GlowLink from './GlowLink';
-import { BookAuthor } from '@/interfaces/i-book';
-import { BookLanguage } from '@/enums/book-enums';
+import { BookAuthor, BookPrice } from '@/interfaces/i-book';
+import { BookLanguage, BookPriceCurrency } from '@/enums/book-enums';
 import SanitizedHtml from './sanitized-html';
 import Badge from 'react-bootstrap/Badge';
 import EditableImage from './editable-image';
@@ -241,6 +241,12 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
     ? t('langSinhala')
     : t('langEnglish');
 
+  const getPriceWithCurrency = (price?: BookPrice) => {
+    if (!price) return null;
+    const amount = (price.amount / 100).toFixed(2);
+    return `${t(`priceCurrency.${price.currency}`)} ${amount}`;
+  }
+
   // Locale section renderer
 
   const renderSection = (isSin: boolean) => {
@@ -254,6 +260,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
       { label: t('writtenLang'),   value: writtenLangLabel   },
       { label: t('edition'),       value: book.edition       },
       { label: t('pages'),         value: book.pages         },
+      { label: t('price'),         value: getPriceWithCurrency(book.price)},
       { label: t('displayOrder'),  value: book.displayOrder  },
     ];
 

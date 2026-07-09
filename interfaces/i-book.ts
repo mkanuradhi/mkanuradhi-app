@@ -30,6 +30,11 @@ export interface BookPreviewImage {
   displayOrder: number;
 }
 
+export interface BookPrice {
+  amount:   number; // 150000 = LKR 1500.00
+  currency: string;
+}
+
 interface Book {
   id: string;
 
@@ -48,6 +53,7 @@ interface Book {
   isbns?: BookIsbn[];
   pages?: number;
   tags: string[];
+  price?: BookPrice;
 
   // Media & links
   coverImage?:    string;
@@ -95,7 +101,11 @@ export interface LocalizedBookPreviewImage {
 export interface LocalizedBook {
   id:            string;
   title:         string;
+  titleEn:       string;
+  titleOriginal: string;
   subtitle?:     string;
+  subtitleEn?:   string;
+  subtitleOriginal?: string;
   description:   string;
   content:       string;
   subject:       string[];
@@ -108,6 +118,7 @@ export interface LocalizedBook {
   isbns?:        BookIsbn[];
   pages?:        number;
   tags:          string[];
+  price?:        BookPrice;
   coverImage?:   string;
   previewImages?: LocalizedBookPreviewImage[];
   buyLink?:      string;
@@ -118,7 +129,10 @@ export interface LocalizedBook {
 // Public list/card — light, one locale resolved
 export interface LocalizedSummaryBook {
   title:         string;
+  titleEn:       string;
+  titleOriginal: string;
   subtitle?:     string;
+  subtitleOriginal?: string;
   description:   string;
   writtenLang:   BookLanguage;
   path:          string;

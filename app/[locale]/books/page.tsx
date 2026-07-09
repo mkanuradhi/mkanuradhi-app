@@ -1,9 +1,11 @@
 import React from 'react';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Alert, Col, Container, Row } from 'react-bootstrap';
 import { getLocalizedBooks } from '@/services/book-service';
 import BooksViewer from '@/components/books-viewer';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
+import { ApiError } from '@/errors/api-error';
+import ApiErrorAlert from '@/components/api-error-alert';
 
 const baseTPath = 'pages.Books';
 export const revalidate = 604800; // cache for 1 week
@@ -57,7 +59,15 @@ export async function generateMetadata ({ params }: { params: { locale: string }
 const BooksPage = async () => {
   const t = await getTranslations(baseTPath);
   const locale = await getLocale();
-  const lsBooksPaginatedResult = await getLocalizedBooks(locale, 0, 100);
+
+  let lsBooksPaginatedResult = null;
+  let fetchError: unknown = null;
+
+  try {
+    lsBooksPaginatedResult = await getLocalizedBooks(locale, 0, 100);
+  } catch (err) {
+    fetchError = err;
+  }
 
   return (
     <>
@@ -70,7 +80,11 @@ const BooksPage = async () => {
                 <p>{t('description')}</p>
               </section>
               <section>
-                <BooksViewer lsBooks={lsBooksPaginatedResult.items} />
+                {fetchError ? (
+                  <ApiErrorAlert error={fetchError} message={t('loadFailed')} />
+                ) : (
+                  <BooksViewer lsBooks={lsBooksPaginatedResult!.items} />
+                )}
               </section>
             </Col>
           </Row>

@@ -18,7 +18,7 @@ import {
   MIN_BOOK_PUBLISHED_YEAR,
   MIN_BOOK_TITLE_LENGTH,
 } from '@/constants/validation-vars';
-import { BookAuthorRole, BookIsbnFormat, BookLanguage } from '@/enums/book-enums';
+import { BookAuthorRole, BookIsbnFormat, BookLanguage, BookPriceCurrency } from '@/enums/book-enums';
 
 export const getUpdateBookSchema = (t: (key: string, values?: Record<string, any>) => string) => {
   return yup.object({
@@ -171,6 +171,34 @@ export const getUpdateBookSchema = (t: (key: string, values?: Record<string, any
     tags: yup.array()
       .of(yup.string().trim().max(MAX_BOOK_TAG_LENGTH, t('tagTooLong', { max: MAX_BOOK_TAG_LENGTH })))
       .max(MAX_BOOK_TAGS, t('tagsTooMany', { max: MAX_BOOK_TAGS }))
+      .notRequired(),
+
+    price: yup.object().shape({
+      currency: yup.mixed<BookPriceCurrency>()
+        .oneOf(Object.values(BookPriceCurrency), t('priceCurrencyInvalid'))
+        .when('amount', {
+          is: (amount: number | undefined) => amount !== undefined && amount !== null,
+          then: (schema) => schema.required(t('priceCurrencyRequired')),
+          otherwise: (schema) => schema.notRequired(),
+        }),
+
+      amount: yup.number()
+        .transform((value, originalValue) =>
+          originalValue === '' ? undefined : value
+        )
+        .typeError(t('priceAmountMustBeNumber'))
+        .min(0, t('priceAmountTooLow'))
+        .test(
+          'max-two-decimals',
+          t('priceAmountTooManyDecimals'),
+          (value) => {
+            if (value === undefined) return true;
+            const scaled = value * 100;
+            return Math.abs(scaled - Math.round(scaled)) < 1e-9;
+          }
+        )
+        .notRequired(),
+    })
       .notRequired(),
 
     // Links & display

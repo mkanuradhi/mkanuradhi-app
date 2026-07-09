@@ -50,10 +50,10 @@ const BookCard: React.FC<BookCardProps> = ({lsBook, reversed}) => {
                   {t(`language.${lsBook.writtenLang}`)}
                 </Badge>
 
-                <h2 className="h1 mb-2">{lsBook.title}</h2>
+                <h2 className="h1 mb-2">{lsBook.titleOriginal}</h2>
 
-                {lsBook.subtitle && (
-                  <h3 className="h6 fst-italic text-muted mb-3">{lsBook.subtitle}</h3>
+                {lsBook.subtitleOriginal && (
+                  <h3 className="h6 fst-italic text-muted mb-3">{lsBook.subtitleOriginal}</h3>
                 )}
 
                 <div className={`d-flex gap-4 mb-3 ${reversed ? 'justify-content-md-end' : ''}`}>

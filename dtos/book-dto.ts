@@ -18,6 +18,11 @@ export interface BookIsbnDto {
   value: string;
 }
 
+export interface BookPrice {
+  amount:   number;
+  currency: string;
+}
+
 export interface CreateBookDto {
   title:       LocalizedString;
   subtitle?:   LocalizedString;
@@ -33,6 +38,7 @@ export interface CreateBookDto {
   isbns?:        BookIsbnDto[];
   pages?:        number;
   tags:          string[];
+  price?:        BookPrice,
 
   buyLink?:      string;
   featured:      boolean;
@@ -67,6 +73,7 @@ export interface UpdateBookDto {
   isbns?:        BookIsbnDto[];
   pages?:        number;
   tags:          string[];
+  price?:        BookPrice,
 
   buyLink?:       string;
   featured:      boolean;

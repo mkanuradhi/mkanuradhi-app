@@ -15,3 +15,8 @@ export enum BookIsbnFormat {
   HARDCOVER = "hardcover",
   EBOOK     = "ebook",
 }
+
+export enum BookPriceCurrency {
+  LKR = "LKR",
+  USD = "USD",
+}

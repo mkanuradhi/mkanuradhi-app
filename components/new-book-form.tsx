@@ -15,7 +15,7 @@ import { useRouter } from '@/i18n/routing';
 import { useCreateBookMutation } from '@/hooks/use-books';
 import { CreateBookDto } from '@/dtos/book-dto';
 import { getNewBookSchema } from '@/schemas/new-book-schema';
-import { BookAuthorRole, BookIsbnFormat, BookLanguage } from '@/enums/book-enums';
+import { BookAuthorRole, BookIsbnFormat, BookLanguage, BookPriceCurrency } from '@/enums/book-enums';
 import RequiredFormLabel from './required-form-label';
 import Book, { BookIsbn } from '@/interfaces/i-book';
 import { MAX_BOOK_CONTENT_LENGTH, MAX_BOOK_DESCRIPTION_LENGTH } from '@/constants/validation-vars';
@@ -46,6 +46,7 @@ const initialValues = {
   isbns:         [] as BookIsbn[],
   pages:         '',
   tags:          [] as string[],
+  price:         { amount: '' as number | '', currency: BookPriceCurrency.LKR.toString() },
   buyLink:       '',
   featured:      false,
   displayOrder:  '',
@@ -112,6 +113,12 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
       })),
       pages:         values.pages ? Number(values.pages) : undefined,
       tags:          values.tags,
+      price:         values.price.amount === '' || Number(values.price.amount) === 0 
+                      ? undefined 
+                      : { 
+                        amount: Math.round(Number(values.price.amount) * 100),
+                        currency: values.price.currency,
+                      },
       buyLink:       values.buyLink?.trim()     || undefined,
       featured:      values.featured,
       displayOrder:  values.displayOrder ? Number(values.displayOrder) : undefined,
@@ -517,6 +524,30 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                     ))}
                   </div>
                   <ErrorMessage name="tags" component="p" className="text-danger mt-1" />
+                </BootstrapForm.Group>
+
+                {/* ---- Price ------------------------------------------------ */}
+                <BootstrapForm.Group className="mb-4" controlId="formPrice">
+                  <BootstrapForm.Label id="formPriceLabel">{t('priceLabel')}</BootstrapForm.Label>
+                  <div className="d-flex gap-4 ps-1">
+
+                    <div>
+                      <Field as="select" id="formPriceCurrency" name={`price.currency`} className="form-select" aria-label={t('priceCurrencyLabel')}>
+                        {Object.values(BookPriceCurrency).map((currency) => (
+                          <option key={currency} value={currency}>
+                            {t(`priceCurrency.${currency}`)}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage name={`price.currency`} component="p" className="text-danger mt-1" />
+                    </div>
+
+                    <div className="flex-grow-1">
+                      <Field id="formPriceAmount" name="price.amount" type="text" inputMode="numeric" placeholder={t('priceAmountPlaceholder')} className="form-control" aria-label={t('priceAmountLabel')} />
+                      <BootstrapForm.Text className="text-muted">{t('priceAmountHelp')}</BootstrapForm.Text>
+                      <ErrorMessage name={`price.amount`} component="p" className="text-danger mt-1" />
+                    </div>
+                  </div>
                 </BootstrapForm.Group>
 
                 {/* ---- Buy link ------------------------------------------------ */}

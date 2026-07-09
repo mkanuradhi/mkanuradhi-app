@@ -659,7 +659,8 @@
       "pageDescription": "Explore my published books, covering topics in computer science, AI, metaheuristics, and more.",
       "pageKeywords": "books, publications, computer science, metaheuristics, AI",
       "title": "Books",
-      "description": "I believe knowledge is most valuable when it is shared. My books are written to make complex topics practical, accessible, and engaging, with the hope of supporting lifelong learning and inspiring curiosity."
+      "description": "I believe knowledge is most valuable when it is shared. My books are written to make complex topics practical, accessible, and engaging, with the hope of supporting lifelong learning and inspiring curiosity.",
+      "loadFailed": "Books cannot be loaded at the moment."
     }
   },
   "components": {
@@ -2174,6 +2175,16 @@
       "tagsHelp":        "Type a tag and press Enter or click + to add",
       "tagsPlaceholder": "Add a tag",
 
+      "priceLabel": "Price",
+      "priceCurrencyLabel": "Currency",
+      "priceCurrency": {
+        "LKR": "Rs.",
+        "USD": "US$"
+      },
+      "priceAmountLabel": "Amount",
+      "priceAmountPlaceholder": "2350 Or 2350.00",
+      "priceAmountHelp": "Enter the amount in currency, e.g. 2350.50 Or 2350",
+
       "coverImageLabel":       "Cover image URL",
       "coverImagePlaceholder": "https://example.com/cover.jpg",
 
@@ -2271,6 +2282,12 @@
       "tagTooLong":                "Tag cannot exceed {max} characters.",
       "tagsTooMany":               "Cannot exceed {max} tags.",
 
+      "priceCurrencyInvalid":       "Not a valid currency",
+      "priceCurrencyRequired":      "Currency is required",
+      "priceAmountMustBeNumber":    "Amount must be a valid number",
+      "priceAmountTooLow":          "Amount should be positive",
+      "priceAmountTooManyDecimals": "Amount has too many decimals",
+
       "urlMustBeValid":            "Must be a valid URL.",
       "urlTooLong":                "URL cannot exceed {max} characters.",
 
@@ -2320,6 +2337,11 @@
       "description":  "Description",
       "content":      "Content",
       "tags":         "Tags",
+      "price":        "Price",
+      "priceCurrency": {
+        "LKR": "Rs.",
+        "USD": "US$"
+      },
       "links":        "Buy Link",
       "sampleFile":    "Sample File",
       "previewImages":"Preview Images",
@@ -2437,6 +2459,14 @@
         "si": "Sinhala"
       },
       "viewDetails": "View Details"
+    },
+    "BookViewer": {
+      "publishedYear": "Published year",
+      "writtenLang":   "Written in",
+      "writtenLangen": "English",
+      "writtenLangsi": "Sinhala",
+      "edition":       "Edition",
+      "pages":         "Pages"
     }
   },
   "contexts": {
