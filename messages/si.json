@@ -2131,8 +2131,8 @@
       "authorProfileUrlPlaceholder": "https://example.com/jane",
 
       "authorRole": {
-        "author":    "කතුවරයා",
-        "co-author": "සහ-කතුවරයා",
+        "author":    "කර්තෘ",
+        "co-author": "සම කර්තෘ",
         "editor":    "සංස්කාරක",
         "reviewer":  "සමාලෝචක"
       },
@@ -2461,12 +2461,32 @@
       "viewDetails": "විස්තර බලන්න"
     },
     "BookViewer": {
+      "home": "මුල් පිටුව",
+      "books": "පොත්",
+
       "publishedYear": "ප්‍රකාශිත වර්ෂය",
       "writtenLang":   "ලියූ භාෂාව",
       "writtenLangen": "ඉංග්‍රීසි",
       "writtenLangsi": "සිංහල",
       "edition":       "සංස්කරණය",
-      "pages":         "පිටු"
+      "pages":         "පිටු",
+      "isbnSectionLabel": "ISBN",
+      "isbnFormat": {
+        "paperback": "කඩදාසි කවරය (Paperback)",
+        "hardcover": "දෘඪ කවරය (Hardcover)",
+        "ebook":     "ඊ-පොත (eBook)"
+      },
+      "authorsSectionLabel": "කතුවරුන්",
+      "authorRole": {
+        "author":    "කර්තෘ",
+        "co-author": "සම කර්තෘ",
+        "editor":    "සංස්කාරක",
+        "reviewer":  "සමාලෝචක"
+      },
+      "sampleTitle": "කුතුහලයෙන්ද?",
+      "sampleSubtitle": "පිටු කීපයක් පෙරලා බලමු.",
+      "viewSampleButtonLabel": "ආදර්ශය බලන්න",
+      "buyLinkButtonLabel": "මිලදී ගන්න"
     }
   },
   "contexts": {

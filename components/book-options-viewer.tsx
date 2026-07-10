@@ -27,7 +27,7 @@ import { LANG_SI } from '@/constants/common-vars';
 import RecordMetadata from './record-metadata';
 import GlowLink from './GlowLink';
 import { BookAuthor, BookPrice } from '@/interfaces/i-book';
-import { BookLanguage, BookPriceCurrency } from '@/enums/book-enums';
+import { BookLanguage } from '@/enums/book-enums';
 import SanitizedHtml from './sanitized-html';
 import Badge from 'react-bootstrap/Badge';
 import EditableImage from './editable-image';

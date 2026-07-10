@@ -1,10 +1,16 @@
 "use client";
 import { LocalizedBook } from "@/interfaces/i-book";
 import { useLocale, useTranslations } from "next-intl";
-import { Badge, Card, Col, Container, Row } from "react-bootstrap";
-import "./book-viewer.scss";
+import { Breadcrumb, Card, Col, Container, Row } from "react-bootstrap";
 import SanitizedHtml from "./sanitized-html";
-import { BookLanguage } from "@/enums/book-enums";
+import BookAuthorsList from "./book-authors-list";
+import BookIsbnList from "./book-isbn-list";
+import BookSampleFileSection from "./book-sample-file-section";
+import BookPublisherSection from "./book-publisher-section";
+import BookSubjectsList from "./book-subjects-list";
+import BookPreviewImagesGallery from "./book-preview-images-gallery";
+import { Link } from '@/i18n/routing';
+import "./book-viewer.scss";
 
 const baseTPath = 'components.BookViewer';
 
@@ -52,6 +58,18 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
       <Container fluid="md" className="book-viewer">
         <Row className="my-4">
           <Col>
+            <Row>
+              <Col>
+                <Breadcrumb>
+                  <Breadcrumb.Item linkAs="span">
+                    <Link href="/">{t('home')}</Link>
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item linkAs="span">
+                    <Link href="/books">{t('books')}</Link>
+                  </Breadcrumb.Item>
+                </Breadcrumb>
+              </Col>
+            </Row>
             <Card className='shadow glass-card'>
               <Card.Body className="p-4">
                 <Row>
@@ -75,21 +93,42 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
                       <h2 className="h4 fst-italic text-muted mb-3">{localizedBook.subtitleOriginal}</h2>
                     )}
 
+                    {localizedBook.subject && localizedBook.subject.length > 0 && (
+                      <BookSubjectsList subjects={localizedBook.subject} />
+                    )}
+
                     {/* Metadata grid — only shows available fields */}
                     <MetaGrid items={metaItems} />
 
                     {/* publisher */}
-                    <Row>
-                      <Col>
-                        <div>
-                          Publisher
-                        </div>
-                      </Col>
-                    </Row>
+                    {localizedBook.publisher && (
+                      <BookPublisherSection lPublisher={localizedBook.publisher} />
+                    )}
+
+                    {/* ISBNs */}
+                    {localizedBook.isbns && localizedBook.isbns.length > 0 && (
+                      <BookIsbnList isbns={localizedBook.isbns} />
+                    )}
 
                   </Col>
                   <Col className='mt-4'>
+                    {/* Authors list */}
+                    {localizedBook.authors && localizedBook.authors.length > 0 && (
+                      <BookAuthorsList authors={localizedBook.authors} />
+                    )}
+
+                    {/* long description */}
                     <SanitizedHtml html={localizedBook.content} />
+
+                    {/* sample file and buy link */}
+                    {localizedBook.pdfTeaser && (
+                      <BookSampleFileSection sampleFileUrl={localizedBook.pdfTeaser} buyLink={localizedBook.buyLink} />
+                    )}
+
+                    {localizedBook.previewImages && (
+                      <BookPreviewImagesGallery previewImages={localizedBook.previewImages} />
+                    )}
+
                   </Col>
 
                 </Row>

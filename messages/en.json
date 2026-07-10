@@ -2461,12 +2461,32 @@
       "viewDetails": "View Details"
     },
     "BookViewer": {
+      "home": "Home",
+      "books": "Books",
+
       "publishedYear": "Published year",
       "writtenLang":   "Written in",
       "writtenLangen": "English",
       "writtenLangsi": "Sinhala",
       "edition":       "Edition",
-      "pages":         "Pages"
+      "pages":         "Pages",
+      "isbnSectionLabel": "ISBN",
+      "isbnFormat": {
+        "paperback": "Paperback",
+        "hardcover": "Hardcover",
+        "ebook": "eBook"
+      },
+      "authorsSectionLabel": "Authors",
+      "authorRole": {
+        "author": "Author",
+        "co-author": "Co-Author",
+        "editor": "Editor",
+        "reviewer": "Reviewer"
+      },
+      "sampleTitle": "Curious?",
+      "sampleSubtitle": "See What Awaits Inside",
+      "viewSampleButtonLabel": "View sample",
+      "buyLinkButtonLabel": "Buy book"
     }
   },
   "contexts": {
