@@ -1,14 +1,21 @@
 .glow-button {
+  --glow-clr-one: var(--bs-success);
+  --glow-clr-two: var(--bs-primary-text-emphasis);
 
+  border: none;
   border-radius: 1000px;
+  color: #fff;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
+  background-image: linear-gradient(to bottom right, var(--glow-clr-one), var(--glow-clr-two));
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+
   &:hover {
-    background-image: linear-gradient(to bottom right, var(--bs-success), var(--bs-primary-text-emphasis));
-    box-shadow: 0 0 2rem rgba(var(--bs-success-rgb), 0.6);
+    background-image: linear-gradient(to top left, var(--glow-clr-one), var(--glow-clr-two));
+    box-shadow: 0 0 2rem color-mix(in srgb, var(--glow-clr-one) 60%, transparent);
   }
 
 }

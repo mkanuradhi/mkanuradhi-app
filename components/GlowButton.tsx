@@ -4,14 +4,22 @@ import "./GlowButton.scss";
 
 interface GlowButtonProps {
   withShadow?: boolean;
+  clrOne?: string;
+  clrTwo?: string;
   children: React.ReactNode;
 }
 
-const GlowButton: React.FC<GlowButtonProps> = ({ withShadow = false, children }) => {
+const GlowButton: React.FC<GlowButtonProps> = ({ withShadow = false, clrOne, clrTwo, children }) => {
+  const style = clrOne
+    ? ({
+        "--glow-clr-one": clrOne,
+        "--glow-clr-two": clrTwo || `color-mix(in srgb, ${clrOne}, white 35%)`,
+      } as React.CSSProperties)
+    : undefined;
 
   return (
     <>
-      <Button variant="primary" className="glow-button">
+      <Button value="" className="glow-button" style={style}>
         {children}
       </Button>
     </>
