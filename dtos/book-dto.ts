@@ -25,10 +25,12 @@ export interface BookPrice {
 
 export interface CreateBookDto {
   title:       LocalizedString;
+  titleOriginal: string;
   subtitle?:   LocalizedString;
+  subtitleOriginal?: string;
   description: LocalizedString;
   content:     LocalizedString;
-  subject:     LocalizedString[];
+  subjects:    LocalizedString[];
   authors:     BookAuthorDto[];
   writtenLang: BookLanguage;
 
@@ -39,6 +41,8 @@ export interface CreateBookDto {
   pages?:        number;
   tags:          string[];
   price?:        BookPrice,
+  audiences?:    LocalizedString[];
+  dimensions?:   LocalizedString;
 
   buyLink?:      string;
   featured:      boolean;
@@ -60,10 +64,12 @@ export interface UpdateBookPreviewImageDto {
 
 export interface UpdateBookDto {
   title:       LocalizedString;
+  titleOriginal: string;
   subtitle?:   LocalizedString;
+  subtitleOriginal?: string;
   description: LocalizedString;
   content:     LocalizedString;
-  subject:     LocalizedString[];
+  subjects:    LocalizedString[];
   authors:     UpdateBookAuthorDto[];
   writtenLang: BookLanguage;
 
@@ -74,6 +80,8 @@ export interface UpdateBookDto {
   pages?:        number;
   tags:          string[];
   price?:        BookPrice,
+  audiences?:    LocalizedString[];
+  dimensions?:   LocalizedString;
 
   buyLink?:       string;
   featured:      boolean;

@@ -2087,10 +2087,18 @@
       "titleSiLabel": "Title (Sinhala)",
       "titleSiPlaceholder": "පිරිසිදු කේතයේ කලාව",
 
+      "titleOriginalLabel": "Original Title",
+      "titleOriginalPlaceholder": "முறையான இலக்கிய மதிப்பாய்வுகள்",
+      "titleOriginalHelp": "Your original work title in any language",
+
       "subtitleEnLabel": "Subtitle (English)",
       "subtitleEnPlaceholder": "Writing Readable and Maintainable Software",
       "subtitleSiLabel": "Subtitle (Sinhala)",
       "subtitleSiPlaceholder": "කියවිය හැකි සහ නඩත්තු කළ හැකි මෘදුකාංග ලිවීම",
+
+      "subtitleOriginalLabel": "Original Subtitle",
+      "subtitleOriginalPlaceholder": "வழிமுறை மற்றும் நடைமுறை",
+      "subtitleOriginalHelp": "Your original work subtitle in any language",
 
       "descriptionEnLabel": "Description (English)",
       "descriptionEnPlaceholder": "Short description shown on book cards...",
@@ -2185,6 +2193,16 @@
       "priceAmountPlaceholder": "2350 Or 2350.00",
       "priceAmountHelp": "Enter the amount in currency, e.g. 2350.50 Or 2350",
 
+      "audiencesLabel": "Audiences",
+      "audiencesHelp": "To which people this book wrote to",
+      "addAudience": "Add Audience",
+      "audiencesEnPlaceholder": "Audience in English",
+      "audiencesSiPlaceholder": "Audience in Sinhala",
+
+      "dimensionsLabel": "Dimensions",
+      "dimensionsEnPlaceholder": "5.83 × 8.27 inch (A5)",
+      "dimensionsSiPlaceholder": "අඟල් 5.83 × 8.27 (A5)",
+
       "coverImageLabel":       "Cover image URL",
       "coverImagePlaceholder": "https://example.com/cover.jpg",
 
@@ -2220,8 +2238,13 @@
       "titleEnTooLong":            "English title cannot exceed {max} characters.",
       "titleSiTooLong":            "Sinhala title cannot exceed {max} characters.",
 
+      "titleOriginalRequired":     "Original title is required.",
+      "titleOriginalTooLong":      "Original title cannot exceed {max} characters.",
+      "titleOriginalTooShort":     "Original title must be at least {min} characters.",
+
       "subtitleEnTooLong":         "English subtitle cannot exceed {max} characters.",
       "subtitleSiTooLong":         "Sinhala subtitle cannot exceed {max} characters.",
+      "subtitleOriginalTooLong":   "Original subtitle cannot exceed {max} characters.",
 
       "descriptionEnRequired":     "English description is required.",
       "descriptionEnTooShort":     "English description must be at least {min} characters.",
@@ -2287,6 +2310,15 @@
       "priceAmountMustBeNumber":    "Amount must be a valid number",
       "priceAmountTooLow":          "Amount should be positive",
       "priceAmountTooManyDecimals": "Amount has too many decimals",
+
+      "audienceEnRequired":         "English audience is required.",
+      "audienceEnTooLong":          "English audience cannot exceed {max} characters.",
+      "audienceSiRequired":         "Sinhala audience is required.",
+      "audienceSiTooLong":          "Sinhala audience cannot exceed {max} characters.",
+
+      "dimensionsEnTooLong":        "English dimensions cannot exceed {max} characters.",
+      "dimensionsSiTooLong":        "Sinhala dimensions cannot exceed {max} characters.",
+      "dimensionsBothRequired":     "Both English and Sinhala dimensions are required.",
 
       "urlMustBeValid":            "Must be a valid URL.",
       "urlTooLong":                "URL cannot exceed {max} characters.",

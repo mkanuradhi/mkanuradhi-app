@@ -327,7 +327,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
 
         {/* Subjects */}
         <SubjectChips
-          subjects={book.subject}
+          subjects={book.subjects}
           isSi={isSin}
           label={t('subjects')}
         />

@@ -70,7 +70,9 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
     if (!book) return null;
     return {
       title:         { en: book.title.en       ?? '', si: book.title.si       ?? '' },
+      titleOriginal: book.titleOriginal ?? '',
       subtitle:      { en: book.subtitle?.en   ?? '', si: book.subtitle?.si   ?? '' },
+      subtitleOriginal: book.subtitleOriginal ?? '',
       description:   { en: book.description.en ?? '', si: book.description.si ?? '' },
       content:       { en: book.content.en     ?? '', si: book.content.si     ?? '' },
       publisher:     {
@@ -78,7 +80,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
         address: { en: book.publisher?.address.en ?? '', si: book.publisher?.address.si ?? '' },
         webUrl:  book.publisher?.webUrl ?? '',
       },
-      subject:       book.subject.map(s => ({ en: s.en ?? '', si: s.si ?? '' })),
+      subjects:      book.subjects.map(s => ({ en: s.en ?? '', si: s.si ?? '' })),
       authors:       book.authors.map(a => ({
         id:         a.id,
         name:       { en: a.name.en ?? '', si: a.name.si ?? '' },
@@ -98,6 +100,10 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
       price:         book.price 
                       ? { amount: Number(book.price.amount) / 100, currency: book.price.currency }
                       : { amount: '' as number | '', currency: BookPriceCurrency.LKR.toString() },
+      audiences:     book.audiences
+                     ? book.audiences.map(a => ({ en: a.en ?? '', si: a.si }))
+                     : undefined,
+      dimensions:    book.dimensions ? { en: book.dimensions.en, si: book.dimensions.si } : { en: '', si: '' },
       buyLink:       book.buyLink       ?? '',
       featured:      book.featured,
       displayOrder:  book.displayOrder  ?? '',
@@ -120,9 +126,11 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
   ) => {
     const bookDto: UpdateBookDto = {
       title:       { en: values.title.en.trim(),       si: values.title.si.trim()       || undefined },
+      titleOriginal: values.titleOriginal,
       subtitle:    values.subtitle.en || values.subtitle.si
                      ? { en: values.subtitle.en.trim() || undefined, si: values.subtitle.si.trim() || undefined }
                      : undefined,
+      subtitleOriginal: values.subtitleOriginal ? values.subtitleOriginal : undefined,
       description: { en: values.description.en.trim(), si: values.description.si.trim() || undefined },
       content:     { en: values.content.en.trim(),     si: values.content.si.trim()     || undefined },
       publisher:   {
@@ -130,7 +138,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
         address: { en: values.publisher.address.en.trim(), si: values.publisher.address.si.trim() || undefined },
         webUrl:  values.publisher.webUrl?.trim() || undefined,
       },
-      subject:     values.subject
+      subjects:     values.subjects
                      .filter(s => s.en.trim() || s.si.trim())
                      .map(s => ({ en: s.en.trim() || undefined, si: s.si.trim() || undefined })),
       authors: values.authors.map(a => ({
@@ -154,6 +162,10 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                       amount: Math.round(Number(values.price.amount) * 100),
                       currency: values.price.currency,
                     },
+      audiences:     values.audiences
+                     ? values.audiences.map(a => ({ en: a.en, si: a.si }))
+                     : [],
+      dimensions:   values.dimensions ? { en: values.dimensions.en ?? '', si: values.dimensions.si ?? '' } : undefined,
       buyLink:      values.buyLink?.trim() || undefined,
       featured:     values.featured,
       displayOrder: values.displayOrder ? Number(values.displayOrder) : undefined,
@@ -290,6 +302,20 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                 )}
 
                 <hr />
+
+                <BootstrapForm.Group className="mb-4" controlId="formTitleOriginal">
+                  <RequiredFormLabel>{t('titleOriginalLabel')}</RequiredFormLabel>
+                  <Field name="titleOriginal" type="text" placeholder={t('titleOriginalPlaceholder')} className="form-control" />
+                  <BootstrapForm.Text className="text-muted">{t('titleOriginalHelp')}</BootstrapForm.Text>
+                  <ErrorMessage name="titleOriginal" component="p" className="text-danger mt-1" />
+                </BootstrapForm.Group>
+
+                <BootstrapForm.Group className="mb-4" controlId="formSubtitleOriginal">
+                  <BootstrapForm.Label>{t('subtitleOriginalLabel')}</BootstrapForm.Label>
+                  <Field name="subtitleOriginal" type="text" placeholder={t('subtitleOriginalPlaceholder')} className="form-control" />
+                  <BootstrapForm.Text className="text-muted">{t('subtitleOriginalHelp')}</BootstrapForm.Text>
+                  <ErrorMessage name="subtitleOriginal" component="p" className="text-danger mt-1" />
+                </BootstrapForm.Group>
 
                 {/* ── Publisher ───────────────────────────────────────────── */}
                 <BootstrapForm.Group className="mb-4" controlId="formPublisher">
@@ -464,7 +490,7 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   <FieldArray name="subject">
                     {({ push, remove }) => (
                       <div>
-                        {values.subject.map((_, index) => (
+                        {values.subjects.map((_, index) => (
                           <Row key={index} className="mb-2">
                             <Col md={6}>
                               <Field name={`subject.${index}.en`} type="text" placeholder={t('subjectEnPlaceholder')} className="form-control" />
@@ -646,6 +672,55 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                       <ErrorMessage name={`price.amount`} component="p" className="text-danger mt-1" />
                     </div>
                   </div>
+                </BootstrapForm.Group>
+
+                {/* ---- Audiences ------------------------------------------------ */}
+                <BootstrapForm.Group className="mb-4">
+                  <BootstrapForm.Label>{t('audiencesLabel')}</BootstrapForm.Label>
+                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('audiencesHelp')}</BootstrapForm.Text>
+                  <FieldArray name="audiences">
+                    {({ push, remove }) => (
+                      <div>
+                        {values.audiences && values.audiences.map((_, index) => (
+                          <Row key={index} className="mb-2">
+                            <Col md={6}>
+                              <Field name={`audiences.${index}.en`} type="text" placeholder={t('audiencesEnPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`audiences.${index}.en`} />
+                            </Col>
+                            <Col md={5}>
+                              <Field name={`audiences.${index}.si`} type="text" placeholder={t('audiencesSiPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`audiences.${index}.si`} />
+                            </Col>
+                            <Col md={1}>
+                              <Button variant="danger" type="button" onClick={() => remove(index)}>
+                                <FontAwesomeIcon icon={faMinus} />
+                              </Button>
+                            </Col>
+                          </Row>
+                        ))}
+                        <Button variant="outline-primary" type="button" onClick={() => push({ en: '', si: '' })}>
+                          <FontAwesomeIcon icon={faPlus} className="me-1" /> {t('addAudience')}
+                        </Button>
+                        <SafeErrorMessage name="audiences" />
+                      </div>
+                    )}
+                  </FieldArray>
+                </BootstrapForm.Group>
+
+                {/* ---- Dimensions ------------------------------------------------ */}
+                <BootstrapForm.Group className="mb-4" controlId="formDimensions">
+                  <BootstrapForm.Label>{t('dimensionsLabel')}</BootstrapForm.Label>
+                  <Row>
+                    <Col>
+                      <Field name="dimensions.en" type="text" placeholder={t('dimensionsEnPlaceholder')} className="form-control" />
+                      <ErrorMessage name="dimensions.en" component="p" className="text-danger mt-1" />
+                    </Col>
+                    <Col>
+                      <Field name="dimensions.si" type="text" placeholder={t('dimensionsSiPlaceholder')} className="form-control" />
+                      <ErrorMessage name="dimensions.si" component="p" className="text-danger mt-1" />
+                    </Col>
+                  </Row>
+                  <ErrorMessage name="dimensions" component="p" className="text-danger mt-1" />
                 </BootstrapForm.Group>
 
                 {/* ── Buy link ────────────────────────────────────────────── */}

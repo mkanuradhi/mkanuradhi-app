@@ -37,6 +37,12 @@ export const getNewBookSchema = (t: (key: string, values?: Record<string, any>) 
         .notRequired(),
     }).required(),
 
+    titleOriginal: yup.string()
+      .trim()
+      .min(MIN_BOOK_TITLE_LENGTH, t('titleOriginalTooShort', { min: MIN_BOOK_TITLE_LENGTH }))
+      .max(MAX_BOOK_TITLE_LENGTH, t('titleOriginalTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
+      .required(),
+
     subtitle: yup.object({
       en: yup.string()
         .trim()
@@ -47,6 +53,11 @@ export const getNewBookSchema = (t: (key: string, values?: Record<string, any>) 
         .max(MAX_BOOK_TITLE_LENGTH, t('subtitleSiTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
         .notRequired(),
     }).notRequired(),
+
+    subtitleOriginal: yup.string()
+      .trim()
+      .max(MAX_BOOK_TITLE_LENGTH, t('subtitleOriginalTooLong', { max: MAX_BOOK_TITLE_LENGTH }))
+      .notRequired(),
 
     description: yup.object({
       en: yup.string()
@@ -138,9 +149,9 @@ export const getNewBookSchema = (t: (key: string, values?: Record<string, any>) 
       .max(MAX_BOOK_AUTHORS, t('authorsTooMany', { max: MAX_BOOK_AUTHORS }))
       .required(t('authorsRequired')),
 
-    // Subject
+    // Subjects
 
-    subject: yup.array()
+    subjects: yup.array()
       .of(
         yup.object({
           en: yup.string()
@@ -248,33 +259,45 @@ export const getNewBookSchema = (t: (key: string, values?: Record<string, any>) 
     })
       .notRequired(),
 
-    // Media & links
-
-    coverImage: yup.string()
-      .trim()
-      .max(MAX_BOOK_URL_LENGTH, t('urlTooLong', { max: MAX_BOOK_URL_LENGTH }))
-      .notRequired()
-      .transform((value, originalValue) =>
-        originalValue === '' ? undefined : value
-      ),
-
-    previewImages: yup.array()
+    audiences: yup.array()
       .of(
-        yup.string()
-          .trim()
-          .max(MAX_BOOK_URL_LENGTH, t('urlTooLong', { max: MAX_BOOK_URL_LENGTH }))
+        yup.object({
+          en: yup.string()
+            .trim()
+            .max(MAX_BOOK_SUBJECT_LENGTH, t('audienceEnTooLong', { max: MAX_BOOK_SUBJECT_LENGTH }))
+            .required(t('audienceEnRequired')),
+          si: yup.string()
+            .trim()
+            .max(MAX_BOOK_SUBJECT_LENGTH, t('audienceSiTooLong', { max: MAX_BOOK_SUBJECT_LENGTH }))
+            .required(t('audienceSiRequired')),
+        })
       )
+      .max(MAX_BOOK_SUBJECTS, t('subjectsTooMany', { max: MAX_BOOK_SUBJECTS }))
       .notRequired(),
 
-    buyLink: yup.string()
-      .url(t('urlMustBeValid'))
-      .max(MAX_BOOK_URL_LENGTH, t('urlTooLong', { max: MAX_BOOK_URL_LENGTH }))
-      .notRequired()
-      .transform((value, originalValue) =>
-        originalValue === '' ? undefined : value
-      ),
+    dimensions: yup.object({
+      en: yup.string()
+        .trim()
+        .max(MAX_BOOK_TITLE_LENGTH, t('dimensionsEnTooLong', { max: MAX_BOOK_TITLE_LENGTH })),
+      si: yup.string()
+        .trim()
+        .max(MAX_BOOK_TITLE_LENGTH, t('dimensionsSiTooLong', { max: MAX_BOOK_TITLE_LENGTH })),
+    })
+    .notRequired()
+    .test(
+      'dimensions-both-or-neither',
+      t('dimensionsBothRequired'),
+      (value) => {
+        if (!value) return true;
+        const enFilled = !!value.en?.trim();
+        const siFilled = !!value.si?.trim();
+        return enFilled === siFilled; // both filled, or both empty
+      }
+    ),
 
-    pdfTeaser: yup.string()
+    // Media & links
+
+    buyLink: yup.string()
       .url(t('urlMustBeValid'))
       .max(MAX_BOOK_URL_LENGTH, t('urlTooLong', { max: MAX_BOOK_URL_LENGTH }))
       .notRequired()

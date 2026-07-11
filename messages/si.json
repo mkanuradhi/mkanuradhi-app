@@ -2087,10 +2087,18 @@
       "titleSiLabel": "මාතෘකාව (සිංහල)",
       "titleSiPlaceholder": "The Art of Clean Code",
 
+      "titleOriginalLabel": "මුල් මාතෘකාව",
+      "titleOriginalPlaceholder": "முறையான இலக்கிய மதிப்பாய்வுகள்",
+      "titleOriginalHelp": "ඔබගේ මුල් කෘතියේ මාතෘකාව ඕනෑම භාෂාවකින්",
+
       "subtitleEnLabel": "උපශීර්ෂය (ඉංග්‍රීසි)",
       "subtitleEnPlaceholder": "කියවිය හැකි මෘදුකාංග ලිවීම",
       "subtitleSiLabel": "උපශීර්ෂය (සිංහල)",
       "subtitleSiPlaceholder": "Writing Readable Software",
+
+      "subtitleOriginalLabel": "මුල් උපසිරැසිය",
+      "subtitleOriginalPlaceholder": "வழிமுறை மற்றும் நடைமுறை",
+      "subtitleOriginalHelp": "ඔබේ මුල් කෘතියේ උපසිරැසිය ඕනෑම භාෂාවකින්",
 
       "descriptionEnLabel": "කෙටි විස්තරය (ඉංග්‍රීසි)",
       "descriptionEnPlaceholder": "පොත පිළිබඳ කෙටි විස්තරයක් ලියන්න...",
@@ -2185,6 +2193,16 @@
       "priceAmountPlaceholder": "2350 or 2350.00",
       "priceAmountHelp": "Enter the amount in [currency], e.g. 2350.50 Or 2350",
 
+      "audiencesLabel": "ප්‍රේක්ෂකයින්",
+      "audiencesHelp": "මෙම පොත ලියුවේ කාටද?",
+      "addAudience": "ප්‍රේක්ෂකයින් එක් කරන්න",
+      "audiencesEnPlaceholder": "ඉංග්‍රීසියෙන් ප්‍රේක්ෂකයින්",
+      "audiencesSiPlaceholder": "සිංහල ප්‍රේක්ෂකයින්",
+
+      "dimensionsLabel": "මානයන්",
+      "dimensionsEnPlaceholder": "5.83 × 8.27 inch (A5)",
+      "dimensionsSiPlaceholder": "අඟල් 5.83 × 8.27 (A5)",
+
       "coverImageLabel":       "කවර පින්තූරයේ සබැඳිය",
       "coverImagePlaceholder": "https://example.com/cover.jpg",
 
@@ -2220,8 +2238,13 @@
       "titleEnTooLong":           "ඉංග්‍රීසි මාතෘකාව අකුරු {max}කට වඩා දිග විය නොහැකිය.",
       "titleSiTooLong":           "සිංහල මාතෘකාව අකුරු {max}කට වඩා දිග විය නොහැකිය.",
 
+      "titleOriginalRequired":     "මුල් මාතෘකාව අවශ්‍යයි.",
+      "titleOriginalTooLong":      "මුල් මාතෘකාව අක්ෂර {max} ඉක්මවිය නොහැක.",
+      "titleOriginalTooShort":     "මුල් මාතෘකාව අවම වශයෙන් අක්ෂර {min} ක් විය යුතුය.",
+
       "subtitleEnTooLong":        "ඉංග්‍රීසි උපශීර්ෂය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
       "subtitleSiTooLong":        "සිංහල උපශීර්ෂය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "subtitleOriginalTooLong":   "මුල් උපසිරැසියේ උපරිම අක්ෂර ගණන {max} ඉක්මවිය නොහැක.",
 
       "descriptionEnRequired":    "ඉංග්‍රීසි කෙටි විස්තරය අවශ්‍යයි.",
       "descriptionEnTooShort":    "ඉංග්‍රීසි කෙටි විස්තරය අඩු තරම් අකුරු {min}ක් විය යුතුයි.",
@@ -2287,6 +2310,15 @@
       "priceAmountMustBeNumber":    "මිල ගණන වලංගු අංකයක් විය යුතුය.",
       "priceAmountTooLow":          "අගය ධන විය යුතුය.",
       "priceAmountTooManyDecimals": "දශම සංඛ්‍යා ගණන වැඩිය.",
+
+      "audienceEnRequired":         "ඉංග්‍රීසි ප්‍රේක්ෂකයින් අවශ්‍යයි.",
+      "audienceEnTooLong":          "ඉංග්‍රීසි ප්‍රේක්ෂකයින්ට උපරිම අක්ෂර {max} ඉක්මවිය නොහැක.",
+      "audienceSiRequired":         "සිංහල ප්‍රේක්ෂකයින් අවශ්‍යයි.",
+      "audienceSiTooLong":          "සිංහල ප්‍රේක්ෂකයින්ට උපරිම අක්ෂර {max} ඉක්මවිය නොහැක.",
+
+      "dimensionsEnTooLong":        "ඉංග්‍රීසි මානයන් {max} අක්ෂර ඉක්මවිය නොහැක.",
+      "dimensionsSiTooLong":        "සිංහල මානයන් {max} අක්ෂර ඉක්මවිය නොහැක.",
+      "dimensionsBothRequired":     "ඉංග්‍රීසි සහ සිංහල මානයන් දෙකම අවශ්‍ය වේ.",
 
       "urlMustBeValid":           "වලංගු URL ලිපිනයක් විය යුතුයි.",
       "urlTooLong":               "URL ලිපිනය අකුරු {max}කට වඩා දිග විය නොහැකිය.",

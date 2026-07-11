@@ -93,8 +93,8 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
                       <h2 className="h4 fst-italic text-muted mb-3">{localizedBook.subtitleOriginal}</h2>
                     )}
 
-                    {localizedBook.subject && localizedBook.subject.length > 0 && (
-                      <BookSubjectsList subjects={localizedBook.subject} />
+                    {localizedBook.subjects && localizedBook.subjects.length > 0 && (
+                      <BookSubjectsList subjects={localizedBook.subjects} />
                     )}
 
                     {/* Metadata grid — only shows available fields */}
