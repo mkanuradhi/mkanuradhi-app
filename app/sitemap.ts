@@ -52,6 +52,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${baseUrl}/en/books`,
+      lastModified: new Date('2026-07-12'),
+      changeFrequency: 'yearly',
+      priority: 0.6,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/books`,
+          si: `${baseUrl}/si/books`,
+        },
+      },
+    },
+    {
       url: `${baseUrl}/en/awards`,
       lastModified: new Date('2025-09-11'),
       changeFrequency: 'yearly',
