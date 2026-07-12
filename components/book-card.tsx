@@ -83,7 +83,7 @@ const BookCard: React.FC<BookCardProps> = ({lsBook, reversed}) => {
                       <motion.i
                         className="bi bi-arrow-right ms-2"
                         variants={{
-                          hover: { x: 5 },
+                          hover: { x: 2 },
                         }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
