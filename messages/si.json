@@ -2145,8 +2145,8 @@
         "reviewer":  "සමාලෝචක"
       },
 
-      "subjectLabel": "විෂය ක්ෂේත්‍ර",
-      "subjectHelp":  "පොතේ විෂය ක්ෂේත්‍ර එකතු කරන්න. උදා: පරිගණක විද්‍යාව, කෘත්‍රිම බුද්ධිය",
+      "subjectsLabel": "විෂය ක්ෂේත්‍ර",
+      "subjectsHelp":  "පොතේ විෂය ක්ෂේත්‍ර එකතු කරන්න. උදා: පරිගණක විද්‍යාව, කෘත්‍රිම බුද්ධිය",
       "addSubject":   "විෂය ක්ෂේත්‍රයක් එකතු කරන්න",
       "subjectEnPlaceholder": "Computer Science",
       "subjectSiPlaceholder": "පරිගණක විද්‍යාව",
@@ -2342,7 +2342,6 @@
       "localeEn":     "ඉංග්‍රීසි",
       "localeSi":     "සිංහල",
       "noCover":      "ආවරණ රූපයක් නොමැත",
-      "noTitle":      "මාතෘකාවක් නොමැත",
       "failBook":     "පොත පූරණය කිරීමට අසමත් විය.",
       "publishedYear":"ප්‍රකාශිත වර්ෂය",
       "writtenLang":  "ලිඛිත භාෂාව",
@@ -2370,6 +2369,8 @@
       "content":      "අන්තර්ගතය",
       "tags":         "ටැග්",
       "price":        "මිල",
+      "audienceLabel": "මෙම පොත ලියා ඇත්තේ කා වෙනුවෙන්ද?",
+      "dimensions":   "මානයන්",
       "priceCurrency": {
         "LKR": "රු.",
         "USD": "ඇ.ඩොලර්"
@@ -2502,6 +2503,8 @@
       "writtenLangsi": "සිංහල",
       "edition":       "සංස්කරණය",
       "pages":         "පිටු",
+      "dimensions":    "මානයන්",
+      "audienceLabel": "පාඨක පිරිස",
       "isbnSectionLabel": "ISBN",
       "isbnFormat": {
         "paperback": "කඩදාසි කවරය (Paperback)",

@@ -51,6 +51,7 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
     { label: t('publishedYear'), value: localizedBook.publishedYear },
     { label: t('edition'),       value: localizedBook.edition       },
     { label: t('pages'),         value: localizedBook.pages         },
+    { label: t('dimensions'),    value: localizedBook.dimensions    },
   ];
 
   return (
@@ -95,6 +96,12 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
 
                     {localizedBook.subjects && localizedBook.subjects.length > 0 && (
                       <BookSubjectsList subjects={localizedBook.subjects} />
+                    )}
+
+                    {localizedBook.audiences && localizedBook.audiences.length > 0 && (
+                      <div className="text-muted small mb-2">
+                        <strong>{t('audienceLabel')}:</strong> {localizedBook.audiences.join(', ')}
+                      </div>
                     )}
 
                     {/* Metadata grid — only shows available fields */}

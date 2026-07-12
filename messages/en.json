@@ -2145,8 +2145,8 @@
         "reviewer":  "Reviewer"
       },
 
-      "subjectLabel": "Subjects",
-      "subjectHelp":  "Add the academic or professional subjects this book covers. e.g. Computer Science, Artificial Intelligence",
+      "subjectsLabel": "Subjects",
+      "subjectsHelp":  "Add the academic or professional subjects this book covers. e.g. Computer Science, Artificial Intelligence",
       "addSubject":   "Add subject",
       "subjectEnPlaceholder": "Computer Science",
       "subjectSiPlaceholder": "පරිගණක විද්‍යාව",
@@ -2342,7 +2342,6 @@
       "localeEn":     "English",
       "localeSi":     "සිංහල",
       "noCover":      "No cover",
-      "noTitle":      "No title",
       "failBook":     "Failed to load book.",
       "publishedYear":"Published year",
       "writtenLang":  "Written in",
@@ -2370,6 +2369,8 @@
       "content":      "Content",
       "tags":         "Tags",
       "price":        "Price",
+      "audienceLabel": "To whoom this book is written for",
+      "dimensions":   "Dimensions",
       "priceCurrency": {
         "LKR": "Rs.",
         "USD": "US$"
@@ -2502,6 +2503,8 @@
       "writtenLangsi": "Sinhala",
       "edition":       "Edition",
       "pages":         "Pages",
+      "dimensions":    "Dimensions",
+      "audienceLabel": "Intended for",
       "isbnSectionLabel": "ISBN",
       "isbnFormat": {
         "paperback": "Paperback",

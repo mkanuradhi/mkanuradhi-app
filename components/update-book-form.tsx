@@ -484,21 +484,22 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                   </FieldArray>
                 </BootstrapForm.Group>
 
-                {/* ── Subject ─────────────────────────────────────────────── */}
+                {/* ── Subjects ─────────────────────────────────────────────── */}
                 <BootstrapForm.Group className="mb-4">
-                  <BootstrapForm.Label>{t('subjectLabel')}</BootstrapForm.Label>
-                  <FieldArray name="subject">
+                  <BootstrapForm.Label>{t('subjectsLabel')}</BootstrapForm.Label>
+                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectsHelp')}</BootstrapForm.Text>
+                  <FieldArray name="subjects">
                     {({ push, remove }) => (
                       <div>
                         {values.subjects.map((_, index) => (
                           <Row key={index} className="mb-2">
                             <Col md={6}>
-                              <Field name={`subject.${index}.en`} type="text" placeholder={t('subjectEnPlaceholder')} className="form-control" />
-                              <SafeErrorMessage name={`subject.${index}.en`} />
+                              <Field name={`subjects.${index}.en`} type="text" placeholder={t('subjectEnPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`subjects.${index}.en`} />
                             </Col>
                             <Col md={5}>
-                              <Field name={`subject.${index}.si`} type="text" placeholder={t('subjectSiPlaceholder')} className="form-control" />
-                              <SafeErrorMessage name={`subject.${index}.si`} />
+                              <Field name={`subjects.${index}.si`} type="text" placeholder={t('subjectSiPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`subjects.${index}.si`} />
                             </Col>
                             <Col md={1}>
                               <Button variant="danger" type="button" onClick={() => remove(index)}>
@@ -510,11 +511,10 @@ const UpdateBookForm: React.FC<UpdateBookFormProps> = ({ bookId }) => {
                         <Button variant="outline-primary" type="button" onClick={() => push({ en: '', si: '' })}>
                           <FontAwesomeIcon icon={faPlus} className="me-1" /> {t('addSubject')}
                         </Button>
-                        <SafeErrorMessage name="subject" />
+                        <SafeErrorMessage name="subjects" />
                       </div>
                     )}
                   </FieldArray>
-                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectHelp')}</BootstrapForm.Text>
                 </BootstrapForm.Group>
 
                 {/* ── Written language ────────────────────────────────────── */}

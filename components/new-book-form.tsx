@@ -384,20 +384,20 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
 
                 {/* ---- Subjects ------------------------------------------------ */}
                 <BootstrapForm.Group className="mb-4">
-                  <BootstrapForm.Label>{t('subjectLabel')}</BootstrapForm.Label>
-                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectHelp')}</BootstrapForm.Text>
-                  <FieldArray name="subject">
+                  <BootstrapForm.Label>{t('subjectsLabel')}</BootstrapForm.Label>
+                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectsHelp')}</BootstrapForm.Text>
+                  <FieldArray name="subjects">
                     {({ push, remove }) => (
                       <div>
                         {values.subjects.map((_, index) => (
                           <Row key={index} className="mb-2">
                             <Col md={6}>
-                              <Field name={`subject.${index}.en`} type="text" placeholder={t('subjectEnPlaceholder')} className="form-control" />
-                              <SafeErrorMessage name={`subject.${index}.en`} />
+                              <Field name={`subjects.${index}.en`} type="text" placeholder={t('subjectEnPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`subjects.${index}.en`} />
                             </Col>
                             <Col md={5}>
-                              <Field name={`subject.${index}.si`} type="text" placeholder={t('subjectSiPlaceholder')} className="form-control" />
-                              <SafeErrorMessage name={`subject.${index}.si`} />
+                              <Field name={`subjects.${index}.si`} type="text" placeholder={t('subjectSiPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`subjects.${index}.si`} />
                             </Col>
                             <Col md={1}>
                               <Button variant="danger" type="button" onClick={() => remove(index)}>
@@ -612,12 +612,12 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                   <BootstrapForm.Label>{t('dimensionsLabel')}</BootstrapForm.Label>
                   <Row>
                     <Col>
-                      <Field name="dimensionsEn" type="text" placeholder={t('dimensionsEnPlaceholder')} className="form-control" />
-                      <ErrorMessage name="dimensionsEn" component="p" className="text-danger mt-1" />
+                      <Field name="dimensions.en" type="text" placeholder={t('dimensionsEnPlaceholder')} className="form-control" />
+                      <ErrorMessage name="dimensions.en" component="p" className="text-danger mt-1" />
                     </Col>
                     <Col>
-                      <Field name="dimensionsSi" type="text" placeholder={t('dimensionsSiPlaceholder')} className="form-control" />
-                      <ErrorMessage name="dimensionsSi" component="p" className="text-danger mt-1" />
+                      <Field name="dimensions.si" type="text" placeholder={t('dimensionsSiPlaceholder')} className="form-control" />
+                      <ErrorMessage name="dimensions.si" component="p" className="text-danger mt-1" />
                     </Col>
                   </Row>
                 </BootstrapForm.Group>
