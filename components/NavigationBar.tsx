@@ -1,6 +1,6 @@
 "use client";
 import { Suspense, useEffect, useState } from "react";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge, Button, Container, ListGroup, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 import { useLocale, useTranslations } from 'next-intl';
@@ -42,13 +42,17 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
   }
 
   const navLinks = [
-    { title: t('teaching'), path: '/teaching'},
     { title: t('research'), path: '/research'},
     { title: t('publications'), path: '/publications'},
-    { title: t('awards'), path: '/awards'},
-    { title: t('experience'), path: '/experience'},
+    { title: t('books'), path: '/books'},
+    { title: t('teaching'), path: '/teaching'},
     { title: t('blog'), path: '/blog'},
     { title: t('contact'), path: '/contact'},
+  ];
+
+  const navMenuLinks = [
+    { title: t('awards'), path: '/awards'},
+    { title: t('experience'), path: '/experience'},
   ];
 
   return (
@@ -94,6 +98,16 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
                     {navLink.title}
                   </Nav.Link>
                 ))}
+                <NavDropdown
+                  title={<FontAwesomeIcon icon={faEllipsis} aria-label={t('more')} />}
+                  id="more-nav-dropdown"
+                >
+                  {navMenuLinks.map((navMenuLink) => (
+                    <NavDropdown.Item key={navMenuLink.title} as={Link} href={navMenuLink.path} active={pathname.endsWith(navMenuLink.path)}>
+                      {navMenuLink.title}
+                    </NavDropdown.Item>
+                  ))}
+                </NavDropdown>
               </Nav>
               <Nav>
                 <Nav.Link

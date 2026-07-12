@@ -2,6 +2,26 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-bottom: 1px solid rgba(var(--bs-body-bg-rgb), 0.5);
+
+  :global(.dropdown-menu) {
+    background-color: rgba(var(--bs-tertiary-bg-rgb), 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(var(--bs-body-bg-rgb), 0.5);
+    border-radius: 0.5rem;
+
+    :global(.dropdown-item) {
+      &:hover,
+      &:focus {
+        background-color: rgba(var(--bs-body-bg-rgb), 0.5);
+      }
+
+      &:global(.active) {
+        background-color: rgba(var(--bs-body-bg-rgb), 0.7);
+        color: var(--bs-body-color);
+      }
+    }
+  }
 }
 
 .navbarDarkThemeIcon {
