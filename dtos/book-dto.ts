@@ -18,12 +18,19 @@ export interface BookIsbnDto {
   value: string;
 }
 
+export interface BookPrice {
+  amount:   number;
+  currency: string;
+}
+
 export interface CreateBookDto {
   title:       LocalizedString;
+  titleOriginal: string;
   subtitle?:   LocalizedString;
+  subtitleOriginal?: string;
   description: LocalizedString;
   content:     LocalizedString;
-  subject:     LocalizedString[];
+  subjects:    LocalizedString[];
   authors:     BookAuthorDto[];
   writtenLang: BookLanguage;
 
@@ -33,6 +40,9 @@ export interface CreateBookDto {
   isbns?:        BookIsbnDto[];
   pages?:        number;
   tags:          string[];
+  price?:        BookPrice,
+  audiences?:    LocalizedString[];
+  dimensions?:   LocalizedString;
 
   buyLink?:      string;
   featured:      boolean;
@@ -54,10 +64,12 @@ export interface UpdateBookPreviewImageDto {
 
 export interface UpdateBookDto {
   title:       LocalizedString;
+  titleOriginal: string;
   subtitle?:   LocalizedString;
+  subtitleOriginal?: string;
   description: LocalizedString;
   content:     LocalizedString;
-  subject:     LocalizedString[];
+  subjects:    LocalizedString[];
   authors:     UpdateBookAuthorDto[];
   writtenLang: BookLanguage;
 
@@ -67,6 +79,9 @@ export interface UpdateBookDto {
   isbns?:        BookIsbnDto[];
   pages?:        number;
   tags:          string[];
+  price?:        BookPrice,
+  audiences?:    LocalizedString[];
+  dimensions?:   LocalizedString;
 
   buyLink?:       string;
   featured:      boolean;

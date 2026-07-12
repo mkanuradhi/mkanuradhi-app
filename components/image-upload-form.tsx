@@ -37,6 +37,7 @@ interface ImageUploadFormProps {
   isPendingDelete:   boolean;
   doneHref:          string;
   maxSize?:          number;
+  accept:            string[];
   maxImageSize?:     number;  // max width or height in px, default 300
   labels:            ImageUploadLabels;
 }
@@ -52,13 +53,15 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({
   isPendingUpload,
   isPendingDelete,
   doneHref,
-  maxSize   = 5 * 1024 * 1024,
+  maxSize = 5 * 1024 * 1024,
+  accept,
   maxImageSize = 300,
   labels,
 }) => {
 
   const { files, fileRejections, isDragActive, getRootProps, getInputProps, clearFiles } = useImageUpload({
     maxSize,
+    accept,
     disabled: isPendingUpload || isPendingDelete,
   });
 

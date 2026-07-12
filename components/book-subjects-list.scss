@@ -1,0 +1,25 @@
+.subject-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.subject-pill {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+
+  // Light mode: darker teal text on a pale teal background for contrast
+  background: rgba(13, 110, 106, 0.1);
+  color: #0d6e6a;
+  border: 1px solid rgba(13, 110, 106, 0.25);
+}
+
+[data-bs-theme="dark"] .subject-pill {
+  background: color-mix(in srgb, var(--bs-teal) 20%, transparent);
+  color: color-mix(in srgb, var(--bs-teal) 85%, white);
+  border-color: color-mix(in srgb, var(--bs-teal) 35%, transparent);
+}

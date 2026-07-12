@@ -1,0 +1,50 @@
+.book-viewer {
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--bs-body-bg) 20%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    bottom: -20%;
+    right: -20%;
+    width: 90%;
+    height: 90%;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(var(--bs-body-color-rgb), 0.5),
+      rgba(var(--bs-body-color-rgb), 0.35) 10%,
+      transparent 70%
+    );
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glass-card > * {
+    position: relative;
+    z-index: 1; /* keep content above the glow */
+  }
+
+  .book-cover-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 3 / 4; // xs: fixed ratio, no row-height dependency
+
+    @media (min-width: 576px) {
+      aspect-ratio: 3 / 4; // sm: fixed ratio, no row-height dependency
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      aspect-ratio: auto; // md and up: auto ratio
+      height: 100%; // stretch to the text height
+    }
+  }
+
+}

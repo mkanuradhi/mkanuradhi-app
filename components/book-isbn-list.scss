@@ -1,0 +1,11 @@
+:root {
+  --isbn-color-paperback: #d4a373;
+  --isbn-color-hardcover: #6c757d;
+  --isbn-color-ebook:     #2a9d8f;
+}
+
+[data-bs-theme="dark"] {
+  --isbn-color-paperback: #e6b878; // brighter, more saturated tan
+  --isbn-color-hardcover: #adb5bd; // lighter slate so it doesn't disappear on dark bg
+  --isbn-color-ebook:     #4ecdc4; // brighter teal, more glow
+}

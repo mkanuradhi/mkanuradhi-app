@@ -1,3 +1,4 @@
+import { toDropzoneAccept } from '@/utils/mime-types';
 import { useCallback, useEffect, useState } from 'react';
 import { useDropzone, FileRejection, Accept } from 'react-dropzone';
 
@@ -13,7 +14,7 @@ interface PreviewFile extends File {
 interface UseImageUploadOptions {
   maxSize?:    number;
   disabled?:   boolean;
-  accept?:     Accept;
+  accept?:     string[];
   maxFiles?:   number;
 }
 
@@ -59,7 +60,7 @@ const getImageDimensions = (file: File): Promise<{ width: number; height: number
 export const useImageUpload = ({
   maxSize  = DEFAULT_MAX_SIZE,
   disabled = false,
-  accept   = { 'image/*': [] },
+  accept   = ['image/*'],
   maxFiles = 1,
 }: UseImageUploadOptions = {}): UseImageUploadReturn => {
 
@@ -110,7 +111,7 @@ export const useImageUpload = ({
   }, [files]);
 
   const { getRootProps, getInputProps, fileRejections, isDragActive } = useDropzone({
-    accept,
+    accept: toDropzoneAccept(accept),
     maxFiles,
     maxSize,
     disabled,

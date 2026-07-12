@@ -26,7 +26,7 @@ import DeleteModal from './delete-modal';
 import { LANG_SI } from '@/constants/common-vars';
 import RecordMetadata from './record-metadata';
 import GlowLink from './GlowLink';
-import { BookAuthor } from '@/interfaces/i-book';
+import { BookAuthor, BookPrice } from '@/interfaces/i-book';
 import { BookLanguage } from '@/enums/book-enums';
 import SanitizedHtml from './sanitized-html';
 import Badge from 'react-bootstrap/Badge';
@@ -241,21 +241,33 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
     ? t('langSinhala')
     : t('langEnglish');
 
+  const getPriceWithCurrency = (price?: BookPrice) => {
+    if (!price) return null;
+    const amount = (price.amount / 100).toFixed(2);
+    return `${t(`priceCurrency.${price.currency}`)} ${amount}`;
+  }
+
   // Locale section renderer
 
   const renderSection = (isSin: boolean) => {
+    const titleOriginal       = book.titleOriginal;
+    const subtitleOriginal    = book.subtitleOriginal;
     const title       = isSin ? book.title.si       : book.title.en;
-    const subtitle    = isSin ? book.subtitle?.si    : book.subtitle?.en;
-    const description = isSin ? book.description.si  : book.description.en;
-    const content     = isSin ? book.content.si      : book.content.en;
+    const subtitle    = isSin ? book.subtitle?.si   : book.subtitle?.en;
+    const description = isSin ? book.description.si : book.description.en;
+    const content     = isSin ? book.content.si     : book.content.en;
 
     const metaItems: MetaItem[] = [
       { label: t('publishedYear'), value: book.publishedYear },
       { label: t('writtenLang'),   value: writtenLangLabel   },
       { label: t('edition'),       value: book.edition       },
       { label: t('pages'),         value: book.pages         },
+      { label: t('price'),         value: getPriceWithCurrency(book.price)},
+      { label: t('dimensions'),    value: isSin ? book.dimensions?.si : book.dimensions?.en },
       { label: t('displayOrder'),  value: book.displayOrder  },
     ];
+
+    const audiences = book.audiences?.map(aud => isSin ? aud.si : aud.en).join(', ');
 
     return (
       <div>
@@ -281,12 +293,12 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
           )}
           <div className="flex-grow-1">
             <h1 className="mb-1 d-flex align-items-center gap-2 flex-wrap">
-              {title || <span className="text-muted fst-italic">{t('noTitle')}</span>}
+              {titleOriginal}
               {book.featured && (
                 <FontAwesomeIcon icon={faStar} style={{ color: '#BA7517', fontSize: 16 }} title={t('featured')} />
               )}
             </h1>
-            {subtitle && <h2 className="h4 text-secondary mb-2">{subtitle}</h2>}
+            {subtitleOriginal && <h2 className="h4 text-secondary mb-2">{subtitleOriginal}</h2>}
             <span className={`badge ${book.status === DocumentStatus.ACTIVE ? 'bg-success' : 'bg-warning text-dark'}`}>
               {book.status === DocumentStatus.ACTIVE ? t('active') : t('inactive')}
             </span>
@@ -295,11 +307,32 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
             </p>
           </div>
         </div>
+        <Row>
+          <Col>
+            <h5 className="mb-1">
+              {title}
+            </h5>
+            {subtitle && <h6 className="text-secondary mb-2">{subtitle}</h6>}
+          </Col>
+        </Row>
 
         <hr />
 
         {/* Metadata grid — only shows available fields */}
         <MetaGrid items={metaItems} />
+
+        <hr />
+
+        {/* Audiences */}
+        {audiences && (
+          <Row>
+            <Col>
+              <div className="text-muted small mb-2">
+                <strong>{t('audienceLabel')}:</strong> {audiences}
+              </div>
+            </Col>
+          </Row>
+        )}
 
         <hr />
 
@@ -320,7 +353,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
 
         {/* Subjects */}
         <SubjectChips
-          subjects={book.subject}
+          subjects={book.subjects}
           isSi={isSin}
           label={t('subjects')}
         />
@@ -345,7 +378,7 @@ const BookOptionsViewer: React.FC<BookOptionsViewerProps> = ({ bookId }) => {
           <Row>
             <Col>
               <h4 className="mb-2">{t('description')}</h4>
-              <div>{description}</div>
+              <SanitizedHtml html={description} />
             </Col>
           </Row>
         )}

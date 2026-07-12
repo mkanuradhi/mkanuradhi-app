@@ -15,7 +15,7 @@ import { useRouter } from '@/i18n/routing';
 import { useCreateBookMutation } from '@/hooks/use-books';
 import { CreateBookDto } from '@/dtos/book-dto';
 import { getNewBookSchema } from '@/schemas/new-book-schema';
-import { BookAuthorRole, BookIsbnFormat, BookLanguage } from '@/enums/book-enums';
+import { BookAuthorRole, BookIsbnFormat, BookLanguage, BookPriceCurrency } from '@/enums/book-enums';
 import RequiredFormLabel from './required-form-label';
 import Book, { BookIsbn } from '@/interfaces/i-book';
 import { MAX_BOOK_CONTENT_LENGTH, MAX_BOOK_DESCRIPTION_LENGTH } from '@/constants/validation-vars';
@@ -26,7 +26,9 @@ const baseTPath = 'components.NewBookForm';
 
 const initialValues = {
   title:       { en: '', si: '' },
+  titleOriginal: '',
   subtitle:    { en: '', si: '' },
+  subtitleOriginal: '',
   description: { en: '', si: '' },
   content:     { en: '', si: '' },
   publisher:   { 
@@ -34,7 +36,7 @@ const initialValues = {
     address: { en: '', si: '' }, 
     webUrl:  ''
   },
-  subject:     [] as { en: string; si: string }[],
+  subjects:    [] as { en: string; si: string }[],
   authors:     [{
     name: { en: '', si: '' },
     role: BookAuthorRole.AUTHOR,
@@ -46,6 +48,9 @@ const initialValues = {
   isbns:         [] as BookIsbn[],
   pages:         '',
   tags:          [] as string[],
+  price:         { amount: '' as number | '', currency: BookPriceCurrency.LKR.toString() },
+  audiences:     [] as { en: string; si: string }[],
+  dimensions:    { en: '', si: '' },
   buyLink:       '',
   featured:      false,
   displayOrder:  '',
@@ -85,9 +90,11 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
   ) => {
     const bookDto: CreateBookDto = {
       title:       { en: values.title.en.trim(),       si: values.title.si.trim()       || undefined },
+      titleOriginal: values.titleOriginal,
       subtitle:    values.subtitle.en || values.subtitle.si
                      ? { en: values.subtitle.en.trim() || undefined, si: values.subtitle.si.trim() || undefined }
                      : undefined,
+      subtitleOriginal: values.subtitleOriginal ? values.subtitleOriginal : undefined,
       description: { en: values.description.en.trim(), si: values.description.si.trim() || undefined },
       content:     { en: values.content.en.trim(),     si: values.content.si.trim()     || undefined },
       publisher:   {
@@ -95,7 +102,7 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
         address: { en: values.publisher.address.en.trim(), si: values.publisher.address.si.trim() || undefined },
         webUrl:  values.publisher.webUrl?.trim() || undefined,
       },
-      subject:     values.subject
+      subjects:     values.subjects
                      .filter(s => s.en.trim() || s.si.trim())
                      .map(s => ({ en: s.en.trim() || undefined, si: s.si.trim() || undefined })),
       authors: values.authors.map(a => ({
@@ -112,6 +119,16 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
       })),
       pages:         values.pages ? Number(values.pages) : undefined,
       tags:          values.tags,
+      price:         values.price.amount === '' || Number(values.price.amount) === 0 
+                      ? undefined 
+                      : { 
+                        amount: Math.round(Number(values.price.amount) * 100),
+                        currency: values.price.currency,
+                      },
+      audiences:     values.audiences
+                     ? values.audiences.map(a => ({ en: a.en.trim(), si: a.si.trim() }))
+                     : undefined,
+      dimensions:   { en: values.dimensions.en.trim(), si: values.dimensions.si.trim() },
       buyLink:       values.buyLink?.trim()     || undefined,
       featured:      values.featured,
       displayOrder:  values.displayOrder ? Number(values.displayOrder) : undefined,
@@ -225,6 +242,20 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                 )}
 
                 <hr />
+
+                <BootstrapForm.Group className="mb-4" controlId="formTitleOriginal">
+                  <RequiredFormLabel>{t('titleOriginalLabel')}</RequiredFormLabel>
+                  <Field name="titleOriginal" type="text" placeholder={t('titleOriginalPlaceholder')} className="form-control" />
+                  <BootstrapForm.Text className="text-muted">{t('titleOriginalHelp')}</BootstrapForm.Text>
+                  <ErrorMessage name="titleOriginal" component="p" className="text-danger mt-1" />
+                </BootstrapForm.Group>
+
+                <BootstrapForm.Group className="mb-4" controlId="formSubtitleOriginal">
+                  <BootstrapForm.Label>{t('subtitleOriginalLabel')}</BootstrapForm.Label>
+                  <Field name="subtitleOriginal" type="text" placeholder={t('subtitleOriginalPlaceholder')} className="form-control" />
+                  <BootstrapForm.Text className="text-muted">{t('subtitleOriginalHelp')}</BootstrapForm.Text>
+                  <ErrorMessage name="subtitleOriginal" component="p" className="text-danger mt-1" />
+                </BootstrapForm.Group>
 
                 {/* ── Publisher ───────────────────────────────────────────── */}
                 <BootstrapForm.Group className="mb-4" controlId="formPublisher">
@@ -351,22 +382,22 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                   </FieldArray>
                 </BootstrapForm.Group>
 
-                {/* ---- Subject ------------------------------------------------ */}
+                {/* ---- Subjects ------------------------------------------------ */}
                 <BootstrapForm.Group className="mb-4">
-                  <BootstrapForm.Label>{t('subjectLabel')}</BootstrapForm.Label>
-                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectHelp')}</BootstrapForm.Text>
-                  <FieldArray name="subject">
+                  <BootstrapForm.Label>{t('subjectsLabel')}</BootstrapForm.Label>
+                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('subjectsHelp')}</BootstrapForm.Text>
+                  <FieldArray name="subjects">
                     {({ push, remove }) => (
                       <div>
-                        {values.subject.map((_, index) => (
+                        {values.subjects.map((_, index) => (
                           <Row key={index} className="mb-2">
                             <Col md={6}>
-                              <Field name={`subject.${index}.en`} type="text" placeholder={t('subjectEnPlaceholder')} className="form-control" />
-                              <SafeErrorMessage name={`subject.${index}.en`} />
+                              <Field name={`subjects.${index}.en`} type="text" placeholder={t('subjectEnPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`subjects.${index}.en`} />
                             </Col>
                             <Col md={5}>
-                              <Field name={`subject.${index}.si`} type="text" placeholder={t('subjectSiPlaceholder')} className="form-control" />
-                              <SafeErrorMessage name={`subject.${index}.si`} />
+                              <Field name={`subjects.${index}.si`} type="text" placeholder={t('subjectSiPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`subjects.${index}.si`} />
                             </Col>
                             <Col md={1}>
                               <Button variant="danger" type="button" onClick={() => remove(index)}>
@@ -517,6 +548,78 @@ const NewBookForm: FC<NewBookFormProps> = ({ onSuccess }) => {
                     ))}
                   </div>
                   <ErrorMessage name="tags" component="p" className="text-danger mt-1" />
+                </BootstrapForm.Group>
+
+                {/* ---- Price ------------------------------------------------ */}
+                <BootstrapForm.Group className="mb-4" controlId="formPrice">
+                  <BootstrapForm.Label id="formPriceLabel">{t('priceLabel')}</BootstrapForm.Label>
+                  <div className="d-flex gap-4 ps-1">
+
+                    <div>
+                      <Field as="select" id="formPriceCurrency" name={`price.currency`} className="form-select" aria-label={t('priceCurrencyLabel')}>
+                        {Object.values(BookPriceCurrency).map((currency) => (
+                          <option key={currency} value={currency}>
+                            {t(`priceCurrency.${currency}`)}
+                          </option>
+                        ))}
+                      </Field>
+                      <ErrorMessage name={`price.currency`} component="p" className="text-danger mt-1" />
+                    </div>
+
+                    <div className="flex-grow-1">
+                      <Field id="formPriceAmount" name="price.amount" type="text" inputMode="numeric" placeholder={t('priceAmountPlaceholder')} className="form-control" aria-label={t('priceAmountLabel')} />
+                      <BootstrapForm.Text className="text-muted">{t('priceAmountHelp')}</BootstrapForm.Text>
+                      <ErrorMessage name={`price.amount`} component="p" className="text-danger mt-1" />
+                    </div>
+                  </div>
+                </BootstrapForm.Group>
+
+                {/* ---- Audiences ------------------------------------------------ */}
+                <BootstrapForm.Group className="mb-4">
+                  <BootstrapForm.Label>{t('audiencesLabel')}</BootstrapForm.Label>
+                  <BootstrapForm.Text className="text-muted d-block mb-2">{t('audiencesHelp')}</BootstrapForm.Text>
+                  <FieldArray name="audiences">
+                    {({ push, remove }) => (
+                      <div>
+                        {values.audiences.map((_, index) => (
+                          <Row key={index} className="mb-2">
+                            <Col md={6}>
+                              <Field name={`audiences.${index}.en`} type="text" placeholder={t('audiencesEnPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`audiences.${index}.en`} />
+                            </Col>
+                            <Col md={5}>
+                              <Field name={`audiences.${index}.si`} type="text" placeholder={t('audiencesSiPlaceholder')} className="form-control" />
+                              <SafeErrorMessage name={`audiences.${index}.si`} />
+                            </Col>
+                            <Col md={1}>
+                              <Button variant="danger" type="button" onClick={() => remove(index)}>
+                                <FontAwesomeIcon icon={faMinus} />
+                              </Button>
+                            </Col>
+                          </Row>
+                        ))}
+                        <Button variant="outline-primary" type="button" onClick={() => push({ en: '', si: '' })}>
+                          <FontAwesomeIcon icon={faPlus} className="me-1" /> {t('addAudience')}
+                        </Button>
+                        <SafeErrorMessage name="audiences" />
+                      </div>
+                    )}
+                  </FieldArray>
+                </BootstrapForm.Group>
+
+                {/* ---- Dimensions ------------------------------------------------ */}
+                <BootstrapForm.Group className="mb-4" controlId="formDimensions">
+                  <BootstrapForm.Label>{t('dimensionsLabel')}</BootstrapForm.Label>
+                  <Row>
+                    <Col>
+                      <Field name="dimensions.en" type="text" placeholder={t('dimensionsEnPlaceholder')} className="form-control" />
+                      <ErrorMessage name="dimensions.en" component="p" className="text-danger mt-1" />
+                    </Col>
+                    <Col>
+                      <Field name="dimensions.si" type="text" placeholder={t('dimensionsSiPlaceholder')} className="form-control" />
+                      <ErrorMessage name="dimensions.si" component="p" className="text-danger mt-1" />
+                    </Col>
+                  </Row>
                 </BootstrapForm.Group>
 
                 {/* ---- Buy link ------------------------------------------------ */}

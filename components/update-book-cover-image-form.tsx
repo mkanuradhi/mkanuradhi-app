@@ -47,6 +47,7 @@ const UpdateBookCoverImageForm: React.FC<UpdateBookCoverImageFormProps> = ({ boo
       isPendingDelete={isPendingDelete}
       doneHref={`/dashboard/books/${bookId}`}
       maxSize={MAX_BOOK_IMAGE_SIZE}
+      accept={['image/jpeg', 'image/png', 'image/svg+xml']}
       maxImageSize={300}
       labels={{
         noImage:            t('noCoverImage'),

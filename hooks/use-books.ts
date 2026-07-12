@@ -1,3 +1,4 @@
+import { getBookRoutes } from "@/constants/routes";
 import { CreateBookDto, UpdateBookDto } from "@/dtos/book-dto";
 import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
@@ -24,6 +25,7 @@ import {
   uploadPublisherImage,
   uploadSampleFile,
 } from "@/services/book-service";
+import { triggerRevalidation } from "@/services/common-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -139,7 +141,7 @@ export const useCreateBookMutation = () => {
       return { previousBooks };
     },
 
-    onSuccess: (createdBook) => {
+    onSuccess: async (createdBook) => {
       if (!createdBook || !createdBook.id) return;
 
       queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData?: PaginatedResult<Book>) => {
@@ -162,6 +164,13 @@ export const useCreateBookMutation = () => {
       });
 
       queryClient.setQueryData([BOOK_QUERY_KEY, createdBook.id], createdBook);
+
+      const paths = [
+        ...getBookRoutes(),
+        ...(createdBook.path ? getBookRoutes(createdBook.path) : []),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
     },
 
     onError: (_error, _newBookData, context) => {
@@ -225,7 +234,10 @@ export const useDeleteBookMutation = () => {
       const token = (await getToken()) ?? '';
       return deleteBook(bookId, token);
     },
-    onSuccess: (_, id) => {
+    onSuccess: async (_, id) => {
+      // Grab the path before we drop the cached book entry
+      const cachedBook = queryClient.getQueryData<Book>([BOOK_QUERY_KEY, id]);
+
       queryClient.removeQueries({ queryKey: [BOOK_QUERY_KEY, id] });
       queryClient.setQueryData([BOOKS_QUERY_KEY], (oldData: PaginatedResult<Book> | undefined) => {
         if (!oldData) return;
@@ -235,6 +247,13 @@ export const useDeleteBookMutation = () => {
         };
       });
       queryClient.invalidateQueries({ queryKey: [BOOKS_QUERY_KEY] });
+
+      const paths = [
+        ...getBookRoutes(),
+        ...(cachedBook?.path ? getBookRoutes(cachedBook.path) : []),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
     },
   });
 };
@@ -248,7 +267,7 @@ export const useUpdateBookMutation = () => {
       const token = (await getToken()) ?? '';
       return updateBook(variables.id, variables.bookDto, token);
     },
-    onSuccess: (updatedBook) => {
+    onSuccess: async (updatedBook) => {
       if (!updatedBook || !updatedBook.id) return;
 
       // Update individual book cache
@@ -265,6 +284,13 @@ export const useUpdateBookMutation = () => {
           ),
         };
       });
+
+      const paths = [
+        ...getBookRoutes(),
+        ...(updatedBook.path ? getBookRoutes(updatedBook.path) : []),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
     },
     onSettled: (_data, _error, variables) => {
       // Refetch only the updated book instead of all books

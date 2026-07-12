@@ -653,6 +653,14 @@
         "pageDescription": "සරල රේඛීය නොවන ශ්‍රිතයක අවම අගය සොයාගැනීමට කණමැදිරි ඇල්ගොරිතම භාවිතය",
         "pageKeywords": "කණමැදිරි ඇල්ගොරිතමය, දෘශ්‍යකරණය, ශ්‍රිතය"
       }
+    },
+    "Books": {
+      "pageTitle": "පොත්",
+      "pageDescription": "පරිගණක විද්‍යාව, AI, මෙටාහියුරිස්ටික්ස් සහ තවත් බොහෝ මාතෘකා ආවරණය වන පරිදි මගේ ප්‍රකාශිත පොත් ගවේෂණය කරන්න.",
+      "pageKeywords": "පොත්, ප්‍රකාශන, පරිගණක විද්‍යාව, මෙටාහියුරිස්ටික්ස්, කෘත්‍රිම බුද්ධිය",
+      "title": "පොත්",
+      "description": "දැනුම සැබෑ වටිනාකමක් ලබන්නේ එය අන් අය සමඟ බෙදාගන්නා විට බව මම විශ්වාස කරමි. ඒ නිසාම, සංකීර්ණ මාතෘකා වුවද සරලව, ප්‍රායෝගිකව සහ රසවත් අයුරින් ඉදිරිපත් කරමින්, පාඨකයන්ගේ ජීවිත කාලය පුරාම ඉගෙනීමේ ගමනට සහාය වීමටත්, නව දැනුම සොයා යාමේ කුතුහලය අවදි කිරීමටත් බලාපොරොත්තුවෙන් මෙම පොත් රචනා කර ඇත.",
+      "loadFailed": "මේ මොහොතේ පොත් පූරණය කළ නොහැක."
     }
   },
   "components": {
@@ -2079,10 +2087,18 @@
       "titleSiLabel": "මාතෘකාව (සිංහල)",
       "titleSiPlaceholder": "The Art of Clean Code",
 
+      "titleOriginalLabel": "මුල් මාතෘකාව",
+      "titleOriginalPlaceholder": "முறையான இலக்கிய மதிப்பாய்வுகள்",
+      "titleOriginalHelp": "ඔබගේ මුල් කෘතියේ මාතෘකාව ඕනෑම භාෂාවකින්",
+
       "subtitleEnLabel": "උපශීර්ෂය (ඉංග්‍රීසි)",
       "subtitleEnPlaceholder": "කියවිය හැකි මෘදුකාංග ලිවීම",
       "subtitleSiLabel": "උපශීර්ෂය (සිංහල)",
       "subtitleSiPlaceholder": "Writing Readable Software",
+
+      "subtitleOriginalLabel": "මුල් උපසිරැසිය",
+      "subtitleOriginalPlaceholder": "வழிமுறை மற்றும் நடைமுறை",
+      "subtitleOriginalHelp": "ඔබේ මුල් කෘතියේ උපසිරැසිය ඕනෑම භාෂාවකින්",
 
       "descriptionEnLabel": "කෙටි විස්තරය (ඉංග්‍රීසි)",
       "descriptionEnPlaceholder": "පොත පිළිබඳ කෙටි විස්තරයක් ලියන්න...",
@@ -2123,14 +2139,14 @@
       "authorProfileUrlPlaceholder": "https://example.com/jane",
 
       "authorRole": {
-        "author":    "කතුවරයා",
-        "co-author": "සහ-කතුවරයා",
+        "author":    "කර්තෘ",
+        "co-author": "සම කර්තෘ",
         "editor":    "සංස්කාරක",
         "reviewer":  "සමාලෝචක"
       },
 
-      "subjectLabel": "විෂය ක්ෂේත්‍ර",
-      "subjectHelp":  "පොතේ විෂය ක්ෂේත්‍ර එකතු කරන්න. උදා: පරිගණක විද්‍යාව, කෘත්‍රිම බුද්ධිය",
+      "subjectsLabel": "විෂය ක්ෂේත්‍ර",
+      "subjectsHelp":  "පොතේ විෂය ක්ෂේත්‍ර එකතු කරන්න. උදා: පරිගණක විද්‍යාව, කෘත්‍රිම බුද්ධිය",
       "addSubject":   "විෂය ක්ෂේත්‍රයක් එකතු කරන්න",
       "subjectEnPlaceholder": "Computer Science",
       "subjectSiPlaceholder": "පරිගණක විද්‍යාව",
@@ -2164,8 +2180,28 @@
       "pagesPlaceholder": "280",
 
       "tagsLabel":       "ටැග්",
-      "tagsHelp":        "ටැගයක් ටයිප් කර Enter 누르거나 + බොත්තම ඔබන්න",
+      "tagsHelp":        "ටැගයක් ටයිප් කර Enter බොත්තම ඔබන්න",
       "tagsPlaceholder": "ටැගයක් ඇතුළත් කරන්න",
+
+      "priceLabel": "මිල",
+      "priceCurrencyLabel": "මුදල් ඒකකය",
+      "priceCurrency": {
+        "LKR": "රු.",
+        "USD": "ඇ.ඩොලර්"
+      },
+      "priceAmountLabel": "Amount",
+      "priceAmountPlaceholder": "2350 or 2350.00",
+      "priceAmountHelp": "Enter the amount in [currency], e.g. 2350.50 Or 2350",
+
+      "audiencesLabel": "ප්‍රේක්ෂකයින්",
+      "audiencesHelp": "මෙම පොත ලියුවේ කාටද?",
+      "addAudience": "ප්‍රේක්ෂකයින් එක් කරන්න",
+      "audiencesEnPlaceholder": "ඉංග්‍රීසියෙන් ප්‍රේක්ෂකයින්",
+      "audiencesSiPlaceholder": "සිංහල ප්‍රේක්ෂකයින්",
+
+      "dimensionsLabel": "මානයන්",
+      "dimensionsEnPlaceholder": "5.83 × 8.27 inch (A5)",
+      "dimensionsSiPlaceholder": "අඟල් 5.83 × 8.27 (A5)",
 
       "coverImageLabel":       "කවර පින්තූරයේ සබැඳිය",
       "coverImagePlaceholder": "https://example.com/cover.jpg",
@@ -2202,8 +2238,13 @@
       "titleEnTooLong":           "ඉංග්‍රීසි මාතෘකාව අකුරු {max}කට වඩා දිග විය නොහැකිය.",
       "titleSiTooLong":           "සිංහල මාතෘකාව අකුරු {max}කට වඩා දිග විය නොහැකිය.",
 
+      "titleOriginalRequired":     "මුල් මාතෘකාව අවශ්‍යයි.",
+      "titleOriginalTooLong":      "මුල් මාතෘකාව අක්ෂර {max} ඉක්මවිය නොහැක.",
+      "titleOriginalTooShort":     "මුල් මාතෘකාව අවම වශයෙන් අක්ෂර {min} ක් විය යුතුය.",
+
       "subtitleEnTooLong":        "ඉංග්‍රීසි උපශීර්ෂය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
       "subtitleSiTooLong":        "සිංහල උපශීර්ෂය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
+      "subtitleOriginalTooLong":   "මුල් උපසිරැසියේ උපරිම අක්ෂර ගණන {max} ඉක්මවිය නොහැක.",
 
       "descriptionEnRequired":    "ඉංග්‍රීසි කෙටි විස්තරය අවශ්‍යයි.",
       "descriptionEnTooShort":    "ඉංග්‍රීසි කෙටි විස්තරය අඩු තරම් අකුරු {min}ක් විය යුතුයි.",
@@ -2264,6 +2305,21 @@
       "tagTooLong":               "ටැගය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
       "tagsTooMany":              "ටැග් {max}කට වඩා ඇතුළත් කළ නොහැකිය.",
 
+      "priceCurrencyInvalid":       "වලංගු මුදල් ඒකකයක් නොවේ.",
+      "priceCurrencyRequired":      "මුදල් ඒකකය අවශ්‍යයි",
+      "priceAmountMustBeNumber":    "මිල ගණන වලංගු අංකයක් විය යුතුය.",
+      "priceAmountTooLow":          "අගය ධන විය යුතුය.",
+      "priceAmountTooManyDecimals": "දශම සංඛ්‍යා ගණන වැඩිය.",
+
+      "audienceEnRequired":         "ඉංග්‍රීසි ප්‍රේක්ෂකයින් අවශ්‍යයි.",
+      "audienceEnTooLong":          "ඉංග්‍රීසි ප්‍රේක්ෂකයින්ට උපරිම අක්ෂර {max} ඉක්මවිය නොහැක.",
+      "audienceSiRequired":         "සිංහල ප්‍රේක්ෂකයින් අවශ්‍යයි.",
+      "audienceSiTooLong":          "සිංහල ප්‍රේක්ෂකයින්ට උපරිම අක්ෂර {max} ඉක්මවිය නොහැක.",
+
+      "dimensionsEnTooLong":        "ඉංග්‍රීසි මානයන් {max} අක්ෂර ඉක්මවිය නොහැක.",
+      "dimensionsSiTooLong":        "සිංහල මානයන් {max} අක්ෂර ඉක්මවිය නොහැක.",
+      "dimensionsBothRequired":     "ඉංග්‍රීසි සහ සිංහල මානයන් දෙකම අවශ්‍ය වේ.",
+
       "urlMustBeValid":           "වලංගු URL ලිපිනයක් විය යුතුයි.",
       "urlTooLong":               "URL ලිපිනය අකුරු {max}කට වඩා දිග විය නොහැකිය.",
 
@@ -2286,7 +2342,6 @@
       "localeEn":     "ඉංග්‍රීසි",
       "localeSi":     "සිංහල",
       "noCover":      "ආවරණ රූපයක් නොමැත",
-      "noTitle":      "මාතෘකාවක් නොමැත",
       "failBook":     "පොත පූරණය කිරීමට අසමත් විය.",
       "publishedYear":"ප්‍රකාශිත වර්ෂය",
       "writtenLang":  "ලිඛිත භාෂාව",
@@ -2313,6 +2368,13 @@
       "description":  "විස්තරය",
       "content":      "අන්තර්ගතය",
       "tags":         "ටැග්",
+      "price":        "මිල",
+      "audienceLabel": "මෙම පොත ලියා ඇත්තේ කා වෙනුවෙන්ද?",
+      "dimensions":   "මානයන්",
+      "priceCurrency": {
+        "LKR": "රු.",
+        "USD": "ඇ.ඩොලර්"
+      },
       "links":        "සබැඳි",
       "sampleFile":    "නියැදි ගොනුව",
       "previewImages":"පෙරදසුන්",
@@ -2423,6 +2485,43 @@
       "fileRejectionTitle": "ගොනුව ප්‍රතික්ෂේප කරන ලදී",
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
+    },
+    "BookCard": {
+      "language": {
+        "en": "ඉංග්‍රීසි",
+        "si": "සිංහල"
+      },
+      "viewDetails": "විස්තර බලන්න"
+    },
+    "BookViewer": {
+      "home": "මුල් පිටුව",
+      "books": "පොත්",
+
+      "publishedYear": "ප්‍රකාශිත වර්ෂය",
+      "writtenLang":   "ලියූ භාෂාව",
+      "writtenLangen": "ඉංග්‍රීසි",
+      "writtenLangsi": "සිංහල",
+      "edition":       "සංස්කරණය",
+      "pages":         "පිටු",
+      "dimensions":    "මානයන්",
+      "audienceLabel": "පාඨක පිරිස",
+      "isbnSectionLabel": "ISBN",
+      "isbnFormat": {
+        "paperback": "කඩදාසි කවරය (Paperback)",
+        "hardcover": "දෘඪ කවරය (Hardcover)",
+        "ebook":     "ඊ-පොත (eBook)"
+      },
+      "authorsSectionLabel": "කතුවරුන්",
+      "authorRole": {
+        "author":    "කර්තෘ",
+        "co-author": "සම කර්තෘ",
+        "editor":    "සංස්කාරක",
+        "reviewer":  "සමාලෝචක"
+      },
+      "sampleTitle": "කුතුහලයෙන්ද?",
+      "sampleSubtitle": "පිටු කීපයක් පෙරලා බලමු.",
+      "viewSampleButtonLabel": "ආදර්ශය බලන්න",
+      "buyLinkButtonLabel": "මිලදී ගන්න"
     }
   },
   "contexts": {
