@@ -38,16 +38,18 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
             <>
             {/* Mobile */}
               <Col xs={12} className="d-md-none">
-                <Card.Img
-                  src={img}
-                  alt={`Image for ${title}`}
-                  className="rounded-top rounded-bottom-0 object-fit-cover w-100"
-                  style={{ maxHeight: "24rem", minHeight: "16rem" }}
-                />
+                <div className="img-wrap img-wrap-mobile">
+                  <Card.Img
+                    src={img}
+                    alt={`Image for ${title}`}
+                    className="rounded-top rounded-bottom-0 object-fit-cover w-100"
+                    style={{ maxHeight: "24rem", minHeight: "16rem" }}
+                  />
+                </div>
               </Col>
               {/* Desktop */}
               <Col md={4} className="d-none d-md-flex">
-                <div className="position-relative w-100 overflow-hidden">
+                <div className="img-wrap img-wrap-desktop position-relative w-100 overflow-hidden">
                   <Card.Img 
                     src={img}
                     alt={`Image for ${title}`} 
@@ -79,7 +81,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({title, summary, img, path, f
                       <motion.i
                         className="bi bi-arrow-right ms-2"
                         variants={{
-                          hover: { x: 5 },
+                          hover: { x: 2 },
                         }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
