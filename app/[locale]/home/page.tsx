@@ -1,18 +1,12 @@
 import React from 'react';
-import { useMessages, useTranslations } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
-import ScopusIcon from '@/icons/ScopusIcon';
-import WebOfScienceIcon from '@/icons/WebOfScienceIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
-import ExternalLinkBar from '@/components/ExternalLinkBar';
-import MainImageDisplayer from '@/components/MainImageDisplayer';
-import GlowLink from '@/components/GlowLink';
 import ToolsSkillsDisplayer from '@/components/tools-skills-displayer';
-import MovingGradientTitle from '@/components/moving-gradient-title';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
+import HeroSection from '@/components/hero-section';
+import IntroSection from '@/components/intro-section';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
@@ -110,70 +104,16 @@ const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
   const t = await getTranslations({ locale, namespace: baseTPath });
   const messages = await getMessages({ locale }) as any;
 
-  const descriptions = messages?.pages?.Home?.aboutDescriptions as string[];
   const interests = messages?.pages?.Home?.interests as string[];
   const educations = messages?.pages?.Home?.educations as string[];
-
-  const externalLinks = [
-    {
-      tooltipText: `${t('gsTooltip')}`,
-      url: 'https://scholar.google.com/citations?user=-O25soMAAAAJ',
-      faIcon: faGoogleScholar,
-    },
-    {
-      tooltipText: `${t('liTooltip')}`,
-      url: 'https://www.linkedin.com/in/anuradha-ariyaratne-3a406281/',
-      faIcon: faLinkedin,
-    },
-    {
-      tooltipText: `${t('oiTooltip')}`,
-      url: 'https://orcid.org/0000-0002-3548-3976',
-      faIcon: faOrcid,
-    },
-    {
-      tooltipText: `${t('rgTooltip')}`,
-      url: 'https://www.researchgate.net/profile/Anuradha-Ariyaratne',
-      faIcon: faResearchgate,
-    },
-    {
-      tooltipText: `${t('scTooltip')}`,
-      url: 'https://www.scopus.com/authid/detail.uri?authorId=57188855115',
-      customIcon: <ScopusIcon size={30} />,
-    },
-    {
-      tooltipText: `${t('wsTooltip')}`,
-      url: 'https://www.webofscience.com/wos/author/record/NRY-6429-2025',
-      customIcon: <WebOfScienceIcon size={30} />,
-    },
-  ];
 
   return (
     <>
       <div className="home">
         <Container fluid="md">
-          <Row className="my-4">
-            <Col sm={5}>
-              <MainImageDisplayer />
-              <div className="text-center">
-                <MovingGradientTitle text={t('title')} />
-                <p className="h5 text-center">{t('subTitle')}</p>
-                <p className="h6 text-center">
-                  <GlowLink href="https://www.sjp.ac.lk/" newTab={true}>{t('university')}</GlowLink>
-                </p>
-              </div>
-              <ExternalLinkBar links={externalLinks} />
-            </Col>
-            <Col sm={7}>
-              <div>
-                <h2 className="h1 text-center">{t('aboutTitle')}</h2>
-                {descriptions.map((desc, index) => (
-                  <p key={index}>
-                    {desc}
-                  </p>
-                ))}
-              </div>
-            </Col>
-          </Row>
+          <HeroSection />
+          <IntroSection />
+          
           <Row className="my-4">
             <Col sm={5}>
               <div>

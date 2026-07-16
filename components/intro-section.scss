@@ -1,0 +1,49 @@
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro-section {
+  padding: 3rem 0;
+  text-align: left;
+
+  @media (max-width: 767px) {
+    padding: 2rem 0;
+  }
+
+  .intro-wrapper {
+    max-width: 640px;
+    margin: 0 auto 0 8%;
+    animation: fade-up 0.6s ease-out both;
+
+    @media (max-width: 767px) {
+      margin: 0 auto;
+    }
+  }
+
+  .intro-kicker {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .intro-text {
+    text-align: left;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intro-text {
+      animation: none;
+    }
+  }
+}
