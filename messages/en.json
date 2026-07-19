@@ -2524,6 +2524,10 @@
     "IntroSection": {
       "title": "Who I Am",
       "introText": "I'm a Senior Lecturer in the Department of Computer Science at the University of Sri Jayewardenepura, Sri Lanka, where I combine research, teaching, and academic service in optimization and artificial intelligence."
+    },
+    "ResearchSection": {
+      "title": "The smallest ideas can illuminate the longest journeys.",
+      "researchText": "For me, the humble firefly became more than an insect—it became the inspiration for my research in computational intelligence and a symbol of curiosity, exploration, and continual learning."
     }
   },
   "contexts": {

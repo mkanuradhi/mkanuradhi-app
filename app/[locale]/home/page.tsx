@@ -7,6 +7,7 @@ import ToolsSkillsDisplayer from '@/components/tools-skills-displayer';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 import HeroSection from '@/components/hero-section';
 import IntroSection from '@/components/intro-section';
+import ResearchSection from '@/components/research-section';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
@@ -113,6 +114,7 @@ const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
         <Container fluid="md">
           <HeroSection />
           <IntroSection />
+          <ResearchSection />
           
           <Row className="my-4">
             <Col sm={5}>
