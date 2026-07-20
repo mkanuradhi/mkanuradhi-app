@@ -17,7 +17,7 @@ const ResearchSection = () => {
           <div className="research-photo-wrapper">
             <Image
               src={resImage}
-              alt={`researcj image`}
+              alt={`research image`}
               fill
               sizes="(max-width: 767px) 100vw, 420px"
               className="research-photo"
