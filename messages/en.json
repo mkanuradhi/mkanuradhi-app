@@ -2528,6 +2528,18 @@
     "ResearchSection": {
       "title": "The smallest ideas can illuminate the longest journeys.",
       "researchText": "For me, the humble firefly became more than an insect—it became the inspiration for my research in computational intelligence and a symbol of curiosity, exploration, and continual learning."
+    },
+    "EducationSection": {
+      "title": "Education",
+      "bscDegree": "BSc (Hons) in Computer Science",
+      "bscLocation": "University of Sri Jayewardenepura, Sri Lanka",
+      "bscYear": "2012",
+      "mscDegree": "MSc in Data Science",
+      "mscLocation": "Tampere University, Finland",
+      "mscYear": "2025",
+      "phdDegree": "PhD in Computer Science",
+      "phdLocation": "University of Sri Jayewardenepura, Sri Lanka",
+      "phdYear": "2018"
     }
   },
   "contexts": {

@@ -8,6 +8,7 @@ import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 import HeroSection from '@/components/hero-section';
 import IntroSection from '@/components/intro-section';
 import ResearchSection from '@/components/research-section';
+import EducationSection from '@/components/education-section';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
@@ -115,34 +116,10 @@ const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
           <HeroSection />
           <IntroSection />
           <ResearchSection />
+          <EducationSection />
           
-          <Row className="my-4">
-            <Col sm={5}>
-              <div>
-                <h3>{t('interestTitle')}</h3>
-                <ul className="home-ul">
-                  {interests.map((interest, index) => (
-                    <li key={index}>
-                      <FontAwesomeIcon icon={faBookmark} className="list-icon" />{interest}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Col>
-            <Col sm={7}>
-              <div>
-                <h3>{t('educationTitle')}</h3>
-                <ul className="home-ul">
-                  {educations.map((education, index) => (
-                    <li key={index}>
-                      <FontAwesomeIcon icon={faGraduationCap} className="list-icon" />{education}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Col>
-          </Row>
-          <ToolsSkillsDisplayer />
+          
+          {/* <ToolsSkillsDisplayer /> */}
         </Container>
       </div>
     </>
