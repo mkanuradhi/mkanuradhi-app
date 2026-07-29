@@ -1,23 +1,21 @@
 "use client";
 import { useLocale, useTranslations } from "next-intl";
-import { animate, AnimatePresence, motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { animate, AnimatePresence, motion, useInView, useReducedMotion, Variants } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "@/i18n/routing";
-import "./summary-stats-section.scss";
 import { DisplayStatItem } from "@/interfaces/i-stat";
+import "./summary-stats-section.scss";
 
 const baseTPath = 'components.SummaryStatsSection';
 
 const MotionLink = motion(Link);
 
-const Counter = ({ value, showPlus }: { value: number; showPlus?: boolean }) => {
-  const ref = useRef<HTMLHeadingElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
+const Counter = ({ value, showPlus, start }: { value: number; showPlus?: boolean; start: boolean }) => {
   const [display, setDisplay] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!start) return;
     const controls = animate(0, value, {
       duration: 1.4,
       ease: "easeOut",
@@ -25,10 +23,10 @@ const Counter = ({ value, showPlus }: { value: number; showPlus?: boolean }) => 
       onComplete: () => setDone(true),
     });
     return () => controls.stop();
-  }, [isInView, value]);
+  }, [start, value]);
 
   return (
-    <h2 className="value" ref={ref}>
+    <h2 className="value">
       {display}
       <AnimatePresence>
         {showPlus && done && (
@@ -54,10 +52,36 @@ const SummaryStatsSection = ({ items }: SummaryStatsSectionProps) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
   const isSinhala = locale === "si";
+  const shouldReduceMotion = useReducedMotion();
+  const [triggered, setTriggered] = useState<Record<string, boolean>>({});
+
+  const containerVariants: Variants = useMemo(() => ({
+      hidden: {},
+      visible: {
+        transition: {
+          staggerChildren: shouldReduceMotion ? 0 : 0.12,
+        },
+      },
+    }), [shouldReduceMotion]);
+
+  const itemVariants: Variants = useMemo(() => ({
+      hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.4 },
+      },
+    }), [shouldReduceMotion]);
 
   return (
     <section className="summary-stats-section">
-      <div className="grid">
+      <motion.div
+        className="grid"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+        variants={containerVariants}
+      >
       {items.map((item, i) => (
         <MotionLink
           key={item.label}
@@ -65,26 +89,27 @@ const SummaryStatsSection = ({ items }: SummaryStatsSectionProps) => {
           className={`item`}
           data-locale={locale}
           aria-label={t(item.label)}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: i * 0.12 }}
+          variants={itemVariants}
           whileHover={{ scale: 1.02 }}
+          onViewportEnter={() =>
+            setTriggered((prev) => ({ ...prev, [item.label]: true }))
+          }
+          viewport={{ once: true, amount: 0.6 }}
         >
           {isSinhala ? (
             <>
               <p className="label">{t(item.label)}</p>
-              <Counter value={item.value} showPlus={item.showPlus} />
+              <Counter value={item.value} showPlus={item.showPlus} start={!!triggered[item.label]} />
             </>
           ) : (
             <>
-              <Counter value={item.value} showPlus={item.showPlus} />
+              <Counter value={item.value} showPlus={item.showPlus} start={!!triggered[item.label]} />
               <p className="label">{t(item.label)}</p>
             </>
           )}
         </MotionLink>
       ))}
-    </div>
+    </motion.div>
     </section>
   );
 };
