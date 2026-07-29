@@ -2540,6 +2540,13 @@
       "phdDegree": "පරිගණක විද්‍යාව පිළිබඳ ආචාර්ය උපාධිය",
       "phdLocation": "ශ්‍රී ජයවර්ධනපුර විශ්වවිද්‍යාලය, ශ්‍රී ලංකාව",
       "phdYear": "2018"
+    },
+    "SummaryStatsSection": {
+      "books": "පොත්",
+      "publications": "ප්‍රකාශන",
+      "research": "පර්යේෂණ",
+      "awards": "සම්මාන",
+      "courses": "පාඨමාලා"
     }
   },
   "contexts": {

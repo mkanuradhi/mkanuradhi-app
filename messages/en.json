@@ -2540,6 +2540,13 @@
       "phdDegree": "PhD in Computer Science",
       "phdLocation": "University of Sri Jayewardenepura, Sri Lanka",
       "phdYear": "2018"
+    },
+    "SummaryStatsSection": {
+      "books": "Books",
+      "publications": "Publications",
+      "research": "Research",
+      "awards": "Awards",
+      "courses": "Courses"
     }
   },
   "contexts": {

@@ -1,4 +1,4 @@
-import { getBookRoutes } from "@/constants/routes";
+import { getBookRoutes, getHomeRoutes } from "@/constants/revalidation-routes";
 import { CreateBookDto, UpdateBookDto } from "@/dtos/book-dto";
 import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
@@ -168,6 +168,7 @@ export const useCreateBookMutation = () => {
       const paths = [
         ...getBookRoutes(),
         ...(createdBook.path ? getBookRoutes(createdBook.path) : []),
+        ...getHomeRoutes(),
       ];
       const token = (await getToken()) ?? '';
       await triggerRevalidation(paths, token);
@@ -251,6 +252,7 @@ export const useDeleteBookMutation = () => {
       const paths = [
         ...getBookRoutes(),
         ...(cachedBook?.path ? getBookRoutes(cachedBook.path) : []),
+        ...getHomeRoutes(),
       ];
       const token = (await getToken()) ?? '';
       await triggerRevalidation(paths, token);
@@ -288,6 +290,7 @@ export const useUpdateBookMutation = () => {
       const paths = [
         ...getBookRoutes(),
         ...(updatedBook.path ? getBookRoutes(updatedBook.path) : []),
+        ...getHomeRoutes(),
       ];
       const token = (await getToken()) ?? '';
       await triggerRevalidation(paths, token);

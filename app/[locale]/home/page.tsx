@@ -1,14 +1,14 @@
 import React from 'react';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
-import { Col, Container, Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
-import ToolsSkillsDisplayer from '@/components/tools-skills-displayer';
+import { Container } from 'react-bootstrap';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
 import HeroSection from '@/components/hero-section';
 import IntroSection from '@/components/intro-section';
 import ResearchSection from '@/components/research-section';
 import EducationSection from '@/components/education-section';
+import SummaryStatsSection from '@/components/summary-stats-section';
+import { DisplayStatItem, WeightedLabelValueStat } from '@/interfaces/i-stat';
+import { getCachedSummaryStats } from '@/services/stat-service';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
@@ -99,6 +99,25 @@ export async function generateMetadata ({ params }: { params: Promise<{locale: s
   };
 };
 
+interface DisplayStatConfig {
+  href?: string;
+  showPlus?: boolean;
+}
+
+const displayConfig: Record<string, DisplayStatConfig> = {
+  research: { showPlus: true },
+  courses: { href: "teaching/courses", showPlus: true },
+};
+
+const toDisplayItem = (item: WeightedLabelValueStat): DisplayStatItem => {
+  const config = displayConfig[item.label] ?? {};
+  return {
+    ...item,
+    href: config.href ?? `${item.label}`,
+    showPlus: config.showPlus ?? false,
+  };
+}
+
 const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -106,8 +125,14 @@ const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
   const t = await getTranslations({ locale, namespace: baseTPath });
   const messages = await getMessages({ locale }) as any;
 
-  const interests = messages?.pages?.Home?.interests as string[];
-  const educations = messages?.pages?.Home?.educations as string[];
+  let displayStats: DisplayStatItem[] = [];
+
+  try {
+    const { stats } = await getCachedSummaryStats();
+    displayStats = stats.map(toDisplayItem);
+  } catch (error) {
+    console.error("Failed to load summary stats:", error);
+  }
 
   return (
     <>
@@ -116,10 +141,8 @@ const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
           <HeroSection />
           <IntroSection />
           <ResearchSection />
+          <SummaryStatsSection items={displayStats} />
           <EducationSection />
-          
-          
-          {/* <ToolsSkillsDisplayer /> */}
         </Container>
       </div>
     </>
