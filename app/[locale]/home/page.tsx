@@ -121,9 +121,6 @@ const toDisplayItem = (item: WeightedLabelValueStat): DisplayStatItem => {
 const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
   const { locale } = await params;
   setRequestLocale(locale);
-  
-  const t = await getTranslations({ locale, namespace: baseTPath });
-  const messages = await getMessages({ locale }) as any;
 
   let displayStats: DisplayStatItem[] = [];
 

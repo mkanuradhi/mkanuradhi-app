@@ -195,7 +195,14 @@ export const useActivateBookMutation = () => {
       const token = (await getToken()) ?? '';
       return activateBook(bookId, token);
     },
-    onSuccess: (_, id) => {
+    onSuccess: async (_, id) => {
+      const paths = [
+        ...getBookRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
+
       queryClient.setQueryData([BOOK_QUERY_KEY, id], (oldData: Book | undefined) => {
         if (!oldData) return;
         return { ...oldData, status: DocumentStatus.ACTIVE };
@@ -215,7 +222,14 @@ export const useDeactivateBookMutation = () => {
       const token = (await getToken()) ?? '';
       return deactivateBook(bookId, token);
     },
-    onSuccess: (_, id) => {
+    onSuccess: async (_, id) => {
+      const paths = [
+        ...getBookRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
+
       queryClient.setQueryData([BOOK_QUERY_KEY, id], (oldData: Book | undefined) => {
         if (!oldData) return;
         return { ...oldData, status: DocumentStatus.INACTIVE };

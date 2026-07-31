@@ -33,6 +33,12 @@ export default clerkMiddleware(async (auth, req) => {
   }
 
   const { pathname } = req.nextUrl;
+
+  // Skip next-intl entirely for API routes — they're not locale-prefixed
+  if (pathname.startsWith('/api') || pathname.startsWith('/trpc')) {
+    return NextResponse.next();
+  }
+
   const locale = pathname.split('/')[1] || 'en';
 
   // Handle Protected Routes
