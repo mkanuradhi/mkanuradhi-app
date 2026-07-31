@@ -1,0 +1,165 @@
+.summary-stats-section {
+  padding: 3rem 0;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .item {
+    // light mode vars
+    --beam-halo-rgb: 230, 170, 70;
+    --beam-core-peak-rgb: 255, 205, 110;
+    --beam-core-tail-rgb: 235, 180, 90;
+
+    --beam-halo-start: 0.38;
+    --beam-halo-mid: 0.12;
+    --beam-core-start: 0.6;
+    --beam-core-mid: 0.3;
+    --beam-angle: 9deg;
+
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4 / 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background: linear-gradient(145deg, rgba(0,0,0,0.04), rgba(0,0,0,0.015));
+    border: 1px solid rgba(0,0,0,0.08);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid rgba(var(--beam-core-peak-rgb), 0.8);
+      outline-offset: 3px;
+    }
+
+    &:hover {
+      border-color: rgba(0,0,0,0.16);
+
+      &::after {
+        opacity: 1.15;
+      }
+    }
+
+    // -- alternate the angle per card so the row doesn't
+    &:nth-of-type(1) { --beam-angle: -6deg; }
+    &:nth-of-type(2) { --beam-angle: 8deg; }
+    &:nth-of-type(3) { --beam-angle: -11deg; }
+    &:nth-of-type(4) { --beam-angle: 5deg; }
+    &:nth-of-type(5) { --beam-angle: 12deg; }
+    &:nth-of-type(6) { --beam-angle: -9deg; }
+    &:nth-of-type(7) { --beam-angle: -8deg; }
+    &:nth-of-type(8) { --beam-angle: 10deg; }
+
+    [data-bs-theme="dark"] & {
+      --beam-halo-rgb: 190, 200, 70;
+      --beam-core-peak-rgb: 235, 250, 160;
+      --beam-core-tail-rgb: 205, 220, 100;
+
+      --beam-halo-start: 0.42;
+      --beam-halo-mid: 0.15;
+      --beam-core-start: 0.65;
+      --beam-core-mid: 0.35;
+
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+
+      &:hover {
+        border-color: rgba(255,255,255,0.2);
+      }
+    }
+
+    // -- light beam effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: -55%;
+      left: 22%;
+      width: 55%;
+      height: 220%;
+      transform-origin: top center;
+      transform: rotate(var(--beam-angle));
+      background: linear-gradient(
+        to bottom,
+        rgba(var(--beam-halo-rgb), var(--beam-halo-start)) 0%,
+        rgba(var(--beam-halo-rgb), var(--beam-halo-mid)) 45%,
+        transparent 80%
+      );
+      filter: blur(14px);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 34%;
+      width: 12%;
+      height: 200%;
+      transform-origin: top center;
+      transform: rotate(var(--beam-angle));
+      background: linear-gradient(
+        to bottom,
+        rgba(var(--beam-core-peak-rgb), var(--beam-core-start)) 0%,
+      rgba(var(--beam-core-tail-rgb), var(--beam-core-mid)) 35%,
+        transparent 75%
+      );
+      filter: blur(4px);
+      pointer-events: none;
+    }
+    // -- end of light beam effect
+
+    .value {
+      position: relative;
+      z-index: 1;
+      font-weight: 700;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      margin-bottom: 0.25rem;
+      font-variant-numeric: tabular-nums;
+
+      .plus {
+        font-size: 0.6em;
+        font-weight: 600;
+        opacity: 0.7;
+        margin-left: 0.1em;
+        vertical-align: super;
+      }
+    }
+
+    .label {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+    }
+
+    // -- Sinhala: label comes first, so the gap needs to sit
+    // under the label instead of under the value
+    &[data-locale="si"] {
+      .value {
+        margin-bottom: 0;
+        margin-top: 0.25rem;
+      }
+      .label {
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
+}

@@ -30,4 +30,21 @@
     }
   }
 
+  .social-icon {
+    font-size: 1.9rem;
+
+    @media (max-width: 767px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .custom-icon-wrapper {
+    display: inline-flex;
+    transform: scale(0.9);
+
+    @media (max-width: 767px) {
+      transform: scale(0.7);
+    }
+  }
+
 }

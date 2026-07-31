@@ -3,13 +3,14 @@ import "./moving-gradient-title.scss";
 
 interface MovingGradientTitleProps {
   text: string;
+  className?: string;
 }
 
-const MovingGradientTitle: React.FC<MovingGradientTitleProps> = ( {text} ) => {
+const MovingGradientTitle = ({ text, className }: MovingGradientTitleProps) => {
   return (
     <>
       <div className="moving-gradient-title">
-        <h1 className="gradient-text">{text}</h1>
+        <h1 className={`gradient-text ${className ?? ''}`}>{text}</h1>
       </div>
     </>
   )
