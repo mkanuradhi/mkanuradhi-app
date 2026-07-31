@@ -4,6 +4,14 @@ html {
   box-sizing: border-box;
 }
 
+:root {
+  --accent-color: #2b6cb0;
+}
+
+[data-bs-theme="dark"] {
+  --accent-color: #6fa8dc; // lighter, higher-contrast blue for dark backgrounds
+}
+
 .app {
   padding-top: 3.5rem;
   padding-bottom: 4.5rem;

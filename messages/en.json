@@ -20,24 +20,8 @@
       "knItem10": "R Programming",
       "knItem11": "Nature Inspired Computing",
       "knItem12": "Nature Inspired Algorithms",
-      "title": "Anuradha Ariyaratne",
       "subTitle": "Senior Lecturer",
       "university": "University of Sri Jayewardenepura",
-      "gsTooltip": "Google Scholar",
-      "liTooltip": "LinkedIn",
-      "oiTooltip": "ORCID",
-      "rgTooltip": "ResearchGate",
-      "scTooltip": "Scopus",
-      "wsTooltip": "Web of Science",
-      "aboutTitle": "About Me",
-      "aboutDescriptions": [
-        "I am a passionate lecturer and a researcher in the field of computing, specializing in meta-heuristic optimization and machine learning. My research area has mainly comprised of finding promising solutions for different real world optimizations tasks appear in different fields such as Sports, Agriculture, Numerical optimization and many other.",
-        "My focus spans a variety of topics ranging from the development of novel meta-heuristic algorithms for optimization problems, the integration of meta-heuristics with machine learning techniques for enhanced predictive modeling, the application of machine learning in hyper-parameter tuning and feature selection, to the exploration of hybrid approaches that combine evolutionary algorithms with deep learning for complex data analysis. In 2019, I was awarded with the President's Awards for Scientific Research, for being among highly impacted 100 research papers in Sri Lanka for the year 2019 under computer science.",
-        "Currently I work as a senior lecturer in the Department of Computer Science, University of Sri Jayewardenepura. I earned my PhD in computer science from University of Sri Jayewardenepura, Sri Lanka, under the supervision of Professor TGI Fernando and Emeritus Professor Sunethra Weerakoon.",
-        "I'm a fellow of OWSD, founded by UNESCO, from 2022 to present. I am also a life member of SLAAS and SLAAI associations, which are premier organizations of science  and artificial intelligence in Sri Lanka.",
-        "From 2018 to 2024, I served as a reviewer for the springer journals; Evolutionary Intelligence and Soft Computing.",
-        "Currently I am serving as the Coordinator for the MSc in Data Science and Artificial Intelligence program at the University of Sri Jayewardenepura."
-      ],
       "interestTitle": "Interests",
       "interests": [
         "Swarm Intelligence",
@@ -2524,6 +2508,45 @@
       "sampleSubtitle": "See What Awaits Inside",
       "viewSampleButtonLabel": "View sample",
       "buyLinkButtonLabel": "Buy book"
+    },
+    "HeroSection": {
+      "heroName": "Anuradha Ariyaratne",
+      "designation": "Senior Lecturer",
+      "university": "University of Sri Jayewardenepura",
+      "tagline": "Researching and teaching across Optimization, Data Science, and Artificial Intelligence.",
+      "gsTooltip": "Google Scholar",
+      "liTooltip": "LinkedIn",
+      "oiTooltip": "ORCID",
+      "rgTooltip": "ResearchGate",
+      "scTooltip": "Scopus",
+      "wsTooltip": "Web of Science"
+    },
+    "IntroSection": {
+      "title": "Who I Am",
+      "introText": "I'm a Senior Lecturer in the Department of Computer Science at the University of Sri Jayewardenepura, Sri Lanka, where I combine research, teaching, and academic service in optimization and artificial intelligence."
+    },
+    "ResearchSection": {
+      "title": "The smallest ideas can illuminate the longest journeys.",
+      "researchText": "For me, the humble firefly became more than an insect—it became the inspiration for my research in computational intelligence and a symbol of curiosity, exploration, and continual learning."
+    },
+    "EducationSection": {
+      "title": "Education",
+      "bscDegree": "BSc (Hons) in Computer Science",
+      "bscLocation": "University of Sri Jayewardenepura, Sri Lanka",
+      "bscYear": "2012",
+      "mscDegree": "MSc in Data Science",
+      "mscLocation": "Tampere University, Finland",
+      "mscYear": "2025",
+      "phdDegree": "PhD in Computer Science",
+      "phdLocation": "University of Sri Jayewardenepura, Sri Lanka",
+      "phdYear": "2018"
+    },
+    "SummaryStatsSection": {
+      "books": "Books",
+      "publications": "Publications",
+      "research": "Research",
+      "awards": "Awards",
+      "courses": "Courses"
     }
   },
   "contexts": {

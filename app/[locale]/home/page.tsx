@@ -1,18 +1,14 @@
 import React from 'react';
-import { useMessages, useTranslations } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
-import { Col, Container, Row } from 'react-bootstrap';
-import { faGoogleScholar, faLinkedin, faOrcid, faResearchgate } from '@fortawesome/free-brands-svg-icons';
-import ScopusIcon from '@/icons/ScopusIcon';
-import WebOfScienceIcon from '@/icons/WebOfScienceIcon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGraduationCap, faBookmark } from '@fortawesome/free-solid-svg-icons';
-import ExternalLinkBar from '@/components/ExternalLinkBar';
-import MainImageDisplayer from '@/components/MainImageDisplayer';
-import GlowLink from '@/components/GlowLink';
-import ToolsSkillsDisplayer from '@/components/tools-skills-displayer';
-import MovingGradientTitle from '@/components/moving-gradient-title';
+import { Container } from 'react-bootstrap';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
+import HeroSection from '@/components/hero-section';
+import IntroSection from '@/components/intro-section';
+import ResearchSection from '@/components/research-section';
+import EducationSection from '@/components/education-section';
+import SummaryStatsSection from '@/components/summary-stats-section';
+import { DisplayStatItem, WeightedLabelValueStat } from '@/interfaces/i-stat';
+import { getCachedSummaryStats } from '@/services/stat-service';
 import './home.scss';
 
 const baseTPath = 'pages.Home';
@@ -103,104 +99,47 @@ export async function generateMetadata ({ params }: { params: Promise<{locale: s
   };
 };
 
+interface DisplayStatConfig {
+  href?: string;
+  showPlus?: boolean;
+}
+
+const displayConfig: Record<string, DisplayStatConfig> = {
+  research: { showPlus: true },
+  courses: { href: "teaching/courses", showPlus: true },
+};
+
+const toDisplayItem = (item: WeightedLabelValueStat): DisplayStatItem => {
+  const config = displayConfig[item.label] ?? {};
+  return {
+    ...item,
+    href: config.href ?? `${item.label}`,
+    showPlus: config.showPlus ?? false,
+  };
+}
+
 const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
   const { locale } = await params;
   setRequestLocale(locale);
-  
-  const t = await getTranslations({ locale, namespace: baseTPath });
-  const messages = await getMessages({ locale }) as any;
 
-  const descriptions = messages?.pages?.Home?.aboutDescriptions as string[];
-  const interests = messages?.pages?.Home?.interests as string[];
-  const educations = messages?.pages?.Home?.educations as string[];
+  let displayStats: DisplayStatItem[] = [];
 
-  const externalLinks = [
-    {
-      tooltipText: `${t('gsTooltip')}`,
-      url: 'https://scholar.google.com/citations?user=-O25soMAAAAJ',
-      faIcon: faGoogleScholar,
-    },
-    {
-      tooltipText: `${t('liTooltip')}`,
-      url: 'https://www.linkedin.com/in/anuradha-ariyaratne-3a406281/',
-      faIcon: faLinkedin,
-    },
-    {
-      tooltipText: `${t('oiTooltip')}`,
-      url: 'https://orcid.org/0000-0002-3548-3976',
-      faIcon: faOrcid,
-    },
-    {
-      tooltipText: `${t('rgTooltip')}`,
-      url: 'https://www.researchgate.net/profile/Anuradha-Ariyaratne',
-      faIcon: faResearchgate,
-    },
-    {
-      tooltipText: `${t('scTooltip')}`,
-      url: 'https://www.scopus.com/authid/detail.uri?authorId=57188855115',
-      customIcon: <ScopusIcon size={30} />,
-    },
-    {
-      tooltipText: `${t('wsTooltip')}`,
-      url: 'https://www.webofscience.com/wos/author/record/NRY-6429-2025',
-      customIcon: <WebOfScienceIcon size={30} />,
-    },
-  ];
+  try {
+    const { stats } = await getCachedSummaryStats();
+    displayStats = stats.map(toDisplayItem);
+  } catch (error) {
+    console.error("Failed to load summary stats:", error);
+  }
 
   return (
     <>
       <div className="home">
         <Container fluid="md">
-          <Row className="my-4">
-            <Col sm={5}>
-              <MainImageDisplayer />
-              <div className="text-center">
-                <MovingGradientTitle text={t('title')} />
-                <p className="h5 text-center">{t('subTitle')}</p>
-                <p className="h6 text-center">
-                  <GlowLink href="https://www.sjp.ac.lk/" newTab={true}>{t('university')}</GlowLink>
-                </p>
-              </div>
-              <ExternalLinkBar links={externalLinks} />
-            </Col>
-            <Col sm={7}>
-              <div>
-                <h2 className="h1 text-center">{t('aboutTitle')}</h2>
-                {descriptions.map((desc, index) => (
-                  <p key={index}>
-                    {desc}
-                  </p>
-                ))}
-              </div>
-            </Col>
-          </Row>
-          <Row className="my-4">
-            <Col sm={5}>
-              <div>
-                <h3>{t('interestTitle')}</h3>
-                <ul className="home-ul">
-                  {interests.map((interest, index) => (
-                    <li key={index}>
-                      <FontAwesomeIcon icon={faBookmark} className="list-icon" />{interest}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Col>
-            <Col sm={7}>
-              <div>
-                <h3>{t('educationTitle')}</h3>
-                <ul className="home-ul">
-                  {educations.map((education, index) => (
-                    <li key={index}>
-                      <FontAwesomeIcon icon={faGraduationCap} className="list-icon" />{education}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Col>
-          </Row>
-          <ToolsSkillsDisplayer />
+          <HeroSection />
+          <IntroSection />
+          <ResearchSection />
+          <SummaryStatsSection items={displayStats} />
+          <EducationSection />
         </Container>
       </div>
     </>

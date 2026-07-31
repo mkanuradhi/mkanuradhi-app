@@ -16,7 +16,7 @@ interface ExternalLinkBarProps {
 
 const ExternalLinkBar: React.FC<ExternalLinkBarProps> = ({ links }) => (
   <Container className="external-link-bar">
-    <Row className="margin-row gy-2">
+    <Row className="margin-row gy-2 gx-2 gx-md-4">
       {links.map((link, index) => (
         <Col key={index} className="d-flex justify-content-center align-items-center">
           <OverlayTrigger
@@ -29,9 +29,9 @@ const ExternalLinkBar: React.FC<ExternalLinkBarProps> = ({ links }) => (
             >
             <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.tooltipText}>
               {link.faIcon ? (
-                <FontAwesomeIcon icon={link.faIcon} size="2x" />
+                <FontAwesomeIcon icon={link.faIcon} className="social-icon" />
               ) : (
-                link.customIcon
+                <span className="custom-icon-wrapper">{link.customIcon}</span>
               )}
             </a>
           </OverlayTrigger>
