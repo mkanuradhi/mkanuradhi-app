@@ -1,10 +1,9 @@
 import React from 'react';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { Alert, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { getLocalizedBooks } from '@/services/book-service';
 import BooksViewer from '@/components/books-viewer';
 import { LANG_EN, LANG_SI } from '@/constants/common-vars';
-import { ApiError } from '@/errors/api-error';
 import ApiErrorAlert from '@/components/api-error-alert';
 
 const baseTPath = 'pages.Books';
@@ -34,16 +33,18 @@ export async function generateMetadata ({ params }: { params: { locale: string }
       locale: locale === LANG_SI ? 'si_LK' : 'en_US',
       images: [
         {
-          url: '/images/mkanuradhi.png',
+          url: '/images/og/mka-books.png',
           width: 1200,
           height: 630,
-          alt: 'MKA',
+          alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
+          type: 'image/png',
         },
         {
-          url: '/images/mkanuradhis.png',
+          url: '/images/og/mka-books-600.png',
           width: 600,
-          height: 314,
-          alt: 'MKA',
+          height: 315,
+          alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
+          type: 'image/png',
         },
       ],
     },
@@ -51,7 +52,7 @@ export async function generateMetadata ({ params }: { params: { locale: string }
       card: 'summary_large_image',
       title: t('pageTitle'),
       description: t('pageDescription'),
-      images: ['/images/mkanuradhi.png'],
+      images: ['/images/og/mka-books.png'],
     }
   };
 };

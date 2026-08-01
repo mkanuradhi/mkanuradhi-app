@@ -88,12 +88,12 @@ html {
   }
 
   .bg1 {
-    background-image: url('/images/back1.jpg');
+    background-image: url('/images/back1.jpg?v=2');
     animation: fadeOut 32s infinite;
   }
 
   .bg2 {
-    background-image: url('/images/back2.jpg');
+    background-image: url('/images/back2.jpg?v=2');
     animation: fadeIn 32s infinite;
   }
 }

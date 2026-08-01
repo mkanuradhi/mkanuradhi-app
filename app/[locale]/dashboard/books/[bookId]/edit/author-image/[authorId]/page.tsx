@@ -11,23 +11,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
   return {
     title: t('title'),
-    openGraph: {
-      title: t('title'),
-      type:  'website',
-      images: [
-        {
-          url:    '/images/mkanuradhi.png',
-          width:  1200,
-          height: 630,
-          alt:    'MKA',
-        },
-        {
-          url:    '/images/mkanuradhis.png',
-          width:  600,
-          height: 314,
-          alt:    'MKA',
-        },
-      ],
+    robots: {
+      index: false,
+      follow: false,
     },
   };
 }
