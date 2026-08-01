@@ -21,10 +21,18 @@ export async function generateMetadata () {
       type: 'website',
       images: [
         {
-          url: '/images/mkanuradhi.png',
+          url: '/images/og/mka-books.png',
           width: 1200,
           height: 630,
-          alt: 'MKA',
+          alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
+          type: 'image/png',
+        },
+        {
+          url: '/images/og/mka-books-600.png',
+          width: 600,
+          height: 315,
+          alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
+          type: 'image/png',
         },
       ],
     }

@@ -49,16 +49,18 @@ export async function generateMetadata ({ params }: { params: Promise<{ locale: 
       locale: 'en_US',
       images: [
         {
-          url: '/images/mkanuradhi.png',
+          url: '/images/og/mka.png',
           width: 1200,
           height: 630,
-          alt: 'MKA',
+          alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
+          type: 'image/png',
         },
         {
-          url: '/images/mkanuradhis.png',
+          url: '/images/og/mka-600.png',
           width: 600,
-          height: 314,
-          alt: 'MKA',
+          height: 315,
+          alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
+          type: 'image/png',
         },
       ],
     }
