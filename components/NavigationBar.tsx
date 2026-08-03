@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { faEllipsis, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Badge, Button, Container, ListGroup, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
@@ -11,6 +11,13 @@ import styles from './NavigationBar.module.scss'
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { useSideBar } from "@/hooks/use-side-bar";
+import { useBreakpoint, isAtLeast, type Breakpoint } from "@/hooks/useBreakpoint";
+
+interface NavItem {
+  title: string;
+  path: string;
+  minBreakpoint: Breakpoint; // minimum breakpoint at which this item shows inline
+}
 
 interface NavigationBarProps {
 }
@@ -25,6 +32,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
   const { sidebarLinks, showOffcanvas, handleClose, handleShow } = useSideBar();
   const locale = useLocale();
   const [isMounted, setIsMounted] = useState(false);
+  const breakpoint = useBreakpoint();
 
   useEffect(() => {
     setIsMounted(true);
@@ -41,26 +49,35 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
     router.replace(newPath, { locale: lang });
   }
 
-  const navLinks = [
-    { title: t('research'), path: '/research'},
-    { title: t('publications'), path: '/publications'},
-    { title: t('books'), path: '/books'},
-    { title: t('teaching'), path: '/teaching'},
-    { title: t('blog'), path: '/blog'},
-    { title: t('contact'), path: '/contact'},
-  ];
+  // Single source of truth for all nav items, ordered by priority.
+  // minBreakpoint = the smallest breakpoint at which this item shows inline
+  const allNavLinks: NavItem[] = useMemo(() => [
+    { title: t('research'),     path: '/research',     minBreakpoint: 'md' },
+    { title: t('publications'), path: '/publications', minBreakpoint: 'md' },
+    { title: t('books'),        path: '/books',        minBreakpoint: 'md' },
+    { title: t('teaching'),     path: '/teaching',     minBreakpoint: 'lg' },
+    { title: t('blog'),         path: '/blog',         minBreakpoint: 'lg' },
+    { title: t('contact'),      path: '/contact',      minBreakpoint: 'xl' },
+    { title: t('awards'),       path: '/awards',       minBreakpoint: 'xl' },
+    { title: t('experience'),   path: '/experience',   minBreakpoint: 'xl' },
+  ], [t]);
 
-  const navMenuLinks = [
-    { title: t('awards'), path: '/awards'},
-    { title: t('experience'), path: '/experience'},
-  ];
+  const isOffcanvasMode = !isAtLeast(breakpoint, 'md');
+
+  const visibleLinks = isOffcanvasMode
+    ? allNavLinks
+    : allNavLinks.filter((link) => isAtLeast(breakpoint, link.minBreakpoint));
+
+  const overflowLinks = isOffcanvasMode
+    ? []
+    : allNavLinks.filter((link) => !isAtLeast(breakpoint, link.minBreakpoint));
 
   return (
     <>
       <Navbar 
         collapseOnSelect 
         fixed="top" 
-        expand="lg" 
+        expand="md" 
         className={`bg-body-tertiary bg-opacity-75 ${styles.navbarTop}`}
         as={motion.nav}
         initial={{ boxShadow: 'none' }}
@@ -93,21 +110,24 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="me-auto">
-                {navLinks.map((navLink) => (
+                {visibleLinks.map((navLink) => (
                   <Nav.Link key={navLink.title} as={Link} href={navLink.path} active={pathname.endsWith(navLink.path)}>
                     {navLink.title}
                   </Nav.Link>
                 ))}
-                <NavDropdown
-                  title={<FontAwesomeIcon icon={faEllipsis} aria-label={t('more')} />}
-                  id="more-nav-dropdown"
-                >
-                  {navMenuLinks.map((navMenuLink) => (
-                    <NavDropdown.Item key={navMenuLink.title} as={Link} href={navMenuLink.path} active={pathname.endsWith(navMenuLink.path)}>
-                      {navMenuLink.title}
-                    </NavDropdown.Item>
-                  ))}
-                </NavDropdown>
+
+                {overflowLinks.length > 0 && (
+                  <NavDropdown
+                    title={<FontAwesomeIcon icon={faEllipsis} aria-label={t('more')} />}
+                    id="more-nav-dropdown"
+                  >
+                    {overflowLinks.map((navMenuLink) => (
+                      <NavDropdown.Item key={navMenuLink.title} as={Link} href={navMenuLink.path} active={pathname.endsWith(navMenuLink.path)}>
+                        {navMenuLink.title}
+                      </NavDropdown.Item>
+                    ))}
+                  </NavDropdown>
+                )}
               </Nav>
               <Nav>
                 <Nav.Link
