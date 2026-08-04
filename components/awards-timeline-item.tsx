@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import Award from "@/interfaces/i-award";
+import { LocalizedAward } from "@/interfaces/i-award";
 import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
 import { useLocale, useTranslations } from 'next-intl';
 import { LANG_EN } from '@/constants/common-vars';
@@ -12,7 +12,7 @@ import AwardType from '@/enums/award-type';
 const baseTPath = 'components.AwardsTimelineItem';
 
 interface AwardsTimelineItemProps {
-  award: Award;
+  award: LocalizedAward;
   isFirst: boolean;
   isLast: boolean;
 }
@@ -60,12 +60,12 @@ const AwardsTimelineItem: React.FC<AwardsTimelineItemProps> = ({award, isFirst, 
   const locale = useLocale();
 
   // Extract localized content
-  const title = locale === LANG_EN ? award.titleEn : award.titleSi;
-  const description = locale === LANG_EN ? award.descriptionEn : award.descriptionSi;
-  const issuer = locale === LANG_EN ? award.issuerEn : award.issuerSi;
-  const issuerLocation = locale === LANG_EN ? award.issuerLocationEn : award.issuerLocationSi;
-  const ceremonyLocation = locale === LANG_EN ? award.ceremonyLocationEn : award.ceremonyLocationSi;
-  const coRecipients = locale === LANG_EN ? award.coRecipientsEn : award.coRecipientsSi;
+  // const title = locale === LANG_EN ? award.titleEn : award.titleSi;
+  // const description = locale === LANG_EN ? award.descriptionEn : award.descriptionSi;
+  // const issuer = locale === LANG_EN ? award.issuerEn : award.issuerSi;
+  // const issuerLocation = locale === LANG_EN ? award.issuerLocationEn : award.issuerLocationSi;
+  // const ceremonyLocation = locale === LANG_EN ? award.ceremonyLocationEn : award.ceremonyLocationSi;
+  // const coRecipients = locale === LANG_EN ? award.coRecipientsEn : award.coRecipientsSi;
 
   const iconClass = AWARD_TYPE_ICONS[award.type] || 'bi-trophy-fill';
   const typeColor = AWARD_TYPE_COLORS[award.type] || AWARD_TYPE_COLORS.AWARD;
@@ -114,11 +114,11 @@ const AwardsTimelineItem: React.FC<AwardsTimelineItemProps> = ({award, isFirst, 
                 <Badge bg="secondary">{t(`awardScope.${award.scope}`)}</Badge>
                 <Badge bg="secondary">{t(`awardResult.${award.result}`)}</Badge>
               </div>
-              <h3>{title}</h3>
-              <p className="issuer">{issuer}</p>
-              {issuerLocation && (
+              <h3>{award.title}</h3>
+              <p className="issuer">{award.issuer}</p>
+              {award.issuerLocation && (
                 <p>
-                  <i className="bi bi-geo-fill"></i> { issuerLocation }
+                  <i className="bi bi-geo-fill"></i> { award.issuerLocation }
                 </p>
               )}
             </div>
@@ -135,14 +135,14 @@ const AwardsTimelineItem: React.FC<AwardsTimelineItemProps> = ({award, isFirst, 
                   className="secondary-info"
                 >
 
-                  { description && (
-                    <SanitizedHtml html={description} className="ql-editor" />
+                  { award.description && (
+                    <SanitizedHtml html={award.description} className="ql-editor" />
                   )}
 
-                  {ceremonyLocation && (
+                  {award.ceremonyLocation && (
                     <div className="detail-row">
                       <i className="bi bi-geo-alt-fill"></i>
-                      <span>{ceremonyLocation}</span>
+                      <span>{award.ceremonyLocation}</span>
                     </div>
                   )}
 
@@ -153,10 +153,10 @@ const AwardsTimelineItem: React.FC<AwardsTimelineItemProps> = ({award, isFirst, 
                     </div>
                   )}
 
-                  {coRecipients.length > 0 && (
+                  {award.coRecipients.length > 0 && (
                     <div className="detail-row">
                       <i className="bi bi-people-fill"></i>
-                      <span>{t('coRecipients')}: {coRecipients.join(', ')}</span>
+                      <span>{t('coRecipients')}: {award.coRecipients.join(', ')}</span>
                     </div>
                   )}
 

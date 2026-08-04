@@ -1,11 +1,11 @@
 "use client";
 import React from 'react';
-import Award from "@/interfaces/i-award";
+import { LocalizedAward } from "@/interfaces/i-award";
 import AwardsTimelineItem from './awards-timeline-item';
 import "./awards-timeline.scss";
 
 interface AwardsTimelineProps {
-  awards: Award[];
+  awards: LocalizedAward[];
 }
 
 const AwardsTimeline: React.FC<AwardsTimelineProps> = ({awards}) => {
@@ -16,7 +16,7 @@ const AwardsTimeline: React.FC<AwardsTimelineProps> = ({awards}) => {
       <div className="timeline">
         {awards.map((award, index) => (
           <AwardsTimelineItem 
-            key={award.id} 
+            key={index} 
             award={award} 
             isFirst={index === 0}
             isLast={index === awards.length - 1}

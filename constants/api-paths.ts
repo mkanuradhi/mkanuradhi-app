@@ -8,6 +8,7 @@ export const MCQS_PATH = '/mcqs';
 export const PUBLICATIONS_PATH = '/publications';
 export const RESEARCH_PATH = '/research';
 export const AWARDS_PATH = '/awards';
+export const LOCALIZED_AWARDS_PATH = '/awards/localized';
 export const BOOKS_PATH = '/books';
 export const LOCALIZED_BOOKS_PATH = '/books/localized';
 export const STATS_PATH = '/stats';

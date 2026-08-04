@@ -1,7 +1,7 @@
 import React from 'react';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import { getAwards } from '@/services/award-service';
+import { getAwards, getLocalizedAwards } from '@/services/award-service';
 import AwardsTimeline from '@/components/awards-timeline';
 
 const baseTPath = 'pages.Awards';
@@ -41,7 +41,8 @@ export async function generateMetadata ({ params }: { params: { locale: string }
 
 const AwardsPage = async () => {
   const t = await getTranslations(baseTPath);
-  const awards = await getAwards(0, 100);
+  const locale = await getLocale();
+  const awards = await getLocalizedAwards(locale, 0, 100);
 
   return (
     <>
