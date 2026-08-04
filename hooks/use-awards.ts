@@ -1,9 +1,11 @@
+import { getAwardRoutes, getHomeRoutes } from "@/constants/revalidation-routes";
 import { CreateAwardEnDto, UpdateAwardEnDto, UpdateAwardSiDto } from "@/dtos/award-dto";
 import DocumentStatus from "@/enums/document-status";
 import { ApiError } from "@/errors/api-error";
 import Award from "@/interfaces/i-award";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import { activateAward, createAwardEn, deactivateAward, deleteAward, deleteAwardPrimaryImage, getAwardById, getAwards, updateAwardEn, updateAwardSi, uploadAwardPrimaryImage } from "@/services/award-service";
+import { triggerRevalidation } from "@/services/common-service";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -42,7 +44,14 @@ export const useActivateAwardMutation = () => {
       const token = (await getToken()) ?? '';
       return activateAward(awardId, token);
     },
-    onSuccess: (_, id) => {
+    onSuccess: async (_, id) => {
+      const paths = [
+        ...getAwardRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
+
       // Update cache instantly instead of re-fetching
       queryClient.setQueryData([AWARD_QUERY_KEY, id], (oldData: Award | undefined) => {
         if (!oldData) return;
@@ -64,7 +73,14 @@ export const useDeactivateAwardMutation = () => {
       const token = (await getToken()) ?? '';
       return deactivateAward(awardId, token);
     },
-    onSuccess: (_, id) => {
+    onSuccess: async (_, id) => {
+      const paths = [
+        ...getAwardRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
+
       // Update cache instantly
       queryClient.setQueryData([AWARD_QUERY_KEY, id], (oldData: Award | undefined) => {
         if (!oldData) return;
@@ -86,7 +102,7 @@ export const useDeleteAwardMutation = () => {
       const token = (await getToken()) ?? '';
       return deleteAward(awardId, token);
     },
-    onSuccess: (_, id) => {
+    onSuccess: async (_, id) => {
       queryClient.removeQueries({ queryKey: [AWARD_QUERY_KEY, id] });
 
       // Update paginated list cache by filtering out the deleted award
@@ -100,6 +116,13 @@ export const useDeleteAwardMutation = () => {
 
       queryClient.invalidateQueries({ queryKey: [AWARDS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [AWARD_QUERY_KEY, id] });
+
+      const paths = [
+        ...getAwardRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
     },
   });
 };
@@ -144,7 +167,7 @@ export const useCreateAwardEnMutation = () => {
       return { previousAwards };
     },
 
-    onSuccess: (createdAward) => {
+    onSuccess: async (createdAward) => {
       if (!createdAward || !createdAward.id) return;
 
       // Replace the temp award with the actual one
@@ -170,6 +193,13 @@ export const useCreateAwardEnMutation = () => {
 
       // Also cache the individual award
       queryClient.setQueryData([AWARD_QUERY_KEY, createdAward.id], createdAward);
+
+      const paths = [
+        ...getAwardRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
     },
 
     onError: (_error, _newAwardData, context) => {
@@ -193,7 +223,7 @@ export const useUpdateAwardSiMutation = () => {
       const token = (await getToken()) ?? '';
       return updateAwardSi(variables.id, variables.awardSiDto, token);
     },
-    onSuccess: (updatedAward) => {
+    onSuccess: async (updatedAward) => {
       if (!updatedAward || !updatedAward.id) return;
 
       // Update award list cache
@@ -210,6 +240,13 @@ export const useUpdateAwardSiMutation = () => {
 
       // Update individual award cache
       queryClient.setQueryData([AWARD_QUERY_KEY, updatedAward.id], updatedAward);
+
+      const paths = [
+        ...getAwardRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
     },
     onSettled: (_data, _error, variables) => {
       // Refetch only the updated award instead of all awards
@@ -228,7 +265,7 @@ export const useUpdateAwardEnMutation = () => {
       const token = (await getToken()) ?? '';
       return updateAwardEn(variables.id, variables.awardEnDto, token);
     },
-    onSuccess: (updatedAward) => {
+    onSuccess: async (updatedAward) => {
       if (!updatedAward || !updatedAward.id) return;
 
       // Update award list cache
@@ -245,6 +282,13 @@ export const useUpdateAwardEnMutation = () => {
 
       // Update individual award cache
       queryClient.setQueryData([AWARD_QUERY_KEY, updatedAward.id], updatedAward);
+
+      const paths = [
+        ...getAwardRoutes(),
+        ...getHomeRoutes(),
+      ];
+      const token = (await getToken()) ?? '';
+      await triggerRevalidation(paths, token);
     },
     onSettled: (_data, _error, variables) => {
       // Refetch only the updated award instead of all awards
