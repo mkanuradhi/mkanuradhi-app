@@ -9,3 +9,9 @@ export const getBookRoutes = (path?: string): string[] => {
     return path ? `/${locale}/books/${path}` : `/${locale}/books`;
   });
 };
+
+export const getAwardRoutes = (path?: string): string[] => {
+  return routing.locales.map((locale) => {
+    return path ? `/${locale}/awards/${path}` : `/${locale}/awards`;
+  });
+};

@@ -1,8 +1,8 @@
-import { API_BASE_URL, AWARDS_PATH } from "@/constants/api-paths";
+import { API_BASE_URL, AWARDS_PATH, LOCALIZED_AWARDS_PATH } from "@/constants/api-paths";
 import { ActivationAwardDto, CreateAwardEnDto, UpdateAwardEnDto, UpdateAwardSiDto } from "@/dtos/award-dto";
 import DocumentStatus from "@/enums/document-status";
 import { handleApiError } from "@/errors/api-error-handler";
-import Award from "@/interfaces/i-award";
+import Award, { LocalizedAward } from "@/interfaces/i-award";
 import PaginatedResult from "@/interfaces/i-paginated-result";
 import { buildHeaders } from "@/utils/common-utils";
 import axios from "axios";
@@ -16,6 +16,18 @@ export const getAwards = async (page: number, size: number): Promise<PaginatedRe
         size,
       },
     });
+    return response.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
+export const getLocalizedAwards = async (lang: string, page: number, size: number): Promise<PaginatedResult<LocalizedAward>> => {
+  try {
+    const response = await axios.get<PaginatedResult<LocalizedAward>>(
+      `${API_BASE_URL}${LOCALIZED_AWARDS_PATH}`,
+      { params: { lang, page, size } }
+    );
     return response.data;
   } catch (error) {
     throw handleApiError(error);
