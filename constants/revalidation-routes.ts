@@ -15,3 +15,9 @@ export const getAwardRoutes = (path?: string): string[] => {
     return path ? `/${locale}/awards/${path}` : `/${locale}/awards`;
   });
 };
+
+export const getMediaContributionRoutes = (path?: string): string[] => {
+  return routing.locales.map((locale) => {
+    return path ? `/${locale}/media-contributions/${path}` : `/${locale}/media-contributions`;
+  });
+};

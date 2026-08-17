@@ -127,3 +127,28 @@ export const MAX_BOOK_EDITION_LENGTH      = 100;
 export const MAX_BOOK_IMAGE_SIZE          = 5 * 1024 * 1024; // 5MB
 export const MAX_BOOK_IMAGES              = 15;
 export const MAX_BOOK_FILE_SIZE           = 15 * 1024 * 1024; // 15MB
+
+// --------------- media contribution ---------------
+export const MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH       = 2;
+export const MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH       = 500;
+
+export const MIN_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH = 2;
+export const MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH = 1000;
+
+export const MIN_MEDIA_CONTRIBUTION_CONTENT_LENGTH     = 2;
+export const MAX_MEDIA_CONTRIBUTION_CONTENT_LENGTH     = 5000;
+
+export const MIN_MEDIA_CONTRIBUTION_PUBLISHED_DATE     = new Date(2010, 0, 1);
+export const MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE     = new Date();
+
+export const MAX_MEDIA_CONTRIBUTION_AUTHORS            = 10;
+export const MAX_MEDIA_CONTRIBUTION_AUTHOR_NAME_LENGTH = 200;
+
+export const MAX_MEDIA_CONTRIBUTION_TOPICS             = 10;
+export const MAX_MEDIA_CONTRIBUTION_TOPIC_LENGTH       = 100;
+
+export const MAX_MEDIA_CONTRIBUTION_URL_LENGTH         = 500;
+
+export const MAX_MEDIA_CONTRIBUTION_IMAGE_SIZE         = 5 * 1024 * 1024; // 5MB
+export const MAX_MEDIA_CONTRIBUTION_IMAGES             = 10;
+export const MAX_MEDIA_CONTRIBUTION_FILE_SIZE          = 15 * 1024 * 1024; // 15MB
