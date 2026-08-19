@@ -610,6 +610,14 @@
         "EditPublisherImage": {
           "title": "Edit Publisher Image"
         }
+      },
+      "MediaContributions": {
+        "pageTitle": "Media Contributions Dashboard",
+        "title": "Media Contributions",
+        "addNew": "Add New Media Contribution",
+        "New": {
+          "title": "Add New Media Contribution"
+        }
       }
     },
     "Visualizations": {
@@ -2547,6 +2555,26 @@
       "research": "Research",
       "awards": "Awards",
       "courses": "Courses"
+    },
+    "MediaContributionsTable": {
+      "failMediaContributions": "Failed to load media contributions",
+      "noMediaContributions": "No media contributions to display",
+      "refreshMediaContributions": "Refreshing media contributions...",
+      "mediaContributions": "media contributions"
+    },
+    "MediaContributionOptionsCard": {
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the media contribution: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the media contribution",
+      "deactivateErrorTitle": "Cannot deactivate the media contribution",
+      "deleteErrorTitle": "Cannot delete the media contribution"
     }
   },
   "contexts": {
@@ -2559,6 +2587,7 @@
       "contactMessages": "Contact Messages",
       "awards": "Awards",
       "books": "Books",
+      "media-contributions": "Media Contributions",
       "studentCourses": "Student Courses"
     }
   },

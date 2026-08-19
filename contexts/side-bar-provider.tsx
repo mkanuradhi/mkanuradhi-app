@@ -41,6 +41,7 @@ export const SideBarProvider: React.FC<SideBarProviderProps> = ({children}) => {
     { title: t('contactMessages'), path: `/dashboard/contact`, info: unreadCount ? `${unreadCount}` : '' },
     { title: t('awards'), path: `/dashboard/awards`, info: '' },
     { title: t('books'), path: `/dashboard/books`, info: '' },
+    { title: t('media-contributions'), path: `/dashboard/media-contributions`, info: '' },
   ];
 
   const studentLinks = [

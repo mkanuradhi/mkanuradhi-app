@@ -610,6 +610,14 @@
         "EditPublisherImage": {
           "title": "ප්‍රකාශක රූපය සංස්කරණය"
         }
+      },
+      "MediaContributions": {
+        "pageTitle": "මාධ්‍ය දායකත්ව පුවරුව",
+        "title": "මාධ්‍ය දායකත්වයන්",
+        "addNew": "නව මාධ්‍ය දායකත්වයක් එක් කරන්න",
+        "New": {
+          "title": "නව මාධ්‍ය දායකත්වයක් එක් කිරීම"
+        }
       }
     },
     "Visualizations": {
@@ -2547,6 +2555,26 @@
       "research": "පර්යේෂණ",
       "awards": "සම්මාන",
       "courses": "පාඨමාලා"
+    },
+    "MediaContributionsTable": {
+      "failMediaContributions": "මාධ්‍ය දායකත්වයන් පූරණය කිරීමට අපොහොසත් විය",
+      "noMediaContributions": "ප්‍රදර්ශනය කිරීමට මාධ්‍ය දායකත්වයන් නොමැත",
+      "refreshMediaContributions": "මාධ්‍ය දායකත්වයන් නැවුම් කරමින්...",
+      "mediaContributions": "මාධ්‍ය දායකත්වයන්"
+    },
+    "MediaContributionOptionsCard": {
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මකා දැමීම තහවුරු කිරීම",
+      "deleteModalMessage": "ඔබට මාධ්‍ය දායකත්වය මකා දැමීමට අවශ්‍ය බව විශ්වාසද: <strong>title</strong>?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "මාධ්‍ය දායකත්වය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "මාධ්‍ය දායකත්වය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "මාධ්‍ය දායකත්වය මකා දැමිය නොහැක"
     }
   },
   "contexts": {
@@ -2559,6 +2587,7 @@
       "contactMessages": "සම්බන්ධතා පණිවිඩ",
       "awards": "සම්මාන",
       "books": "පොත්",
+      "media-contributions": "මාධ්‍ය දායකත්වයන්",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },
