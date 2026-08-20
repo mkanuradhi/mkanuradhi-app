@@ -10,6 +10,7 @@ import DeleteModal from './delete-modal';
 import SanitizedHtml from './sanitized-html';
 import MediaContribution from '@/interfaces/i-media-contribution';
 import { useActivateMediaContributionMutation, useDeactivateMediaContributionMutation, useDeleteMediaContributionMutation } from '@/hooks/use-media-contributions';
+import { LANG_SI } from '@/constants/common-vars';
 
 const baseTPath = 'components.MediaContributionOptionsCard';
 
@@ -23,9 +24,7 @@ const MediaContributionOptionsCard: React.FC<MediaContributionOptionsCardProps> 
   const [deleteModalShow, setDeleteModalShow] = useState(false);
   const router = useRouter();
 
-  const selectedTitle = locale === "si" 
-                      ? `${mediaContribution.publishedDate.getFullYear} '${mediaContribution.title.si}'` 
-                      : `${mediaContribution.publishedDate.getFullYear} '${mediaContribution.title.en}'`;
+  const selectedTitle = locale === LANG_SI ? `'${mediaContribution.title.si}'` : `'${mediaContribution.title.en}'`;
 
   const { mutate: deleteMediaContributionMutation, isPending: isPendingDelete, isError: isDeleteError, error: deleteError } = useDeleteMediaContributionMutation();
   const { mutate: activateMediaContributionMutation, isPending: isPendingActivate, isError: isActivateError, error: activateError } = useActivateMediaContributionMutation();
@@ -78,11 +77,7 @@ const MediaContributionOptionsCard: React.FC<MediaContributionOptionsCardProps> 
                 <Row className="align-items-center">
                   <Col>
                     <span>
-                      {/* {mediaContribution.publishedDate.toLocaleDateString(locale, {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })} */}
+                      { new Date(mediaContribution.publishedDate).toLocaleDateString() }
                     </span>
                   </Col>
                 </Row>

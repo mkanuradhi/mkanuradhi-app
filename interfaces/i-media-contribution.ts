@@ -122,7 +122,7 @@ export interface LocalizedMediaContribution {
   path:          string;
 
   outlet?:          LocalizedMediaContributionOutlet;
-  publishedDate:    Date;
+  publishedDateFormatted: string;
   durationSeconds?: number;
   highlightQuote?:  LocalizedString;
 
@@ -144,7 +144,7 @@ export interface LocalizedSummaryMediaContribution {
   language:      MediaContributionLanguage;
   path:          string;
   outlet?:       LocalizedMediaContributionOutlet;
-  publishedDate: Date;
+  publishedDateFormatted: string;
   topics:        string[];
   coverImage?:   string;
   featured:      boolean;
