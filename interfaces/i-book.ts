@@ -32,7 +32,7 @@ export interface BookPreviewImage {
 
 export interface BookPrice {
   amount:   number; // 150000 = LKR 1500.00
-  currency: string;
+  currency: string; // ISO 4217 — "LKR", "USD", etc.
 }
 
 interface Book {

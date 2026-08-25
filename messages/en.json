@@ -2498,6 +2498,11 @@
       "edition":       "Edition",
       "pages":         "Pages",
       "dimensions":    "Dimensions",
+      "price":        "Price",
+      "priceCurrency": {
+        "LKR": "Rs.",
+        "USD": "US$"
+      },
       "audienceLabel": "Intended for",
       "isbnSectionLabel": "ISBN",
       "isbnFormat": {

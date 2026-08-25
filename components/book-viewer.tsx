@@ -1,5 +1,5 @@
 "use client";
-import { LocalizedBook } from "@/interfaces/i-book";
+import { BookPrice, LocalizedBook } from "@/interfaces/i-book";
 import { useLocale, useTranslations } from "next-intl";
 import { Breadcrumb, Card, Col, Container, Row } from "react-bootstrap";
 import SanitizedHtml from "./sanitized-html";
@@ -46,11 +46,18 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
 
+  const getPriceWithCurrency = (price?: BookPrice) => {
+    if (!price) return null;
+    const amount = (price.amount / 100).toFixed(2);
+    return `${t(`priceCurrency.${price.currency}`)} ${amount}`;
+  }
+
   const metaItems: MetaItem[] = [
     { label: t('writtenLang'),   value: t(`writtenLang${localizedBook.writtenLang}`) },
     { label: t('publishedYear'), value: localizedBook.publishedYear },
     { label: t('edition'),       value: localizedBook.edition       },
     { label: t('pages'),         value: localizedBook.pages         },
+    { label: t('price'),         value: getPriceWithCurrency(localizedBook.price)},
     { label: t('dimensions'),    value: localizedBook.dimensions    },
   ];
 

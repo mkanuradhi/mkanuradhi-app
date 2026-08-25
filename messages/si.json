@@ -2498,6 +2498,11 @@
       "edition":       "සංස්කරණය",
       "pages":         "පිටු",
       "dimensions":    "මානයන්",
+      "price":        "මිල",
+      "priceCurrency": {
+        "LKR": "රු.",
+        "USD": "ඇ.ඩොලර්"
+      },
       "audienceLabel": "පාඨක පිරිස",
       "isbnSectionLabel": "ISBN",
       "isbnFormat": {
