@@ -21,7 +21,6 @@ import { LANG_SI } from '@/constants/common-vars';
 import RecordMetadata from './record-metadata';
 import GlowLink from './GlowLink';
 import SanitizedHtml from './sanitized-html';
-import Badge from 'react-bootstrap/Badge';
 import EditableImage from './editable-image';
 import EditableImagePlaceholder from './editable-image-placeholder';
 import { MediaContributionAuthor, MediaContributionInterviewer } from '@/interfaces/i-media-contribution';
@@ -275,6 +274,8 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
 
     const metaItems: MetaItem[] = [
       { label: t('language'),   value: languageLabel   },
+      { label: t('type'),  value: t(`typeValue.${mediaContribution.type}`)  },
+      { label: t('role'),  value: t(`roleValue.${mediaContribution.role}`)  },
       { label: t('displayOrder'),  value: mediaContribution.displayOrder  },
     ];
 

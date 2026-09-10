@@ -2599,6 +2599,22 @@
       "langEnglish": "ඉංග්‍රීසි",
       "langSinhala": "සිංහල",
       "langTamil":   "දෙමළ",
+      "type": "වර්ගය",
+      "typeValue": {
+        "radio": "ගුවන්විදුලිය",
+        "newspaper_article": "පුවත්පත් ලිපිය",
+        "expert_interview": "විශේෂඥ සම්මුඛ පරීක්ෂණය",
+        "tv_interview": "රූපවාහිනී සම්මුඛ පරීක්ෂණය",
+        "podcast": "පොඩ්කාස්ට්",
+        "other": "වෙනත්"
+      },
+      "role": "භූමිකාව",
+      "roleValue": {
+        "author": "කර්තෘ",
+        "co_author": "සම කර්තෘ",
+        "interviewee": "සම්මුඛ පරීක්ෂක",
+        "contributor": "දායකයා"
+      },
       "displayOrder": "දර්ශන අනුපිළිවෙල",
       "outlet":    "මාධ්‍ය ආයතනය",
       "topics":    "මාතෘකා",

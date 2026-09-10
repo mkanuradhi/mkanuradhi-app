@@ -2599,6 +2599,22 @@
       "langEnglish": "English",
       "langSinhala": "Sinhala",
       "langTamil": "Tamil",
+      "type": "Type",
+      "typeValue": {
+        "radio": "Radio",
+        "newspaper_article": "Newspaper Article",
+        "expert_interview": "Expert Interview",
+        "tv_interview": "TV Interview",
+        "podcast": "Podcast",
+        "other": "Other"
+      },
+      "role": "Role",
+      "roleValue": {
+        "author": "Author",
+        "co_author": "Co Author",
+        "interviewee": "Interviewee",
+        "contributor": "Contributor"
+      },
       "displayOrder": "Display order",
       "outlet":    "Outlet",
       "topics":     "Topics",
