@@ -9,12 +9,12 @@ export interface mediaContributionAuthorDto {
 
 export interface mediaContributionInterviewerDto {
   name:       LocalizedString;
-  profileUrl: string;
+  profileUrl?: string;
 }
 
 export interface mediaContributionOutletDto {
-  name:   LocalizedString;
-  webUrl: string;
+  name:    LocalizedString;
+  webUrl?: string;
 }
 
 export interface CreateMediaContributionDto {
@@ -40,7 +40,7 @@ export interface CreateMediaContributionDto {
 
   sourceUrl?:   string;
   featured:     boolean;
-  displayOrder: number;
+  displayOrder?: number;
 }
 
 export interface updateMediaContributionAuthorDto {
@@ -86,7 +86,7 @@ export interface updateMediaContributionDto {
 
   sourceUrl?:   string;
   featured:     boolean;
-  displayOrder: number;
+  displayOrder?: number;
 
   v: number;    // always required — never optional
 }

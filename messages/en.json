@@ -2634,6 +2634,220 @@
       "deleteModalMessage":   "Are you sure you want to delete <strong>title</strong>? This action cannot be undone.",
       "deleteModalCancel":    "Cancel",
       "deleteModalAccept":    "Delete"
+    },
+    "NewMediaContributionForm": {
+      "localeTabEnTitle": "English (en)",
+      "localeTabSiTitle": "සිංහල (si)",
+
+      "titleEnLabel": "Title (English)",
+      "titleEnPlaceholder": "The Art of Clean Code",
+      "titleSiLabel": "Title (Sinhala)",
+      "titleSiPlaceholder": "පිරිසිදු කේතයේ කලාව",
+
+      "titleOriginalLabel": "Original Title",
+      "titleOriginalPlaceholder": "விளையாட்டு மற்றும் தொழில் துறை | Sports and industry | ක්‍රීඩා සහ කර්මාන්ත",
+      "titleOriginalHelp": "Your original work title in any language",
+
+      "subtitleEnLabel": "Subtitle (English)",
+      "subtitleEnPlaceholder": "Sports and industry",
+      "subtitleSiLabel": "Subtitle (Sinhala)",
+      "subtitleSiPlaceholder": "ක්‍රීඩා සහ කර්මාන්ත",
+
+      "subtitleOriginalLabel": "Original Subtitle",
+      "subtitleOriginalPlaceholder": "விளையாட்டு ஒரு தொழில்துறையாக மாறுகிறது. | Sports become an industry | ක්‍රීඩාව කර්මාන්තයක් බවට පත් වේ",
+      "subtitleOriginalHelp": "Your original work subtitle in any language",
+
+      "descriptionEnLabel": "Description (English)",
+      "descriptionEnPlaceholder": "Short description shown on media contribution cards...",
+      "descriptionEnHelp": "This will be displayed on the media contribution card. Cannot exceed {max} characters.",
+      "descriptionSiLabel": "Description (Sinhala)",
+      "descriptionSiPlaceholder": "මාධ්‍ය දායකත්වය පිළිබඳ කෙටි විස්තරය...",
+      "descriptionSiHelp": "This will be displayed on the media contribution card. Cannot exceed {max} characters.",
+
+      "contentEnLabel": "Content (English)",
+      "contentEnPlaceholder": "Full media contribution description...",
+      "contentEnHelp": "This is the full description of the media contribution. Cannot exceed {max} characters.",
+      "contentSiLabel": "Content (Sinhala)",
+      "contentSiPlaceholder": "සම්පූර්ණ විස්තරය...",
+      "contentSiHelp": "This is the full description of the media contribution. Cannot exceed {max} characters.",
+
+      "outletLabel": "Outlet",
+      "outletNameEnLabel": "Outlet (English)",
+      "outletNameEnPlaceholder": "Divayina | Youtube",
+      "outletNameSiLabel": "Outlet (Sinhala)",
+      "outletNameSiPlaceholder": "සාම්පල් ප්‍රකාශකයෝ",
+      "outletAddressEnLabel": "Outlet Address (English)",
+      "outletAddressEnPlaceholder": "123, Sample Street, Colombo, Sri Lanka",
+      "outletAddressSiLabel": "Outlet Address (Sinhala)",
+      "outletAddressSiPlaceholder": "123, සාම්පල් වීදිය, කොළඹ, ශ්‍රී ලංකාව",
+      "outletWebUrlLabel": "Outlet Website",
+      "outletWebUrlPlaceholder": "https://sample-publications.lk",
+
+      "authorsLabel": "Authors",
+      "authorLabel": "Author {number}",
+      "addAuthor": "Add author",
+      "removeAuthor": "Remove author",
+      "authorNameEnLabel": "Name (English)",
+      "authorNameEnPlaceholder": "Jane Smith",
+      "authorNameSiLabel": "Name (Sinhala)",
+      "authorNameSiPlaceholder": "ජේන් ස්මිත්",
+      "authorIsMeLabel": "Is me?",
+      "authorProfileUrlLabel": "Profile URL",
+      "authorProfileUrlPlaceholder": "https://example.com/jane",
+
+      "typeLabel": "Type",
+      "mediaContributionType": {
+        "newspaper_article": "Newspaper Article",
+        "expert_interview": "Expert Interview",
+        "tv_interview": "TV Interview",
+        "podcast": "Podcast",
+        "radio": "Radio",
+        "other": "Other"
+      },
+      
+      "roleLabel": "Your Role",
+      "mediaContributionRole": {
+        "author": "Author",
+        "co_author": "Co-author",
+        "interviewee": "Interviewee",
+        "contributor": "Contributor"
+      },
+
+      "topicsLabel": "Topics",
+      "topicsHelp":  "Add the academic or professional topics this media contribution covers. e.g. Computer Science, Artificial Intelligence",
+      "addTopic":   "Add topic",
+      "topicEnPlaceholder": "Computer Science",
+      "topicSiPlaceholder": "පරිගණක විද්‍යාව",
+
+      "languageLabel": "Language",
+      "mediaContributionLanguage": {
+        "en": "English",
+        "si": "Sinhala",
+        "ta": "Tamil"
+      },
+
+      "interviewersLabel": "Interviewers",
+      "interviewerLabel": "Interviewer {number}",
+      "addInterviewer": "Add interviewer",
+      "removeInterviewer": "Remove interviewer",
+      "interviewerNameEnLabel": "Name (English)",
+      "interviewerNameEnPlaceholder": "John Doe",
+      "interviewerNameSiLabel": "Name (Sinhala)",
+      "interviewerNameSiPlaceholder": "ජේන් ස්මිත්",
+      "interviewerProfileUrlLabel": "Profile URL",
+      "interviewerProfileUrlPlaceholder": "https://example.com/john",
+
+      "publishedDateLabel":       "Published date",
+      "publishedDatePlaceholder": "2025-01-01",
+
+      "durationSecondsLabel":       "Duration (seconds)",
+      "durationSecondsPlaceholder": "300",
+
+      "highlightQuoteLabel":       "Highlight Quote",
+      "highlightQuoteEnPlaceholder": "Enter the English highlight quote",
+      "highlightQuoteSiPlaceholder": "Enter the Sinhala highlight quote",
+      "highlightQuoteHelp": "Enter the highlight quote",
+
+      "sourceUrlLabel":       "Source URL",
+      "sourceUrlPlaceholder": "https://example.com/article/1234",
+      "sourceUrlHelp":        "URL where this media contribution can be read",
+
+      "pdfTeaserLabel":       "PDF teaser URL",
+      "pdfTeaserPlaceholder": "https://example.com/teaser.pdf",
+
+      "featuredLabel": "Featured",
+      "featuredCheckboxLabel": "Mark this media contribution as featured",
+
+      "displayOrderLabel":       "Display order",
+      "displayOrderPlaceholder": "1",
+      "displayOrderHelp":        "Order in which this media contribution appears in the list. Lower number = higher position.",
+
+      "cancel":     "Cancel",
+      "submit":     "Save",
+      "submitting": "Saving...",
+
+      "titleEnRequired":           "English title is required.",
+      "titleEnTooShort":           "English title must be at least {min} characters.",
+      "titleEnTooLong":            "English title cannot exceed {max} characters.",
+      "titleSiTooLong":            "Sinhala title cannot exceed {max} characters.",
+
+      "titleOriginalRequired":     "Original title is required.",
+      "titleOriginalTooLong":      "Original title cannot exceed {max} characters.",
+      "titleOriginalTooShort":     "Original title must be at least {min} characters.",
+
+      "subtitleEnTooLong":         "English subtitle cannot exceed {max} characters.",
+      "subtitleSiTooLong":         "Sinhala subtitle cannot exceed {max} characters.",
+      "subtitleOriginalTooLong":   "Original subtitle cannot exceed {max} characters.",
+
+      "descriptionEnRequired":     "English description is required.",
+      "descriptionEnTooShort":     "English description must be at least {min} characters.",
+      "descriptionEnTooLong":      "English description cannot exceed {max} characters.",
+      "descriptionSiTooLong":      "Sinhala description cannot exceed {max} characters.",
+
+      "contentEnRequired":         "English content is required.",
+      "contentEnTooShort":         "English content must be at least {min} characters.",
+      "contentEnTooLong":          "English content cannot exceed {max} characters.",
+      "contentSiTooLong":          "Sinhala content cannot exceed {max} characters.",
+
+      "outletNameEnRequired":    "English outlet name is required.",
+      "outletNameEnTooShort":    "English outlet name must be at least {min} characters.",
+      "outletNameEnTooLong":     "English outlet name cannot exceed {max} characters.",
+      "outletNameSiRequired":    "Outlet name in Sinhala is required.",
+      "outletNameSiTooShort":    "Outlet name in Sinhala must be at least {min} characters.",
+      "outletNameSiTooLong":     "Outlet name in Sinhala cannot exceed {max} characters.",
+
+      "typeRequired": "Type of the contribution is required.",
+      "typeInvalid": "Type of the contribution is invalid.",
+
+      "roleRequired": "Role of the contribution is required.",
+      "roleInvalid": "Role of the contribution is invalid.",
+
+      "topicsTooMany": "Cannot exceed {max} topics.",
+      "topicEnTooLong": "English topic cannot exceed {max} characters.",
+      "topicSiTooLong": "Sinhala topic cannot exceed {max} characters.",
+
+      "authorsRequired":           "At least one author is required.",
+      "authorsTooMany":            "Cannot exceed {max} authors.",
+      "authorNameEnRequired":      "English author name is required.",
+      "authorNameEnTooShort":      "English author name must be at least 2 characters.",
+      "authorNameEnTooLong":       "English author name cannot exceed {max} characters.",
+      "authorNameSiTooLong":       "Sinhala author name cannot exceed {max} characters.",
+      "authorRoleRequired":        "Author role is required.",
+      "authorRoleInvalid":         "Invalid author role.",
+
+      "interviewerNameEnRequired": "English interviewer name is required.",
+      "interviewerNameEnTooShort": "English interviewer name must be at least 2 characters.",
+      "interviewerNameEnTooLong":  "English interviewer name cannot exceed {max} characters.",
+      "interviewerNameSiTooLong":  "Sinhala interviewer name cannot exceed {max} characters.",
+      "interviewersTooMany":  "Cannot exceed {max} interviewers.",
+
+      "subjectEnTooLong":          "English subject cannot exceed {max} characters.",
+      "subjectSiTooLong":          "Sinhala subject cannot exceed {max} characters.",
+      "subjectsTooMany":           "Cannot exceed {max} subjects.",
+
+      "languageRequired": "Language is required.",
+      "languageInvalid":  "Invalid language.",
+
+      "publishedDateMustBeDate": "Published date must be a valid date.",
+      "publishedDateRequired":   "Published date is required.",
+      "publishedDateTooLow":     "Published date cannot be before {min, date, medium}.",
+      "publishedDateTooHigh":    "Published date cannot be in the future.",
+
+      "durationSecondsMustBeNumber":  "Duration (seconds) must be a number.",
+      "durationSecondsMustBeInteger": "Duration (seconds) must be a whole number.",
+      "durationSecondsTooLow":        "Duration (seconds) must be at least 1.",
+
+      "highlightQuoteEnTooLong": "English highlight quote cannot exceed {max} characters.",
+      "highlightQuoteSiTooLong": "Sinhala highlight quote cannot exceed {max} characters.",
+
+      "urlMustBeValid": "Must be a valid URL.",
+      "urlTooLong":     "URL cannot exceed {max} characters.",
+
+      "displayOrderMustBeNumber":  "Display order must be a number.",
+      "displayOrderMustBeInteger": "Display order must be a whole number.",
+      "displayOrderTooLow":        "Display order cannot be negative.",
+
+      "versionRequired": "Version is required for updates."
     }
   },
   "contexts": {

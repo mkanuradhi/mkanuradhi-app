@@ -154,12 +154,12 @@ export const getNewMediaContributionSchema = (t: (key: string, values?: Record<s
       name: yup.object({
         en: yup.string()
           .trim()
-          .min(MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('publisherNameEnTooShort', { min: MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
-          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('publisherNameEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
-          .required(t('publisherNameEnRequired')),
+          .min(MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('outletNameEnTooShort', { min: MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
+          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('outletNameEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
+          .required(t('outletNameEnRequired')),
         si: yup.string()
           .trim()
-          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('publisherNameSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
+          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('outletNameSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
           .notRequired(),
       }).required(),
 
@@ -173,9 +173,9 @@ export const getNewMediaContributionSchema = (t: (key: string, values?: Record<s
     }).notRequired(),
 
     publishedDate: yup.date()
-      .typeError(t('publishedDateMustBeNumber'))
+      .typeError(t('publishedDateMustBeDate'))
       .min(MIN_MEDIA_CONTRIBUTION_PUBLISHED_DATE, t('publishedDateTooLow', { min: MIN_MEDIA_CONTRIBUTION_PUBLISHED_DATE }))
-      .max(MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE, t('publishedDateTooHigh', { max: MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE }))
+      .max(MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE, t('publishedDateTooHigh'))
       .required(t('publishedDateRequired')),
 
     durationSeconds: yup.number()
@@ -187,12 +187,11 @@ export const getNewMediaContributionSchema = (t: (key: string, values?: Record<s
     highlightQuote: yup.object({
       en: yup.string()
         .trim()
-        .min(MIN_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('descriptionEnTooShort', { min: MIN_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
-        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('descriptionEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
-        .required(t('descriptionEnRequired')),
+        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('highlightQuoteEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
+        .notRequired(),
       si: yup.string()
         .trim()
-        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('descriptionSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
+        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('highlightQuoteSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
         .notRequired(),
     }),
 
