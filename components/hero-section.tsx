@@ -56,7 +56,7 @@ const HeroSection = () => {
           <MovingGradientTitle text={t('heroName')} className="hero-animate hero-name" />
           <p className="text-center fs-5 mb-1 hero-animate hero-designation">{t('designation')}</p>
           <p className="text-center text-muted mb-3 hero-animate hero-university">
-            <a href="https://www.sjp.ac.lk/" target="_blank" rel="noopener noreferrer" className="university-link">
+            <a href="https://cs.sjp.ac.lk/academic-staff/" target="_blank" rel="noopener noreferrer" className="university-link">
               {t('university')}
             </a>
           </p>
