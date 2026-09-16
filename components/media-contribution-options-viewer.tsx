@@ -334,13 +334,16 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
         <hr />
 
         {/* Topics */}
-        <TopicChips
-          topics={mediaContribution.topics}
-          isSi={isSin}
-          label={t('topics')}
-        />
-
-        <hr />
+        {mediaContribution.topics && mediaContribution.topics.length > 0 && (
+          <>
+            <TopicChips
+              topics={mediaContribution.topics}
+              isSi={isSin}
+              label={t('topics')}
+            />
+            <hr />
+          </>
+        )}
 
         {/* Authors */}
         {mediaContribution.authors && (
@@ -357,7 +360,7 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
         <hr />
 
         {/* Interviewers */}
-        {mediaContribution.interviewers && (
+        {mediaContribution.interviewers && mediaContribution.interviewers.length > 0 && (
           <div className="mb-3">
             <h4 className="mb-2">{t('interviewers')}</h4>
             <InterviewerList
@@ -365,10 +368,9 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
               interviewers={mediaContribution.interviewers}
               isSi={isSin}
             />
+            <hr />
           </div>
         )}
-
-        <hr />
 
         {/* Description */}
         {description && (
