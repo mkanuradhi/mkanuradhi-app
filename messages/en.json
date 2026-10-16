@@ -617,6 +617,9 @@
         "addNew": "Add New Media Contribution",
         "New": {
           "title": "Add New Media Contribution"
+        },
+        "Edit": {
+          "title": "Edit Media Contribution"
         }
       }
     },
@@ -2762,6 +2765,15 @@
       "displayOrderPlaceholder": "1",
       "displayOrderHelp":        "Order in which this media contribution appears in the list. Lower number = higher position.",
 
+      "previewImages": "Preview Images",
+      "previewImageCaption": "Caption",
+      "previewImageCaptionEnLabel": "Caption (English)",
+      "previewImageCaptionEnPlaceholder": "Short description of the image",
+      "previewImageCaptionSiLabel": "කෙටි විස්තරය (Caption)",
+      "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරයක්",
+      "moveUp": "Move Up",
+      "moveDown": "Move Down",
+
       "cancel":     "Cancel",
       "submit":     "Save",
       "submitting": "Saving...",
@@ -2835,7 +2847,7 @@
 
       "durationSecondsMustBeNumber":  "Duration (seconds) must be a number.",
       "durationSecondsMustBeInteger": "Duration (seconds) must be a whole number.",
-      "durationSecondsTooLow":        "Duration (seconds) must be at least 1.",
+      "durationSecondsTooLow":        "Duration must be at least {min} seconds.",
 
       "highlightQuoteEnTooLong": "English highlight quote cannot exceed {max} characters.",
       "highlightQuoteSiTooLong": "Sinhala highlight quote cannot exceed {max} characters.",

@@ -617,6 +617,9 @@
         "addNew": "නව මාධ්‍ය දායකත්වයක් එක් කරන්න",
         "New": {
           "title": "නව මාධ්‍ය දායකත්වයක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "මාධ්‍ය දායකත්වය සංස්කරණය කිරීම"
         }
       }
     },
@@ -2762,6 +2765,15 @@
       "displayOrderPlaceholder": "1",
       "displayOrderHelp": "මෙම මාධ්‍ය දායකත්වය ලැයිස්තුවේ පෙන්වන අනුපිළිවෙළ. අඩු අංකයක් = ඉහළ ස්ථානයක්.",
 
+      "previewImages":"පෙරදසුන්",
+      "previewImageCaption": "රූප ශීර්ෂය",
+      "previewImageCaptionEnLabel": "රූප ශීර්ෂය (ඉංග්‍රීසි)",
+      "previewImageCaptionEnPlaceholder": "Short description of the image",
+      "previewImageCaptionSiLabel": "රූප ශීර්ෂය (සිංහල)",
+      "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරය",
+      "moveUp": "ඉහළට යවන්න",
+      "moveDown": "පහළට යවන්න",
+
       "cancel": "අවලංගු කරන්න",
       "submit": "සුරකින්න",
       "submitting": "සුරකිමින් පවතී...",
@@ -2835,7 +2847,7 @@
 
       "durationSecondsMustBeNumber": "කාලසීමාව (තත්පර) සංඛ්‍යාවක් විය යුතුය.",
       "durationSecondsMustBeInteger": "කාලසීමාව (තත්පර) පූර්ණ සංඛ්‍යාවක් විය යුතුය.",
-      "durationSecondsTooLow": "කාලසීමාව (තත්පර) අවම වශයෙන් 1ක් විය යුතුය.",
+      "durationSecondsTooLow": "කාලසීමාව අවම වශයෙන් තත්පර {min}ක් විය යුතුය.",
 
       "highlightQuoteEnTooLong": "ඉංග්‍රීසි විශේෂ උපුටා දැක්වීම අක්ෂර {max} නොඉක්මවිය යුතුය.",
       "highlightQuoteSiTooLong": "සිංහල විශේෂ උපුටා දැක්වීම අක්ෂර {max} නොඉක්මවිය යුතුය.",

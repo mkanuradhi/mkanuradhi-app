@@ -1,5 +1,19 @@
 import * as yup from 'yup';
-import { MAX_MEDIA_CONTRIBUTION_AUTHOR_NAME_LENGTH, MAX_MEDIA_CONTRIBUTION_AUTHORS, MAX_MEDIA_CONTRIBUTION_CONTENT_LENGTH, MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE, MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, MAX_MEDIA_CONTRIBUTION_TOPIC_LENGTH, MAX_MEDIA_CONTRIBUTION_TOPICS, MAX_MEDIA_CONTRIBUTION_URL_LENGTH, MIN_MEDIA_CONTRIBUTION_CONTENT_LENGTH, MIN_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, MIN_MEDIA_CONTRIBUTION_PUBLISHED_DATE, MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH } from '@/constants/validation-vars';
+import { MAX_MEDIA_CONTRIBUTION_AUTHOR_NAME_LENGTH, 
+  MAX_MEDIA_CONTRIBUTION_AUTHORS, 
+  MAX_MEDIA_CONTRIBUTION_CONTENT_LENGTH, 
+  MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, 
+  MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE, 
+  MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, 
+  MAX_MEDIA_CONTRIBUTION_TOPIC_LENGTH, 
+  MAX_MEDIA_CONTRIBUTION_TOPICS, 
+  MAX_MEDIA_CONTRIBUTION_URL_LENGTH, 
+  MIN_MEDIA_CONTRIBUTION_CONTENT_LENGTH, 
+  MIN_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, 
+  MIN_MEDIA_CONTRIBUTION_DURATION_SECONDS, 
+  MIN_MEDIA_CONTRIBUTION_PUBLISHED_DATE, 
+  MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH 
+} from '@/constants/validation-vars';
 import { MEDIA_CONTRIBUTION_LANGUAGES, MEDIA_CONTRIBUTION_ROLES, MEDIA_CONTRIBUTION_TYPES } from '@/enums/media-contribution-enums';
 
 export const getUpdateMediaContributionSchema = (t: (key: string, values?: Record<string, any>) => string) => {
@@ -23,7 +37,7 @@ export const getUpdateMediaContributionSchema = (t: (key: string, values?: Recor
       .trim()
       .min(MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('titleOriginalTooShort', { min: MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
       .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('titleOriginalTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
-      .required(),
+      .required(t('titleOriginalRequired')),
 
     subtitle: yup.object({
       en: yup.string()
@@ -154,12 +168,12 @@ export const getUpdateMediaContributionSchema = (t: (key: string, values?: Recor
       name: yup.object({
         en: yup.string()
           .trim()
-          .min(MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('publisherNameEnTooShort', { min: MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
-          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('publisherNameEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
-          .required(t('publisherNameEnRequired')),
+          .min(MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('outletNameEnTooShort', { min: MIN_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
+          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('outletNameEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
+          .required(t('outletNameEnRequired')),
         si: yup.string()
           .trim()
-          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('publisherNameSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
+          .max(MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH, t('outletNameSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_TITLE_LENGTH }))
           .notRequired(),
       }).required(),
 
@@ -173,7 +187,7 @@ export const getUpdateMediaContributionSchema = (t: (key: string, values?: Recor
     }).notRequired(),
 
     publishedDate: yup.date()
-      .typeError(t('publishedDateMustBeNumber'))
+      .typeError(t('publishedDateMustBeDate'))
       .min(MIN_MEDIA_CONTRIBUTION_PUBLISHED_DATE, t('publishedDateTooLow', { min: MIN_MEDIA_CONTRIBUTION_PUBLISHED_DATE }))
       .max(MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE, t('publishedDateTooHigh', { max: MAX_MEDIA_CONTRIBUTION_PUBLISHED_DATE }))
       .required(t('publishedDateRequired')),
@@ -181,18 +195,17 @@ export const getUpdateMediaContributionSchema = (t: (key: string, values?: Recor
     durationSeconds: yup.number()
       .typeError(t('durationSecondsMustBeNumber'))
       .integer(t('durationSecondsMustBeInteger'))
-      .min(5, t('durationSecondsTooLow'))
+      .min(MIN_MEDIA_CONTRIBUTION_DURATION_SECONDS, t('durationSecondsTooLow', {min: MIN_MEDIA_CONTRIBUTION_DURATION_SECONDS }))
       .notRequired(),
     
     highlightQuote: yup.object({
       en: yup.string()
         .trim()
-        .min(MIN_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('descriptionEnTooShort', { min: MIN_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
-        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('descriptionEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
-        .required(t('descriptionEnRequired')),
+        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('highlightQuoteEnTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
+        .notRequired(),
       si: yup.string()
         .trim()
-        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('descriptionSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
+        .max(MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH, t('highlightQuoteSiTooLong', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH }))
         .notRequired(),
     }),
 

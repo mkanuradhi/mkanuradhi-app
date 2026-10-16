@@ -53,7 +53,7 @@ export interface updateMediaContributionAuthorDto {
 export interface updateMediaContributionInterviewerDto {
   id:         string;
   name:       LocalizedString;
-  profileUrl: string;
+  profileUrl?: string;
 }
 
 export interface updateMediaContributionPreviewImageDto {
@@ -79,14 +79,14 @@ export interface updateMediaContributionDto {
   interviewers?: updateMediaContributionInterviewerDto[];
 
   outlet?:          mediaContributionOutletDto;
-  publishedDate:    Date;
-  durationSeconds?: number;
+  publishedDate:    string;
+  durationSeconds?: number | null;
   highlightQuote?:  LocalizedString;
   previewImages?:   updateMediaContributionPreviewImageDto[];
 
-  sourceUrl?:   string;
+  sourceUrl?:   string | null;
   featured:     boolean;
-  displayOrder?: number;
+  displayOrder?: number | null;
 
   v: number;    // always required — never optional
 }
