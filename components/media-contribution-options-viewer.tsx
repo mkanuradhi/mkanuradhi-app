@@ -25,6 +25,7 @@ import EditableImage from './editable-image';
 import EditableImagePlaceholder from './editable-image-placeholder';
 import { MediaContributionAuthor, MediaContributionInterviewer } from '@/interfaces/i-media-contribution';
 import { useActivateMediaContributionMutation, useDeactivateMediaContributionMutation, useDeleteMediaContributionMutation, useMediaContributionByIdQuery } from '@/hooks/use-media-contributions';
+import { getFormattedDate } from '@/utils/common-utils';
 
 const baseTPath = 'components.MediaContributionOptionsViewer';
 
@@ -277,6 +278,8 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
       { label: t('type'),  value: t(`typeValue.${mediaContribution.type}`)  },
       { label: t('role'),  value: t(`roleValue.${mediaContribution.role}`)  },
       { label: t('displayOrder'),  value: mediaContribution.displayOrder  },
+      { label: t('durationSeconds'),  value: mediaContribution.durationSeconds  },
+      { label: t('publishedDate'),  value: getFormattedDate(lang, mediaContribution.publishedDate)  },
     ];
 
     return (
