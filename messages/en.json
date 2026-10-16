@@ -620,6 +620,9 @@
         },
         "Edit": {
           "title": "Edit Media Contribution"
+        },
+        "EditCoverImage": {
+          "title": "Edit Cover Image"
         }
       }
     },
