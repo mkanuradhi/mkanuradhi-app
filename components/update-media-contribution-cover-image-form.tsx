@@ -7,7 +7,7 @@ import LoadingContainer from './loading-container';
 import ImageUploadForm from './image-upload-form';
 import { MAX_MEDIA_CONTRIBUTION_IMAGE_SIZE } from '@/constants/validation-vars';
 
-const baseTPath = 'components.UpdateBookCoverImageForm';
+const baseTPath = 'components.UpdateCoverImageForm';
 
 interface UpdateMediaContributionCoverImageFormProps {
   mediaContributionId: string;

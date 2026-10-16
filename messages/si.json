@@ -2408,7 +2408,7 @@
       "deactivateErrorTitle": "පොත අක්‍රිය කළ නොහැක",
       "deleteErrorTitle": "පොත මකා දැමිය නොහැක"
     },
-    "UpdateBookCoverImageForm": {
+    "UpdateCoverImageForm": {
       "noCoverImage": "තවමත් කවරයේ රූපයක් උඩුගත කර නොමැත.",
       "deleteCoverImage": "කවර රූපය මකන්න",
       "deleting": "මකමින්...",

@@ -2408,7 +2408,7 @@
       "deactivateErrorTitle": "Cannot deactivate the book",
       "deleteErrorTitle": "Cannot delete the book"
     },
-    "UpdateBookCoverImageForm": {
+    "UpdateCoverImageForm": {
       "noCoverImage": "No cover image uploaded yet.",
       "deleteCoverImage": "Delete cover image",
       "deleting": "Deleting...",
