@@ -623,6 +623,15 @@
         },
         "EditCoverImage": {
           "title": "Edit Cover Image"
+        },
+        "EditPreviewImages": {
+          "title": "Edit Preview Images"
+        },
+        "EditAuthorImage": {
+          "title": "Edit Author Image"
+        },
+        "EditSampleFile": {
+          "title": "Edit Sample File"
         }
       }
     },
@@ -2438,7 +2447,7 @@
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
     },
-    "UpdateBookAuthorImageForm": {
+    "UpdateAuthorImageForm": {
       "subtitle": "Author: {authorName}",
       "noAuthorImage": "No author image uploaded yet.",
       "deleteAuthorImage": "Delete author image",

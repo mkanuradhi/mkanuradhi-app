@@ -623,6 +623,15 @@
         },
         "EditCoverImage": {
           "title": "කවර රූපය සංස්කරණය"
+        },
+        "EditPreviewImages": {
+          "title": "අනෙකුත් රූප සංස්කරණය"
+        },
+        "EditAuthorImage": {
+          "title": "කර්තෘ රූපය සංස්කරණය"
+        },
+        "EditSampleFile": {
+          "title": "නියැදි ගොනුව සංස්කරණය"
         }
       }
     },
@@ -2438,7 +2447,7 @@
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
     },
-    "UpdateBookAuthorImageForm": {
+    "UpdateAuthorImageForm": {
       "subtitle": "කර්තෘ: {authorName}",
       "noAuthorImage": "තවමත් කර්තෘ රූපයක් උඩුගත කර නොමැත.",
       "deleteAuthorImage": "කර්තෘ රූපය මකන්න",
