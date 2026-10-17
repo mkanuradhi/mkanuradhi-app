@@ -399,7 +399,7 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
 
         <hr />
 
-        {/* Publisher */}
+        {/* Outlet */}
         {mediaContribution.outlet && (
           <>
             <Row className="mb-3">

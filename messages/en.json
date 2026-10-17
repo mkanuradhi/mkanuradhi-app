@@ -632,6 +632,9 @@
         },
         "EditSampleFile": {
           "title": "Edit Sample File"
+        },
+        "EditOutletImage": {
+          "title": "Edit Outlet Image"
         }
       }
     },
@@ -2874,6 +2877,22 @@
       "displayOrderTooLow":        "Display order cannot be negative.",
 
       "versionRequired": "Version is required for updates."
+    },
+    "UpdateMediaContributionOutletImageForm": {
+      "noOutletImage": "No outlet image uploaded yet.",
+      "deleteOutletImage": "Delete outlet image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
     }
   },
   "contexts": {
