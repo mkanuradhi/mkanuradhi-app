@@ -256,7 +256,7 @@ const UpdateMediaContributionForm: React.FC<UpdateMediaContributionFormProps> = 
                 {activeLocale === 'en' && (
                   <BootstrapForm.Group className="mb-4" controlId="formDescriptionEn">
                     <RequiredFormLabel>{t('descriptionEnLabel')}</RequiredFormLabel>
-                    <Field name="description.en" as="textarea" rows={3} placeholder={t('descriptionEnPlaceholder')} className="form-control" />
+                    <Field name="description.en" as="textarea" rows={3} placeholder={t('descriptionEnPlaceholder')} className="form-control auto-grow" />
                     <BootstrapForm.Text className="text-muted">{t('descriptionEnHelp', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="description.en" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
@@ -264,7 +264,7 @@ const UpdateMediaContributionForm: React.FC<UpdateMediaContributionFormProps> = 
                 {activeLocale === 'si' && (
                   <BootstrapForm.Group className="mb-4" controlId="formDescriptionSi">
                     <BootstrapForm.Label>{t('descriptionSiLabel')}</BootstrapForm.Label>
-                    <Field name="description.si" as="textarea" rows={3} placeholder={t('descriptionSiPlaceholder')} className="form-control" />
+                    <Field name="description.si" as="textarea" rows={3} placeholder={t('descriptionSiPlaceholder')} className="form-control auto-grow" />
                     <BootstrapForm.Text className="text-muted">{t('descriptionSiHelp', { max: MAX_MEDIA_CONTRIBUTION_DESCRIPTION_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="description.si" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
@@ -274,7 +274,7 @@ const UpdateMediaContributionForm: React.FC<UpdateMediaContributionFormProps> = 
                 {activeLocale === 'en' && (
                   <BootstrapForm.Group className="mb-4" controlId="formContentEn">
                     <RequiredFormLabel>{t('contentEnLabel')}</RequiredFormLabel>
-                    <Field name="content.en" as="textarea" rows={10} placeholder={t('contentEnPlaceholder')} className="form-control" />
+                    <Field name="content.en" as="textarea" rows={6} placeholder={t('contentEnPlaceholder')} className="form-control auto-grow" />
                     <BootstrapForm.Text className="text-muted">{t('contentEnHelp', { max: MAX_MEDIA_CONTRIBUTION_CONTENT_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="content.en" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
@@ -282,7 +282,7 @@ const UpdateMediaContributionForm: React.FC<UpdateMediaContributionFormProps> = 
                 {activeLocale === 'si' && (
                   <BootstrapForm.Group className="mb-4" controlId="formContentSi">
                     <BootstrapForm.Label>{t('contentSiLabel')}</BootstrapForm.Label>
-                    <Field name="content.si" as="textarea" rows={10} placeholder={t('contentSiPlaceholder')} className="form-control" />
+                    <Field name="content.si" as="textarea" rows={6} placeholder={t('contentSiPlaceholder')} className="form-control auto-grow" />
                     <BootstrapForm.Text className="text-muted">{t('contentSiHelp', { max: MAX_MEDIA_CONTRIBUTION_CONTENT_LENGTH })}</BootstrapForm.Text>
                     <ErrorMessage name="content.si" component="p" className="text-danger mt-1" />
                   </BootstrapForm.Group>
