@@ -2439,7 +2439,7 @@
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
     },
-    "UpdateBookPreviewImagesForm": {
+    "UpdatePreviewImagesForm": {
       "noPreviewImages": "No preview images uploaded yet.",
       "dragActiveLabel": "Drop the images here...",
       "selectFilesLabel": "Drag and drop an images here, or click to select",

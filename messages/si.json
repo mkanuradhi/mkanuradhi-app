@@ -2439,7 +2439,7 @@
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
     },
-    "UpdateBookPreviewImagesForm": {
+    "UpdatePreviewImagesForm": {
       "noPreviewImages": "පෙරදසුන් රූප තවමත් උඩුගත කර නැත.",
       "dragActiveLabel": "රූපය මෙතනට දාන්න...",
       "selectFilesLabel": "රූප මෙතැනට ඇද දමන්න, නැතහොත් තේරීමට ක්ලික් කරන්න",
