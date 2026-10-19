@@ -7,7 +7,7 @@ import LoadingContainer from './loading-container';
 import FileUploadForm from './file-upload-form';
 import { MAX_BOOK_FILE_SIZE } from '@/constants/validation-vars';
 
-const baseTPath = 'components.UpdateBookSampleFileForm';
+const baseTPath = 'components.UpdateSampleFileForm';
 
 interface UpdateBookSampleFileFormProps {
   bookId: string;

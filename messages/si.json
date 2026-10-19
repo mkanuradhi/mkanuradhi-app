@@ -2487,7 +2487,7 @@
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
     },
-    "UpdateBookSampleFileForm": {
+    "UpdateSampleFileForm": {
       "noSampleFile": "තවම නියැදි ගොනුවක් උඩුගත කර නැත.",
       "deleteSampleFile": "නියැදි ගොනුව මකන්න",
       "deleting": "මකමින්...",

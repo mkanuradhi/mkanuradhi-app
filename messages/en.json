@@ -2487,7 +2487,7 @@
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
     },
-    "UpdateBookSampleFileForm": {
+    "UpdateSampleFileForm": {
       "noSampleFile": "No sample file uploaded yet.",
       "deleteSampleFile": "Delete sample file",
       "deleting": "Deleting...",
