@@ -7,7 +7,7 @@ import LoadingContainer from './loading-container';
 import ImageUploadForm from './image-upload-form';
 import { Locale } from '@/types/locale.types';
 import { localizeField } from '@/utils/common-utils';
-import { MAX_BOOK_IMAGE_SIZE } from '@/constants/validation-vars';
+import { MAX_MEDIA_CONTRIBUTION_IMAGE_SIZE } from '@/constants/validation-vars';
 
 const baseTPath = 'components.UpdateAuthorImageForm';
 
@@ -57,7 +57,7 @@ const UpdateMediaContributionAuthorImageForm: React.FC<UpdateMediaContributionAu
         isPendingUpload={isPendingUpload}
         isPendingDelete={isPendingDelete}
         doneHref={`/dashboard/media-contributions/${mediaContributionId}`}
-        maxSize={MAX_BOOK_IMAGE_SIZE}
+        maxSize={MAX_MEDIA_CONTRIBUTION_IMAGE_SIZE}
         accept={['image/jpeg', 'image/png', 'image/svg+xml']}
         maxImageSize={300}
         labels={{
