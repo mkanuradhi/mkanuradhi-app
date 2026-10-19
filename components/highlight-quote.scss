@@ -1,0 +1,136 @@
+@mixin quote-mark($size: 6rem) {
+  content: "\201C";
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: $size;
+  line-height: 1;
+  color: var(--bs-primary);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.highlight-quote {
+  margin: 2rem 0;
+
+  &__text {
+    margin: 0;
+  }
+
+  // 1. Left accent bar
+  &--bar {
+    border-left: 4px solid var(--bs-primary);
+    padding: 0.5rem 0 0.5rem 1.25rem;
+
+    .highlight-quote__text {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--bs-body-color);
+    }
+  }
+
+  // 2. Tinted card with large quotation mark
+  &--card {
+    position: relative;
+    padding: 2rem 1.5rem;
+    border-radius: var(--bs-border-radius-lg);
+    background: var(--bs-primary-bg-subtle);
+    color: var(--bs-primary-text-emphasis);
+
+    &::before {
+      @include quote-mark(6rem);
+      position: absolute;
+      top: -0.25rem;
+      left: 1rem;
+    }
+
+    .highlight-quote__text {
+      position: relative;
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      padding: 3rem;
+    }
+  }
+
+    // 3. Editorial: hanging quotation mark with a short dash under the text
+  &--editorial {
+    --hq-mark-col: 3rem;
+    --hq-gap: 1.5rem;
+
+    position: relative;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding: 0.25rem 0 0.5rem calc(var(--hq-mark-col) + var(--hq-gap));
+
+    // Big quotation mark
+    &::before {
+      content: "\201C";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--hq-mark-col);
+      height: 3.5rem;
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 6rem;
+      line-height: 1;
+      color: var(--bs-primary-bg-subtle);
+      pointer-events: none;
+    }
+
+    .highlight-quote__text {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.5rem, 1rem + 1.8vw, 2.25rem);
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--bs-emphasis-color);
+      text-wrap: balance;
+      hanging-punctuation: first;
+
+      // Short accent dash under the text
+      &::after {
+        content: "";
+        display: block;
+        width: 2.75rem;
+        height: 3px;
+        margin-top: 1.5rem;
+        border-radius: 2px;
+        background: var(--bs-primary-bg-subtle);
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      --hq-mark-col: 2.25rem;
+      --hq-gap: 1rem;
+
+      &::before {
+        font-size: 4.5rem;
+        height: 2.75rem;
+      }
+
+      .highlight-quote__text::after {
+        margin-top: 1.25rem;
+      }
+    }
+  }
+
+  // 4. Marker-style highlight (wrap key words in <mark>)
+  &--marker {
+    .highlight-quote__text {
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    mark {
+      padding: 0 0.15em;
+      color: inherit;
+      background: linear-gradient(
+        transparent 55%,
+        rgba(var(--bs-warning-rgb), 0.6) 55%
+      );
+    }
+  }
+}

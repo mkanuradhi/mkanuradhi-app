@@ -26,6 +26,7 @@ import EditableImagePlaceholder from './editable-image-placeholder';
 import { MediaContributionAuthor, MediaContributionInterviewer } from '@/interfaces/i-media-contribution';
 import { useActivateMediaContributionMutation, useDeactivateMediaContributionMutation, useDeleteMediaContributionMutation, useMediaContributionByIdQuery } from '@/hooks/use-media-contributions';
 import { getFormattedDate } from '@/utils/common-utils';
+import HighlightQuote from './highlight-quote';
 
 const baseTPath = 'components.MediaContributionOptionsViewer';
 
@@ -272,6 +273,7 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
     const subtitle    = isSin ? mediaContribution.subtitle?.si   : mediaContribution.subtitle?.en;
     const description = isSin ? mediaContribution.description.si : mediaContribution.description.en;
     const content     = isSin ? mediaContribution.content?.si    : mediaContribution.content?.en;
+    const highlightQuote = isSin ? mediaContribution.highlightQuote?.si : mediaContribution.highlightQuote?.en;
 
     const metaItems: MetaItem[] = [
       { label: t('language'),   value: languageLabel   },
@@ -397,6 +399,19 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
           </>
         )}
 
+        {/* Highlight quote */}
+        {highlightQuote && (
+          <>
+          <Row>
+            <Col>
+              <HighlightQuote variant="editorial" cite={mediaContribution.sourceUrl}>
+                {highlightQuote}
+              </HighlightQuote>
+            </Col>
+          </Row>
+          </>
+        )}
+
         <hr />
 
         {/* Outlet */}
@@ -443,7 +458,7 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
 
         <hr />
 
-        {/* Buy Link */}
+        {/* Source URL */}
         { mediaContribution.sourceUrl && (
           <Row className="mb-3">
             <Col>
