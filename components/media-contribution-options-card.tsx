@@ -3,7 +3,7 @@ import { useRouter } from '@/i18n/routing';
 import { Alert, Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { useLocale, useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookOpenReader, faEye, faEyeSlash, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpenReader, faEye, faEyeSlash, faPen, faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import DocumentStatus from "@/enums/document-status";
 import DeleteModal from './delete-modal';
@@ -11,6 +11,7 @@ import SanitizedHtml from './sanitized-html';
 import MediaContribution from '@/interfaces/i-media-contribution';
 import { useActivateMediaContributionMutation, useDeactivateMediaContributionMutation, useDeleteMediaContributionMutation } from '@/hooks/use-media-contributions';
 import { LANG_SI } from '@/constants/common-vars';
+import LocalizedOptionsTitles from './localized-options-titles';
 
 const baseTPath = 'components.MediaContributionOptionsCard';
 
@@ -82,12 +83,13 @@ const MediaContributionOptionsCard: React.FC<MediaContributionOptionsCardProps> 
                   </Col>
                 </Row>
               </Card.Subtitle>
-              <Card.Title>
-                { mediaContribution.title.en && `${mediaContribution.title.en} ` }
-              </Card.Title>
-              <Card.Title>
-                { mediaContribution.title.si && `${mediaContribution.title.si} ` }
-              </Card.Title>
+              <h2 className="d-flex align-items-center gap-2 flex-wrap">
+                {mediaContribution.titleOriginal}
+                {mediaContribution.featured && (
+                  <FontAwesomeIcon icon={faStar} style={{ color: '#BA7517', fontSize: 16 }} title={t('featured')} />
+                )}
+              </h2>
+              <LocalizedOptionsTitles title={mediaContribution.title} className="mb-2" />
               <hr />
               {mediaContribution.description.en && (
                 <Row className='mb-3'>

@@ -2606,6 +2606,7 @@
       "mediaContributions": "media contributions"
     },
     "MediaContributionOptionsCard": {
+      "featured": "Featured",
       "read": "Read More",
       "edit": "Edit",
       "activate": "Activate",
@@ -2913,6 +2914,10 @@
       "fileRejectionTitle": "File Rejected",
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
+    },
+    "LocalizedOptionsTitles": {
+      "en": "English",
+      "si": "Sinhala"
     }
   },
   "contexts": {

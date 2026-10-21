@@ -2606,6 +2606,7 @@
       "mediaContributions": "මාධ්‍ය දායකත්වයන්"
     },
     "MediaContributionOptionsCard": {
+      "featured": "විශේෂිත",
       "read": "තව කියවන්න",
       "edit": "සංස්කරණය",
       "activate": "සක්‍රිය කරන්න",
@@ -2913,6 +2914,10 @@
       "fileRejectionTitle": "ගොනුව ප්‍රතික්ෂේප කරන ලදී",
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
+    },
+    "LocalizedOptionsTitles": {
+      "en": "ඉංග්‍රීසි",
+      "si": "සිංහල"
     }
   },
   "contexts": {
