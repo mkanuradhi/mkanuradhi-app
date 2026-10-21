@@ -12,6 +12,7 @@ import MediaContribution from '@/interfaces/i-media-contribution';
 import { useActivateMediaContributionMutation, useDeactivateMediaContributionMutation, useDeleteMediaContributionMutation } from '@/hooks/use-media-contributions';
 import { LANG_SI } from '@/constants/common-vars';
 import LocalizedOptionsTitles from './localized-options-titles';
+import { getFormattedDate } from '@/utils/common-utils';
 
 const baseTPath = 'components.MediaContributionOptionsCard';
 
@@ -78,7 +79,7 @@ const MediaContributionOptionsCard: React.FC<MediaContributionOptionsCardProps> 
                 <Row className="align-items-center">
                   <Col>
                     <span>
-                      { new Date(mediaContribution.publishedDate).toLocaleDateString() }
+                      { getFormattedDate(locale, mediaContribution.publishedDate) }
                     </span>
                   </Col>
                 </Row>

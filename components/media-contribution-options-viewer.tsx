@@ -281,7 +281,6 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
       { label: t('role'),  value: t(`roleValue.${mediaContribution.role}`)  },
       { label: t('displayOrder'),  value: mediaContribution.displayOrder  },
       { label: t('durationSeconds'),  value: mediaContribution.durationSeconds  },
-      { label: t('publishedDate'),  value: getFormattedDate(lang, mediaContribution.publishedDate)  },
     ];
 
     return (
@@ -294,19 +293,22 @@ const MediaContributionOptionsViewer: React.FC<MediaContributionOptionsViewerPro
               src={mediaContribution.coverImage}
               alt={title || ''}
               editHref={`/dashboard/media-contributions/${mediaContribution.id}/edit/cover-image`}
-              width={90}
-              height={126}
+              width={192}
+              height={256}
               borderRadius='6px'
             />
           ) : (
             <EditableImagePlaceholder
               editHref={`/dashboard/media-contributions/${mediaContribution.id}/edit/cover-image`}
-              width={90}
-              height={126}
+              width={192}
+              height={256}
               borderRadius='6px'
             />
           )}
           <div className="flex-grow-1">
+            <span className="text-secondary h5">
+              { getFormattedDate(lang, mediaContribution.publishedDate) }
+            </span>
             <h1 className="mb-1 d-flex align-items-center gap-2 flex-wrap">
               {titleOriginal}
               {mediaContribution.featured && (
