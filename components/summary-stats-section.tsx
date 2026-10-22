@@ -8,7 +8,7 @@ import "./summary-stats-section.scss";
 
 const baseTPath = 'components.SummaryStatsSection';
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const Counter = ({ value, showPlus, start }: { value: number; showPlus?: boolean; start: boolean }) => {
   const [display, setDisplay] = useState(0);
