@@ -1,0 +1,26 @@
+.media-contributions-viewer {
+  --mcv-border: #d9d0c1;
+
+  [data-bs-theme='dark'] & {
+    --mcv-border: #2c3a3f;
+  }
+
+  .mcv-featured {
+    margin-bottom: 2rem;
+  }
+
+  .mcv-rows {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid var(--mcv-border);
+
+    li {
+      border-top: 1px solid var(--mcv-border);
+    }
+  }
+}
+
+.mcv-empty {
+  color: var(--bs-secondary-color);
+}

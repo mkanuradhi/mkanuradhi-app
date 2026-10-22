@@ -674,6 +674,14 @@
       "title": "Books",
       "description": "I believe knowledge is most valuable when it is shared. My books are written to make complex topics practical, accessible, and engaging, with the hope of supporting lifelong learning and inspiring curiosity.",
       "loadFailed": "Books cannot be loaded at the moment."
+    },
+    "MediaContributions": {
+      "pageTitle": "Media Contributions",
+      "pageDescription": "Articles I have written and interviews where I was invited to share my expertise.",
+      "pageKeywords": "media, computer science, metaheuristics, AI",
+      "title": "Media Contributions",
+      "description": "This page gathers the newspaper articles I have written and the interviews in which I was asked to share my thoughts as an expert. There are only a few so far, but I am grateful for each opportunity to explain ideas in simple terms, and I will add new pieces here as they come.",
+      "loadFailed": "Media contributions cannot be loaded at the moment."
     }
   },
   "components": {
@@ -2917,6 +2925,10 @@
     "LocalizedOptionsTitles": {
       "en": "English",
       "si": "Sinhala"
+    },
+    "MediaContributionFeaturedCard": {
+      "featured": "Featured",
+      "readMore": "Read more"
     }
   },
   "contexts": {

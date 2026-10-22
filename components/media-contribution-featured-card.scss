@@ -1,0 +1,125 @@
+.media-contribution-featured-card {
+  --fmc-g1: #0f5c4a;
+  --fmc-g2: #0b3b63;
+  --fmc-rim: #e4dccf;
+  --fmc-media-bg: #e7dfd0;
+  --fmc-media-fg: #5a6468;
+
+  [data-bs-theme='dark'] & {
+    --fmc-g1: #14856a;
+    --fmc-g2: #1a5fb0;
+    --fmc-rim: #3a5560;
+    --fmc-media-bg: #243238;
+    --fmc-media-fg: #9daaae;
+  }
+
+  border-radius: 20px;
+
+  .card {
+    border: 1px solid var(--fmc-rim);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .fmc-media {
+    position: relative;
+    min-height: 420px;
+    background: var(--fmc-media-bg);
+
+    @media (max-width: 767.98px) {
+      min-height: 0;
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  .fmc-media-img {
+    object-fit: cover;
+    object-position: top;
+
+    [data-bs-theme='dark'] & {
+      filter: brightness(0.88);
+    }
+  }
+
+  .fmc-media-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fmc-media-fg);
+  }
+
+  .fmc-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    padding: 2.75rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--fmc-g1), var(--fmc-g2));
+
+    @media (max-width: 767.98px) {
+      padding: 1.75rem;
+    }
+  }
+
+  .fmc-flag {
+    align-self: flex-start;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #fff;
+    color: #0b3b63;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .fmc-meta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d5eee3;
+  }
+
+  .fmc-title {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    line-height: 1.25;
+  }
+
+  .fmc-subtitle,
+  .fmc-description {
+    margin: 0;
+    line-height: 1.7;
+    color: #eaf5f0;
+    text-align: start;
+  }
+
+  .fmc-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .fmc-cta {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: #fff;
+    color: #0b3b63;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover { background: #eaf5f0; }
+    &:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  }
+}
