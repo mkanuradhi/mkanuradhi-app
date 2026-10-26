@@ -2648,11 +2648,12 @@
       "langTamil": "Tamil",
       "type": "Type",
       "typeValue": {
-        "radio": "Radio",
-        "newspaper_article": "Newspaper Article",
+        "authored_article": "Authored Article",
+        "expert_commentary": "Expert Commentary",
         "expert_interview": "Expert Interview",
         "tv_interview": "TV Interview",
         "podcast": "Podcast",
+        "radio": "Radio",
         "other": "Other"
       },
       "role": "Role",
@@ -2745,7 +2746,8 @@
 
       "typeLabel": "Type",
       "mediaContributionType": {
-        "newspaper_article": "Newspaper Article",
+        "authored_article": "Authored Article",
+        "expert_commentary": "Expert Commentary",
         "expert_interview": "Expert Interview",
         "tv_interview": "TV Interview",
         "podcast": "Podcast",
@@ -2929,6 +2931,46 @@
     "MediaContributionFeaturedCard": {
       "featured": "Featured",
       "readMore": "Read more"
+    },
+    "MediaContributionViewer": {
+      "allMedia": "All media contributions",
+
+      "types": {
+        "authored_article": "Authored Article",
+        "expert_commentary": "Expert Commentary",
+        "expert_interview": "Expert Interview",
+        "tv_interview": "TV Interview",
+        "podcast": "Podcast",
+        "radio": "Radio",
+        "other": "Other"
+      },
+
+      "imageCaption": "Illustration: created for this page",
+
+      "published": "Published",
+      "publishedIn": "Published in",
+      "by": "By",
+
+      "interviewedBy": "Interviewed by",
+      "duration": "Duration",
+      "myContribution": "My contribution",
+      "opensOn": "Opens on {outlet}",
+      "opensInNewTab": "Opens in a new tab",
+      "originalLanguage": "Original language: {language}",
+      "languages": {
+        "en": "English",
+        "si": "Sinhala",
+        "ta": "Tamil"
+      },
+      "cta": {
+        "authored_article": "Read original article",
+        "expert_commentary": "Read original article",
+        "tv_interview": "Watch original interview",
+        "podcast": "Listen to original episode",
+        "radio": "Listen to original broadcast",
+        "other": "View original"
+      },
+      "topics": "Topics"
     }
   },
   "contexts": {

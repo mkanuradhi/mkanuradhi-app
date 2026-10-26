@@ -2648,11 +2648,12 @@
       "langTamil":   "දෙමළ",
       "type": "වර්ගය",
       "typeValue": {
-        "radio": "ගුවන්විදුලිය",
-        "newspaper_article": "පුවත්පත් ලිපිය",
-        "expert_interview": "විශේෂඥ සම්මුඛ පරීක්ෂණය",
+        "authored_article": "රචිත ලිපිය",
+        "expert_commentary": "විශේෂඥ විවරණය",
+        "expert_interview": "විශේෂඥ සාකච්ඡාව",
         "tv_interview": "රූපවාහිනී සම්මුඛ පරීක්ෂණය",
         "podcast": "පොඩ්කාස්ට්",
+        "radio": "ගුවන්විදුලිය",
         "other": "වෙනත්"
       },
       "role": "භූමිකාව",
@@ -2745,8 +2746,9 @@
 
       "typeLabel": "වර්ගය",
       "mediaContributionType": {
-        "newspaper_article": "පුවත්පත් ලිපිය",
-        "expert_interview": "විශේෂඥ සම්මුඛ සාකච්ඡාව",
+        "authored_article": "රචිත ලිපිය",
+        "expert_commentary": "විශේෂඥ විවරණය",
+        "expert_interview": "විශේෂඥ සාකච්ඡාව",
         "tv_interview": "රූපවාහිනී සම්මුඛ සාකච්ඡාව",
         "podcast": "පොඩ්කාස්ට්",
         "radio": "ගුවන්විදුලි වැඩසටහන",
@@ -2929,6 +2931,46 @@
     "MediaContributionFeaturedCard": {
       "featured": "විශේෂිත",
       "readMore": "තව කියවන්න"
+    },
+    "MediaContributionViewer": {
+      "allMedia": "සියළු මාධ්‍ය දායකත්වයන්",
+
+      "types": {
+        "authored_article": "ස්වයං රචිත ලිපිය",
+        "expert_commentary": "විශේෂඥ විවරණය",
+        "expert_interview": "විශේෂඥ සාකච්ඡාව",
+        "tv_interview": "රූපවාහිනී සාකච්ඡාව",
+        "podcast": "පොඩ්කාස්ට්",
+        "radio": "ගුවන් විදුලි",
+        "other": "වෙනත්"
+      },
+
+      "imageCaption": "රූප සටහන: මෙම පිටුව සඳහා නිර්මාණය කරන ලද්දකි",
+
+      "published": "දින පළ විය",
+      "publishedIn": "හි ප්‍රකාශයට පත් විය",
+      "by": "විසිනි",
+
+      "interviewedBy": "සාකච්ඡා කළේ",
+      "duration": "කාලසීමාව",
+      "myContribution": "මගේ දායකත්වය",
+      "opensOn": "{outlet} හි විවෘත වේ",
+      "opensInNewTab": "නව ටැබයක විවෘත වේ",
+      "originalLanguage": "මුල් භාෂාව: {language}",
+      "languages": {
+        "en": "ඉංග්‍රීසි",
+        "si": "සිංහල",
+        "ta": "දෙමළ"
+      },
+      "cta": {
+        "authored_article": "මුල් ලිපිය කියවන්න",
+        "expert_commentary": "මුල් ලිපිය කියවන්න",
+        "tv_interview": "මුල් සම්මුඛ සාකච්ඡාව නරඹන්න",
+        "podcast": "මුල් වැඩසටහනට සවන් දෙන්න",
+        "radio": "මුල් විකාශයට සවන් දෙන්න",
+        "other": "මුල් අන්තර්ගතය බලන්න"
+      },
+      "topics": "Topics"
     }
   },
   "contexts": {

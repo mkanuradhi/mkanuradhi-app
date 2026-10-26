@@ -122,9 +122,10 @@ export interface LocalizedMediaContribution {
   path:          string;
 
   outlet?:          LocalizedMediaContributionOutlet;
+  publishedDate: Date;
   publishedDateFormatted: string;
   durationSeconds?: number;
-  highlightQuote?:  LocalizedString;
+  highlightQuote?:  string;
 
   coverImage?:    string;
   previewImages?: LocalizedMediaContributionPreviewImage[];
@@ -141,9 +142,12 @@ export interface LocalizedSummaryMediaContribution {
   subtitle?:     string;
   subtitleOriginal?: string;
   description:   string;
+  type: MediaContributionType;
+  role: MediaContributionRole;
   language:      MediaContributionLanguage;
   path:          string;
   outlet?:       LocalizedMediaContributionOutlet;
+  publishedDate: Date;
   publishedDateFormatted: string;
   topics:        string[];
   coverImage?:   string;
