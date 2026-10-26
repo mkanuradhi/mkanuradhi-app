@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import SharePanel from './SharePanel';
 import "./BlogPostViewer.scss";
+import PageTrail from './page-trail';
 
 const baseTPath = 'components.BlogPostViewer';
 
@@ -47,14 +48,9 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
           <Col>
             <Row>
               <Col>
-                <Breadcrumb>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/">{t('home')}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/blog">{t('blog')}</Link>
-                  </Breadcrumb.Item>
-                </Breadcrumb>
+                <div className='mb-3'>
+                  <PageTrail items={[{ label: t("allBlogposts"), href: "/blog" }]} />
+                </div>
                 <h1>{blogPostView.title}</h1>
                 <p className="fs-7">
                   <span className="text-muted fs-7">{blogPostView.formattedDate} {blogPostView.formattedTime}</span>

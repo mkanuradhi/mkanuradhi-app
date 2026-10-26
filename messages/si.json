@@ -745,8 +745,7 @@
       "blogPosts": "බ්ලොග් සටහන්"
     },
     "BlogPostViewer": {
-      "home": "මුල් පිටුව",
-      "blog": "බ්ලොග්",
+      "allBlogposts": "සියළු බ්ලොග් සටහන්",
       "share": "මෙම සටහන බෙදා ගන්න"
     },
     "CoursesContainer": {

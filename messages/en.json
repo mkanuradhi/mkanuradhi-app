@@ -745,8 +745,7 @@
       "blogPosts": "blog posts"
     },
     "BlogPostViewer": {
-      "home": "Home",
-      "blog": "Blog",
+      "allBlogposts": "All blog posts",
       "share": "Share this post"
     },
     "CoursesContainer": {
