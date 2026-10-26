@@ -1,14 +1,13 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import DOMPurify from 'dompurify';
-import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import BlogPostView from '../interfaces/i-blog-post-view';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Link } from '@/i18n/routing';
 import SharePanel from './SharePanel';
-import "./BlogPostViewer.scss";
 import PageTrail from './page-trail';
+import "./BlogPostViewer.scss";
 
 const baseTPath = 'components.BlogPostViewer';
 
