@@ -8,7 +8,7 @@ import BookIsbnList from "./book-isbn-list";
 import BookSampleFileSection from "./book-sample-file-section";
 import BookPublisherSection from "./book-publisher-section";
 import BookSubjectsList from "./book-subjects-list";
-import BookPreviewImagesGallery from "./book-preview-images-gallery";
+import PreviewImagesGallery from "./preview-images-gallery";
 import { Link } from '@/i18n/routing';
 import "./book-viewer.scss";
 
@@ -140,7 +140,7 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
                     )}
 
                     {localizedBook.previewImages && (
-                      <BookPreviewImagesGallery previewImages={localizedBook.previewImages} />
+                      <PreviewImagesGallery previewImages={localizedBook.previewImages} />
                     )}
 
                   </Col>

@@ -7,6 +7,7 @@ import { Link } from '@/i18n/routing';
 import { MediaContributionType } from "@/enums/media-contribution-enums";
 import SanitizedHtml from "./sanitized-html";
 import "./media-contribution-viewer.scss";
+import PreviewImagesGallery from "./preview-images-gallery";
 
 const baseTPath = 'components.MediaContributionViewer';
 
@@ -213,6 +214,10 @@ const MediaContributionViewer: React.FC<MediaContributionViewerProps> = ({ local
                 </li>
               ))}
             </ul>
+          )}
+
+          {lmc.previewImages && (
+            <PreviewImagesGallery previewImages={lmc.previewImages} />
           )}
         </Stack>
       </Container>
