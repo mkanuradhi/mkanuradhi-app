@@ -66,7 +66,7 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
       <Container fluid="md" className="book-viewer">
         <Row className="my-4">
           <Col>
-            <Row className="mb-3">
+            <Row className="mb-4">
               <Col>
                 <PageTrail items={[{ label: t("allBooks"), href: "/books" }]} />
               </Col>

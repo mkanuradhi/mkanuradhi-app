@@ -8,7 +8,7 @@ const baseTPath = 'components.PageTrail';
 
 export type TrailItem = { label: string; href: string };
 
-const linkClass = "link-secondary link-underline-opacity-0 link-underline-opacity-100-hover";
+const linkClass = "link-body-emphasis link-opacity-75 link-opacity-100-hover link-underline-opacity-0 link-underline-opacity-100-hover";
 
 const BackArrow = () => (
   <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"
