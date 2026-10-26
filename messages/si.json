@@ -749,7 +749,6 @@
       "share": "මෙම සටහන බෙදා ගන්න"
     },
     "CoursesContainer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "title": "පාඨමාලා"
     },
@@ -758,7 +757,6 @@
       "quizCount": "{count, plural, =1 {# ප්‍රශ්නාවලියකි} other {ප්‍රශ්නාවලි #}}"
     },
     "CourseViewer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "courses": "පාඨමාලා",
       "share": "මෙම පාඨමාලාව බෙදා ගන්න",
@@ -771,14 +769,12 @@
       "quizWord": "ප්‍රශ්නාවලි"
     },
     "QuizzesContainer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "courses": "පාඨමාලා",
       "title": "ප්‍රශ්නාවලි",
       "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය."
     },
     "QuizViewer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "courses": "පාඨමාලා",
       "quizzes": "ප්‍රශ්නාවලි",

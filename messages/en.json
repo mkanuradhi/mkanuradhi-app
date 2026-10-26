@@ -749,7 +749,6 @@
       "share": "Share this post"
     },
     "CoursesContainer": {
-      "home": "Home",
       "teaching": "Teaching",
       "title": "Courses"
     },
@@ -758,7 +757,6 @@
       "quizCount": "{count, plural, =1 {# Quiz} other {# Quizzes}}"
     },
     "CourseViewer": {
-      "home": "Home",
       "teaching": "Teaching",
       "courses": "Courses",
       "share": "Share this course",
@@ -771,14 +769,12 @@
       "quizWord": "quiz"
     },
     "QuizzesContainer": {
-      "home": "Home",
       "teaching": "Teaching",
       "courses": "Courses",
       "title": "Quizzes",
       "failCourse": "Failed to load course"
     },
     "QuizViewer": {
-      "home": "Home",
       "teaching": "Teaching",
       "courses": "Courses",
       "quizzes": "Quizzes",
