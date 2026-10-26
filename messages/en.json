@@ -2534,8 +2534,7 @@
       "viewDetails": "View Details"
     },
     "BookViewer": {
-      "home": "Home",
-      "books": "Books",
+      "allBooks": "All books",
 
       "publishedYear": "Published year",
       "writtenLang":   "Written in",
@@ -2971,6 +2970,9 @@
         "other": "View original"
       },
       "topics": "Topics"
+    },
+    "PageTrail": {
+      "trail": "Breadcrumb"
     }
   },
   "contexts": {

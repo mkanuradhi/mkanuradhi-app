@@ -1,7 +1,7 @@
 "use client";
 import { BookPrice, LocalizedBook } from "@/interfaces/i-book";
 import { useLocale, useTranslations } from "next-intl";
-import { Breadcrumb, Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import SanitizedHtml from "./sanitized-html";
 import BookAuthorsList from "./book-authors-list";
 import BookIsbnList from "./book-isbn-list";
@@ -9,7 +9,7 @@ import BookSampleFileSection from "./book-sample-file-section";
 import BookPublisherSection from "./book-publisher-section";
 import BookSubjectsList from "./book-subjects-list";
 import PreviewImagesGallery from "./preview-images-gallery";
-import { Link } from '@/i18n/routing';
+import PageTrail from "./page-trail";
 import "./book-viewer.scss";
 
 const baseTPath = 'components.BookViewer';
@@ -66,16 +66,9 @@ const BookViewer: React.FC<BookViewerProps> = ({ localizedBook }) => {
       <Container fluid="md" className="book-viewer">
         <Row className="my-4">
           <Col>
-            <Row>
+            <Row className="mb-3">
               <Col>
-                <Breadcrumb>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/">{t('home')}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/books">{t('books')}</Link>
-                  </Breadcrumb.Item>
-                </Breadcrumb>
+                <PageTrail items={[{ label: t("allBooks"), href: "/books" }]} />
               </Col>
             </Row>
             <Card className='shadow glass-card'>

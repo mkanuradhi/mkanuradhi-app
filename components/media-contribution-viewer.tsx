@@ -3,11 +3,11 @@ import Image from "next/image";
 import { LocalizedMediaContribution } from "@/interfaces/i-media-contribution";
 import { useLocale, useTranslations } from "next-intl";
 import { Button, Container, Stack } from "react-bootstrap";
-import { Link } from '@/i18n/routing';
 import { MediaContributionType } from "@/enums/media-contribution-enums";
 import SanitizedHtml from "./sanitized-html";
-import "./media-contribution-viewer.scss";
+import PageTrail from "./page-trail";
 import PreviewImagesGallery from "./preview-images-gallery";
+import "./media-contribution-viewer.scss";
 
 const baseTPath = 'components.MediaContributionViewer';
 
@@ -110,16 +110,7 @@ const MediaContributionViewer: React.FC<MediaContributionViewerProps> = ({ local
       <Container as="article" fluid="md" className="media-contribution-viewer my-4">
         <Stack gap={4}>
           {/* breadcrumb */}
-          <Link
-            href="/media-contributions"
-            className="mc-back align-self-start link-secondary link-underline-opacity-0 link-underline-opacity-100-hover d-inline-flex align-items-center gap-2 small"
-          >
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M13 8H3M7 4L3 8l4 4" />
-            </svg>
-            {t("allMedia")}
-          </Link>
+          <PageTrail items={[{ label: t("allMedia"), href: "/media-contributions" }]} />
 
           {/* type, title and subtitle */}
           <header>

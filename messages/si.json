@@ -2534,8 +2534,7 @@
       "viewDetails": "විස්තර බලන්න"
     },
     "BookViewer": {
-      "home": "මුල් පිටුව",
-      "books": "පොත්",
+      "allBooks": "සියළු පොත්",
 
       "publishedYear": "ප්‍රකාශිත වර්ෂය",
       "writtenLang":   "ලියූ භාෂාව",
@@ -2971,6 +2970,9 @@
         "other": "මුල් අන්තර්ගතය බලන්න"
       },
       "topics": "Topics"
+    },
+    "PageTrail": {
+      "trail": "පිටු මාර්ගය"
     }
   },
   "contexts": {
