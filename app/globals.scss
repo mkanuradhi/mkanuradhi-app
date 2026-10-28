@@ -54,6 +54,12 @@ html {
   .breadcrumb a {
     text-decoration: none;
   }
+
+  textarea.auto-grow {
+    field-sizing: content;
+    min-height: 6rem;
+    max-height: 32rem; /* grow up to here, then scroll */
+  }
 }
 
 .background-container {

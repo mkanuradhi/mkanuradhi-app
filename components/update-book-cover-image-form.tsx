@@ -7,7 +7,7 @@ import LoadingContainer from './loading-container';
 import ImageUploadForm from './image-upload-form';
 import { MAX_BOOK_IMAGE_SIZE } from '@/constants/validation-vars';
 
-const baseTPath = 'components.UpdateBookCoverImageForm';
+const baseTPath = 'components.UpdateCoverImageForm';
 
 interface UpdateBookCoverImageFormProps {
   bookId: string;

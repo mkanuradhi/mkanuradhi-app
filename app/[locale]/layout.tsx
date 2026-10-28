@@ -10,7 +10,7 @@ import { getClerkLocalization } from "@/utils/server/clerk-localization";
 import { QueryProvider } from "@/contexts/query-provider";
 import { SideBarProvider } from "@/contexts/side-bar-provider";
 import { routing } from "@/i18n/routing";
-import notFound from "./not-found";
+import { notFound } from 'next/navigation';
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const notoSansSinhala = Noto_Sans_Sinhala({ subsets: ["sinhala", "latin"] });

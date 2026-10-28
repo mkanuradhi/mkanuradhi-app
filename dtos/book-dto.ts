@@ -18,7 +18,7 @@ export interface BookIsbnDto {
   value: string;
 }
 
-export interface BookPrice {
+export interface BookPriceDto {
   amount:   number;
   currency: string;
 }
@@ -40,7 +40,7 @@ export interface CreateBookDto {
   isbns?:        BookIsbnDto[];
   pages?:        number;
   tags:          string[];
-  price?:        BookPrice,
+  price?:        BookPriceDto,
   audiences?:    LocalizedString[];
   dimensions?:   LocalizedString;
 
@@ -79,7 +79,7 @@ export interface UpdateBookDto {
   isbns?:        BookIsbnDto[];
   pages?:        number;
   tags:          string[];
-  price?:        BookPrice,
+  price?:        BookPriceDto,
   audiences?:    LocalizedString[];
   dimensions?:   LocalizedString;
 

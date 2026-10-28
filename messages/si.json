@@ -610,6 +610,35 @@
         "EditPublisherImage": {
           "title": "ප්‍රකාශක රූපය සංස්කරණය"
         }
+      },
+      "MediaContributions": {
+        "pageTitle": "මාධ්‍ය දායකත්ව පුවරුව",
+        "title": "මාධ්‍ය දායකත්වයන්",
+        "addNew": "නව මාධ්‍ය දායකත්වයක් එක් කරන්න",
+        "New": {
+          "title": "නව මාධ්‍ය දායකත්වයක් එක් කිරීම"
+        },
+        "Edit": {
+          "title": "මාධ්‍ය දායකත්වය සංස්කරණය කිරීම"
+        },
+        "EditCoverImage": {
+          "title": "කවර රූපය සංස්කරණය"
+        },
+        "EditPreviewImages": {
+          "title": "අනෙකුත් රූප සංස්කරණය"
+        },
+        "EditAuthorImage": {
+          "title": "කර්තෘ රූපය සංස්කරණය"
+        },
+        "EditInterviewerImage": {
+          "title": "සම්මුඛ සාකච්ඡාකරු රූපය සංස්කරණය"
+        },
+        "EditSampleFile": {
+          "title": "නියැදි ගොනුව සංස්කරණය"
+        },
+        "EditOutletImage": {
+          "title": "මාධ්‍යය රූපය සංස්කරණය"
+        }
       }
     },
     "Visualizations": {
@@ -645,6 +674,14 @@
       "title": "පොත්",
       "description": "දැනුම සැබෑ වටිනාකමක් ලබන්නේ එය අන් අය සමඟ බෙදාගන්නා විට බව මම විශ්වාස කරමි. ඒ නිසාම, සංකීර්ණ මාතෘකා වුවද සරලව, ප්‍රායෝගිකව සහ රසවත් අයුරින් ඉදිරිපත් කරමින්, පාඨකයන්ගේ ජීවිත කාලය පුරාම ඉගෙනීමේ ගමනට සහාය වීමටත්, නව දැනුම සොයා යාමේ කුතුහලය අවදි කිරීමටත් බලාපොරොත්තුවෙන් මෙම පොත් රචනා කර ඇත.",
       "loadFailed": "මේ මොහොතේ පොත් පූරණය කළ නොහැක."
+    },
+    "MediaContributions": {
+      "pageTitle": "මාධ්‍ය දායකත්වයන්",
+      "pageDescription": "මා විසින් රචිත ලිපි සහ මගේ විශේෂඥ දැනුම බෙදා ගැනීමට ආරාධනා ලැබූ සම්මුඛ සාකච්ඡා.",
+      "pageKeywords": "මාධ්‍ය, පරිගණක විද්‍යාව, මෙටාහියුරිස්ටික්ස්, කෘත්‍රිම බුද්ධිය",
+      "title": "මාධ්‍ය දායකත්වයන්",
+      "description": "මා විසින් රචනා කරන ලද පුවත්පත් ලිපි මෙන්ම, විශේෂඥයෙකු ලෙස මගේ අදහස් දැක්වීමට ආරාධනා ලැබූ සම්මුඛ සාකච්ඡා මෙහි ඇතුළත් වේ. දැනට මෙහි ඇත්තේ ලිපි සහ සම්මුඛ සාකච්ඡා කිහිපයක් පමණක් වුවද, මගේ අදහස් සරලව පැහැදිලි කිරීමට ලැබුණු සෑම අවස්ථාවක් පිළිබඳවම මම කෘතඥ වෙමි.",
+      "loadFailed": "මේ මොහොතේ මාධ්‍ය දායකත්වයන් පූරණය කළ නොහැක."
     }
   },
   "components": {
@@ -708,12 +745,10 @@
       "blogPosts": "බ්ලොග් සටහන්"
     },
     "BlogPostViewer": {
-      "home": "මුල් පිටුව",
-      "blog": "බ්ලොග්",
+      "allBlogposts": "සියළු බ්ලොග් සටහන්",
       "share": "මෙම සටහන බෙදා ගන්න"
     },
     "CoursesContainer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "title": "පාඨමාලා"
     },
@@ -722,7 +757,6 @@
       "quizCount": "{count, plural, =1 {# ප්‍රශ්නාවලියකි} other {ප්‍රශ්නාවලි #}}"
     },
     "CourseViewer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "courses": "පාඨමාලා",
       "share": "මෙම පාඨමාලාව බෙදා ගන්න",
@@ -735,14 +769,12 @@
       "quizWord": "ප්‍රශ්නාවලි"
     },
     "QuizzesContainer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "courses": "පාඨමාලා",
       "title": "ප්‍රශ්නාවලි",
       "failCourse": "පාඨමාලාව පූරණය කිරීමට අසමත් විය."
     },
     "QuizViewer": {
-      "home": "මුල් පිටුව",
       "teaching": "ඉගැන්වීම්",
       "courses": "පාඨමාලා",
       "quizzes": "ප්‍රශ්නාවලි",
@@ -2394,7 +2426,7 @@
       "deactivateErrorTitle": "පොත අක්‍රිය කළ නොහැක",
       "deleteErrorTitle": "පොත මකා දැමිය නොහැක"
     },
-    "UpdateBookCoverImageForm": {
+    "UpdateCoverImageForm": {
       "noCoverImage": "තවමත් කවරයේ රූපයක් උඩුගත කර නොමැත.",
       "deleteCoverImage": "කවර රූපය මකන්න",
       "deleting": "මකමින්...",
@@ -2410,7 +2442,7 @@
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
     },
-    "UpdateBookPreviewImagesForm": {
+    "UpdatePreviewImagesForm": {
       "noPreviewImages": "පෙරදසුන් රූප තවමත් උඩුගත කර නැත.",
       "dragActiveLabel": "රූපය මෙතනට දාන්න...",
       "selectFilesLabel": "රූප මෙතැනට ඇද දමන්න, නැතහොත් තේරීමට ක්ලික් කරන්න",
@@ -2424,7 +2456,7 @@
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
     },
-    "UpdateBookAuthorImageForm": {
+    "UpdateAuthorImageForm": {
       "subtitle": "කර්තෘ: {authorName}",
       "noAuthorImage": "තවමත් කර්තෘ රූපයක් උඩුගත කර නොමැත.",
       "deleteAuthorImage": "කර්තෘ රූපය මකන්න",
@@ -2441,7 +2473,24 @@
       "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
       "done": "අවසන් කරන්න"
     },
-    "UpdateBookSampleFileForm": {
+    "UpdateInterviewerImageForm": {
+      "subtitle": "සම්මුඛ සාකච්ඡාකරු: {interviewerName}",
+      "noInterviewerImage": "තවමත් සම්මුඛ සාකච්ඡාකරු රූපයක් උඩුගත කර නොමැත.",
+      "deleteInterviewerImage": "සම්මුඛ සාකච්ඡාකරු රූපය මකන්න",
+      "deleting": "මකමින්...",
+      "dragActiveLabel": "රූපය මෙතනට දාන්න...",
+      "selectFileLabel": "රූපයක් මෙතැනට ඇද දමන්න, නැතහොත් තේරීමට ක්ලික් කරන්න",
+      "selectedFileNameLabel": "නම",
+      "selectedFileSizeLabel": "ප්‍රමාණය",
+      "selectedFileDimensionsLabel": "මානයන්",
+      "uploading": "උඩුගත කරමින්...",
+      "upload": "උඩුගත කරන්න",
+      "remove": "ඉවත් කරන්න",
+      "fileRejectionTitle": "ගොනුව ප්‍රතික්ෂේප කරන ලදී",
+      "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
+      "done": "අවසන් කරන්න"
+    },
+    "UpdateSampleFileForm": {
       "noSampleFile": "තවම නියැදි ගොනුවක් උඩුගත කර නැත.",
       "deleteSampleFile": "නියැදි ගොනුව මකන්න",
       "deleting": "මකමින්...",
@@ -2480,8 +2529,7 @@
       "viewDetails": "විස්තර බලන්න"
     },
     "BookViewer": {
-      "home": "මුල් පිටුව",
-      "books": "පොත්",
+      "allBooks": "සියළු පොත්",
 
       "publishedYear": "ප්‍රකාශිත වර්ෂය",
       "writtenLang":   "ලියූ භාෂාව",
@@ -2490,6 +2538,11 @@
       "edition":       "සංස්කරණය",
       "pages":         "පිටු",
       "dimensions":    "මානයන්",
+      "price":        "මිල",
+      "priceCurrency": {
+        "LKR": "රු.",
+        "USD": "ඇ.ඩොලර්"
+      },
       "audienceLabel": "පාඨක පිරිස",
       "isbnSectionLabel": "ISBN",
       "isbnFormat": {
@@ -2547,6 +2600,374 @@
       "research": "පර්යේෂණ",
       "awards": "සම්මාන",
       "courses": "පාඨමාලා"
+    },
+    "MediaContributionsTable": {
+      "failMediaContributions": "මාධ්‍ය දායකත්වයන් පූරණය කිරීමට අපොහොසත් විය",
+      "noMediaContributions": "ප්‍රදර්ශනය කිරීමට මාධ්‍ය දායකත්වයන් නොමැත",
+      "refreshMediaContributions": "මාධ්‍ය දායකත්වයන් නැවුම් කරමින්...",
+      "mediaContributions": "මාධ්‍ය දායකත්වයන්"
+    },
+    "MediaContributionOptionsCard": {
+      "featured": "විශේෂිත",
+      "read": "තව කියවන්න",
+      "edit": "සංස්කරණය",
+      "activate": "සක්‍රිය කරන්න",
+      "deactivate": "අක්‍රිය කරන්න",
+      "delete": "මකන්න",
+      "deleteModalTitle": "මකා දැමීම තහවුරු කිරීම",
+      "deleteModalMessage": "ඔබට මාධ්‍ය දායකත්වය මකා දැමීමට අවශ්‍ය බව විශ්වාසද: <strong>title</strong>?",
+      "deleteModalCancel": "නැත",
+      "deleteModalAccept": "ඔව්, මකන්න",
+      "activateErrorTitle": "මාධ්‍ය දායකත්වය සක්‍රිය කළ නොහැක",
+      "deactivateErrorTitle": "මාධ්‍ය දායකත්වය අක්‍රිය කළ නොහැක",
+      "deleteErrorTitle": "මාධ්‍ය දායකත්වය මකා දැමිය නොහැක"
+    },
+    "MediaContributionOptionsViewer": {
+      "dashboard":    "පාලන පුවරුව",
+      "mediaContributions": "මාධ්‍ය දායකත්වයන්",
+      "edit":         "සංස්කරණය කරන්න",
+      "activate":     "සක්‍රිය කරන්න",
+      "deactivate":   "අක්‍රිය කරන්න",
+      "delete":       "මකන්න",
+      "active":       "සක්‍රිය",
+      "inactive":     "අක්‍රිය",
+      "featured":     "විශේෂිත",
+      "localeEn":     "ඉංග්‍රීසි",
+      "localeSi":     "සිංහල",
+      "noCover":      "ආවරණ රූපයක් නොමැත",
+      "failMediaContribution": "මාධ්‍ය දායකත්වය පූරණය කිරීමට අසමත් විය.",
+      "language": "භාෂාව",
+      "langEnglish": "ඉංග්‍රීසි",
+      "langSinhala": "සිංහල",
+      "langTamil":   "දෙමළ",
+      "type": "වර්ගය",
+      "typeValue": {
+        "authored_article": "රචිත ලිපිය",
+        "expert_commentary": "විශේෂඥ විවරණය",
+        "expert_interview": "විශේෂඥ සාකච්ඡාව",
+        "tv_interview": "රූපවාහිනී සම්මුඛ පරීක්ෂණය",
+        "podcast": "පොඩ්කාස්ට්",
+        "radio": "ගුවන්විදුලිය",
+        "other": "වෙනත්"
+      },
+      "role": "භූමිකාව",
+      "roleValue": {
+        "author": "කර්තෘ",
+        "co_author": "සම කර්තෘ",
+        "interviewee": "සම්මුඛ පරීක්ෂක",
+        "contributor": "දායකයා"
+      },
+      "displayOrder": "දර්ශන අනුපිළිවෙල",
+      "durationSeconds": "කාලය (තත්පර)",
+      "outlet":    "මාධ්‍ය ආයතනය",
+      "topics":    "මාතෘකා",
+      "authors":      "කතුවරුන්",
+      "interviewers": "සම්මුඛ සාකච්ඡාකරුවන්",
+      "description":  "විස්තරය",
+      "content":      "අන්තර්ගතය",
+      "links":        "මූලාශ්‍ර URL",
+      "sampleFile":   "නියැදි ගොනුව",
+      "previewImages": "පෙරදසුන්",
+      "addPreviewImages": "පෙරදසුන් එක් කරන්න",
+      "addSampleFile":    "සංස්කරණය",
+      "activateErrorTitle":   "මාධ්‍ය දායකත්වය සක්‍රිය කිරීමට නොහැකි විය.",
+      "deactivateErrorTitle": "මාධ්‍ය දායකත්වය අක්‍රිය කිරීමට නොහැකි විය.",
+      "deleteErrorTitle":     "මාධ්‍ය දායකත්වය මකා දැමීමට නොහැකි විය.",
+      "deleteModalTitle":     "මාධ්‍ය දායකත්වය මකා දමන්න",
+      "deleteModalMessage":   "ඔබට <strong>title</strong> මකා දැමීමට අවශ්‍ය බව විශ්වාසද? මෙම ක්‍රියාව ආපසු හැරවිය නොහැක.",
+      "deleteModalCancel":    "නැත",
+      "deleteModalAccept":    "ඔව්, මකන්න"
+    },
+    "NewMediaContributionForm": {
+      "localeTabEnTitle": "ඉංග්‍රීසි (en)",
+      "localeTabSiTitle": "සිංහල (si)",
+
+      "titleEnLabel": "මාතෘකාව (ඉංග්‍රීසි)",
+      "titleEnPlaceholder": "පිරිසිදු කේතකරණයේ කලාව",
+      "titleSiLabel": "මාතෘකාව (සිංහල)",
+      "titleSiPlaceholder": "පිරිසිදු කේතකරණයේ කලාව",
+
+      "titleOriginalLabel": "මුල් මාතෘකාව",
+      "titleOriginalPlaceholder": "விளையாட்டு மற்றும் தொழில் துறை | Sports and industry | ක්‍රීඩා සහ කර්මාන්ත",
+      "titleOriginalHelp": "ඔබගේ නිර්මාණයේ මුල් මාතෘකාව ඕනෑම භාෂාවකින් ඇතුළත් කරන්න",
+
+      "subtitleEnLabel": "උපමාතෘකාව (ඉංග්‍රීසි)",
+      "subtitleEnPlaceholder": "ක්‍රීඩාව සහ කර්මාන්තය",
+      "subtitleSiLabel": "උපමාතෘකාව (සිංහල)",
+      "subtitleSiPlaceholder": "ක්‍රීඩාව සහ කර්මාන්තය",
+
+      "subtitleOriginalLabel": "මුල් උපමාතෘකාව",
+      "subtitleOriginalPlaceholder": "விளையாட்டு ஒரு தொழில்துறையாக மாறுகிறது. | Sports become an industry | ක්‍රීඩාව කර්මාන්තයක් බවට පත් වේ",
+      "subtitleOriginalHelp": "ඔබගේ නිර්මාණයේ මුල් උපමාතෘකාව ඕනෑම භාෂාවකින් ඇතුළත් කරන්න",
+
+      "descriptionEnLabel": "විස්තරය (ඉංග්‍රීසි)",
+      "descriptionEnPlaceholder": "මාධ්‍ය දායකත්ව කාඩ්පතෙහි පෙන්වන කෙටි විස්තරය...",
+      "descriptionEnHelp": "මෙය මාධ්‍ය දායකත්ව කාඩ්පතෙහි පෙන්වනු ලැබේ. අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "descriptionSiLabel": "විස්තරය (සිංහල)",
+      "descriptionSiPlaceholder": "මාධ්‍ය දායකත්වය පිළිබඳ කෙටි විස්තරය...",
+      "descriptionSiHelp": "මෙය මාධ්‍ය දායකත්ව කාඩ්පතෙහි පෙන්වනු ලැබේ. අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "contentEnLabel": "අන්තර්ගතය (ඉංග්‍රීසි)",
+      "contentEnPlaceholder": "මාධ්‍ය දායකත්වය පිළිබඳ සම්පූර්ණ විස්තරය...",
+      "contentEnHelp": "මෙය මාධ්‍ය දායකත්වය පිළිබඳ සම්පූර්ණ විස්තරයයි. අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "contentSiLabel": "අන්තර්ගතය (සිංහල)",
+      "contentSiPlaceholder": "සම්පූර්ණ විස්තරය...",
+      "contentSiHelp": "මෙය මාධ්‍ය දායකත්වය පිළිබඳ සම්පූර්ණ විස්තරයයි. අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "outletLabel": "මාධ්‍ය ආයතනය",
+      "outletNameEnLabel": "මාධ්‍ය ආයතනය (ඉංග්‍රීසි)",
+      "outletNameEnPlaceholder": "දිවයින | YouTube",
+      "outletNameSiLabel": "මාධ්‍ය ආයතනය (සිංහල)",
+      "outletNameSiPlaceholder": "උදාහරණ ප්‍රකාශකයෝ",
+      "outletAddressEnLabel": "මාධ්‍ය ආයතනයේ ලිපිනය (ඉංග්‍රීසි)",
+      "outletAddressEnPlaceholder": "123, උදාහරණ වීදිය, කොළඹ, ශ්‍රී ලංකාව",
+      "outletAddressSiLabel": "මාධ්‍ය ආයතනයේ ලිපිනය (සිංහල)",
+      "outletAddressSiPlaceholder": "123, උදාහරණ වීදිය, කොළඹ, ශ්‍රී ලංකාව",
+      "outletWebUrlLabel": "මාධ්‍ය ආයතනයේ වෙබ් අඩවිය",
+      "outletWebUrlPlaceholder": "https://sample-publications.lk",
+
+      "authorsLabel": "කර්තෘවරු",
+      "authorLabel": "කර්තෘ {number}",
+      "addAuthor": "කර්තෘවරයෙකු එක් කරන්න",
+      "removeAuthor": "කර්තෘවරයා ඉවත් කරන්න",
+      "authorNameEnLabel": "නම (ඉංග්‍රීසි)",
+      "authorNameEnPlaceholder": "Jane Smith",
+      "authorNameSiLabel": "නම (සිංහල)",
+      "authorNameSiPlaceholder": "ජේන් ස්මිත්",
+      "authorIsMeLabel": "මේ මමද?",
+      "authorProfileUrlLabel": "පැතිකඩ URL",
+      "authorProfileUrlPlaceholder": "https://example.com/jane",
+
+      "typeLabel": "වර්ගය",
+      "mediaContributionType": {
+        "authored_article": "රචිත ලිපිය",
+        "expert_commentary": "විශේෂඥ විවරණය",
+        "expert_interview": "විශේෂඥ සාකච්ඡාව",
+        "tv_interview": "රූපවාහිනී සම්මුඛ සාකච්ඡාව",
+        "podcast": "පොඩ්කාස්ට්",
+        "radio": "ගුවන්විදුලි වැඩසටහන",
+        "other": "වෙනත්"
+      },
+
+      "roleLabel": "ඔබගේ භූමිකාව",
+      "mediaContributionRole": {
+        "author": "කර්තෘ",
+        "co_author": "සම කර්තෘ",
+        "interviewee": "සම්මුඛ සාකච්ඡාවට සහභාගි වූ පුද්ගලයා",
+        "contributor": "දායකයා"
+      },
+
+      "topicsLabel": "මාතෘකා",
+      "topicsHelp": "මෙම මාධ්‍ය දායකත්වයෙන් ආවරණය වන ශාස්ත්‍රීය හෝ වෘත්තීය මාතෘකා එක් කරන්න. උදා: පරිගණක විද්‍යාව, කෘත්‍රිම බුද්ධිය",
+      "addTopic": "මාතෘකාවක් එක් කරන්න",
+      "topicEnPlaceholder": "පරිගණක විද්‍යාව",
+      "topicSiPlaceholder": "පරිගණක විද්‍යාව",
+
+      "languageLabel": "භාෂාව",
+      "mediaContributionLanguage": {
+        "en": "ඉංග්‍රීසි",
+        "si": "සිංහල",
+        "ta": "දෙමළ"
+      },
+
+      "interviewersLabel": "සම්මුඛ පරීක්ෂකවරු",
+      "interviewerLabel": "සම්මුඛ පරීක්ෂක {number}",
+      "addInterviewer": "සම්මුඛ පරීක්ෂකවරයෙකු එක් කරන්න",
+      "removeInterviewer": "සම්මුඛ පරීක්ෂකවරයා ඉවත් කරන්න",
+      "interviewerNameEnLabel": "නම (ඉංග්‍රීසි)",
+      "interviewerNameEnPlaceholder": "John Doe",
+      "interviewerNameSiLabel": "නම (සිංහල)",
+      "interviewerNameSiPlaceholder": "ජේන් ස්මිත්",
+      "interviewerProfileUrlLabel": "පැතිකඩ URL",
+      "interviewerProfileUrlPlaceholder": "https://example.com/john",
+
+      "publishedDateLabel": "ප්‍රකාශිත දිනය",
+      "publishedDatePlaceholder": "2025-01-01",
+
+      "durationSecondsLabel": "කාලසීමාව (තත්පර)",
+      "durationSecondsPlaceholder": "300",
+
+      "highlightQuoteLabel": "විශේෂ උපුටා දැක්වීම",
+      "highlightQuoteEnPlaceholder": "ඉංග්‍රීසි විශේෂ උපුටා දැක්වීම ඇතුළත් කරන්න",
+      "highlightQuoteSiPlaceholder": "සිංහල විශේෂ උපුටා දැක්වීම ඇතුළත් කරන්න",
+      "highlightQuoteHelp": "විශේෂ උපුටා දැක්වීම ඇතුළත් කරන්න",
+
+      "sourceUrlLabel": "මූලාශ්‍ර URL",
+      "sourceUrlPlaceholder": "https://example.com/article/1234",
+      "sourceUrlHelp": "මෙම මාධ්‍ය දායකත්වය කියවිය හැකි වෙබ් ලිපිනය",
+
+      "pdfTeaserLabel": "PDF පෙරදසුන් URL",
+      "pdfTeaserPlaceholder": "https://example.com/teaser.pdf",
+
+      "featuredLabel": "විශේෂාංගගත",
+      "featuredCheckboxLabel": "මෙම මාධ්‍ය දායකත්වය විශේෂාංගගත අන්තර්ගතයක් ලෙස සලකුණු කරන්න",
+
+      "displayOrderLabel": "පෙන්වීමේ අනුපිළිවෙළ",
+      "displayOrderPlaceholder": "1",
+      "displayOrderHelp": "මෙම මාධ්‍ය දායකත්වය ලැයිස්තුවේ පෙන්වන අනුපිළිවෙළ. අඩු අංකයක් = ඉහළ ස්ථානයක්.",
+
+      "previewImages":"පෙරදසුන්",
+      "previewImageCaption": "රූප ශීර්ෂය",
+      "previewImageCaptionEnLabel": "රූප ශීර්ෂය (ඉංග්‍රීසි)",
+      "previewImageCaptionEnPlaceholder": "Short description of the image",
+      "previewImageCaptionSiLabel": "රූප ශීර්ෂය (සිංහල)",
+      "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරය",
+      "moveUp": "ඉහළට යවන්න",
+      "moveDown": "පහළට යවන්න",
+
+      "cancel": "අවලංගු කරන්න",
+      "submit": "සුරකින්න",
+      "submitting": "සුරකිමින් පවතී...",
+
+      "titleEnRequired": "ඉංග්‍රීසි මාතෘකාව අනිවාර්ය වේ.",
+      "titleEnTooShort": "ඉංග්‍රීසි මාතෘකාව අවම වශයෙන් අක්ෂර {min} කින් සමන්විත විය යුතුය.",
+      "titleEnTooLong": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "titleSiTooLong": "සිංහල මාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "titleOriginalRequired": "මුල් මාතෘකාව අනිවාර්ය වේ.",
+      "titleOriginalTooLong": "මුල් මාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "titleOriginalTooShort": "මුල් මාතෘකාව අවම වශයෙන් අක්ෂර {min} කින් සමන්විත විය යුතුය.",
+
+      "subtitleEnTooLong": "ඉංග්‍රීසි උපමාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "subtitleSiTooLong": "සිංහල උපමාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "subtitleOriginalTooLong": "මුල් උපමාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "descriptionEnRequired": "ඉංග්‍රීසි විස්තරය අනිවාර්ය වේ.",
+      "descriptionEnTooShort": "ඉංග්‍රීසි විස්තරය අවම වශයෙන් අක්ෂර {min} කින් සමන්විත විය යුතුය.",
+      "descriptionEnTooLong": "ඉංග්‍රීසි විස්තරය අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "descriptionSiTooLong": "සිංහල විස්තරය අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "contentEnRequired": "ඉංග්‍රීසි අන්තර්ගතය අනිවාර්ය වේ.",
+      "contentEnTooShort": "ඉංග්‍රීසි අන්තර්ගතය අවම වශයෙන් අක්ෂර {min} කින් සමන්විත විය යුතුය.",
+      "contentEnTooLong": "ඉංග්‍රීසි අන්තර්ගතය අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "contentSiTooLong": "සිංහල අන්තර්ගතය අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "outletNameEnRequired": "මාධ්‍ය ආයතනයේ ඉංග්‍රීසි නම අනිවාර්ය වේ.",
+      "outletNameEnTooShort": "මාධ්‍ය ආයතනයේ ඉංග්‍රීසි නම අවම වශයෙන් අක්ෂර {min} කින් සමන්විත විය යුතුය.",
+      "outletNameEnTooLong": "මාධ්‍ය ආයතනයේ ඉංග්‍රීසි නම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "outletNameSiRequired": "මාධ්‍ය ආයතනයේ සිංහල නම අනිවාර්ය වේ.",
+      "outletNameSiTooShort": "මාධ්‍ය ආයතනයේ සිංහල නම අවම වශයෙන් අක්ෂර {min} කින් සමන්විත විය යුතුය.",
+      "outletNameSiTooLong": "මාධ්‍ය ආයතනයේ සිංහල නම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "typeRequired": "දායකත්වයේ වර්ගය තෝරාගැනීම අනිවාර්ය වේ.",
+      "typeInvalid": "තෝරාගත් දායකත්ව වර්ගය වලංගු නොවේ.",
+
+      "roleRequired": "දායකත්වයට අදාළ භූමිකාව තෝරාගැනීම අනිවාර්ය වේ.",
+      "roleInvalid": "තෝරාගත් භූමිකාව වලංගු නොවේ.",
+
+      "topicsTooMany": "මාතෘකා {max} කට වඩා ඇතුළත් කළ නොහැක.",
+      "topicEnTooLong": "ඉංග්‍රීසි මාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "topicSiTooLong": "සිංහල මාතෘකාව අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "authorsRequired": "අවම වශයෙන් එක් කර්තෘවරයෙකු අවශ්‍ය වේ.",
+      "authorsTooMany": "කර්තෘවරුන් {max} කට වඩා ඇතුළත් කළ නොහැක.",
+      "authorNameEnRequired": "කර්තෘගේ ඉංග්‍රීසි නම අනිවාර්ය වේ.",
+      "authorNameEnTooShort": "කර්තෘගේ ඉංග්‍රීසි නම අවම වශයෙන් අක්ෂර 2 කින් සමන්විත විය යුතුය.",
+      "authorNameEnTooLong": "කර්තෘගේ ඉංග්‍රීසි නම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "authorNameSiTooLong": "කර්තෘගේ සිංහල නම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "authorRoleRequired": "කර්තෘගේ භූමිකාව අනිවාර්ය වේ.",
+      "authorRoleInvalid": "කර්තෘගේ භූමිකාව වලංගු නොවේ.",
+
+      "interviewerNameEnRequired": "සම්මුඛ පරීක්ෂකගේ ඉංග්‍රීසි නම අනිවාර්ය වේ.",
+      "interviewerNameEnTooShort": "සම්මුඛ පරීක්ෂකගේ ඉංග්‍රීසි නම අවම වශයෙන් අක්ෂර 2 කින් සමන්විත විය යුතුය.",
+      "interviewerNameEnTooLong": "සම්මුඛ පරීක්ෂකගේ ඉංග්‍රීසි නම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "interviewerNameSiTooLong": "සම්මුඛ පරීක්ෂකගේ සිංහල නම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "interviewersTooMany": "සම්මුඛ පරීක්ෂකවරුන් {max} කට වඩා ඇතුළත් කළ නොහැක.",
+
+      "subjectEnTooLong": "ඉංග්‍රීසි විෂය අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "subjectSiTooLong": "සිංහල විෂය අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "subjectsTooMany": "විෂයන් {max} කට වඩා ඇතුළත් කළ නොහැක.",
+
+      "languageRequired": "භාෂාව තෝරාගැනීම අනිවාර්ය වේ.",
+      "languageInvalid": "තෝරාගත් භාෂාව වලංගු නොවේ.",
+
+      "publishedDateMustBeDate": "ප්‍රකාශිත දිනය වලංගු දිනයක් විය යුතුය.",
+      "publishedDateRequired": "ප්‍රකාශිත දිනය අනිවාර්ය වේ.",
+      "publishedDateTooLow": "ප්‍රකාශිත දිනය {min, date, medium} ට පෙර දිනයක් විය නොහැක.",
+      "publishedDateTooHigh": "ප්‍රකාශිත දිනය අනාගත දිනයක් විය නොහැක.",
+
+      "durationSecondsMustBeNumber": "කාලසීමාව (තත්පර) සංඛ්‍යාවක් විය යුතුය.",
+      "durationSecondsMustBeInteger": "කාලසීමාව (තත්පර) පූර්ණ සංඛ්‍යාවක් විය යුතුය.",
+      "durationSecondsTooLow": "කාලසීමාව අවම වශයෙන් තත්පර {min}ක් විය යුතුය.",
+
+      "highlightQuoteEnTooLong": "ඉංග්‍රීසි විශේෂ උපුටා දැක්වීම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+      "highlightQuoteSiTooLong": "සිංහල විශේෂ උපුටා දැක්වීම අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "urlMustBeValid": "වලංගු URL එකක් ඇතුළත් කළ යුතුය.",
+      "urlTooLong": "URL එක අක්ෂර {max} නොඉක්මවිය යුතුය.",
+
+      "displayOrderMustBeNumber": "පෙන්වීමේ අනුපිළිවෙළ සංඛ්‍යාවක් විය යුතුය.",
+      "displayOrderMustBeInteger": "පෙන්වීමේ අනුපිළිවෙළ පූර්ණ සංඛ්‍යාවක් විය යුතුය.",
+      "displayOrderTooLow": "පෙන්වීමේ අනුපිළිවෙළ ඍණ අගයක් විය නොහැක.",
+
+      "versionRequired": "යාවත්කාලීන කිරීම සඳහා අනුවාදය අනිවාර්ය වේ."
+    },
+    "UpdateMediaContributionOutletImageForm": {
+      "noOutletImage": "මාධ්‍ය වේදිකාවේ රූපයක් තවමත් උඩුගත කර නොමැත.",
+      "deleteOutletImage": "මාධ්‍ය වේදිකා රූපය මකන්න",
+      "deleting": "මකමින්...",
+      "dragActiveLabel": "රූපය මෙතනට දාන්න...",
+      "selectFileLabel": "රූපයක් මෙතැනට ඇද දමන්න, නැතහොත් තේරීමට ක්ලික් කරන්න",
+      "selectedFileNameLabel": "නම",
+      "selectedFileSizeLabel": "ප්‍රමාණය",
+      "selectedFileDimensionsLabel": "මානයන්",
+      "uploading": "උඩුගත කරමින්...",
+      "upload": "උඩුගත කරන්න",
+      "remove": "ඉවත් කරන්න",
+      "fileRejectionTitle": "ගොනුව ප්‍රතික්ෂේප කරන ලදී",
+      "fileRejectionName":  "පහත සඳහන් හේතු නිසා <strong>{name}</strong> ප්‍රතික්ෂේප කරන ලදී.",
+      "done": "අවසන් කරන්න"
+    },
+    "LocalizedOptionsTitles": {
+      "en": "ඉංග්‍රීසි",
+      "si": "සිංහල"
+    },
+    "MediaContributionFeaturedCard": {
+      "featured": "විශේෂිත",
+      "readMore": "තව කියවන්න"
+    },
+    "MediaContributionViewer": {
+      "allMedia": "සියළු මාධ්‍ය දායකත්වයන්",
+
+      "types": {
+        "authored_article": "ස්වයං රචිත ලිපිය",
+        "expert_commentary": "විශේෂඥ විවරණය",
+        "expert_interview": "විශේෂඥ සාකච්ඡාව",
+        "tv_interview": "රූපවාහිනී සාකච්ඡාව",
+        "podcast": "පොඩ්කාස්ට්",
+        "radio": "ගුවන් විදුලි",
+        "other": "වෙනත්"
+      },
+
+      "imageCaption": "රූප සටහන: මෙම පිටුව සඳහා නිර්මාණය කරන ලද්දකි",
+
+      "published": "දින පළ විය",
+      "publishedIn": "හි ප්‍රකාශයට පත් විය",
+      "by": "විසිනි",
+
+      "interviewedBy": "සාකච්ඡා කළේ",
+      "duration": "කාලසීමාව",
+      "myContribution": "මගේ දායකත්වය",
+      "opensOn": "{outlet} හි විවෘත වේ",
+      "opensInNewTab": "නව ටැබයක විවෘත වේ",
+      "originalLanguage": "මුල් භාෂාව: {language}",
+      "languages": {
+        "en": "ඉංග්‍රීසි",
+        "si": "සිංහල",
+        "ta": "දෙමළ"
+      },
+      "cta": {
+        "authored_article": "මුල් ලිපිය කියවන්න",
+        "expert_commentary": "මුල් ලිපිය කියවන්න",
+        "tv_interview": "මුල් සම්මුඛ සාකච්ඡාව නරඹන්න",
+        "podcast": "මුල් වැඩසටහනට සවන් දෙන්න",
+        "radio": "මුල් විකාශයට සවන් දෙන්න",
+        "other": "මුල් අන්තර්ගතය බලන්න"
+      },
+      "topics": "Topics"
+    },
+    "PageTrail": {
+      "trail": "පිටු මාර්ගය"
     }
   },
   "contexts": {
@@ -2559,6 +2980,7 @@
       "contactMessages": "සම්බන්ධතා පණිවිඩ",
       "awards": "සම්මාන",
       "books": "පොත්",
+      "media-contributions": "මාධ්‍ය දායකත්වයන්",
       "studentCourses": "ශිෂ්‍ය පාඨමාලා"
     }
   },

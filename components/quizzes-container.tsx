@@ -1,14 +1,13 @@
 "use client";
 import React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
-import { Link } from '@/i18n/routing';
+import { Col, Container, Row } from 'react-bootstrap';
 import Quiz from '@/interfaces/i-quiz';
 import QuizCard from './quiz-card';
 import { useCourseViewByPathQuery } from '@/hooks/use-courses';
 import LoadingContainer from './loading-container';
+import PageTrail from './page-trail';
 import "./quizzes-container.scss";
-
 
 const baseTPath = 'components.QuizzesContainer';
 
@@ -45,22 +44,15 @@ const QuizzesContainer: React.FC<QuizzesContainerProps> = ({ coursePath, quizzes
   return (
     <>
       <Container className="quizzes-container">
-        <Row className="mt-4">
+        <Row className="mt-4 mb-4">
           <Col>
-            <Breadcrumb>
-              <Breadcrumb.Item linkAs="span">
-                <Link href="/">{t('home')}</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item linkAs="span">
-                <Link href="/teaching">{t('teaching')}</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item linkAs="span">
-                <Link href="/teaching/courses">{t('courses')}</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item linkAs="span">
-                <Link href={`/teaching/courses/${courseView.path}`}>{formattedCourseTitle}</Link>
-              </Breadcrumb.Item>
-            </Breadcrumb>
+            <PageTrail
+              items={[
+                { label: t('teaching'), href: `/teaching` },
+                { label: t('courses'), href: `/teaching/courses` },
+                { label: formattedCourseTitle, href: `/teaching/courses/${courseView.path}` },
+              ]}
+            />
           </Col>
         </Row>
         <Row>

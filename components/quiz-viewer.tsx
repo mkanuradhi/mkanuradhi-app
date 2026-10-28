@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { Breadcrumb, Button, Card, Col, Container, Modal, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Modal, Row } from 'react-bootstrap';
 import { useLocale, useTranslations } from 'next-intl';
-import { Link, useRouter } from '@/i18n/routing';
+import { useRouter } from '@/i18n/routing';
 import Quiz from '@/interfaces/i-quiz';
 import Mcq from '@/interfaces/i-mcq';
 import { useCourseViewByPathQuery } from '@/hooks/use-courses';
@@ -13,8 +13,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import MathRenderer from './math-renderer';
 import ScrollToTopButton from './scroll-to-top-button';
 import SanitizedHtml from './sanitized-html';
+import PageTrail from './page-trail';
 import './quiz-viewer.scss';
-
 
 const baseTPath = 'components.QuizViewer';
 
@@ -222,25 +222,16 @@ const QuizViewer: React.FC<QuizViewerProps> = ({ coursePath, quiz }) => {
         {!started && (
         <Row className="my-4">
           <Col>
-            <Row>
+            <Row className='mb-4'>
               <Col>
-                <Breadcrumb>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/">{t('home')}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/teaching">{t('teaching')}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/teaching/courses">{t('courses')}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href={`/teaching/courses/${courseView.path}`}>{formattedCourseTitle}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href={`/teaching/courses/${courseView.path}/quizzes`}>{t('quizzes')}</Link>
-                  </Breadcrumb.Item>
-                </Breadcrumb>
+                <PageTrail
+                  items={[
+                    { label: t('teaching'), href: `/teaching` },
+                    { label: t('courses'), href: `/teaching/courses` },
+                    { label: formattedCourseTitle, href: `/teaching/courses/${courseView.path}` },
+                    { label: t('quizzes'), href: `/teaching/courses/${courseView.path}/quizzes` },
+                  ]}
+                />
               </Col>
             </Row>
             <Row>

@@ -1,0 +1,13 @@
+.media-contribution-viewer {
+
+  .mc-content {
+    > :last-child { margin-bottom: 0; }
+    img { max-width: 100%; height: auto; }
+    blockquote {
+      margin: 1rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--bs-primary);
+      color: var(--bs-secondary-color);
+    }
+  }
+}

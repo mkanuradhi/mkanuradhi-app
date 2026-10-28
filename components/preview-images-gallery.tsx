@@ -1,15 +1,15 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { LocalizedBookPreviewImage } from "@/interfaces/i-book";
+import { LocalizedPreviewImage } from "@/interfaces/i-preview-image";
 import Image from "next/image";
 import { Modal } from "react-bootstrap";
-import "./book-preview-images-gallery.scss";
+import "./preview-images-gallery.scss";
 
-interface BookPreviewImagesGalleryProps {
-  previewImages: LocalizedBookPreviewImage[];
+interface PreviewImagesGalleryProps {
+  previewImages: LocalizedPreviewImage[];
 }
 
-const BookPreviewImagesGallery = ({ previewImages }: BookPreviewImagesGalleryProps) => {
+const PreviewImagesGallery = ({ previewImages }: PreviewImagesGalleryProps) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const selectedImage = selectedIndex !== null ? previewImages[selectedIndex] : null;
@@ -135,4 +135,4 @@ const BookPreviewImagesGallery = ({ previewImages }: BookPreviewImagesGalleryPro
   );
 };
 
-export default BookPreviewImagesGallery;
+export default PreviewImagesGallery;

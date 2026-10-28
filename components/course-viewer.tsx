@@ -1,14 +1,14 @@
 "use client";
 import React from 'react';
-import { Breadcrumb, Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useLocale, useTranslations } from 'next-intl';
 import CourseView from '@/interfaces/i-course-view';
-import { Link, useRouter } from '@/i18n/routing';
 import SharePanel from './SharePanel';
 import SanitizedHtml from './sanitized-html';
+import GlowLink from './GlowLink';
+import PageTrail from './page-trail';
 import 'react-quill/dist/quill.snow.css';
 import "./course-viewer.scss";
-import GlowLink from './GlowLink';
 
 const baseTPath = 'components.CourseViewer';
 
@@ -19,7 +19,6 @@ interface CourseViewerProps {
 const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
   const t = useTranslations(baseTPath);
   const locale = useLocale();
-  const router = useRouter();
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
   const fullUrl = `${baseUrl}/${locale}/teaching/courses/${courseView.path}`;
@@ -39,19 +38,14 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ courseView }) => {
       <Container fluid="md" className="course-viewer">
         <Row className="my-4">
           <Col>
-            <Row>
+            <Row className='mb-4'>
               <Col>
-                <Breadcrumb>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/">{t('home')}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/teaching">{t('teaching')}</Link>
-                  </Breadcrumb.Item>
-                  <Breadcrumb.Item linkAs="span">
-                    <Link href="/teaching/courses">{t('courses')}</Link>
-                  </Breadcrumb.Item>
-                </Breadcrumb>
+                <PageTrail
+                  items={[
+                    { label: t('teaching'), href: "/teaching" },
+                    { label: t('courses'), href: "/teaching/courses" },
+                  ]}
+                />
               </Col>
             </Row>
             <Row>

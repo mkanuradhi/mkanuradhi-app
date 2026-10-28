@@ -610,6 +610,35 @@
         "EditPublisherImage": {
           "title": "Edit Publisher Image"
         }
+      },
+      "MediaContributions": {
+        "pageTitle": "Media Contributions Dashboard",
+        "title": "Media Contributions",
+        "addNew": "Add New Media Contribution",
+        "New": {
+          "title": "Add New Media Contribution"
+        },
+        "Edit": {
+          "title": "Edit Media Contribution"
+        },
+        "EditCoverImage": {
+          "title": "Edit Cover Image"
+        },
+        "EditPreviewImages": {
+          "title": "Edit Preview Images"
+        },
+        "EditAuthorImage": {
+          "title": "Edit Author Image"
+        },
+        "EditInterviewerImage": {
+          "title": "Edit Interviewer Image"
+        },
+        "EditSampleFile": {
+          "title": "Edit Sample File"
+        },
+        "EditOutletImage": {
+          "title": "Edit Outlet Image"
+        }
       }
     },
     "Visualizations": {
@@ -645,6 +674,14 @@
       "title": "Books",
       "description": "I believe knowledge is most valuable when it is shared. My books are written to make complex topics practical, accessible, and engaging, with the hope of supporting lifelong learning and inspiring curiosity.",
       "loadFailed": "Books cannot be loaded at the moment."
+    },
+    "MediaContributions": {
+      "pageTitle": "Media Contributions",
+      "pageDescription": "Articles I have written and interviews where I was invited to share my expertise.",
+      "pageKeywords": "media, computer science, metaheuristics, AI",
+      "title": "Media Contributions",
+      "description": "This page gathers the newspaper articles I have written and the interviews in which I was asked to share my thoughts as an expert. There are only a few so far, but I am grateful for each opportunity to explain ideas in simple terms, and I will add new pieces here as they come.",
+      "loadFailed": "Media contributions cannot be loaded at the moment."
     }
   },
   "components": {
@@ -708,12 +745,10 @@
       "blogPosts": "blog posts"
     },
     "BlogPostViewer": {
-      "home": "Home",
-      "blog": "Blog",
+      "allBlogposts": "All blog posts",
       "share": "Share this post"
     },
     "CoursesContainer": {
-      "home": "Home",
       "teaching": "Teaching",
       "title": "Courses"
     },
@@ -722,7 +757,6 @@
       "quizCount": "{count, plural, =1 {# Quiz} other {# Quizzes}}"
     },
     "CourseViewer": {
-      "home": "Home",
       "teaching": "Teaching",
       "courses": "Courses",
       "share": "Share this course",
@@ -735,14 +769,12 @@
       "quizWord": "quiz"
     },
     "QuizzesContainer": {
-      "home": "Home",
       "teaching": "Teaching",
       "courses": "Courses",
       "title": "Quizzes",
       "failCourse": "Failed to load course"
     },
     "QuizViewer": {
-      "home": "Home",
       "teaching": "Teaching",
       "courses": "Courses",
       "quizzes": "Quizzes",
@@ -2394,7 +2426,7 @@
       "deactivateErrorTitle": "Cannot deactivate the book",
       "deleteErrorTitle": "Cannot delete the book"
     },
-    "UpdateBookCoverImageForm": {
+    "UpdateCoverImageForm": {
       "noCoverImage": "No cover image uploaded yet.",
       "deleteCoverImage": "Delete cover image",
       "deleting": "Deleting...",
@@ -2410,7 +2442,7 @@
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
     },
-    "UpdateBookPreviewImagesForm": {
+    "UpdatePreviewImagesForm": {
       "noPreviewImages": "No preview images uploaded yet.",
       "dragActiveLabel": "Drop the images here...",
       "selectFilesLabel": "Drag and drop an images here, or click to select",
@@ -2424,7 +2456,7 @@
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
     },
-    "UpdateBookAuthorImageForm": {
+    "UpdateAuthorImageForm": {
       "subtitle": "Author: {authorName}",
       "noAuthorImage": "No author image uploaded yet.",
       "deleteAuthorImage": "Delete author image",
@@ -2441,7 +2473,24 @@
       "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
       "done": "Done"
     },
-    "UpdateBookSampleFileForm": {
+    "UpdateInterviewerImageForm": {
+      "subtitle": "Interviewer: {interviewerName}",
+      "noInterviewerImage": "No interviewer image uploaded yet.",
+      "deleteInterviewerImage": "Delete interviewer image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "UpdateSampleFileForm": {
       "noSampleFile": "No sample file uploaded yet.",
       "deleteSampleFile": "Delete sample file",
       "deleting": "Deleting...",
@@ -2480,8 +2529,7 @@
       "viewDetails": "View Details"
     },
     "BookViewer": {
-      "home": "Home",
-      "books": "Books",
+      "allBooks": "All books",
 
       "publishedYear": "Published year",
       "writtenLang":   "Written in",
@@ -2490,6 +2538,11 @@
       "edition":       "Edition",
       "pages":         "Pages",
       "dimensions":    "Dimensions",
+      "price":        "Price",
+      "priceCurrency": {
+        "LKR": "Rs.",
+        "USD": "US$"
+      },
       "audienceLabel": "Intended for",
       "isbnSectionLabel": "ISBN",
       "isbnFormat": {
@@ -2547,6 +2600,374 @@
       "research": "Research",
       "awards": "Awards",
       "courses": "Courses"
+    },
+    "MediaContributionsTable": {
+      "failMediaContributions": "Failed to load media contributions",
+      "noMediaContributions": "No media contributions to display",
+      "refreshMediaContributions": "Refreshing media contributions...",
+      "mediaContributions": "media contributions"
+    },
+    "MediaContributionOptionsCard": {
+      "featured": "Featured",
+      "read": "Read More",
+      "edit": "Edit",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "delete": "Delete",
+      "deleteModalTitle": "Confirm Delete",
+      "deleteModalMessage": "Are you sure you want to delete the media contribution: <strong>title</strong>?",
+      "deleteModalCancel": "No",
+      "deleteModalAccept": "Yes, Delete",
+      "activateErrorTitle": "Cannot activate the media contribution",
+      "deactivateErrorTitle": "Cannot deactivate the media contribution",
+      "deleteErrorTitle": "Cannot delete the media contribution"
+    },
+    "MediaContributionOptionsViewer": {
+      "dashboard":    "Dashboard",
+      "mediaContributions": "Media Contributions",
+      "edit":         "Edit",
+      "activate":     "Activate",
+      "deactivate":   "Deactivate",
+      "delete":       "Delete",
+      "active":       "Active",
+      "inactive":     "Inactive",
+      "featured":     "Featured",
+      "localeEn":     "English",
+      "localeSi":     "සිංහල",
+      "noCover":      "No cover",
+      "failMediaContribution": "Failed to load media contribution.",
+      "language": "Original language",
+      "langEnglish": "English",
+      "langSinhala": "Sinhala",
+      "langTamil": "Tamil",
+      "type": "Type",
+      "typeValue": {
+        "authored_article": "Authored Article",
+        "expert_commentary": "Expert Commentary",
+        "expert_interview": "Expert Interview",
+        "tv_interview": "TV Interview",
+        "podcast": "Podcast",
+        "radio": "Radio",
+        "other": "Other"
+      },
+      "role": "Role",
+      "roleValue": {
+        "author": "Author",
+        "co_author": "Co Author",
+        "interviewee": "Interviewee",
+        "contributor": "Contributor"
+      },
+      "displayOrder": "Display order",
+      "durationSeconds": "Duration (seconds)",
+      "outlet":    "Outlet",
+      "topics":     "Topics",
+      "authors":      "Authors",
+      "interviewers": "Interviewers",
+      "description":  "Description",
+      "content":      "Content",
+      "links":        "Source URL",
+      "sampleFile":    "Sample File",
+      "previewImages":"Preview Images",
+      "addPreviewImages":"Add Preview Images",
+      "addSampleFile":"Edit File",
+      "activateErrorTitle":   "Failed to activate media contribution.",
+      "deactivateErrorTitle": "Failed to deactivate media contribution.",
+      "deleteErrorTitle":     "Failed to delete media contribution.",
+      "deleteModalTitle":     "Delete Media Contribution",
+      "deleteModalMessage":   "Are you sure you want to delete <strong>title</strong>? This action cannot be undone.",
+      "deleteModalCancel":    "Cancel",
+      "deleteModalAccept":    "Delete"
+    },
+    "NewMediaContributionForm": {
+      "localeTabEnTitle": "English (en)",
+      "localeTabSiTitle": "සිංහල (si)",
+
+      "titleEnLabel": "Title (English)",
+      "titleEnPlaceholder": "The Art of Clean Code",
+      "titleSiLabel": "Title (Sinhala)",
+      "titleSiPlaceholder": "පිරිසිදු කේතයේ කලාව",
+
+      "titleOriginalLabel": "Original Title",
+      "titleOriginalPlaceholder": "விளையாட்டு மற்றும் தொழில் துறை | Sports and industry | ක්‍රීඩා සහ කර්මාන්ත",
+      "titleOriginalHelp": "Your original work title in any language",
+
+      "subtitleEnLabel": "Subtitle (English)",
+      "subtitleEnPlaceholder": "Sports and industry",
+      "subtitleSiLabel": "Subtitle (Sinhala)",
+      "subtitleSiPlaceholder": "ක්‍රීඩා සහ කර්මාන්ත",
+
+      "subtitleOriginalLabel": "Original Subtitle",
+      "subtitleOriginalPlaceholder": "விளையாட்டு ஒரு தொழில்துறையாக மாறுகிறது. | Sports become an industry | ක්‍රීඩාව කර්මාන්තයක් බවට පත් වේ",
+      "subtitleOriginalHelp": "Your original work subtitle in any language",
+
+      "descriptionEnLabel": "Description (English)",
+      "descriptionEnPlaceholder": "Short description shown on media contribution cards...",
+      "descriptionEnHelp": "This will be displayed on the media contribution card. Cannot exceed {max} characters.",
+      "descriptionSiLabel": "Description (Sinhala)",
+      "descriptionSiPlaceholder": "මාධ්‍ය දායකත්වය පිළිබඳ කෙටි විස්තරය...",
+      "descriptionSiHelp": "This will be displayed on the media contribution card. Cannot exceed {max} characters.",
+
+      "contentEnLabel": "Content (English)",
+      "contentEnPlaceholder": "Full media contribution description...",
+      "contentEnHelp": "This is the full description of the media contribution. Cannot exceed {max} characters.",
+      "contentSiLabel": "Content (Sinhala)",
+      "contentSiPlaceholder": "සම්පූර්ණ විස්තරය...",
+      "contentSiHelp": "This is the full description of the media contribution. Cannot exceed {max} characters.",
+
+      "outletLabel": "Outlet",
+      "outletNameEnLabel": "Outlet (English)",
+      "outletNameEnPlaceholder": "Divayina | Youtube",
+      "outletNameSiLabel": "Outlet (Sinhala)",
+      "outletNameSiPlaceholder": "සාම්පල් ප්‍රකාශකයෝ",
+      "outletAddressEnLabel": "Outlet Address (English)",
+      "outletAddressEnPlaceholder": "123, Sample Street, Colombo, Sri Lanka",
+      "outletAddressSiLabel": "Outlet Address (Sinhala)",
+      "outletAddressSiPlaceholder": "123, සාම්පල් වීදිය, කොළඹ, ශ්‍රී ලංකාව",
+      "outletWebUrlLabel": "Outlet Website",
+      "outletWebUrlPlaceholder": "https://sample-publications.lk",
+
+      "authorsLabel": "Authors",
+      "authorLabel": "Author {number}",
+      "addAuthor": "Add author",
+      "removeAuthor": "Remove author",
+      "authorNameEnLabel": "Name (English)",
+      "authorNameEnPlaceholder": "Jane Smith",
+      "authorNameSiLabel": "Name (Sinhala)",
+      "authorNameSiPlaceholder": "ජේන් ස්මිත්",
+      "authorIsMeLabel": "Is me?",
+      "authorProfileUrlLabel": "Profile URL",
+      "authorProfileUrlPlaceholder": "https://example.com/jane",
+
+      "typeLabel": "Type",
+      "mediaContributionType": {
+        "authored_article": "Authored Article",
+        "expert_commentary": "Expert Commentary",
+        "expert_interview": "Expert Interview",
+        "tv_interview": "TV Interview",
+        "podcast": "Podcast",
+        "radio": "Radio",
+        "other": "Other"
+      },
+      
+      "roleLabel": "Your Role",
+      "mediaContributionRole": {
+        "author": "Author",
+        "co_author": "Co-author",
+        "interviewee": "Interviewee",
+        "contributor": "Contributor"
+      },
+
+      "topicsLabel": "Topics",
+      "topicsHelp":  "Add the academic or professional topics this media contribution covers. e.g. Computer Science, Artificial Intelligence",
+      "addTopic":   "Add topic",
+      "topicEnPlaceholder": "Computer Science",
+      "topicSiPlaceholder": "පරිගණක විද්‍යාව",
+
+      "languageLabel": "Language",
+      "mediaContributionLanguage": {
+        "en": "English",
+        "si": "Sinhala",
+        "ta": "Tamil"
+      },
+
+      "interviewersLabel": "Interviewers",
+      "interviewerLabel": "Interviewer {number}",
+      "addInterviewer": "Add interviewer",
+      "removeInterviewer": "Remove interviewer",
+      "interviewerNameEnLabel": "Name (English)",
+      "interviewerNameEnPlaceholder": "John Doe",
+      "interviewerNameSiLabel": "Name (Sinhala)",
+      "interviewerNameSiPlaceholder": "ජේන් ස්මිත්",
+      "interviewerProfileUrlLabel": "Profile URL",
+      "interviewerProfileUrlPlaceholder": "https://example.com/john",
+
+      "publishedDateLabel":       "Published date",
+      "publishedDatePlaceholder": "2025-01-01",
+
+      "durationSecondsLabel":       "Duration (seconds)",
+      "durationSecondsPlaceholder": "300",
+
+      "highlightQuoteLabel":       "Highlight Quote",
+      "highlightQuoteEnPlaceholder": "Enter the English highlight quote",
+      "highlightQuoteSiPlaceholder": "Enter the Sinhala highlight quote",
+      "highlightQuoteHelp": "Enter the highlight quote",
+
+      "sourceUrlLabel":       "Source URL",
+      "sourceUrlPlaceholder": "https://example.com/article/1234",
+      "sourceUrlHelp":        "URL where this media contribution can be read",
+
+      "pdfTeaserLabel":       "PDF teaser URL",
+      "pdfTeaserPlaceholder": "https://example.com/teaser.pdf",
+
+      "featuredLabel": "Featured",
+      "featuredCheckboxLabel": "Mark this media contribution as featured",
+
+      "displayOrderLabel":       "Display order",
+      "displayOrderPlaceholder": "1",
+      "displayOrderHelp":        "Order in which this media contribution appears in the list. Lower number = higher position.",
+
+      "previewImages": "Preview Images",
+      "previewImageCaption": "Caption",
+      "previewImageCaptionEnLabel": "Caption (English)",
+      "previewImageCaptionEnPlaceholder": "Short description of the image",
+      "previewImageCaptionSiLabel": "කෙටි විස්තරය (Caption)",
+      "previewImageCaptionSiPlaceholder": "රූපය පිළිබඳ කෙටි විස්තරයක්",
+      "moveUp": "Move Up",
+      "moveDown": "Move Down",
+
+      "cancel":     "Cancel",
+      "submit":     "Save",
+      "submitting": "Saving...",
+
+      "titleEnRequired":           "English title is required.",
+      "titleEnTooShort":           "English title must be at least {min} characters.",
+      "titleEnTooLong":            "English title cannot exceed {max} characters.",
+      "titleSiTooLong":            "Sinhala title cannot exceed {max} characters.",
+
+      "titleOriginalRequired":     "Original title is required.",
+      "titleOriginalTooLong":      "Original title cannot exceed {max} characters.",
+      "titleOriginalTooShort":     "Original title must be at least {min} characters.",
+
+      "subtitleEnTooLong":         "English subtitle cannot exceed {max} characters.",
+      "subtitleSiTooLong":         "Sinhala subtitle cannot exceed {max} characters.",
+      "subtitleOriginalTooLong":   "Original subtitle cannot exceed {max} characters.",
+
+      "descriptionEnRequired":     "English description is required.",
+      "descriptionEnTooShort":     "English description must be at least {min} characters.",
+      "descriptionEnTooLong":      "English description cannot exceed {max} characters.",
+      "descriptionSiTooLong":      "Sinhala description cannot exceed {max} characters.",
+
+      "contentEnRequired":         "English content is required.",
+      "contentEnTooShort":         "English content must be at least {min} characters.",
+      "contentEnTooLong":          "English content cannot exceed {max} characters.",
+      "contentSiTooLong":          "Sinhala content cannot exceed {max} characters.",
+
+      "outletNameEnRequired":    "English outlet name is required.",
+      "outletNameEnTooShort":    "English outlet name must be at least {min} characters.",
+      "outletNameEnTooLong":     "English outlet name cannot exceed {max} characters.",
+      "outletNameSiRequired":    "Outlet name in Sinhala is required.",
+      "outletNameSiTooShort":    "Outlet name in Sinhala must be at least {min} characters.",
+      "outletNameSiTooLong":     "Outlet name in Sinhala cannot exceed {max} characters.",
+
+      "typeRequired": "Type of the contribution is required.",
+      "typeInvalid": "Type of the contribution is invalid.",
+
+      "roleRequired": "Role of the contribution is required.",
+      "roleInvalid": "Role of the contribution is invalid.",
+
+      "topicsTooMany": "Cannot exceed {max} topics.",
+      "topicEnTooLong": "English topic cannot exceed {max} characters.",
+      "topicSiTooLong": "Sinhala topic cannot exceed {max} characters.",
+
+      "authorsRequired":           "At least one author is required.",
+      "authorsTooMany":            "Cannot exceed {max} authors.",
+      "authorNameEnRequired":      "English author name is required.",
+      "authorNameEnTooShort":      "English author name must be at least 2 characters.",
+      "authorNameEnTooLong":       "English author name cannot exceed {max} characters.",
+      "authorNameSiTooLong":       "Sinhala author name cannot exceed {max} characters.",
+      "authorRoleRequired":        "Author role is required.",
+      "authorRoleInvalid":         "Invalid author role.",
+
+      "interviewerNameEnRequired": "English interviewer name is required.",
+      "interviewerNameEnTooShort": "English interviewer name must be at least 2 characters.",
+      "interviewerNameEnTooLong":  "English interviewer name cannot exceed {max} characters.",
+      "interviewerNameSiTooLong":  "Sinhala interviewer name cannot exceed {max} characters.",
+      "interviewersTooMany":  "Cannot exceed {max} interviewers.",
+
+      "subjectEnTooLong":          "English subject cannot exceed {max} characters.",
+      "subjectSiTooLong":          "Sinhala subject cannot exceed {max} characters.",
+      "subjectsTooMany":           "Cannot exceed {max} subjects.",
+
+      "languageRequired": "Language is required.",
+      "languageInvalid":  "Invalid language.",
+
+      "publishedDateMustBeDate": "Published date must be a valid date.",
+      "publishedDateRequired":   "Published date is required.",
+      "publishedDateTooLow":     "Published date cannot be before {min, date, medium}.",
+      "publishedDateTooHigh":    "Published date cannot be in the future.",
+
+      "durationSecondsMustBeNumber":  "Duration (seconds) must be a number.",
+      "durationSecondsMustBeInteger": "Duration (seconds) must be a whole number.",
+      "durationSecondsTooLow":        "Duration must be at least {min} seconds.",
+
+      "highlightQuoteEnTooLong": "English highlight quote cannot exceed {max} characters.",
+      "highlightQuoteSiTooLong": "Sinhala highlight quote cannot exceed {max} characters.",
+
+      "urlMustBeValid": "Must be a valid URL.",
+      "urlTooLong":     "URL cannot exceed {max} characters.",
+
+      "displayOrderMustBeNumber":  "Display order must be a number.",
+      "displayOrderMustBeInteger": "Display order must be a whole number.",
+      "displayOrderTooLow":        "Display order cannot be negative.",
+
+      "versionRequired": "Version is required for updates."
+    },
+    "UpdateMediaContributionOutletImageForm": {
+      "noOutletImage": "No outlet image uploaded yet.",
+      "deleteOutletImage": "Delete outlet image",
+      "deleting": "Deleting...",
+      "dragActiveLabel": "Drop the image here...",
+      "selectFileLabel": "Drag and drop an image here, or click to select",
+      "selectedFileNameLabel": "Name",
+      "selectedFileSizeLabel": "Size",
+      "selectedFileDimensionsLabel": "Dimensions",
+      "uploading": "Uploading...",
+      "upload": "Upload",
+      "remove": "Remove",
+      "fileRejectionTitle": "File Rejected",
+      "fileRejectionName":  "<strong>{name}</strong> was rejected due to following reason/s.",
+      "done": "Done"
+    },
+    "LocalizedOptionsTitles": {
+      "en": "English",
+      "si": "Sinhala"
+    },
+    "MediaContributionFeaturedCard": {
+      "featured": "Featured",
+      "readMore": "Read more"
+    },
+    "MediaContributionViewer": {
+      "allMedia": "All media contributions",
+
+      "types": {
+        "authored_article": "Authored Article",
+        "expert_commentary": "Expert Commentary",
+        "expert_interview": "Expert Interview",
+        "tv_interview": "TV Interview",
+        "podcast": "Podcast",
+        "radio": "Radio",
+        "other": "Other"
+      },
+
+      "imageCaption": "Illustration: created for this page",
+
+      "published": "Published",
+      "publishedIn": "Published in",
+      "by": "By",
+
+      "interviewedBy": "Interviewed by",
+      "duration": "Duration",
+      "myContribution": "My contribution",
+      "opensOn": "Opens on {outlet}",
+      "opensInNewTab": "Opens in a new tab",
+      "originalLanguage": "Original language: {language}",
+      "languages": {
+        "en": "English",
+        "si": "Sinhala",
+        "ta": "Tamil"
+      },
+      "cta": {
+        "authored_article": "Read original article",
+        "expert_commentary": "Read original article",
+        "tv_interview": "Watch original interview",
+        "podcast": "Listen to original episode",
+        "radio": "Listen to original broadcast",
+        "other": "View original"
+      },
+      "topics": "Topics"
+    },
+    "PageTrail": {
+      "trail": "Breadcrumb"
     }
   },
   "contexts": {
@@ -2559,6 +2980,7 @@
       "contactMessages": "Contact Messages",
       "awards": "Awards",
       "books": "Books",
+      "media-contributions": "Media Contributions",
       "studentCourses": "Student Courses"
     }
   },

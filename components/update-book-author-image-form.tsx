@@ -9,7 +9,7 @@ import { Locale } from '@/types/locale.types';
 import { localizeField } from '@/utils/common-utils';
 import { MAX_BOOK_IMAGE_SIZE } from '@/constants/validation-vars';
 
-const baseTPath = 'components.UpdateBookAuthorImageForm';
+const baseTPath = 'components.UpdateAuthorImageForm';
 
 interface UpdateBookAuthorImageFormProps {
   bookId: string;

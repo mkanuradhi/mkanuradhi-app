@@ -2,10 +2,10 @@
 import React from 'react';
 import { GroupedCourses } from '@/interfaces/i-grouped-courses';
 import { useTranslations } from 'next-intl';
-import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import CourseCard from './course-card';
-import { Link } from '@/i18n/routing';
 import ScrollReveal from './scroll-reveal';
+import PageTrail from './page-trail';
 import "./courses-container.scss";
 
 const baseTPath = 'components.CoursesContainer';
@@ -20,16 +20,13 @@ const CoursesContainer: React.FC<CoursesContainerProps> = ({ groupedCourses }) =
   return (
     <>
       <Container className="courses-container">
-        <Row className="mt-4">
+        <Row className="mt-4 mb-2">
           <Col>
-            <Breadcrumb>
-              <Breadcrumb.Item linkAs="span">
-                <Link href="/">{t('home')}</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item linkAs="span">
-                <Link href="/teaching">{t('teaching')}</Link>
-              </Breadcrumb.Item>
-            </Breadcrumb>
+            <PageTrail
+              items={[
+                { label: t('teaching'), href: "/teaching" },
+              ]}
+            />
           </Col>
         </Row>
         <Row>
