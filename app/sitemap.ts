@@ -1,127 +1,37 @@
+import { SUPPORTED_LOCALES } from '@/types/locale.types';
 import type { MetadataRoute } from 'next';
 
+const BASE_URL = (process.env.NEXT_PUBLIC_BASE_URL || 'https://mkanuradhi.com').replace(/\/$/, '');
+
+type PageDef = {
+  path: string;          // '' for the homepage
+  lastModified: string;  // update when the page content really changes
+};
+
+const PAGES: PageDef[] = [
+  { path: '',             lastModified: '2026-09-11' },
+  { path: '/research',    lastModified: '2026-09-21' },
+  { path: '/publications',lastModified: '2026-08-17' },
+  { path: '/books',       lastModified: '2026-07-12' },
+  { path: '/teaching',    lastModified: '2026-10-07' },
+  { path: '/blog',        lastModified: '2026-10-16' },
+  { path: '/contact',     lastModified: '2025-10-21' },
+  { path: '/awards',      lastModified: '2025-09-11' },
+  { path: '/experience',  lastModified: '2025-10-17' },
+  { path: '/policy',      lastModified: '2025-11-17' },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}`;
-  return [
-    {
-      url: `${baseUrl}/en`,
-      lastModified: new Date('2025-09-11'),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en`,
-          si: `${baseUrl}/si`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/teaching`,
-      lastModified: new Date('2025-10-07'),
-      changeFrequency: 'yearly',
-      priority: 0.8,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/teaching`,
-          si: `${baseUrl}/si/teaching`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/research`,
-      lastModified: new Date('2025-10-21'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/research`,
-          si: `${baseUrl}/si/research`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/publications`,
-      lastModified: new Date('2025-10-17'),
-      changeFrequency: 'yearly',
-      priority: 0.6,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/publications`,
-          si: `${baseUrl}/si/publications`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/books`,
-      lastModified: new Date('2026-07-12'),
-      changeFrequency: 'yearly',
-      priority: 0.6,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/books`,
-          si: `${baseUrl}/si/books`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/awards`,
-      lastModified: new Date('2025-09-11'),
-      changeFrequency: 'yearly',
-      priority: 0.4,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/awards`,
-          si: `${baseUrl}/si/awards`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/experience`,
-      lastModified: new Date('2025-10-17'),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/experience`,
-          si: `${baseUrl}/si/experience`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/blog`,
-      lastModified: new Date('2025-10-26'),
-      changeFrequency: 'monthly',
-      priority: 0.3,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/blog`,
-          si: `${baseUrl}/si/blog`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/contact`,
-      lastModified: new Date('2025-10-21'),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/contact`,
-          si: `${baseUrl}/si/contact`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/en/policy`,
-      lastModified: new Date('2025-11-17'),
-      changeFrequency: 'yearly',
-      priority: 0.2,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/policy`,
-          si: `${baseUrl}/si/policy`,
-        },
-      },
-    },
-  ]
+  return PAGES.flatMap(({ path, lastModified }) => {
+    const languages = Object.fromEntries(
+      SUPPORTED_LOCALES.map((locale) => [locale, `${BASE_URL}/${locale}${path}`])
+    );
+
+    // One <url> per language, each listing all alternates
+    return SUPPORTED_LOCALES.map((locale) => ({
+      url: `${BASE_URL}/${locale}${path}`,
+      lastModified: new Date(lastModified),
+      alternates: { languages },
+    }));
+  });
 }
