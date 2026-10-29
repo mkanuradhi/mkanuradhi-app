@@ -18,29 +18,29 @@ export async function generateMetadata ({ params }: { params: { locale: string }
     description: t('pageDescription'),
     keywords: t('pageKeywords'),
     alternates: {
-      canonical: `/${locale}/books`,
+      canonical: `/${locale}/media-contributions`,
       languages: {
-        en: `/${LANG_EN}/books`,
-        si: `/${LANG_SI}/books`,
+        en: `/${LANG_EN}/media-contributions`,
+        si: `/${LANG_SI}/media-contributions`,
       },
     },
     openGraph: {
       title: t('pageTitle'),
       description: t('pageDescription'),
       type: 'website',
-      url: `/${locale}/books`,
+      url: `/${locale}/media-contributions`,
       siteName: 'mkanuradhi',
       locale: locale === LANG_SI ? 'si_LK' : 'en_US',
       images: [
         {
-          url: '/images/og/mka-books.png',
+          url: '/images/og/mka-media-contributions.png',
           width: 1200,
           height: 630,
           alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
           type: 'image/png',
         },
         {
-          url: '/images/og/mka-books-600.png',
+          url: '/images/og/mka-media-contributions-600.png',
           width: 600,
           height: 315,
           alt: 'M.K.A. Ariyaratne, Senior Lecturer in Computer Science',
@@ -52,7 +52,7 @@ export async function generateMetadata ({ params }: { params: { locale: string }
       card: 'summary_large_image',
       title: t('pageTitle'),
       description: t('pageDescription'),
-      images: ['/images/og/mka-books.png'],
+      images: ['/images/og/mka-media-contributions.png'],
     }
   };
 };
