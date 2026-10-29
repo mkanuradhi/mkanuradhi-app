@@ -40,7 +40,12 @@ export async function generateMetadata ({ params }: MediaContributionPageProps) 
       siteName: 'mkanuradhi',
       locale: locale === LANG_SI ? 'si_LK' : 'en_US',
       url: `/${locale}/books/${slug}`,
-      // no images[] here — opengraph-image.tsx supplies it automatically
+      images: localizedMediaContribution.coverImage ? [
+        {
+          url: localizedMediaContribution.coverImage,
+          alt: localizedMediaContribution.title
+        }
+      ] : undefined,
     },
     // no twitter block needed either — same file supplies twitter:image too
   };
