@@ -32,8 +32,8 @@ const initialValues = {
   description: { en: '', si: '' },
   content:     { en: '', si: '' },
 
-  type: 'newspaper_article' as MediaContributionType,
-  role: 'author' as MediaContributionRole,
+  type: MEDIA_CONTRIBUTION_TYPES[0],
+  role: MEDIA_CONTRIBUTION_ROLES[0],
 
   topics: [] as { en: string; si: string }[],
   authors:     [{
@@ -41,7 +41,7 @@ const initialValues = {
     isMe: false,
     profileUrl: ''
   }],
-  language: 'en' as MediaContributionLanguage,
+  language: MEDIA_CONTRIBUTION_LANGUAGES[0],
   interviewers: [] as {name: { en: '', si: '' }, profileUrl: ''}[],
 
   outlet:   { 

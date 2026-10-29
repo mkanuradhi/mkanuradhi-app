@@ -80,11 +80,11 @@ export const getUpdateMediaContributionSchema = (t: (key: string, values?: Recor
     }).required(),
 
     type: yup.string()
-      .oneOf(Object.values(MEDIA_CONTRIBUTION_TYPES), t('typeInvalid'))
+      .oneOf(MEDIA_CONTRIBUTION_TYPES, t('typeInvalid'))
       .required(t('typeRequired')),
 
     role: yup.string()
-      .oneOf(Object.values(MEDIA_CONTRIBUTION_ROLES), t('roleInvalid'))
+      .oneOf(MEDIA_CONTRIBUTION_ROLES, t('roleInvalid'))
       .required(t('roleRequired')),
 
     // Topics
@@ -135,7 +135,7 @@ export const getUpdateMediaContributionSchema = (t: (key: string, values?: Recor
       .notRequired(),
     
     language: yup.string()
-      .oneOf(Object.values(MEDIA_CONTRIBUTION_LANGUAGES), t('languageInvalid'))
+      .oneOf(MEDIA_CONTRIBUTION_LANGUAGES, t('languageInvalid'))
       .required(t('languageRequired')),
 
     interviewers: yup.array()
