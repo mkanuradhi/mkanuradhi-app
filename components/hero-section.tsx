@@ -9,6 +9,7 @@ import WebOfScienceIcon from "@/icons/WebOfScienceIcon";
 import Image from "next/image";
 import anuImage from "@/public/images/anuradha.jpg"
 import "./hero-section.scss";
+import AnimatedLink from "./animated-link";
 
 const baseTPath = 'components.HeroSection';
 
@@ -56,9 +57,14 @@ const HeroSection = () => {
           <MovingGradientTitle text={t('heroName')} className="hero-animate hero-name" />
           <p className="text-center fs-5 mb-1 hero-animate hero-designation">{t('designation')}</p>
           <p className="text-center text-muted mb-3 hero-animate hero-university">
-            <a href="https://cs.sjp.ac.lk/academic-staff/" target="_blank" rel="noopener noreferrer" className="university-link">
+            <AnimatedLink
+              href="https://cs.sjp.ac.lk/academic-staff/"
+              external
+              showArrow={false}
+              newTabLabel={t('opensInNewTab')}
+            >
               {t('university')}
-            </a>
+            </AnimatedLink>
           </p>
           <p className="text-center fst-italic hero-subtext mb-4 hero-animate hero-tagline">{t('tagline')}</p>
           <div className="hero-animate hero-links">
