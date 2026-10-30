@@ -2580,7 +2580,8 @@
     },
     "ResearchSection": {
       "title": "The smallest ideas can illuminate the longest journeys.",
-      "researchText": "For me, the humble firefly became more than an insect—it became the inspiration for my research in computational intelligence and a symbol of curiosity, exploration, and continual learning."
+      "researchText": "For me, the humble firefly became more than an insect—it inspired my journey into nature-inspired computational intelligence. What began as a fascination with a simple natural phenomenon grew into a lasting passion for exploring intelligent approaches to complex computational problems.",
+      "exploreResearch": "Explore My Research"
     },
     "EducationSection": {
       "title": "Education",
