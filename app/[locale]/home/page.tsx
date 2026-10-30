@@ -7,6 +7,7 @@ import IntroSection from '@/components/intro-section';
 import ResearchSection from '@/components/research-section';
 import EducationSection from '@/components/education-section';
 import SummaryStatsSection from '@/components/summary-stats-section';
+import ConnectSection from '@/components/connect-section';
 import { DisplayStatItem, WeightedLabelValueStat } from '@/interfaces/i-stat';
 import { getCachedSummaryStats } from '@/services/stat-service';
 import './home.scss';
@@ -142,6 +143,7 @@ const HomePage = async ({ params }: { params: Promise<{locale: string}> }) => {
           <ResearchSection />
           <SummaryStatsSection items={displayStats} />
           <EducationSection />
+          <ConnectSection />
         </Container>
       </div>
     </>

@@ -2603,6 +2603,11 @@
       "awards": "Awards",
       "courses": "Courses"
     },
+    "ConnectSection": {
+      "title": "Let's connect",
+      "text": "I welcome opportunities for research collaboration, academic discussions, and knowledge sharing in optimization, data science, and artificial intelligence.",
+      "cta": "Get in Touch"
+    },
     "MediaContributionsTable": {
       "failMediaContributions": "Failed to load media contributions",
       "noMediaContributions": "No media contributions to display",
