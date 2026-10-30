@@ -2566,7 +2566,8 @@
       "heroName": "Anuradha Ariyaratne",
       "designation": "Senior Lecturer",
       "university": "University of Sri Jayewardenepura",
-      "tagline": "Researching and teaching across Optimization, Data Science, and Artificial Intelligence.",
+      "opensInNewTab": "Opens in a new tab",
+      "tagline": "Exploring metaheuristic optimization, data science, and artificial intelligence through research and teaching.",
       "gsTooltip": "Google Scholar",
       "liTooltip": "LinkedIn",
       "oiTooltip": "ORCID",
@@ -2576,11 +2577,12 @@
     },
     "IntroSection": {
       "title": "Who I Am",
-      "introText": "I'm a Senior Lecturer in the Department of Computer Science at the University of Sri Jayewardenepura, Sri Lanka, where I combine research, teaching, and academic service in optimization and artificial intelligence."
+      "introText": "I am a computer scientist, researcher, and educator with a keen interest in exploring how optimization and artificial intelligence can help solve complex problems. My academic work brings together research, teaching, and the practical application of computational methods. I particularly value the opportunity to share knowledge, encourage curiosity, and inspire students to think critically and explore new ideas."
     },
     "ResearchSection": {
       "title": "The smallest ideas can illuminate the longest journeys.",
-      "researchText": "For me, the humble firefly became more than an insect—it became the inspiration for my research in computational intelligence and a symbol of curiosity, exploration, and continual learning."
+      "researchText": "For me, the humble firefly became more than an insect—it inspired my journey into nature-inspired computational intelligence. What began as a fascination with a simple natural phenomenon grew into a lasting passion for exploring intelligent approaches to complex computational problems.",
+      "exploreResearch": "Explore My Research"
     },
     "EducationSection": {
       "title": "Education",
@@ -2600,6 +2602,11 @@
       "research": "Research",
       "awards": "Awards",
       "courses": "Courses"
+    },
+    "ConnectSection": {
+      "title": "Let's connect",
+      "text": "I welcome opportunities for research collaboration, academic discussions, and knowledge sharing in optimization, data science, and artificial intelligence.",
+      "cta": "Get in Touch"
     },
     "MediaContributionsTable": {
       "failMediaContributions": "Failed to load media contributions",

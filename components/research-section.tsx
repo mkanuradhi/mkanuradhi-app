@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import resImage from "@/public/images/anu-research.png"
 import Image from "next/image";
 import { motion, useReducedMotion, Variants } from "framer-motion";
+import AnimatedLink from "./animated-link";
 import "./research-section.scss";
 
 const baseTPath = 'components.ResearchSection';
@@ -61,6 +62,9 @@ const ResearchSection = () => {
           >
             <p className="research-title">{t('title')}</p>
             <p className="research-text lead">{t('researchText')}</p>
+            <AnimatedLink href="/research" className="mt-4">
+              {t('exploreResearch')}
+            </AnimatedLink>
           </motion.div>
         </Col>
       </Row>
