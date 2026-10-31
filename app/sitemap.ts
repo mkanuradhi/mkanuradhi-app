@@ -15,6 +15,7 @@ const PAGES: PageDef[] = [
   { path: '/books',       lastModified: '2026-07-12' },
   { path: '/teaching',    lastModified: '2026-10-07' },
   { path: '/blog',        lastModified: '2026-10-16' },
+  { path: '/media-contributions', lastModified: '2026-10-31' },
   { path: '/contact',     lastModified: '2025-10-21' },
   { path: '/awards',      lastModified: '2025-09-11' },
   { path: '/experience',  lastModified: '2025-10-17' },
