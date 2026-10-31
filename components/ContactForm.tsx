@@ -131,7 +131,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ }) => {
                       </BootstrapForm.Group>
                       <BootstrapForm.Group controlId="formMessage" className="mb-3">
                         <BootstrapForm.Label>{t('message')}</BootstrapForm.Label>
-                        <Field name="message" as="textarea" className="form-control" placeholder={t('messagePlaceholder')} rows={5} />
+                        <Field name="message" as="textarea" className="form-control auto-grow" placeholder={t('messagePlaceholder')} rows={5} />
                         <div className="text-muted text-end small">
                           {values.message.length} / {maxMessageLength}
                         </div>
