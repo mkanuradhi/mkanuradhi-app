@@ -57,6 +57,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({  }) => {
     { title: t('books'),        path: '/books',        minBreakpoint: 'md' },
     { title: t('teaching'),     path: '/teaching',     minBreakpoint: 'lg' },
     { title: t('blog'),         path: '/blog',         minBreakpoint: 'lg' },
+    { title: t('media'),        path: '/media-contributions', minBreakpoint: 'lg' },
     { title: t('contact'),      path: '/contact',      minBreakpoint: 'xl' },
     { title: t('awards'),       path: '/awards',       minBreakpoint: 'xl' },
     { title: t('experience'),   path: '/experience',   minBreakpoint: 'xl' },
