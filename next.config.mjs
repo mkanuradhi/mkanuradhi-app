@@ -1,6 +1,7 @@
 import createNextIntlPlugin from 'next-intl/plugin';
  
 const withNextIntl = createNextIntlPlugin();
+const r2Hostname = process.env.R2_HOSTNAME;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -18,6 +19,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'img.clerk.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: r2Hostname,
         pathname: '/**',
       },
     ],
