@@ -43,6 +43,7 @@ jobs:
             NEXT_PUBLIC_CLERK_SIGN_UP_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}
             NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
             NEXT_PUBLIC_CONTACT_EMAILS=${{ secrets.NEXT_PUBLIC_CONTACT_EMAILS }}
+            R2_HOSTNAME=${{ vars.R2_HOSTNAME }}
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1
