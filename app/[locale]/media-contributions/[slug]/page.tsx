@@ -17,7 +17,15 @@ interface MediaContributionPageProps {
 export async function generateMetadata ({ params }: MediaContributionPageProps) {
   const { locale, slug } = params;
   
-  const localizedMediaContribution = await getLocalizedMediaContributionByPath(locale, slug);
+  let localizedMediaContribution;
+  try {
+    localizedMediaContribution = await getLocalizedMediaContributionByPath(locale, slug);
+  } catch (error: any) {
+    if (error instanceof ApiError && (error.status === 404 || error.status === 400)) {
+      notFound();
+    }
+    throw error;
+  }
 
   return {
     title: localizedMediaContribution.title,
