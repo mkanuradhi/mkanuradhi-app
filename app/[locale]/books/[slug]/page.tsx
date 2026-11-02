@@ -17,7 +17,15 @@ interface BookPageProps {
 export async function generateMetadata ({ params }: BookPageProps) {
   const { locale, slug } = params;
   
-  const localizedBook = await getLocalizedBookByPath(locale, slug);
+  let localizedBook;
+  try {
+    localizedBook = await getLocalizedBookByPath(locale, slug);
+  } catch (error: any) {
+    if (error instanceof ApiError && (error.status === 404 || error.status === 400)) {
+      notFound();
+    }
+    throw error;
+  }
 
   return {
     title: localizedBook.title,
