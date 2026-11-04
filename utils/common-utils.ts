@@ -1,5 +1,11 @@
+import { LANG_SI } from "@/constants/common-vars";
 import { ApiError } from "@/errors/api-error";
 import { DEFAULT_LOCALE, Locale, LocalizedString } from "@/types/locale.types";
+
+const SI_MONTHS = [
+  'ජනවාරි', 'පෙබරවාරි', 'මාර්තු', 'අප්‍රේල්', 'මැයි', 'ජූනි',
+  'ජූලි', 'අගෝස්තු', 'සැප්තැම්බර්', 'ඔක්තෝබර්', 'නොවැම්බර්', 'දෙසැම්බර්',
+];
 
 export const truncateText = (text: string, maxLength: number = 100, appendEllipsis: boolean = true): string => {
   if (!text || text.length <= maxLength) return text;
@@ -14,6 +20,10 @@ export const truncateText = (text: string, maxLength: number = 100, appendEllips
 };
 
 export const getFormattedDate = (locale: string, dateTime: Date) => {
+  if (!dateTime) return "";
+  if (locale === LANG_SI) {
+    return `${dateTime.getFullYear()} ${SI_MONTHS[dateTime.getMonth()]} ${dateTime.getDate()}`;
+  }
   return new Intl.DateTimeFormat(locale, {
     year: 'numeric',
     month: 'long',
