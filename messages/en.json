@@ -86,7 +86,8 @@
       "pageKeywords": "Achievements, President's Award, Academic Excellence Award, Virtusa, scholarship",
       "title": "Awards and Grants",
       "subTitle": "Achievements",
-      "description": "I have had the honor of receiving several awards and grants throughout my academic journey."
+      "description": "I have had the honor of receiving several awards and grants throughout my academic journey.",
+      "loadFailed": "Awards cannot be loaded at the moment."
     },
     "Experience": {
       "pageTitle": "Experience",
