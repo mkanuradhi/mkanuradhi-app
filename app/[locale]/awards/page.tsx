@@ -1,8 +1,9 @@
 import React from 'react';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Col, Container, Row } from 'react-bootstrap';
-import { getAwards, getLocalizedAwards } from '@/services/award-service';
+import { getLocalizedAwards } from '@/services/award-service';
 import AwardsTimeline from '@/components/awards-timeline';
+import ApiErrorAlert from '@/components/api-error-alert';
 
 const baseTPath = 'pages.Awards';
 export const revalidate = 604800; // cache for 1 week
@@ -42,7 +43,14 @@ export async function generateMetadata ({ params }: { params: { locale: string }
 const AwardsPage = async () => {
   const t = await getTranslations(baseTPath);
   const locale = await getLocale();
-  const awards = await getLocalizedAwards(locale, 0, 100);
+
+  let awards = null;
+  let fetchError: unknown = null;
+  try {
+    awards = await getLocalizedAwards(locale, 0, 100);
+  } catch (err) {
+    fetchError = err;
+  }
 
   return (
     <>
@@ -55,7 +63,11 @@ const AwardsPage = async () => {
                 <p>{t('description')}</p>
               </section>
               <section>
-                <AwardsTimeline awards={awards.items} />
+                {fetchError ? (
+                  <ApiErrorAlert error={fetchError} message={t('loadFailed')} />
+                ) : (
+                  <AwardsTimeline awards={awards!.items} />
+                )}
               </section>
             </Col>
           </Row>
