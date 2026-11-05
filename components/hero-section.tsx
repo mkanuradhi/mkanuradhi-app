@@ -8,8 +8,8 @@ import ScopusIcon from "@/icons/ScopusIcon";
 import WebOfScienceIcon from "@/icons/WebOfScienceIcon";
 import Image from "next/image";
 import anuImage from "@/public/images/anuradha.jpg"
-import "./hero-section.scss";
 import AnimatedLink from "./animated-link";
+import "./hero-section.scss";
 
 const baseTPath = 'components.HeroSection';
 
@@ -25,7 +25,7 @@ const HeroSection = () => {
     },
     {
       tooltipText: `${t('liTooltip')}`,
-      url: 'https://www.linkedin.com/in/anuradha-ariyaratne-3a406281/',
+      url: 'https://www.linkedin.com/in/mka-ariyaratne/',
       faIcon: faLinkedin,
     },
     {
