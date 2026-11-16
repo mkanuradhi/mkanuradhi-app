@@ -52,7 +52,9 @@ const BlogPostViewer: React.FC<BlogPostContentProps> = ({ blogPostView }) => {
                 </div>
                 <h1>{blogPostView.title}</h1>
                 <p className="fs-7">
-                  <span className="text-muted fs-7">{blogPostView.formattedDate} {blogPostView.formattedTime}</span>
+                  <span className="text-muted fs-7">
+                    {blogPostView.formattedDate}, {blogPostView.formattedTime}
+                  </span>
                 </p>
                 <hr className="divider" />
               </Col>
