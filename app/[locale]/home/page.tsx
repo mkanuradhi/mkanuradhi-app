@@ -40,7 +40,7 @@ export async function generateMetadata ({ params }: { params: Promise<{locale: s
     // Social media links
     sameAs: [
       'https://scholar.google.com/citations?user=-O25soMAAAAJ',
-      'https://www.linkedin.com/in/anuradha-ariyaratne-3a406281/',
+      'https://www.linkedin.com/in/mka-ariyaratne/',
       'https://orcid.org/0000-0002-3548-3976',
       'https://www.researchgate.net/profile/Anuradha-Ariyaratne',
       'https://www.scopus.com/authid/detail.uri?authorId=57188855115',

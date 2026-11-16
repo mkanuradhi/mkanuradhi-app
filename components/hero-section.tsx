@@ -8,8 +8,8 @@ import ScopusIcon from "@/icons/ScopusIcon";
 import WebOfScienceIcon from "@/icons/WebOfScienceIcon";
 import Image from "next/image";
 import anuImage from "@/public/images/anuradha.jpg"
-import "./hero-section.scss";
 import AnimatedLink from "./animated-link";
+import "./hero-section.scss";
 
 const baseTPath = 'components.HeroSection';
 
@@ -24,19 +24,9 @@ const HeroSection = () => {
       faIcon: faGoogleScholar,
     },
     {
-      tooltipText: `${t('liTooltip')}`,
-      url: 'https://www.linkedin.com/in/anuradha-ariyaratne-3a406281/',
-      faIcon: faLinkedin,
-    },
-    {
       tooltipText: `${t('oiTooltip')}`,
       url: 'https://orcid.org/0000-0002-3548-3976',
       faIcon: faOrcid,
-    },
-    {
-      tooltipText: `${t('rgTooltip')}`,
-      url: 'https://www.researchgate.net/profile/Anuradha-Ariyaratne',
-      faIcon: faResearchgate,
     },
     {
       tooltipText: `${t('scTooltip')}`,
@@ -47,6 +37,16 @@ const HeroSection = () => {
       tooltipText: `${t('wsTooltip')}`,
       url: 'https://www.webofscience.com/wos/author/record/NRY-6429-2025',
       customIcon: <WebOfScienceIcon size={30} />,
+    },
+    {
+      tooltipText: `${t('liTooltip')}`,
+      url: 'https://www.linkedin.com/in/mka-ariyaratne/',
+      faIcon: faLinkedin,
+    },
+    {
+      tooltipText: `${t('rgTooltip')}`,
+      url: 'https://www.researchgate.net/profile/Anuradha-Ariyaratne',
+      faIcon: faResearchgate,
     },
   ];
 
