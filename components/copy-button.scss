@@ -1,0 +1,19 @@
+.copy-button {
+  --copy-hover-bg: color-mix(in srgb, var(--bs-secondary-bg), var(--bs-body-color) 18%);
+  
+  color: var(--bs-body-color);
+  border: 0;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: var(--bs-body-color);
+    background-color: var(--copy-hover-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 1px;
+  }
+}

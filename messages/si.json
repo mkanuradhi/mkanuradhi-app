@@ -2977,6 +2977,11 @@
     },
     "PageTrail": {
       "trail": "පිටු මාර්ගය"
+    },
+    "CopyButton": {
+      "copy": "පිටපත් කරන්න",
+      "copied": "පිටපත් කර ඇත",
+      "copyToClipboard": "ක්ලිප්බෝඩ් එකට පිටපත් කරන්න"
     }
   },
   "contexts": {

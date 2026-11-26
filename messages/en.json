@@ -2977,6 +2977,11 @@
     },
     "PageTrail": {
       "trail": "Breadcrumb"
+    },
+    "CopyButton": {
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyToClipboard": "Copy to clipboard"
     }
   },
   "contexts": {
