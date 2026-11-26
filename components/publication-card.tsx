@@ -12,6 +12,8 @@ import PublicationAuthors from './publication-authors';
 import { Link } from '@/i18n/routing';
 import { AnimatePresence, motion } from "framer-motion";
 import PublicationTagBadge from './publication-tag-badge';
+import CopyCodeBlock from './copy-code-block';
+import CopyTextBlock from './copy-text-block';
 
 const baseTPath = 'components.PublicationCard';
 
@@ -217,9 +219,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                  <code>{publication.abstract}</code>
-                </pre>
+                <CopyTextBlock text={publication.abstract} />
               </motion.div>
             )}
 
@@ -251,9 +251,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                  <code>{publication.bibtex}</code>
-                </pre>
+                <CopyCodeBlock code={publication.bibtex} />
               </motion.div>
             )}
 
@@ -266,9 +264,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <pre className="p-3 rounded bg-body-secondary text-body fw-normal lh-sm" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                  <code>{publication.ris}</code>
-                </pre>
+                <CopyCodeBlock code={publication.ris} />
               </motion.div>
             )}
           </AnimatePresence>
